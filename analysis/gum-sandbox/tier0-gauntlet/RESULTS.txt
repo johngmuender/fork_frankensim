@@ -1,0 +1,83 @@
+== GUM TIER-0 CONSTANTS GAUNTLET (fs-ivl certified) ==
+
+A1    PASS  [1.358122181051e0, 1.358122181051e0]  corpus 1.358100e0  e0 = 64/(15 pi) [corpus 1.3581]
+        note: Bogomolny/Haar field constant
+A2    PASS  [7.760698177433e-1, 7.760698177433e-1]  corpus 7.761000e-1  i0 = 256/(105 pi) [corpus 0.7761]
+        note: compacton isorotation inertia
+A3    PASS  [1.750000000000e0, 1.750000000000e0]  corpus 1.750000e0  e0/i0 = 7/4 exactly
+        note: integer identity 64*105*4 == 7*15*256: true
+A4    PASS  [2.514753626328e0, 2.514753626328e0]  corpus 2.514700e0  c0 = 128 sqrt(42)/(105 pi) = 2 sqrt((3/2) e0 i0) [corpus 2.5147]
+        note: routes intersect: true; exact square identity: true
+A5a   PASS  [7.637626158260e-1, 7.637626158260e-1]  corpus 7.638000e-1  kappa_phys = sqrt(7/12) [corpus 0.7638]
+        note: deep-BPS clock ratio
+A5b   PASS  [1.527525231652e0, 1.527525231652e0]  corpus 1.527500e0  omega_th = 2 kappa = sqrt(7/3) [corpus 1.5275]
+        note: exact identity 4*(7/12) == 7/3: true
+A6    PASS  [1.080123449735e0, 1.080123449735e0]  corpus 1.080100e0  rigid closure kappa = sqrt(7/6) = 1.0801 > 1 (superradiant, rejected)
+        note: enclosure lower bound certifies kappa > 1
+A7a   PASS  [2.053287737772e0, 2.053287737772e0]  corpus 2.053000e0  scaling closure c(g=1) = 2 sqrt(e0 i0) [corpus 2.053]
+        note: isotropic-breathing rung
+A7b   PASS  [9.354143466935e-1, 9.354143466935e-1]  corpus 9.354000e-1  kappa(g=1) = sqrt(7/8) = 0.9354 < 1 (in-gap)
+        note: enclosure upper bound certifies kappa < 1
+A8a   PASS  [1.414213562373e0, 1.414213562373e0]  corpus 1.414214e0  j=1/2: V = sqrt(2), E_rot/E = 1/4 exact
+        note: w j(1-j)=1 => w=4; E_rot/E = j/2 = 1/4 (rational)
+A8b   PASS  [-2.000000000000e0, -2.000000000000e0]  corpus -2.000000e0  j=1 pole; j=3/2: V^2 = -2 < 0 => only 0 < j < 1 solvable (j = 1/2 selected)
+        note: pole certified by WHOLE-interval division: true
+A9    PASS  [2.357753520800e0, 2.385057886978e0]  corpus 2.370000e0  c(eps=0.05) = c0[1 - c_g eps^(2/3)] intersects <r1> = 2.37 +/- 0.09
+        note: central 2.3714 vs benchmark 2.37
+B1    PASS  [1.358090181094e0, 1.358154181510e0]  corpus 1.358100e0  Haar quadrature (16/pi) INT sin^3 cos^2 = 64/(15 pi) [1.3581]
+        note: enclosure width 6.4e-5; intersects A1
+B2    PASS  [1.358096716148e0, 1.358147646208e0]  corpus 1.358100e0  compacton direct energy (32/pi) INT s^2(1-s^2) = 64/(15 pi)
+        note: two routes, one number: B1 and B2 enclosures intersect
+B3    PASS  [9.999899998599e-1, 1.000010000140e0]  corpus 1.000000e0  hedgehog topological degree K = 1 (pi_3(S^3))
+        note: enclosure width 2.0e-5
+B4    PASS  [2.285647619235e-1, 2.285780953460e-1]  corpus 2.285714e-1  inertia moment INT 4 s^4(1-s^2) = 8/35 = 0.228571 exact
+        note: feeds i0 = 256/(105 pi) via I0 = 128 pi J R*^3 / 105
+C2    PASS  [2.362373841740e-1, 2.362373841740e-1]  corpus 2.362000e-1  deep-BPS binding depth 1 - sqrt(7/12) = 0.2362
+D1    PASS  [2.822324496071e0, 2.822459565801e0]  corpus 2.822200e0  ln(m_tau/m_mu) = 2.8222; claim A/2 = 2.80 +/- 0.45
+        note: pull 0.05 sigma (corpus 0.05)
+D2    PASS  [5.331598750942e0, 5.331598750942e0]  corpus 5.332500e0  ln(m_mu/m_e) = 5.3325; claim (A+B)/2 = 5.65 +/- 0.75
+        note: pull 0.42 sigma (corpus 0.4)
+D3    PASS  [1.888990303189e0, 1.889080705767e0]  corpus 1.889400e0  log-ratio = 1.8894; claim (A+B)/A = 2.02 +/- 0.28
+        note: pull 0.47 sigma (corpus 0.5)
+D4    PASS  [1.039721229227e2, 1.039721229227e2]  corpus 1.040000e2  p=3 termination mass m_e e^{-8.5} [corpus 104 eV]
+        note: 1/2(A+2B) = 8.5 at central A, B
+D5a   PASS  [2.435680751174e1, 2.435680751174e1]  corpus 2.436000e1  <r10> bridge log = 24.357 [corpus 24.36]
+        note: sole release with end-to-end arithmetic in the archive (WS-nu-P2)
+D5b   PASS  [4.694580393701e-2, 4.695214532233e-2]  corpus 4.680000e-2  m3 = m_tau e^{-24.357} = 0.0468 eV [corpus 0.0468]
+        note: 1-sigma band e^{+/-0.90} => [0.019, 0.115] eV
+D6    PASS  [5.895935939768e-2, 5.895935939768e-2]  corpus 5.900000e-2  minimal-NO Sigma = 0.0590 eV [stake floor 0.058]
+        note: S1 stake floor arithmetic
+D7    PASS  [2.677211768359e-2, 2.677211768359e-2]  corpus 2.680000e-2  Delta N_eff = (4/7)(10.75/106.75)^{4/3} = 0.0268
+        note: Majoron thermal relic
+D8a   PASS  [1.169505234092e-5, 1.169505234092e-5]  corpus 1.170000e-5  P-F1' delta_mu = (m_e/m_mu)^2/2 = 1.17e-5
+        note: HL-LHC forced-null magnitude (stake S2)
+D8b   PASS  [4.134708912168e-8, 4.135826011080e-8]  corpus 4.100000e-8  P-F1' delta_tau = (m_e/m_tau)^2/2 = 4.1e-8
+D9    PASS  [6.782006920415e-3, 1.384083044983e-2]  corpus 1.000000e-2  eps_q in [0.68, 1.4]e-2; stiffness law f_q = sqrt(eps_q) m_Sk = 0.17 in band
+        note: f_q(law) = 0.170 GeV in [0.14, 0.20] (V15.7 closed loop)
+D10   PASS  [2.456174900099e-1, 2.456174900099e-1]  corpus 2.460000e-1  lambda*(eps_q = 0.01) = 0.2456 [corpus 0.246]
+        note: quark-belt oblateness
+D11   PASS  [8.200000000000e-1, 1.270000000000e0]  corpus 1.270000e0  FQ closes: R_up = 1+0.33-0.06 = 1.27; R_down = 1+0.33-0.51 = 0.82 (sign flip)
+        note: arithmetic overdetermination of <r11>
+D12   PASS  [2.890000000000e0, 2.890000000000e0]  corpus 2.890000e0  Yukawa trace h_par + 2 h_perp = x^2 e^{-x}/r^3 (identity)
+        note: exact polynomial cancellation + interval spot check
+D13a  PASS  [1.235041562220e-1, 1.235041562220e-1]  corpus 1.230000e-1  tau*(30 m) = 0.123 ns
+D13b  PASS  [4.116805207398e-1, 4.116805207398e-1]  corpus 4.100000e-1  tau*(100 m) = 0.41 ns
+D14   PASS  [3.709351695378e0, 2.873251468285e1]  corpus 4.000000e0  phason window [3.7, 28.7] MeV [corpus (4, 29)]
+        note: lower edge 3.71 rounds to the corpus's 4 — noted honestly
+D15   PASS  [8.377104089232e-6, 8.377104089232e-6]  corpus 8.400000e-6  closure-failure threshold eps_e >= 8.4e-6
+        note: suppression 8.356e4 (corpus 8.3e4)
+E1    PASS  [9.274010072680e-24, 9.274010072680e-24]  corpus 9.274010e-24  g_s = 2 chain: (1/2) q omega lbar^2 = mu_B = 9.274e-24 J/T (WS-A1)
+        note: identity route mu_B = 9.274010e-24; CODATA 9.2740101e-24
+E2    PASS  [3.977968265813e-20, 3.977968265813e-20]  corpus 4.000000e-20  Unruh T(9.81 m/s^2) = 4.0e-20 K (WS-T geometric recovery)
+        note: standard-physics recovery; route is the novelty
+
+== 37/37 checks PASS ==
+
+fs-evidence: 37 enclosures certified (fail-closed Certified<f64>).
+fs-package: 37 Verified claims bundled; root e7a8e897c55984d1a11eaea70ffd7af02a4d528a9d45150d53b3602c21c9df91
+fs-checker mode 1 (deny-all):        passed = false (expected false — unauthenticated Verified claims are refused; anti-laundering works)
+fs-checker mode 2 (cert capability): passed = true (expected true)
+fs-checker mode 3 (tampered root):   passed = false (expected false)
+
+EPISTEMIC NOTICE: every PASS verifies a WITHIN-MODEL claim of a speculative
+theory (GUM). Reproducible arithmetic is not evidence about nature.

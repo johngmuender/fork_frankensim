@@ -1,0 +1,16 @@
+[package]
+name = "gum-tier0-gauntlet"
+version = "0.1.0"
+edition = "2021"
+description = "Tier 0 of the GUM replication program: the constants gauntlet, with fs-ivl certified interval enclosures, fs-evidence certificates, and an fs-package bundle verified by fs-checker."
+
+# Deliberately outside the frankensim workspace (like tools/bootstrap):
+# only the std-only dependency closure below is built.
+[workspace]
+
+[dependencies]
+fs-ivl = { path = "../../../crates/fs-ivl" }
+fs-evidence = { path = "../../../crates/fs-evidence" }
+fs-package = { path = "../../../crates/fs-package" }
+fs-checker = { path = "../../../crates/fs-checker" }
+fs-blake3 = { path = "../../../crates/fs-blake3" }

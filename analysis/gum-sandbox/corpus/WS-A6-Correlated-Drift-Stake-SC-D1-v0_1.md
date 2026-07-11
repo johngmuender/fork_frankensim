@@ -1,0 +1,50 @@
+# WS-A6 — THE CORRELATED-DRIFT SECTOR: THE LOCK ANALYSIS AND STAKE CANDIDATE SC-D1
+## Which constants may drift, in what pattern — Primer problem 10.5 resolved at corpus grade; Sec. XII's kill line converted to an adjudicated instrument — filed 2026-07-06 (S-30)
+### Attaches to WS-A Charter v0.1 · Anchors: P-O1 (Ω IV.H.3), the bootstrap/servo record, F-A15-3's τ_𝔥, Ω-3/WS2-O2 (spatial face), WS-Q1 v0.2 (the colored carrier chain), WS-A1's 𝔤-lock · Baseline: Session Map v1.0.1 · **Note:** unlike every prior WS-A instrument, this one is **pre-adjudication** — its targets are not yet measured; the post-public-target cap does not apply to the conditional content
+
+---
+
+## §1 The lock analysis [DF-structural] — the ledger of laboratory dimensionless observables
+
+Let the medium's primitives drift adiabatically and classify each observable by its drift status. The corpus's distinguished non-equilibrium mode is the **𝔥-channel**: a displacement of the agitation invariant against its dynamically selected fixed point (the servo of IV.H.3), at fixed constitutive constants — the only channel for which the corpus supplies a complete sensitivity statement (P-O1).
+
+| Observable | Status | Mechanism | Tag |
+|---|---|---|---|
+| 𝔤_s (and every g-factor's leading value) | **LOCKED — drift forbidden identically** | 𝔤 = nħ/L·𝒥 is a ratio of a topological winding to the FR half-quantum (Theorem A1-2): no medium constant appears | DF |
+| ¼, √2, ê₀/𝔦₀ = 7/4 | LOCKED | closure pure numbers | DF |
+| 𝔠, κ | **quasi-locked** | fixed-point values; excursion bounded by the entrainment bandwidth ≤ Δ_lock ≈ 3×10⁻³ over the entire ε-window — and only via cosmological ε-drift, a separate, slower channel | DF/DW |
+| α | **CONTINGENT — the 𝔥-carrier** | α compares defect self-coupling to torsion stiffness *through ħ* (V.F): at fixed constitutive sector, δα/α = −δ𝔥/𝔥 at leading order | DW-structural |
+| μ = m_p/m_e | **contingent but 𝔥-suppressed** | masses are ê·Λm̃-objects — 𝔥-blind at leading order; the closure re-entrains a displaced 𝔥 with stored strain O(δ²), and the 𝔥-sensitive residue is the binding-fraction channel: **\|δμ/μ\| ≤ ∼10⁻² · \|δ𝔥/𝔥\|** (P-O1, taken at its printed bound) | DW |
+| optical clock ratios | contingent, **slaved** | each ratio drifts as its own K_α sensitivity ⬛ times the single parameter δα/α; μ- and g-terms enter at ≤10⁻² relative | DW-structural |
+
+**Resolution of Primer 10.5:** if the medium's constants drifted, the first objector is **atomic spectra through α** (the 𝔥-carrier); the speed of light is a *unit* in the groomed sector (cone-locked, unobservable as drift in dimensionless form); and **mass ratios object last** — they are 𝔥-blind to leading order and locked to the constitutive sector. The consistency-locked combinations are exactly the closure's pure numbers, which cannot drift at all.
+
+## §2 The electron/quark asymmetry, made explicit and tagged
+
+μ's two carriers live in different strata. **Electron:** m_e = √2 ê₀ Λ m̃_e · s_e(frustration) — channels {Λ, m̃_e, fog geometry}. **Proton:** dominated by colored-stratum energy — through the WS-Q1 chain, f_q = √ε_q·𝔪_Sk (the V15.7 stiffness law) and 𝔪_Sk = c_Sk√(a₂a₄) with a₂ = 1/(2𝔠²Λ²), so 𝔪_Sk ∝ √a₄/(𝔠Λ). Hence the constitutive sensitivities differ sharply: **∂lnμ/∂lnΛ = −2, ∂lnμ/∂ln a₄ = +½, ∂lnμ/∂ln m̃_e = −1** — μ-drift couples to the {Λ, a₄, m̃} sector, a *different stratum* from α's 𝔥-carrier, which is the structural root of Sec. XII's kill line: **a drift epoch that moves μ commensurately with α cannot be the 𝔥-channel.** The honest wall, printed at full size: the **general** constitutive-drift correlation matrix is not derivable at this grade, because α's numerator (the defect self-coupling) is the un-derived V.F object — the α-face again, NR-A3a's sibling. **Scope ruling (binding):** SC-D1 covers the 𝔥-channel, the corpus's one clean mode; constitutive-channel patterns are Tier-C'd behind the α-face and no pattern claim is made for them beyond the locks of §1.
+
+## §3 The 𝔥-channel template [DF-structural given P-O1's bound]
+
+In any 𝔥-displaced epoch or region, the drift vector is one-parameter:
+
+> **(δα/α : δμ/μ : δ𝔤/𝔤 : clock-ratio network) = (1 : R : 0 : K_α-slaved), with \|R\| ≤ ∼10⁻² and the entire optical network fit by the single parameter δα/α through its known K_α spread ⬛ (∼−6 for Yb⁺ E3 to ∼+0.01 for Al⁺) with residuals ≤ 10⁻² relative.**
+
+Consistency check of the equilibrium displacement against the corpus's own margin: δ_eq ∼ H·τ_𝔥 ≈ (2.2×10⁻¹⁸ s⁻¹)(10⁻¹⁶·⁵ s) ≈ **10⁻³⁴** — reproducing F-A15-3's "≈34 orders" from the servo constants directly. ✓
+
+## §4 Registration — stake candidate SC-D1 (frozen)
+
+**Statement.** *If any variation of fundamental dimensionless constants is ever robustly detected — temporal or spatial — the pattern must be the 𝔥-channel template of §3: the ratio R ≡ (δμ/μ)/(δα/α) must satisfy \|R\| ≤ 10⁻² (MARGINAL band (10⁻², 3×10⁻²], flagged); every g-factor drift must be null at instrument precision; and the optical-clock-ratio network must fit the one-parameter K_α template with ≤10⁻² relative residuals. Any robust violation — μ-drift commensurate with α-drift, a confirmed g-drift, or a multi-parameter network pattern — kills the entrainment sector (𝔥 as dynamically selected vacuum order parameter with fast servo).* **Robustness definition: inherited verbatim from SWP-1** — ≥3σ in ≥2 independent pipelines, prior-stable. **Adjudicators, named:** optical clock-ratio networks (Yb⁺/Sr/Al⁺-class laboratories ⬛); quasar-absorption α and μ systems (many-multiplet and methanol/ammonia classes ⬛); Oklo ⬛; for the spatial face, sightline surveys per Ω-3/WS2-O2 (spatial δ𝔥/𝔥 ↔ spatial δα/α; homogeneity ≲10⁻⁵/Gpc as standing compliance).
+
+**The live edge, noted informationally.** The contested α spatial dipole (∼10⁻⁵ amplitude, unresolved status ⬛), combined with current μ-dipole bounds (few×10⁻⁷ at overlapping redshifts ⬛), sits at R ≲ few×10⁻² — **brushing the MARGINAL band already**. A robust confirmation of the dipole would make SC-D1 immediately live and near-decisive in one step; its refutation costs GUM nothing (the null is the central expectation). The stake is therefore not idle: one contested dataset already knows where its adjudication line is.
+
+## §5 Null-branch pricing (the unconditional content, honestly graded)
+
+GUM's central expectation is **null forever through the 𝔥-channel**: equilibrium displacement ∼10⁻³⁴; present-day drift *rate* ∼ δ_eq·H ∼ 10⁻⁴⁴ yr⁻¹, versus the best laboratory bound 1.0×10⁻¹⁸ yr⁻¹ ⬛ — margin ∼10²⁶; versus Oklo's integrated 10⁻⁸/1.8 Gyr — margin ∼10²⁶. Per the P-G2 honesty clause: this null is a **consequence-poor smallness** — derived, signed, and untestable — and is filed as perimeter bookkeeping, never as exposure. **Accordingly the unconditional content ships as inverse-kill sharpenings, not as a stake** (three proposed S7 annex rows): **T-e6** — any robust μ-drift commensurate with a robust α-drift (\|R\| > 3×10⁻²) kills the entrainment sector (Sec. XII's line, now banded); **T-e7** — any robust drift of any g-factor kills the winding-moment identity; **T-e8** — any robust multi-parameter clock-network pattern (non-K_α-slaved) kills the one-𝔥 structure. The **conditional pattern of §4 is the stake proper** — the sector's only pre-adjudication instrument, carrying genuine (non-post-public) evidential exposure if a detection ever occurs. Non-equilibrium windows where the conditional content is physically live: early-universe and relic-ensemble environments hold their standing [CJ] non-claim flags (III.D); the spatial dipole is the near-term face.
+
+## §6 Branch scripts (pre-written, all four)
+
+**Branch N (null persists):** nothing adjudicates; margins refreshed in the annual memo; no document may cite the null as support (consequence-poor clause). **Branch S (robust detection, pattern fits):** the 𝔥-channel is identified in nature — ceiling sentence: *a detected variation matching the one-parameter entrainment template, with mass ratios and g-factors locked as predicted — pre-registered, replication-gated;* grade arithmetic run in public; external replication mandatory before any stronger sentence; the constitutive sector's silence is preserved (no α-value claim arises — the pattern is α-value-blind). **Branch K (robust detection, pattern violated):** the entrainment sector dies — 𝔥 as fast-servo order parameter is struck; what survives, printed now: the closure mathematics and its bench stakes, the EM/gravity/one-world derivations, the QM sector (Nelson kinematics survives; the *bootstrap identity's* dynamical reading falls); obituary annex drafted with the counterfactual filing checked. **Branch W (contested/irreproducible claims — the dipole's current state):** stake stands armed; annual memo; no adjudication under contest; "nature owes us no deadline."
+
+## §7 Ledger, annex proposals, disposition
+
+**Filed:** the lock ledger (§1, resolving Primer 10.5 at corpus grade); the stratum-asymmetry derivation with printed sensitivities (§2); the 𝔥-channel template with the 10⁻³⁴ consistency closure (§3); **SC-D1 registered and frozen** (§4) with SWP-robustness inherited verbatim; the live-edge note on the contested dipole; null margins (∼10²⁶) under the consequence-poor clause (§5); inverse-kill rows T-e6/7/8 proposed for the S7 annex alongside WS-A4's T-e1–5; branch scripts N/S/K/W complete (§6). **Proposed MIP-3 insert:** Ω Sec. XII's "μ-drift commensurate with α-drift" line annotated with SC-D1's banded form and pointer; Ω IV.H.3's P-O1 paragraph annotated with the template and the 𝔤-lock addition. **Named residue:** the general constitutive sensitivity matrix, walled at the α-face (with NR-A3a). **Scope hygiene:** no α value, no drift value, and no detection claim appears anywhere above; the [CJ] non-claim flags on non-equilibrium windows are untouched. **Next instrument: P8 — WS-A8, the in-house line spectra (the K–K̄ bound series below √(7/3)ω₀ and the bond-vibron line, priced for the bench).** Standing by.

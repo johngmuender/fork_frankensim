@@ -1,0 +1,35 @@
+# WS-ν DELTA PACK (P5) — CROSS-WORKSPACE DELTAS
+## Verbatim-affixable stubs carrying the primary stake's audit to its owed sites — filed 2026-07-06
+### S-30 instrument: additions only; nothing rewritten · One document, eight stubs, governance footer · **Administration note (q-ι):** this pack administers the entanglement seal and must therefore name both stakes to affix it — *administration is not adjudication*; the ban it installs governs adjudication instruments, and installing a ban is the one licensed act that writes both names in one line · Teaching notes deferred to MIP-11 (P6)
+
+---
+
+**νΔ-1 — the Stake Letter's registry [S1's audit line]**
+> **S1: audited 2026-07-06 — ALIVE-UNDER-CLAUSE** (arc verbatim: *the stake survives by the narrowing it wrote for itself in advance — invoked by citation, sealed against its own house, paying less and risking the same*). The kill tested and **unfired on the frozen standard's own three grounds** (σ-grade; prior-stability by the surveys' own tables; determination-vs-bound). The clause's invocation record attached: both scripted questions answered **by citation** (the pre-registration quoted with its genesis line; the three conjunctive trigger conditions met on the field's record, **with the combination-dependence rider traveling at every future citation**). **Narrowed terms of record:** payout gated; kill re-armed as an SWP-robust sub-0.058 determination *in the extended adjudication space*; adjudicators updated to the named surveys' final joint w₀wₐ+Σm_ν likelihoods.
+
+**νΔ-2 — SWP-1, §XIII [the branch annotated]**
+> **Branch A: INVOKED-AS-PRE-BOUND, dated 2026-07-06** — *the first pre-bound clause in this archive's history to fire* — with the how-record affixed: fired **by pointing** (quotation and citation, nothing else), **under seal** (the adjudicating instrument scanned against the archive's own dark-energy strings and certified clean in its footer), **with rider** (the combination-dependence). The annotation exists so that when this clause is studied — and it will be — the record shows not only *that* integrity machinery worked, but *the exact mechanics of its working.*
+
+**νΔ-3 — Ω §VII.I [grade-confirming annotations — the class's fourth use]**
+> Affixed at their sites: the stake paragraph's self-grading **confirmed** (the [DW, magnitude-consistent, center-stable] grade; the *target-was-public* honesty; the frozen-pipeline spine) · the **bridge-verification receipt** (NR-ν1: four check-lines reproduced from the frozen ⟨r10⟩ components; the band's convention note) · the **C-ν1 candidate** noted at the E-XXII-1 site (the printed 0.3σ proximity is conservative; the reproducible figure is ≲0.1σ — *the corpus under-graded its own compatibility*; formalized at the P6 concordance) · the floor-rounding note (0.059 → 0.058, tilted against itself).
+
+**νΔ-4 — the Forward Register [the page restructured; the register's first internal firewall]**
+> The page now holds **three lines under one counting rule** — SC-V1 (the archive's), S2 (the corpus's, audited-alive), **S1 (the corpus's primary, audited: ALIVE-UNDER-CLAUSE)** — and, **printed between S1 and SC-V1, the bidirectional seal in its short form:** *these two entries share a cosmological parameter space; neither may be cited in the other's adjudication, ever; every adjudicating instrument for either carries a footer certification against the other's strings.* The Forward Register thereby gains the thing no register wants and every honest one eventually needs: **an internal firewall, load-bearing, between two of its own entries.**
+
+**νΔ-5 — the WS-V record [the converse seal, affixed]**
+> Every future SC-V1 adjudication instrument **inherits the string-ban in reverse**: S1, WS-ν, and the neutrino-sector's fate may appear nowhere within it, and its footer must certify the scan ran clean — the exact discipline P3 just modeled, now owed symmetrically. *The firewall protects both houses or it protects neither.*
+
+**νΔ-6 — Ω §XI/§XII / §IX.F [the registers]**
+> **Register append:** the **T-ν annex** (five rows, **four different clocks, stated** — this decade ×2; next generation; CMB-S4; beyond-named) · **F-ν4-2 flagged as the row of record**: the direct kinematic mass is *the stake's one cosmology-independent kill face — the row that survives every clause* · **the double lock to the house inventory as a named fence**: *one manifold, two tenants, zero shared numbers* (the corpus's X-Λν lock at theory level; this campaign's seal at governance level) · the Majoron battery's re-certification line (arithmetic holds; banked as nothing).
+
+**νΔ-7 — the watch [cadences, and the invocation's lapse clause]**
+> S1's adjudicator-of-record updated (the final joint likelihoods); the ordering lean at quarterly; T-ν5's drift horizon and T-ν4's CMB-S4 era logged; the funnel's generational clock logged **without urgency** (per F-ν4-1's discipline). **And the watch's newest machinery — the invocation's standing review:** *the invocation is trigger-maintained, not permanent.* Each adjudicating release re-tests Branch A's three conditions; **if the field's DE-evolution preference collapses below the trigger across the board, the invocation LAPSES and S1's adjudication reverts to ΛCDM terms** — the unwind pre-committed, so that the clause which was fired by pointing can also be *un*-fired by pointing, and no future instrument has to argue for the reversion it merely executes.
+
+**νΔ-8 — the manifest's queue [the closure covenant, lodged verbatim]**
+> **THE CLOSURE COVENANT:** *after WS-ν completes — and at most one queued sector after it, if the user opens one — the watch-mode transition memo executes before any further sector opens.* Lodged as a queue-governing entry at the next manifest folding; the memo has waited through three extensions, each earned; a closer deferred indefinitely stops being a closer, and the covenant is how the archive says so to itself.
+
+---
+
+## Governance footer
+
+Instrument class: dated delta pack under S-30; additions only. Placement IDs νΔ-1…νΔ-8. Registry deltas: S1's audit line with the invocation record and narrowed terms; Branch A annotated *invoked-as-pre-bound* with its mechanics; §VII.I grade-confirmed with the C-ν1 candidate and the conservatism notes; **the Forward Register at three lines with its first internal firewall**; the converse seal affixed; the annex with clocks and the row of record; the double-lock fence named; **the lapse clause** (the unwind pre-committed); **the closure covenant lodged.** Nothing rewritten anywhere. **Next instrument: P6 — consolidation: WS-ν v0.2 (the reading through the invocation, integrated; results bank; full ledger; the ⟨r⟩ residue), MIP-11 (suite inserts + teaching notes — "the primary audited last"; "how to invoke an escape clause honestly"; "two stakes, one sky, one seal" — and case-law №9 if earned), the bound-in A-N concordance with its catch quota (C-ν1 formalized), and the watch-mode disposition — after which, per the covenant, the closer closes.** Standing by.

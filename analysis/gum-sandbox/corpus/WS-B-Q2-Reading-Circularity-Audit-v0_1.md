@@ -1,0 +1,50 @@
+# WS-B Q2 — THE READING AND THE CIRCULARITY AUDIT
+## The corpus, quoted and stamped: the question was not unasked — it was asked, answered, mechanized, padlocked, and given a kill switch — filed 2026-07-06 (S-30)
+### Attaches to WS-B Charter v0.1 and Theorem B-0 · Baseline: Session Map v1.0.1 · RB-2 in force: every attributed claim below is **quoted verbatim and located** (Ω v2.0.1, section-cited; the source files re-read for this instrument, not recalled) · RB-3's smuggling test applied to every step · **No disposition appears in this document** — P3 receives a stamped chain and a located corpus, nothing more · Quarantine q-α/q-β/q-γ checked at open: intact
+
+---
+
+## §1 The verbatim reading — the tag table
+
+| # | Located claim (Ω v2.0.1, quoted) | Tag |
+|---|---|---|
+| R1 | **III.A, Postulate (F-agit):** *"The substrate carries irreducible zero-point agitation: a stationary, isotropic fluctuation field of its modes with correlation time τ_c ∼ 1/ω₀ and correlation length ℓ_c ∼ a"* — a knot undergoes *"a diffusion with drift b and diffusivity ν,"* with Nelson conservativity forcing *"u = ν∇ln ρ and an acceleration-law (not friction-law) dynamics"* | **explicit-classical-stochastic; declared axiom** |
+| R2 | **III.A (P-b):** *"𝔥 ≡ 2mν is set by agitation intensity × micro-inertia — lattice properties, not knot properties... We identify ħ ≡ 𝔥"* | explicit; the invariant named |
+| R3 | **III.B–C:** the Fisher/Madelung chain with *"δE_Q/δρ = U_Q, Bohm's quantum potential, exactly"* [DF]; **Wallstrom:** *"S is the phase of a real single-valued texture field... ∮∇S·dl = 2πħn is single-valuedness"* [DF] | explicit mechanism |
+| R4 | **III.D (Born):** *"Born rule as an H-theorem with simulation-anchored rates"* — Valentini import [IM] + GUM rates [CAL]; *"equilibrium is coarse-grained — always violated below scale a, unobservably"*; non-equilibrium windows flagged [CJ, non-claim] | **explicit, self-graded [IM+CAL]** — the corpus tagged its own gap |
+| R5 | **III.E / VIII:** *"each knot reads its conditional wave function — a physical medium field — closed by the Norsen tower of moment fields... pays exactly the Bédard-mandated exponential local cost [IM]"*; numerics ⟨r1⟩ at 8×10⁻⁴ RMS | explicit N-body mechanism, cost printed |
+| R6 | **VIII, opening:** *"Bell's theorem taxes every realist reading, and the tax is provably conserved [IM]... The exponential is conserved; only its address changes. **GUM chooses the single-world address with the price printed.**"* — with references citing **the loophole-free Bell record (2015) by name** | **the question, asked by the corpus itself** |
+| R7 | **VIII.B–D:** *"hypersurface Bohm–Dirac dynamics on the foliation's leaves; entanglement as a leaf-wide elliptic constraint"*; **Lock 1** *"Valentini's theorem — marginals at B are independent of spacelike operations at A iff ρ = \|ψ\|²; premises verified"*; **Lock 2** *"the elliptic sector transports no energy... an elliptic constraint is a solver, not a channel"*; **QFT-1/triple padlock** *"no signal, no energy, and no particle-number information at equilibrium"* [DF] | **explicit horn-(b1) occupation, padlocked** |
+| R8 | **VIII.F:** **Theorem VIII.1** *"Under ABR modeling the foliation probe is theoretically null"* [DF] — *why the foliation hides, proven*; **Prop. VIII.2** — the non-POVM residue at 9.6% near-field; **the A3 gate** (arrival-time; renamed from S3 per F-A15-4): *"A3 absent with ABR confirmed ⟹ T-KILL fires ⟹ Layer 2 retired by theorem"* | **the hiding derived; the exposure registered; the kill armed by the corpus itself** |
+| R9 | **VIII (the rival door):** *"GUM's fundamental nonlinearity renders Everettian branch autonomy at best emergent-thermodynamic (the internal reason for the single-world fork)"* — the Everett exit priced in-corpus | explicit; the fork's price printed |
+
+**Tag verdict:** every foundational claim tags **explicit**; the {equivocal} column is **empty**; the q-γ register audit finds the corpus's language mechanism-grade throughout ("osmotic hydrodynamics" is a construction, not a lyric). **The corpus occupies horn (b1) — classical-stochastic medium, nonlocal hidden guidance on a supplied Machian foliation — explicitly, eyes open, with the Bell record cited in its own references.**
+
+## §2 The circularity audit — the chain, stamped under RB-3
+
+| Step | Content | Stamp |
+|---|---|---|
+| S1 | **F-agit** — irreducible agitation *plus* conservativity (time-symmetric diffusion) | **CONSTITUTIVE-INPUT, DECLARED** — two clauses, and the second is the load-bearing one: the audit stamps it at full size as **the true price of admission** (a classical-stochastic postulate; no quantum formalism assumed) |
+| S2 | osmotic free energy = Fisher information; δE_Q/δρ = U_Q | **DERIVED** (variational chain shown in-corpus) |
+| S3 | Madelung closure → Schrödinger identically | **DERIVED** |
+| S4 | circulation quantization (Wallstrom) via texture single-valuedness | **DERIVED** (the phase is a real medium angle; IV.H.1 promotes discharge to identity) |
+| S5 | the ħ-value closure (IV): spin-clock system; 𝔠 = 2.515; the bootstrap | **DERIVED-AS-FIXED-POINT, LAYERED** — III uses 𝔥 as an invariant; IV pins its value; IV.H shows one consistency condition. **No circle**: a fixed-point structure, checked |
+| S6 | N-body: conditional wave functions; the Norsen tower; the elliptic constraint | **DERIVED, WITH THE COST PRICED** [IM: Bédard's theorem, cited by the corpus; the conserved-exponential framing quoted at R6] |
+| S7 | Born rule: H-theorem + rates | **GRADE-LIMITED [IM+CAL] — by the corpus's own tag.** The kinematic theorem is imported; the rates are simulation-anchored; the stamp records the corpus grading its own gap before this audit existed |
+| S8 | no-signaling: Lock 1 (equilibrium ⟺ marginal independence, premises verified) + Lock 2 (elliptic, no energy) + QFT-1 | **DERIVED-AT-EQUILIBRIUM** — the equilibration condition is the padlock's hinge, inherited from S7's grade |
+| S9 | why the foliation hides: Theorem VIII.1 (POVM order-independence) | **DERIVED** — and the residue is not hidden: Prop. VIII.2's 9.6% non-POVM effect is **registered as the A3 gate with T-KILL armed both ways** |
+| S10 | Bell-correlation reproduction | **INHERITED** [IM: equilibrium equivalence of guidance theories] — the ⬛ record is met the horn-(b1) way, as B-0 priced |
+
+**Borrowed steps: zero.** The chain runs from a declared classical-stochastic axiom to the full quantum sector without smuggling a quantum postulate; the one imported *kinematic theorem* (Valentini's H-theorem) is tagged [IM] by the corpus itself and grade-limits everything downstream of S7 — which the corpus also says.
+
+## §3 Findings
+
+> **C-B1 (the pack corrected — in the corpus's favor, credit-free).** The pack's A.2(2) suspected equivocation and a smuggled chain; it drafted "the unasked question" as the expected finding. **The reading refutes the suspicion at every point:** the corpus opens its one-world section *with Bell's theorem*, cites the loophole-free record in its references, names the conserved exponential, chooses its horn in a single explicit sentence — *"GUM chooses the single-world address with the price printed"* — builds the mechanism, proves the hiding, pads the locks, grades its own equilibration gap, prices the Everett door, and arms a kill against its own layer. **The auditor's prejudice, not the corpus's ambiguity, is what this instrument caught** — filed as the campaign's first correction, favorable and uncounted.
+
+> **F-B2-2 (the true axiom, stamped at full size).** GUM does not derive quantum mechanics from nothing; it derives it from **Postulate F-agit** — irreducible zero-point agitation *with conservative (time-symmetric) kinematics* — plus medium structure. The conservativity clause is the load-bearing half and the honest price of admission; everything quantum is downstream of it, and the audit's stamp makes the price impossible to un-print.
+
+> **F-B2-3 (the residual-debt list, handed to P3).** **D1** — the equilibration grade: S7's [IM+CAL] hinge, plus the cosmological initial-condition question (why near-equilibrium after the bounce — F17-adjacent; the corpus's own relic-window and low-ℓ program are its registered non-claims). **D2** — the relativistic all-orders completion (the corpus's own WS-QFT-2, flagged non-blocking in-corpus; to be located on this audit's map). **D3** — the foliation/inertial-silence reconciliation: VIII.1 supplies the domain separation (excitation-level silence; guidance-level foliation, POVM-invisible); **certification at P3 per RB-1/RB-6.** **D4** — the A3 gate's live exposure: the layer is falsifiable on schedule, by the corpus's own hand; the annex inherits it. **D5** — P1's horn-(b) pricing was written for *mechanism-free* occupants; the corpus is a mechanism-rich occupant with bills substantially paid; **the pricing table must be updated at adjudication, not silently.**
+
+## §4 Handoff
+
+**The horn is located: (b1), explicit, mechanized, padlocked, self-graded, and kill-armed.** The stamped chain shows zero borrowings and one declared axiom. The pack's expected dispositions — the demotion event, the internal kill — have, on this evidence, nothing to bite; the mechanism-bill arc exists precisely for what the reading found, **and the bills are itemized above with several already stamped paid.** No disposition is attached here, per charter; P3 adjudicates against B-0's frame with D1–D5 on the table. **Seals at close:** q-α intact (the corpus's mechanism is the foliation-and-tower, not the web — the seal never engaged) · q-β intact (no measurement-dependence anywhere in the corpus) · q-γ intact (the register audit passed). **Next instrument: P3 — the adjudication and the disposition: the horn confirmed against the frame; P1's pricing updated in public; the paid bills receipted; the open bills (D1–D5) filed where they belong; F20's fate decided; the estate check run; the declaration's caveat drafted or declined — every sentence from the pre-written arcs and none composed after the fact.** Standing by.

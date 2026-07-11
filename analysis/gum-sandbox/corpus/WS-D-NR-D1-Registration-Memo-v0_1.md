@@ -1,0 +1,49 @@
+# WS-D / NR-D1 — REGISTRATION MEMO: EXISTENCE AND METASTABILITY OF THE MURK
+## The Q_H-neutral soliton class registered — with two corrections to the pack filed before freezing — frozen before execution
+### Filed 2026-07-06 (S-30) · attaches to WS-D Charter v0.1 and the Q1+Q2 census · Baseline: Session Map v1.0.1 · **Status: FROZEN AS FILED — execution (P3) may not alter one word of §R1–§R7** · Inherits F-D1-1 (Q_H-neutrality) and F-D1-2 (the trade) as structural premises; M-D1 (barrier topology) as the registered mechanism
+
+**R0 Identity, inheritance, and two pack-corrections (filed now, per the C-A1/C-K1 precedent, so the memo freezes clean).**
+
+> **C-D1 (the scale refinement → finding F-D2-1).** The pack's identity card wrote "size ∼ 1/f." Registration-grade scrutiny splits it: the murk's **mass** localizes at its **defect cores** (director point-defects, core scale ∼1/f, energy ∼f each — whence m_𝔪 = f·𝒢 survives, core-dominated), while its **extent** is the **double-twist tether/torus at pitch scale** — and the pitch-scale texture rides the ε-lifted soft manifold, making it **ε-transparent** (soft textures superpose; only cores interact hard). **F-D2-1: the murk is the archive's third two-scale object** — hard cores, soft dressing — the same architecture as the electron (WS-A: charge at a, texture at ƛ) and the shadow (WS-K: transduction core, pitch dressing). The house has a recurring architecture, and it is now a named pattern. Consequence for J-D1: the geometric σ/m estimate correctly used the *core* (the pack's numbers stand); the transparency of the soft part is now structurally motivated in-corpus (the ε-suppression), and NR-D2 inherits it as its leading candidate mechanism rather than a hope.
+>
+> **C-D2 (the survival threshold, corrected — favorable direction, no credit).** The pack wrote "S ≳ 140." The arithmetic: τ > t_U requires **S\* = ln(t_U·f/ħ) = ln(9.9×10³⁹) ≈ 92** (band 91–94 across f ∈ [4, 29] MeV). The corridor is *easier* than the pack stated; the correction is logged, the pack goes to **v0.1.1**, and per house rule catching one's own arithmetic earns nothing.
+
+## R1 The registered statistic (three components; all must land for PASS)
+
+> **(a) Existence:** the corpus's fog free energy (Frank-elastic + chiral term, II.H) admits a **localized, Q_H = 0, locally stable texture class** — the toron nominee: a double-twist torus closed by two hyperbolic director point-defects — exhibiting (i) a local energy minimum (stability against small deformations), (ii) the two-scale structure of C-D1 (core mass f·𝒢_m, 𝒢_m ∈ O(1)–O(10²); pitch-scale extent), (iii) det F finite throughout (director defects are reduction defects, F-K3-2 — Lemma II.1 never engaged). **(b) Metastability, T = 0:** the lifetime *form* τ = τ₀·e^S with τ₀ ∼ ħ/f; today's environment is cold (T_CMB ≪ f: thermal activation dead by e^{−10¹⁰}-class; **tunneling governs**); S = the Euclidean action of the core-pair annihilation path, derivable-in-structure as S = 𝒢_S × O(barrier geometry), the number Tier-C — with the **survival threshold S\* ≈ 92** and the **decay-visibility corridor S ∈ [92, 97]** (τ between 1 and 100 t_U) both printed on the registration so P5's indirect rows have their frame before any barrier is computed. **(c) The decay channel's identity:** core annihilation releases m_𝔪 into the light sector — **phason pairs (O(1) texture coupling, expected dominant) and νν̄ (portal-suppressed, subdominant)** — the branching *structure* derivable at execution; **two indirect faces thereby named in advance**: late phason injection (a dark-radiation admission constrained by late-time N_eff-class bounds ⬛) and the MeV νν̄ line (the DSNB window ⬛).
+
+## R2 Frozen windows (exhaustive)
+
+| Window | Definition | Pre-registered meaning |
+|---|---|---|
+| **PASS** | (a)+(b)+(c) land: the class exists as a local minimum; the barrier is parametrically large enough that **S ≥ 92 is reachable within the geometry's natural range** (the number itself stays Tier-C); the channel identified with its branching structure | the murk lives; P4–P7 open; the lifetime becomes wall w2 with its corridor printed |
+| **KILL-ORPHAN** | no local minimum at any size — the chirality fails to stabilize Q_H = 0 textures and the zoo unwinds freely — **or** the barrier is parametrically small (S ≪ 92 forced across the whole geometric range) | **the orphan branch executes per charter §4**: the murk dies, the sector files "GUM predicts dark matter is not GUM-sector," and the hole is the product |
+| **Branch-W** | the free-energy functional under-determines the verdict (e.g., the ε-lifting's structure on the toron's soft part is ambiguous at the computed order), certified by both routes | suspend; name the under-determining clause; amendment path with tariffs |
+
+## R3 Method — the two-route ritual
+
+**Route A (the in-corpus construction).** Build the toron ansatz in the corpus's own free energy: the double-twist torus (locally the fog's *preferred* structure — the ground state is made of double twist, so the torus body is near-soft) + the two hyperbolic point-defect caps (core energy ∼f each, the mass carriers); establish the local minimum (the constrained Hessian); construct the annihilation path (cores merge through an untwisted intermediate) and exhibit the barrier's structure and parametric size; identify the release channels. **Route B (the transplant audit).** State exactly what the chiral-LC anchor [IM] **proves** — torons exist, are laser-writable, and persist robustly at pitch scale in real chiral media ⬛-adjacent — and exactly what it **cannot prove**: the fog's ε-lifted soft manifold has no LC analog; the T → 0 quantum-tunneling regime is beyond any LC bench; the relativistic completion is GUM's own burden. **The transplant licenses existence-plausibility only; the barrier's magnitude and the minimum's persistence under ε-lifting are Route A's sole property.** The gap is named in the memo so no execution sentence can quietly widen the license. Consistency: A must stand alone; B corroborates class-existence only.
+
+## R4 Acceptance battery (all must pass before adjudication; published regardless)
+
+**B-1 (the heliknoton undisturbed):** the construction must leave the Q_H = ±1 ground state's identity, mass mechanism, and every WS-K role untouched — the toron class must be shown orthogonal (no mixing operator at the computed order). **B-2 (B2-blindness inherited):** no electromagnetic coupling generated at any computed order; any induced moment must be portal²-suppressed and priced (the murk stays dark by the same clause that hides the fog). **B-3 (ledger closure):** the all-zeros object's production and decay conserve 𝕂, B, w_em row-by-row — trivially, but *shown*, against the extended ledger. **B-4 (the routing theorem untouched):** Kibble production at T_fog is *additional* defect structure at the same transition; the mirror dump's entropy bookkeeping (F-T4-1) is neither re-routed nor double-counted — the latent-heat ledger checked explicitly.
+
+## R5 Scope and validity declarations (frozen)
+
+Mean-field/leading-gradient order for the construction; the ε-lifting enters only where declared and its entry points are listed in the execution; the two-scale structure (C-D1) explicit in every size/mass sentence; masses quoted only as m_𝔪 = f·𝒢_m with 𝒢_m banded; T = 0 for all lifetime statements (the early-universe survival check — thermal activation *at* T_fog — is a one-clause item: the murk population that matters is what survives to T ≪ barrier, and the freeze-out of activation is part of P4's production bookkeeping, flagged here so it is owed there). No abundance appears anywhere in NR-D1 (RD-1).
+
+## R6 Tariffs
+
+Post-hoc window/statistic changes = kill · any forward abundance = struck (RD-1) · the transplant cited beyond its R3 license = the sentence struck · an EM coupling assumed rather than bounded = B-2 void · thermal-activation language about today's murk = struck (T = 0 declared) · battery skipped or partial = execution void · pack-correction protocol: C-D1/C-D2 carry no credit and are cited only as clarifications v0.1.1.
+
+## R7 Language locks and ceiling sentences (pre-written, both ways)
+
+Forbidden: "the murk is absolutely stable" (F-D1-2 forbids it forever) · "dark matter is explained" · any lifetime number without its Tier-C tag · any SIDM-window sentence (q-o lives at P5, not here). **PASS:** *the chiral vacuum admits a neutral, barrier-protected soliton class — two hard cores on a soft tether — whose survival corridor (S ≳ 92) is reachable within its own geometry; the lifetime's number stays walled, and both of its decay lights — phasons and neutrinos — are named for the watch before either is priced.* **KILL-ORPHAN (charter-verbatim):** *the theory's inventory cannot supply the dark matter: the murk dies on its own physics, and GUM predicts that Ω_DM is not GUM-sector — the hole is filed at full size, under its own name, as the sector's product.* **Branch-W:** the standing suspension formula.
+
+## R8 Frozen appendix
+
+Statistic components (a)/(b)/(c) verbatim; windows as tabled; S\* = 92 (band 91–94); the visibility corridor [92, 97]; τ₀ = ħ/f; the two-scale card (core f·𝒢_m / extent pitch-class / ε-transparent dressing); routes A/B with B's license fence; battery tolerances (B-1 orthogonality at computed order; B-2 bound ≤ portal²; B-3 row-by-row; B-4 ledger-checked); conventions D-D1. Seals q-n/q-o/q-p: **intact at freeze** (no corridor arithmetic, no window, no ratio appears above).
+
+---
+
+**Disposition:** Memo complete and **frozen as of filing**; staging binding (battery 4/4, publish regardless → Route A → Route B license-audit → single adjudication → branch scripts verbatim). Pack designated v0.1.1 (C-D1/C-D2). **Next instrument: P3 — NR-D1 execution: the construction, the barrier, the channels — and the ⊕ gate.** Standing by.
