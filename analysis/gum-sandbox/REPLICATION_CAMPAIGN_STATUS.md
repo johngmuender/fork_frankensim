@@ -89,9 +89,25 @@ the 1-D hedgehog at ε = 0.05 against the corpus's own App. I.1 gates.
   0.805 (~1.2σ low); the frozen pipeline's normalization is not recoverable
   from the text (the predicted spec-underdetermination, now concrete).
 
+## Tier 2b Step 2 — Spheroidal Isorotating Closure ✅ COMPLETE → FINDING F-R4
+**`tier2-closure/axi_*`** — zero-fit field-level closure over two deformation
+families, unit map validated to 7–9 digits (g(0.42) matches the paper's
+formula to 9 digits; the scaling rung 2√(ê₀𝔦₀) reproduced to 7).
+- **F-R4 (substantive):** under honest SDiff pullback the isorotation
+  inertia is invariant to 10⁻¹⁵ — the paper's G.5 mechanism (SDiff shape
+  modes supplying g → 3/2 at zero energy cost, the basis of the deep-BPS
+  endpoint 𝔠₀ = 2.515) **fails in its literal reading**. The g-enhancing
+  family is non-SDiff and not energy-flat; restricted-family closures land
+  at 𝔠 = 2.05–2.28, κ = 0.90–0.94 — the ⟨r1⟩ tuple NOT reproduced (κ +5.8σ)
+  though 𝔠 is within ~1σ. ¼ and V(ε→0) = √2 hold exactly.
+- Not a kill (families are restricted; the corpus's unrestricted solve may
+  find cheaper non-SDiff modes) — but the deep-BPS endpoint now carries a
+  named, machine-precision-grounded doubt whose adjudicator is the
+  unrestricted 2-D solve.
+
 ## Next (not yet executed)
-- **Tier 2b Step 2 (the kill-shot proper):** the axisymmetric isorotating
-  2-D field solve
+- **Tier 2b Step 3 (now F-R4's adjudicator):** the UNRESTRICTED axisymmetric
+  isorotating 2-D field solve
   with the real ε-sector (log-divergent compacton-edge boundary layer
   resolved), targeting κ = 0.802 ± 0.018, V = 1.409 ± 0.010, c_g = 0.42 ±
   0.04, δ = 0.29 ± 0.05, onset κ = 1.000 ± 0.004.
