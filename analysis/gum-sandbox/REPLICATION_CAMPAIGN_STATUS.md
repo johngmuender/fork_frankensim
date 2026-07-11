@@ -62,10 +62,25 @@ designates the open NR-* gates (NR-A2b ¾-Casimir, NR-D1b core-energy floor,
 NR-D2 murk kill, NR-K2b/K3a) as what "external hands must close" —
 candidate Tier-2+ targets alongside the ⟨r1⟩ axisymmetric closure.
 
+## Tier 2a — Reduced Closure Loop ✅ COMPLETE (2b remains)
+**`tier2-closure/`** (Python + adjudication). One constant calibrated from
+one datum (λ* = 0.42); everything else predicted.
+- **Coarse structure replicates**: ε→0 endpoint to 6 decimals; ¼ invariant
+  automatic (Cor. IV.2 confirmed); g* −0.6σ and 𝔠 +0.9σ inside the ⟨r1⟩
+  bands; the ε^{2/3}-class scan law from pure spheroid geometry.
+- **Fine structure does not**: κ +2.4σ, V +4.2σ (model pushes V above √2;
+  benchmark sits below), c_g ~2× low — a quantified statement that the ⟨r1⟩
+  tuple's fine structure requires the field-level (V-coupled, binding)
+  ε-sector. Tier 2b's falsification targets sharpened to five numbers:
+  κ = 0.802, V = 1.409, c_g = 0.42, δ = 0.29, onset κ = 1.000.
+- **FINDING F-R2 (minor)**: AUD-15 V15.2's quoted g(0.37–0.47) span
+  [1.28, 1.32] is inconsistent with its own corrected formula
+  (true: [1.257, 1.315]); conclusion unaffected.
+
 ## Next (not yet executed)
-- **Tier 2 (the kill-shot):** the axisymmetric non-rigid isorotating closure
-  targeting ⟨r1⟩'s 𝔠 = 2.37 ± 0.09 (with ¼ and √2 as built-in self-tests),
-  then the ε-scan exponent 2/3. The compacton-edge boundary layer
-  (log-divergent W₂ integrand, verified) is the known stiff spot.
-- Archive-era gates: NR-D2 murk-kill recomputation; WS-A4 demand tables;
-  NR-D1b core-energy floor.
+- **Tier 2b (the kill-shot proper):** the axisymmetric field-level solve
+  with the real ε-sector (log-divergent compacton-edge boundary layer
+  resolved), targeting κ = 0.802 ± 0.018, V = 1.409 ± 0.010, c_g = 0.42 ±
+  0.04, δ = 0.29 ± 0.05, onset κ = 1.000 ± 0.004.
+- Archive-era gates remaining: WS-A4 demand tables; NR-D1b core-energy
+  floor; generic-set M = 4 Born rerun.
