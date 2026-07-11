@@ -77,8 +77,21 @@ one datum (λ* = 0.42); everything else predicted.
   [1.28, 1.32] is inconsistent with its own corrected formula
   (true: [1.257, 1.315]); conclusion unaffected.
 
+## Tier 2b Step 1 — Radial Field Solve ✅ COMPLETE
+**`tier2-closure/radial_*`** — the campaign's first field-level PDE solve:
+the 1-D hedgehog at ε = 0.05 against the corpus's own App. I.1 gates.
+- **All gates PASS**: degree 1.0000001; Derrick virial 6×10⁻⁷ (500× inside
+  the 3×10⁻⁴ gate); ε dial 0.049985; near-BPS deficit +0.48%; the tail
+  form + mass replicate with the paper's B.5 formula μ² = m̃²/(2a_ψ)
+  **blind-re-derived and confirmed to 2×10⁻⁶** (against my own spec error —
+  the corpus vindicated).
+- **𝔭 = 0.84 amplitude: CONVENTION-LIMITED** — nearest natural candidate
+  0.805 (~1.2σ low); the frozen pipeline's normalization is not recoverable
+  from the text (the predicted spec-underdetermination, now concrete).
+
 ## Next (not yet executed)
-- **Tier 2b (the kill-shot proper):** the axisymmetric field-level solve
+- **Tier 2b Step 2 (the kill-shot proper):** the axisymmetric isorotating
+  2-D field solve
   with the real ε-sector (log-divergent compacton-edge boundary layer
   resolved), targeting κ = 0.802 ± 0.018, V = 1.409 ± 0.010, c_g = 0.42 ±
   0.04, δ = 0.29 ± 0.05, onset κ = 1.000 ± 0.004.
