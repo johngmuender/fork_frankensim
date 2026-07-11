@@ -516,6 +516,36 @@ fn main() {
                  the corpus's G->8 rounding is conservative-direction",
             s_floor.midpoint(), s_floor.midpoint() - 92.0)));
 
+    // ==== GROUP I — the <r10> error-propagation band (FINDING F-R3) ====
+    // ln(1/qR*) = (A_data - A_core)/kappa_far with A_core = 3.05 +/- 0.09,
+    // kappa_far = 0.1065 +/- 0.0032, printed rho = +0.45, printed band 0.90.
+    let kf = ipt(0.1065);
+    let s1 = ipt(0.09) / kf; // |d lnq / dA_core| * sigma_A = 0.845
+    let s2 = lnq / kf * ipt(0.0032); // |d lnq / dk| * sigma_k = 0.732
+    let var_quad = s1 * s1 + s2 * s2;
+    let cross = ii(2) * ipt(0.45) * s1 * s2;
+    let band_uncorr = var_quad.sqrt(); // 1.118
+    let band_pos = (var_quad + cross).sqrt(); // 1.344 (literal +rho, same-sign partials)
+    let band_anti = (var_quad - cross).sqrt(); // 0.833 (anti-correlating coupling)
+    // effective rho implied by the printed 0.90:
+    let rho_eff = (ipt(0.81) - var_quad) / (ii(2) * s1 * s2); // (0.90^2 - quad)/2 s1 s2
+    checks.push(check_with("I1",
+        "<r10> band partials: s_A = 0.845, s_k = 0.732; quadrature = 1.118",
+        band_uncorr, 1.118,
+        near(s1, 0.845, 2e-3) && near(s2, 0.732, 2e-3) && near(band_uncorr, 1.118, 2e-3),
+        "matches WS-nu-P2's own check-line components".into()));
+    checks.push(check_with("I2",
+        "F-R3 FINDING: printed +/-0.90 band implies rho_eff = -0.36, not the printed +0.45",
+        rho_eff, -0.356,
+        near(band_pos, 1.344, 3e-3) && near(band_anti, 0.833, 3e-3)
+            && near(rho_eff, -0.356, 5e-3),
+        format!(
+            "standard propagation: +rho gives {:.3}, anti gives {:.3}, printed 0.90 sits \
+             between; 'partial correlation cancellation' requires opposite-sign coupling. \
+             Stake window unaffected (set by physical floors); the covariance sign \
+             convention should be pinned",
+            band_pos.midpoint(), band_anti.midpoint())));
+
     // ================================ REPORT ================================
     let mut passes = 0usize;
     println!("== GUM TIER-0 CONSTANTS GAUNTLET (fs-ivl certified) ==\n");

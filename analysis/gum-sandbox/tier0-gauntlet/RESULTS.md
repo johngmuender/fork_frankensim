@@ -111,3 +111,16 @@ honest floor gives S = 220, margin 128). **W-eternal replicated: the fate is
 decided by the one-sided bound, as the instrument claims.** The replication
 gate's two *physics* inputs (c_h in the chiral medium; the r_min ≈ 1/f floor)
 remain argument-level, not discharged by arithmetic.
+
+## Addendum 3 — Group I: the ⟨r10⟩ error band (52/52 total; FINDING F-R3)
+The bridge band's components reproduce exactly (s_A = 0.845, s_κ = 0.732,
+quadrature 1.118 — matching WS-nu-P2's own check-lines). But under standard
+propagation the **printed ρ = +0.45 with same-sign partials gives ±1.344**;
+anti-correlating coupling gives ±0.833; the corpus's printed **±0.90
+corresponds to an effective ρ = −0.356, not the printed +0.45**. The phrase
+"partial correlation cancellation" (App. K.2) implies the anti-correlating
+reading, in which case ±0.90 is mildly conservative; under the literal
+reading the band is ~1.5× understated. **The S1 stake window is unaffected**
+(its floors are physical: the oscillation floor and the Σ bound), but the
+covariance sign convention should be pinned — filed as F-R3, the campaign's
+third finding.
