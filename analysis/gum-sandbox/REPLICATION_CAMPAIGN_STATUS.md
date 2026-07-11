@@ -82,5 +82,16 @@ one datum (λ* = 0.42); everything else predicted.
   with the real ε-sector (log-divergent compacton-edge boundary layer
   resolved), targeting κ = 0.802 ± 0.018, V = 1.409 ± 0.010, c_g = 0.42 ±
   0.04, δ = 0.29 ± 0.05, onset κ = 1.000 ± 0.004.
-- Archive-era gates remaining: WS-A4 demand tables; NR-D1b core-energy
-  floor; generic-set M = 4 Born rerun.
+- ~~WS-A4 demand tables~~ ✅ closed (gauntlet Group G: all five rows from
+  one δ = 1.0×10⁻¹² window; the "thin corner ∼40" confirmed at 38.6).
+- ~~NR-D1b core-energy floor~~ ✅ closed (gauntlet Group H: W-eternal
+  replicated; the corpus's G→8 rounding is conservative-direction).
+- Remaining: generic-set M = 4 Born rerun (minor).
+
+**Gauntlet now at 50/50** — golden Merkle root
+`5640e4fe1e2e52e112af0fac1e7420a15894c384744210be492bbdd50d926b1e`,
+bit-deterministic. Every arithmetic-recomputable gate the archive's
+Watch-Mode memo left open is now externally recomputed; what remains open
+is exactly the *argument-level* physics (NR-A2b's ¾ operator-law selection,
+NR-D2's SDiff-reachability, NR-D1b's c_h/r_min inputs) and the field-level
+Tier 2b solve.

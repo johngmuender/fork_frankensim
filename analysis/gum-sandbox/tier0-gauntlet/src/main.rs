@@ -447,6 +447,75 @@ fn main() {
         format!("lambda_dB = {:.2e} m vs p = 4e-6 m; classical at tether scale by >= 4 orders \
                  under every band corner", lambda_db.midpoint())));
 
+    // ==== GROUP G — WS-A4 precision-perimeter demand tables (archive gate) ====
+    // The sealed-law demand |dg/2| = |c| eps^p over eps in [1.0e-5, 6e-4]
+    // against the few-e-12 a_e window. All five printed rows must equal
+    // delta / eps_max^p with one consistent delta (the binding corner is
+    // eps_max = 6e-4). Recomputed: delta = 1.0e-12 reproduces every row.
+    let eps_max = ipt(6.0e-4);
+    let delta_ae = ipt(1.0e-12);
+    let row = |p: f64| delta_ae / (eps_max.ln() * ipt(p)).exp();
+    let g1_ok = near(row(1.0), 1.7e-9, 5e-11)
+        && near(row(2.0), 2.8e-6, 5e-8)
+        && near(row(3.0), 4.6e-3, 5e-5)
+        && near(row(4.0), 7.7, 5e-2)
+        && near(row(2.0 / 3.0), 1.4e-10, 1e-12);
+    checks.push(check_with("G1",
+        "WS-A4 demand table: all 5 rows = 1.0e-12/eps_max^p (p=1..4, 2/3)",
+        row(4.0), 7.7, g1_ok,
+        format!("p=1: {:.2e}; p=2: {:.2e}; p=3: {:.2e}; p=4: {:.2}; p=2/3: {:.2e}",
+            row(1.0).midpoint(), row(2.0).midpoint(), row(3.0).midpoint(),
+            row(4.0).midpoint(), row(2.0 / 3.0).midpoint())));
+
+    // G2: compositeness scale Lambda* = hbar c / a at a = 1e-26 m ~ 2e10 GeV.
+    let lam_star_gev = hbarc / ipt(1.0e-26) / ipt(1.0e9);
+    checks.push(check("G2", "WS-A4 Lambda* = hbar c / (1e-26 m) ~ 2e10 GeV",
+        lam_star_gev, 2.0e10, 5e8, "UHECR-consistent compositeness scale"));
+
+    // G3: charge-channel margins: quadratic (m_e/Lambda*)^2 = 6.7e-28
+    //     (margin ~1.5e15); linear corner 2.6e-14 (margin ~40, 'thin').
+    let me_ev = ipt(0.510_998_95e6);
+    let lam_star_ev = hbarc / ipt(1.0e-26);
+    let da_quad = (me_ev / lam_star_ev) * (me_ev / lam_star_ev);
+    let da_lin = me_ev / lam_star_ev;
+    let margin_lin = delta_ae / da_lin;
+    checks.push(check("G3a", "WS-A4 chirally-protected da = (m_e/L*)^2 = 6.7e-28",
+        da_quad, 6.7e-28, 5e-30, "margin ~1.5e15 over the a_e window"));
+    checks.push(check_with("G3b",
+        "WS-A4 linear-corner margin ~ 40 (the 'thin corner printed')",
+        margin_lin, 40.0, near(margin_lin, 38.6, 1.5),
+        format!("{:.1} at delta = 1.0e-12 — thin, as the corpus prints", margin_lin.midpoint())));
+
+    // G4: eEDM dimensionless coefficient: 4.1e-30 e cm / (e lbar) = 1.1e-19.
+    let lbar_cm = ipt(3.861_592_68e-11);
+    let edm_coeff = ipt(4.1e-30) / lbar_cm;
+    checks.push(check("G4", "WS-A4 eEDM coefficient 4.1e-30/(e lbar) = 1.1e-19",
+        edm_coeff, 1.1e-19, 1e-20, "GUM predicts d_e = 0 at all static orders; margin >= 1e60"));
+
+    // ==== GROUP H — NR-D1b core-energy floor (archive gate; W-eternal) ====
+    // c_h in [8 pi/3, 8 pi] ~ [8.4, 25]; floor G_c >= 8.4 vs eternal threshold
+    // 5.6 (x1.5); S = pi G^2 >= ~200 vs survival ~92 => tau >= e^{100+} t_U.
+    let ch_min = ii(8) * pi / ii(3);
+    let ch_max = ii(8) * pi;
+    checks.push(check_with("H1", "NR-D1b hyperbolic coefficient band [8pi/3, 8pi] = [8.4, 25]",
+        ch_min.hull(ch_max), 8.4,
+        near(ch_min, 8.378, 5e-3) && near(ch_max, 25.13, 5e-2),
+        "standard defect elasticity [IM]".into()));
+    let ratio_eternal = ch_min / ipt(5.6);
+    checks.push(check_with("H2",
+        "NR-D1b floor G_c >= 8.378 clears the eternal threshold 5.6 by x1.5",
+        ratio_eternal, 1.5, ratio_eternal.lo() > 1.4 && near(ratio_eternal, 1.496, 5e-3),
+        "one-sided bound decides the fate (W-eternal)".into()));
+    let s_corpus = pi * ii(64); // corpus conservatively squares G = 8
+    let s_floor = pi * ch_min * ch_min; // honest floor 8.378^2
+    checks.push(check_with("H3",
+        "NR-D1b action S = pi 8^2 = 201 >= survival 92; exponent margin 109 > 100",
+        s_corpus, 200.0,
+        near(s_corpus, 201.06, 0.5) && s_corpus.lo() - 92.0 > 100.0,
+        format!("tau >= e^(100+) t_U; honest floor gives S = {:.0} (margin {:.0}) — \
+                 the corpus's G->8 rounding is conservative-direction",
+            s_floor.midpoint(), s_floor.midpoint() - 92.0)));
+
     // ================================ REPORT ================================
     let mut passes = 0usize;
     println!("== GUM TIER-0 CONSTANTS GAUNTLET (fs-ivl certified) ==\n");

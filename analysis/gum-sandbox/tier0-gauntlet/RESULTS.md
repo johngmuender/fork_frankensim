@@ -93,3 +93,21 @@ inconsistency in NR-D2 §1's printed KE coefficient. It does not reopen the
 kill — every reading tightens it — but it is exactly the class of defect
 (cf. the corpus's own C-ν1, "too harsh on itself") that the replication gate
 exists to catch. Golden root updated by the added claims (bit-deterministic).
+
+## Addendum 2 — Groups G & H: the remaining arithmetic archive gates (50/50 total)
+**Group G — WS-A4 precision-perimeter demand tables:** all five sealed-law
+rows (`|c| ≤ δ/ε_max^p`, p = 1, 2, 3, 4, 2/3) reproduce from one consistent
+window δ = 1.0×10⁻¹² at ε_max = 6×10⁻⁴ (1.67e-9 / 2.78e-6 / 4.63e-3 / 7.72 /
+1.41e-10 vs the corpus's 1.7e-9 / 2.8e-6 / 4.6e-3 / 7.7 / 1.4e-10); the
+compositeness scale Λ* = 1.97×10¹⁰ GeV; the chirally-protected margin
+~1.5×10¹⁵ and the **thin linear corner at 38.6** (corpus: "∼40 — thin,
+printed rather than hidden") both confirmed; the eEDM coefficient 1.06×10⁻¹⁹.
+
+**Group H — NR-D1b core-energy floor:** c_h band [8π/3, 8π] = [8.378, 25.13];
+the floor clears the eternal threshold 5.6 by ×1.496 ("×1.5"); S = π·8² =
+201.1 vs survival ≈92 gives exponent margin 109 > 100 ("τ ≥ e^{100+} t_U") —
+and the corpus's G→8 rounding before squaring is conservative-direction (the
+honest floor gives S = 220, margin 128). **W-eternal replicated: the fate is
+decided by the one-sided bound, as the instrument claims.** The replication
+gate's two *physics* inputs (c_h in the chiral medium; the r_min ≈ 1/f floor)
+remain argument-level, not discharged by arithmetic.

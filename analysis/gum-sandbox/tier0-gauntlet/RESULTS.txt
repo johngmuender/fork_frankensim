@@ -80,11 +80,27 @@ F3    PASS  [4.699477963591e18, 4.699477963591e18]  corpus 5.000000e18  NR-D2 si
         note: 4.70e18 cm^2/g at f = 15 MeV; kill margin certified > 18 orders
 F4    PASS  [1.291502066624e-6, 1.291502066624e-6]  corpus 1.300000e-6  NR-D2 classicality: lambda_dB / p ~ 1e-6 << 1 (hard-wall criterion applies)
         note: lambda_dB = 5.17e-12 m vs p = 4e-6 m; classical at tether scale by >= 4 orders under every band corner
+G1    PASS  [7.716049382716e0, 7.716049382716e0]  corpus 7.700000e0  WS-A4 demand table: all 5 rows = 1.0e-12/eps_max^p (p=1..4, 2/3)
+        note: p=1: 1.67e-9; p=2: 2.78e-6; p=3: 4.63e-3; p=4: 7.72; p=2/3: 1.41e-10
+G2    PASS  [1.973269804000e10, 1.973269804000e10]  corpus 2.000000e10  WS-A4 Lambda* = hbar c / (1e-26 m) ~ 2e10 GeV
+        note: UHECR-consistent compositeness scale
+G3a   PASS  [6.706054447661e-28, 6.706054447661e-28]  corpus 6.700000e-28  WS-A4 chirally-protected da = (m_e/L*)^2 = 6.7e-28
+        note: margin ~1.5e15 over the a_e window
+G3b   PASS  [3.861592678419e1, 3.861592678419e1]  corpus 4.000000e1  WS-A4 linear-corner margin ~ 40 (the 'thin corner printed')
+        note: 38.6 at delta = 1.0e-12 — thin, as the corpus prints
+G4    PASS  [1.061738080568e-19, 1.061738080568e-19]  corpus 1.100000e-19  WS-A4 eEDM coefficient 4.1e-30/(e lbar) = 1.1e-19
+        note: GUM predicts d_e = 0 at all static orders; margin >= 1e60
+H1    PASS  [8.377580409573e0, 2.513274122872e1]  corpus 8.400000e0  NR-D1b hyperbolic coefficient band [8pi/3, 8pi] = [8.4, 25]
+        note: standard defect elasticity [IM]
+H2    PASS  [1.495996501709e0, 1.495996501709e0]  corpus 1.500000e0  NR-D1b floor G_c >= 8.378 clears the eternal threshold 5.6 by x1.5
+        note: one-sided bound decides the fate (W-eternal)
+H3    PASS  [2.010619298297e2, 2.010619298297e2]  corpus 2.000000e2  NR-D1b action S = pi 8^2 = 201 >= survival 92; exponent margin 109 > 100
+        note: tau >= e^(100+) t_U; honest floor gives S = 220 (margin 128) — the corpus's G->8 rounding is conservative-direction
 
-== 42/42 checks PASS ==
+== 50/50 checks PASS ==
 
-fs-evidence: 42 enclosures certified (fail-closed Certified<f64>).
-fs-package: 42 Verified claims bundled; root 32e48aeccecda57296766978606704ed65f48653cf4209ae8d17d1799d6da3e7
+fs-evidence: 50 enclosures certified (fail-closed Certified<f64>).
+fs-package: 50 Verified claims bundled; root 5640e4fe1e2e52e112af0fac1e7420a15894c384744210be492bbdd50d926b1e
 fs-checker mode 1 (deny-all):        passed = false (expected false — unauthenticated Verified claims are refused; anti-laundering works)
 fs-checker mode 2 (cert capability): passed = true (expected true)
 fs-checker mode 3 (tampered root):   passed = false (expected false)
