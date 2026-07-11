@@ -599,11 +599,11 @@ def fig_landscape(res):
                 mec="white", mew=1.2, ls="none", zorder=5)
         ax.annotate("$(\\lambda^*, d^*) = (%.3f, %.3f)$\n$R^*=%.4f$"
                     % (sol["lam"], sol["d"], sol["R"]),
-                    (sol["lam"], sol["d"]), xytext=(8, 10),
-                    textcoords="offset points", fontsize=9, color=INK)
+                    (sol["lam"], sol["d"]), xytext=(-10, 12), ha="right",
+                    textcoords="offset points", fontsize=9, color="white")
         ax.axhline(sol["d0"], color=RED, lw=1.0, ls=":", alpha=0.8)
-        ax.text(lam_v[-1], sol["d0"], " $d_0$ (static)", color=RED,
-                fontsize=8, va="center")
+        ax.text(lam_v[0] + 0.02, sol["d0"] + 0.008, "$d_0$ (static)",
+                color=RED, fontsize=8, va="bottom")
         cb = fig.colorbar(cf, ax=ax, shrink=0.92)
         cb.set_label("Routhian $R$ (darker = lower)", fontsize=8, color=INK)
         cb.ax.tick_params(labelsize=7, colors=INK)
@@ -642,9 +642,9 @@ def fig_epsscan(scan, endA, endB, fits):
     ax.text(eps[-1], c0B, "  $c_0$ B", color=AQUA, fontsize=8, va="bottom")
     ax.text(eps[0], 2.5147, " paper $\\epsilon\\to0$ endpoint (g=3/2): 2.5147",
             color=VIOLET, fontsize=8, va="bottom")
-    ax.annotate("A (SDiff pullback)", (eps[2], cA[2]), xytext=(0, -14),
+    ax.annotate("A (SDiff pullback)", (eps[3], cA[3]), xytext=(6, -16),
                 textcoords="offset points", color=BLUE, fontsize=9)
-    ax.annotate("B (spheroidal shell)", (eps[2], cB[2]), xytext=(0, 8),
+    ax.annotate("B (spheroidal shell)", (eps[0], cB[0]), xytext=(-2, 10),
                 textcoords="offset points", color=AQUA, fontsize=9)
     ax.set_xlabel("$\\epsilon$ (achieved sector ratio)", color=INK)
     ax.set_ylabel("$c = 2L$  (paper units via compacton map)", color=INK)
@@ -654,19 +654,24 @@ def fig_epsscan(scan, endA, endB, fits):
     style_ax(ax)
     for c, c0, col, lab in ((cA, c0A, BLUE, "A"), (cB, c0B, AQUA, "B")):
         dfc = np.abs(1.0 - c / c0)
-        ax.loglog(eps, dfc, "o" if lab == "A" else "s", color=col, ms=6,
-                  mec="white")
         nu, amp, sgn = fits[lab]
         xe = np.array([eps[0] * 0.9, eps[-1] * 1.1])
-        ax.loglog(xe, amp * xe ** nu, "-", color=col, lw=1.6, alpha=0.8)
-        ax.annotate("%s: $|1-c/c_0| \\propto \\epsilon^{%.3f}$ (%s)"
-                    % (lab, nu, "c>c$_0$" if sgn < 0 else "c<c$_0$"),
-                    (xe[0], amp * xe[0] ** nu), xytext=(4, 10 if lab == "A" else -16),
-                    textcoords="offset points", color=col, fontsize=9)
+        if lab == "A":
+            ax.loglog(eps, dfc, "o", color=col, ms=7, mec="white")
+            ax.loglog(xe, amp * xe ** nu, "-", color=col, lw=1.6, alpha=0.8)
+        else:   # A and B deficits nearly coincide: open squares, dashed fit
+            ax.loglog(eps, dfc, "s", color=col, ms=8, mfc="none", mew=1.6)
+            ax.loglog(xe, amp * xe ** nu, "--", color=col, lw=1.6, alpha=0.9)
+        ax.text(0.03, 0.93 if lab == "A" else 0.85,
+                "%s: $|1-c/c_0| \\propto \\epsilon^{%.3f}$ (%s)"
+                % (lab, nu, "$c>c_0$" if sgn < 0 else "$c<c_0$"),
+                transform=ax.transAxes, color=col, fontsize=9)
+    ax.text(0.03, 0.78, "(A and B nearly coincide)", transform=ax.transAxes,
+            color=INK, fontsize=8)
     xe = np.array([0.015, 0.11])
     ax.loglog(xe, 0.42 * xe ** (2.0 / 3.0), "--", color=VIOLET, lw=1.2)
-    ax.text(xe[0], 0.42 * xe[0] ** (2. / 3.), " corpus $0.42\\,\\epsilon^{2/3}$",
-            color=VIOLET, fontsize=8, va="bottom")
+    ax.text(xe[-1], 0.42 * xe[-1] ** (2. / 3.), "corpus $0.42\\,\\epsilon^{2/3}$ ",
+            color=VIOLET, fontsize=8, va="bottom", ha="right")
     ax.set_xlabel("$\\epsilon$", color=INK)
     ax.set_ylabel("$|1 - c/c_0|$", color=INK)
     ax.set_title("(b) deficit law and fitted exponents", fontsize=10, color=INK)
@@ -700,10 +705,11 @@ def fig_epsscan(scan, endA, endB, fits):
     ax.axhline(1.31, color=RED, lw=1.0, ls="--")
     ax.text(eps[0], 1.315, " paper $g^* = 1.31\\pm0.04$", color=RED, fontsize=8)
     ax.annotate("A (exactly 1: SDiff-invariant inertia)", (eps[1], gA[1]),
-                xytext=(0, -14), textcoords="offset points", color=BLUE,
+                xytext=(0, 7), textcoords="offset points", color=BLUE,
                 fontsize=9)
     ax.annotate("B", (eps[-2], gB[-2]), xytext=(0, 8),
                 textcoords="offset points", color=AQUA, fontsize=10)
+    ax.set_ylim(0.96, 1.38)
     ax.set_xlabel("$\\epsilon$", color=INK)
     ax.set_ylabel("$g^* = I(\\lambda^*,d^*)/I(1,d^*)$", color=INK)
     ax.set_title("(d) shape enhancement of the inertia", fontsize=10, color=INK)

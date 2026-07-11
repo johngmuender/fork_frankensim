@@ -65,6 +65,23 @@ Consequences, measured:
   proof sketch ("∫sin²f is SDiff-invariant and sin²θ ≤ 1") uses exactly the
   invariance that freezes the inertia in the compositional reading.
 
+## Addendum (on the report's ε-scan): the deficit-law disagreement is
+downstream of F-R4, not a separate finding
+
+`axi_RESULTS.md` fits `1 − 𝔠/𝔠₀ ≈ −1.03·ε^1.00` in both families — wrong
+exponent (1.00 vs the corpus's 2/3-class) **and wrong sign** (𝔠 grows with
+ε). I file this under F-R4 rather than as a new finding: the corpus's
++0.42·ε^(2/3) law presumes the shape optimum migrates with ε along a
+statically flat direction on which g varies (exactly the mechanism the
+lemma forbids — in these families that direction either doesn't vary g
+(A) or isn't flat (B), so λ*(ε) barely moves and the ε-sectors act as a
+pure positive penalty). Tier 2a's reduced model — which *hardwires* the
+paper's g(λ) into a flat direction — reproduced the 2/3-class exponent
+(0.75) with the correct sign. So exponent and sign travel with the
+mechanism: if Step 3 finds cheap non-SDiff inertia-gaining modes, the
+corpus's deficit law should reappear along with g* = 1.31; if not, this
+sign flip is a second observable consequence of F-R4.
+
 ## Status
 Tier 2b Step 2 **complete** as a restricted-family closure: unit map
 validated to 7–9 digits, ¼ and √2 anchors exact, the scaling rung
