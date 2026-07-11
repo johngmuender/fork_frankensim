@@ -67,3 +67,14 @@ pilot-wave literature (Valentini's H-theorem + mixing rates) — a real
 property of de Broglie–Bohm dynamics, and the corpus's [IM+CAL] grading of
 it is fair. It is not evidence for GUM's substrate ontology; it verifies
 that the borrowed engine behaves as the corpus says it does.
+
+## Follow-up: generic-set M = 4 (tension resolved)
+Rerun with the non-degenerate mode set {(1,2),(2,3),(3,1),(1,4)} (energies
+{2.5, 6.5, 5.0, 8.5}, all distinct), same N/seeds/protocol:
+**τ = 4.48, fit r² = 0.987, H̄: 1.056 → 0.0996** (32² grain) — clean
+near-exponential relaxation, comparable to the degenerate M = 16 case.
+**Verdict: the corpus's "near-exponential for M ≳ 4" holds for generic mode
+sets**; the original M = 4 stall was entirely the first-2×2 set's
+degenerate, commensurate spectrum (the corpus's own "near-integrable
+small-M" caveat class). The Tier-3 mild tension is resolved in the corpus's
+favor.

@@ -99,7 +99,10 @@ the 1-D hedgehog at ε = 0.05 against the corpus's own App. I.1 gates.
   one δ = 1.0×10⁻¹² window; the "thin corner ∼40" confirmed at 38.6).
 - ~~NR-D1b core-energy floor~~ ✅ closed (gauntlet Group H: W-eternal
   replicated; the corpus's G→8 rounding is conservative-direction).
-- Remaining: generic-set M = 4 Born rerun (minor).
+- ~~Generic-set M = 4 Born rerun~~ ✅ closed: τ = 4.48, r² = 0.987 —
+  near-exponential relaxation restored; the corpus's "M ≳ 4" onset holds
+  for generic sets (the stall was pure spectral degeneracy). Tier-3
+  tension resolved in the corpus's favor.
 
 **Gauntlet now at 50/50** — golden Merkle root
 `5640e4fe1e2e52e112af0fac1e7420a15894c384744210be492bbdd50d926b1e`,
