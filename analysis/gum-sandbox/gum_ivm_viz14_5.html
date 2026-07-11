@@ -1,0 +1,1209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+  <title>GUM IVM Topological Sandbox</title>
+
+  <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/controls/OrbitControls.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.9/dat.gui.min.js"></script>
+
+  <style>
+    html, body {
+      margin: 0; height: 100%; overflow: hidden; background: #050508; color: #fff;
+      font-family: system-ui, -apple-system, sans-serif; touch-action: none;
+    }
+    
+    #container { 
+      width: 100%; height: 100%; position: absolute; top: 0; left: 0; z-index: 1; 
+    }
+
+    .dg.ac { z-index: 9999 !important; }
+
+    /* The Initial Math HUD */
+    #formula {
+      position: absolute; top: 15px; left: 15px; max-width: 480px; z-index: 10;
+      background: rgba(10, 14, 18, 0.85); color: #eee; padding: 15px 20px; border-radius: 8px;
+      border: 1px solid rgba(0, 210, 255, 0.3);
+      font-size: 14px; line-height: 1.4; user-select: none;
+      backdrop-filter: blur(6px); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8);
+    }
+    #formula h3 { 
+      margin: 0 0 10px 0; color: #00d2ff; font-size: 16px; text-transform: uppercase; letter-spacing: 1px; 
+    }
+    #closeFormula {
+      float: right; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+      color: #fff; cursor: pointer; border-radius: 4px; padding: 2px 8px; font-weight: bold; transition: 0.2s;
+    }
+    #closeFormula:hover { background: rgba(255,50,50,0.6); }
+
+    /* Voxel Telemetry Panel */
+    #telemetryPanel {
+      display: none; position: absolute; top: 15px; left: 15px; width: 380px; z-index: 9;
+      background: rgba(10, 14, 18, 0.90); color: #00ffcc; padding: 15px 20px; border-radius: 8px;
+      border: 1px solid rgba(0, 255, 204, 0.4); font-family: monospace; font-size: 12px;
+      backdrop-filter: blur(6px); box-shadow: 0 4px 15px rgba(0, 0, 0, 0.8); pointer-events: none;
+      max-height: 90vh; overflow-y: hidden;
+    }
+    #telemetryPanel h3 { margin: 0 0 12px 0; color: #fff; text-transform: uppercase; font-size: 14px; font-family: system-ui, sans-serif; letter-spacing: 1px;}
+    
+    #closeTelemetry {
+      float: right; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+      color: #fff; cursor: pointer; border-radius: 4px; padding: 2px 8px; font-weight: bold; transition: 0.2s;
+      pointer-events: auto; /* Allows clicking the close button */
+    }
+    #closeTelemetry:hover { background: rgba(255,50,50,0.6); }
+
+    .tel-row { display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.1); padding: 5px 0; align-items: center;}
+    .tel-label { color: #aaa; font-family: system-ui, sans-serif; font-size: 11px;}
+    .tel-val { text-align: right; white-space: pre; padding: 2px 5px; border-radius: 3px; transition: background-color 0.1s, color 0.1s; }
+    
+    .bond-section { margin-top: 15px; padding-top: 10px; border-top: 1px solid rgba(0, 255, 204, 0.3); }
+    .bond-title { font-family: system-ui, sans-serif; font-size: 12px; color: #00d2ff; margin-bottom: 5px; text-transform: uppercase; letter-spacing: 0.5px;}
+    .bond-data { padding: 2px 5px; border-radius: 3px; min-width: 75px; text-align: left; transition: background-color 0.1s, color 0.1s; }
+
+    #infoBtn {
+      position: absolute; bottom: 20px; right: 20px; z-index: 10;
+      background: rgba(0, 210, 255, 0.15); color: #00d2ff;
+      border: 1px solid #00d2ff; padding: 10px 20px; border-radius: 4px;
+      cursor: pointer; font-weight: bold; transition: all 0.2s; pointer-events: auto;
+    }
+    #infoBtn:hover { background: rgba(0, 210, 255, 0.3); }
+
+    #infoPanel {
+      display: none; position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+      width: 80%; max-width: 700px; z-index: 20;
+      background: rgba(10, 14, 18, 0.95); padding: 30px; border-radius: 8px;
+      border: 1px solid rgba(0, 210, 255, 0.5);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.8); backdrop-filter: blur(10px);
+    }
+    #infoPanel h2 { color: #00d2ff; margin-top: 0; }
+    #infoPanel p { line-height: 1.6; color: #ccc; margin-bottom: 15px; }
+    #infoClose {
+      background: #00d2ff; color: #000; border: none; padding: 8px 16px;
+      border-radius: 4px; cursor: pointer; font-weight: bold; float: right;
+    }
+    #infoClose:hover { background: #fff; }
+  </style>
+</head>
+
+<body>
+  <div id="container"></div>
+
+  <div id="formula">
+    <button id="closeFormula" title="Close HUD">✕</button>
+    <h3>GUM Continuum Mechanics</h3>
+    <div>
+      <b>Sextic Potential:</b>
+      $$ V(\rho) = -A\rho^2 + B\rho^4 + C\rho^6 $$
+    </div>
+    <div>
+      <b>Cosserat Wryness Tensor (Topological Twist):</b>
+      $$ \boldsymbol{\phi} = \frac{1}{2} \nabla \times \mathbf{u} + \boldsymbol{\xi}_{chiral} $$
+    </div>
+    <div>
+      <b>Micropolar Couple-Stress:</b>
+      $$ \mathbf{m}_{ij} = D \nabla^2 \boldsymbol{\phi} $$
+    </div>
+  </div>
+
+  <div id="telemetryPanel">
+    <button id="closeTelemetry" title="Close Telemetry">✕</button>
+    <h3>Voxel 6D Telemetry</h3>
+    <div class="tel-row"><span class="tel-label">Base Pos:</span><span class="tel-val" id="tel-base" style="background:rgba(255,255,255,0.1); color:#fff;">[-]</span></div>
+    <div class="tel-row"><span class="tel-label">Disp (u):</span><span class="tel-val" id="tel-u">[-]</span></div>
+    <div class="tel-row"><span class="tel-label">Twist (φ):</span><span class="tel-val" id="tel-phi">[-]</span></div>
+    <div class="tel-row"><span class="tel-label">E-Field:</span><span class="tel-val" id="tel-E">[-]</span></div>
+    <div class="tel-row"><span class="tel-label">B-Field:</span><span class="tel-val" id="tel-B">[-]</span></div>
+    <div class="tel-row"><span class="tel-label">Rate (du/dt):</span><span class="tel-val" id="tel-du">[-]</span></div>
+    <div class="tel-row"><span class="tel-label">Rate (dφ/dt):</span><span class="tel-val" id="tel-dphi">[-]</span></div>
+    
+    <div class="bond-section">
+      <div class="bond-title">Neighbor Bonds ( Strain | Twist )</div>
+      <div class="tel-row" id="bond-0" style="display:none;"><span class="tel-label" id="lbl-bond-0">N0:</span><div style="display:flex; gap:8px;"><span class="bond-data" id="val-bond-s-0">[-]</span><span class="bond-data" id="val-bond-t-0">[-]</span></div></div>
+      <div class="tel-row" id="bond-1" style="display:none;"><span class="tel-label" id="lbl-bond-1">N1:</span><div style="display:flex; gap:8px;"><span class="bond-data" id="val-bond-s-1">[-]</span><span class="bond-data" id="val-bond-t-1">[-]</span></div></div>
+      <div class="tel-row" id="bond-2" style="display:none;"><span class="tel-label" id="lbl-bond-2">N2:</span><div style="display:flex; gap:8px;"><span class="bond-data" id="val-bond-s-2">[-]</span><span class="bond-data" id="val-bond-t-2">[-]</span></div></div>
+      <div class="tel-row" id="bond-3" style="display:none;"><span class="tel-label" id="lbl-bond-3">N3:</span><div style="display:flex; gap:8px;"><span class="bond-data" id="val-bond-s-3">[-]</span><span class="bond-data" id="val-bond-t-3">[-]</span></div></div>
+      <div class="tel-row" id="bond-4" style="display:none;"><span class="tel-label" id="lbl-bond-4">N4:</span><div style="display:flex; gap:8px;"><span class="bond-data" id="val-bond-s-4">[-]</span><span class="bond-data" id="val-bond-t-4">[-]</span></div></div>
+      <div class="tel-row" id="bond-5" style="display:none;"><span class="tel-label" id="lbl-bond-5">N5:</span><div style="display:flex; gap:8px;"><span class="bond-data" id="val-bond-s-5">[-]</span><span class="bond-data" id="val-bond-t-5">[-]</span></div></div>
+      <div class="tel-row" id="bond-6" style="display:none;"><span class="tel-label" id="lbl-bond-6">N6:</span><div style="display:flex; gap:8px;"><span class="bond-data" id="val-bond-s-6">[-]</span><span class="bond-data" id="val-bond-t-6">[-]</span></div></div>
+      <div class="tel-row" id="bond-7" style="display:none;"><span class="tel-label" id="lbl-bond-7">N7:</span><div style="display:flex; gap:8px;"><span class="bond-data" id="val-bond-s-7">[-]</span><span class="bond-data" id="val-bond-t-7">[-]</span></div></div>
+      <div class="tel-row" id="bond-8" style="display:none;"><span class="tel-label" id="lbl-bond-8">N8:</span><div style="display:flex; gap:8px;"><span class="bond-data" id="val-bond-s-8">[-]</span><span class="bond-data" id="val-bond-t-8">[-]</span></div></div>
+      <div class="tel-row" id="bond-9" style="display:none;"><span class="tel-label" id="lbl-bond-9">N9:</span><div style="display:flex; gap:8px;"><span class="bond-data" id="val-bond-s-9">[-]</span><span class="bond-data" id="val-bond-t-9">[-]</span></div></div>
+      <div class="tel-row" id="bond-10" style="display:none;"><span class="tel-label" id="lbl-bond-10">N10:</span><div style="display:flex; gap:8px;"><span class="bond-data" id="val-bond-s-10">[-]</span><span class="bond-data" id="val-bond-t-10">[-]</span></div></div>
+      <div class="tel-row" id="bond-11" style="display:none;"><span class="tel-label" id="lbl-bond-11">N11:</span><div style="display:flex; gap:8px;"><span class="bond-data" id="val-bond-s-11">[-]</span><span class="bond-data" id="val-bond-t-11">[-]</span></div></div>
+    </div>
+  </div>
+
+  <button id="infoBtn">About this Model</button>
+
+  <div id="infoPanel">
+    <h2>The GUM Framework: Topological Sandbox</h2>
+    <p><b>The Substrate:</b> The vacuum is a hyper-elastic continuum. Use the Dat.GUI to toggle between a <b>Strict 12-Bond IVM</b> and a <b>Sparse 6-Bond Cubic</b> lattice.</p>
+    <p><b>Electrodynamics:</b> Maxwell's Equations describe Transverse Torsional Shear Waves in the Substrate. E-fields map to the time rate of twist (\(\partial_t \boldsymbol{\phi}\)), and B-fields map to the spatial curl (\(\nabla \times \boldsymbol{\phi}\)).</p>
+    <p><b>Traditional Field Lines:</b> Toggle classical continuous streamlines in the EM folder to see how standard textbook fields emerge directly from the continuum geometry.</p>
+    <p><b>Magnetic Torus Mode:</b> Select this mode to view a true 3D macroscopic current loop generating classical, closing poloidal magnetic fields.</p>
+    <p><b>Voxel Telemetry:</b> Double-click (or double-tap) any node to reveal its exact 6D kinematic phase space and neighbor bond heatmaps.</p>
+    <button id="infoClose">Close</button>
+  </div>
+
+  <script>
+    // =========================================================================
+    // 0. SCENE & GLOBAL ENGINE SETUP
+    // =========================================================================
+    const container = document.getElementById('container');
+    const scene = new THREE.Scene();
+    scene.background = new THREE.Color(0x050508);
+    scene.fog = new THREE.FogExp2(0x050508, 0.025);
+
+    const camera = new THREE.PerspectiveCamera(45, window.innerWidth / window.innerHeight, 0.1, 1000);
+    camera.position.set(12, 16, 28);
+
+    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: false });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2)); 
+    container.appendChild(renderer.domElement);
+
+    const controls = new THREE.OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.05;
+
+    const ambientLight = new THREE.AmbientLight(0x334455);
+    scene.add(ambientLight);
+    const dirLight = new THREE.DirectionalLight(0xffffff, 1.2);
+    dirLight.position.set(10, 20, 10);
+    scene.add(dirLight);
+    const pointLight = new THREE.PointLight(0x00d2ff, 2, 50);
+    scene.add(pointLight); 
+
+    const fluxGroup = new THREE.Group();
+    scene.add(fluxGroup);
+    const fluxMaterial = new THREE.MeshBasicMaterial({ vertexColors: true, transparent: true, opacity: 0.85 });
+
+    const highlightGeo = new THREE.IcosahedronGeometry(0.35, 1);
+    const highlightMat = new THREE.MeshBasicMaterial({ color: 0xff00ff, wireframe: true, transparent: true, opacity: 0.8 });
+    const highlightMesh = new THREE.Mesh(highlightGeo, highlightMat);
+    highlightMesh.visible = false;
+    scene.add(highlightMesh);
+
+    // TRADITIONAL FIELD LINES GROUPS (Zero-Allocation Pool)
+    const eLinesGroup = new THREE.Group();
+    scene.add(eLinesGroup);
+    const bLinesGroup = new THREE.Group();
+    scene.add(bLinesGroup);
+
+    const MAX_LINES_PER_FIELD = 64; 
+    const MAX_POINTS_PER_LINE = 500; 
+    const eLinesPool = [];
+    const bLinesPool = [];
+
+    const eLineMat = new THREE.LineBasicMaterial({ vertexColors: true, blending: THREE.AdditiveBlending, transparent: true, opacity: 0.9, linewidth: 2.0 });
+    const bLineMat = new THREE.LineBasicMaterial({ vertexColors: true, blending: THREE.AdditiveBlending, transparent: true, opacity: 0.9, linewidth: 2.0 });
+
+    for (let i = 0; i < MAX_LINES_PER_FIELD; i++) {
+        let eGeo = new THREE.BufferGeometry();
+        eGeo.setAttribute('position', new THREE.BufferAttribute(new Float32Array(MAX_POINTS_PER_LINE * 3), 3));
+        eGeo.setAttribute('color', new THREE.BufferAttribute(new Float32Array(MAX_POINTS_PER_LINE * 3), 3));
+        let eLine = new THREE.Line(eGeo, eLineMat);
+        eLine.visible = false;
+        eLinesGroup.add(eLine);
+        eLinesPool.push(eLine);
+
+        let bGeo = new THREE.BufferGeometry();
+        bGeo.setAttribute('position', new THREE.BufferAttribute(new Float32Array(MAX_POINTS_PER_LINE * 3), 3));
+        bGeo.setAttribute('color', new THREE.BufferAttribute(new Float32Array(MAX_POINTS_PER_LINE * 3), 3));
+        let bLine = new THREE.Line(bGeo, bLineMat);
+        bLine.visible = false;
+        bLinesGroup.add(bLine);
+        bLinesPool.push(bLine);
+    }
+
+    // =========================================================================
+    // 1. STATE & DAT.GUI
+    // =========================================================================
+    const modes = [
+      'Photon (K=2)', 'Proton (K=3)', 'Electron (K=10)', 
+      'Hydrogen Atom', 'Helium Atom', 'Superposition Sandbox',
+      'Topological Dipole (+K / -K)',
+      'Magnetic Torus (Current Loop)'
+    ];
+
+    const state = {
+      latticeType: 'Strict IVM (12-Bonds)', 
+      mode: 'Photon (K=2)',
+      showHUD: true,
+      
+      showBonds: true,
+      showBondStrain: true, 
+      showBondTwist: true, 
+      showAxes: true,
+      showFlux: true, 
+      
+      showEField: false,
+      showBField: false,
+      showTraditionalELines: false,
+      showTraditionalBLines: false,
+      
+      showCMB: false,
+      cmb_amplitude: 0.05,
+      cmb_frequency: 6.0,
+
+      xi_chiral: 1.5,
+      D_couple: 0.05,
+      C_sextic: 0.123,
+      c_speed: 15.0,
+      amplitude: 1.2,
+      width: 3.0,
+      k3_intensity: 2.0,
+      k10_intensity: 1.5,
+      strain_radius: 5.0,
+      orbit_speed: 2.0,
+      dipole_separation: 8.0,
+      dipole_intensity: 2.0,
+      animate_annihilation: false,
+
+      selectedNodeId: null
+    };
+
+    const gui = new dat.GUI({ width: 320 });
+    
+    gui.add(state, 'latticeType', ['Strict IVM (12-Bonds)', 'Sparse Cubic (6-Bonds)'])
+       .name('Vacuum Geometry').onChange(() => { buildUniverse(); });
+    gui.add(state, 'mode', modes).name('Simulation Mode').onChange(updateGUI);
+    
+    const hudController = gui.add(state, 'showHUD').name('GUM Equations HUD').onChange(v => {
+      document.getElementById('formula').style.display = v ? 'block' : 'none';
+      document.getElementById('telemetryPanel').style.zIndex = v ? 9 : 11;
+    });
+
+    const folderView = gui.addFolder('Visualization Layers');
+    folderView.add(state, 'showBonds').name('Render Lattice Bonds').onChange(v => { if(instancedBonds) instancedBonds.visible = v; });
+    folderView.add(state, 'showBondStrain').name('Bond Linear Strain');
+    folderView.add(state, 'showBondTwist').name('Bond Twist Shader').onChange(v => {
+        if(instancedBonds && instancedBonds.material.userData.uShowTwist) {
+            instancedBonds.material.userData.uShowTwist.value = v ? 1.0 : 0.0;
+        }
+    });
+    folderView.add(state, 'showAxes').name('Micropolar Axes').onChange(v => { if(instancedNeedles) instancedNeedles.visible = v; });
+    folderView.add(state, 'showFlux').name('Couple-Stress Flux').onChange(v => {
+        fluxGroup.visible = v;
+        if (!v) {
+            while (fluxGroup.children.length > 0) {
+                const child = fluxGroup.children[0];
+                fluxGroup.remove(child);
+                if (child.geometry) child.geometry.dispose();
+            }
+        }
+    });
+    
+    const folderEM = gui.addFolder('Electromagnetic Fields');
+    folderEM.add(state, 'showEField').name('Voxel E-Field Vector (\u2202\u209C\u03D5)'); 
+    folderEM.add(state, 'showBField').name('Voxel B-Field Vector (\u2207\u00D7\u03D5)'); 
+    folderEM.add(state, 'showTraditionalELines').name('Traditional E-Field Lines');
+    folderEM.add(state, 'showTraditionalBLines').name('Traditional B-Field Lines');
+    folderEM.open();
+
+    const folderCMB = gui.addFolder('Cosmic Background (Zitterbewegung)');
+    folderCMB.add(state, 'showCMB').name('Enable CMB Jitter');
+    folderCMB.add(state, 'cmb_amplitude', 0.0, 0.2).name('Jitter Amplitude');
+    folderCMB.add(state, 'cmb_frequency', 0.0, 20.0).name('Jitter Frequency');
+
+    const folderPhoton = gui.addFolder('K=2 Photon Kinematics');
+    folderPhoton.add(state, 'c_speed', 0, 30).name('Speed of Light');
+    folderPhoton.add(state, 'amplitude', 0, 3.0).name('Amplitude');
+    folderPhoton.add(state, 'width', 0.5, 10.0).name('Width');
+
+    const folderMatter = gui.addFolder('Static Topological Knots');
+    folderMatter.add(state, 'k3_intensity', 0, 5.0).name('K=3 Twist Strength');
+    folderMatter.add(state, 'k10_intensity', 0, 5.0).name('K=10 Twist Strength');
+    folderMatter.add(state, 'strain_radius', 1.0, 15.0).name('Strain Valley Radius');
+
+    const folderAtom = gui.addFolder('Atomic Dynamics');
+    folderAtom.add(state, 'orbit_speed', 0, 5.0).name('Oscillation/Orbit Speed');
+
+    const folderDipole = gui.addFolder('Dipole & Torus Dynamics');
+    folderDipole.add(state, 'dipole_separation', 1.0, 15.0).name('Radius / Separation');
+    folderDipole.add(state, 'dipole_intensity', 0.1, 5.0).name('Intensity');
+    folderDipole.add(state, 'animate_annihilation').name('Annihilate');
+
+    function setFolderVisibility(folder, isVisible) {
+        if (folder && folder.domElement && folder.domElement.parentNode) {
+            folder.domElement.parentNode.style.display = isVisible ? '' : 'none';
+        }
+    }
+
+    function updateGUI() {
+      setFolderVisibility(folderPhoton, false);
+      setFolderVisibility(folderMatter, false);
+      setFolderVisibility(folderAtom, false);
+      setFolderVisibility(folderDipole, false);
+
+      if (state.mode === 'Photon (K=2)') {
+        setFolderVisibility(folderPhoton, true); folderPhoton.open();
+      } else if (state.mode === 'Proton (K=3)' || state.mode === 'Electron (K=10)') {
+        setFolderVisibility(folderMatter, true); folderMatter.open();
+      } else if (state.mode === 'Hydrogen Atom' || state.mode === 'Helium Atom') {
+        setFolderVisibility(folderMatter, true); setFolderVisibility(folderAtom, true); folderAtom.open();
+      } else if (state.mode === 'Superposition Sandbox') {
+        setFolderVisibility(folderPhoton, true); setFolderVisibility(folderMatter, true); folderPhoton.open();
+      } else if (state.mode === 'Topological Dipole (+K / -K)') {
+        setFolderVisibility(folderDipole, true); folderDipole.open();
+      } else if (state.mode === 'Magnetic Torus (Current Loop)') {
+        setFolderVisibility(folderDipole, true); setFolderVisibility(folderAtom, true); folderDipole.open(); folderAtom.open();
+      }
+    }
+    updateGUI();
+
+    // =========================================================================
+    // 2. DYNAMIC UNIVERSE BUILDER (IVM vs CUBIC)
+    // =========================================================================
+    let instancedNodes, instancedNeedles, instancedBonds;
+    let instancedEField, instancedBField;
+    let nodes = [], basePositions = [], nodePhis = [], lineIndices = [];
+    let numNodes = 0, numBonds = 0, nnDist = 0;
+    let twistArray;
+    let nodeNeighbors = []; 
+
+    const spacing = 1.3; 
+    const z_start = -12 * spacing - 5.0;
+    const z_end = 12 * spacing + 5.0;
+    const corridor_length = z_end - z_start;
+
+    function buildUniverse() {
+        if (instancedNodes) { scene.remove(instancedNodes); instancedNodes.geometry.dispose(); instancedNodes.material.dispose(); }
+        if (instancedNeedles) { scene.remove(instancedNeedles); instancedNeedles.geometry.dispose(); instancedNeedles.material.dispose(); }
+        if (instancedBonds) { scene.remove(instancedBonds); instancedBonds.geometry.dispose(); instancedBonds.material.dispose(); }
+        if (instancedEField) { scene.remove(instancedEField); instancedEField.geometry.dispose(); instancedEField.material.dispose(); }
+        if (instancedBField) { scene.remove(instancedBField); instancedBField.geometry.dispose(); instancedBField.material.dispose(); }
+
+        nodes = []; basePositions = []; nodePhis = []; lineIndices = [];
+        nodeNeighbors = [];
+
+        const sX = 4, sY = 4, sZ = 12; 
+
+        if (state.latticeType === 'Strict IVM (12-Bonds)') {
+            nnDist = spacing * Math.sqrt(2);
+            for (let x = -sX; x <= sX; x++) {
+                for (let y = -sY; y <= sY; y++) {
+                    for (let z = -sZ; z <= sZ; z++) {
+                        if (Math.abs(x + y + z) % 2 === 0) { 
+                            nodes.push(new THREE.Vector3(x * spacing, y * spacing, z * spacing));
+                            basePositions.push(new THREE.Vector3(x * spacing, y * spacing, z * spacing));
+                            nodePhis.push(new THREE.Vector3());
+                        }
+                    }
+                }
+            }
+        } else {
+            nnDist = spacing * 1.5; 
+            for (let x = -sX; x <= sX; x++) {
+                for (let y = -sY; y <= sY; y++) {
+                    for (let z = -sZ; z <= sZ; z++) {
+                        nodes.push(new THREE.Vector3(x * nnDist, y * nnDist, z * nnDist));
+                        basePositions.push(new THREE.Vector3(x * nnDist, y * nnDist, z * nnDist));
+                        nodePhis.push(new THREE.Vector3());
+                    }
+                }
+            }
+        }
+        numNodes = nodes.length;
+
+        for(let i = 0; i < numNodes; i++) nodeNeighbors.push([]);
+
+        for (let i = 0; i < numNodes; i++) {
+            for (let j = i + 1; j < numNodes; j++) {
+                if (Math.abs(basePositions[i].distanceTo(basePositions[j]) - nnDist) < 0.1) {
+                    lineIndices.push(i, j); 
+                    nodeNeighbors[i].push(j);
+                    nodeNeighbors[j].push(i);
+                }
+            }
+        }
+        numBonds = lineIndices.length / 2;
+
+        const nodeGeo = new THREE.IcosahedronGeometry(0.2, 0); 
+        const nodeMat = new THREE.MeshPhysicalMaterial({ color: 0x00d2ff, metalness: 0.5, roughness: 0.1, emissive: 0x001133, flatShading: true });
+        instancedNodes = new THREE.InstancedMesh(nodeGeo, nodeMat, numNodes);
+        instancedNodes.instanceMatrix.setUsage(THREE.DynamicDrawUsage);
+        instancedNodes.frustumCulled = false; 
+        scene.add(instancedNodes);
+
+        const needleGeo = new THREE.ConeGeometry(0.06, 1.0, 8); needleGeo.translate(0, 0.5, 0); 
+        const needleMat = new THREE.MeshPhysicalMaterial({ color: 0xffffff, metalness: 0.2, roughness: 0.2, emissive: 0x111111 });
+        instancedNeedles = new THREE.InstancedMesh(needleGeo, needleMat, numNodes);
+        instancedNeedles.instanceMatrix.setUsage(THREE.DynamicDrawUsage);
+        instancedNeedles.frustumCulled = false; 
+        scene.add(instancedNeedles);
+
+        const emGeo = new THREE.ConeGeometry(0.05, 1.0, 6); emGeo.translate(0, 0.5, 0);
+        const eMat = new THREE.MeshBasicMaterial({ color: 0xffdd00 }); 
+        const bMat = new THREE.MeshBasicMaterial({ color: 0x00ffff }); 
+        
+        instancedEField = new THREE.InstancedMesh(emGeo, eMat, numNodes);
+        instancedEField.instanceMatrix.setUsage(THREE.DynamicDrawUsage);
+        instancedEField.frustumCulled = false;
+        scene.add(instancedEField);
+
+        instancedBField = new THREE.InstancedMesh(emGeo, bMat, numNodes);
+        instancedBField.instanceMatrix.setUsage(THREE.DynamicDrawUsage);
+        instancedBField.frustumCulled = false;
+        scene.add(instancedBField);
+
+        const bondGeo = new THREE.CylinderGeometry(0.03, 0.03, 1.0, 6); bondGeo.translate(0, 0, 0); 
+        twistArray = new Float32Array(numBonds);
+        bondGeo.setAttribute('instancedTwist', new THREE.InstancedBufferAttribute(twistArray, 1));
+        const bondMat = new THREE.MeshPhysicalMaterial({ color: 0xffffff, metalness: 0.3, roughness: 0.4, transparent: true, opacity: 0.85 });
+        
+        bondMat.userData = { uShowTwist: { value: state.showBondTwist ? 1.0 : 0.0 } };
+        bondMat.onBeforeCompile = (shader) => {
+            shader.uniforms.uShowTwist = bondMat.userData.uShowTwist;
+            shader.vertexShader = `
+                uniform float uShowTwist;
+                attribute float instancedTwist;
+                varying float vTwist;
+                varying vec3 vObjPos;
+                ${shader.vertexShader}
+            `.replace(`#include <begin_vertex>`, `#include <begin_vertex>\n vTwist = instancedTwist;\n vObjPos = position;`);
+            
+            shader.fragmentShader = `
+                uniform float uShowTwist;
+                varying float vTwist;
+                varying vec3 vObjPos;
+                ${shader.fragmentShader}
+            `.replace(`#include <color_fragment>`, `
+                #include <color_fragment>
+                if (uShowTwist > 0.5 && abs(vTwist) > 0.02) {
+                    float freqY = 15.0; float freqX = vTwist * 10.0;
+                    float angle = atan(vObjPos.x, vObjPos.z);
+                    float spiral = sin((vObjPos.y * freqY) - (angle * freqX));
+                    float pattern = smoothstep(-0.2, 0.2, spiral);
+                    diffuseColor.rgb *= (0.3 + 0.7 * pattern);
+                }
+            `);
+        };
+
+        instancedBonds = new THREE.InstancedMesh(bondGeo, bondMat, numBonds);
+        instancedBonds.instanceMatrix.setUsage(THREE.DynamicDrawUsage);
+        instancedBonds.frustumCulled = false; 
+        scene.add(instancedBonds);
+
+        const dummy = new THREE.Object3D();
+        for (let i = 0; i < numNodes; i++) {
+            dummy.position.copy(basePositions[i]); dummy.scale.set(0.001,0.001,0.001); dummy.updateMatrix();
+            instancedNeedles.setMatrixAt(i, dummy.matrix);
+            instancedEField.setMatrixAt(i, dummy.matrix);
+            instancedBField.setMatrixAt(i, dummy.matrix);
+        }
+        for (let i = 0; i < numBonds; i++) instancedBonds.setColorAt(i, new THREE.Color(0xffffff));
+
+        instancedBonds.visible = state.showBonds;
+        instancedNeedles.visible = state.showAxes;
+        instancedEField.visible = state.showEField;
+        instancedBField.visible = state.showBField;
+        
+        state.selectedNodeId = null;
+        highlightMesh.visible = false;
+        document.getElementById('telemetryPanel').style.display = 'none';
+    }
+
+    // =========================================================================
+    // 2.5 TELEMETRY RAYCASTER INTERACTION
+    // =========================================================================
+    const raycaster = new THREE.Raycaster();
+    const mouse = new THREE.Vector2();
+
+    const selectedNodeCache = {
+        t_prev: 0,
+        u_prev: new THREE.Vector3(),
+        phi_prev: new THREE.Vector3(),
+        du_dt: new THREE.Vector3(),
+        dphi_dt: new THREE.Vector3(),
+        isInitialized: false
+    };
+
+    function handleSelection(clientX, clientY) {
+        if (clientX < 480 && clientY < 200) return; 
+        if (clientX > window.innerWidth - 360) return; 
+
+        mouse.x = (clientX / window.innerWidth) * 2 - 1;
+        mouse.y = -(clientY / window.innerHeight) * 2 + 1;
+        raycaster.setFromCamera(mouse, camera);
+
+        if (instancedNodes) {
+            const intersects = raycaster.intersectObject(instancedNodes);
+            if (intersects.length > 0) {
+                const newId = intersects[0].instanceId;
+                if (state.selectedNodeId !== newId) {
+                    state.selectedNodeId = newId;
+                    selectedNodeCache.isInitialized = false; 
+                }
+                highlightMesh.visible = true;
+                highlightMesh.position.copy(basePositions[state.selectedNodeId]);
+                
+                document.getElementById('formula').style.display = 'none';
+                state.showHUD = false; 
+                hudController.updateDisplay();
+                
+                document.getElementById('telemetryPanel').style.display = 'block';
+                document.getElementById('telemetryPanel').style.zIndex = 11;
+            } else {
+                state.selectedNodeId = null;
+                highlightMesh.visible = false;
+                document.getElementById('telemetryPanel').style.display = 'none';
+            }
+        }
+    }
+
+    window.addEventListener('dblclick', (e) => handleSelection(e.clientX, e.clientY));
+
+    let lastTapTime = 0;
+    window.addEventListener('touchstart', (e) => {
+        const currentTime = performance.now();
+        const tapLength = currentTime - lastTapTime;
+        if (tapLength < 300 && tapLength > 0) {
+            if(e.touches.length > 0) handleSelection(e.touches[0].clientX, e.touches[0].clientY);
+        }
+        lastTapTime = currentTime;
+    }, {passive: true});
+
+    // Close Telemetry Panel Listener
+    document.getElementById('closeTelemetry').addEventListener('click', () => {
+        state.selectedNodeId = null;
+        highlightMesh.visible = false;
+        document.getElementById('telemetryPanel').style.display = 'none';
+    });
+
+    // =========================================================================
+    // 3. ZERO-ALLOCATION CONTINUUM EVALUATOR 
+    // =========================================================================
+    const c_u_out = new THREE.Vector3();
+    const c_phi_out = new THREE.Vector3();
+    const c_E_out = new THREE.Vector3(); 
+    const c_B_out = new THREE.Vector3(); 
+    const t_vec1 = new THREE.Vector3(), t_vec2 = new THREE.Vector3(), t_vec3 = new THREE.Vector3();
+
+    function getContinuumState(pos, t, z_center) {
+        c_u_out.set(0,0,0); c_phi_out.set(0,0,0);
+        c_E_out.set(0,0,0); c_B_out.set(0,0,0);
+        const k_wave = Math.PI / 2.0;
+
+        switch(state.mode) {
+          case 'Photon (K=2)': {
+            const z_rel = pos.z - z_center;
+            const clamped_z = Math.max(-30, Math.min(30, z_rel / state.width));
+            const env = 1.0 / Math.cosh(clamped_z);
+            const phase = k_wave * z_rel;
+            
+            c_u_out.set(state.amplitude * Math.cos(phase) * env, state.amplitude * Math.sin(phase) * env, 0.0);
+            
+            const d_env_dz = -(1.0 / state.width) * Math.tanh(clamped_z) * env;
+            const twist_factor = state.xi_chiral + state.D_couple;
+            
+            c_phi_out.set(
+              twist_factor * (-k_wave * state.amplitude * Math.sin(phase) * env + state.amplitude * Math.cos(phase) * d_env_dz),
+              twist_factor * ( k_wave * state.amplitude * Math.cos(phase) * env + state.amplitude * Math.sin(phase) * d_env_dz),
+              twist_factor * state.C_sextic * env * 10.0
+            );
+
+            const omega = k_wave * state.c_speed;
+            c_E_out.set( omega * c_phi_out.y, -omega * c_phi_out.x, 0 ).multiplyScalar(0.08); 
+            c_B_out.set( -k_wave * c_phi_out.y, k_wave * c_phi_out.x, 0 ).multiplyScalar(0.6);
+            break;
+          }
+          case 'Proton (K=3)': {
+            const r_p = pos.length();
+            if (r_p > 0.001) {
+                t_vec1.copy(pos).normalize();
+                const exp_val = Math.exp(Math.max(-20, -(r_p*r_p) / 2.25));
+                c_u_out.copy(t_vec1).multiplyScalar(-state.k3_intensity * exp_val * (state.strain_radius * 0.5));
+                c_phi_out.copy(t_vec1).multiplyScalar(state.k3_intensity * exp_val * 2.0);
+            }
+            break;
+          }
+          case 'Electron (K=10)': {
+            const r_e_dist = pos.length();
+            if (r_e_dist > 0.001) {
+                t_vec1.copy(pos).normalize();
+                const coulomb_tail = r_e_dist / (r_e_dist*r_e_dist*r_e_dist + 15.625);
+                const exp_val = Math.exp(Math.max(-20, -(r_e_dist*r_e_dist) / 6.25));
+                c_u_out.copy(t_vec1).multiplyScalar(-state.k10_intensity * coulomb_tail * (state.strain_radius * 3.0));
+                c_phi_out.copy(t_vec1).multiplyScalar(state.k10_intensity * exp_val * 1.0);
+            }
+            break;
+          }
+          case 'Hydrogen Atom': {
+            const rh_p = pos.length();
+            if (rh_p > 0.001) {
+                t_vec1.copy(pos).normalize();
+                const exp_p = Math.exp(Math.max(-20, -(rh_p*rh_p)/2.25));
+                c_u_out.add(t_vec2.copy(t_vec1).multiplyScalar(-state.k3_intensity * exp_p * (state.strain_radius * 0.5)));
+                c_phi_out.add(t_vec2.copy(t_vec1).multiplyScalar(state.k3_intensity * exp_p * 2.0));
+            }
+            const a_0 = state.strain_radius;
+            t_vec3.set(a_0, 0, 0);
+            let e_vel = new THREE.Vector3();
+            if (state.orbit_speed > 0) {
+                t_vec3.set(Math.cos(t * state.orbit_speed) * a_0, Math.sin(t * state.orbit_speed) * a_0, 0);
+                e_vel.set(-Math.sin(t * state.orbit_speed) * state.orbit_speed * a_0, Math.cos(t * state.orbit_speed) * state.orbit_speed * a_0, 0);
+            }
+            t_vec1.subVectors(pos, t_vec3);
+            const rh_e = t_vec1.length();
+            if (rh_e > 0.001) {
+                t_vec1.normalize();
+                const coulomb = rh_e / (rh_e*rh_e*rh_e + 15.625);
+                const exp_e = Math.exp(Math.max(-20, -(rh_e*rh_e)/6.25));
+                c_u_out.add(t_vec2.copy(t_vec1).multiplyScalar(-state.k10_intensity * coulomb * (state.strain_radius * 2.0)));
+                c_phi_out.add(t_vec2.copy(t_vec1).multiplyScalar(state.k10_intensity * exp_e * 1.0));
+                
+                if (state.orbit_speed > 0) {
+                    t_vec2.copy(t_vec1).multiplyScalar(state.k10_intensity * exp_e); 
+                    c_B_out.add(t_vec3.crossVectors(e_vel, t_vec2).multiplyScalar(0.15));
+                }
+            }
+            break;
+          }
+          case 'Helium Atom': {
+            const r_n = pos.length();
+            if (r_n > 0.001) {
+                t_vec1.copy(pos).normalize();
+                const exp_n = Math.exp(Math.max(-20, -(r_n*r_n)/4.0));
+                c_u_out.add(t_vec2.copy(t_vec1).multiplyScalar(-(state.k3_intensity * 2.0) * exp_n * (state.strain_radius * 0.5)));
+                c_phi_out.add(t_vec2.copy(t_vec1).multiplyScalar((state.k3_intensity * 2.0) * exp_n * 2.0));
+            }
+            const he_a_0 = state.strain_radius * 0.8;
+            for(let step=0; step<2; step++) {
+                let angleOffset = (step === 0) ? 0 : Math.PI;
+                t_vec3.set(he_a_0, 0, 0);
+                if (state.orbit_speed > 0) t_vec3.set(Math.cos(t * state.orbit_speed + angleOffset) * he_a_0, Math.sin(t * state.orbit_speed + angleOffset) * he_a_0, 0);
+                t_vec1.subVectors(pos, t_vec3);
+                const rad = t_vec1.length();
+                if (rad > 0.001) {
+                    t_vec1.normalize();
+                    const coulomb = rad / (rad*rad*rad + 15.625);
+                    const exp_e = Math.exp(Math.max(-20, -(rad*rad)/6.25));
+                    c_u_out.add(t_vec2.copy(t_vec1).multiplyScalar(-state.k10_intensity * coulomb * (state.strain_radius * 2.0)));
+                    c_phi_out.add(t_vec2.copy(t_vec1).multiplyScalar(state.k10_intensity * exp_e * 1.0));
+                }
+            }
+            break;
+          }
+          case 'Superposition Sandbox': {
+            const rsp = pos.length();
+            if (rsp > 0.001) {
+                t_vec1.copy(pos).normalize();
+                const exp_p = Math.exp(Math.max(-20, -(rsp*rsp)/2.25));
+                c_u_out.add(t_vec2.copy(t_vec1).multiplyScalar(-state.k3_intensity * exp_p * (state.strain_radius * 0.5)));
+                c_phi_out.add(t_vec2.copy(t_vec1).multiplyScalar(state.k3_intensity * exp_p * 2.0));
+            }
+            const s_a_0 = state.strain_radius; 
+            t_vec3.set(s_a_0, 0, 0);
+            if (state.orbit_speed > 0) t_vec3.set(Math.cos(t * state.orbit_speed * 0.5) * s_a_0, Math.sin(t * state.orbit_speed * 0.5) * s_a_0, 0);
+            t_vec1.subVectors(pos, t_vec3);
+            const rse = t_vec1.length();
+            if (rse > 0.001) {
+                t_vec1.normalize();
+                const coulomb = rse / (rse*rse*rse + 15.625);
+                const exp_e = Math.exp(Math.max(-20, -(rse*rse)/6.25));
+                c_u_out.add(t_vec2.copy(t_vec1).multiplyScalar(-state.k10_intensity * coulomb * (state.strain_radius * 2.0)));
+                c_phi_out.add(t_vec2.copy(t_vec1).multiplyScalar(state.k10_intensity * exp_e * 1.0));
+            }
+            const sz_rel = pos.z - z_center; 
+            const clamped_z = Math.max(-30, Math.min(30, sz_rel / state.width));
+            const senv = 1.0 / Math.cosh(clamped_z);
+            const sphase = k_wave * sz_rel;
+            
+            c_u_out.add(t_vec2.set(state.amplitude * Math.cos(sphase) * senv, state.amplitude * Math.sin(sphase) * senv, 0));
+            const sd_env_dz = -(1.0 / state.width) * Math.tanh(clamped_z) * senv;
+            const stwist_factor = state.xi_chiral + state.D_couple;
+            
+            t_vec3.set(
+              stwist_factor * (-k_wave * state.amplitude * Math.sin(sphase) * senv + state.amplitude * Math.cos(sphase) * sd_env_dz),
+              stwist_factor * ( k_wave * state.amplitude * Math.cos(sphase) * senv + state.amplitude * Math.sin(sphase) * sd_env_dz),
+              stwist_factor * state.C_sextic * senv * 10.0
+            );
+            c_phi_out.add(t_vec3);
+
+            const omega = k_wave * state.c_speed;
+            c_E_out.add(t_vec2.set(omega * t_vec3.y, -omega * t_vec3.x, 0).multiplyScalar(0.08));
+            c_B_out.add(t_vec2.set(-k_wave * t_vec3.y, k_wave * t_vec3.x, 0).multiplyScalar(0.6));
+            break;
+          }
+          case 'Topological Dipole (+K / -K)': {
+            let current_sep = state.dipole_separation;
+            let v_sep = 0;
+            if (state.animate_annihilation) {
+                current_sep = state.dipole_separation * (0.5 * (1 + Math.cos(t * 1.5)));
+                v_sep = state.dipole_separation * -0.75 * Math.sin(t * 1.5);
+            }
+            const half_sep = current_sep / 2.0;
+            const v_p = v_sep / 2.0;
+            const v_m = -v_sep / 2.0;
+            const strain_mult = state.strain_radius * 0.8; 
+
+            t_vec3.set(half_sep, 0, 0); t_vec1.subVectors(pos, t_vec3);
+            const r_plus = t_vec1.length();
+            if (r_plus > 0.001) {
+                t_vec1.normalize();
+                const exp_plus = Math.exp(Math.max(-20, -(r_plus*r_plus)/4.0));
+                const phi_plus_mag = state.dipole_intensity * exp_plus * 1.5;
+                c_u_out.add(t_vec2.copy(t_vec1).multiplyScalar(-state.dipole_intensity * (r_plus / (r_plus*r_plus*r_plus + 8.0)) * strain_mult));
+                c_phi_out.add(t_vec2.copy(t_vec1).multiplyScalar(phi_plus_mag));
+                if (v_sep !== 0) c_E_out.add(t_vec2.copy(t_vec1).multiplyScalar(-v_p * phi_plus_mag * 0.5));
+            }
+            
+            t_vec3.set(-half_sep, 0, 0); t_vec1.subVectors(pos, t_vec3);
+            const r_minus = t_vec1.length();
+            if (r_minus > 0.001) {
+                t_vec1.normalize();
+                const exp_minus = Math.exp(Math.max(-20, -(r_minus*r_minus)/4.0));
+                const phi_minus_mag = -state.dipole_intensity * exp_minus * 1.5;
+                c_u_out.add(t_vec2.copy(t_vec1).multiplyScalar(state.dipole_intensity * (r_minus / (r_minus*r_minus*r_minus + 8.0)) * strain_mult));
+                c_phi_out.add(t_vec2.copy(t_vec1).multiplyScalar(phi_minus_mag));
+                if (v_sep !== 0) c_E_out.add(t_vec2.copy(t_vec1).multiplyScalar(-v_m * phi_minus_mag * 0.5));
+            }
+
+            if (v_sep !== 0) {
+                t_vec3.set(v_sep, 0, 0);
+                c_B_out.add(t_vec2.crossVectors(t_vec3, c_E_out).multiplyScalar(0.4));
+            }
+            break;
+          }
+          case 'Magnetic Torus (Current Loop)': {
+            const R_torus = state.dipole_separation; 
+            const r_xy = Math.sqrt(pos.x*pos.x + pos.y*pos.y) + 1e-5;
+            const d = Math.sqrt(Math.pow(r_xy - R_torus, 2) + pos.z*pos.z);
+            const sigma2 = 4.0; 
+            const env = Math.exp(-d*d / sigma2);
+            
+            const time_mod = Math.cos(t * state.orbit_speed);
+            const d_time_mod = -state.orbit_speed * Math.sin(t * state.orbit_speed);
+            const intensity = state.dipole_intensity * 2.0; 
+            
+            const phi_mag = intensity * env * time_mod;
+            c_phi_out.set(-pos.y/r_xy * phi_mag, pos.x/r_xy * phi_mag, 0);
+            
+            c_u_out.set(pos.x/r_xy, pos.y/r_xy, pos.z);
+            if (c_u_out.lengthSq() > 1e-6) c_u_out.normalize().multiplyScalar(-0.2 * env);
+            else c_u_out.set(0,0,0); // Safe fallback to prevent NaN matrix crash
+
+            const e_mag = intensity * env * d_time_mod;
+            c_E_out.set(-pos.y/r_xy * e_mag, pos.x/r_xy * e_mag, 0).multiplyScalar(0.5);
+            
+            const df_dz = phi_mag * (-2.0 * pos.z / sigma2);
+            const df_dr = phi_mag * (-2.0 * (r_xy - R_torus) / sigma2);
+            const term_z = (phi_mag / r_xy) + df_dr;
+            
+            c_B_out.set( -(pos.x/r_xy) * df_dz, -(pos.y/r_xy) * df_dz, term_z ).multiplyScalar(0.8);
+            break;
+          }
+        }
+
+        if (state.showCMB && state.cmb_amplitude > 0) {
+            const k1 = 1.34, k2 = 1.71, k3 = 2.15; 
+            const w = state.cmb_frequency;
+            const a = state.cmb_amplitude;
+
+            c_u_out.x += a * Math.sin(k1 * pos.z - w * t) * Math.cos(k2 * pos.y + w * t * 0.5);
+            c_u_out.y += a * Math.sin(k2 * pos.x - w * t) * Math.cos(k3 * pos.z + w * t * 0.5);
+            c_u_out.z += a * Math.sin(k3 * pos.y - w * t) * Math.cos(k1 * pos.x + w * t * 0.5);
+
+            c_phi_out.x += (a * 0.8) * Math.cos(k2 * pos.z - w * t);
+            c_phi_out.y += (a * 0.8) * Math.cos(k3 * pos.x - w * t);
+            c_phi_out.z += (a * 0.8) * Math.cos(k1 * pos.y - w * t);
+
+            c_E_out.x += (a * 0.8 * w) * Math.sin(k2 * pos.z - w * t);
+            c_E_out.y += (a * 0.8 * w) * Math.sin(k3 * pos.x - w * t);
+            c_E_out.z += (a * 0.8 * w) * Math.sin(k1 * pos.y - w * t);
+        }
+    }
+
+    // =========================================================================
+    // 4. STREAMLINE INTEGRATORS (FLUX, TRADITIONAL EM LINES)
+    // =========================================================================
+    const tmpPos = new THREE.Vector3();
+    const tmpDir = new THREE.Vector3();
+    const tmpColor = new THREE.Color();
+
+    function updateFluxLines(t, z_center) {
+        while (fluxGroup.children.length > 0) {
+            const child = fluxGroup.children[0];
+            fluxGroup.remove(child);
+            if (child.geometry) child.geometry.dispose();
+        }
+
+        if (!state.showFlux) return;
+
+        let seeds = [];
+        if (state.mode === 'Photon (K=2)') {
+            for(let i=0; i<5; i++) seeds.push(new THREE.Vector3(Math.cos((i/5)*Math.PI*2)*1.5, Math.sin((i/5)*Math.PI*2)*1.5, z_center));
+        } else if (state.mode === 'Proton (K=3)' || state.mode === 'Electron (K=10)') {
+            for(let i=0; i<6; i++) seeds.push(new THREE.Vector3(Math.cos((i/6)*Math.PI*2)*1.5, Math.sin((i/6)*Math.PI*2)*1.5, 0));
+        } else if (state.mode === 'Hydrogen Atom' || state.mode === 'Helium Atom' || state.mode === 'Superposition Sandbox') {
+            for(let i=0; i<4; i++) seeds.push(new THREE.Vector3(Math.cos((i/4)*Math.PI*2)*1.5, Math.sin((i/4)*Math.PI*2)*1.5, 0));
+        } else if (state.mode === 'Topological Dipole (+K / -K)') {
+            let current_sep = state.dipole_separation;
+            if (state.animate_annihilation) current_sep = state.dipole_separation * (0.5 * (1 + Math.cos(t * 1.5)));
+            for(let i=0; i<4; i++) {
+                seeds.push(new THREE.Vector3( current_sep/2 + Math.cos((i/4)*Math.PI*2)*1.0, Math.sin((i/4)*Math.PI*2)*1.0, 0));
+                seeds.push(new THREE.Vector3(-current_sep/2 + Math.cos((i/4)*Math.PI*2)*1.0, Math.sin((i/4)*Math.PI*2)*1.0, 0));
+            }
+        } else if (state.mode === 'Magnetic Torus (Current Loop)') {
+            let R = state.dipole_separation;
+            for(let i=0; i<4; i++) seeds.push(new THREE.Vector3(R + Math.cos((i/4)*Math.PI*2)*1.0, 0, Math.sin((i/4)*Math.PI*2)*1.0));
+        }
+
+        for (let s = 0; s < seeds.length; s++) {
+            let pts = []; let ptColors = []; tmpPos.copy(seeds[s]);
+            for (let step = 0; step < 20; step++) {
+                pts.push(tmpPos.clone());
+                getContinuumState(tmpPos, t, z_center);
+                let phiMag = c_phi_out.length();
+                flux_color.setHSL(0.33 + Math.min(phiMag * 0.2, 0.5), 1.0, 0.5);
+                ptColors.push(flux_color.r, flux_color.g, flux_color.b);
+                if (phiMag < 1e-4) break; 
+                tmpPos.add(tmpDir.copy(c_phi_out).normalize().multiplyScalar(0.4));
+            }
+            
+            if (pts.length > 3) { 
+                try {
+                    let curve = new THREE.CatmullRomCurve3(pts);
+                    let tubeGeo = new THREE.TubeGeometry(curve, pts.length - 1, 0.05, 4, false);
+                    const colors = new Float32Array(tubeGeo.attributes.position.count * 3);
+                    for (let i = 0; i < tubeGeo.attributes.position.count; i++) {
+                        const segmentIndex = Math.min(Math.floor(i / 5), (ptColors.length / 3) - 1);
+                        colors[i*3]   = ptColors[segmentIndex * 3];
+                        colors[i*3+1] = ptColors[segmentIndex * 3 + 1];
+                        colors[i*3+2] = ptColors[segmentIndex * 3 + 2];
+                    }
+                    tubeGeo.setAttribute('color', new THREE.BufferAttribute(colors, 3));
+                    fluxGroup.add(new THREE.Mesh(tubeGeo, fluxMaterial));
+                } catch(e) {}
+            }
+        }
+    }
+
+    function traceTraditionalFields(t, z_center) {
+        if (!state.showTraditionalELines && !state.showTraditionalBLines) {
+            for(let i=0; i<MAX_LINES_PER_FIELD; i++) { eLinesPool[i].visible = false; bLinesPool[i].visible = false; }
+            return;
+        }
+
+        let seedsE = [], seedsB = [];
+        let current_sep = state.dipole_separation;
+        if (state.animate_annihilation) current_sep = state.dipole_separation * (0.5 * (1 + Math.cos(t * 1.5)));
+
+        if (state.mode === 'Photon (K=2)' || state.mode === 'Superposition Sandbox') {
+            for(let i=0; i<16; i++) {
+                seedsE.push(new THREE.Vector3(0, (i/16)*6-3, z_center));
+                seedsB.push(new THREE.Vector3((i/16)*6-3, 0, z_center));
+            }
+        }
+        if (state.mode === 'Proton (K=3)' || state.mode === 'Electron (K=10)' || state.mode === 'Hydrogen Atom' || state.mode === 'Helium Atom') {
+            for(let i=0; i<24; i++) {
+                let p = new THREE.Vector3(Math.cos(i*Math.PI/12)*0.5, Math.sin(i*Math.PI/12)*0.5, Math.sin(i*Math.PI/6)*0.3);
+                seedsE.push(p);
+                if(state.orbit_speed > 0) seedsB.push(new THREE.Vector3(0, 0, 1.5).applyAxisAngle(new THREE.Vector3(0,1,0), i*Math.PI/12));
+            }
+        }
+        if (state.mode === 'Topological Dipole (+K / -K)') {
+            for(let i=0; i<24; i++) {
+                seedsE.push(new THREE.Vector3(current_sep/2 + Math.cos(i*Math.PI/12)*0.3, Math.sin(i*Math.PI/12)*0.3, 0));
+                if(state.animate_annihilation) seedsB.push(new THREE.Vector3(current_sep/3, Math.cos(i*Math.PI/12)*1.5, Math.sin(i*Math.PI/12)*1.5));
+            }
+        }
+        if (state.mode === 'Magnetic Torus (Current Loop)') {
+            for(let i=0; i<32; i++) { 
+                let angle = (i/16) * Math.PI; 
+                if (i < 16) {
+                    seedsB.push(new THREE.Vector3(Math.cos(angle)*current_sep*0.4, Math.sin(angle)*current_sep*0.4, 0));
+                } else {
+                    seedsB.push(new THREE.Vector3(Math.cos(angle)*current_sep*0.8, Math.sin(angle)*current_sep*0.8, 0));
+                }
+                seedsE.push(new THREE.Vector3(Math.cos(angle)*current_sep, Math.sin(angle)*current_sep, 0.5));
+            }
+        }
+
+        for(let i=0; i<MAX_LINES_PER_FIELD; i++) {
+            let line = eLinesPool[i];
+            if (i >= seedsE.length || !state.showTraditionalELines) { line.visible = false; continue; }
+            
+            line.visible = true;
+            let posArray = line.geometry.attributes.position.array;
+            let colArray = line.geometry.attributes.color.array;
+            
+            tmpPos.copy(seedsE[i]);
+            let ptsDrawn = 0;
+
+            for(let step=0; step<MAX_POINTS_PER_LINE; step++) {
+                getContinuumState(tmpPos, t, z_center);
+                tmpDir.copy(c_E_out).sub(c_u_out.multiplyScalar(0.5)); 
+                let mag = tmpDir.length();
+                if (mag < 0.0001 && step > 10) break; 
+                
+                posArray[step*3] = tmpPos.x; posArray[step*3+1] = tmpPos.y; posArray[step*3+2] = tmpPos.z;
+                
+                let intensity = Math.min(1.0, mag * 1.5);
+                tmpColor.setHSL(0.1 + 0.05 * intensity, 1.0, 0.5 + 0.2 * intensity); 
+                colArray[step*3] = tmpColor.r; colArray[step*3+1] = tmpColor.g; colArray[step*3+2] = tmpColor.b;
+                
+                if (mag > 0.0001) tmpPos.add(tmpDir.normalize().multiplyScalar(0.15));
+                ptsDrawn++;
+            }
+            line.geometry.setDrawRange(0, ptsDrawn);
+            line.geometry.attributes.position.needsUpdate = true;
+            line.geometry.attributes.color.needsUpdate = true;
+        }
+
+        for(let i=0; i<MAX_LINES_PER_FIELD; i++) {
+            let line = bLinesPool[i];
+            if (i >= seedsB.length || !state.showTraditionalBLines) { line.visible = false; continue; }
+            
+            line.visible = true;
+            let posArray = line.geometry.attributes.position.array;
+            let colArray = line.geometry.attributes.color.array;
+            
+            tmpPos.copy(seedsB[i]);
+            let ptsDrawn = 0;
+
+            for(let step=0; step<MAX_POINTS_PER_LINE; step++) {
+                getContinuumState(tmpPos, t, z_center);
+                tmpDir.copy(c_B_out); 
+                let mag = tmpDir.length();
+                if (mag < 0.0001 && step > 10) break; 
+                
+                posArray[step*3] = tmpPos.x; posArray[step*3+1] = tmpPos.y; posArray[step*3+2] = tmpPos.z;
+                
+                let intensity = Math.min(1.0, mag * 2.5);
+                tmpColor.setHSL(0.55 - 0.2 * intensity, 1.0, 0.4 + 0.4 * intensity);
+                colArray[step*3] = tmpColor.r; colArray[step*3+1] = tmpColor.g; colArray[step*3+2] = tmpColor.b;
+                
+                if (mag > 0.0001) tmpPos.add(tmpDir.normalize().multiplyScalar(0.15));
+                ptsDrawn++;
+            }
+            line.geometry.setDrawRange(0, ptsDrawn);
+            line.geometry.attributes.position.needsUpdate = true;
+            line.geometry.attributes.color.needsUpdate = true;
+        }
+    }
+
+    // =========================================================================
+    // 5. MASTER RENDER LOOP
+    // =========================================================================
+    const dummy = new THREE.Object3D(), dummyNeedle = new THREE.Object3D(), dummyBond = new THREE.Object3D();
+    const bondColor = new THREE.Color(), needleColor = new THREE.Color();
+    const bondDir = new THREE.Vector3(), bondMidpoint = new THREE.Vector3();
+    const upVector = new THREE.Vector3(0, 1, 0), base_axis = new THREE.Vector3(0,1,0);
+    const local_phi_axis = new THREE.Vector3(), local_E_axis = new THREE.Vector3(), local_B_axis = new THREE.Vector3();
+
+    const fmt = (v) => `[ ${v.x >= 0 ? ' ' : ''}${v.x.toFixed(4)}, ${v.y >= 0 ? ' ' : ''}${v.y.toFixed(4)}, ${v.z >= 0 ? ' ' : ''}${v.z.toFixed(4)} ]`;
+
+    const applyVectorHeatmap = (elId, vec, maxMag, r, g, b, darkTextAllowed) => {
+        const el = document.getElementById(elId);
+        el.textContent = fmt(vec);
+        const norm = Math.min(1, vec.length() / maxMag);
+        const alpha = norm * 0.8;
+        el.style.backgroundColor = `rgba(${r},${g},${b},${alpha})`;
+        el.style.color = alpha > 0.4 ? (darkTextAllowed ? '#000' : '#fff') : '#00ffcc';
+    };
+
+    function updateAndRender() {
+      const t = performance.now() * 0.001; 
+      if (numNodes === 0 || !instancedNodes) return requestAnimationFrame(updateAndRender);
+      
+      let z_center = z_start + ((state.c_speed * t) % corridor_length);
+      pointLight.position.set(0, 0, z_center);
+
+      instancedEField.visible = state.showEField;
+      instancedBField.visible = state.showBField;
+
+      let needleUpdates = false, eUpdates = false, bUpdates = false;
+
+      for (let i = 0; i < numNodes; i++) {
+        getContinuumState(basePositions[i], t, z_center);
+        nodePhis[i].copy(c_phi_out);
+        
+        dummy.position.copy(basePositions[i]).add(c_u_out);
+        
+        const twistAngle = c_phi_out.length();
+        if (twistAngle > 1e-5) dummy.setRotationFromAxisAngle(local_phi_axis.copy(c_phi_out).normalize(), twistAngle);
+        else dummy.rotation.set(0, 0, 0);
+
+        dummy.updateMatrix();
+        instancedNodes.setMatrixAt(i, dummy.matrix);
+        nodes[i].copy(dummy.position); 
+
+        if (state.showAxes) {
+            dummyNeedle.position.copy(dummy.position);
+            if (twistAngle > 0.05) { 
+                dummyNeedle.quaternion.setFromUnitVectors(base_axis, local_phi_axis);
+                dummyNeedle.scale.set(1, twistAngle * 0.8, 1);
+                instancedNeedles.setColorAt(i, needleColor.setHSL(Math.max(0.0, 0.65 - (twistAngle * 0.15)), 1.0, 0.5));
+            } else dummyNeedle.scale.set(0.001, 0.001, 0.001); 
+            dummyNeedle.updateMatrix();
+            instancedNeedles.setMatrixAt(i, dummyNeedle.matrix);
+            needleUpdates = true;
+        }
+
+        if (state.showEField) {
+            const eMag = c_E_out.length();
+            dummyNeedle.position.copy(dummy.position);
+            if (eMag > 0.02) {
+                local_E_axis.copy(c_E_out).normalize();
+                dummyNeedle.quaternion.setFromUnitVectors(base_axis, local_E_axis);
+                dummyNeedle.scale.set(1, eMag * 2.5, 1);
+            } else dummyNeedle.scale.set(0.001, 0.001, 0.001);
+            dummyNeedle.updateMatrix();
+            instancedEField.setMatrixAt(i, dummyNeedle.matrix);
+            eUpdates = true;
+        }
+
+        if (state.showBField) {
+            const bMag = c_B_out.length();
+            dummyNeedle.position.copy(dummy.position);
+            if (bMag > 0.02) {
+                local_B_axis.copy(c_B_out).normalize();
+                dummyNeedle.quaternion.setFromUnitVectors(base_axis, local_B_axis);
+                dummyNeedle.scale.set(1, bMag * 2.5, 1);
+            } else dummyNeedle.scale.set(0.001, 0.001, 0.001);
+            dummyNeedle.updateMatrix();
+            instancedBField.setMatrixAt(i, dummyNeedle.matrix);
+            bUpdates = true;
+        }
+      }
+      instancedNodes.instanceMatrix.needsUpdate = true;
+      if (state.showAxes && needleUpdates) { instancedNeedles.instanceMatrix.needsUpdate = true; instancedNeedles.instanceColor.needsUpdate = true; }
+      if (state.showEField && eUpdates) instancedEField.instanceMatrix.needsUpdate = true;
+      if (state.showBField && bUpdates) instancedBField.instanceMatrix.needsUpdate = true;
+      
+      updateFluxLines(t, z_center);
+      traceTraditionalFields(t, z_center);
+
+      if (state.showBonds) {
+          for (let i = 0; i < numBonds; i++) {
+              const idxA = lineIndices[i * 2], idxB = lineIndices[i * 2 + 1];
+              bondDir.subVectors(nodes[idxB], nodes[idxA]);
+              const curLen = bondDir.length();
+              
+              if (curLen > 0.0001) {
+                  dummyBond.position.addVectors(nodes[idxA], nodes[idxB]).multiplyScalar(0.5);
+                  dummyBond.quaternion.setFromUnitVectors(upVector, bondDir.clone().normalize());
+                  dummyBond.scale.set(1, curLen, 1);
+                  dummyBond.updateMatrix();
+                  instancedBonds.setMatrixAt(i, dummyBond.matrix);
+                  
+                  twistArray[i] = t_vec1.addVectors(nodePhis[idxA], nodePhis[idxB]).multiplyScalar(0.5).dot(bondDir); 
+                  
+                  if (state.showBondStrain) {
+                      const normStrain = Math.max(-1, Math.min(1, ((curLen - nnDist) / nnDist) / 0.15));
+                      bondColor.setRGB(normStrain < -0.01 ? 1+normStrain : 1, Math.abs(normStrain)>0.01 ? 1-Math.abs(normStrain) : 1, normStrain > 0.01 ? 1-normStrain : 1);
+                      instancedBonds.setColorAt(i, bondColor);
+                  } else instancedBonds.setColorAt(i, bondColor.setHex(0xffffff));
+              }
+          }
+          instancedBonds.instanceMatrix.needsUpdate = true;
+          instancedBonds.instanceColor.needsUpdate = true;
+          instancedBonds.geometry.attributes.instancedTwist.needsUpdate = true;
+      }
+      
+      // PHASE D: Voxel Telemetry
+      if (state.selectedNodeId !== null) {
+          const basePos = basePositions[state.selectedNodeId];
+          getContinuumState(basePos, t, z_center); 
+          
+          highlightMesh.position.copy(basePos).add(c_u_out);
+          
+          if (selectedNodeCache.isInitialized) {
+              const dt = t - selectedNodeCache.t_prev;
+              if (dt > 0.0001) {
+                  selectedNodeCache.du_dt.subVectors(c_u_out, selectedNodeCache.u_prev).multiplyScalar(1.0 / dt);
+                  selectedNodeCache.dphi_dt.subVectors(c_phi_out, selectedNodeCache.phi_prev).multiplyScalar(1.0 / dt);
+              }
+          }
+          
+          document.getElementById('tel-base').textContent = fmt(basePos);
+          
+          applyVectorHeatmap('tel-u', c_u_out, 3.0, 255, 100, 255, false); 
+          applyVectorHeatmap('tel-phi', c_phi_out, 4.0, 255, 150, 0, true); 
+          applyVectorHeatmap('tel-E', c_E_out, 1.5, 255, 221, 0, true); 
+          applyVectorHeatmap('tel-B', c_B_out, 1.5, 0, 255, 255, true); 
+          
+          if (selectedNodeCache.isInitialized) {
+              applyVectorHeatmap('tel-du', selectedNodeCache.du_dt, 15.0, 255, 50, 50, false); 
+              applyVectorHeatmap('tel-dphi', selectedNodeCache.dphi_dt, 15.0, 50, 255, 50, true); 
+          }
+          
+          selectedNodeCache.t_prev = t;
+          selectedNodeCache.u_prev.copy(c_u_out);
+          selectedNodeCache.phi_prev.copy(c_phi_out);
+          selectedNodeCache.isInitialized = true;
+
+          const neighbors = nodeNeighbors[state.selectedNodeId];
+          for (let k = 0; k < 12; k++) {
+              const rowEl = document.getElementById('bond-' + k);
+              if (k < neighbors.length) {
+                  const nIdx = neighbors[k];
+                  bondDir.subVectors(nodes[nIdx], nodes[state.selectedNodeId]);
+                  const curLen = bondDir.length();
+                  const strain = (curLen - nnDist) / nnDist;
+                  
+                  bondDir.normalize();
+                  t_vec1.addVectors(nodePhis[state.selectedNodeId], nodePhis[nIdx]).multiplyScalar(0.5);
+                  const twist = t_vec1.dot(bondDir);
+
+                  t_vec2.subVectors(basePositions[nIdx], basePositions[state.selectedNodeId]).normalize();
+                  const dirStr = `[${Math.round(t_vec2.x)},${Math.round(t_vec2.y)},${Math.round(t_vec2.z)}]`;
+
+                  document.getElementById('lbl-bond-' + k).textContent = `N${k} ${dirStr}:`;
+                  
+                  const sSpan = document.getElementById('val-bond-s-' + k);
+                  const tSpan = document.getElementById('val-bond-t-' + k);
+                  
+                  sSpan.textContent = `S: ${strain>=0?'+':''}${strain.toFixed(4)}`;
+                  tSpan.textContent = `T: ${twist>=0?'+':''}${twist.toFixed(4)}`;
+
+                  const normStrain = Math.max(-1, Math.min(1, strain / 0.15));
+                  const sAlpha = Math.min(0.8, Math.abs(normStrain));
+                  sSpan.style.backgroundColor = normStrain > 0 ? `rgba(255,50,50,${sAlpha})` : `rgba(50,150,255,${sAlpha})`;
+                  sSpan.style.color = sAlpha > 0.4 ? '#fff' : '#00ffcc';
+
+                  const normTwist = Math.max(-1, Math.min(1, twist / 0.2));
+                  const tAlpha = Math.min(0.8, Math.abs(normTwist));
+                  tSpan.style.backgroundColor = normTwist > 0 ? `rgba(255,150,0,${tAlpha})` : `rgba(0,255,200,${tAlpha})`;
+                  tSpan.style.color = tAlpha > 0.4 ? '#000' : '#00ffcc';
+
+                  rowEl.style.display = 'flex';
+              } else {
+                  rowEl.style.display = 'none';
+              }
+          }
+      }
+
+      controls.update();
+      renderer.render(scene, camera);
+      requestAnimationFrame(updateAndRender);
+    }
+    
+    buildUniverse();
+    requestAnimationFrame(updateAndRender);
+
+    // =========================================================================
+    // 6. UI RESIZE HANDLERS
+    // =========================================================================
+    window.addEventListener('resize', () => {
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+      renderer.setSize(window.innerWidth, window.innerHeight);
+    });
+
+    document.getElementById('infoBtn').addEventListener('click', () => { document.getElementById('infoPanel').style.display = 'block'; });
+    document.getElementById('infoClose').addEventListener('click', () => { document.getElementById('infoPanel').style.display = 'none'; });
+    document.getElementById('closeFormula').addEventListener('click', () => {
+        document.getElementById('formula').style.display = 'none'; state.showHUD = false; hudController.updateDisplay();
+        document.getElementById('telemetryPanel').style.zIndex = 11;
+    });
+  </script>
+</body>
+</html>
