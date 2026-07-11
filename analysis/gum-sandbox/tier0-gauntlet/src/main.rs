@@ -395,6 +395,58 @@ fn main() {
     checks.push(check("E2", "Unruh T(9.81 m/s^2) = 4.0e-20 K (WS-T geometric recovery)",
         t_unruh, 4.0e-20, 2e-21, "standard-physics recovery; route is the novelty"));
 
+    // ==== GROUP F — NR-D2 murk-kill recomputation (the archive's fired kill;
+    // corpus-level finality is replication-gated — this is the first external
+    // recomputation of its arithmetic spine) ====
+
+    // F1: the overlap-cost coefficient: V_int = eps (f p) f with p = 4 um.
+    //     f p = 7.6e7 requires f = 7.6e7 hbar c / p = 3.75 MeV (the f-window's
+    //     favorable lower corner).
+    let hbarc = ipt(1.973_269_804e-7); // eV m
+    let p_tether = ipt(4.0e-6); // m
+    let fp = ipt(3.75e6) * p_tether / hbarc; // dimensionless f*p at f = 3.75 MeV
+    checks.push(check("F1", "NR-D2 overlap coefficient f p = 7.6e7 at f = 3.75 MeV, p = 4 um",
+        fp, 7.6e7, 5e5, "V_int = eps (f p) f — the registered eps-transparency cost"));
+
+    // F2: transparency bound. Corpus KE quote 2e-4 f gives eps <= 2.6e-12 ('3e-12').
+    //     LITERAL check at the stated normalization v = 1e-3 c, m = 16 f:
+    //     KE = (1/2)(16)(1e-3)^2 f = 8e-6 f — corpus coefficient 2e-4 is x25 larger
+    //     (corresponds to v = 5e-3 c). FINDING F-R1: conservative-direction slip;
+    //     the literal bound is eps <= 1.05e-13, i.e. the kill fires ~25x HARDER.
+    let eps_corpus = ipt(2.0e-4) / fp;
+    let ke_literal = ir(1, 2) * ii(16) * ipt(1.0e-3) * ipt(1.0e-3); // = 8e-6
+    let eps_literal = ke_literal / fp;
+    checks.push(check("F2a", "NR-D2 transparency bound (corpus KE 2e-4 f): eps <= 2.6e-12",
+        eps_corpus, 2.6e-12, 2e-13, "corpus quotes 'eps <= 3e-12'"));
+    checks.push(check_with("F2b",
+        "F-R1 FINDING: literal KE(v=1e-3c, m=16f) = 8e-6 f => eps <= 1.05e-13 (x25 tighter)",
+        eps_literal, 1.05e-13,
+        near(eps_literal, 1.05e-13, 1e-14) && near(ke_literal, 8.0e-6, 1e-9),
+        "printed KE coefficient 2e-4 corresponds to v = 5e-3 c, not the stated 1e-3 c; \
+         conservative direction — the kill fires HARDER at the stated normalization".into()));
+
+    // F3: sigma/m = pi (2p)^2 / (16 f) at mid-band f = 15 MeV -> ~5e18 cm^2/g,
+    //     vs the Bullet-class bound <= 1: over by 18+ orders.
+    let two_p_cm = ipt(8.0e-4); // 2p in cm
+    let m_murk_g = ii(16) * ipt(15.0e6) * ipt(1.782_661_92e-33); // 16 f in grams (1 eV = 1.78e-33 g)
+    let sigma_over_m = pi * two_p_cm * two_p_cm / m_murk_g;
+    checks.push(check_with("F3",
+        "NR-D2 sigma/m = pi(2p)^2/m ~ 5e18 cm^2/g (Bullet bound <= 1: over by 18+ orders)",
+        sigma_over_m, 5.0e18,
+        near(sigma_over_m, 4.7e18, 5e17) && sigma_over_m.lo() > 1.0e18,
+        format!("{:.2e} cm^2/g at f = 15 MeV; kill margin certified > 18 orders",
+            sigma_over_m.midpoint())));
+
+    // F4: classicality: lambda_dB = 2 pi hbar c/(m c^2 (v/c)) << p under any band reading.
+    let lambda_db = ii(2) * pi * hbarc / (ii(16) * ipt(15.0e6) * ipt(1.0e-3)); // m, mid-band
+    let ratio_class = lambda_db / p_tether;
+    checks.push(check_with("F4",
+        "NR-D2 classicality: lambda_dB / p ~ 1e-6 << 1 (hard-wall criterion applies)",
+        ratio_class, 1.3e-6,
+        ratio_class.hi() < 1.0e-4,
+        format!("lambda_dB = {:.2e} m vs p = 4e-6 m; classical at tether scale by >= 4 orders \
+                 under every band corner", lambda_db.midpoint())));
+
     // ================================ REPORT ================================
     let mut passes = 0usize;
     println!("== GUM TIER-0 CONSTANTS GAUNTLET (fs-ivl certified) ==\n");

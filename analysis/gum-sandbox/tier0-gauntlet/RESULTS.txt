@@ -70,11 +70,21 @@ E1    PASS  [9.274010072680e-24, 9.274010072680e-24]  corpus 9.274010e-24  g_s =
         note: identity route mu_B = 9.274010e-24; CODATA 9.2740101e-24
 E2    PASS  [3.977968265813e-20, 3.977968265813e-20]  corpus 4.000000e-20  Unruh T(9.81 m/s^2) = 4.0e-20 K (WS-T geometric recovery)
         note: standard-physics recovery; route is the novelty
+F1    PASS  [7.601596076519e7, 7.601596076519e7]  corpus 7.600000e7  NR-D2 overlap coefficient f p = 7.6e7 at f = 3.75 MeV, p = 4 um
+        note: V_int = eps (f p) f — the registered eps-transparency cost
+F2a   PASS  [2.631026405333e-12, 2.631026405333e-12]  corpus 2.600000e-12  NR-D2 transparency bound (corpus KE 2e-4 f): eps <= 2.6e-12
+        note: corpus quotes 'eps <= 3e-12'
+F2b   PASS  [1.052410562133e-13, 1.052410562133e-13]  corpus 1.050000e-13  F-R1 FINDING: literal KE(v=1e-3c, m=16f) = 8e-6 f => eps <= 1.05e-13 (x25 tighter)
+        note: printed KE coefficient 2e-4 corresponds to v = 5e-3 c, not the stated 1e-3 c; conservative direction — the kill fires HARDER at the stated normalization
+F3    PASS  [4.699477963591e18, 4.699477963591e18]  corpus 5.000000e18  NR-D2 sigma/m = pi(2p)^2/m ~ 5e18 cm^2/g (Bullet bound <= 1: over by 18+ orders)
+        note: 4.70e18 cm^2/g at f = 15 MeV; kill margin certified > 18 orders
+F4    PASS  [1.291502066624e-6, 1.291502066624e-6]  corpus 1.300000e-6  NR-D2 classicality: lambda_dB / p ~ 1e-6 << 1 (hard-wall criterion applies)
+        note: lambda_dB = 5.17e-12 m vs p = 4e-6 m; classical at tether scale by >= 4 orders under every band corner
 
-== 37/37 checks PASS ==
+== 42/42 checks PASS ==
 
-fs-evidence: 37 enclosures certified (fail-closed Certified<f64>).
-fs-package: 37 Verified claims bundled; root e7a8e897c55984d1a11eaea70ffd7af02a4d528a9d45150d53b3602c21c9df91
+fs-evidence: 42 enclosures certified (fail-closed Certified<f64>).
+fs-package: 42 Verified claims bundled; root 32e48aeccecda57296766978606704ed65f48653cf4209ae8d17d1799d6da3e7
 fs-checker mode 1 (deny-all):        passed = false (expected false — unauthenticated Verified claims are refused; anti-laundering works)
 fs-checker mode 2 (cert capability): passed = true (expected true)
 fs-checker mode 3 (tampered root):   passed = false (expected false)

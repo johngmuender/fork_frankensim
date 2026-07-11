@@ -72,3 +72,24 @@ arithmetic. This is the external re-derivation the corpus's own governance
 Every PASS verifies a **within-model** claim of a speculative theory.
 Reproducible arithmetic is not evidence about nature; GUM's contact with
 nature remains its staked experiments (S1, S2, bench, A3 gate).
+
+## Addendum — Group F: NR-D2 murk-kill recomputation (42/42 total)
+The archive's only fired kill (T-D2) is explicitly **replication-gated** —
+"the ink dries at replication." This is the first external recomputation of
+its arithmetic spine (its two *physics* gates — SDiff-reachability of the
+reconciliation cost, and hard-wall applicability — are argument-level and not
+discharged by arithmetic):
+
+| ID | Check | Result |
+|----|-------|--------|
+| F1 | overlap coefficient f·p = 7.6×10⁷ at f = 3.75 MeV, p = 4 µm | PASS (7.60×10⁷) |
+| F2a | transparency bound from the corpus's KE quote: ε ≤ 2.6×10⁻¹² | PASS (corpus "3×10⁻¹²") |
+| **F2b** | **FINDING F-R1**: at the *stated* normalization (v = 10⁻³c, m = 16f), KE = 8×10⁻⁶f — the printed 2×10⁻⁴f is **×25 too large** (corresponds to v = 5×10⁻³c). Literal bound: ε ≤ 1.05×10⁻¹³ | PASS — **conservative-direction slip; the kill fires ~25× harder** |
+| F3 | σ/m = π(2p)²/m = 4.7×10¹⁸ cm²/g at mid-band; Bullet ≲ 1 → over by 18+ orders | PASS |
+| F4 | classicality λ_dB/p ≈ 1.3×10⁻⁶ ≪ 1 | PASS |
+
+**F-R1 is the campaign's first genuine corpus finding**: an internal
+inconsistency in NR-D2 §1's printed KE coefficient. It does not reopen the
+kill — every reading tightens it — but it is exactly the class of defect
+(cf. the corpus's own C-ν1, "too harsh on itself") that the replication gate
+exists to catch. Golden root updated by the added claims (bit-deterministic).
