@@ -40,10 +40,19 @@ nothing here bears on nature.
 - Two literal spec FAILs adjudicated as over-strict tests (mine), with the
   deviations derived in closed form. **No corpus defect found.**
 
-## Tier 3 — Born-Rule Relaxation ⏳ IN FLIGHT
-**`tier3-born/`** (Python pilot; Valentini–Westman-class). 2-D box,
-M ∈ {4, 9, 16} mode superpositions, exact ψ evolution, de Broglie
-trajectories, coarse-grained H̄(t), equivariance control. Results pending.
+## Tier 3 — Born-Rule Relaxation ✅ COMPLETE
+**`tier3-born/`** (Python pilot + adjudication). 2-D box, exact ψ evolution,
+N = 20,000 de Broglie trajectories to t = 4π.
+- **Relaxation to Born equilibrium replicated**: τ = 83 / 10.2 / 4.9 for
+  M = 4 / 9 / 16; M = 16 decays near-exponentially (r² = 0.99) to the
+  finite-N noise floor within one revival period; the particle distribution
+  does NOT revive when ψ does.
+- **Equivariance control verified**: an equilibrium-born ensemble stays flat
+  at the noise floor for the whole run — the H-theorem fixed point.
+- **Mild tension adjudicated**: M = 4 is pocketed/non-exponential (r² 0.43) —
+  attributable to the first-2×2 mode set's degenerate, commensurate spectrum
+  (the corpus's own "near-integrable small-M" caveat case); generic-set M = 4
+  replication filed as follow-up (`tier3-born/REPORT.md`).
 
 ## Corpus survey (supporting) ✅ COMPLETE
 The full 104-file archive (`corpus/`) contains **no ⟨r1⟩–⟨r11⟩ pipeline
