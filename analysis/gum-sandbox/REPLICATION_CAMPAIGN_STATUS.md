@@ -143,11 +143,13 @@ per the F-R4 lemma), gates G0–G5 all PASS, Step-2's closure reproduced to
 - **F-R4** (Step 2, hardened by Step 3): G.5's SDiff inertia-enhancement
   mechanism fails at machine precision — inertia is invariant on the SDiff
   orbit (proof: `axi_FR4_NOTE.md`); no wording repair survives Step 3.
-- **F-R5** (Step 3): the closure's stated variational problem does not
-  select 𝔠₀ = 2.5147 or the ⟨r1⟩ tuple — tilt-halo instability above
-  κ_paper = 1/√2, saturated infimum ≥ 2√2. Discharge path: the corpus
-  produces the frozen ⟨r1⟩ code exhibiting the stabilizing
-  constraint/term absent from App. I.4's printed protocol.
+- **F-R5** (Step 3; confirmed in 3-D by Tier 4A, sharpened by 4C): the
+  closure's stated variational problem does not select 𝔠₀ = 2.5147 or
+  the ⟨r1⟩ tuple — halo instability above κ_paper = 1/√2 (tilt channel;
+  locked profile channels between √3/2 and 1/√2), saturated infimum
+  ≥ 2√2, clock-forced. Direction-locking does not rescue it. Discharge
+  path: the corpus produces the frozen ⟨r1⟩ code exhibiting the
+  stabilizing constraint/term absent from App. I.4's printed protocol.
 
 Within-model consequence if F-R4/F-R5 stand: every constant downstream of
 𝔠₀ (the ħ calibration 𝔠Λ√J, κ_phys = √(7/12), the S4′ ε-run anchor,
@@ -175,8 +177,35 @@ the *argument-level* physics (NR-A2b's ¾ operator-law selection, NR-D2's
 SDiff-reachability, NR-D1b's c_h/r_min inputs) and, now, the corpus's
 response to F-R4/F-R5.
 
-## Campaign status: COMPLETE (Tiers 0–3, Steps 1–3, archive gates)
-Possible extensions (not scheduled): a fully unrestricted 2-D
-Newton–Krylov solve reproducing the corpus's saddle under explicit
-direction-locking (to test the F-R5 working hypothesis); the fs-cosserat
-certified-Rust port of the closure pipeline from the feasibility plan.
+## Tier 4 — 3-D Texture Field ✅ COMPLETE (three workstreams)
+**`tier4-field/` + `tier2-closure/axi4_locked_*`** — adjudication:
+`tier4-field/TIER4_ADJUDICATION.md`.
+- **4A (unrestricted 3-D pilot)**: F-R5's mechanism **confirmed in full
+  3-D with no symmetry assumption** — fixed-L descent fell 0.56 below the
+  axisymmetric stationary value, κ through the threshold, halo box-limited;
+  88% of the inertia gain priced in E₀ at exactly the threshold rate
+  1/(16π); the below-threshold control self-limited at the (3/2)·I tilt
+  ceiling (two-sided verification). **The clock condition forces the
+  over-spun regime** (κ(L_clock) = 1.25–1.47× threshold in every reading).
+- **4B (fs-cosserat-pilot)**: 13/13 certified 3-D diagnostics, golden root
+  `f88731af…`, bit-identical replay — degree O(h²), sector energies vs
+  fs-ivl enclosures two ways, F-R4's SDiff invariance and the ¼ invariant
+  as certified claims.
+- **4C (direction-locked closure)**: the Step-3 working hypothesis
+  (direction-locking rescues the benchmark) **refuted** — locked profile
+  halos have channel-dependent thresholds κ_crit = 1/√(2⟨sin²θ⟩_w)
+  sliding from √3/2 (uniform) to the unrestricted 1/√2 (equatorial ring);
+  the converged locked closure runs away (𝔠 = 3.26, V = 7.1 at ε = 0.05).
+  **Two exact identities found**: the corpus's measured over-spin onset
+  1.000 ± 0.004 = the polar-channel threshold (exactly 1, ⟨sin²θ⟩ = 1/2);
+  its deep-BPS κ₀ = √(7/12) = the sin²-channel threshold (exactly 6/7
+  moment identity); plus the locked uniform-saturated closure landing at
+  𝔠_paper = 2.37096 vs the benchmark 2.37 ± 0.09. Reading (hypothesis,
+  flagged): **the ⟨r1⟩ numbers are thresholds/saturation values of the
+  halo family the corpus's solver was blind to.**
+
+## Campaign status: COMPLETE (Tiers 0–4, Steps 1–3, archive gates)
+Not scheduled (Tier 5 territory per the v2 assessment): blue-fog/
+disclination boxes, family/bridge integrals beyond ⟨r10⟩, nucleation.
+The remaining engineering item is the full fs-cosserat solver port once
+the corpus responds to F-R4/F-R5 (the 4B pilot proved the packaging).
