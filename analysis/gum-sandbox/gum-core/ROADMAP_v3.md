@@ -77,6 +77,29 @@ suite becomes CI-runnable (~10 min vs 75 min Python).
 ## Execution record
 - Phase A (gap analysis workflow, 5 parallel surveyors): ✅ this document
   + GAP_ANALYSIS_v3.md + gap_survey_v3.json.
-- Phases B1–B4: launched as four parallel build agents; each lands with
-  its gate table and RESULTS.md; adjudication + commit per phase.
+- **Phase B: ✅ COMPLETE — all four crates landed, 91 machine-checked
+  gates total, every gate suite CI-class (< 6 min), all bit-replay
+  verified:**
+  - B1 `fs-gum-field`: 25/25 gates, 1.8 s, golden root `6c1e7850…` —
+    the 4B pilot's certified decimals reproduced to ~1e-13.
+  - B2 `fs-gum-topo`: 25/25 gates, 5.4 s, golden root `9cfbe9a6…` —
+    Hopf by two cross-validating methods (preimage linking lands exact
+    integers), Z/2 disclination suite; two referee-caught bugs fixed.
+  - B3 `fs-gum-cosserat`: 20/20 gates, 2.9 s, golden root `452d780c…` —
+    Tier-1 battery to the digit, arbitrary-k rotation invariance
+    2.7e-15, the repo's first time-domain second-order validation.
+  - B4 `fs-gum-sde`: 21/21 gates, ~320 s (vs born.py's 829 s) — OU
+    moments, measured strong orders (EM 1.00 additive / 0.49
+    multiplicative; SRA1 1.61 nonlinear / 2.00 linear-superconvergent),
+    the Nelson H-theorem demo, and the NEW measurement: Nelson relaxes
+    ρ → |ψ|² **≈37× faster** than deterministic Bohm guidance on the
+    identical system (τ 0.132 vs 4.853). Cross-execution byte-identity
+    verified by coordinator (SHA-256 over all three outputs, run 2 vs
+    run 3).
+  Recurrent portability note: fs-la/fs-fft are unbuildable from
+  out-of-workspace crates in this checkout (dep closure pulls fs-exec →
+  ../../../asupersync, an absent sibling repo); B3 vendored jacobi_eigh
+  verbatim, B2 used an internal radix-2 FFT — both with documented
+  swap-back paths. Upstreaming fix (make fs-exec optional or split the
+  eigensolvers out) filed as a Phase-F item.
 - Phase E/F: specs frozen here; execution follows the B-wave.
