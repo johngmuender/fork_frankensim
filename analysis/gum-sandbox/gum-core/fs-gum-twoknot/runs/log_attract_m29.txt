@@ -8,3 +8,7 @@ twoknot_run: channel=attract m=29 d=5.437500 x=d/R*=3.0517 grid 160x96x96 h=0.09
   [attract] it=250  obj=6.274863383 Estat=6.2737627 pen=7.11e-4 fpen=3.89e-4 fgap=-0.0498 deg=1.96649 gnorm=2.538e0 dt=2.35e-2 arr=3
   [attract] it=300  obj=6.270604855 Estat=6.2691659 pen=8.55e-4 fpen=5.84e-4 fgap=-0.0501 deg=1.96644 gnorm=3.840e0 dt=3.87e-2 arr=3
   [attract] it=350  obj=6.262233258 Estat=6.2609637 pen=7.82e-4 fpen=4.87e-4 fgap=-0.0500 deg=1.96646 gnorm=6.077e0 dt=5.00e-2 arr=3
+  [attract] it=400  obj=6.258229600 Estat=6.2567472 pen=6.97e-4 fpen=7.86e-4 fgap=-0.0504 deg=1.96650 gnorm=2.082e0 dt=8.23e-3 arr=7
+  [attract] DONE (iter_cap) it=400 obj=6.258229600 gnorm/gnorm0=1.345e0 arrests=7
+  final: Estat(corner)=6.256747162 Estat(central4)=8.335344432 deg=1.966495 deff=5.4375 status=iter_cap iters=400 arrests=7 (552.6s, 1.382 s/iter)
+  wrote runs/run_attract_m29.json  (total 553.8s)

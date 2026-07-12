@@ -125,7 +125,20 @@ in this checkout.
   tolerance-band/metric goldens across backends and at ANF endpoints
   (arrest cascades amplify ulps).
 
-## 6. IN-FLIGHT AT CHECKPOINT — resume here
+## 6. IN-FLIGHT AT CHECKPOINT — RESOLVED before session end
+
+**Both in-flight builds completed and are committed.** G1: 13/13 gates,
+serial↔4-thread bit-identical, 3.61× speedup. G4: full protocol run
+(23 relaxations, 3 orientations), bond loop IN BAND — closed-loop
+x₀ = 1.88/1.97 vs predicted 1.90 ± 0.05; direct 2.0 ± 0.15 vs corpus
+1.92 ± 0.08; 𝔟_eff absolute normalization not recoverable (documented
+spec-underdetermination, 𝔭-class). See ROADMAP_v4_SCALE execution
+record and fs-gum-twoknot/twoknot_RESULTS.md. **The next session's
+starting point is G5** (N=192 F-R5 endpoint + longer-cap two-knot on
+fs-gum-kern threads) and §7. The subsections below are retained as the
+historical checkpoint state.
+
+### (historical) in-flight state at the checkpoint commit
 
 **G1 `fs-gum-kern`** (deterministic parallel kernel layer): all source
 modules committed (tile.rs TILE_I=4 canonical order, reduce.rs pairwise

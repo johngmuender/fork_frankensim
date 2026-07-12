@@ -1,0 +1,14 @@
+twoknot_run: channel=align m=20 d=3.750000 x=d/R*=2.1046 grid 160x96x96 h=0.09375 maxit=400
+  seed: Estat(corner)=6.293765843 deg=1.971994 fgap=-0.038745 -> wall -0.048745 deff=3.7513 tail=4.58e-11 drift=3.33e-16
+  [align] it=0  obj=6.293765843 Estat=6.2937658 deg=1.97199 gnorm=1.804e0
+  [align] it=50  obj=6.293305116 Estat=6.2933051 pen=0.00e0 fpen=0.00e0 fgap=-0.0390 deg=1.97190 gnorm=1.476e0 dt=1.64e-2 arr=0
+  [align] it=100  obj=6.291423115 Estat=6.2914231 pen=0.00e0 fpen=0.00e0 fgap=-0.0393 deg=1.97112 gnorm=1.682e0 dt=2.70e-2 arr=0
+  [align] it=150  obj=6.285210896 Estat=6.2851230 pen=8.79e-5 fpen=0.00e0 fgap=-0.0365 deg=1.96681 gnorm=1.895e0 dt=2.64e-2 arr=1
+  [align] it=200  obj=6.281674716 Estat=6.2811037 pen=5.71e-4 fpen=0.00e0 fgap=-0.0404 deg=1.96652 gnorm=2.833e0 dt=4.35e-2 arr=1
+  [align] it=250  obj=6.275308600 Estat=6.2742878 pen=6.10e-4 fpen=4.11e-4 fgap=-0.0502 deg=1.96650 gnorm=2.123e0 dt=2.33e-2 arr=3
+  [align] it=300  obj=6.271051100 Estat=6.2697330 pen=6.68e-4 fpen=6.50e-4 fgap=-0.0505 deg=1.96648 gnorm=1.907e0 dt=3.83e-2 arr=3
+  [align] it=350  obj=6.262550628 Estat=6.2613173 pen=6.44e-4 fpen=5.89e-4 fgap=-0.0505 deg=1.96649 gnorm=2.154e0 dt=5.00e-2 arr=3
+  [align] it=400  obj=6.257998158 Estat=6.2564895 pen=7.38e-4 fpen=7.70e-4 fgap=-0.0507 deg=1.96645 gnorm=2.034e0 dt=7.99e-3 arr=7
+  [align] DONE (iter_cap) it=400 obj=6.257998158 gnorm/gnorm0=1.128e0 arrests=7
+  final: Estat(corner)=6.256489538 Estat(central4)=8.478698415 deg=1.966450 deff=3.7547 status=iter_cap iters=400 arrests=7 (431.0s, 1.078 s/iter)
+  wrote runs/run_align_m20.json  (total 432.3s)

@@ -63,8 +63,27 @@ Blue-fog condensate/disclination boxes and tower-depth studies at scale
 nucleation.
 
 ## Execution record
-- Phase G-A (measured scaling survey, 4 surveyors): ✅ this document +
-  GAP_ANALYSIS_v4_SCALE.md + scale_survey_v4.json.
-- G1–G4: launched as parallel agents (G4 farms the existing serial
-  engine and does not wait on G1).
-- G5: queued behind G1.
+- Phase G-A (measured scaling survey, 4 surveyors): ✅ docs + JSON.
+- **G1 ✅** fs-gum-kern: 13/13 gates; serial↔1/2/3/4-thread BIT-IDENTICAL
+  (one BLAKE3 hash); 3.61× at N=96; golden bump 2.8e-14 documented;
+  corner adjoint inversion cost zero bits; SIMD honestly unclaimed.
+- **G2 ✅** fs-gum-gpu: f64 WGSL on llvmpipe; all gates green; identical
+  descent decisions vs CPU; tolerance-band doctrine confirmed by
+  measured 1–2 ulp FMA contraction.
+- **G3 ✅** G* = 16√2/9 EXACTLY (oblate compacton closed form); the 𝔠₀
+  identity disproven (24√21 ≈ 35π accident); saturated closure exact:
+  𝔠_paper = 64√2/(9π) at κ = 1/√2.
+- **G4 ✅** fs-gum-twoknot: App I.2 executed for the first time anywhere
+  — 23 guarded relaxations, 160×96×96, 3 orientations × 7 separations +
+  far anchor, 49.5 min wall (3.7× farm scaling); anisotropic engine
+  bitwise-gated (20/20) against fs-gum-statics. **Bond loop lands in
+  band**: 𝔟 = 42 closed-loop x₀ = 1.88/1.97 vs predicted 1.90 ± 0.05;
+  direct x₀ = 2.0 ± 0.15 vs corpus-measured 1.92 ± 0.08 (0.5σ);
+  attractive well at x = 1.89 (2.1σ); channel sign structure confirmed;
+  tail mass ±3%. NOT recoverable: the 𝔟_eff absolute normalization
+  (~7 orders — App-A convention at ε = 0.05 with overlapping cores;
+  same spec-underdetermination class as the Tier-2b 𝔭 amplitude).
+  Caveats: iter_cap runs, 2.1σ well depth, product-ansatz bias — the
+  longer-cap rerun is the natural G5 companion workload.
+- G5: queued — N=192 F-R5 endpoint + longer-cap two-knot on
+  fs-gum-kern's threaded sweeps.

@@ -1,34 +1,52 @@
 #!/usr/bin/env python3
 """Phase G4 analysis: E_int(d), pair-law fit, bond-equation closure.
 
-Deterministic (no RNG; fixed algorithms). Reads runs/*.json written by
-twoknot_run, writes twoknot_results.json + figures.
+Deterministic (no RNG; fixed grids and golden-section refinements).
+Reads runs/*.json written by twoknot_run; writes twoknot_results.json and
+twoknot_fig.png.
 
-Corpus forms used (stated verbatim from 01-GUM-Omega-Paper-v2.0.1.md):
+Corpus forms used (verbatim from 01-GUM-Omega-Paper-v2.0.1.md):
 
-  (7.5)  V_lin = C_d Q_ij H_ij(X),  H = dd(e^{-mu r}/r):
-         h_par  = (2 + 2x + x^2) e^{-x} / r^3          [x = mu r]
-         h_perp = -(1 + x) e^{-x} / r^3
-  Channel theorem: V = C_d [cos(th) TrH + (1 - cos(th)) n^T H n];
-         attractive channel (th = pi, n perp X): V = -C_d h_par.
-  App A: b := B / (2 pi p^2), [B] = E L^2, [C_d] = E L^3, p = 0.84 +- 0.03
-         => B_eff = C_d mu  (the unique EL^2 combination of C_d and mu).
+  (7.5)  V_lin = C_d Q_ij H_ij(X), H = dd(e^{-mu r}/r):
+             h_par  = (2 + 2x + x^2) e^{-x} / r^3     [x = mu r]
+             h_perp = -(1 + x) e^{-x} / r^3
+  Channel theorem (VII.D): V = C_d [cos th TrH + (1 - cos th) n^T H n];
+         attractive channel (th = pi, n perp X): V = -C_d h_par;
+         strong repulsion (th = pi, n par X); weak repulsion aligned.
+  App A units lock: b := B / (2 pi p^2), [B] = E L^2, [C_d] = E L^3,
+         p = 0.84 +- 0.03  =>  B_eff = C_d mu is the unique E L^2
+         combination; b_eff = C_d mu / (2 pi p^2).
   App H: pair-law domain x >= 1.5, MANDATORY calibration window [1.5, 3]
-         (read here, per the campaign's operating convention, in the bond
-         coordinate x = d / R*); alpha-Josephson class e^{-2 mu r} taken as
-         the core-repulsion form (App C's "derived core repulsion"
-         expression is not printed in the corpus text).
-  VII.D / App I.2: bond against derived core repulsion; closed loop: the
+         (x read in the campaign's bond coordinate x = d / R*).
+  VII.D/App I.2: "bond against derived core repulsion"; closed loop: the
          bond equation at b = 42 returns x0 = 1.90 +- 0.05 vs measured
          x0 = 1.92 +- 0.08.
 
-Fit model on the calibration window (attractive channel):
+Fit model (attractive channel, calibration window):
 
-  E_int(d) = -C_d * h_par(mu d) + B_rep * exp(-2 mu d)
+    E_int(d) = -C_d h_par(mu d) + B_core exp(-nu d)
 
-linear in (C_d, B_rep) -> weighted least squares; x0 = argmin of the model;
-closed loop: replace C_d by C_d(b=42) = 2 pi p^2 b / mu, keep the fitted
-B_rep, re-solve the bond equation dE/dd = 0.
+with mu FROZEN at 7.7725 (radial referee) and the core exponent nu fitted
+(the corpus's "derived core repulsion" closed form is not printed in the
+text; a Yukawa-class exponential is assumed and nu is reported).  (C_d,
+B_core) enter linearly -> WLS at each nu on a deterministic grid + golden
+refinement.
+
+Two E_int estimators, both reported:
+  * relaxed  (protocol): E_int(d) = E_relaxed(d) - E_relaxed(d_far),
+    far anchor x ~ 4; cross-check E(d_far) - 2 E_single printed as the
+    cap-convergence systematic;
+  * seed (product ansatz, iteration-free, deterministic): E_seed(d) -
+    2 E_seed(single) — the clean tail instrument (no cap noise), carrying
+    the product-ansatz bias instead.
+
+Bond closures reported:
+  * x0_direct: parabolic minimum of the relaxed anchored E_int samples;
+  * x0_fit: argmin of the fitted model;
+  * x0(b=42), reading 1 (amplitude substitution): argmin of
+    -C_d(42) h_par + fitted core, C_d(42) = 2 pi p^2 * 42 / mu;
+  * x0(b=42), reading 2 (running estimator): the x where
+    b_eff(x) = -E_int(x) mu / (2 pi p^2 h_par(mu d)) crosses +42.
 """
 
 import glob
@@ -43,23 +61,21 @@ RUNS = os.path.join(HERE, "runs")
 
 RSTAR = 2.0 ** (5.0 / 6.0)
 T_FROZEN = 0.008276434949296802
-MU = 1.0 / math.sqrt(2.0 * T_FROZEN)  # 7.77254686... (radial referee R4)
-P_DIP = 0.84  # p = 0.84 +- 0.03 (Sec VII.C [CAL])
+MU = 1.0 / math.sqrt(2.0 * T_FROZEN)
+P_DIP = 0.84
 P_DIP_ERR = 0.03
 B_CORPUS = 42.0
-X0_PRED = (1.90, 0.05)   # corpus bond equation at b = 42
-X0_MEAS = (1.92, 0.08)   # corpus measured
-WINDOW = (1.5, 3.0)      # mandatory calibration window (App H)
+X0_PRED = (1.90, 0.05)
+X0_MEAS = (1.92, 0.08)
+WINDOW = (1.5, 3.06)  # mandatory [1.5, 3] + the m=29 point at x = 3.0517
 SCHEMES = ("corner", "central4")
+FAR_M = 38
 
 
 def h_par(d):
+    d = np.asarray(d, dtype=float)
     x = MU * d
     return (2.0 + 2.0 * x + x * x) * np.exp(-x) / d**3
-
-
-def rep(d):
-    return np.exp(-2.0 * MU * d)
 
 
 def load_runs():
@@ -67,132 +83,109 @@ def load_runs():
     for fn in sorted(glob.glob(os.path.join(RUNS, "run_*.json"))):
         with open(fn) as f:
             r = json.load(f)
-        key = (r["protocol"]["channel"], r["protocol"]["m"])
-        runs[key] = r
+        runs[(r["protocol"]["channel"], r["protocol"]["m"])] = r
     return runs
 
 
-def conv_sigma(run, scheme):
-    """Tail-flatness proxy: objective drop over the last quarter of the
-    descent (upper-bound-flavoured estimate of the remaining cap error),
-    plus the drift between the last two recorded estat samples."""
+def conv_sigma(run):
+    """Cap-tail systematic proxy: objective drop over the last quarter of
+    the recorded descent + last-sample estat drift."""
     ser = run["series"]
     n = len(ser)
     i0 = max(0, n - 1 - max(1, n // 4))
     drop = abs(ser[i0]["obj"] - ser[-1]["obj"])
-    est_drift = abs(ser[-2]["estat"] - ser[-1]["estat"]) if n >= 2 else 0.0
-    return max(drop, est_drift)
+    est = abs(ser[-2]["estat"] - ser[-1]["estat"]) if n >= 2 else 0.0
+    return max(drop, est)
 
 
-def e_final(run, scheme):
-    return run["final"][scheme]["estat"]
-
-
-def weighted_lsq(dd, ee, ss):
-    """WLS for E = -C_d h_par(d) + B_rep rep(d); returns coef, cov (2x2)."""
-    # scaled basis for conditioning
+def wls_two(dd, ee, ss, nu):
+    """WLS of E = -C h_par + B exp(-nu d) with C > 0, B > 0 enforced
+    (attraction amplitude and core repulsion are positive by construction;
+    an unconstrained solution violating the signs is rejected as inf).
+    Returns (C, B, cov, chi2) or None."""
     b1 = -h_par(dd)
-    b2 = rep(dd)
-    s1, s2 = np.max(np.abs(b1)), np.max(np.abs(b2))
+    b2 = np.exp(-nu * dd)
+    s1 = np.max(np.abs(b1))
+    s2 = np.max(np.abs(b2))
     A = np.column_stack([b1 / s1, b2 / s2])
     w = 1.0 / ss
     Aw = A * w[:, None]
-    yw = ee * w
     ATA = Aw.T @ Aw
-    ATy = Aw.T @ yw
-    coef_s = np.linalg.solve(ATA, ATy)
-    cov_s = np.linalg.inv(ATA)
+    try:
+        coef_s = np.linalg.solve(ATA, Aw.T @ (ee * w))
+        cov_s = np.linalg.inv(ATA)
+    except np.linalg.LinAlgError:
+        return None
     scale = np.array([1.0 / s1, 1.0 / s2])
     coef = coef_s * scale
-    cov = cov_s * np.outer(scale, scale)
-    resid = ee - (A @ coef_s)
-    chi2 = float(np.sum((resid * w) ** 2))
-    dof = max(1, len(dd) - 2)
-    return coef, cov, chi2, dof
-
-
-def model_e(d, cd, br):
-    return -cd * h_par(np.asarray(d, dtype=float)) + br * rep(np.asarray(d, dtype=float))
-
-
-def argmin_model(cd, br, lo=2.0, hi=7.5):
-    """Deterministic golden-section minimization of the model on [lo, hi]."""
-    g = (math.sqrt(5.0) - 1.0) / 2.0
-    a, b = lo, hi
-    c = b - g * (b - a)
-    dd = a + g * (b - a)
-    for _ in range(200):
-        if model_e(c, cd, br) < model_e(dd, cd, br):
-            b = dd
-        else:
-            a = c
-        c = b - g * (b - a)
-        dd = a + g * (b - a)
-    dm = 0.5 * (a + b)
-    # interior check
-    if dm - lo < 1e-6 or hi - dm < 1e-6:
+    if coef[0] <= 0.0 or coef[1] <= 0.0:
         return None
-    return dm
+    cov = cov_s * np.outer(scale, scale)
+    chi2 = float(np.sum(((ee - A @ coef_s) * w) ** 2))
+    return float(coef[0]), float(coef[1]), cov, chi2
 
 
-def x0_band(coef, cov, lo=2.0, hi=7.5, npts=720):
-    """x0 range over the deterministic 1-sigma ellipse of (C_d, B_rep)."""
-    vals, vecs = np.linalg.eigh(cov)
-    vals = np.clip(vals, 0.0, None)
-    x0s = []
-    for i in range(npts):
-        th = 2.0 * math.pi * i / npts
-        dp = vecs @ (np.sqrt(vals) * np.array([math.cos(th), math.sin(th)]))
-        cd, br = coef + dp
-        if cd <= 0 or br <= 0:
-            continue
-        dm = argmin_model(cd, br, lo, hi)
-        if dm is not None:
-            x0s.append(dm / RSTAR)
-    if not x0s:
-        return None, None
-    return float(min(x0s)), float(max(x0s))
+def fit_model(dd, ee, ss):
+    """Deterministic nu-grid + golden refinement of the 3-parameter model.
+    nu is restricted to [1.2 mu, 2.6 mu]: the core must decay strictly
+    faster than the pair-law tail, and nu -> mu makes the two basis
+    functions collinear (degenerate fit, observed and rejected)."""
 
+    def chi_at(nu):
+        r = wls_two(dd, ee, ss, nu)
+        return (math.inf if r is None else r[3]), r
 
-def fit_free_mu(dd, ee, ss):
-    """One-parameter scan over mu' with WLS amplitude of -h_par(mu' d):
-    checks the measured decay constant against the frozen mu."""
-
-    def chi2_of(muv):
-        x = muv * dd
-        b1 = -(2.0 + 2.0 * x + x * x) * np.exp(-x) / dd**3
-        w = 1.0 / ss
-        num = np.sum(b1 * ee * w * w)
-        den = np.sum(b1 * b1 * w * w)
-        a = num / den
-        r = (ee - a * b1) * w
-        return float(np.sum(r * r)), float(a)
-
-    grid = np.linspace(2.0, 14.0, 481)
-    chis = [chi2_of(m)[0] for m in grid]
+    grid = np.linspace(1.2 * MU, 2.6 * MU, 561)
+    chis = [chi_at(nu)[0] for nu in grid]
     i = int(np.argmin(chis))
-    lo, hi = grid[max(0, i - 1)], grid[min(len(grid) - 1, i + 1)]
+    a, b = grid[max(0, i - 1)], grid[min(len(grid) - 1, i + 1)]
     g = (math.sqrt(5.0) - 1.0) / 2.0
-    a, b = lo, hi
     c, d = b - g * (b - a), a + g * (b - a)
     for _ in range(120):
-        if chi2_of(c)[0] < chi2_of(d)[0]:
+        if chi_at(c)[0] < chi_at(d)[0]:
             b = d
         else:
             a = c
         c, d = b - g * (b - a), a + g * (b - a)
-    mubest = 0.5 * (a + b)
-    chi, amp = chi2_of(mubest)
-    return mubest, amp, chi
+    nu = 0.5 * (a + b)
+    chi2, r = chi_at(nu)
+    if r is None:
+        # fall back to the best valid grid point
+        best = None
+        for nug in grid:
+            c2, rg = chi_at(nug)
+            if rg is not None and (best is None or c2 < best[0]):
+                best = (c2, nug, rg)
+        if best is None:
+            return None
+        chi2, nu, r = best
+    C, B, cov, _ = r
+    return {"C_d": C, "B_core": B, "nu": nu, "cov_CB": cov.tolist(), "chi2": chi2,
+            "dof": max(1, len(dd) - 3)}
 
 
-def parabola_min(xs, ys):
-    """Quadratic through the 3 points bracketing the minimum sample."""
-    i = int(np.argmin(ys))
-    if i == 0 or i == len(xs) - 1:
+def model_v(d, C, B, nu):
+    return -C * h_par(d) + B * np.exp(-nu * np.asarray(d, dtype=float))
+
+
+def golden_min(fun, lo, hi, iters=240):
+    g = (math.sqrt(5.0) - 1.0) / 2.0
+    a, b = lo, hi
+    c, d = b - g * (b - a), a + g * (b - a)
+    for _ in range(iters):
+        if fun(c) < fun(d):
+            b = d
+        else:
+            a = c
+        c, d = b - g * (b - a), a + g * (b - a)
+    m = 0.5 * (a + b)
+    if m - lo < 1e-5 or hi - m < 1e-5:
         return None
-    x0, x1, x2 = xs[i - 1], xs[i], xs[i + 1]
-    y0, y1, y2 = ys[i - 1], ys[i], ys[i + 1]
+    return m
+
+
+def parabola_vertex(x3, y3):
+    (x0, x1, x2), (y0, y1, y2) = x3, y3
     denom = (x0 - x1) * (x0 - x2) * (x1 - x2)
     a = (x2 * (y1 - y0) + x1 * (y0 - y2) + x0 * (y2 - y1)) / denom
     b = (x2 * x2 * (y0 - y1) + x1 * x1 * (y2 - y0) + x0 * x0 * (y1 - y2)) / denom
@@ -201,234 +194,344 @@ def parabola_min(xs, ys):
     return -b / (2.0 * a)
 
 
+def parabola_min_with_band(xs, ys, ss):
+    """Vertex of the parabola through the 3 points bracketing the sample
+    minimum, with a deterministic 1-sigma band from per-point sigmas
+    (vertex recomputed under +-sigma shifts of each point, extremes taken;
+    2^3 x sign patterns = 8 deterministic evaluations)."""
+    i = int(np.argmin(ys))
+    if i == 0 or i == len(xs) - 1:
+        return None, None, None
+    x3 = (xs[i - 1], xs[i], xs[i + 1])
+    y3 = np.array([ys[i - 1], ys[i], ys[i + 1]])
+    s3 = np.array([ss[i - 1], ss[i], ss[i + 1]])
+    v0 = parabola_vertex(x3, y3)
+    if v0 is None:
+        return None, None, None
+    vs = []
+    for sgn in range(8):
+        pert = np.array([(1 if sgn >> k & 1 else -1) for k in range(3)]) * s3
+        v = parabola_vertex(x3, y3 + pert)
+        if v is not None and x3[0] <= v <= x3[2]:
+            vs.append(v)
+    if vs:
+        return v0, min(vs), max(vs)
+    return v0, None, None
+
+
+def beff_running(eint, d):
+    return -eint * MU / (2.0 * math.pi * P_DIP**2 * h_par(d))
+
+
+def crossing_x(xs, vals, target):
+    """First x where vals crosses target from below-x side (linear interp
+    between adjacent samples)."""
+    for i in range(len(xs) - 1):
+        a, b = vals[i] - target, vals[i + 1] - target
+        if a == 0.0:
+            return float(xs[i])
+        if a * b < 0.0:
+            return float(xs[i] + (xs[i + 1] - xs[i]) * (-a) / (b - a))
+    return None
+
+
 def main():
     runs = load_runs()
     single = runs[("single", 0)]
-    far_key = ("attract", 38)
-
-    channels = {}
-    for ch in ("attract", "align", "repulse"):
-        ms = sorted(m for (c, m) in runs if c == ch)
-        channels[ch] = ms
+    channels = {ch: sorted(m for (c, m) in runs if c == ch)
+                for ch in ("attract", "align", "repulse")}
+    far = runs.get(("attract", FAR_M))
 
     results = {
         "constants": {
-            "rstar": RSTAR,
-            "mu": MU,
-            "t_frozen": T_FROZEN,
-            "p_dipole": P_DIP,
-            "b_corpus": B_CORPUS,
-            "window_x": list(WINDOW),
+            "rstar": RSTAR, "mu": MU, "t_frozen": T_FROZEN, "p_dipole": P_DIP,
+            "b_corpus": B_CORPUS, "window_x": [1.5, 3.0],
             "x0_predicted_corpus": list(X0_PRED),
             "x0_measured_corpus": list(X0_MEAS),
         },
-        "single_knot": {},
-        "per_run": [],
-        "fits": {},
-        "bond": {},
+        "single_knot": {"sigma_conv": conv_sigma(single)},
+        "per_run": [], "fits": {}, "bond": {}, "anchor_crosscheck": {},
     }
-
     for scheme in SCHEMES:
         results["single_knot"][scheme] = {
-            "estat_final": e_final(single, scheme),
+            "estat_final": single["final"][scheme]["estat"],
             "estat_seed": single["seed"][scheme]["estat"],
         }
     results["single_knot"]["deg_final"] = single["final"]["corner"]["deg"]
-    results["single_knot"]["sigma_conv"] = conv_sigma(single, "corner")
-    results["single_knot"]["anf"] = {
-        k: single["anf"][k] for k in ("status", "iters", "arrests", "seconds")
-    }
+    results["single_knot"]["anf"] = {k: single["anf"][k]
+                                     for k in ("status", "iters", "arrests", "seconds")}
 
+    sig_far = conv_sigma(far) if far else 0.0
     table = {}
     for ch, ms in channels.items():
         for m in ms:
             r = runs[(ch, m)]
-            d = r["protocol"]["d"]
-            x = r["protocol"]["x_sep"]
             row = {
-                "channel": ch,
-                "m": m,
-                "d": d,
-                "x": x,
+                "channel": ch, "m": m,
+                "d": r["protocol"]["d"], "x": r["protocol"]["x_sep"],
                 "deg_seed": r["seed"]["corner"]["deg"],
                 "deg_final": r["final"]["corner"]["deg"],
                 "d_eff_seed": r["seed"]["d_eff"],
                 "d_eff_final": r["final"]["d_eff"],
-                "arrests": r["anf"]["arrests"],
-                "status": r["anf"]["status"],
+                "arrests": r["anf"]["arrests"], "status": r["anf"]["status"],
                 "seconds": r["anf"]["seconds"],
-                "sigma_conv": conv_sigma(r, "corner"),
+                "sigma_conv": conv_sigma(r),
                 "epen_final": r["final"]["corner"]["epen"],
                 "efpen_final": r["final"]["corner"]["efpen"],
             }
             for scheme in SCHEMES:
-                e1 = e_final(single, scheme)
-                e2k = e_final(r, scheme)
-                row[f"E_{scheme}"] = e2k
-                row[f"Eint_{scheme}"] = e2k - 2.0 * e1
-                row[f"Eint_seed_{scheme}"] = (
-                    r["seed"][scheme]["estat"] - 2.0 * single["seed"][scheme]["estat"]
-                )
+                e1s = single["seed"][scheme]["estat"]
+                e1f = single["final"][scheme]["estat"]
+                ef = r["final"][scheme]["estat"]
+                row[f"E_{scheme}"] = ef
+                row[f"Eint2s_{scheme}"] = ef - 2.0 * e1f
+                row[f"Eint_seed_{scheme}"] = r["seed"][scheme]["estat"] - 2.0 * e1s
+                if far is not None:
+                    row[f"Eint_{scheme}"] = ef - far["final"][scheme]["estat"]
+            row["sigma_anch"] = math.hypot(row["sigma_conv"], sig_far)
             table[(ch, m)] = row
             results["per_run"].append(row)
 
-    # anchor cross-check: E(far attract) - 2 E_single
-    if far_key in runs:
-        results["anchor_crosscheck"] = {
-            scheme: table[far_key][f"Eint_{scheme}"] for scheme in SCHEMES
-        }
+    if far is not None:
+        for scheme in SCHEMES:
+            results["anchor_crosscheck"][scheme] = (
+                far["final"][scheme]["estat"]
+                - 2.0 * single["final"][scheme]["estat"]
+            )
 
-    # ---- fits + bond equation (attractive channel) -------------------------
+    # ---- channel-theorem tail ratios (seed estimator, corner) --------------
+    # Theorem VII.2 large-separation predictions relative to the attractive
+    # channel: align/(-attract) = x^2/(2+2x+x^2) [V = C_d TrH],
+    # repulse/(-attract) = (2+x)^2/(2+2x+x^2) [V = C_d(-TrH + 2 h_par-part)],
+    # x = mu d.
+    ratios = []
+    for m in (23, 26, 29):
+        row_a = table[("attract", m)]
+        xmu = MU * row_a["d"]
+        pred_align = xmu * xmu / (2.0 + 2.0 * xmu + xmu * xmu)
+        pred_rep = (2.0 + xmu) ** 2 / (2.0 + 2.0 * xmu + xmu * xmu)
+        ea = row_a["Eint_seed_corner"]
+        ratios.append({
+            "m": m, "x": row_a["x"],
+            "align_over_minus_attract": table[("align", m)]["Eint_seed_corner"] / (-ea),
+            "align_predicted": pred_align,
+            "repulse_over_minus_attract": table[("repulse", m)]["Eint_seed_corner"] / (-ea),
+            "repulse_predicted": pred_rep,
+        })
+    results["channel_theorem_tail_ratios"] = ratios
+
+    # ---- differential-noise calibration (measured, not assumed) ------------
+    # In the mid zone the three channels' far-anchored E_int scatter by
+    # ~2.5e-4 with random signs at m = 20..23 while the seed estimator says
+    # the physical interaction there is <= 5e-6: that scatter IS the
+    # differential cap-convergence noise.  It decays with separation like
+    # the interaction itself (all-channel magnitudes track e^{-mu d}), so
+    # the noise model is  sigma_dc(d) = RMS_23 * exp(-mu (d - d_23))
+    # floored below by 10% relative.
+    m_ref = 23
+    d_ref = 2.0 * m_ref * 0.09375
+    rms_ref = {}
     for scheme in SCHEMES:
-        att = [table[("attract", m)] for m in channels["attract"]]
-        dd_all = np.array([r["d"] for r in att])
-        xx_all = dd_all / RSTAR
-        ee_all = np.array([r[f"Eint_{scheme}"] for r in att])
-        sig_single = results["single_knot"]["sigma_conv"]
-        ss_all = np.array(
-            [
-                max(
-                    math.hypot(r["sigma_conv"], 2.0 * sig_single),
-                    0.02 * abs(r[f"Eint_{scheme}"]),
-                    1e-12,
-                )
-                for r in att
-            ]
-        )
-        inw = (xx_all >= WINDOW[0] - 1e-9) & (xx_all <= WINDOW[1] + 0.06)
-        dd, ee, ss = dd_all[inw], ee_all[inw], ss_all[inw]
+        vals = [table[(ch, m_ref)][f"Eint_{scheme}"]
+                for ch in ("attract", "align", "repulse")]
+        rms_ref[scheme] = float(np.sqrt(np.mean(np.square(vals))))
+    results["noise_model"] = {
+        "rms_at_m23": rms_ref,
+        "form": "sigma_dc(d) = rms_23 * min(1, exp(-mu (d - d_23))), "
+                "sigma_i = max(sigma_dc, 0.10 |E_int|)",
+    }
 
-        coef, cov, chi2, dof = weighted_lsq(dd, ee, ss)
-        cd_fit, br_fit = float(coef[0]), float(coef[1])
-        cd_err = float(math.sqrt(max(cov[0, 0], 0.0)))
-        br_err = float(math.sqrt(max(cov[1, 1], 0.0)))
+    for scheme in SCHEMES:
+        att_ms = [m for m in channels["attract"] if m != FAR_M]
+        att = [table[("attract", m)] for m in att_ms]
+        xx = np.array([r["x"] for r in att])
+        dd = np.array([r["d"] for r in att])
+        ee_rel = np.array([r[f"Eint_{scheme}"] for r in att])
+        sig_dc = rms_ref[scheme] * np.minimum(1.0, np.exp(-MU * (dd - d_ref)))
+        ss_rel = np.maximum(sig_dc, 0.10 * np.abs(ee_rel))
+        ee_seed = np.array([r[f"Eint_seed_{scheme}"] for r in att])
+        ss_seed = np.array([max(0.01 * abs(v), 1e-11) for v in ee_seed])
 
-        beff = cd_fit * MU  # B_eff = C_d mu (App A dimensional lock)
-        b_small = beff / (2.0 * math.pi * P_DIP**2)
-        b_small_err = b_small * math.sqrt(
-            (cd_err / abs(cd_fit)) ** 2 + (2.0 * P_DIP_ERR / P_DIP) ** 2
-        ) if cd_fit != 0 else float("nan")
+        inw = (xx >= WINDOW[0] - 1e-9) & (xx <= WINDOW[1])
+        fits = {}
+        for name, ee, ss in (("relaxed_anchored", ee_rel, ss_rel),
+                             ("seed_ansatz", ee_seed, ss_seed)):
+            fit = fit_model(dd[inw], ee[inw], ss[inw])
+            if fit is None:
+                fits[name] = {"failed": True}
+                continue
+            C = fit["C_d"]
+            fit["b_eff"] = C * MU / (2.0 * math.pi * P_DIP**2)
+            cerr = math.sqrt(max(fit["cov_CB"][0][0], 0.0))
+            fit["C_d_err"] = cerr
+            fit["b_eff_err"] = (abs(fit["b_eff"]) * math.hypot(
+                cerr / abs(C) if C else math.inf, 2.0 * P_DIP_ERR / P_DIP))
+            dmin = golden_min(lambda d_, f=fit: float(
+                model_v(d_, f["C_d"], f["B_core"], f["nu"])), 2.2, 7.4)
+            fit["x0_fit"] = dmin / RSTAR if dmin else None
+            fits[name] = fit
 
-        d0 = argmin_model(cd_fit, br_fit)
-        x0_fit = d0 / RSTAR if d0 else None
-        x0_lo, x0_hi = x0_band(coef, cov) if d0 else (None, None)
-
-        # direct minimum from measured points (all attract points incl. x<1.5)
-        x0_direct = parabola_min(xx_all, ee_all)
+        # direct minima with deterministic bands
+        x0_rel, x0_rel_lo, x0_rel_hi = parabola_min_with_band(xx, ee_rel, ss_rel)
+        x0_seed, _, _ = parabola_min_with_band(xx, ee_seed, ss_seed)
 
         # closed loop at b = 42
-        cd_42 = 2.0 * math.pi * P_DIP**2 * B_CORPUS / MU
-        d0_42 = argmin_model(cd_42, br_fit)
-        x0_42 = d0_42 / RSTAR if d0_42 else None
+        cd42 = 2.0 * math.pi * P_DIP**2 * B_CORPUS / MU
+        bond42 = {}
+        for name, fit in fits.items():
+            if fit.get("failed"):
+                bond42[name] = None
+                continue
+            dmin = golden_min(lambda d_, f=fit: float(
+                model_v(d_, cd42, f["B_core"], f["nu"])), 1.8, 12.0)
+            bond42[name] = dmin / RSTAR if dmin else None
+        # reading 2: running-estimator crossing of +42 (relaxed + seed)
+        beff_rel = beff_running(ee_rel, dd)
+        beff_seed = beff_running(ee_seed, dd)
+        x42_rel = crossing_x(xx, beff_rel, B_CORPUS)
+        x42_seed = crossing_x(xx, beff_seed, B_CORPUS)
 
-        mu_free, amp_free, chi_free = fit_free_mu(dd, ee, ss)
+        # free-mu tail check on the seed estimator (pure-attraction points)
+        tail = ee_seed < 0
+        mu_eff = None
+        if int(np.sum(tail)) >= 3:
+            dt_, et_ = dd[tail], ee_seed[tail]
 
-        results["fits"][scheme] = {
-            "window_points_x": [float(v) for v in xx_all[inw]],
-            "C_d": cd_fit,
-            "C_d_err": cd_err,
-            "B_rep": br_fit,
-            "B_rep_err": br_err,
-            "chi2": chi2,
-            "dof": dof,
-            "B_eff=C_d*mu": beff,
-            "b_eff=B_eff/(2 pi p^2)": b_small,
-            "b_eff_err": b_small_err,
-            "mu_free_fit": mu_free,
-            "mu_free_amp": amp_free,
-            "mu_free_chi2": chi_free,
-        }
+            def chi_mu(muv):
+                xv = muv * dt_
+                b1 = -(2.0 + 2.0 * xv + xv * xv) * np.exp(-xv) / dt_**3
+                a = float(np.sum(b1 * et_) / np.sum(b1 * b1))
+                return float(np.sum((et_ - a * b1) ** 2 / et_**2)), a
+
+            gridm = np.linspace(4.0, 12.0, 641)
+            cm = [chi_mu(m)[0] for m in gridm]
+            i = int(np.argmin(cm))
+            a, b = gridm[max(0, i - 1)], gridm[min(len(gridm) - 1, i + 1)]
+            g = (math.sqrt(5.0) - 1.0) / 2.0
+            c, d = b - g * (b - a), a + g * (b - a)
+            for _ in range(120):
+                if chi_mu(c)[0] < chi_mu(d)[0]:
+                    b = d
+                else:
+                    a = c
+                c, d = b - g * (b - a), a + g * (b - a)
+            mu_eff = 0.5 * (a + b)
+
+        results["fits"][scheme] = fits
+        results["fits"][scheme]["mu_eff_seed_tail"] = mu_eff
         results["bond"][scheme] = {
-            "x0_fit_min": x0_fit,
-            "x0_fit_band": [x0_lo, x0_hi],
-            "x0_direct_parabola": x0_direct,
-            "x0_closed_loop_b42": x0_42,
-            "C_d_at_b42": cd_42,
+            "x0_direct_relaxed": x0_rel,
+            "x0_direct_relaxed_band": [x0_rel_lo, x0_rel_hi],
+            "x0_direct_seed": x0_seed,
+            "x0_fit_relaxed": fits["relaxed_anchored"].get("x0_fit"),
+            "x0_fit_seed": fits["seed_ansatz"].get("x0_fit"),
+            "C_d_at_b42": cd42,
+            "x0_b42_amplitude_relaxed": bond42["relaxed_anchored"],
+            "x0_b42_amplitude_seed": bond42["seed_ansatz"],
+            "x0_b42_running_relaxed": x42_rel,
+            "x0_b42_running_seed": x42_seed,
+            "beff_running_relaxed": beff_rel.tolist(),
+            "beff_running_seed": beff_seed.tolist(),
         }
 
     with open(os.path.join(HERE, "twoknot_results.json"), "w") as f:
-        json.dump(results, f, indent=1, sort_keys=True)
+        json.dump(results, f, indent=1, sort_keys=True, default=float)
 
-    # ---- figures ------------------------------------------------------------
+    # ---- figure --------------------------------------------------------------
     try:
         import matplotlib
 
         matplotlib.use("Agg")
         import matplotlib.pyplot as plt
 
-        fig, axes = plt.subplots(1, 2, figsize=(11, 4.4))
-        colors = {"attract": "#1c6fb8", "align": "#8a8a8a", "repulse": "#c23b22"}
+        fig, axes = plt.subplots(1, 2, figsize=(11.5, 4.6))
+        colors = {"attract": "#1c6fb8", "align": "#5f9e6e", "repulse": "#c23b22"}
         ax = axes[0]
         for ch, ms in channels.items():
-            xs = [table[(ch, m)]["x"] for m in ms]
-            es = [table[(ch, m)]["Eint_corner"] for m in ms]
+            rows = [table[(ch, m)] for m in ms if m != FAR_M or ch != "attract"]
+            xs = [r["x"] for r in rows]
+            es = [r["Eint_corner"] for r in rows]
             ax.plot(xs, es, "o-", ms=4, lw=1, color=colors[ch], label=ch)
         ax.axhline(0, color="k", lw=0.6)
-        ax.axvspan(*WINDOW, alpha=0.08, color="green", label="calibration window")
+        ax.axvspan(1.5, 3.0, alpha=0.08, color="green", label="calibration window")
         ax.set_xlabel("x = d / R*")
-        ax.set_ylabel("E_int (corner)")
-        ax.set_yscale("symlog", linthresh=1e-6)
+        ax.set_ylabel("E_int (corner, far-anchored)")
+        ax.set_yscale("symlog", linthresh=1e-5)
         ax.legend(fontsize=8)
         ax.set_title("Two-knot interaction energy by channel")
 
         ax = axes[1]
-        att = [table[("attract", m)] for m in channels["attract"]]
+        att_ms = [m for m in channels["attract"] if m != FAR_M]
+        att = [table[("attract", m)] for m in att_ms]
         xs = np.array([r["x"] for r in att])
-        es = np.array([r["Eint_corner"] for r in att])
-        ax.plot(xs, es, "o", color="#1c6fb8", label="measured (attract)")
-        fit = results["fits"]["corner"]
-        xg = np.linspace(1.3, 4.1, 400)
-        ax.plot(
-            xg,
-            model_e(xg * RSTAR, fit["C_d"], fit["B_rep"]),
-            "-",
-            color="#e08214",
-            lw=1.2,
-            label="pair-law fit (7.5) + e^{-2mu d}",
+        er = np.array([r["Eint_corner"] for r in att])
+        ds = np.array([r["d"] for r in att])
+        sr = np.maximum(
+            rms_ref["corner"] * np.minimum(1.0, np.exp(-MU * (ds - d_ref))),
+            0.10 * np.abs(er),
         )
+        es = np.array([r["Eint_seed_corner"] for r in att])
+        ax.errorbar(xs, er, yerr=sr, fmt="o", ms=4, color="#1c6fb8",
+                    label="relaxed, far-anchored")
+        ax.plot(xs, es, "s", ms=4, color="#7b3294", label="seed product ansatz")
+        fit = results["fits"]["corner"]["relaxed_anchored"]
+        xg = np.linspace(1.55, 3.3, 400)
+        if not fit.get("failed"):
+            ax.plot(xg, model_v(xg * RSTAR, fit["C_d"], fit["B_core"], fit["nu"]),
+                    "-", color="#e08214", lw=1.2, label="pair-law (7.5) + core fit")
         b = results["bond"]["corner"]
-        if b["x0_fit_min"]:
-            ax.axvline(b["x0_fit_min"], color="#e08214", ls="--", lw=0.8)
+        if b["x0_direct_relaxed"]:
+            ax.axvline(b["x0_direct_relaxed"], color="#1c6fb8", ls="--", lw=0.8)
         ax.axvspan(X0_MEAS[0] - X0_MEAS[1], X0_MEAS[0] + X0_MEAS[1], alpha=0.12,
-                   color="purple", label="corpus x0 = 1.92 +- 0.08")
-        ax.axvline(X0_PRED[0], color="purple", ls=":", lw=1,
-                   label="corpus bond eq. 1.90")
+                   color="purple", label="corpus 1.92 +- 0.08")
+        ax.axvline(X0_PRED[0], color="purple", ls=":", lw=1, label="corpus bond eq. 1.90")
         ax.axhline(0, color="k", lw=0.6)
+        ax.set_xlim(1.55, 3.3)
+        span = max(1e-4, 3 * abs(min(er.min(), es.min())))
+        ax.set_ylim(-span, span * 4)
         ax.set_xlabel("x = d / R*")
         ax.set_ylabel("E_int (corner)")
-        ax.set_title("Attractive channel: bond")
+        ax.set_title("Attractive channel: the bond region")
         ax.legend(fontsize=7)
         fig.tight_layout()
         fig.savefig(os.path.join(HERE, "twoknot_fig.png"), dpi=140)
-    except Exception as ex:  # figures are convenience, not protocol
+    except Exception as ex:
         print("figure generation skipped:", ex)
 
-    # ---- console summary -----------------------------------------------------
-    print(f"single knot: E_corner = {e_final(single, 'corner'):.9f}  "
-          f"E_central4 = {e_final(single, 'central4'):.9f}  "
-          f"sigma_conv = {results['single_knot']['sigma_conv']:.2e}")
-    if "anchor_crosscheck" in results:
-        print("anchor cross-check E(x~4) - 2 E_single:",
-              {k: f"{v:.3e}" for k, v in results["anchor_crosscheck"].items()})
-    print(f"{'ch':8s} {'m':>3s} {'x':>7s} {'Eint_corner':>13s} {'Eint_c4':>13s} "
-          f"{'deg_f':>8s} {'deff_f':>7s} {'sig':>9s} {'arr':>4s}")
+    # ---- console summary ------------------------------------------------------
+    print(f"single: E_corner {single['final']['corner']['estat']:.9f} "
+          f"(seed {single['seed']['corner']['estat']:.9f}) "
+          f"sigma_conv {results['single_knot']['sigma_conv']:.2e}")
+    for scheme in SCHEMES:
+        if results["anchor_crosscheck"]:
+            print(f"[{scheme}] anchor cross-check E(x~4) - 2 E_single = "
+                  f"{results['anchor_crosscheck'][scheme]:+.6e} (cap systematic)")
+    hdr = (f"{'ch':8s} {'m':>3s} {'x':>7s} {'Eint_anch':>12s} {'Eint_seed':>12s} "
+           f"{'sig':>9s} {'deg_f':>8s} {'deff_f':>7s} {'arr':>4s} {'sec':>5s}")
+    print(hdr)
     for row in results["per_run"]:
         print(f"{row['channel']:8s} {row['m']:3d} {row['x']:7.4f} "
-              f"{row['Eint_corner']:13.4e} {row['Eint_central4']:13.4e} "
+              f"{row.get('Eint_corner', float('nan')):12.4e} "
+              f"{row['Eint_seed_corner']:12.4e} {row['sigma_anch']:9.2e} "
               f"{row['deg_final']:8.5f} {row['d_eff_final']:7.4f} "
-              f"{row['sigma_conv']:9.2e} {row['arrests']:4d}")
+              f"{row['arrests']:4d} {row['seconds']:5.0f}")
     for scheme in SCHEMES:
-        f_ = results["fits"][scheme]
+        for name in ("relaxed_anchored", "seed_ansatz"):
+            f_ = results["fits"][scheme][name]
+            if f_.get("failed"):
+                print(f"[{scheme}/{name}] fit FAILED (no valid nu/positivity)")
+                continue
+            print(f"[{scheme}/{name}] C_d={f_['C_d']:.4e}+-{f_['C_d_err']:.1e} "
+                  f"B_core={f_['B_core']:.4e} nu={f_['nu']:.4f} "
+                  f"(nu/mu={f_['nu'] / MU:.3f}) chi2/dof={f_['chi2']:.2f}/{f_['dof']} "
+                  f"b_eff={f_['b_eff']:.4g} x0_fit={f_['x0_fit']}")
+        print(f"[{scheme}] mu_eff(seed tail) = "
+              f"{results['fits'][scheme]['mu_eff_seed_tail']} (frozen {MU:.4f})")
         b_ = results["bond"][scheme]
-        print(f"[{scheme}] C_d = {f_['C_d']:.4e} +- {f_['C_d_err']:.1e}, "
-              f"B_rep = {f_['B_rep']:.4e} +- {f_['B_rep_err']:.1e}, "
-              f"chi2/dof = {f_['chi2']:.2f}/{f_['dof']}")
-        print(f"[{scheme}] b_eff = {f_['b_eff=B_eff/(2 pi p^2)']:.4g} "
-              f"(corpus 42 +- 6); mu_free = {f_['mu_free_fit']:.4f} "
-              f"(frozen {MU:.4f})")
-        print(f"[{scheme}] x0_fit = {b_['x0_fit_min']}, band = {b_['x0_fit_band']}, "
-              f"x0_direct = {b_['x0_direct_parabola']}, "
-              f"x0(b=42) = {b_['x0_closed_loop_b42']}")
+        print(f"[{scheme}] x0_direct = {b_['x0_direct_relaxed']} "
+              f"band {b_['x0_direct_relaxed_band']} | x0_seed {b_['x0_direct_seed']} | "
+              f"x0(b=42): ampl {b_['x0_b42_amplitude_relaxed']}/{b_['x0_b42_amplitude_seed']}, "
+              f"running {b_['x0_b42_running_relaxed']}/{b_['x0_b42_running_seed']}")
 
 
 if __name__ == "__main__":
