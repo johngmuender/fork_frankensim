@@ -74,6 +74,27 @@ impl Field3 {
         ((a * self.p + ip) * self.p + jp) * self.p + kp
     }
 
+    /// Read-only view of the raw SoA storage: `4 * P^3` doubles,
+    /// component-major, k fastest — `idx(a, ip, jp, kp) =
+    /// ((a*P + ip)*P + jp)*P + kp` over PADDED indices (see module docs).
+    /// Added for `fs-gum-kern`'s tiled sweeps (Phase G1); the layout is
+    /// already a documented contract of this type.
+    #[inline]
+    #[must_use]
+    pub fn data(&self) -> &[f64] {
+        &self.data
+    }
+
+    /// Mutable view of the raw SoA storage (layout as [`Self::data`]).
+    /// Callers own the invariants (unit norm after their sweep, vacuum
+    /// ghosts untouched) — exactly the same responsibility `set` gives
+    /// them per cell.  Added for `fs-gum-kern` (Phase G1).
+    #[inline]
+    #[must_use]
+    pub fn data_mut(&mut self) -> &mut [f64] {
+        &mut self.data
+    }
+
     /// Component `a` at padded indices (ghosts addressable: real cell i is
     /// at padded index i + GHOST).
     #[inline]

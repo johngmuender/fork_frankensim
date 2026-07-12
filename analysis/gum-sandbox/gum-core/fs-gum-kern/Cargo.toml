@@ -1,0 +1,22 @@
+[package]
+name = "fs-gum-kern"
+version = "0.1.0"
+edition = "2021"
+description = "GUM core Phase G1: the deterministic parallel kernel layer for the N^3 sweeps of fs-gum-field / fs-gum-statics — i-slab tile decomposition (TILE_I = 4, part of the bit contract), per-tile serial accumulation combined up a fixed largest-pow2-below pairwise tree keyed only to tile count, an AtomicUsize tile dispenser over std::thread::scope with cache-padded per-tile slots (serial and threaded execution bit-identical BY CONSTRUCTION), the gradient adjoint inverted from scatter to gather, renormalize/vector ops as parallel-map sweeps, ANF re-hosted on the new layer, and the gates binary (old-engine equivalence at machine-eps class, frozen tiled-order bit goldens, 1/2/3/4-thread hash identity, the G-C descent referee, and the measured speedup table)."
+
+# Deliberately outside the frankensim workspace (fs-gum-field/statics
+# pattern): only the std-only dependency closure below is built.
+[workspace]
+
+[dependencies]
+fs-gum-field = { path = "../fs-gum-field" }
+# fs-gum-statics is depended on for (a) the shared engine types
+# (Opts/Out/Grad/AnfParams/Record) so the new eval is a literal drop-in,
+# (b) the diagnostics kit (LCG bumps, halo fraction, save/restore), and
+# (c) the OLD engine itself, which the gates binary needs for the one-time
+# machine-eps-class cross-check and the endpoint-band ANF comparison.
+# Consequence (documented): fs-gum-statics can never path-dep on this
+# crate; downstream scale phases (G5) call fs_gum_kern::{eval, anf}
+# directly.
+fs-gum-statics = { path = "../fs-gum-statics" }
+fs-blake3 = { path = "../../../../crates/fs-blake3" }

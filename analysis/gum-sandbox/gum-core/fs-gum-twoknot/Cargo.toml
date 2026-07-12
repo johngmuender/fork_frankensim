@@ -1,0 +1,17 @@
+[package]
+name = "fs-gum-twoknot"
+version = "0.1.0"
+edition = "2021"
+description = "GUM core Phase G4: the App I.2 two-knot bond-equation flagship — anisotropic (nx,ny,nz) field wrapper + generalized eval/ANF (bit-gated against fs-gum-statics on cubic grids), symmetrized product-ansatz two-knot seeding at three relative orientations (attractive pi/perp, strong-repulsive pi/parallel, aligned), guarded relaxation runs over a separation scan, and the E_int(d)/bond-equation estimator inputs.  Runs as a 4-process task farm of independent, per-run bit-deterministic relaxations."
+
+# Deliberately outside the frankensim workspace (fs-cosserat-pilot /
+# fs-gum-field / fs-gum-statics pattern): std-only dependency closure.
+[workspace]
+
+[dependencies]
+fs-gum-field = { path = "../fs-gum-field" }
+fs-gum-statics = { path = "../fs-gum-statics" }
+fs-math = { path = "../../../../crates/fs-math" }
+
+[profile.release]
+opt-level = 3
