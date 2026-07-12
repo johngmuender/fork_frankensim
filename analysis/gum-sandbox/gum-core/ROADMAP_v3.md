@@ -102,4 +102,25 @@ suite becomes CI-runnable (~10 min vs 75 min Python).
   verbatim, B2 used an internal radix-2 FFT — both with documented
   swap-back paths. Upstreaming fix (make fs-exec optional or split the
   eigensolvers out) filed as a Phase-F item.
-- Phase E/F: specs frozen here; execution follows the B-wave.
+- **Phase E: ✅ COMPLETE — the statics/chiral gap (G4) closed:**
+  - E1 `fs-gum-statics`: 18/18 gates — analytic gradients for every
+    sector FD-gated at 1.2e-6 (full analytic sextic cofactor, 1e-8;
+    no fallback needed), arrested Newton flow with the frozen near-BPS
+    guards, the F-R5 halo referee reproduced at N=48 (threshold
+    crossing, halo growth, differential control), clock ratio
+    κ(L_clock)/threshold = 1.2525 vs the Python 1.245. Zero
+    modifications to fs-gum-field (clean layering). 75 gate numbers
+    bit-identical across runs.
+  - E2 W_χ + Dzyaloshinskii (in `fs-gum-cosserat`): 26/26 gates —
+    real-space chiral density with analytic gradient (4e-13), the
+    dispersion-path cross-validation at 3e-15, convention pinning
+    documented (χ's free, default 0), soft-sector tilt reproducing
+    sinθ_c = √(1−1/𝔪) exactly with the 𝔪 = 1 threshold bisected.
+    Within-model note: the printed quadratic gap term's literal
+    all-orders reading contradicts the corpus's own pinned tilt; the
+    pinned pieces uniquely complete to G(θ) = −Δ²ln cos θ (both
+    readings implemented and co-gated).
+- Phase F: spec frozen here; remaining items — the e2e certified demo
+  (seed → relax → isorotate + clock → topo diagnostics → one
+  EvidencePackage), the corpus-facing F-R5 demonstration package, and
+  the fs-la/fs-exec workspace-portability fix.
