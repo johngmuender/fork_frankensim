@@ -88,7 +88,12 @@ and make the benchmark a genuine constrained minimum. Measured outcome:
 Identities 1–2 are rational-moment facts of the sphere and could in
 principle be coincidences of sin²-moment algebra (the paper's κ₀ also
 comes from sin²-moments); identity 3 is a one-part-in-300 numerical match
-of a solve nobody tuned. Taken together they support a coherent reading:
+of a solve nobody tuned. A fourth proximity, recorded without a claim:
+the saturated objective G* = min(E_static − I/16π) converges downward
+with basis size to 2.51442–2.51446 (4C's independent engine cross-checks
+axi3's value at 6×10⁻⁵) — within ~1.2×10⁻⁴ of 𝔠₀ = 2.514735 itself,
+though measurably *below* it and still decreasing; whether the halo-
+saturated G* and the paper's 𝔠₀ coincide exactly in some limit is open. Taken together they support a coherent reading:
 **the ⟨r1⟩ pipeline's reported numbers are threshold/saturation values of
 the halo family its own solver was blind to** — the solver sat at (or
 drifted along) the edge of an instability it could not represent, its
