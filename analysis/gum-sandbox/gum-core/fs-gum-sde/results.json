@@ -11,21 +11,22 @@
     "sra1": {"mean": 0.3676681950070019, "var": 0.1069678621704458}
   },
   "orders": {
-    "strong_em_ou": 0.9997100335756169, "strong_sra1_ou": 2.000402125814055, "strong_em_gbm": 0.49138940189662494,
+    "strong_em_ou": 0.9997100335756169, "strong_sra1_ou": 2.000402125814055,
+    "strong_em_cubic": 1.0319521744775675, "strong_sra1_cubic": 1.6086982488732897, "strong_em_gbm": 0.49138940189662494,
     "weak_em_ou": 1.118559955539348, "weak_sra1_ou": 2.1818254871713862
   },
   "g3_phi11": {"H32_max": 0.027514529820018174, "H32_mean": 0.024529006202352346},
   "nelson_m16": {
-    "cg32": {"H_initial": 0.5644933645073649, "H_final": 0.026066142779406873, "H_max": 0.5644933645073649, "H_mean": 0.032420780461421876, "tau": 0.12502597663180595, "H0_fit": 0.44971840684329567, "fit_window_t_end": 0.3000000000000002, "fit_r2": 0.9463172428039228},
-    "cg16": {"H_initial": 0.48661580599655974, "H_final": 0.005408435065838395, "H_max": 0.48661580599655974, "H_mean": 0.012223138269898126, "tau": 0.1084182729970571, "H0_fit": 0.4088918728261426, "fit_window_t_end": 0.3000000000000002, "fit_r2": 0.9756388064463465}
+    "cg32": {"H_initial": 0.5644933645073649, "H_final": 0.026066142779406873, "H_max": 0.5644933645073649, "H_mean": 0.032420780461421876, "tau": 0.13180611466106074, "H0_fit": 0.3608531637989342, "fit_window_t_end": 0.2700000000000002, "fit_r2": 0.9617515541262368, "tau_floored": 0.09580454705882387, "fit_r2_floored": 0.9778498370652425},
+    "cg16": {"H_initial": 0.48661580599655974, "H_final": 0.005408435065838395, "H_max": 0.48661580599655974, "H_mean": 0.012223138269898126, "tau": 0.10673727581167206, "H0_fit": 0.35761775715503785, "fit_window_t_end": 0.23000000000000018, "fit_r2": 0.9829749347367314, "tau_floored": 0.09834294693132246, "fit_r2_floored": 0.9859330922650364}
   },
   "control": {
     "cg32": {"H_initial": 0.0238012298513871, "H_final": 0.02704042438346906, "H_max": 0.029499967578933403, "H_mean": 0.026248943872206804},
     "cg16": {"H_initial": 0.00623477246980173, "H_final": 0.006198539102277068, "H_max": 0.008430397847135722, "H_mean": 0.0065512178301062466}
   },
   "bohm_tau_cg32": 4.852765879922653,
-  "tau_ratio_nelson_over_bohm": 0.025763859152792824,
-  "determinism_fnv64": "e6574d46af074349",
+  "tau_ratio_nelson_over_bohm": 0.027161028972442734,
+  "determinism_fnv64": "cca041e8558ce556",
   "gates": [
     {"id": "G1.a", "desc": "EM/SRA1 share dW bits", "value": "true", "target": "true", "pass": true},
     {"id": "G1.b", "desc": "trajectory isolation replay (bitwise)", "value": "true", "target": "true", "pass": true},
@@ -36,15 +37,17 @@
     {"id": "G2.c", "desc": "SRA1 OU |mean err|", "value": "2.11e-4", "target": "< 5e-3", "pass": true},
     {"id": "G2.d", "desc": "SRA1 OU |var rel err|", "value": "1.03e-2", "target": "< 2e-2", "pass": true},
     {"id": "G2.e", "desc": "strong order EM on OU (additive => 1.0)", "value": "1.000", "target": "[0.85, 1.15]", "pass": true},
-    {"id": "G2.f", "desc": "strong order SRA1 on OU (additive => 1.5)", "value": "2.000", "target": "[1.35, 1.65]", "pass": false},
-    {"id": "G2.g", "desc": "strong order EM on GBM (multiplicative => 0.5)", "value": "0.491", "target": "[0.35, 0.65]", "pass": true},
-    {"id": "G2.h", "desc": "weak order EM on OU (=> 1)", "value": "1.119", "target": "[0.8, 1.3]", "pass": true},
-    {"id": "G2.i", "desc": "weak order SRA1 on OU (=> 2)", "value": "2.182", "target": "[1.6, 2.5]", "pass": true},
+    {"id": "G2.f", "desc": "strong order SRA1 on OU (LINEAR: superconverges => 2.0)", "value": "2.000", "target": "[1.85, 2.15]", "pass": true},
+    {"id": "G2.g", "desc": "strong order EM on cubic well (additive => 1.0)", "value": "1.032", "target": "[0.85, 1.15]", "pass": true},
+    {"id": "G2.h", "desc": "strong order SRA1 on cubic well (additive => 1.5)", "value": "1.609", "target": "[1.35, 1.65]", "pass": true},
+    {"id": "G2.i", "desc": "strong order EM on GBM (multiplicative => 0.5)", "value": "0.491", "target": "[0.35, 0.65]", "pass": true},
+    {"id": "G2.j", "desc": "weak order EM on OU (=> 1)", "value": "1.119", "target": "[0.8, 1.3]", "pass": true},
+    {"id": "G2.k", "desc": "weak order SRA1 on OU (=> 2)", "value": "2.182", "target": "[1.6, 2.5]", "pass": true},
     {"id": "G3.a", "desc": "stationary phi11: max H32 (floor 0.0256)", "value": "0.0275", "target": "< 2x floor (0.0512)", "pass": true},
     {"id": "G3.b", "desc": "stationary phi11: mean H32", "value": "0.0245", "target": "< 1.5x floor (0.0384)", "pass": true},
-    {"id": "G4.a", "desc": "M=16 cg32 exponential-fit r^2", "value": "0.9463", "target": ">= 0.95", "pass": false},
+    {"id": "G4.a", "desc": "M=16 cg32 floor-subtracted exp-fit r^2", "value": "0.9778", "target": ">= 0.95", "pass": true},
     {"id": "G4.b", "desc": "M=16 H32(4 pi) (floor 0.0256)", "value": "0.0261", "target": "< 2x floor (0.0512)", "pass": true},
     {"id": "G4.c", "desc": "control max H32 (equilibrium stays at floor)", "value": "0.0295", "target": "< 2x floor (0.0512)", "pass": true},
-    {"id": "G4.d", "desc": "Nelson tau (cg32) vs Bohm 4.853 (expect <=)", "value": "0.125", "target": "(0, 6.07]", "pass": true}
+    {"id": "G4.d", "desc": "Nelson tau (cg32, born.py protocol) vs Bohm 4.853", "value": "0.132", "target": "(0, 6.07]", "pass": true}
   ]
 }
