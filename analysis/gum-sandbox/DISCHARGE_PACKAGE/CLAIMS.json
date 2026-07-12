@@ -1,0 +1,184 @@
+{
+  "package": "GUM replication campaign - corpus-facing discharge package for F-R4/F-R5",
+  "assembled": "2026-07-12",
+  "epistemic_status": "Every claim is within-model: it concerns whether the corpus's printed numbers solve the corpus's printed equations, computed on independent certified numerics with the corpus's own conventions. Nothing here bears on nature or on any empirical stake (S1 untouched).",
+  "index": "analysis/gum-sandbox/REPLICATION_CAMPAIGN_STATUS.md",
+  "certification": {
+    "tier0_gauntlet": {
+      "checks": "52/52 PASS",
+      "golden_merkle_root": "e19d0bcb3e97e430d9cca8d0823705f7b6b0807bf3601d5f40923c5f010a85f3",
+      "reverified": "2026-07-12"
+    },
+    "tier4b_certified_diagnostics": {
+      "checks": "13/13 PASS",
+      "golden_merkle_root": "f88731afb676d76570ac719fc5b79ced053a1fa95e17750510e375debc64fd7a"
+    },
+    "gum_core_crate_gates": {
+      "total": 91,
+      "breakdown": "fs-gum-field 25/25 (root 6c1e785071a753e40a33c4d8532886d2ca20bd245d7f184f67b5eed9c6c9fb1f, reverified 2026-07-12), fs-gum-topo 25/25, fs-gum-cosserat 20/20, fs-gum-sde 21/21; plus fs-gum-statics 18/18 (the F-R5 halo referee, reverified 2026-07-12)"
+    }
+  },
+  "replicated_clean": [
+    "All 52 archive arithmetic gates (Tier 0): every exactness claim exact (7/4, 1/4, sqrt2, 7/3, 8/35, the c0 square identity); Haar-vs-compacton 64/(15 pi) two ways; <r10> bridge m3 = 0.0468 eV; g_s=2 -> mu_B identity; Unruh; WS-A4 demand tables incl. thin corner 38.6; NR-D1b W-eternal floor",
+    "Four-branch linear spectrum exactly; B3 factor 4 measured 4.000000000; Theorem II.2 exact masslessness; M-1 defect exhibited with a sharper mechanism (the corpus's fatal call vindicated)",
+    "hbar-closure kinematics at every tier: E_rot/E = 1/4 to 1e-9, V(eps->0) = sqrt2 exact, spin-selection family, scaling rung 2 sqrt(e0 i0) = 2.0533 to 7 digits, paper g(0.42) to 9 digits, clock residuals <= 4e-9",
+    "Radial rung (Tier 2b Step 1): all App. I.1 gates; Derrick virial 6e-7; tail-mass formula mu^2 = m~^2/(2 a_psi) blind-re-derived and confirmed to 2e-6 against the replicator's own spec error",
+    "Born-rule relaxation (Tier 3): tau = 83/10.2/4.9 for M = 4/9/16; equivariance control at the noise floor; generic-set M = 4 rerun resolves the tension in the corpus's favor (tau 4.48, r^2 0.987)",
+    "<r10> central value; <r11> quark belts vindicated by full zero-fit reconstruction (printed ratios to the error digits, forced down-type sign flip, PDG lands with direct m_t = 172.5 GeV, four pulls 0.17-0.32 sigma)",
+    "Tier 5a arithmetic perimeter: lepton logs and pulls (0.05/0.43 sigma), shape ratios, dN_eff = 0.026772, termination arithmetic, sin(theta_c) = sqrt(1 - 1/m) = 0.688"
+  ],
+  "findings": [
+    {
+      "id": "F-R1",
+      "severity": "minor",
+      "class": "print-level arithmetic",
+      "claim": "NR-D2 section 1's printed KE coefficient is x25 too large at its stated normalization (v = 1e-3 c, m = 16f): printed 2e-4 f vs computed 8e-6 f (printed value corresponds to v = 5e-3 c). Conservative direction: the literal bound tightens to eps <= 1.05e-13 and the murk kill fires ~25x harder.",
+      "key_numbers": {
+        "printed_KE": "2e-4 f",
+        "computed_KE_at_stated_v": "8e-6 f",
+        "literal_transparency_bound": "eps <= 1.05e-13"
+      },
+      "artifacts": [
+        "analysis/gum-sandbox/tier0-gauntlet/RESULTS.md",
+        "analysis/gum-sandbox/tier0-gauntlet/RESULTS.txt"
+      ],
+      "discharge": "Correct the printed coefficient in NR-D2 section 1; the kill verdict is unaffected under every reading."
+    },
+    {
+      "id": "F-R2",
+      "severity": "minor",
+      "class": "print-level arithmetic",
+      "claim": "AUD-15 V15.2's quoted g(0.37-0.47) span [1.28, 1.32] is inconsistent with its own corrected formula; the true span is [1.257, 1.315].",
+      "key_numbers": {
+        "printed_span": "[1.28, 1.32]",
+        "computed_span": "[1.257, 1.315]"
+      },
+      "artifacts": [
+        "analysis/gum-sandbox/tier2-closure/REPORT.md"
+      ],
+      "discharge": "Reprint the span from the corrected formula; the V15.2 conclusion is unaffected."
+    },
+    {
+      "id": "F-R3",
+      "severity": "minor",
+      "class": "print-level error propagation",
+      "claim": "<r10>'s printed +/-0.90 band is inconsistent with its printed correlation rho = +0.45 (which gives +/-1.344 under standard propagation); the printed band corresponds to rho_eff = -0.356. The prose ('partial correlation cancellation') supports the anti-correlating reading, under which +/-0.90 is mildly conservative.",
+      "key_numbers": {
+        "printed_band": "+/-0.90",
+        "band_from_printed_rho_plus_0.45": "+/-1.344",
+        "band_from_anti_correlation": "+/-0.833",
+        "implied_rho_eff": -0.356
+      },
+      "artifacts": [
+        "analysis/gum-sandbox/tier0-gauntlet/RESULTS.md"
+      ],
+      "discharge": "Pin the covariance sign convention in App. K.2 / WS-nu-P2. The S1 stake window is unaffected (set by physical floors)."
+    },
+    {
+      "id": "F-R4",
+      "severity": "substantive",
+      "class": "variational mechanism (App. G.5)",
+      "claim": "G.5's SDiff inertia-enhancement mechanism - the basis of the deep-BPS endpoint c0 = 128 sqrt(42)/(105 pi) = 2.5147 via a free g-dial to 3/2 at zero energy cost - fails in its literal compositional reading: E0, E6 and the isorotation inertia are all invariant on the SDiff orbit (two-line change-of-variables proof; measured drift 1.2e-15). The deformation class that does turn the g-dial (contour at held direction, reproducing the paper's own g(lambda) formula to 9 digits) is not SDiff and not energy-flat. Hardened by the enlarged-basis solve: tilt modes drive the eps->0 closure PAST 2.5147 without stopping, so no wording repair of G.5 survives; restricted families land at c = 2.05-2.28 (kappa +5.8 sigma vs <r1>).",
+      "key_numbers": {
+        "measured_inertia_drift_under_SDiff_pullback": "1.2e-15 (lambda = 0.6)",
+        "measured_E0_drift": "1.6e-15",
+        "paper_g_formula_reproduced": "1.285547004 vs 1.285547005 (9 digits, g(0.42))",
+        "scaling_rung_reproduced": "2 sqrt(e0 i0) = 2.0532877 (7 digits)",
+        "restricted_family_closures": "c = 2.05-2.28, kappa = 0.90-0.94 (<r1> kappa +5.8 sigma)",
+        "compacton_marginal_spectrum": "12/12 modes: dE/dp = 0 (FD floor), d2E/dp2 > 0, dI/dp != 0 - inertia never free, never refused",
+        "certified_confirmation": "SDiff invariance + 1/4 invariant as Certified<f64> claims, Tier 4B root f88731af..."
+      },
+      "artifacts": [
+        "analysis/gum-sandbox/tier2-closure/axi_FR4_NOTE.md",
+        "analysis/gum-sandbox/tier2-closure/axi_ADJUDICATION.md",
+        "analysis/gum-sandbox/tier2-closure/axi_RESULTS.md",
+        "analysis/gum-sandbox/tier2-closure/axi_results.json",
+        "analysis/gum-sandbox/tier2-closure/axi3_ADJUDICATION.md",
+        "analysis/gum-sandbox/tier4-field/fs-cosserat-pilot/RESULTS.md"
+      ],
+      "discharge": "(a) Exhibit non-SDiff modes whose cost/gain balance lands g* = 1.31 at eps = 0.05 and drives c(eps->0) -> 2.515 (then G.5 is a wording defect and the numbers survive - note the enlarged-basis solve measured this balance and it does not land there, see F-R5); or (b) produce a non-compositional reading of 'SDiff images' under which G.5's derivation is sound. Absent both: the deep-BPS endpoint reverts toward the scaling rung and every constant downstream of c0 shifts ~20% within-model."
+    },
+    {
+      "id": "F-R5",
+      "severity": "substantive",
+      "class": "variational selection (App. I.4 closure)",
+      "claim": "The closure's stated variational problem (fixed-L Routhian minimisation + clock) does not select c0 = 2.5147 or the <r1> benchmark tuple. The fixed-L Routhian is variationally unstable to a far-field tilt halo whenever kappa_paper > 1/sqrt2: dR = [integral eta^2 dV] * (1/(8 pi) - kappa_ours^2), the standard over-spin criterion omega > mu(tilt). Every solution the corpus quotes (rung 0.935, benchmark 0.802, deep-BPS sqrt(7/12) = 0.764) sits above the threshold; the <r1> benchmark is a halo-unstable saddle of its own functional. The minimizing sequence saturates at kappa_paper = 1/sqrt2 exactly with c_paper = (4/pi) G*, and the Bogomolny-type bound G >= pi/sqrt2 gives the rigorous c_paper >= 2 sqrt2 = 2.82843, excluding c0 = 2.5147 from below. Confirmed in unrestricted 3-D (no symmetry, no ansatz); the clock condition itself forces the over-spun regime (1.245-1.474x threshold in every reading). Direction-locking does not rescue it: locked profile-halo thresholds slide from sqrt(3)/2 down to 1/sqrt2 (equatorial ring) and the converged locked closure runs away (c = 3.26 at eps = 0.05).",
+      "key_numbers": {
+        "threshold_formula": "dR = [int eta^2 dV] * (1/(8 pi) - kappa_ours^2); kappa_crit_paper = 1/sqrt2 = 0.70711",
+        "threshold_verified": "shell probes 0.2163-0.2169 vs ideal 1/sqrt(8 pi) = 0.19947; dI quadratic ratio 4.000; position-independent to 5e-5",
+        "corpus_tuples_above_threshold": "rung 0.9354, <r1> 0.802, deep-BPS 0.7638 - all > 0.70711",
+        "saturation": "kappa_paper = 1/sqrt2 exact; c_paper = (4/pi) G*; internal identity E_core + E0_halo = (3/2) G* to 2.2e-16",
+        "rigorous_bound": "c_paper >= 2 sqrt2 = 2.82843 (G >= pi/sqrt2, quadrature-verified to 2e-16)",
+        "family_bracket_t_to_0": "[2.82843, 3.20146]",
+        "3d_confirmation": "R fell 0.560 below the axisymmetric stationary value; 88% of inertia gain priced in E0 at exactly 1/(16 pi); below-threshold control self-limited at (3/2) I; halo box-limited (1.3x box descends deeper)",
+        "clock_forcing": "kappa(L_clock)/threshold = 1.245 (3-D solution), 1.331 (solA), 1.474 (axisymmetric control)",
+        "locked_channel_family": "kappa_crit_paper = 1/sqrt(2 <sin^2 theta>_w), from sqrt(3)/2 = 0.86603 (uniform) to 1/sqrt2 (ring)",
+        "exact_identity_onset": "polar channel s^2 = |cos theta|: <sin^2 theta>_w = 1/2 exactly => kappa_crit = 1.00000 exactly, vs the corpus's measured onset 1.000 +/- 0.004",
+        "exact_identity_kappa0": "s = sin^2 channel: <sin^6>/<sin^4> = 6/7 exactly => kappa_crit = sqrt(7/12) exactly, the corpus's deep-BPS kappa_0",
+        "saturation_match_benchmark": "locked uniform-channel saturated closure on the hedgehog core: c_paper = 2.37096 vs the <r1> benchmark 2.37 +/- 0.09",
+        "recorded_proximity_no_claim": "saturated G* converges downward to 2.51442-2.51446 (two engines agree at 6e-5), within ~1.2e-4 of c0 = 2.514735, measurably below and still decreasing",
+        "convention_tension": "the closure-algebra kappas (sqrt(7/8), 0.802, sqrt(7/12)) and the onset quote (1.000) cannot both hold in one convention for the tilt channel; under either resolution at least one printed claim fails within-model",
+        "downstream_shift_if_stands": "scaling rung -18%; saturated closure +12% to +27%, vs printed c0 = 2.5147; selection theorems (1/4, sqrt2, spin-1/2) untouched"
+      },
+      "artifacts": [
+        "analysis/gum-sandbox/tier2-closure/axi3_ADJUDICATION.md",
+        "analysis/gum-sandbox/tier2-closure/axi3_RESULTS.md",
+        "analysis/gum-sandbox/tier2-closure/axi3_results.json",
+        "analysis/gum-sandbox/tier2-closure/axi4_locked_RESULTS.md",
+        "analysis/gum-sandbox/tier2-closure/axi4_locked_results.json",
+        "analysis/gum-sandbox/tier4-field/TIER4_ADJUDICATION.md",
+        "analysis/gum-sandbox/tier4-field/field3d_RESULTS.md",
+        "analysis/gum-sandbox/tier4-field/field3d_results.json",
+        "analysis/gum-sandbox/gum-core/fs-gum-statics/RESULTS.md"
+      ],
+      "discharge": "(a) Produce the frozen <r1> code and identify the term/constraint in the actually-solved functional that gaps the halo channel above the clock frequency, amending App. I.4 to state it - then F-R5 becomes a spec-omission finding and the benchmark survives as the solution of the constrained problem (G.5's eps->0 endpoint still falls under F-R4); or (b) state and justify the stabilizing side condition independently, showing it excludes both the tilt halo and the equatorial profile halo (direction-locking alone was tested and does not suffice); or (c) exhibit an error in the halo algebra or unit map at one of the three named attack points: (1) the E0 coefficient 1/(8 pi) per unit int eta^2, (2) the inertia normalization KE = int(qdot1^2 + qdot2^2) fixed by the same convention as I itself, (3) the compacton calibration c_paper = c_ours/sqrt(2 pi^3), kappa_paper = 2 sqrt(pi) kappa_ours (validated at 7-9 digits against three independent paper quantities). Absent all three: within the model, the honest answers are the scaling rung with a stability constraint (2.053) or the saturated closure (>= 2.828); the printed 2.5147 is neither."
+    },
+    {
+      "id": "F-R6",
+      "severity": "moderate",
+      "class": "provenance chain",
+      "claim": "The <r7> -> E-F1 -> <r8> narrative chain is arithmetically false as written: 2.9 -> exact x2 -> +14% cone stiffening = 6.61, not the printed A = 5.6 (closure needs net -3.4%, more than 3x the printed +/-5% away from +14%); and the printed errors shrink along the chain (+/-0.9 where the chain forces >= +/-1.37), impossible under an exact factor plus uncertain corrections. All eight correction-ordering readings fail for A. The only coherent reading: <r8> is an independent re-evaluation (implied leading values 2.46/3.05, consistent with <r7> at 0.74/0.17 sigma) and the provenance sentence is wrong. Direction-neutral: the honest chain value would worsen data agreement (~1.1 sigma).",
+      "key_numbers": {
+        "chain_value": "2.9 x2 +14% = 6.61",
+        "printed_value": "A = 5.6",
+        "printed_error": "+/-0.9",
+        "chain_forced_error": ">= +/-1.37"
+      },
+      "artifacts": [
+        "analysis/gum-sandbox/tier5-family/family_ADJUDICATION.md",
+        "analysis/gum-sandbox/tier5-family/family_RESULTS.md",
+        "analysis/gum-sandbox/tier5-family/family_results.json"
+      ],
+      "discharge": "State <r8>'s actual pipeline (fresh evaluation vs corrected <r7>) and correct section VII.C / K.1's provenance sentence."
+    },
+    {
+      "id": "F-R7",
+      "severity": "minor",
+      "class": "print-level prose magnitude",
+      "claim": "App. K.2 prints 'qR* ~ 1e-17' beside ln(1/qR*) = 24.36, which gives qR* = 2.6e-11 - six orders apart. The inversion side is internally coherent (implied R* = 1.11e-16 m = the tau reduced Compton wavelength, as the pipeline's base-m_tau convention implies).",
+      "key_numbers": {
+        "printed": "qR* ~ 1e-17",
+        "implied_by_own_inversion": "qR* = 2.6e-11"
+      },
+      "artifacts": [
+        "analysis/gum-sandbox/tier5-family/family_ADJUDICATION.md"
+      ],
+      "discharge": "Fix the stray magnitude in prose; no downstream number moves; S1 unaffected."
+    },
+    {
+      "id": "F-R8",
+      "severity": "minor",
+      "class": "print-level grading",
+      "claim": "The locked-bond comparison's printed errors give a 1.54-1.59 sigma pull where the body claims 1.3 sigma (and the corpus's own harmonization memo F-A15-5 says 1.4 sigma); closing it needs an unprinted uncertainty on the 0.96 denominator.",
+      "key_numbers": {
+        "claimed_pull": "1.3 sigma",
+        "computed_pull": "1.54-1.59 sigma"
+      },
+      "artifacts": [
+        "analysis/gum-sandbox/tier5-family/family_ADJUDICATION.md"
+      ],
+      "discharge": "Print the denominator uncertainty or amend the grading sentence."
+    }
+  ],
+  "consequence_if_FR4_FR5_stand": "Within-model only: every constant downstream of c0 (the hbar calibration c Lambda sqrt(J), kappa_phys = sqrt(7/12), the S4' eps-run anchor, binding depths, omega_th) shifts by -18% (scaling rung with a stability constraint) to +12%..+27% (saturated closure) against printed values. Untouched: the selection theorems (spin-1/2 only, E_rot/E = 1/4, V = sqrt2 at the rung), the clock algebra, the four-branch spectrum, the radial rung, Born-rule relaxation, the family sector (c0-blind by the corpus's own P-O1 argument), and the S1 stake."
+}
