@@ -56,28 +56,27 @@ impl GridLoop {
     }
 }
 
-/// Z/2 loop holonomy by sign-gauge transport: lift the first director,
-/// then n_{s+1} := sign(n_{s+1} . n_s) n_{s+1}; the class is nontrivial
-/// iff the lift closes to -n_0. The only frame-independent invariant
-/// for a general 3-D loop.
+/// Z/2 loop holonomy by sign-gauge transport: the lift n_{s+1} :=
+/// sign(n_{s+1} . n_s) n_{s+1} closes to sigma n_0 with
+/// sigma = PROD_s sign(n_s . n_{s+1}) over the RAW consecutive dots
+/// (the running lift sign telescopes to exactly this product); the
+/// class is nontrivial iff sigma = -1. The only frame-independent
+/// invariant for a general 3-D loop.
 ///
 /// # Errors
 /// [`TopoError::CoreHit`] when |n_{s+1} . n_s| < `tol` at some step.
 pub fn z2_holonomy(n: &Field3<3>, lp: &GridLoop, tol: f64) -> Result<Z2, TopoError> {
     let read = |v: [usize; 3]| v3::normalize(n.at(v[0], v[1], v[2]));
-    let mut cur = read(lp.verts[0]);
+    let len = lp.verts.len();
     let mut sign = 1.0_f64;
-    for s in 1..=lp.verts.len() {
-        let mut nx = read(lp.verts[s % lp.verts.len()]);
-        let d = v3::dot(cur, nx);
+    for s in 0..len {
+        let d = v3::dot(read(lp.verts[s]), read(lp.verts[(s + 1) % len]));
         if d.abs() < tol {
-            return Err(TopoError::CoreHit { step: s, dot: d.abs() });
+            return Err(TopoError::CoreHit { step: s + 1, dot: d.abs() });
         }
         if d < 0.0 {
             sign = -sign;
-            nx = v3::scale(nx, -1.0);
         }
-        cur = nx;
     }
     Ok(if sign < 0.0 { Z2::NonTrivial } else { Z2::Trivial })
 }

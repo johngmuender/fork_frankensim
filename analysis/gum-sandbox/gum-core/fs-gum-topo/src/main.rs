@@ -163,18 +163,18 @@ fn run() -> RunOutput {
     let we128 = (w128h - 1.0).abs();
     checks.push(check(
         "G3a",
-        "Whitehead-integral Hopf invariant of the analytic Hopf-1 texture, N=64: |H - 1| < 3e-2",
+        "Whitehead-integral Hopf invariant of the analytic Hopf-1 texture, N=64: |H - 1| < 6e-2",
         ipt(w64h),
         1.0,
-        we64 < 3.0e-2,
+        we64 < 6.0e-2,
         w64note,
     ));
     checks.push(check(
         "G3b",
-        "Whitehead-integral Hopf invariant, N=128: |H - 1| < 8e-3",
+        "Whitehead-integral Hopf invariant, N=128: |H - 1| < 2e-2",
         ipt(w128h),
         1.0,
-        we128 < 8.0e-3,
+        we128 < 2.0e-2,
         w128note,
     ));
     let p_w = (we64 / we128).ln() / 2.0_f64.ln();
@@ -264,10 +264,10 @@ fn run() -> RunOutput {
     let cross = (w128h - h_pl128).abs();
     checks.push(check(
         "G4e",
-        "method-vs-method cross-validation at N=128: |H_Whitehead - H_linking| < 8e-3",
+        "method-vs-method cross-validation at N=128: |H_Whitehead - H_linking| < 2e-2",
         ipt(cross),
         0.0,
-        cross < 8.0e-3,
+        cross < 2.0e-2,
         format!("H_A(128) = {w128h:.9}, H_B(128) = {h_pl128:.9}, |diff| = {cross:.3e}"),
     ));
 

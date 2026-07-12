@@ -196,10 +196,22 @@ pub fn hopf_whitehead(f: &DirectorField) -> Result<WhiteheadOut, TopoError> {
         spec[c].extend(b.iter().map(|v| C64::new(v[c], 0.0)));
         plan.forward(&mut spec[c]);
     }
-    let tau = 2.0 * PI;
-    let kax: Vec<f64> = (0..n0).map(|m| (tau * m as f64 / n0 as f64).sin() / h).collect();
-    let kay: Vec<f64> = (0..n1).map(|m| (tau * m as f64 / n1 as f64).sin() / h).collect();
-    let kaz: Vec<f64> = (0..n2).map(|m| (tau * m as f64 / n2 as f64).sin() / h).collect();
+    // Discrete central-difference wavevector kappa_m = sin(2 pi m/N)/h.
+    // At m = 0 and m = N/2 the symbol is EXACTLY zero (f64 sin(pi)
+    // rounds to ~1.2e-16, which would turn the 1/|kappa|^2 division
+    // into a catastrophic near-zero-mode amplification — pinned here).
+    let kvec = |n: usize| -> Vec<f64> {
+        (0..n)
+            .map(|m| {
+                if m == 0 || 2 * m == n {
+                    0.0
+                } else {
+                    (2.0 * PI * m as f64 / n as f64).sin() / h
+                }
+            })
+            .collect()
+    };
+    let (kax, kay, kaz) = (kvec(n0), kvec(n1), kvec(n2));
     for i in 0..n0 {
         for j in 0..n1 {
             for k in 0..n2 {
