@@ -1,0 +1,14 @@
+[package]
+name = "fs-gum-statics"
+version = "0.1.0"
+edition = "2021"
+description = "GUM core Phase E1: the solver half of the Skyrme/chiral statics dimension — analytic variational gradients for every sector (2+4 flux form, sextic cofactor via the 6-term det pair expansion, E0 density, Routhian term), scheme adjoints (central4 stencil transpose, corner average/difference transposes), tangent projection, arrested Newton flow with the frozen near-BPS lattice guards (one-sided degree anchor MU=5000, one-sided Bogomolny-floor wall MU_F=400, deterministic halo-seed perturbation), and the diagnostics kit (degree, weighted virial, halo fraction, floor gap, clock bisection). Gated by FD-vs-analytic gradient checks and the low-resolution halo-descent qualitative referee."
+
+# Deliberately outside the frankensim workspace (fs-cosserat-pilot /
+# fs-gum-field pattern): only the std-only dependency closure below is built.
+[workspace]
+
+[dependencies]
+fs-gum-field = { path = "../fs-gum-field" }
+fs-math = { path = "../../../../crates/fs-math" }
+fs-blake3 = { path = "../../../../crates/fs-blake3" }
