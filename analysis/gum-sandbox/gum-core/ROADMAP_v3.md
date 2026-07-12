@@ -120,7 +120,24 @@ suite becomes CI-runnable (~10 min vs 75 min Python).
     all-orders reading contradicts the corpus's own pinned tilt; the
     pinned pieces uniquely complete to G(θ) = −Δ²ln cos θ (both
     readings implemented and co-gated).
-- Phase F: spec frozen here; remaining items — the e2e certified demo
-  (seed → relax → isorotate + clock → topo diagnostics → one
-  EvidencePackage), the corpus-facing F-R5 demonstration package, and
-  the fs-la/fs-exec workspace-portability fix.
+- **Phase F: ✅ COMPLETE — the roadmap is executed end-to-end:**
+  - F1 `fs-gum-e2e`: 22/22 claims, golden root `d30de830…` — one binary
+    chains seed → guarded relaxation → clock/isorotation (κ ratio
+    1.2525 reproduced through the composed pipeline) → cross-crate
+    topology, with an instrument-honesty section so no claim
+    overreaches its instrument.
+  - F2 `DISCHARGE_PACKAGE/`: the corpus-facing F-R4/F-R5 deliverable —
+    README (credit first, findings ledger, the two-line lemma, the
+    threshold algebra + exact identities, three discharge routes with
+    three named attack points), REPRODUCE.md (every load-bearing
+    number behind a verified deterministic command), CLAIMS.json.
+  - F3: fs-la/fs-fft buildable out-of-tree via a default-ON `exec`
+    feature (in-workspace consumers byte-identical); fs-gum-cosserat
+    de-vendored with its Merkle root unchanged; PORTABILITY.md.
+
+## Program status: ROADMAP EXECUTED (Phases A, B1–B4, E1–E2, F1–F3)
+Eight crates/packages, ~200 machine-checked certified claims across
+six golden Merkle roots, all bit-replay verified. The five gaps of
+GAP_ANALYSIS_v3.md are closed. Beyond this roadmap (research-class,
+unchanged): the gravitation sector, blue-fog GPU boxes, nucleation —
+revisit after the corpus responds to the DISCHARGE_PACKAGE.
