@@ -245,7 +245,7 @@ fn run(csv: &CsvData) -> RunOutput {
         let n_t = rows.iter().filter(|r| r.1 == "transverse").count();
         let wmin = rows.iter().map(|r| r.2).fold(1.0, f64::min);
         census_ok &= n_u == 1 && n_p == 1 && n_t == 4 && wmin > 0.99;
-        census_note.push_str(&format!("k={kc:g}: {n_u}u/{n_p}phi/{n_t}t wmin={wmin:.6}; "));
+        census_note.push_str(&format!("k={kc}: {n_u}u/{n_p}phi/{n_t}t wmin={wmin:.6}; "));
     }
     gates.push(gate(
         "G03",
@@ -367,7 +367,7 @@ fn run(csv: &CsvData) -> RunOutput {
     let mut drift_note = String::new();
     for (i, s) in dev_a_full.iter().enumerate() {
         drift_ok &= (s - drift_targets[i]).abs() < 1e-6;
-        drift_note.push_str(&format!("mV={:g}: {s:.4e}; ", MV_LIST[i]));
+        drift_note.push_str(&format!("mV={}: {s:.4e}; ", MV_LIST[i]));
     }
     let ir_dev = dev_a_small.iter().fold(0.0f64, |a, &b| a.max(b));
     gates.push(gate(
@@ -394,7 +394,7 @@ fn run(csv: &CsvData) -> RunOutput {
         let want = c2_analytic(mv);
         let got = sweeps_b[i].c2;
         cb_ok &= (got - want).abs() < 1e-6 && sweeps_b[i].gap.abs() <= 1e-12;
-        cb_note.push_str(&format!("mV={mv:g}: c^2 = {got:.9} (analytic {want:.9}); "));
+        cb_note.push_str(&format!("mV={mv}: c^2 = {got:.9} (analytic {want:.9}); "));
     }
     gates.push(gate(
         "G09",
@@ -427,7 +427,7 @@ fn run(csv: &CsvData) -> RunOutput {
         let r_b = sweeps_b[i].r[0];
         let want_b = 4.0 * bench.mu_c / (4.0 * bench.mu_c + mv * mv);
         r_ok &= (r_a - 1.0).abs() < 5e-9 && (r_b - want_b).abs() < 5e-9;
-        r_note.push_str(&format!("mV={mv:g}: rA = {r_a:.9}, rB = {r_b:.9} (want {want_b:.9}); "));
+        r_note.push_str(&format!("mV={mv}: rA = {r_a:.9}, rB = {r_b:.9} (want {want_b:.9}); "));
     }
     gates.push(gate(
         "G10",
@@ -611,7 +611,7 @@ fn run(csv: &CsvData) -> RunOutput {
     let mut trans: Vec<usize> = Vec::new();
     for n in 0..6 {
         let v = &full1.vecs[n];
-        let tot: f64 = v.iter().map(fs_math::c64::C64::norm_sq).sum();
+        let tot: f64 = v.iter().map(|z| z.norm_sq()).sum();
         if v[2].norm_sq() / tot > 0.99 {
             i_b1 = n;
         } else if v[5].norm_sq() / tot > 0.99 {
@@ -642,7 +642,7 @@ fn run(csv: &CsvData) -> RunOutput {
             run.omega, run.omega_meas, run.e_dev_max
         ));
         report.push(format!(
-            "time-domain {label} k=1: omega_eig = {:.12}, omega_h = {:.12}, omega_meas = {:.12}, energy dev max = {:.3e}, secular drift = {:.3e} ({} steps, h = {:.3e})",
+            "time-domain {label} k=1: omega_eig = {:.12}, omega_h = {:.12}, omega_meas = {:.12}, energy dev max = {:.3e}, envelope growth = {:.3e} ({} steps, h = {:.3e})",
             run.omega, run.omega_h, run.omega_meas, run.e_dev_max, run.e_drift, run.steps, run.h
         ));
     }
@@ -662,7 +662,7 @@ fn run(csv: &CsvData) -> RunOutput {
     td_edev = td_edev.max(run_s.e_dev_max);
     td_drift = td_drift.max(run_s.e_drift);
     report.push(format!(
-        "time-domain B3 k=1e-3: omega_meas = {:.12} vs sqrt(21) = {want:.12} (rel {d_gap:.3e}), energy dev max = {:.3e}, secular drift = {:.3e}",
+        "time-domain B3 k=1e-3: omega_meas = {:.12} vs sqrt(21) = {want:.12} (rel {d_gap:.3e}), energy dev max = {:.3e}, envelope growth = {:.3e}",
         run_s.omega_meas, run_s.e_dev_max, run_s.e_drift
     ));
     gates.push(gate(
@@ -675,11 +675,11 @@ fn run(csv: &CsvData) -> RunOutput {
     ));
     gates.push(gate(
         "G20",
-        "time domain: symplectic energy conservation over 2e5 Verlet steps per mode — max relative energy deviation below 1e-5, secular drift below 1e-9",
+        "time domain: symplectic energy conservation over 2e5 Verlet steps per mode — max relative energy deviation below 1e-5 (bounded oscillation), first-to-second-half envelope growth (secular-drift witness) below 1e-9",
         td_edev,
         0.0,
         td_edev <= 1e-5 && td_drift <= 1e-9,
-        format!("max energy dev = {td_edev:.3e}, max secular drift = {td_drift:.3e}"),
+        format!("max energy dev = {td_edev:.3e}, max envelope growth = {td_drift:.3e}"),
     ));
 
     // sort gates by id for a stable table and stable Merkle input order

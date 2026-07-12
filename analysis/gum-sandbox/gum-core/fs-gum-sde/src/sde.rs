@@ -166,6 +166,11 @@ impl Stepper for EulerMaruyama {
 
 /// Additive-noise SRA1-class order-1.5 SRK (see module docs; NOT Milstein —
 /// Milstein degenerates to EM exactly for additive noise).
+///
+/// Order fine print (measured by the gate binary): the generic strong order
+/// for additive noise is 1.5, limited by zero-mean residuals that carry
+/// f''(x); on LINEAR drift (e.g. OU) those vanish and SRA1 superconverges
+/// to strong order 2.0.
 #[derive(Debug, Clone, Copy)]
 pub struct Sra1;
 

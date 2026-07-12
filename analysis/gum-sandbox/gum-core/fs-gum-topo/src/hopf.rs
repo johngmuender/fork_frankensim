@@ -10,8 +10,9 @@
 //!      vanish component-wise (tol 1e-10 x max|B|). A nonzero mean is
 //!      net flux through a torus 2-cycle — the Hopf invariant is
 //!      undefined on T^3 and a typed error is returned, never a number.
-//!   3. Coulomb-gauge vector potential via fs-fft's `FftNd` (axes must
-//!      be powers of two — structured rejection otherwise):
+//!   3. Coulomb-gauge vector potential via the crate's minimal radix-2
+//!      FFT (crates/fs-fft is not usable standalone — see src/fft.rs;
+//!      axes must be powers of two, structured rejection otherwise):
 //!      A-hat(k) = i (kappa x B-hat) / |kappa|^2 with the DISCRETE
 //!      wavevector kappa_m = sin(2 pi m / N) / h — the symbol of the
 //!      central difference, so the discrete curl of A reproduces B to
@@ -24,10 +25,10 @@
 //!      fixed (i, j, k) loop order; the sign is fixed once against the
 //!      analytic Hopf-1 referee.
 
+use crate::fft::{C64, Fft3};
 use crate::field::{Bc, DirectorField, Field3};
 use crate::{v3, TopoError, SIGN_WHITEHEAD};
 use core::f64::consts::PI;
-use fs_fft::{C64, FftNd};
 
 /// Result of the Whitehead route.
 #[derive(Debug, Clone, Copy)]
@@ -134,7 +135,7 @@ pub fn hopf_whitehead(f: &DirectorField) -> Result<WhiteheadOut, TopoError> {
     }
 
     // Step 3: Coulomb-gauge A via the discrete-wavevector curl-inverse.
-    let plan = FftNd::new(&[n0, n1, n2]);
+    let plan = Fft3::new([n0, n1, n2]);
     let mut spec: [Vec<C64>; 3] = [
         Vec::with_capacity(total),
         Vec::with_capacity(total),

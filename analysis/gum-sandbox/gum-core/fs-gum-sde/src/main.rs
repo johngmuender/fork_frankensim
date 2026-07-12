@@ -57,6 +57,7 @@ const K_OU_MOM_SRA1: u32 = 21;
 const K_OU_STRONG: u32 = 22;
 const K_GBM_STRONG: u32 = 23;
 const K_OU_WEAK: u32 = 24;
+const K_CUBIC_STRONG: u32 = 25;
 const K_G1: u32 = 90;
 
 // ---------------------------------------------------------------------------
@@ -89,6 +90,27 @@ impl Sde for Ou {
     }
     fn drift(&self, _t: f64, x: &[f64], out: &mut [f64]) {
         out[0] = -self.theta * x[0];
+    }
+    fn diffusion(&self, _t: f64, _x: &[f64], out: &mut [f64]) {
+        out[0] = self.sigma;
+    }
+}
+
+/// Additive-noise double well dX = (X − X³) dt + σ dW — the NONLINEAR-drift
+/// referee for SRA1's generic strong order 1.5. On LINEAR drift (OU) SRA1
+/// superconverges to strong order 2.0: the h^1.5-limiting Itô–Taylor
+/// residuals are the zero-mean fluctuations of terms carrying f''(x)
+/// (e.g. ½g²f'' via (ΔZ/h)² in the H2 stage), which vanish identically for
+/// linear f. A nonlinear drift (f'' = −6x ≠ 0) restores the generic rate.
+struct CubicWell {
+    sigma: f64,
+}
+impl Sde for CubicWell {
+    fn dim(&self) -> usize {
+        1
+    }
+    fn drift(&self, _t: f64, x: &[f64], out: &mut [f64]) {
+        out[0] = x[0] - x[0] * x[0] * x[0];
     }
     fn diffusion(&self, _t: f64, _x: &[f64], out: &mut [f64]) {
         out[0] = self.sigma;
@@ -454,7 +476,18 @@ fn main() {
     println!("    EM   strong errors: {es_em:?}");
     println!("    SRA1 strong errors: {es_sra:?}");
     push_gate(&mut gates, "G2.e", "strong order EM on OU (additive => 1.0)", format!("{p_em:.3}"), "[0.85, 1.15]".into(), (0.85..=1.15).contains(&p_em));
-    push_gate(&mut gates, "G2.f", "strong order SRA1 on OU (additive => 1.5)", format!("{p_sra:.3}"), "[1.35, 1.65]".into(), (1.35..=1.65).contains(&p_sra));
+    push_gate(&mut gates, "G2.f", "strong order SRA1 on OU (LINEAR: superconverges => 2.0)", format!("{p_sra:.3}"), "[1.85, 2.15]".into(), (1.85..=2.15).contains(&p_sra));
+
+    // Nonlinear additive drift: the generic SRA1 strong order 1.5.
+    let cubic = CubicWell { sigma: 0.5 };
+    let (cep_em, _) = ladder(&cubic, false, K_CUBIC_STRONG, 2000, 12, &strong_levels, t_end, x0);
+    let (cep_sra, _) = ladder(&cubic, true, K_CUBIC_STRONG, 2000, 12, &strong_levels, t_end, x0);
+    let (_, ces_em, cp_em) = strong_slope(&strong_levels, &cep_em, t_end);
+    let (_, ces_sra, cp_sra) = strong_slope(&strong_levels, &cep_sra, t_end);
+    println!("    EM   cubic-well strong errors: {ces_em:?}");
+    println!("    SRA1 cubic-well strong errors: {ces_sra:?}");
+    push_gate(&mut gates, "G2.g", "strong order EM on cubic well (additive => 1.0)", format!("{cp_em:.3}"), "[0.85, 1.15]".into(), (0.85..=1.15).contains(&cp_em));
+    push_gate(&mut gates, "G2.h", "strong order SRA1 on cubic well (additive => 1.5)", format!("{cp_sra:.3}"), "[1.35, 1.65]".into(), (1.35..=1.65).contains(&cp_sra));
 
     let gbm = Gbm { mu: 1.0, sigma: 1.0 };
     let gbm_levels: Vec<u32> = (4..=9).collect();
@@ -472,7 +505,7 @@ fn main() {
     }
     let p_gbm = loglog_slope(&hs_g, &es_g);
     println!("    EM   GBM strong errors (vs exact path solution): {es_g:?}");
-    push_gate(&mut gates, "G2.g", "strong order EM on GBM (multiplicative => 0.5)", format!("{p_gbm:.3}"), "[0.35, 0.65]".into(), (0.35..=0.65).contains(&p_gbm));
+    push_gate(&mut gates, "G2.i", "strong order EM on GBM (multiplicative => 0.5)", format!("{p_gbm:.3}"), "[0.35, 0.65]".into(), (0.35..=0.65).contains(&p_gbm));
 
     let weak_levels: Vec<u32> = (1..=7).collect();
     let (wep_em, _) = ladder(&ou, false, K_OU_WEAK, 20_000, 7, &weak_levels, t_end, x0);
@@ -481,8 +514,8 @@ fn main() {
     let (_, we_sra, q_sra) = weak_slope(&weak_levels, &wep_sra, t_end, 4);
     println!("    EM   weak errors (CRN successive diffs): {we_em:?}");
     println!("    SRA1 weak errors (CRN successive diffs): {we_sra:?}");
-    push_gate(&mut gates, "G2.h", "weak order EM on OU (=> 1)", format!("{q_em:.3}"), "[0.8, 1.3]".into(), (0.8..=1.3).contains(&q_em));
-    push_gate(&mut gates, "G2.i", "weak order SRA1 on OU (=> 2)", format!("{q_sra:.3}"), "[1.6, 2.5]".into(), (1.6..=2.5).contains(&q_sra));
+    push_gate(&mut gates, "G2.j", "weak order EM on OU (=> 1)", format!("{q_em:.3}"), "[0.8, 1.3]".into(), (0.8..=1.3).contains(&q_em));
+    push_gate(&mut gates, "G2.k", "weak order SRA1 on OU (=> 2)", format!("{q_sra:.3}"), "[1.6, 2.5]".into(), (1.6..=2.5).contains(&q_sra));
 
     // =======================================================================
     // G3 — Nelson stationary state (psi = phi_11): H̄ pinned at the floor.
@@ -595,7 +628,8 @@ fn main() {
     let _ = writeln!(js, "    \"sra1\": {{\"mean\": {sra_mean}, \"var\": {sra_var}}}");
     let _ = writeln!(js, "  }},");
     let _ = writeln!(js, "  \"orders\": {{");
-    let _ = writeln!(js, "    \"strong_em_ou\": {p_em}, \"strong_sra1_ou\": {p_sra}, \"strong_em_gbm\": {p_gbm},");
+    let _ = writeln!(js, "    \"strong_em_ou\": {p_em}, \"strong_sra1_ou\": {p_sra},");
+    let _ = writeln!(js, "    \"strong_em_cubic\": {cp_em}, \"strong_sra1_cubic\": {cp_sra}, \"strong_em_gbm\": {p_gbm},");
     let _ = writeln!(js, "    \"weak_em_ou\": {q_em}, \"weak_sra1_ou\": {q_sra}");
     let _ = writeln!(js, "  }},");
     let _ = writeln!(js, "  \"g3_phi11\": {{\"H32_max\": {g3_max}, \"H32_mean\": {g3_mean}}},");

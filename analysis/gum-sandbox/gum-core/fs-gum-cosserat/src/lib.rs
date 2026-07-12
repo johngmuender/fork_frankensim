@@ -39,6 +39,7 @@
 
 pub mod branches;
 pub mod eigh;
+pub mod fsla_vendored;
 pub mod moduli;
 pub mod symbol;
 pub mod verlet;

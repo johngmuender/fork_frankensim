@@ -65,10 +65,11 @@ const PERMS: [[usize; 3]; 6] = [
     [2, 1, 0],
 ];
 
-/// One extracted preimage segment, endpoints tagged by exact face keys.
+/// One extracted preimage segment: its start point and the exact face
+/// keys of both endpoints (the polyline stores start points only; the
+/// end point is the next segment's start).
 struct Seg {
     p: [f64; 3],
-    q: [f64; 3],
     f_start: [usize; 3],
     f_end: [usize; 3],
 }
@@ -283,7 +284,6 @@ pub fn extract_preimage_curves(
                             let (s0, s1) = if d > 0.0 { (0, 1) } else { (1, 0) };
                             segs.push(Seg {
                                 p: hits[s0].1,
-                                q: hits[s1].1,
                                 f_start: hits[s0].0,
                                 f_end: hits[s1].0,
                             });

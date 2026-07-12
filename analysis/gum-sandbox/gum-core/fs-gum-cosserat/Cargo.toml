@@ -9,7 +9,13 @@ description = "GUM physics core, Phase B3: linearized micropolar/Cosserat contin
 [workspace]
 
 [dependencies]
-fs-la = { path = "../../../../crates/fs-la" }
+# fs-la is the intended home of jacobi_eigh / eigen_complex::eig, but it is
+# unbuildable from an out-of-workspace crate in this checkout: its closure
+# pulls fs-exec, which requires asupersync at ../../../asupersync (a sibling
+# repository not present here). The two kernels are vendored VERBATIM in
+# src/fsla_vendored.rs with provenance; swap back to
+#   fs-la = { path = "../../../../crates/fs-la" }
+# and delete that file once fs-la builds from here.
 fs-math = { path = "../../../../crates/fs-math" }
 fs-ivl = { path = "../../../../crates/fs-ivl" }
 fs-evidence = { path = "../../../../crates/fs-evidence" }

@@ -15,7 +15,11 @@ fs-evidence = { path = "../../../../crates/fs-evidence" }
 fs-package = { path = "../../../../crates/fs-package" }
 fs-checker = { path = "../../../../crates/fs-checker" }
 fs-blake3 = { path = "../../../../crates/fs-blake3" }
-fs-fft = { path = "../../../../crates/fs-fft" }
+# NOTE: crates/fs-fft was the survey's first choice for the Whitehead
+# curl-inverse, but its dependency closure (fs-exec -> asupersync) needs
+# an EXTERNAL sibling repo that is not present in this tree, so the
+# build spec's fallback applies: src/fft.rs, a minimal internal radix-2
+# FFT (deterministic, power-of-two, 3-D separable).
 
 [[bin]]
 name = "gates"

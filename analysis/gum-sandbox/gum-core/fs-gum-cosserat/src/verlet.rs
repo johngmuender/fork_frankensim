@@ -54,10 +54,13 @@ pub struct ModeRun {
     pub omega_meas: f64,
     /// Initial energy H = ½pᵀM⁻¹p + ½xᵀSx.
     pub e0: f64,
-    /// max |H_n − H_0| / H_0 over the run.
+    /// max |H_n − H_0| / H_0 over the run (the bounded Verlet oscillation,
+    /// amplitude O(h²ω²)·E).
     pub e_dev_max: f64,
-    /// |mean(H) over last window − mean(H) over first window| / H_0
-    /// (secular-drift witness; symplecticity keeps this at round-off).
+    /// Envelope growth max(0, dev_second_half − dev_first_half): a secular
+    /// drift would inflate the second half's envelope; symplecticity keeps
+    /// this at round-off. (A windowed-mean drift estimator is WRONG here —
+    /// it aliases the bounded oscillation over non-integer period counts.)
     pub e_drift: f64,
     /// Number of steps taken.
     pub steps: usize,
@@ -135,10 +138,9 @@ pub fn evolve_mode(
     let mut p = [0.0f64; 12];
     let mut scratch = [0.0f64; 12];
     let e0 = energy(&q, &p);
-    let mut e_dev_max = 0.0f64;
-    let window = (steps / 20).max(1);
-    let mut e_first = 0.0f64;
-    let mut e_last = 0.0f64;
+    let mut e_dev_first = 0.0f64;
+    let mut e_dev_second = 0.0f64;
+    let half = steps / 2;
     // M-weighted projection series s_n = ⟨x_n, x0⟩_M (x0 is M-unit).
     let mut proj = Vec::with_capacity(steps + 1);
     let project = |q: &[f64]| -> f64 {
@@ -154,17 +156,16 @@ pub fn evolve_mode(
         proj.push(project(&q));
         let e = energy(&q, &p);
         let dev = ((e - e0) / e0).abs();
-        if dev > e_dev_max {
-            e_dev_max = dev;
-        }
-        if n < window {
-            e_first += e;
-        }
-        if n >= steps - window {
-            e_last += e;
+        if n < half {
+            if dev > e_dev_first {
+                e_dev_first = dev;
+            }
+        } else if dev > e_dev_second {
+            e_dev_second = dev;
         }
     }
-    let e_drift = ((e_last - e_first) / (window as f64) / e0).abs();
+    let e_dev_max = e_dev_first.max(e_dev_second);
+    let e_drift = (e_dev_second - e_dev_first).max(0.0);
     // sin²(θ/2) = −Σ s_n (s_{n+1} − 2 s_n + s_{n−1}) / (4 Σ s_n²).
     let mut num = 0.0f64;
     let mut den = 0.0f64;

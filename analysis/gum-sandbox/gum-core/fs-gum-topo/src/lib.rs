@@ -37,6 +37,7 @@
 pub mod certify;
 pub mod degree;
 pub mod disclination;
+pub mod fft;
 pub mod field;
 pub mod hopf;
 pub mod linking;

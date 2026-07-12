@@ -180,7 +180,6 @@ fn plaquette_sign(vals: [[f64; 3]; 4], tol: f64) -> Result<f64, TopoError> {
 /// violation) or a line junction (>= 4 pierced faces in one cube,
 /// unresolvable without finer data).
 pub fn disclination_lines(n: &Field3<3>, tol: f64) -> Result<Vec<DefectLine>, TopoError> {
-    let [n0, n1, n2] = n.n;
     // A pierced face: the two cubes it separates (None = outside), and
     // its center.
     struct Face {
