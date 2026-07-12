@@ -889,6 +889,7 @@ impl FftNd {
 
 /// One parallel axis pass: each tile owns one outer block and transforms
 /// the `stride` pencils inside it, in the serial path's exact order.
+#[cfg(feature = "exec")]
 struct PencilBlockKernel<'a> {
     blocks: &'a [std::sync::Mutex<&'a mut [C64]>],
     plan: &'a Fft,
@@ -897,6 +898,7 @@ struct PencilBlockKernel<'a> {
     inverse: bool,
 }
 
+#[cfg(feature = "exec")]
 impl fs_exec::TileKernel for PencilBlockKernel<'_> {
     type Out = ();
 
@@ -942,6 +944,7 @@ impl fs_exec::TileKernel for PencilBlockKernel<'_> {
 /// cache, and scattering back. Every element is read and written by
 /// exactly one tile, so lock order affects timing only — per-pencil
 /// arithmetic and order match the serial path bit for bit.
+#[cfg(feature = "exec")]
 struct PencilColumnKernel<'a> {
     rows: &'a [std::sync::Mutex<&'a mut [C64]>],
     plan: &'a Fft,
@@ -951,6 +954,7 @@ struct PencilColumnKernel<'a> {
     inverse: bool,
 }
 
+#[cfg(feature = "exec")]
 impl fs_exec::TileKernel for PencilColumnKernel<'_> {
     type Out = ();
 
@@ -999,6 +1003,11 @@ impl fs_exec::TileKernel for PencilColumnKernel<'_> {
     }
 }
 
+// Executor-coupled surface (the `exec` feature, ON by default): fs-exec
+// path-depends on the ../asupersync sibling checkout, so this pooled API is
+// compiled out under `default-features = false` to keep fs-fft buildable
+// from a checkout without that sibling repo (Phase F3 portability).
+#[cfg(feature = "exec")]
 impl FftNd {
     /// Executor-tiled forward N-D DFT: bitwise identical to
     /// [`FftNd::forward`] at every worker count (gated). See

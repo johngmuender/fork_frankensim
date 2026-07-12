@@ -194,3 +194,29 @@ Every PASS above certifies a WITHIN-MODEL property of diagnostic
 machinery evaluated on a speculative theory's analytic configurations.
 It validates the discretizations, the topological algorithms, and the
 evidence pipeline — never the physics.
+
+---
+
+# Phase F3 update (2026-07-12): fs-fft is now importable — swap deferred
+
+Deviation 1 above ("fs-fft not used") is no longer forced. Phase F3 made
+`crates/fs-fft` (and `crates/fs-la`) buildable from out-of-workspace
+crates in this checkout: fs-fft's `fs-exec` dependency is now optional
+behind a default-ON `exec` feature, so
+
+```toml
+fs-fft = { path = "../../../../crates/fs-fft", default-features = false }
+```
+
+resolves and builds without the `../../../asupersync` sibling repository
+(the full serial `Fft`/`FftNd`/`RealFft` surface remains; only the
+TilePool-tiled `*_pooled` API is compiled out). See
+`analysis/gum-sandbox/gum-core/PORTABILITY.md`.
+
+The swap is deliberately NOT performed in F3: `src/fft.rs` is
+golden-gated, and fs-fft's Stockham kernels are not guaranteed to
+reproduce this file's radix-2 butterfly order bit-for-bit, so a swap
+would risk a golden re-freeze for zero functional gain. When a future
+phase performs it, keep the structured `NotPow2` rejection at the
+Whitehead API boundary (fs-fft's `Fft::new` panics on non-power-of-two
+instead of returning a typed error).

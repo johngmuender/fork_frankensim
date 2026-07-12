@@ -9,13 +9,15 @@ description = "GUM physics core, Phase B3: linearized micropolar/Cosserat contin
 [workspace]
 
 [dependencies]
-# fs-la is the intended home of jacobi_eigh / eigen_complex::eig, but it is
-# unbuildable from an out-of-workspace crate in this checkout: its closure
-# pulls fs-exec, which requires asupersync at ../../../asupersync (a sibling
-# repository not present here). The two kernels are vendored VERBATIM in
-# src/fsla_vendored.rs with provenance; swap back to
-#   fs-la = { path = "../../../../crates/fs-la" }
-# and delete that file once fs-la builds from here.
+# Phase F3: fs-la is now consumed directly. `default-features = false`
+# disables its `exec` feature (the fs-exec / ../../../asupersync coupling),
+# which is what makes fs-la buildable from this out-of-workspace crate in a
+# checkout without the asupersync sibling repo. The previously vendored
+# kernels (src/fsla_vendored.rs, verbatim copies of eigen::jacobi_eigh and
+# eigen_complex::eig) were deleted in the same change — the swap is
+# bit-identical by construction (verified: 26/26 gates, unchanged Merkle
+# root). See analysis/gum-sandbox/gum-core/PORTABILITY.md.
+fs-la = { path = "../../../../crates/fs-la", default-features = false }
 fs-math = { path = "../../../../crates/fs-math" }
 fs-ivl = { path = "../../../../crates/fs-ivl" }
 fs-evidence = { path = "../../../../crates/fs-evidence" }

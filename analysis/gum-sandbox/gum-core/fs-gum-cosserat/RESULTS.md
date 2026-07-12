@@ -296,3 +296,32 @@ Every new PASS certifies a WITHIN-MODEL property: the internal
 consistency of the W_χ real-space and symbol implementations, and the
 within-model threshold structure of a speculative theory's soft-sector
 functional — never the physics.
+
+---
+
+# Phase F3 update (2026-07-12): de-vendored — fs-la consumed directly
+
+The vendored-kernel deviation recorded above is resolved. Phase F3 made
+`crates/fs-la` buildable from out-of-workspace crates in this checkout
+(its `fs-exec` dependency — the edge that pulled the absent
+`../../../asupersync` sibling repository — is now optional behind a
+default-ON `exec` feature). This crate now depends on
+
+```toml
+fs-la = { path = "../../../../crates/fs-la", default-features = false }
+```
+
+and `src/fsla_vendored.rs` was DELETED; `src/eigh.rs` imports
+`fs_la::eigen::jacobi_eigh` and `fs_la::eigen_complex::eig` directly.
+The vendored copies were verbatim (re-diffed against fs-la sources
+before the swap: byte-identical code), and the swap was gate-verified:
+
+- Gates: **26/26 PASS**, 26/26 claims certified, fs-checker 3/3 modes,
+  two-run replay determinism — identical to the pre-swap run.
+- Golden Merkle root UNCHANGED:
+  `9ddc0fe40548bf9c97cd505ef30339bbe8b4b8ff537ef6f3ef64377cb5f57b15`
+  (bit-identical gate output modulo the wall-clock runtime line).
+- Crate unit tests: 13/13 pass.
+
+See `analysis/gum-sandbox/gum-core/PORTABILITY.md` for the F3 diagnosis
+and the exact fs-la/fs-fft feature mechanics.

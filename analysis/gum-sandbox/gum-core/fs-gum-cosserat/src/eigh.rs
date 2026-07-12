@@ -11,7 +11,8 @@
 //! Jacobi (`jacobi_eigh`), so the whole path is replay-stable; fs-la's
 //! complex QR `eig` serves as a values-only oracle.
 
-use crate::fsla_vendored::{eig, jacobi_eigh};
+use fs_la::eigen::jacobi_eigh;
+use fs_la::eigen_complex::eig;
 use fs_math::c64::C64;
 
 /// Eigenmodes of a Hermitian pencil: ascending ω², eigenvectors, and the

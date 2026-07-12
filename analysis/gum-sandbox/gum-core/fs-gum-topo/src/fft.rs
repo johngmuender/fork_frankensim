@@ -1,10 +1,21 @@
 //! Minimal internal radix-2 FFT (power-of-two sizes, 3-D separable).
 //!
-//! The survey's first choice was crates/fs-fft (`FftNd`), but its
-//! dependency closure pulls fs-exec -> asupersync, an EXTERNAL sibling
-//! repository that is not present in this tree — so fs-fft is not
-//! usable from a standalone out-of-workspace crate, and the build spec's
-//! fallback applies: a minimal internal radix-2 FFT. Deterministic by
+//! The survey's first choice was crates/fs-fft (`FftNd`), but at build
+//! time its dependency closure pulled fs-exec -> asupersync, an EXTERNAL
+//! sibling repository that is not present in this tree — so fs-fft was
+//! not usable from a standalone out-of-workspace crate, and the build
+//! spec's fallback applied: a minimal internal radix-2 FFT.
+//!
+//! PHASE F3 UPDATE: fs-fft IS now importable from here — depend on it as
+//! `fs-fft = { path = "../../../../crates/fs-fft", default-features =
+//! false }` (its default-ON `exec` feature carries the fs-exec/asupersync
+//! coupling; disabling it keeps the whole serial `Fft`/`FftNd`/`RealFft`
+//! surface). The swap is deliberately NOT performed in F3: this internal
+//! FFT is golden-gated, and swapping kernels risks output changes that
+//! would force a golden re-freeze. Keep the structured `NotPow2`
+//! rejection when swapping — see gum-core/PORTABILITY.md.
+//!
+//! Deterministic by
 //! construction: precomputed twiddles, fixed butterfly and axis order.
 //! Forward is unnormalized (X_m = sum_j x_j e^{-2 pi i m j / n});
 //! `inverse` scales by 1/n so inverse(forward(x)) = x.
