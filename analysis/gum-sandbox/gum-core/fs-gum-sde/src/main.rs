@@ -374,7 +374,7 @@ fn run_nelson_ensemble(
             t += h;
         }
         t = t_final;
-        record_h(modes, t, xs, ys, &mut out);
+        record_h(modes, t, xs, ys, &mut out.ts, &mut out.h);
     }
     println!(
         "    [{label}] done in {:.1} s (final H32 = {:.4})",
@@ -557,7 +557,7 @@ fn main() {
             xs[i] = x;
             ys[i] = y;
         }
-        g3_curves = run_nelson_ensemble(&modes, &ws, &mut xs, &mut ys, 2.0 * std::f64::consts::PI, "G3 phi11");
+        g3_curves = run_nelson_ensemble(&modes, &ws, &mut xs, &mut ys, 2.0 * std::f64::consts::PI, 0.0, "G3 phi11");
     }
     let floor32 = noise_floor(32, N_PART);
     let g3_max = g3_curves.h[0].iter().cloned().fold(f64::MIN, f64::max);
@@ -580,7 +580,7 @@ fn main() {
             xs[i] = x;
             ys[i] = y;
         }
-        main_curves = run_nelson_ensemble(&modes16, &ws, &mut xs, &mut ys, T_FINAL, "M=16 nelson");
+        main_curves = run_nelson_ensemble(&modes16, &ws, &mut xs, &mut ys, T_FINAL, 1.5, "M=16 nelson");
     }
     let ctrl_curves;
     {
@@ -594,24 +594,46 @@ fn main() {
             xs[i] = x;
             ys[i] = y;
         }
-        ctrl_curves = run_nelson_ensemble(&modes16, &ws, &mut xs, &mut ys, T_FINAL, "M=16 control");
+        ctrl_curves = run_nelson_ensemble(&modes16, &ws, &mut xs, &mut ys, T_FINAL, 0.0, "M=16 control");
     }
 
-    let fits: Vec<TauFit> = (0..2).map(|ci| fit_tau(&main_curves.ts, &main_curves.h[ci])).collect();
+    // τ fits on the FINE early-time series (the Nelson decay is far too
+    // fast for the 0.1 output cadence): raw born.py-protocol fit (protocol
+    // parity with the Tier-3 τ = 4.85 referee) plus the floor-subtracted
+    // fit, which is the correct exponentiality test here because — unlike
+    // the deterministic Tier-3 runs — the Nelson ensemble REACHES the
+    // finite-N noise floor inside the fit window.
+    let fits_raw: Vec<TauFit> = (0..2)
+        .map(|ci| fit_tau(&main_curves.fine_ts, &main_curves.fine_h[ci]))
+        .collect();
+    let fits_floored: Vec<TauFit> = (0..2)
+        .map(|ci| {
+            fs_gum_sde::hfunc::fit_tau_floored(
+                &main_curves.fine_ts,
+                &main_curves.fine_h[ci],
+                noise_floor(CGS[ci], N_PART),
+            )
+        })
+        .collect();
     let h32_final = *main_curves.h[0].last().unwrap();
     let ctrl_max = ctrl_curves.h[0].iter().cloned().fold(f64::MIN, f64::max);
     let ctrl_mean = ctrl_curves.h[0].iter().sum::<f64>() / ctrl_curves.h[0].len() as f64;
 
-    push_gate(&mut gates, "G4.a", "M=16 cg32 exponential-fit r^2", format!("{:.4}", fits[0].r2), ">= 0.95".into(), fits[0].r2 >= 0.95);
+    println!(
+        "  M=16 cg32 fits (fine sampling, dt_fine = 0.01): raw tau = {:.4} (r2 {:.4}), floored tau = {:.4} (r2 {:.4})",
+        fits_raw[0].tau, fits_raw[0].r2, fits_floored[0].tau, fits_floored[0].r2
+    );
+    push_gate(&mut gates, "G4.a", "M=16 cg32 floor-subtracted exp-fit r^2", format!("{:.4}", fits_floored[0].r2), ">= 0.95".into(), fits_floored[0].r2 >= 0.95);
     push_gate(&mut gates, "G4.b", "M=16 H32(4 pi) (floor 0.0256)", format!("{h32_final:.4}"), "< 2x floor (0.0512)".into(), h32_final < 2.0 * floor32);
     println!("  control H32: mean {ctrl_mean:.4}, max {ctrl_max:.4} (floor {floor32:.4})");
     push_gate(&mut gates, "G4.c", "control max H32 (equilibrium stays at floor)", format!("{ctrl_max:.4}"), "< 2x floor (0.0512)".into(), ctrl_max < 2.0 * floor32);
-    let tau32 = fits[0].tau;
-    push_gate(&mut gates, "G4.d", "Nelson tau (cg32) vs Bohm 4.853 (expect <=)", format!("{tau32:.3}"), "(0, 6.07]".into(), tau32 > 0.0 && tau32 <= 1.25 * BOHM_TAU_CG32);
+    let tau32 = fits_raw[0].tau;
+    push_gate(&mut gates, "G4.d", "Nelson tau (cg32, born.py protocol) vs Bohm 4.853", format!("{tau32:.3}"), "(0, 6.07]".into(), tau32 > 0.0 && tau32 <= 1.25 * BOHM_TAU_CG32);
 
     println!(
-        "  Nelson vs de Broglie-Bohm relaxation (cg32): tau_nelson = {:.3}, tau_bohm = {:.3}, ratio {:.3}",
+        "  Nelson vs de Broglie-Bohm relaxation (cg32): tau_nelson = {:.4} (floored {:.4}), tau_bohm = {:.3}, ratio {:.4}",
         tau32,
+        fits_floored[0].tau,
         BOHM_TAU_CG32,
         tau32 / BOHM_TAU_CG32
     );
@@ -622,6 +644,8 @@ fn main() {
     let mut hash = FNV_OFFSET;
     hash = fnv1a_f64(hash, &main_curves.h[0]);
     hash = fnv1a_f64(hash, &main_curves.h[1]);
+    hash = fnv1a_f64(hash, &main_curves.fine_h[0]);
+    hash = fnv1a_f64(hash, &main_curves.fine_h[1]);
     hash = fnv1a_f64(hash, &ctrl_curves.h[0]);
     hash = fnv1a_f64(hash, &ctrl_curves.h[1]);
     hash = fnv1a_f64(hash, &g3_curves.h[0]);
@@ -638,6 +662,17 @@ fn main() {
         );
     }
     std::fs::write(format!("{outdir}/hdata.csv"), csv).expect("write hdata.csv");
+
+    // hdata_fine.csv (fine early-time series for the tau fits).
+    let mut csvf = String::from("t,H32_nelson16,H16_nelson16\n");
+    for i in 0..main_curves.fine_ts.len() {
+        let _ = writeln!(
+            csvf,
+            "{},{},{}",
+            main_curves.fine_ts[i], main_curves.fine_h[0][i], main_curves.fine_h[1][i]
+        );
+    }
+    std::fs::write(format!("{outdir}/hdata_fine.csv"), csvf).expect("write hdata_fine.csv");
 
     // results.json (deterministic content only).
     let mut js = String::from("{\n");
@@ -658,7 +693,10 @@ fn main() {
     let _ = writeln!(js, "    \"weak_em_ou\": {q_em}, \"weak_sra1_ou\": {q_sra}");
     let _ = writeln!(js, "  }},");
     let _ = writeln!(js, "  \"g3_phi11\": {{\"H32_max\": {g3_max}, \"H32_mean\": {g3_mean}}},");
-    for (name, curves, fit) in [("nelson_m16", &main_curves, Some(&fits)), ("control", &ctrl_curves, None)] {
+    for (name, curves, fit) in [
+        ("nelson_m16", &main_curves, Some((&fits_raw, &fits_floored))),
+        ("control", &ctrl_curves, None),
+    ] {
         let _ = writeln!(js, "  \"{name}\": {{");
         for (ci, cg) in CGS.iter().enumerate() {
             let h = &curves.h[ci];
@@ -670,11 +708,11 @@ fn main() {
                 h[0],
                 h.last().unwrap()
             );
-            if let Some(f) = fit {
+            if let Some((raw, floored)) = fit {
                 let _ = write!(
                     js,
-                    ", \"tau\": {}, \"H0_fit\": {}, \"fit_window_t_end\": {}, \"fit_r2\": {}",
-                    f[ci].tau, f[ci].h0_fit, f[ci].t_end, f[ci].r2
+                    ", \"tau\": {}, \"H0_fit\": {}, \"fit_window_t_end\": {}, \"fit_r2\": {}, \"tau_floored\": {}, \"fit_r2_floored\": {}",
+                    raw[ci].tau, raw[ci].h0_fit, raw[ci].t_end, raw[ci].r2, floored[ci].tau, floored[ci].r2
                 );
             }
             let _ = writeln!(js, "}}{}", if ci == 0 { "," } else { "" });
