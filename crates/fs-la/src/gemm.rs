@@ -619,6 +619,7 @@ pub fn gemm_f64_parallel_with(
 /// # Panics
 /// Structured panics on slice-length or extent mismatches, before `c` can be
 /// mutated.
+#[cfg(feature = "exec")]
 #[allow(clippy::too_many_arguments)]
 pub fn gemm_f64_parallel_with_cancel(
     m: usize,
@@ -655,6 +656,7 @@ pub fn gemm_f64_parallel_with_cancel(
 ///
 /// # Panics
 /// Structured panics on slice-length or extent mismatches before `c` mutation.
+#[cfg(feature = "exec")]
 #[allow(clippy::too_many_arguments)]
 pub fn gemm_f64_parallel_with_pool(
     m: usize,
@@ -697,6 +699,7 @@ pub fn gemm_f64_parallel_with_pool(
 ///
 /// # Panics
 /// As [`gemm_f64_parallel_with_pool`].
+#[cfg(feature = "exec")]
 #[allow(clippy::too_many_arguments)]
 pub fn gemm_f64_parallel_with_pool_declared(
     m: usize,
@@ -747,6 +750,7 @@ pub fn gemm_f64_parallel_with_pool_declared(
 ///
 /// # Panics
 /// As [`gemm_f64_parallel_with_pool`].
+#[cfg(feature = "exec")]
 #[allow(clippy::too_many_arguments)]
 pub fn gemm_f64_parallel_with_pool_budgeted(
     m: usize,
@@ -783,6 +787,7 @@ pub fn gemm_f64_parallel_with_pool_budgeted(
     )
 }
 
+#[cfg(feature = "exec")]
 #[track_caller]
 fn segmented_micro_tiles(extent: usize, block: usize, micro: usize, label: &str) -> usize {
     debug_assert!(block > 0 && micro > 0);
@@ -795,6 +800,7 @@ fn segmented_micro_tiles(extent: usize, block: usize, micro: usize, label: &str)
         .unwrap_or_else(|| panic!("{label} tile-count overflow"))
 }
 
+#[cfg(feature = "exec")]
 #[track_caller]
 fn cancellable_tile_count(m: usize, n: usize, k: usize, mc_q: usize, nc_q: usize) -> usize {
     let mt = segmented_micro_tiles(m, mc_q, MR, "parallel M");
@@ -805,6 +811,7 @@ fn cancellable_tile_count(m: usize, n: usize, k: usize, mc_q: usize, nc_q: usize
         .unwrap_or_else(|| panic!("parallel MNK tile-count overflow"))
 }
 
+#[cfg(feature = "exec")]
 fn report(
     completed: &std::sync::atomic::AtomicUsize,
     total_tiles: usize,
@@ -821,6 +828,7 @@ fn report(
     }
 }
 
+#[cfg(feature = "exec")]
 fn cancelled(
     completed: &std::sync::atomic::AtomicUsize,
     total_tiles: usize,
@@ -839,6 +847,7 @@ fn cancelled(
     }
 }
 
+#[cfg(feature = "exec")]
 fn alloc_error_requested_bytes(error: &fs_alloc::AllocError) -> u128 {
     match error {
         fs_alloc::AllocError::Exhausted {
@@ -858,6 +867,7 @@ fn alloc_error_requested_bytes(error: &fs_alloc::AllocError) -> u128 {
     }
 }
 
+#[cfg(feature = "exec")]
 struct GemmMemoryPlan {
     report: GemmMemoryReport,
     b_pack_len: Option<usize>,
@@ -865,10 +875,12 @@ struct GemmMemoryPlan {
     panel_count: Option<usize>,
 }
 
+#[cfg(feature = "exec")]
 fn checked_memory_product(what: &'static str, lhs: u128, rhs: u128) -> Result<u128, &'static str> {
     lhs.checked_mul(rhs).ok_or(what)
 }
 
+#[cfg(feature = "exec")]
 fn checked_memory_sum(
     what: &'static str,
     values: impl IntoIterator<Item = u128>,
@@ -883,6 +895,7 @@ fn checked_memory_sum(
 /// require only transactional C staging. Product calls size arenas from the
 /// pool's exact fresh-arena reservation and the active M-band worker count.
 #[allow(clippy::too_many_arguments)]
+#[cfg(feature = "exec")]
 fn preflight_memory(
     c_len: usize,
     m: usize,
@@ -974,11 +987,13 @@ fn preflight_memory(
 }
 
 #[derive(Default)]
+#[cfg(feature = "exec")]
 struct ArenaUseTracker {
     current: std::sync::atomic::AtomicUsize,
     peak: std::sync::atomic::AtomicUsize,
 }
 
+#[cfg(feature = "exec")]
 impl ArenaUseTracker {
     fn enter(&self) -> ArenaUseGuard<'_> {
         let current = self
@@ -995,10 +1010,12 @@ impl ArenaUseTracker {
     }
 }
 
+#[cfg(feature = "exec")]
 struct ArenaUseGuard<'a> {
     tracker: &'a ArenaUseTracker,
 }
 
+#[cfg(feature = "exec")]
 impl Drop for ArenaUseGuard<'_> {
     fn drop(&mut self) {
         self.tracker
@@ -1007,6 +1024,7 @@ impl Drop for ArenaUseGuard<'_> {
     }
 }
 
+#[cfg(feature = "exec")]
 fn refresh_peak_memory(
     memory: &mut GemmMemoryReport,
     root_used_bytes: u128,
@@ -1018,6 +1036,7 @@ fn refresh_peak_memory(
 }
 
 #[allow(clippy::too_many_arguments)]
+#[cfg(feature = "exec")]
 fn memory_refused(
     what: &'static str,
     refused_bytes: u128,
@@ -1045,6 +1064,7 @@ fn memory_refused(
     }
 }
 
+#[cfg(feature = "exec")]
 struct GemmBandKernel<'kernel, 'staged, 'shared, P> {
     bands: &'kernel [std::sync::Mutex<&'staged mut [f64]>],
     m: usize,
@@ -1064,6 +1084,7 @@ struct GemmBandKernel<'kernel, 'staged, 'shared, P> {
     poll: &'shared P,
 }
 
+#[cfg(feature = "exec")]
 impl<P> fs_exec::TileKernel for GemmBandKernel<'_, '_, '_, P>
 where
     P: Fn() -> bool + Sync,
@@ -1177,6 +1198,7 @@ where
 /// the generic form lets G4 deterministically inject a request after a known
 /// number of boundaries without timing sleeps.
 #[allow(clippy::too_many_arguments, clippy::too_many_lines)]
+#[cfg(feature = "exec")]
 fn gemm_f64_parallel_with_pool_and_poll<P>(
     m: usize,
     n: usize,
@@ -1549,6 +1571,7 @@ where
 }
 
 /// Why a root-orchestration reservation stopped (wf9.15).
+#[cfg(feature = "exec")]
 enum StageAbort {
     /// The gate/poll tripped mid-initialization.
     Cancelled,
@@ -1559,6 +1582,7 @@ enum StageAbort {
 /// Fallible, poll-chunked zeroed buffer: capacity via try_reserve_exact
 /// (allocator refusal is a STRUCTURED outcome, not an abort), fill
 /// chunked under the gate.
+#[cfg(feature = "exec")]
 fn zeroed_with_poll<P>(len: usize, poll: &P) -> Result<Vec<f64>, StageAbort>
 where
     P: Fn() -> bool,
@@ -1580,6 +1604,7 @@ where
     Ok(values)
 }
 
+#[cfg(feature = "exec")]
 fn stage_beta<P>(source: &[f64], beta: f64, poll: &P) -> Result<Vec<f64>, StageAbort>
 where
     P: Fn() -> bool,
@@ -1607,6 +1632,7 @@ where
 }
 
 #[allow(clippy::too_many_arguments)]
+#[cfg(feature = "exec")]
 fn pack_a_with_poll<P>(
     dst: &mut [f64],
     a: &[f64],
@@ -1643,6 +1669,7 @@ where
 }
 
 #[allow(clippy::too_many_arguments)]
+#[cfg(feature = "exec")]
 fn pack_b_with_poll<P>(
     dst: &mut [f64],
     b: &[f64],
@@ -1679,6 +1706,7 @@ where
 }
 
 #[allow(clippy::too_many_arguments)]
+#[cfg(feature = "exec")]
 fn macro_kernel_with_poll<P>(
     a_pack: &[f64],
     b_pack: &[f64],
