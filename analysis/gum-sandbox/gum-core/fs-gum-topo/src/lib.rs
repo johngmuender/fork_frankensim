@@ -61,12 +61,21 @@ pub const SIGN_LINK: f64 = 1.0;
 /// degenerate configurations return one of these — never a number.
 #[derive(Debug, Clone, PartialEq)]
 pub enum TopoError {
-    /// The mean of B over the periodic box is nonzero: net flux through
-    /// a torus 2-cycle, so the Hopf invariant is undefined on T^3.
+    /// Net flux of B through a torus 2-cycle: the Hopf invariant is
+    /// undefined on T^3. Detected by the LATTICE-EXACT geometric
+    /// (Berg-Luscher solid-angle) winding of the three coordinate-slice
+    /// maps, which is an integer up to floating point — the survey's
+    /// mean-B test restated in a form that machine-precision separates
+    /// topology from the O(h^{3/2}) discretization residue of the
+    /// central-difference B (measured ~1e-2 on the sqrt-cusp referee).
     NetFlux {
-        /// Component-wise box mean of B.
+        /// Slice winding integers (flux / 4 pi) for the (yz, zx, xy)
+        /// 2-cycles.
+        flux: [f64; 3],
+        /// Component-wise box mean of the central-difference B
+        /// (reported for the record).
         mean: [f64; 3],
-        /// max |B| over the box (the scale the tolerance is relative to).
+        /// max |B| over the box.
         max_b: f64,
     },
     /// The FFT route needs power-of-two axes (fs-fft constraint).
@@ -96,10 +105,11 @@ pub enum TopoError {
 impl fmt::Display for TopoError {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         match self {
-            TopoError::NetFlux { mean, max_b } => write!(
+            TopoError::NetFlux { flux, mean, max_b } => write!(
                 f,
-                "net B-flux obstruction: mean B = [{:.3e}, {:.3e}, {:.3e}], max|B| = {:.3e}",
-                mean[0], mean[1], mean[2], max_b
+                "net B-flux obstruction: slice winding integers [{:.3}, {:.3}, {:.3}], \
+                 mean B = [{:.3e}, {:.3e}, {:.3e}], max|B| = {:.3e}",
+                flux[0], flux[1], flux[2], mean[0], mean[1], mean[2], max_b
             ),
             TopoError::NotPow2 { dims } => {
                 write!(f, "FFT axes must be powers of two, got {dims:?}")

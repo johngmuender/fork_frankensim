@@ -6,10 +6,17 @@
 //!      B_k = (1/2) eps_kij F_ij, so B = (F_yz, F_zx, F_xy).
 //!      Normalization: the flux of B through a sphere around a unit
 //!      hedgehog is 4 pi.
-//!   2. Obstruction check BEFORE the solve: the box mean of B must
-//!      vanish component-wise (tol 1e-10 x max|B|). A nonzero mean is
-//!      net flux through a torus 2-cycle — the Hopf invariant is
+//!   2. Obstruction check BEFORE the solve: the net flux of B through
+//!      each torus 2-cycle must vanish, or the Hopf invariant is
 //!      undefined on T^3 and a typed error is returned, never a number.
+//!      The survey's raw mean-B test (tol 1e-10 x max|B|) cannot work
+//!      on the central-difference B, whose box mean carries an
+//!      O(h^{3/2}) discretization residue (measured ~1e-2 on the
+//!      sqrt-cusp referee); the flux is therefore measured with the
+//!      LATTICE-EXACT Berg-Luscher solid-angle winding of the three
+//!      coordinate-slice maps — an integer up to floating point, which
+//!      separates topology from noise at machine precision. The raw
+//!      mean is still computed and reported.
 //!   3. Coulomb-gauge vector potential via the crate's minimal radix-2
 //!      FFT (crates/fs-fft is not usable standalone — see src/fft.rs;
 //!      axes must be powers of two, structured rejection otherwise):
@@ -37,7 +44,11 @@ pub struct WhiteheadOut {
     pub hopf: f64,
     /// The raw integral (1/(4 pi)^2) INT A . B before the sign fix.
     pub raw: f64,
-    /// Component-wise box mean of B (the obstruction monitor).
+    /// Lattice-exact slice winding integers (net flux / 4 pi) through
+    /// the (yz, zx, xy) 2-cycles — all zero for an admissible field.
+    pub flux: [f64; 3],
+    /// Component-wise box mean of the central-difference B (the
+    /// discretization-residue monitor).
     pub mean_b: [f64; 3],
     /// max |B| over the box.
     pub max_b: f64,
@@ -59,6 +70,35 @@ fn dn(f: &DirectorField, i: isize, j: isize, k: isize, inv2h: f64) -> [[f64; 3];
     let dy = v3::scale(v3::sub(f.get(i, j + 1, k), f.get(i, j - 1, k)), inv2h);
     let dz = v3::scale(v3::sub(f.get(i, j, k + 1), f.get(i, j, k - 1)), inv2h);
     [dx, dy, dz]
+}
+
+/// Lattice-exact geometric winding (net flux / 4 pi) of the director
+/// map restricted to the coordinate slice `fixed_axis = 0`: sum of the
+/// signed spherical-triangle areas of the plaquette corners — an exact
+/// integer up to floating point (the Berg-Luscher kernel).
+fn slice_winding(f: &DirectorField, fixed_axis: usize) -> f64 {
+    let bx = (fixed_axis + 1) % 3;
+    let cx = (fixed_axis + 2) % 3;
+    let nb = f.n[bx];
+    let nc = f.n[cx];
+    let read = |b: usize, c: usize| -> [f64; 3] {
+        let mut v = [0usize; 3];
+        v[bx] = b % nb;
+        v[cx] = c % nc;
+        crate::v3::normalize(f.at(v[0], v[1], v[2]))
+    };
+    let mut omega = 0.0;
+    for b in 0..nb {
+        for c in 0..nc {
+            let n00 = read(b, c);
+            let n10 = read(b + 1, c);
+            let n11 = read(b + 1, c + 1);
+            let n01 = read(b, c + 1);
+            omega += crate::solid_angle_origin(n00, n10, n11)
+                + crate::solid_angle_origin(n00, n11, n01);
+        }
+    }
+    omega / (4.0 * PI)
 }
 
 /// The Faraday/curvature field B of a director field:
@@ -118,20 +158,31 @@ pub fn hopf_whitehead(f: &DirectorField) -> Result<WhiteheadOut, TopoError> {
     for c in &mut mean {
         *c /= total as f64;
     }
+    let flux = [
+        slice_winding(f, 0),
+        slice_winding(f, 1),
+        slice_winding(f, 2),
+    ];
+    if flux.iter().any(|q| q.abs() > 0.5) {
+        return Err(TopoError::NetFlux { flux, mean, max_b });
+    }
+    if flux.iter().any(|q| q.abs() > 1.0e-6) {
+        // Not an integer at all: a slice map grazes a degeneracy.
+        return Err(TopoError::Degenerate(format!(
+            "slice winding not integer-snapped: {flux:?}"
+        )));
+    }
     if max_b == 0.0 {
         // Uniform (or curvature-free) director: H = 0 exactly.
         return Ok(WhiteheadOut {
             hopf: 0.0,
             raw: 0.0,
+            flux,
             mean_b: mean,
             max_b,
             curl_rel_err: 0.0,
             max_imag: 0.0,
         });
-    }
-    let tol = 1.0e-10 * max_b;
-    if mean.iter().any(|m| m.abs() > tol) {
-        return Err(TopoError::NetFlux { mean, max_b });
     }
 
     // Step 3: Coulomb-gauge A via the discrete-wavevector curl-inverse.
@@ -225,6 +276,7 @@ pub fn hopf_whitehead(f: &DirectorField) -> Result<WhiteheadOut, TopoError> {
     Ok(WhiteheadOut {
         hopf: SIGN_WHITEHEAD * raw,
         raw,
+        flux,
         mean_b: mean,
         max_b,
         curl_rel_err,
