@@ -22,8 +22,11 @@ use fs_evidence::{Evidence, ProvenanceHash};
 use fs_gum_cosserat::branches::{branches, classify_full, fit_loglog, fit_w2};
 use fs_gum_cosserat::eigh::{oracle_check, solve};
 use fs_gum_cosserat::moduli::{MassCase, Moduli};
+use fs_gum_cosserat::softsector::SoftSector;
 use fs_gum_cosserat::symbol::{mass_matrix, stiffness};
 use fs_gum_cosserat::verlet::evolve_mode;
+use fs_gum_cosserat::wchi::{energy_displaced, grad_dot, wchi_energy, wchi_grad, MicroField};
+use fs_math::c64::C64;
 use fs_package::origin::{
     SourceCertificateRequest, SourceCertificateVerifier, VerificationCapabilities,
     VerificationDecision,
@@ -680,6 +683,293 @@ fn run(csv: &CsvData) -> RunOutput {
         0.0,
         td_edev <= 1e-5 && td_drift <= 1e-9,
         format!("max energy dev = {td_edev:.3e}, max envelope growth = {td_drift:.3e}"),
+    ));
+
+    // ================= PHASE E2: W_chi chiral-coupling module ================
+    // Spec: gap_survey_v3.json "Skyrme/chiral" (W_chi missing-pieces item) +
+    // corpus II.C eq (2.2) and II.H. chi1/chi2/chi3 are FREE parameters
+    // (default 0 — the chi = 0 default is what keeps every gate above and
+    // the knot-statics functional unchanged); the trace-vs-deviatoric chi2
+    // convention is unpinned by the text and carried as a switch.
+
+    let chi_only = |chi1: f64, chi2: f64, chi3: f64, dev: bool| -> Moduli {
+        let mut m = Moduli::bench();
+        m.lam = 0.0;
+        m.mu = 0.0;
+        m.mu_c = 0.0;
+        m.alpha = 0.0;
+        m.beta = 0.0;
+        m.gamma = 0.0;
+        m.m_v = 0.0;
+        m.chi1 = chi1;
+        m.chi2 = chi2;
+        m.chi3 = chi3;
+        m.chi_deviatoric = dev;
+        m
+    };
+    let smooth_field = |seed0: u64, n: usize| -> MicroField {
+        let mut f = MicroField::zeros(n, 2.0 * std::f64::consts::PI);
+        let mut s = seed0;
+        for comp in 0..6 {
+            for _ in 0..4 {
+                let m = [
+                    (next_unit(&mut s) * 7.0) as i64 - 3,
+                    (next_unit(&mut s) * 7.0) as i64 - 3,
+                    (next_unit(&mut s) * 7.0) as i64 - 3,
+                ];
+                let amp = 2.0 * next_unit(&mut s) - 1.0;
+                let ph = 2.0 * std::f64::consts::PI * next_unit(&mut s);
+                f.add_mode(comp, m, amp, ph);
+            }
+        }
+        f
+    };
+
+    // ---- G21: FD-vs-analytic gradient of the real-space W_chi energy ----
+    let mut fd_worst = 0.0f64;
+    let mut fd_note = String::new();
+    let chi_sets = [
+        (0.4, 0.0, 0.0, false),
+        (0.0, -0.3, 0.0, false),
+        (0.0, 0.0, 0.25, false),
+        (0.4, -0.3, 0.25, false),
+        (0.4, -0.3, 0.25, true),
+    ];
+    for (ci, &(c1, c2, c3, dv)) in chi_sets.iter().enumerate() {
+        let m = chi_only(c1, c2, c3, dv);
+        let f = smooth_field(41_000 + ci as u64, 8);
+        let d = smooth_field(52_000 + ci as u64, 8);
+        let (gu, gphi) = wchi_grad(&f, &m);
+        let dot = grad_dot(&gu, &gphi, &d);
+        let t = 1e-3; // W_chi is exactly quadratic: central FD exact to round-off
+        let fd = (energy_displaced(&f, &d, t, &m) - energy_displaced(&f, &d, -t, &m)) / (2.0 * t);
+        let rel = (fd - dot).abs() / dot.abs().max(fd.abs()).max(1e-30);
+        fd_worst = fd_worst.max(rel);
+        fd_note.push_str(&format!("chi=({c1},{c2},{c3},dev={dv}): rel {rel:.2e}; "));
+    }
+    gates.push(gate(
+        "G21",
+        "W_chi real-space analytic gradient vs central FD on random smooth periodic (u, phi) fields (8^3 grid, chi1/chi2/chi3 singly and mixed, both trace conventions): worst relative deviation below 1e-6",
+        fd_worst,
+        0.0,
+        fd_worst <= 1e-6,
+        fd_note,
+    ));
+
+    // ---- G22: plane-wave consistency real-space W_chi vs symbol K_chi ----
+    // The discrete plane wave is an exact eigenfunction of the central
+    // difference with symbol i*k_eff, k_eff = sin(k h)/h, so
+    // E_grid = (V/4) v^dag K_chi(k_eff) v is an EXACT identity (1e-12-class).
+    let mut pw_worst = 0.0f64;
+    let mut seed_pw: u64 = 77_100_100;
+    let pw_sets = [
+        (0.7, -0.4, 0.3, false),
+        (0.7, -0.4, 0.3, true),
+        (0.9, 0.0, 0.0, false),
+        (0.0, 0.8, 0.0, false),
+        (0.0, 0.8, 0.0, true),
+        (0.0, 0.0, 0.6, false),
+    ];
+    let mut field_pw = MicroField::zeros(8, 2.0 * std::f64::consts::PI);
+    for &(c1, c2, c3, dv) in &pw_sets {
+        let m = chi_only(c1, c2, c3, dv);
+        for _ in 0..4 {
+            // integer mode in [-3,3]^3, not all zero (2m never aliases to 0 mod 8)
+            let mut mode = [0i64; 3];
+            loop {
+                for md_ in &mut mode {
+                    *md_ = (next_unit(&mut seed_pw) * 7.0) as i64 - 3;
+                }
+                if mode != [0, 0, 0] {
+                    break;
+                }
+            }
+            let mut v = [C64::ZERO; 6];
+            for vc in &mut v {
+                *vc = C64::new(
+                    2.0 * next_unit(&mut seed_pw) - 1.0,
+                    2.0 * next_unit(&mut seed_pw) - 1.0,
+                );
+            }
+            field_pw.set_plane_wave(mode, &v);
+            let (_, e_real) = wchi_energy(&field_pw, &m);
+            let kmat = stiffness(field_pw.k_eff(mode), &m);
+            let mut quad = 0.0f64;
+            let mut scale = 0.0f64;
+            for a in 0..6 {
+                for b in 0..6 {
+                    quad += (v[a].conj() * kmat[a * 6 + b] * v[b]).re;
+                    scale += v[a].abs() * kmat[a * 6 + b].abs() * v[b].abs();
+                }
+            }
+            let vol = field_pw.lbox().powi(3);
+            let dev = (e_real - 0.25 * vol * quad).abs() / (0.25 * vol * scale).max(1e-30);
+            pw_worst = pw_worst.max(dev);
+        }
+    }
+    gates.push(gate(
+        "G22",
+        "dispersion-path consistency: real-space W_chi energy of a stored plane wave equals the symbol quadratic form (V/4) v^dag K_chi(k_eff) v (same couplings, k_eff = sin(kh)/h exact for central differences) — 24 random (k, polarization) samples across chi1/chi2/chi3 and both conventions, scaled deviation below 1e-12",
+        pw_worst,
+        0.0,
+        pw_worst <= 1e-12,
+        format!("worst scaled deviation = {pw_worst:.3e} over 24 samples"),
+    ));
+
+    // ---- G23: convention switch identity, chi = 0 default, rotation invariance ----
+    // (a) deviatoric(chi1, chi2) == trace-included(chi1 - chi2/3, chi2) exactly
+    let mut conv_dev = 0.0f64;
+    let mut seed_cv: u64 = 33_444_555;
+    for kmag in [0.3, 1.7] {
+        for _ in 0..3 {
+            let d = rand_dir(&mut seed_cv);
+            let kv = [kmag * d[0], kmag * d[1], kmag * d[2]];
+            let kd = stiffness(kv, &chi_only(0.2, 0.9, 0.15, true));
+            let kt = stiffness(kv, &chi_only(0.2 - 0.9 / 3.0, 0.9, 0.15, false));
+            let scale = kt.iter().map(|z| z.abs()).fold(1.0, f64::max);
+            for i in 0..36 {
+                conv_dev = conv_dev.max((kd[i] - kt[i]).abs() / scale);
+            }
+        }
+    }
+    // ... and the same identity for the real-space DENSITY, pointwise
+    // (the total of a random field is a near-cancelling sum — the density
+    // comparison is the stronger statement anyway)
+    let f_cv = smooth_field(61_000, 8);
+    let (dens_dev, _) = wchi_energy(&f_cv, &chi_only(0.2, 0.9, 0.15, true));
+    let (dens_tr, _) = wchi_energy(&f_cv, &chi_only(0.2 - 0.9 / 3.0, 0.9, 0.15, false));
+    let dens_scale = dens_tr.iter().map(|x| x.abs()).fold(1e-30, f64::max);
+    let conv_rs = dens_dev
+        .iter()
+        .zip(dens_tr.iter())
+        .map(|(a, b)| (a - b).abs())
+        .fold(0.0f64, f64::max)
+        / dens_scale;
+    // (b) chi = 0 default: density, total, and gradient EXACTLY zero
+    let m0 = Moduli::bench();
+    let (dens0, tot0) = wchi_energy(&f_cv, &m0);
+    let (gu0, gphi0) = wchi_grad(&f_cv, &m0);
+    let zero_ok = tot0 == 0.0
+        && dens0.iter().all(|&x| x == 0.0)
+        && gu0.iter().chain(gphi0.iter()).all(|v| v.iter().all(|&x| x == 0.0));
+    // (c) rotation invariance of the full spectrum with chi1/chi2/chi3 on
+    let mut m_full = Moduli::bench();
+    m_full.chi1 = 0.2;
+    m_full.chi2 = 0.15;
+    m_full.chi3 = 0.3;
+    let mut rot_chi = 0.0f64;
+    let mut seed_rc: u64 = 91_929_394;
+    for kmag in [0.1, 1.0, 3.0] {
+        let kz = stiffness([0.0, 0.0, kmag], &m_full);
+        let wz = solve(&kz, &md, None);
+        let scale = wz.w2[5].abs().max(1.0);
+        for _ in 0..4 {
+            let d = rand_dir(&mut seed_rc);
+            let kg = stiffness([kmag * d[0], kmag * d[1], kmag * d[2]], &m_full);
+            let wg = solve(&kg, &md, None);
+            for i in 0..6 {
+                rot_chi = rot_chi.max((wg.w2[i] - wz.w2[i]).abs() / scale);
+            }
+        }
+    }
+    gates.push(gate(
+        "G23",
+        "W_chi conventions: (a) deviatoric(chi1, chi2) equals trace-included(chi1 - chi2/3, chi2) exactly (symbol below 1e-13 scaled, real-space density pointwise below 1e-12 scaled — the switch is a reparametrization, which is WHY the text can leave it unpinned); (b) chi = 0 default gives exactly zero density/energy/gradient (knot statics untouched); (c) full spectrum with chi1/chi2/chi3 on is rotation-invariant to 1e-12 (scaled)",
+        conv_dev.max(rot_chi),
+        0.0,
+        conv_dev <= 1e-13 && conv_rs <= 1e-12 && zero_ok && rot_chi <= 1e-12,
+        format!(
+            "symbol conv dev = {conv_dev:.3e}, real-space conv dev = {conv_rs:.3e}, chi=0 exact zeros = {zero_ok}, rotation dev = {rot_chi:.3e}"
+        ),
+    ));
+
+    // ---- G24: Dzyaloshinskii tilt at the r9 margin m = 1.9 ----
+    let sin_h3 = |mm: f64| (1.0 - 1.0 / mm).sqrt();
+    let s19 = SoftSector::with_margin(1.9, 0.7, 1.1);
+    let th19 = s19.theta_c_numeric();
+    let sin_num = th19.sin();
+    let sin_want = sin_h3(1.9); // 0.6882472016116852 -> corpus prints 0.69 +/- 0.11
+    let tilt_dev = (sin_num - sin_want).abs();
+    let stat_resid = s19.df_tilt(th19).abs() / (s19.delta_s * s19.delta_s);
+    let q_dev = ((s19.pitch_numeric(0.8) - s19.pitch_star()) / s19.pitch_star()).abs();
+    let in_band = (sin_num - 0.69).abs() <= 0.11;
+    gates.push(gate(
+        "G24",
+        "Dzyaloshinskii soft sector at the ONLY text-pinned margin m = 1.9 (r9, Thm H2-1): numerical minimization of f(theta) gives sin(theta_c) = sqrt(1 - 1/m) = 0.688247201612 (Thm H-3; Tier-5a C7a's 0.688 -> 0.69) within 1e-12, stationarity residual below 1e-12, numerical pitch equals q* = chi_s/gamma_s within 1e-9, and the tilt sits inside the printed 0.69 +/- 0.11",
+        sin_num,
+        sin_want,
+        tilt_dev <= 1e-12 && stat_resid <= 1e-12 && q_dev <= 1e-9 && in_band,
+        format!(
+            "sin theta_c = {sin_num:.15} (analytic {sin_want:.15}, dev {tilt_dev:.2e}), f'(theta_c)/Delta^2 = {stat_resid:.2e}, pitch rel dev = {q_dev:.2e}, in 0.69+/-0.11 band = {in_band}"
+        ),
+    ));
+
+    // ---- G25: margin scan m in [1.1, 3] against the Thm H-3 tilt ----
+    let mut scan_worst = 0.0f64;
+    let gd_combos = [(0.7, 1.1), (1.3, 0.9), (2.0, 0.5)];
+    for i in 0..39usize {
+        let mm = 0.05f64.mul_add(i as f64, 1.1);
+        let (gs, ds) = gd_combos[i % 3];
+        let s = SoftSector::with_margin(mm, gs, ds);
+        let dev = (s.theta_c_numeric().sin() - sin_h3(mm)).abs();
+        scan_worst = scan_worst.max(dev);
+    }
+    gates.push(gate(
+        "G25",
+        "margin scan m in [1.1, 3] (39 points, three (gamma_s, Delta_s) parametrizations — only the DIMENSIONLESS margin matters, Thm H2-1): numerical tilt matches sin(theta_c) = sqrt(1 - 1/m) within 1e-10 everywhere",
+        scan_worst,
+        0.0,
+        scan_worst <= 1e-10,
+        format!("worst |sin theta_num - sqrt(1 - 1/m)| = {scan_worst:.3e}"),
+    ));
+
+    // ---- G26: the Dzyaloshinskii threshold at m = 1 ----
+    let mut below_max_tilt = 0.0f64;
+    let mut below_ok = true;
+    for mm in [0.3, 0.6, 0.9, 0.999] {
+        let s = SoftSector::with_margin(mm, 1.3, 0.9);
+        let th = s.theta_c_numeric();
+        below_max_tilt = below_max_tilt.max(th);
+        below_ok &= !s.condenses() && th <= 1e-6 && s.d2f_tilt(0.0) > 0.0;
+    }
+    let mut above_ok = true;
+    let mut above_note = String::new();
+    for mm in [1.001, 1.01, 1.1] {
+        let s = SoftSector::with_margin(mm, 1.3, 0.9);
+        let dev = (s.theta_c_numeric().sin() - sin_h3(mm)).abs();
+        above_ok &= s.condenses() && dev <= 1e-8 && s.d2f_tilt(0.0) < 0.0;
+        above_note.push_str(&format!("m={mm}: dev {dev:.1e}; "));
+    }
+    // bisect the f''(0) sign change (numeric FD, no analytic shortcut)
+    let fpp0 = |mm: f64| -> f64 {
+        let s = SoftSector::with_margin(mm, 1.3, 0.9);
+        let d = 1e-4;
+        2.0 * (s.f_tilt(d) - s.f_tilt(0.0)) / (d * d)
+    };
+    let (mut lo, mut hi) = (0.5f64, 2.0f64);
+    for _ in 0..60 {
+        let mid = 0.5 * (lo + hi);
+        if fpp0(mid) > 0.0 {
+            lo = mid;
+        } else {
+            hi = mid;
+        }
+    }
+    let m_star = 0.5 * (lo + hi);
+    // the literal printed quadratic gap shares the same threshold
+    let quad_below = SoftSector::with_margin(0.9, 1.0, 1.0);
+    let quad_above = SoftSector::with_margin(1.9, 1.0, 1.0);
+    let quad_ok = (0..14).all(|i| quad_below.f_tilt_quadgap(0.1 * (i + 1) as f64) > 0.0)
+        && quad_above.f_tilt_quadgap(0.5) < 0.0;
+    gates.push(gate(
+        "G26",
+        "Dzyaloshinskii threshold structure: NO tilt for m <= 1 (theta_c below 1e-6 at m in (0.3, 0.6, 0.9, 0.999), f''(0) > 0), tilt matching sqrt(1 - 1/m) within 1e-8 just above (m in (1.001, 1.01, 1.1), f''(0) < 0); numeric-FD bisection of the f''(0) sign change lands at m* = 1 within 1e-6; the literal quadratic-gap reading shares the same threshold (co-gated)",
+        m_star,
+        1.0,
+        below_ok && above_ok && (m_star - 1.0).abs() <= 1e-6 && quad_ok,
+        format!(
+            "max tilt below threshold = {below_max_tilt:.2e}; {above_note}bisected m* = {m_star:.9}; quadgap threshold ok = {quad_ok}"
+        ),
     ));
 
     // sort gates by id for a stable table and stable Merkle input order

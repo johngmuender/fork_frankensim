@@ -11,6 +11,13 @@
 //!   e_ij = i k_i u_j − ε_ijl φ_l;  Γ_ij = i k_i φ_j;
 //!   ψ_a  = φ_a − (i/2) ε_abc k_b u_c  (ψ = φ − ½ curl u);
 //!   each energy term c·Σ|T|² contributes K += 2c R†R  (W = ½ q†Kq).
+//!
+//! Phase E2 extension: the full W_χ chiral transduction of corpus II.C
+//! eq (2.2) — χ₁ e_kkΓ_ll + χ₂ e_(ij)Γ_(ij) + χ₃ e_[ij]Γ_[ij] — assembled
+//! as Hermitized cross terms K += χ(A + A†), with the (unpinned) χ₂
+//! trace-vs-deviatoric convention switch on `Moduli::chi_deviatoric`.
+//! Cross-validated against the real-space module [`crate::wchi`] (gate
+//! G22): for a plane wave the grid energy equals (V/4)·v̂†K_χ(k_eff)v̂.
 
 use crate::moduli::{MassCase, Moduli};
 use fs_math::c64::C64;
@@ -102,6 +109,40 @@ pub fn tensor_parts(r: &[C64; 54]) -> ([C64; 6], [C64; 54], [C64; 54]) {
     (tr, sym, asym)
 }
 
+/// Deviatoric part of a symmetric rank-2 operator: dev(S)_ij = S_ij −
+/// (1/3)δ_ij S_kk (rows 0, 4, 8 shifted by −tr/3). Used only by the
+/// deviatoric χ₂ convention — see [`crate::moduli::Moduli::chi_deviatoric`].
+#[must_use]
+pub fn deviatoric(sym: &[C64; 54], tr: &[C64; 6]) -> [C64; 54] {
+    let mut d = *sym;
+    for diag in [0usize, 4, 8] {
+        for c in 0..6 {
+            d[diag * 6 + c] = d[diag * 6 + c] - tr[c].scale(1.0 / 3.0);
+        }
+    }
+    d
+}
+
+/// K += coeff · (A + A†) with A = Ra†Rb over `rows` rows — the Hermitized
+/// cross term of a real-space coupling coeff·Re(a_ij* b_ij), so that
+/// ½ q†Kq picks up coeff·Re(Σ a* b). Loop order identical to the original
+/// inline χ₃ block (bit-identical results for the χ₃ path).
+fn add_cross(k: &mut [C64; 36], ra: &[C64], rb: &[C64], rows: usize, coeff: f64) {
+    if coeff == 0.0 {
+        return;
+    }
+    for a in 0..6 {
+        for b in 0..6 {
+            let mut acc = C64::ZERO;
+            for row in 0..rows {
+                acc = acc + ra[row * 6 + a].conj() * rb[row * 6 + b];
+            }
+            k[a * 6 + b] = k[a * 6 + b] + acc.scale(coeff);
+            k[b * 6 + a] = k[b * 6 + a] + acc.conj().scale(coeff);
+        }
+    }
+}
+
 /// K += coeff · R†R over `rows` rows (fixed row-major accumulation order).
 fn add_gram(k: &mut [C64; 36], r: &[C64], rows: usize, coeff: f64) {
     if coeff == 0.0 {
@@ -140,19 +181,21 @@ pub fn stiffness(kvec: [f64; 3], m: &Moduli) -> [C64; 36] {
         MassCase::B => add_gram(&mut k, &ops.phi, 3, mv2), // (m_V²/2)|φ|²
     }
 
-    if m.chi3 != 0.0 {
-        // W_χ₃ = χ₃ Re(e_[ij]* Γ_[ij]) → K += χ₃ (A + A†), A = e_a† Γ_a.
-        for a in 0..6 {
-            for b in 0..6 {
-                let mut acc = C64::ZERO;
-                for row in 0..9 {
-                    acc = acc + easym[row * 6 + a].conj() * gasym[row * 6 + b];
-                }
-                k[a * 6 + b] = k[a * 6 + b] + acc.scale(m.chi3);
-                k[b * 6 + a] = k[b * 6 + a] + acc.conj().scale(m.chi3);
-            }
-        }
+    // W_χ chiral transduction, corpus II.C eq (2.2):
+    //   W_χ = χ₁ e_kk Γ_ll + χ₂ e_(ij)Γ_(ij) + χ₃ e_[ij]Γ_[ij]
+    // (each coupling FREE, default 0; the (ij) contraction of χ₂ is
+    // trace-included or deviatoric per m.chi_deviatoric — the text never
+    // pins the choice). All three couplings enter as Hermitized cross
+    // terms K += χ (A + A†) so that ½q†Kq = χ Re(Σ e-part* Γ-part).
+    add_cross(&mut k, &etr, &gtr, 1, m.chi1); //   χ₁ e_kk Γ_ll
+    if m.chi_deviatoric {
+        let edev = deviatoric(&esym, &etr);
+        let gdev = deviatoric(&gsym, &gtr);
+        add_cross(&mut k, &edev, &gdev, 9, m.chi2); // χ₂ dev(e)_(ij) dev(Γ)_(ij)
+    } else {
+        add_cross(&mut k, &esym, &gsym, 9, m.chi2); // χ₂ e_(ij) Γ_(ij)
     }
+    add_cross(&mut k, &easym, &gasym, 9, m.chi3); // χ₃ e_[ij] Γ_[ij]
 
     // Enforce exact Hermiticity against round-off.
     for a in 0..6 {
@@ -220,6 +263,47 @@ mod tests {
                 let d = k[a * 6 + b] - k[b * 6 + a].conj();
                 assert!(d.abs() == 0.0, "K not exactly Hermitian at ({a},{b})");
             }
+        }
+    }
+
+    #[test]
+    fn chi12_hermitian_and_nontrivial() {
+        let mut m = Moduli::bench();
+        m.chi1 = 0.4;
+        m.chi2 = -0.25;
+        m.chi3 = 0.3;
+        let k = stiffness([0.7, -0.2, 1.1], &m);
+        let k0 = stiffness([0.7, -0.2, 1.1], &Moduli::bench());
+        let mut changed = false;
+        for a in 0..6 {
+            for b in 0..6 {
+                let d = k[a * 6 + b] - k[b * 6 + a].conj();
+                assert!(d.abs() == 0.0, "K not exactly Hermitian at ({a},{b})");
+                changed |= (k[a * 6 + b] - k0[a * 6 + b]).abs() > 1e-12;
+            }
+        }
+        assert!(changed, "chi1/chi2 must alter K");
+    }
+
+    #[test]
+    fn deviatoric_is_chi1_shift() {
+        // dev(e)_(ij) dev(Γ)_(ij) = e_(ij)Γ_(ij) − (1/3) e_kk Γ_ll, so
+        // deviatoric(χ₁, χ₂) ≡ trace-included(χ₁ − χ₂/3, χ₂) exactly.
+        let mut md = Moduli::bench();
+        md.chi1 = 0.2;
+        md.chi2 = 0.9;
+        md.chi_deviatoric = true;
+        let mut mt = Moduli::bench();
+        mt.chi1 = 0.2 - 0.9 / 3.0;
+        mt.chi2 = 0.9;
+        for kvec in [[0.3, -0.4, 1.1], [0.0, 0.0, 2.0], [1.0, 0.5, 0.0]] {
+            let kd = stiffness(kvec, &md);
+            let kt = stiffness(kvec, &mt);
+            let scale = kt.iter().map(|z| z.abs()).fold(1.0, f64::max);
+            assert!(
+                max_abs_diff(&kd, &kt) < 1e-13 * scale,
+                "convention reparametrization broken at {kvec:?}"
+            );
         }
     }
 }
