@@ -655,10 +655,10 @@ def fig_landscape(fint, basis, rep, ladder, k5rep, probes_t0, probes_eps,
                  ls="none", label=lab)
     for y, lab, col in ((1.000, "corpus onset 1.000", VIOLET),
                         (0.9354, "rung 0.9354", INK),
-                        (0.86603, r"$\sqrt3/2$ (uniform)", INK),
+                        (0.86603, r"$\sqrt{3}/2$ (uniform)", INK),
                         (0.802, r"$\langle r_1\rangle$ 0.802", RED),
                         (0.76376, r"$\sqrt{7/12}$ (deep-BPS)", INK),
-                        (0.70711, r"$1/\sqrt2$ (ring limit)", INK)):
+                        (0.70711, r"$1/\sqrt{2}$ (ring limit)", INK)):
         a3x.axhline(y, color=col, lw=0.9,
                     ls="--" if col != INK else ":", alpha=0.85)
         a3x.text(1.0, y, " " + lab, color=col, fontsize=7, va="bottom",
@@ -697,8 +697,8 @@ def fig_landscape(fint, basis, rep, ladder, k5rep, probes_t0, probes_eps,
     a5.axhline(0.802, color=RED, lw=1.0, ls="--")
     a5.text(ix[0], 0.803, r" $\langle r_1\rangle$: $0.802\pm0.018$",
             color=RED, fontsize=8, va="bottom")
-    for y, lab in ((KLOCK_PAPER, r" $\sqrt3/2$ uniform-halo onset"),
-                   (KRING_PAPER, r" $1/\sqrt2$ ring limit")):
+    for y, lab in ((KLOCK_PAPER, r" $\sqrt{3}/2$ uniform-halo onset"),
+                   (KRING_PAPER, r" $1/\sqrt{2}$ ring limit")):
         a5.axhline(y, color=AQUA, lw=1.2)
         a5.text(ix[0], y, lab, color=AQUA, fontsize=8, va="bottom")
     a5.set_xticks(ix, labs, fontsize=8)
@@ -706,23 +706,22 @@ def fig_landscape(fint, basis, rep, ladder, k5rep, probes_t0, probes_eps,
     a5.set_title("(e) $\\kappa$ placement vs the locked thresholds",
                  fontsize=10, color=INK)
 
-    # (f) mode amplitudes K=4 vs K=5
+    # (f) mode amplitudes of the accepted K=4 optimum
     a6 = axes[1, 2]
     style_ax(a6)
     lab4 = basis.labels
     v4 = np.asarray(rep["a"])
-    a6.bar(np.arange(len(lab4)) - 0.18, v4, width=0.34, color=BLUE,
-           label="K=4 (12 params)")
-    if k5rep is not None:
-        v5 = np.asarray(k5rep["a"])
-        a6.bar(np.arange(len(v5)) * (len(lab4) - 1.0)
-               / max(len(v5) - 1.0, 1.0) + 0.18, v5, width=0.34,
-               color=AQUA, alpha=0.75, label="K=5 (15 params, rescaled axis)")
+    a6.bar(np.arange(len(lab4)), v4, width=0.6, color=BLUE)
     a6.axhline(0.0, color=INK, lw=0.8)
     a6.set_xticks(np.arange(len(lab4)), lab4, rotation=60, fontsize=7)
-    a6.legend(frameon=False, fontsize=8)
+    if k5rep is not None:
+        a6.text(0.02, 0.02, "K=5 (15-param) rerun: $c$ shifts by %.2e,\n"
+                "$\\kappa$ by %.2e (relative)"
+                % (abs(k5rep["c_paper"] / rep["c_paper"] - 1.0),
+                   abs(k5rep["kappa_paper"] / rep["kappa_paper"] - 1.0)),
+                transform=a6.transAxes, fontsize=8, color=INK, va="bottom")
     a6.set_ylabel("coefficient", color=INK)
-    a6.set_title("(f) locked-optimum mode amplitudes", fontsize=10,
+    a6.set_title("(f) locked-optimum mode amplitudes (K=4)", fontsize=10,
                  color=INK)
 
     fig.suptitle("Tier-4C: direction-locked closure — halo-onset family, "
@@ -753,7 +752,7 @@ def fig_epsscan(scan, end, fit, path):
                 capsize=4, mec="white")
     a1.text(0.052, 2.37, r" $\langle r_1\rangle$ $2.37\pm0.09$", color=RED,
             fontsize=8, va="center")
-    a1.legend(frameon=False, fontsize=8, loc="lower right")
+    a1.legend(frameon=False, fontsize=8, loc="upper left")
     a1.set_xlabel(r"$\epsilon$ (achieved sector ratio)", color=INK)
     a1.set_ylabel(r"$c_{\rm paper}$", color=INK)
     a1.set_title("(a) clock charge vs $\\epsilon$, locked closure",
@@ -786,8 +785,8 @@ def fig_epsscan(scan, end, fit, path):
     a3x.axhline(0.802, color=RED, lw=1.0, ls="--")
     a3x.text(eps[0], 0.803, r" $\langle r_1\rangle$ $0.802\pm0.018$",
              color=RED, fontsize=8)
-    for y, lab in ((KLOCK_PAPER, r" $\sqrt3/2$ uniform-halo onset"),
-                   (KRING_PAPER, r" $1/\sqrt2$ ring limit")):
+    for y, lab in ((KLOCK_PAPER, r" $\sqrt{3}/2$ uniform-halo onset"),
+                   (KRING_PAPER, r" $1/\sqrt{2}$ ring limit")):
         a3x.axhline(y, color=AQUA, lw=1.2)
         a3x.text(eps[0], y, lab, color=AQUA, fontsize=8, va="bottom")
     a3x.set_xlabel(r"$\epsilon$", color=INK)
@@ -951,39 +950,49 @@ def main():
         for (nm, sf), d in zip(SPROFILES, derived):
             pr = halo_probe(fint, rsup, tt, sf, 2.1, 0.45, N_PROBE,
                             base_cache=cache)
+            pr["kcrit_paper_eta"] = pr["kcrit_paper"]
             pr.update(name=nm, conc=d["conc"],
                       kcrit_paper_ideal=d["kcrit_paper"],
-                      kcrit_paper=pr["kcrit_paper"][0])
+                      kcrit_paper=pr["kcrit_paper_eta"][0])
             probes[tag].append(pr)
             print("    %-18s k_crit ours %.5f / %.5f (ideal %.5f)  paper "
                   "%.5f (ideal %.5f)  dI ratio %.3f"
                   % (nm, pr["kcrit_ours"][0], pr["kcrit_ours"][1],
                      d["kcrit_ours"], pr["kcrit_paper"],
                      d["kcrit_paper"], pr["dI_ratio"]))
-        # radius scan (uniform + sin^2): approach to the far-field ideal
+        # radius scan (uniform + sin^2), NON-overlapping shells only
+        # (shell support is r_c +/- 2w; keep r_c - 2w > r_sup)
         rad = []
-        for rcf, prof_i in ((1.3, 0), (3.2, 0), (3.2, 2)):
+        for rcf, wf, prof_i in ((1.5, 0.22, 0), (3.2, 0.45, 0),
+                                (3.2, 0.45, 2)):
             nm, sf = SPROFILES[prof_i]
-            pr = halo_probe(fint, rsup, tt, sf, rcf, 0.45, N_PROBE,
+            pr = halo_probe(fint, rsup, tt, sf, rcf, wf, N_PROBE,
                             base_cache=cache)
+            pr["kcrit_paper_eta"] = pr["kcrit_paper"]
             pr.update(name=nm, rc_fac=rcf, conc=derived[prof_i]["conc"],
-                      kcrit_paper_ideal=derived[prof_i]["kcrit_paper"])
+                      kcrit_paper_ideal=derived[prof_i]["kcrit_paper"],
+                      kcrit_paper=pr["kcrit_paper_eta"][0])
             rad.append(pr)
-            print("    radius scan %-12s r_c=%.1f r_sup: k_ours %.5f "
-                  "(ideal %.5f)" % (nm, rcf, pr["kcrit_ours"][0],
-                                    derived[prof_i]["kcrit_ours"]))
+            print("    radius scan %-12s r_c=%.1f r_sup (w=%.2f): k_ours "
+                  "%.5f (ideal %.5f)" % (nm, rcf, wf, pr["kcrit_ours"][0],
+                                         derived[prof_i]["kcrit_ours"]))
         probes[tag + "_radius"] = rad
-        # mid-field / overlap probe (Task D): shell straddling the edge
-        rc_mid = 1.0 / 1.02 if tag == "t0" else 0.95
-        prm = halo_probe(fint, rsup, tt, SPROFILES[0][1], rc_mid, 0.25,
+        # mid-field / overlap probe (Task D): shell straddling the profile
+        # (t=0: at the compacton edge R*; eps: at 0.40 r_sup where the
+        #  exponential tail still has f ~ 0.1)
+        rc_mid, w_mid = (1.0 / 1.02, 0.25) if tag == "t0" else (0.40, 0.15)
+        prm = halo_probe(fint, rsup, tt, SPROFILES[0][1], rc_mid, w_mid,
                          N_PROBE, base_cache=cache)
         prm.update(name="edge shell (overlap)")
         probes[tag + "_edge"] = prm
+        chr_mid = ("LINEAR in eta -> first-order profile-relaxation "
+                   "direction (already inside the minimised family), "
+                   "NOT an onset channel" if prm["dI_ratio"] < 3.0 else
+                   "ratio ~4: quadratic, behaves as a clean halo here")
         print("    edge shell r_c=%.2f r_sup: dI(0.02)=%.4f dI(0.04)=%.4f "
-              "ratio %.3f (LINEAR -> profile-relaxation direction, not an "
-              "onset channel); dE ratio %.3f (quadratic)"
+              "ratio %.3f (%s); dE ratio %.3f"
               % (rc_mid, prm["dI"][0], prm["dI"][1], prm["dI_ratio"],
-                 prm["dE_ratio"]))
+                 chr_mid, prm["dE_ratio"]))
     out["probes"] = probes
 
     print("\n  -- placement of the corpus tuples (measure, don't assume) --")
@@ -1243,10 +1252,10 @@ def main():
           "0.866)" % KLOCK_PAPER)
     print("   locked s^2~|cos| onset:        1.00000 EXACT in the ideal "
           "far-field limit (measured smoothed variant above)")
-    print("   edge shells: dI linear in eta (ratios %.3f / %.3f at t=0 / "
-          "eps) -> first-order profile relaxation, no onset threshold "
-          "at the compacton edge" % (probes["t0_edge"]["dI_ratio"],
-                                     probes["eps_edge"]["dI_ratio"]))
+    print("   edge shells (overlap probes): dI(2eta)/dI(eta) = %.3f (t=0) "
+          "/ %.3f (eps); a ratio ~2 = LINEAR dI -> first-order profile "
+          "relaxation inside the family, NOT a distinct onset channel"
+          % (probes["t0_edge"]["dI_ratio"], probes["eps_edge"]["dI_ratio"]))
     out["onset_table"] = onset
 
     # ------------------------------------------------------------------

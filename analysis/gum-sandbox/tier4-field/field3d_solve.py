@@ -35,6 +35,23 @@ reverted whenever the objective increases; adaptive dt), unit norm enforced
 by renormalization after every update, velocity re-projected to the tangent
 space of the updated field.
 
+PROTOCOL NOTE (numerical obstacle, documented): at eps = 0.05 the model is
+95% BPS, and the BPS sector (E6 + E0) does not control the topological
+degree; on any affordable lattice the unconstrained flow finds a smooth
+charge-leak channel (measured here: degree decays from 0.99991 with
+exponentially growing rate; the leak is DOWNHILL in the discrete energy
+because the anti-unwinding barrier of the eps-suppressed (2+4) sectors is
+O(t) and smaller than the discretization error).  Every previous tier
+excluded this channel by construction (Step 1 pins f(0) = pi as a Dirichlet
+constraint; the Step-2/3 ansaetze build f(0) = pi in).  The 3-D analogue
+used here is a degree-anchoring penalty  E_pen = (MU/2) (deg - 1)^2,
+MU = 5000, added to the descent objective only (all reported energies and
+Routhians are the bare functionals; E_pen at every reported solution is
+logged and is O(1e-4) or below).  Its gradient enters as a constant shift
+of the det-weight field, so it deforms nothing outside the topological
+density; in particular the far-field tilt-halo channel under adjudication
+(q1, q2 at large r, where det ~ 0) is untouched by it.
+
 Stages:
   G  gates: hedgehog sectors at N = 48/64/96 vs step-1 radial references,
      degree, virial, FD-vs-analytic gradient check, boundary-tail check
@@ -97,6 +114,7 @@ INSTR_EVERY = 10 if SMOKE else 25
 PRINT_EVERY = 20 if SMOKE else 200
 GTOL_RATIO = 1.0e-6
 SEED_PERT = 424242
+MU_DEG = 5000.0                      # degree-anchoring penalty (see header)
 
 LOGFH = None
 
@@ -362,6 +380,8 @@ class Engine:
         Estat = t * (E2 + E4) + E6 + E0
         out = dict(E2=E2, E4=E4, E6=E6, E0=E0, I=Ival, deg=deg, Estat=Estat)
         out["R"] = Estat if L is None else Estat + L * L / (2.0 * Ival)
+        out["Epen"] = 0.5 * MU_DEG * (deg - 1.0) ** 2
+        out["obj"] = out["R"] + out["Epen"]
         if not need_grad:
             return out, None
         # ---- gradient --------------------------------------------------
@@ -392,9 +412,11 @@ class Engine:
                 np.multiply(d2, D[o2, a], out=T0)
                 Pv -= T0
                 Pv *= w24
-        # sextic: d(det^2/4pi)/d det = det/2pi
+        # sextic: d(det^2/4pi)/d det = det/2pi; the degree-anchoring penalty
+        # adds the constant  MU (deg-1) sgn6 / (2 pi^2)  to the det-weight
         np.multiply(det, 1.0 / (2.0 * np.pi), out=self.w6)
         w6 = self.w6
+        w6 += MU_DEG * (deg - 1.0) * self.sgn6 / (2.0 * np.pi ** 2)
         for p, (a, b, c, d, sg) in enumerate(PAIRS):
             np.multiply(w6, Pc6[p], out=T2)
             if sg < 0:
@@ -479,7 +501,7 @@ def anf(eng, q, L, maxit, label, dt0=0.02, dt_max=0.60,
     h3 = eng.h3
     out, gbuf = eng.energy(q, L=L, need_grad=True)
     g = gbuf.copy()
-    obj = out["R"]
+    obj = out["obj"]
     gn0 = float(np.sqrt(np.sum(g * g))) / h3
     v = np.zeros_like(q)
     qb = q.copy()
@@ -491,7 +513,8 @@ def anf(eng, q, L, maxit, label, dt0=0.02, dt_max=0.60,
     def record(it, gn, dtv):
         hf, cen = eng.halo_fraction(q)
         series.append(dict(
-            it=it, R=obj, Estat=out["Estat"], E2=out["E2"], E4=out["E4"],
+            it=it, R=out["R"], obj=obj, Epen=out["Epen"],
+            Estat=out["Estat"], E2=out["E2"], E4=out["E4"],
             E6=out["E6"], E0=out["E0"], I=out["I"],
             kappa=(0.0 if L is None else L / out["I"]),
             deg=out["deg"], halo=hf, gnorm=gn, dt=dtv, arrests=arrests,
@@ -499,7 +522,7 @@ def anf(eng, q, L, maxit, label, dt0=0.02, dt_max=0.60,
         return series[-1]
 
     rec = record(0, gn0, dt)
-    log(f"  [{label}] it=0  obj={obj:.7f}  I={out['I']:.4f} "
+    log(f"  [{label}] it=0  R={out['R']:.7f}  I={out['I']:.4f} "
         f"kappa={rec['kappa']:.5f} deg={out['deg']:.5f} halo={rec['halo']:.4f} "
         f"gnorm={gn0:.3e}")
     it = 0
@@ -509,7 +532,7 @@ def anf(eng, q, L, maxit, label, dt0=0.02, dt_max=0.60,
         q += dt * v
         eng.normalize(q)
         out_new, gbuf = eng.energy(q, L=L, need_grad=True)
-        if out_new["R"] > obj:                 # arrest: revert, kill velocity
+        if out_new["obj"] > obj:               # arrest: revert, kill velocity
             q[...] = qb
             v.fill(0.0)
             dt *= 0.6
@@ -520,7 +543,7 @@ def anf(eng, q, L, maxit, label, dt0=0.02, dt_max=0.60,
             # g of the accepted point is still valid (stored copy)
         else:
             out = out_new
-            obj = out["R"]
+            obj = out["obj"]
             np.copyto(g, gbuf)
             np.copyto(qb, q)
             # re-project velocity onto the new tangent space
@@ -532,7 +555,8 @@ def anf(eng, q, L, maxit, label, dt0=0.02, dt_max=0.60,
         if it % instr_every == 0 or it == maxit:
             rec = record(it, gn, dt)
             if it % PRINT_EVERY == 0 or it == maxit:
-                log(f"  [{label}] it={it}  obj={obj:.7f}  I={out['I']:.4f} "
+                log(f"  [{label}] it={it}  R={out['R']:.7f} "
+                    f"pen={out['Epen']:.2e}  I={out['I']:.4f} "
                     f"kappa={rec['kappa']:.5f} deg={out['deg']:.5f} "
                     f"halo={rec['halo']:.4f} gnorm={gn:.3e} dt={dt:.2e} "
                     f"arr={arrests}")
@@ -542,8 +566,8 @@ def anf(eng, q, L, maxit, label, dt0=0.02, dt_max=0.60,
             break
     q[...] = qb
     gn = float(np.sqrt(np.sum(g * g))) / h3
-    log(f"  [{label}] DONE ({status}) it={it} obj={obj:.7f} "
-        f"gnorm/gnorm0={gn / gn0:.3e} arrests={arrests}")
+    log(f"  [{label}] DONE ({status}) it={it} R={out['R']:.7f} "
+        f"pen={out['Epen']:.2e} gnorm/gnorm0={gn / gn0:.3e} arrests={arrests}")
     return q, out, series, status, dict(gn0=gn0, gn=gn, iters=it,
                                         arrests=arrests, status=status)
 
@@ -649,7 +673,7 @@ def run_gates(rn, fn):
             qm = eng.normalize(q - eps * u)
             op, _ = eng.energy(qp, L=L, need_grad=False)
             om, _ = eng.energy(qm, L=L, need_grad=False)
-            fd = (op["R"] - om["R"]) / (2.0 * eps)
+            fd = (op["obj"] - om["obj"]) / (2.0 * eps)
             an = float(np.sum(g * u))
             worst_gc = max(worst_gc, abs(fd - an) / max(abs(fd), 1e-30))
     log(f"  gate: FD-vs-analytic gradient (E_static and Routhian, 6 dirs): "
