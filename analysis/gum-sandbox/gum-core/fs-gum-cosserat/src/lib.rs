@@ -11,7 +11,10 @@
 //!      on fs-la's deterministic `jacobi_eigh` (eigenvalues come in exact
 //!      duplicate pairs; any real eigenvector (x; y) of S recovers the
 //!      complex eigenvector x + iy of H), cross-checked against fs-la's
-//!      complex QR `eig` as a values-only oracle;
+//!      complex QR `eig` as a values-only oracle — both kernels vendored
+//!      VERBATIM in [`fsla_vendored`] because fs-la's dependency closure
+//!      (fs-exec → ../../../asupersync) is unbuildable from this checkout
+//!      (see that module's provenance note for the drop-in swap back);
 //!   2. a mass-matrix-aware symplectic Verlet (kick–drift–kick with
 //!      q̇ = M⁻¹p) evolving plane-wave amplitudes of each branch in the
 //!      TIME domain — the repo's first time-domain validation of the
