@@ -147,6 +147,20 @@ pub fn fit_tau(ts: &[f64], hs: &[f64]) -> TauFit {
     }
 }
 
+/// Same windowing logic as [`fit_tau`] but on the FLOOR-SUBTRACTED signal
+/// ln(H − floor): the correct exponentiality test when the ensemble REACHES
+/// the finite-N noise floor inside the fit window. The Nelson ensembles do
+/// (their relaxation is far faster than the Tier-3 deterministic runs, and
+/// H̄ sits on the floor well before t = 2π); born.py's raw-log fit was
+/// adequate for Bohm because its H̄(t ≤ 2π) stayed far above the floor.
+/// Points with H − floor ≤ 0 are excluded; the 10%-of-initial window
+/// threshold is applied to the floored signal.
+#[must_use]
+pub fn fit_tau_floored(ts: &[f64], hs: &[f64], floor: f64) -> TauFit {
+    let floored: Vec<f64> = hs.iter().map(|&h| h - floor).collect();
+    fit_tau(ts, &floored)
+}
+
 #[cfg(test)]
 mod tests {
     use super::*;

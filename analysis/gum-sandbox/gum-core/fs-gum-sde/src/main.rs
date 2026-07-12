@@ -286,15 +286,31 @@ fn weak_slope(
 struct HCurves {
     ts: Vec<f64>,
     h: [Vec<f64>; 2], // per CGS entry
+    /// Fine early-time series (every [`FINE_EVERY`] macro steps while
+    /// t ≤ fine_until): the Nelson relaxation turns out to be far faster
+    /// than born.py's DT_OUT = 0.1 diagnostic cadence can resolve, so the
+    /// τ fits use this series.
+    fine_ts: Vec<f64>,
+    fine_h: [Vec<f64>; 2],
 }
 
-fn record_h(modes: &ModeSystem, t: f64, xs: &[f64], ys: &[f64], out: &mut HCurves) {
+/// Fine-sampling cadence: every 5 macro steps = 0.01 time units.
+const FINE_EVERY: u64 = 5;
+
+fn record_h(
+    modes: &ModeSystem,
+    t: f64,
+    xs: &[f64],
+    ys: &[f64],
+    ts: &mut Vec<f64>,
+    h: &mut [Vec<f64>; 2],
+) {
     let qf = modes.psi2_grid(t, NFINE);
-    out.ts.push(t);
+    ts.push(t);
     for (ci, &cg) in CGS.iter().enumerate() {
         let p = histogram_p(xs, ys, cg);
         let q = coarse_q(&qf, NFINE, cg);
-        out.h[ci].push(h_bar(&p, &q));
+        h[ci].push(h_bar(&p, &q));
     }
 }
 
@@ -304,6 +320,7 @@ fn run_nelson_ensemble(
     xs: &mut [f64],
     ys: &mut [f64],
     t_final: f64,
+    fine_until: f64,
     label: &str,
 ) -> HCurves {
     let t0 = Instant::now();
@@ -313,11 +330,16 @@ fn run_nelson_ensemble(
     let mut out = HCurves {
         ts: Vec::new(),
         h: [Vec::new(), Vec::new()],
+        fine_ts: Vec::new(),
+        fine_h: [Vec::new(), Vec::new()],
     };
     let mut cache = CoeffCache::new();
     let mut step: u64 = 0;
     let mut t = 0.0f64;
-    record_h(modes, t, xs, ys, &mut out);
+    record_h(modes, t, xs, ys, &mut out.ts, &mut out.h);
+    if fine_until > 0.0 {
+        record_h(modes, t, xs, ys, &mut out.fine_ts, &mut out.fine_h);
+    }
     for block in 1..=n_full {
         for _ in 0..steps_per_out {
             cache.clear();
@@ -326,8 +348,11 @@ fn run_nelson_ensemble(
             }
             step += 1;
             t += DT;
+            if t <= fine_until && step % FINE_EVERY == 0 {
+                record_h(modes, t, xs, ys, &mut out.fine_ts, &mut out.fine_h);
+            }
         }
-        record_h(modes, t, xs, ys, &mut out);
+        record_h(modes, t, xs, ys, &mut out.ts, &mut out.h);
         if block % 25 == 0 {
             println!(
                 "    [{label}] block {block}/{n_full}  t = {t:.3}  H32 = {:.4}  ({:.1} s)",
