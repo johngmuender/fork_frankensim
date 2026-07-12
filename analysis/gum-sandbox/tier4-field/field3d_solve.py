@@ -35,22 +35,45 @@ reverted whenever the objective increases; adaptive dt), unit norm enforced
 by renormalization after every update, velocity re-projected to the tangent
 space of the updated field.
 
-PROTOCOL NOTE (numerical obstacle, documented): at eps = 0.05 the model is
-95% BPS, and the BPS sector (E6 + E0) does not control the topological
-degree; on any affordable lattice the unconstrained flow finds a smooth
-charge-leak channel (measured here: degree decays from 0.99991 with
-exponentially growing rate; the leak is DOWNHILL in the discrete energy
-because the anti-unwinding barrier of the eps-suppressed (2+4) sectors is
-O(t) and smaller than the discretization error).  Every previous tier
-excluded this channel by construction (Step 1 pins f(0) = pi as a Dirichlet
-constraint; the Step-2/3 ansaetze build f(0) = pi in).  The 3-D analogue
-used here is a degree-anchoring penalty  E_pen = (MU/2) (deg - 1)^2,
-MU = 5000, added to the descent objective only (all reported energies and
-Routhians are the bare functionals; E_pen at every reported solution is
-logged and is O(1e-4) or below).  Its gradient enters as a constant shift
-of the det-weight field, so it deforms nothing outside the topological
-density; in particular the far-field tilt-halo channel under adjudication
-(q1, q2 at large r, where det ~ 0) is untouched by it.
+PROTOCOL NOTES (numerical obstacles, documented; see field3d_RESULTS.md):
+ 1. CHARGE LEAK.  At eps = 0.05 the model is 95% BPS and the BPS sector
+    (E6 + E0) does not control the topological degree; the unconstrained
+    lattice flow finds a smooth charge-leak channel (measured: degree
+    decays from 0.99991 with exponentially growing rate; the anti-unwinding
+    barrier of the eps-suppressed (2+4) sectors is O(t) and smaller than
+    the discretization error).  Every previous tier excluded this channel
+    by construction (Step 1 pins f(0) = pi as a Dirichlet constraint; the
+    Step-2/3 ansaetze build f(0) = pi in).  The 3-D analogue used here is a
+    ONE-SIDED degree anchor  E_pen = (MU/2) min(0, deg - (deg_ref-0.005))^2,
+    MU = 5000, deg_ref = the engine's measured hedgehog degree, added to
+    the DESCENT OBJECTIVE only (all reported energies/Routhians are the
+    bare functionals; E_pen is logged at every reported solution).  Its
+    gradient is a constant shift of the det-weight field: it acts only
+    through the topological density, and the far-field tilt-halo channel
+    under adjudication (q1, q2 at large r, where det ~ 0) is untouched.
+ 2. QUADRATURE-CHEAT DRIFT.  Independently of the degree, a ~95%-BPS
+    functional on a lattice has O(h^2) quadrature-error valleys: the flow
+    can lower the DISCRETE (6+0) sectors a few percent below the continuum
+    Bogomolny floor  E6 + E0 >= (32 sqrt2/15) B  by roughening the core
+    (measured with both discretization schemes; the compact corner scheme
+    bounds it more tightly than central differences, which is why it is
+    the descent objective).  Two safeguards: (a) the floor gap
+    E6+E0 - 3.016989*deg  is instrumented at every record as the drift
+    diagnostic; (b) a ONE-SIDED Bogomolny-floor wall
+    E_fpen = (MU_FLOOR/2) min(0, fgap - fgap_ref)^2, MU_FLOOR = 400,
+    fgap_ref = (hedgehog's own discrete floor gap) - 0.01, is added to the
+    descent objective.  Since every continuum configuration rigorously
+    satisfies E6+E0 >= (32 sqrt2/15) B, the wall only excludes
+    lattice-artifact territory; it is one-sided, calibrated to the
+    engine's own smooth-field offset, and logged.  Verdict-relevant
+    instruments (I, kappa = L/I, halo fraction, degree) contain no
+    derivatives, are quadrature-exact, and are immune to this channel.
+ 3. HALO SEED.  The descent initial perturbation includes, besides the
+    random bumps, an explicit small tilt-halo shell (eta = 0.05 in q1 at
+    r ~ 3.2).  This is an accelerator for the stability test, applied
+    identically to the over-spun (L = 8.4979) and control (L = 4.0) runs:
+    a stable solution must make the seed DECAY (control), an unstable one
+    grows it (main) -- the two-sided design keeps the test honest.
 
 Stages:
   G  gates: hedgehog sectors at N = 48/64/96 vs step-1 radial references,
@@ -115,6 +138,10 @@ PRINT_EVERY = 20 if SMOKE else 200
 GTOL_RATIO = 1.0e-6
 SEED_PERT = 424242
 MU_DEG = 5000.0                      # degree-anchoring penalty (see header)
+DEG_BAND = 0.005                     # one-sided anchor dead band
+BPS_FLOOR = 32.0 * np.sqrt(2.0) / 15.0   # continuum floor of E6+E0 per B
+MU_FLOOR = 400.0                     # one-sided Bogomolny-floor wall
+FLOOR_BAND = 0.01                    # dead band below the hedgehog's own gap
 
 LOGFH = None
 
@@ -248,10 +275,22 @@ PAIRS = [(0, 1, 2, 3, 1.0), (0, 2, 1, 3, -1.0), (0, 3, 1, 2, 1.0),
 
 
 class Engine:
-    def __init__(self, N, Lbox, t=T_FROZEN):
+    """scheme='central4': 4th-order central differences at cell centres --
+    the high-accuracy MEASUREMENT engine (gates, final evaluations).
+    scheme='corner': compact midpoint scheme -- derivative sectors evaluated
+    at the (N+1)^3 cell corners, D_i q = edge difference of face averages,
+    q at the corner = 8-cell average; the 3-D analogue of the Step-1
+    midpoint discretization.  Width-1 stencils leave no sub-grid null modes,
+    so the near-BPS sextic sector cannot be under-measured by sharpening
+    below the grid scale (measured failure of the central engine as a
+    DESCENT objective: E_static descended through the Bogomolny floor).
+    All descents use scheme='corner'; both engines are gated."""
+
+    def __init__(self, N, Lbox, t=T_FROZEN, scheme="corner"):
         self.N = N
         self.Lbox = Lbox
         self.t = t
+        self.scheme = scheme
         self.h = 2.0 * Lbox / N
         self.h3 = self.h ** 3
         self.x1 = (np.arange(N) + 0.5) * self.h - Lbox
@@ -259,12 +298,17 @@ class Engine:
         self.r = np.sqrt(x[:, None, None] ** 2 + x[None, :, None] ** 2
                          + x[None, None, :] ** 2)
         self.sgn6 = -1.0    # measured on the hedgehog: raw degree < 0
-        sh = (N, N, N)
-        self.qp = np.zeros((4, N + 4, N + 4, N + 4))
+        self.deg_ref = 1.0  # one-sided degree-anchor reference (see header)
+        self.fgap_ref = None   # one-sided Bogomolny-floor wall (None = off)
+        M = N if scheme == "central4" else N + 1   # evaluation-point count
+        self.Me = M
+        sh = (M, M, M)
+        npad = N + 4 if scheme == "central4" else N + 2
+        self.qp = np.zeros((4, npad, npad, npad))
         self.qp[0] = 1.0                       # vacuum ghosts
-        self.D = np.empty((3, 4) + sh)         # D_i q
+        self.D = np.empty((3, 4) + sh)         # D_i q at evaluation points
         self.P = np.empty((3, 4) + sh)         # fluxes d(dens)/d(D_i q)
-        self.g = np.empty((4,) + sh)
+        self.g = np.empty((4, N, N, N))        # gradient on cells
         self.M6 = np.empty((6,) + sh)
         self.Pc6 = np.empty((6,) + sh)
         self.det = np.empty(sh)
@@ -272,6 +316,16 @@ class Engine:
         self.nn = np.empty((3,) + sh)          # |D_i|^2
         self.dd = np.empty((3,) + sh)          # D_x.D_y, D_x.D_z, D_y.D_z
         self.T = [np.empty(sh) for _ in range(4)]
+        self.Tc = [np.empty((N, N, N)) for _ in range(2)]  # cell-shaped temps
+        if scheme == "corner":
+            self.qe = np.empty((4,) + sh)      # 8-cell average at corners
+            self.ge = np.empty((4,) + sh)      # d(dens)/d(qe)
+            self.gp = np.empty((4, N + 2, N + 2, N + 2))  # padded cell grad
+            self.B_ayz = np.empty((N + 2, N + 1, N + 1))
+            self.B_ay = np.empty((N + 2, N + 1, N + 2))
+            self.B_axz = np.empty((N + 1, N + 2, N + 1))
+            self.B_ax = np.empty((N + 1, N + 2, N + 2))
+            self.B_axy = np.empty((N + 1, N + 1, N + 2))
 
     # -- fields --------------------------------------------------------
     def hedgehog(self, rnodes, fnodes, d=1.0):
@@ -300,27 +354,28 @@ class Engine:
             dq += A[:, None, None, None] * gau
         return dq
 
+    def halo_seed(self, eta=0.05, r0=3.2, w=0.6):
+        """Small explicit tilt-halo shell in q1 (see header note 3)."""
+        dq = np.zeros((4, self.N, self.N, self.N))
+        dq[1] = eta * np.exp(-((self.r - r0) ** 2) / (2.0 * w * w))
+        return dq
+
     @staticmethod
     def normalize(q):
         nrm = np.sqrt(q[0] ** 2 + q[1] ** 2 + q[2] ** 2 + q[3] ** 2)
         q /= nrm
         return q
 
-    # -- 4th-order derivatives ------------------------------------------
+    # -- derivative builders --------------------------------------------
     def _view(self, a, axis, off):
         N = self.N
         sl = [slice(2, 2 + N)] * 3
         sl[axis] = slice(2 + off, 2 + off + N)
         return self.qp[a][tuple(sl)]
 
-    def energy(self, q, L=None, need_grad=True):
-        """Sector energies + (optionally) tangent-projected gradient of
-        E_static (L None) or of R = E_static + L^2/(2I).  The returned
-        gradient array is an internal buffer: copy it before the next call."""
-        N, t, h3 = self.N, self.t, self.h3
+    def _derivs_central4(self):
         c1 = 8.0 / (12.0 * self.h)
         c2 = 1.0 / (12.0 * self.h)
-        self.qp[:, 2:-2, 2:-2, 2:-2] = q
         D, T0 = self.D, self.T[0]
         for ax in range(3):
             for a in range(4):
@@ -330,6 +385,43 @@ class Engine:
                 np.subtract(self._view(a, ax, 2), self._view(a, ax, -2), out=T0)
                 T0 *= c2
                 Dv -= T0
+
+    def _derivs_corner(self):
+        """Corner (midpoint) scheme: for each component,
+        D_x = edge-difference of the yz-face average, etc.; qe = 8-average."""
+        ih = 1.0 / self.h
+        D, qe, qp = self.D, self.qe, self.qp
+        for a in range(4):
+            v = qp[a]
+            ay = 0.5 * (v[:, 1:, :] + v[:, :-1, :])
+            ayz = 0.5 * (ay[:, :, 1:] + ay[:, :, :-1])
+            np.subtract(ayz[1:], ayz[:-1], out=D[0, a])
+            D[0, a] *= ih
+            np.add(ayz[1:], ayz[:-1], out=qe[a])
+            qe[a] *= 0.5
+            ax = 0.5 * (v[1:, :, :] + v[:-1, :, :])
+            axz = 0.5 * (ax[:, :, 1:] + ax[:, :, :-1])
+            np.subtract(axz[:, 1:], axz[:, :-1], out=D[1, a])
+            D[1, a] *= ih
+            axy = 0.5 * (ax[:, 1:, :] + ax[:, :-1, :])
+            np.subtract(axy[:, :, 1:], axy[:, :, :-1], out=D[2, a])
+            D[2, a] *= ih
+
+    def energy(self, q, L=None, need_grad=True):
+        """Sector energies + (optionally) tangent-projected gradient of
+        E_static (L None) or of R = E_static + L^2/(2I), plus the
+        degree-anchoring penalty in out['obj'].  The returned gradient
+        array is an internal buffer: copy it before the next call."""
+        N, t, h3 = self.N, self.t, self.h3
+        if self.scheme == "central4":
+            self.qp[:, 2:-2, 2:-2, 2:-2] = q
+            self._derivs_central4()
+            qE = q                       # densities evaluated at cells
+        else:
+            self.qp[:, 1:-1, 1:-1, 1:-1] = q
+            self._derivs_corner()
+            qE = self.qe                 # densities evaluated at corners
+        D, T0 = self.D, self.T[0]
         nn, dd = self.nn, self.dd
         for ax in range(3):
             v, o = D[ax], nn[ax]
@@ -356,8 +448,8 @@ class Engine:
         Dx, Dy, Dz = D[0], D[1], D[2]
         for p, (a, b, c, d, sg) in enumerate(PAIRS):
             Mp, Pc = M6[p], Pc6[p]
-            np.multiply(q[a], Dx[b], out=Mp)
-            np.multiply(q[b], Dx[a], out=T0)
+            np.multiply(qE[a], Dx[b], out=Mp)
+            np.multiply(qE[b], Dx[a], out=T0)
             Mp -= T0
             np.multiply(Dy[c], Dz[d], out=Pc)
             np.multiply(Dy[d], Dz[c], out=T0)
@@ -373,29 +465,42 @@ class Engine:
         E6 = float(np.sum(T0)) * h3 / FOURPI
         E0 = (q[0].size - float(np.sum(q[0]))) * h3 / FOURPI
         deg = self.sgn6 * float(np.sum(det)) * h3 / (2.0 * np.pi ** 2)
-        np.multiply(q[1], q[1], out=T0)
-        Ival = float(np.sum(T0))
-        np.multiply(q[2], q[2], out=T0)
-        Ival = (Ival + float(np.sum(T0))) * 2.0 * h3
+        Tc0, Tc1 = self.Tc
+        np.multiply(q[1], q[1], out=Tc0)
+        Ival = float(np.sum(Tc0))
+        np.multiply(q[2], q[2], out=Tc0)
+        Ival = (Ival + float(np.sum(Tc0))) * 2.0 * h3
         Estat = t * (E2 + E4) + E6 + E0
         out = dict(E2=E2, E4=E4, E6=E6, E0=E0, I=Ival, deg=deg, Estat=Estat)
         out["R"] = Estat if L is None else Estat + L * L / (2.0 * Ival)
-        out["Epen"] = 0.5 * MU_DEG * (deg - 1.0) ** 2
-        out["obj"] = out["R"] + out["Epen"]
+        dev = min(0.0, deg - (self.deg_ref - DEG_BAND))
+        out["Epen"] = 0.5 * MU_DEG * dev * dev
+        fgap = E6 + E0 - BPS_FLOOR * deg / self.deg_ref
+        out["floor_gap"] = fgap
+        devf = (min(0.0, fgap - self.fgap_ref)
+                if self.fgap_ref is not None else 0.0)
+        out["Efpen"] = 0.5 * MU_FLOOR * devf * devf
+        out["obj"] = out["R"] + out["Epen"] + out["Efpen"]
         if not need_grad:
             return out, None
         # ---- gradient --------------------------------------------------
         g, P, T1, T2, T3 = self.g, self.P, self.T[1], self.T[2], self.T[3]
-        g[0].fill(-1.0 / FOURPI)               # e0 density part
-        g[1].fill(0.0)
-        g[2].fill(0.0)
-        g[3].fill(0.0)
-        if L is not None:                      # -(L^2/2I^2) dI/dq (density)
-            fac = -(L * L) / (2.0 * Ival * Ival) * 4.0
-            np.multiply(q[1], fac, out=T0)
-            g[1] += T0
-            np.multiply(q[2], fac, out=T0)
-            g[2] += T0
+        if self.scheme == "central4":
+            gq = g                              # eval points = cells
+            # e0 density part, floor-wall-scaled (dE_fpen includes its dE0)
+            g[0].fill(-(1.0 + MU_FLOOR * devf) / FOURPI)
+            g[1].fill(0.0)
+            g[2].fill(0.0)
+            g[3].fill(0.0)
+            if L is not None:                   # -(L^2/2I^2) dI/dq (density)
+                fac = -(L * L) / (2.0 * Ival * Ival) * 4.0
+                np.multiply(q[1], fac, out=Tc0)
+                g[1] += Tc0
+                np.multiply(q[2], fac, out=Tc0)
+                g[2] += Tc0
+        else:
+            gq = self.ge                        # d(dens)/d(qe) at corners
+            gq.fill(0.0)
         # (2+4)-sector fluxes, weight t/4pi
         w24 = 2.0 * t / FOURPI
         DOT = {(0, 1): 0, (0, 2): 1, (1, 2): 2}
@@ -412,22 +517,33 @@ class Engine:
                 np.multiply(d2, D[o2, a], out=T0)
                 Pv -= T0
                 Pv *= w24
-        # sextic: d(det^2/4pi)/d det = det/2pi; the degree-anchoring penalty
-        # adds the constant  MU (deg-1) sgn6 / (2 pi^2)  to the det-weight
-        np.multiply(det, 1.0 / (2.0 * np.pi), out=self.w6)
+        # sextic: d(det^2/4pi)/d det = det/2pi.  The one-sided degree anchor
+        # adds a constant to the det-weight; the one-sided Bogomolny-floor
+        # wall rescales the E6 weight by s6 = 1 + MU_FLOOR*devf and adds its
+        # own deg-derivative constant (dE_fpen = MU_FLOOR devf (dE6 + dE0
+        # - BPS_FLOOR/deg_ref * ddeg)); its dE0 part is applied at the e0
+        # density below.
+        s6 = 1.0 + MU_FLOOR * devf
+        np.multiply(det, s6 / (2.0 * np.pi), out=self.w6)
         w6 = self.w6
-        w6 += MU_DEG * (deg - 1.0) * self.sgn6 / (2.0 * np.pi ** 2)
+        cst = 0.0
+        if dev < 0.0:
+            cst += MU_DEG * dev
+        if devf < 0.0:
+            cst -= MU_FLOOR * devf * BPS_FLOOR / self.deg_ref
+        if cst != 0.0:
+            w6 += cst * self.sgn6 / (2.0 * np.pi ** 2)
         for p, (a, b, c, d, sg) in enumerate(PAIRS):
             np.multiply(w6, Pc6[p], out=T2)
             if sg < 0:
                 T2 *= -1.0
             np.multiply(T2, Dx[b], out=T0)
-            g[a] += T0
+            gq[a] += T0
             np.multiply(T2, Dx[a], out=T0)
-            g[b] -= T0
-            np.multiply(T2, q[a], out=T0)
+            gq[b] -= T0
+            np.multiply(T2, qE[a], out=T0)
             P[0, b] += T0
-            np.multiply(T2, q[b], out=T0)
+            np.multiply(T2, qE[b], out=T0)
             P[0, a] -= T0
             np.multiply(w6, M6[p], out=T3)
             if sg < 0:
@@ -440,33 +556,88 @@ class Engine:
             P[2, d] += T0
             np.multiply(T3, Dy[d], out=T0)
             P[2, c] -= T0
-        # divergence: adjoint of the 4th-order stencil (ghost flux = 0)
-        for a in range(4):
-            gv = g[a]
-            Pv = P[0, a]
-            gv[1:, :, :] += c1 * Pv[:-1, :, :]
-            gv[:-1, :, :] -= c1 * Pv[1:, :, :]
-            gv[:-2, :, :] += c2 * Pv[2:, :, :]
-            gv[2:, :, :] -= c2 * Pv[:-2, :, :]
-            Pv = P[1, a]
-            gv[:, 1:, :] += c1 * Pv[:, :-1, :]
-            gv[:, :-1, :] -= c1 * Pv[:, 1:, :]
-            gv[:, :-2, :] += c2 * Pv[:, 2:, :]
-            gv[:, 2:, :] -= c2 * Pv[:, :-2, :]
-            Pv = P[2, a]
-            gv[:, :, 1:] += c1 * Pv[:, :, :-1]
-            gv[:, :, :-1] -= c1 * Pv[:, :, 1:]
-            gv[:, :, :-2] += c2 * Pv[:, :, 2:]
-            gv[:, :, 2:] -= c2 * Pv[:, :, :-2]
+        if self.scheme == "central4":
+            # divergence: adjoint of the 4th-order stencil (ghost flux = 0)
+            c1 = 8.0 / (12.0 * self.h)
+            c2 = 1.0 / (12.0 * self.h)
+            for a in range(4):
+                gv = g[a]
+                Pv = P[0, a]
+                gv[1:, :, :] += c1 * Pv[:-1, :, :]
+                gv[:-1, :, :] -= c1 * Pv[1:, :, :]
+                gv[:-2, :, :] += c2 * Pv[2:, :, :]
+                gv[2:, :, :] -= c2 * Pv[:-2, :, :]
+                Pv = P[1, a]
+                gv[:, 1:, :] += c1 * Pv[:, :-1, :]
+                gv[:, :-1, :] -= c1 * Pv[:, 1:, :]
+                gv[:, :-2, :] += c2 * Pv[:, 2:, :]
+                gv[:, 2:, :] -= c2 * Pv[:, :-2, :]
+                Pv = P[2, a]
+                gv[:, :, 1:] += c1 * Pv[:, :, :-1]
+                gv[:, :, :-1] -= c1 * Pv[:, :, 1:]
+                gv[:, :, :-2] += c2 * Pv[:, :, 2:]
+                gv[:, :, 2:] -= c2 * Pv[:, :, :-2]
+        else:
+            # adjoints of the corner operators (ghost cells receive nothing)
+            ih = 1.0 / self.h
+            gp = self.gp
+            gp.fill(0.0)
+            B, By = self.B_ayz, self.B_ay
+            Bz, Bx, Bw = self.B_axz, self.B_ax, self.B_axy
+            for a in range(4):
+                gpa = gp[a]
+                # branch ay -> ayz -> {Dx, qe}
+                np.multiply(P[0, a], ih, out=T1)     # diff_x^T source
+                np.multiply(gq[a], 0.5, out=T2)      # avg_x^T of d/dqe
+                B.fill(0.0)
+                B[1:] += T1
+                B[:-1] -= T1
+                B[1:] += T2
+                B[:-1] += T2
+                B *= 0.5                             # avg_z^T
+                By.fill(0.0)
+                By[:, :, 1:] += B
+                By[:, :, :-1] += B
+                By *= 0.5                            # avg_y^T
+                gpa[:, 1:, :] += By
+                gpa[:, :-1, :] += By
+                # branch ax -> {axz -> Dy, axy -> Dz}
+                np.multiply(P[1, a], ih, out=T1)
+                Bz.fill(0.0)
+                Bz[:, 1:, :] += T1
+                Bz[:, :-1, :] -= T1
+                Bz *= 0.5                            # avg_z^T
+                Bx.fill(0.0)
+                Bx[:, :, 1:] += Bz
+                Bx[:, :, :-1] += Bz
+                np.multiply(P[2, a], ih, out=T1)
+                Bw.fill(0.0)
+                Bw[:, :, 1:] += T1
+                Bw[:, :, :-1] -= T1
+                Bw *= 0.5                            # avg_y^T
+                Bx[:, 1:, :] += Bw
+                Bx[:, :-1, :] += Bw
+                Bx *= 0.5                            # avg_x^T
+                gpa[1:, :, :] += Bx
+                gpa[:-1, :, :] += Bx
+            g[:] = gp[:, 1:-1, 1:-1, 1:-1]
+            # e0 (cell density), floor-wall-scaled
+            g[0] -= (1.0 + MU_FLOOR * devf) / FOURPI
+            if L is not None:                        # -(L^2/2I^2) dI/dq
+                fac = -(L * L) / (2.0 * Ival * Ival) * 4.0
+                np.multiply(q[1], fac, out=Tc0)
+                g[1] += Tc0
+                np.multiply(q[2], fac, out=Tc0)
+                g[2] += Tc0
         g *= h3
-        # tangent projection
-        np.multiply(g[0], q[0], out=T0)
+        # tangent projection (cells)
+        np.multiply(g[0], q[0], out=Tc0)
         for a in range(1, 4):
-            np.multiply(g[a], q[a], out=T1)
-            T0 += T1
+            np.multiply(g[a], q[a], out=Tc1)
+            Tc0 += Tc1
         for a in range(4):
-            np.multiply(T0, q[a], out=T1)
-            g[a] -= T1
+            np.multiply(Tc0, q[a], out=Tc1)
+            g[a] -= Tc1
         return out, g
 
     # -- diagnostics ----------------------------------------------------
@@ -493,7 +664,7 @@ def virial(out, t=T_FROZEN):
 # ----------------------------------------------------------------------
 # arrested Newton flow
 # ----------------------------------------------------------------------
-def anf(eng, q, L, maxit, label, dt0=0.02, dt_max=0.60,
+def anf(eng, q, L, maxit, label, dt0=0.01, dt_max=0.05,
         gtol_ratio=GTOL_RATIO, instr_every=INSTR_EVERY):
     """Arrested Newton flow on E_static (L None) or R(q; L).  Returns the
     final field, final sector dict, the instrumented time series, and a
@@ -514,6 +685,7 @@ def anf(eng, q, L, maxit, label, dt0=0.02, dt_max=0.60,
         hf, cen = eng.halo_fraction(q)
         series.append(dict(
             it=it, R=out["R"], obj=obj, Epen=out["Epen"],
+            Efpen=out["Efpen"], floor_gap=out["floor_gap"],
             Estat=out["Estat"], E2=out["E2"], E4=out["E4"],
             E6=out["E6"], E0=out["E0"], I=out["I"],
             kappa=(0.0 if L is None else L / out["I"]),
@@ -550,13 +722,15 @@ def anf(eng, q, L, maxit, label, dt0=0.02, dt_max=0.60,
             dot = v[0] * q[0] + v[1] * q[1] + v[2] * q[2] + v[3] * q[3]
             for a in range(4):
                 v[a] -= dot * q[a]
-            dt = min(dt * 1.005, dt_max)
+            dt = min(dt * 1.01, dt_max)
         gn = float(np.sqrt(np.sum(g * g))) / h3
         if it % instr_every == 0 or it == maxit:
             rec = record(it, gn, dt)
             if it % PRINT_EVERY == 0 or it == maxit:
                 log(f"  [{label}] it={it}  R={out['R']:.7f} "
-                    f"pen={out['Epen']:.2e}  I={out['I']:.4f} "
+                    f"pen={out['Epen']:.2e} fpen={out['Efpen']:.2e} "
+                    f"fgap={out['floor_gap']:+.4f}  "
+                    f"I={out['I']:.4f} "
                     f"kappa={rec['kappa']:.5f} deg={out['deg']:.5f} "
                     f"halo={rec['halo']:.4f} gnorm={gn:.3e} dt={dt:.2e} "
                     f"arr={arrests}")
@@ -607,43 +781,46 @@ def axi_reference(eng, rn, fn, L, lo=-0.10, hi=0.45, iters=48):
 def run_gates(rn, fn):
     log("\n===== Section G: validation gates =====")
     gates = {}
-    hh = {}
-    for N in (N_GATE_XLO, N_GATE_LO, N_MAIN):
-        eng = Engine(N, LBOX)
+    runs = [("central4", N) for N in (N_GATE_XLO, N_GATE_LO, N_MAIN)] + \
+           [("corner", N) for N in (N_GATE_LO, N_MAIN)]
+    for scheme, N in runs:
+        eng = Engine(N, LBOX, scheme=scheme)
         q = eng.hedgehog(rn, fn)
         t0 = time.time()
         out, _ = eng.energy(q, need_grad=False)
         dt = time.time() - t0
-        hh[N] = out
         rel = {k: out[k] / REF[k] - 1.0 for k in REF}
         vir = virial(out)
-        log(f"  N={N} (h={eng.h:.5f}, eval {dt:.2f}s): "
+        log(f"  {scheme:8s} N={N} (h={eng.h:.5f}, eval {dt:.2f}s): "
             + " ".join(f"{k}={out[k]:.6f}({rel[k]:+.2e})" for k in REF))
-        log(f"        degree={out['deg']:+.6f}  virial={vir:+.3e} "
+        log(f"           degree={out['deg']:+.6f}  virial={vir:+.3e} "
             f"(rel {vir / out['Estat']:+.3e})")
-        gates[f"N{N}"] = dict(
+        gates[f"{scheme}_N{N}"] = dict(
             {k: out[k] for k in ("E2", "E4", "E6", "E0", "I")},
             deg=out["deg"], rel={k: rel[k] for k in REF},
             virial=vir, virial_rel=vir / out["Estat"])
-    conv = {k: abs(gates[f"N{N_GATE_LO}"]["rel"][k])
-            / max(abs(gates[f"N{N_MAIN}"]["rel"][k]), 1e-30) for k in REF}
-    log("  convergence ratio |err(N=%d)|/|err(N=%d)|: " % (N_GATE_LO, N_MAIN)
-        + " ".join(f"{k}={conv[k]:.2f}" for k in REF)
-        + f"   [O(h^2) would be {(N_MAIN / N_GATE_LO) ** 2:.2f}]")
-    worst = max(abs(v) for v in gates[f"N{N_MAIN}"]["rel"].values())
-    dg = abs(abs(gates[f"N{N_MAIN}"]["deg"]) - 1.0)
-    log(f"  gate: worst sector rel err at N={N_MAIN}: {worst:.2e} "
-        f"(tol 1e-2) -> {'PASS' if worst < 1e-2 else 'FAIL'}")
-    log(f"  gate: |degree - 1| = {dg:.2e} (tol 5e-3) -> "
-        f"{'PASS' if dg < 5e-3 else 'FAIL'}")
-    gates["convergence_ratio"] = conv
-    gates["worst_rel_Nmain"] = worst
-    gates["degree_err_Nmain"] = dg
-    gates["pass_sectors"] = bool(worst < 1e-2)
-    gates["pass_degree"] = bool(dg < 5e-3)
+    for scheme in ("central4", "corner"):
+        conv = {k: abs(gates[f"{scheme}_N{N_GATE_LO}"]["rel"][k])
+                / max(abs(gates[f"{scheme}_N{N_MAIN}"]["rel"][k]), 1e-30)
+                for k in REF}
+        log(f"  {scheme}: convergence ratio |err(N={N_GATE_LO})|/"
+            f"|err(N={N_MAIN})|: "
+            + " ".join(f"{k}={conv[k]:.2f}" for k in REF)
+            + f"   [O(h^2) would be {(N_MAIN / N_GATE_LO) ** 2:.2f}]")
+        worst = max(abs(v) for v in gates[f"{scheme}_N{N_MAIN}"]["rel"].values())
+        dg = abs(abs(gates[f"{scheme}_N{N_MAIN}"]["deg"]) - 1.0)
+        log(f"  {scheme}: worst sector rel err at N={N_MAIN}: {worst:.2e} "
+            f"(tol 1e-2) -> {'PASS' if worst < 1e-2 else 'FAIL'};  "
+            f"|degree - 1| = {dg:.2e} (tol 5e-3) -> "
+            f"{'PASS' if dg < 5e-3 else 'FAIL'}")
+        gates[f"{scheme}_convergence_ratio"] = conv
+        gates[f"{scheme}_worst_rel_Nmain"] = worst
+        gates[f"{scheme}_degree_err_Nmain"] = dg
+        gates[f"{scheme}_pass_sectors"] = bool(worst < 1e-2)
+        gates[f"{scheme}_pass_degree"] = bool(dg < 5e-3)
 
     # boundary-tail check on the initial hedgehog
-    engM = Engine(N_MAIN, LBOX)
+    engM = Engine(N_GATE_LO, LBOX, scheme="corner")
     qM = engM.hedgehog(rn, fn)
     fb = np.sqrt(qM[1] ** 2 + qM[2] ** 2 + qM[3] ** 2)
     tail = max(float(fb[0].max()), float(fb[-1].max()),
@@ -654,34 +831,38 @@ def run_gates(rn, fn):
     gates["boundary_tail"] = tail
     gates["pass_tail"] = bool(tail < 1e-6)
 
-    # FD-vs-analytic gradient check (small grid, perturbed hedgehog)
+    # FD-vs-analytic gradient check (small grid, perturbed hedgehog;
+    # fgap_ref = +10 forces the floor wall active so its branch is checked)
     Ng = 20
-    eng = Engine(Ng, LBOX)
-    q = eng.hedgehog(rn, fn)
-    q = eng.normalize(q + eng.perturbation(seed=11, amp=0.05))
     rng = np.random.default_rng(12)
     worst_gc = 0.0
-    for L in (None, L_MAIN):
-        out, g = eng.energy(q, L=L, need_grad=True)
-        g = g.copy()
-        for _ in range(3):
-            u = rng.standard_normal(q.shape)
-            u -= (u[0] * q[0] + u[1] * q[1] + u[2] * q[2] + u[3] * q[3]) * q
-            u /= np.sqrt(np.sum(u * u))
-            eps = 1e-5
-            qp = eng.normalize(q + eps * u)
-            qm = eng.normalize(q - eps * u)
-            op, _ = eng.energy(qp, L=L, need_grad=False)
-            om, _ = eng.energy(qm, L=L, need_grad=False)
-            fd = (op["obj"] - om["obj"]) / (2.0 * eps)
-            an = float(np.sum(g * u))
-            worst_gc = max(worst_gc, abs(fd - an) / max(abs(fd), 1e-30))
-    log(f"  gate: FD-vs-analytic gradient (E_static and Routhian, 6 dirs): "
-        f"worst rel {worst_gc:.2e} (tol 1e-5) -> "
+    for scheme in ("central4", "corner"):
+        eng = Engine(Ng, LBOX, scheme=scheme)
+        eng.fgap_ref = 10.0
+        q = eng.hedgehog(rn, fn)
+        q = eng.normalize(q + eng.perturbation(seed=11, amp=0.05))
+        for L in (None, L_MAIN):
+            out, g = eng.energy(q, L=L, need_grad=True)
+            g = g.copy()
+            for _ in range(3):
+                u = rng.standard_normal(q.shape)
+                u -= (u[0] * q[0] + u[1] * q[1] + u[2] * q[2]
+                      + u[3] * q[3]) * q
+                u /= np.sqrt(np.sum(u * u))
+                eps = 1e-5
+                qp = eng.normalize(q + eps * u)
+                qm = eng.normalize(q - eps * u)
+                op, _ = eng.energy(qp, L=L, need_grad=False)
+                om, _ = eng.energy(qm, L=L, need_grad=False)
+                fd = (op["obj"] - om["obj"]) / (2.0 * eps)
+                an = float(np.sum(g * u))
+                worst_gc = max(worst_gc, abs(fd - an) / max(abs(fd), 1e-30))
+    log(f"  gate: FD-vs-analytic gradient (both schemes, E_static and "
+        f"Routhian, 12 dirs): worst rel {worst_gc:.2e} (tol 1e-5) -> "
         f"{'PASS' if worst_gc < 1e-5 else 'FAIL'}")
     gates["gradcheck_worst"] = worst_gc
     gates["pass_gradcheck"] = bool(worst_gc < 1e-5)
-    return gates, hh
+    return gates
 
 
 # ----------------------------------------------------------------------
@@ -767,33 +948,54 @@ def main():
         f"gmax={gmax:.1e}")
 
     # ---- gates ----------------------------------------------------------
-    gates, hh = run_gates(rn, fn)
+    gates = run_gates(rn, fn)
 
-    # ---- engines --------------------------------------------------------
-    eng = Engine(N_MAIN, LBOX)
-    engB = Engine(N_MAIN, LBOX_BIG)
+    # ---- engines: corner scheme drives the descents, central4 measures --
+    eng = Engine(N_MAIN, LBOX, scheme="corner")
+    engB = Engine(N_MAIN, LBOX_BIG, scheme="corner")
+    engM4 = Engine(N_MAIN, LBOX, scheme="central4")
+    engB4 = Engine(N_MAIN, LBOX_BIG, scheme="central4")
+
+    def remeasure(engine4, qf, L):
+        o, _ = engine4.energy(qf, L=L, need_grad=False)
+        return o
 
     # ---- on-grid axisymmetric family-A references -----------------------
     log("\n===== Section A: on-grid axisymmetric family-A references =====")
+    log("  (corner objective, the same functional the descents minimize;")
+    log("   central4 re-measurement of the same configuration in [..])")
     dA, RA, outA = axi_reference(eng, rn, fn, L_MAIN)
-    log(f"  main box, L={L_MAIN}: d*={dA:.5f}  R_A={RA:.6f} "
+    RA4 = remeasure(engM4, eng.hedgehog(rn, fn, d=dA), L_MAIN)["R"]
+    log(f"  main box, L={L_MAIN}: d*={dA:.5f}  R_A={RA:.6f} [{RA4:.6f}] "
         f"(spectral solA: d={SOLA['d']:.5f} R={SOLA['R']:.6f})  "
         f"I={outA['I']:.4f} kappa={L_MAIN / outA['I']:.5f}")
     dAb, RAb, outAb = axi_reference(engB, rn, fn, L_MAIN)
-    log(f"  big  box, L={L_MAIN}: d*={dAb:.5f}  R_A={RAb:.6f}  "
+    RAb4 = remeasure(engB4, engB.hedgehog(rn, fn, d=dAb), L_MAIN)["R"]
+    log(f"  big  box, L={L_MAIN}: d*={dAb:.5f}  R_A={RAb:.6f} [{RAb4:.6f}]  "
         f"I={outAb['I']:.4f} kappa={L_MAIN / outAb['I']:.5f}")
     dAc, RAc, outAc = axi_reference(eng, rn, fn, L_CTRL)
-    log(f"  main box, L={L_CTRL}: d*={dAc:.5f}  R_A={RAc:.6f}  "
+    RAc4 = remeasure(engM4, eng.hedgehog(rn, fn, d=dAc), L_CTRL)["R"]
+    log(f"  main box, L={L_CTRL}: d*={dAc:.5f}  R_A={RAc:.6f} [{RAc4:.6f}]  "
         f"I={outAc['I']:.4f} kappa={L_CTRL / outAc['I']:.5f}")
-    axiref = dict(main=dict(d=dA, R=RA, I=outA["I"], Estat=outA["Estat"]),
-                  big=dict(d=dAb, R=RAb, I=outAb["I"], Estat=outAb["Estat"]),
-                  ctrl=dict(d=dAc, R=RAc, I=outAc["I"], Estat=outAc["Estat"]),
+    axiref = dict(main=dict(d=dA, R=RA, R_central4=RA4, I=outA["I"],
+                            Estat=outA["Estat"]),
+                  big=dict(d=dAb, R=RAb, R_central4=RAb4, I=outAb["I"],
+                           Estat=outAb["Estat"]),
+                  ctrl=dict(d=dAc, R=RAc, R_central4=RAc4, I=outAc["I"],
+                            Estat=outAc["Estat"]),
                   solA_spectral=SOLA)
 
     # ---- Section S: static minimization ---------------------------------
     log("\n===== Section S: static minimization (perturbed hedgehog) =====")
     q = eng.hedgehog(rn, fn)
     out_h, _ = eng.energy(q, need_grad=False)
+    eng.deg_ref = out_h["deg"]          # one-sided degree anchor reference
+    out_h, _ = eng.energy(eng.hedgehog(rn, fn), need_grad=False)
+    eng.fgap_ref = out_h["floor_gap"] - FLOOR_BAND   # Bogomolny-floor wall
+    log(f"  degree anchor: deg_ref={eng.deg_ref:.6f} (corner-scheme "
+        f"hedgehog), dead band {DEG_BAND}")
+    log(f"  Bogomolny-floor wall: hedgehog fgap={out_h['floor_gap']:+.6f}, "
+        f"wall at {eng.fgap_ref:+.6f} (MU_FLOOR={MU_FLOOR})")
     q = eng.normalize(q + eng.perturbation())
     out_p, _ = eng.energy(q, need_grad=False)
     log(f"  hedgehog E_static={out_h['Estat']:.7f}; perturbed "
@@ -801,26 +1003,36 @@ def main():
     q, outS, serS, stS, msS = anf(eng, q, None, MAXIT_STATIC, "static")
     hfS, cenS = eng.halo_fraction(q)
     virS = virial(outS)
+    outS4 = remeasure(engM4, q, None)
     log(f"  static solution: Estat={outS['Estat']:.7f} "
-        f"(hedgehog {out_h['Estat']:.7f}, delta {outS['Estat'] - out_h['Estat']:+.2e})")
-    log("  sectors: " + " ".join(
-        f"{k}={outS[k]:.6f}(vs hh {outS[k] / out_h[k] - 1:+.2e})"
+        f"(hedgehog {out_h['Estat']:.7f}, delta {outS['Estat'] - out_h['Estat']:+.2e});"
+        f" central4 re-measure Estat={outS4['Estat']:.7f}")
+    log("  sectors (corner | central4): " + " ".join(
+        f"{k}={outS[k]:.6f}|{outS4[k]:.6f}"
         for k in ("E2", "E4", "E6", "E0", "I")))
-    log(f"  degree={outS['deg']:.6f}  virial={virS:+.3e} "
+    log(f"  degree={outS['deg']:.6f}|{outS4['deg']:.6f}  virial={virS:+.3e} "
         f"(rel {virS / outS['Estat']:+.3e})  centroid={cenS}")
+    log(f"  BPS-floor sanity: Estat >= (E6+E0 >= 3.016989*deg): "
+        f"E6+E0={outS['E6'] + outS['E0']:.6f} vs "
+        f"{3.016989 * outS['deg']:.6f}")
     q_static = q.copy()
     static_res = dict(E_hedgehog=out_h["Estat"], E_perturbed=out_p["Estat"],
-                      final={k: outS[k] for k in outS}, virial=virS,
+                      final={k: outS[k] for k in outS},
+                      final_central4={k: outS4[k] for k in outS4},
+                      virial=virS,
                       virial_rel=virS / outS["Estat"], centroid=list(cenS),
                       meta=msS, series=serS)
 
     # ---- Section M: main Routhian descent at L = 8.4979 -----------------
     log(f"\n===== Section M: Routhian descent, L={L_MAIN} "
         f"(kappa_hedgehog={L_MAIN / outS['I']:.4f} > KC={KC:.5f}) =====")
-    q = eng.normalize(q_static.copy() + eng.perturbation())
+    q = eng.normalize(q_static.copy() + eng.perturbation() + eng.halo_seed())
     q, outM, serM, stM, msM = anf(eng, q, L_MAIN, MAXIT_MAIN, "L=8.4979")
+    outM4 = remeasure(engM4, q, L_MAIN)
     log(f"  final: R={outM['R']:.6f} vs on-grid axi ref {RA:.6f} "
-        f"(dR={outM['R'] - RA:+.6f}) vs spectral solA {SOLA['R']:.6f}")
+        f"(dR={outM['R'] - RA:+.6f});  central4 re-measure "
+        f"R={outM4['R']:.6f} vs [{RA4:.6f}] (dR={outM4['R'] - RA4:+.6f});  "
+        f"spectral solA {SOLA['R']:.6f}")
     log(f"  I: {serM[0]['I']:.4f} -> {outM['I']:.4f};  kappa: "
         f"{L_MAIN / serM[0]['I']:.5f} -> {L_MAIN / outM['I']:.5f} "
         f"(threshold {KC:.5f});  halo: {serM[0]['halo']:.4f} -> "
@@ -829,10 +1041,12 @@ def main():
     # ---- Section C: control descent at L = 4.0 ---------------------------
     log(f"\n===== Section C: control descent, L={L_CTRL} "
         f"(kappa_hedgehog={L_CTRL / outS['I']:.4f} < KC) =====")
-    q = eng.normalize(q_static.copy() + eng.perturbation())
+    q = eng.normalize(q_static.copy() + eng.perturbation() + eng.halo_seed())
     q, outC, serC, stC, msC = anf(eng, q, L_CTRL, MAXIT_CTRL, "L=4.0")
+    outC4 = remeasure(engM4, q, L_CTRL)
     log(f"  final: R={outC['R']:.6f} vs on-grid axi ref {RAc:.6f} "
-        f"(dR={outC['R'] - RAc:+.6f})")
+        f"(dR={outC['R'] - RAc:+.6f});  central4 re-measure "
+        f"R={outC4['R']:.6f} vs [{RAc4:.6f}] (dR={outC4['R'] - RAc4:+.6f})")
     log(f"  I: {serC[0]['I']:.4f} -> {outC['I']:.4f};  kappa -> "
         f"{L_CTRL / outC['I']:.5f};  halo -> {serC[-1]['halo']:.4f};  "
         f"deg={outC['deg']:.5f}")
@@ -843,13 +1057,18 @@ def main():
         f"+-{LBOX_BIG:.2f}, h={engB.h:.5f} =====")
     qB = engB.hedgehog(rn, fn)
     outBh, _ = engB.energy(qB, need_grad=False)
+    engB.deg_ref = outBh["deg"]
+    outBh, _ = engB.energy(qB, need_grad=False)   # fgap with final deg_ref
+    engB.fgap_ref = outBh["floor_gap"] - FLOOR_BAND
     log(f"  big-box hedgehog: Estat={outBh['Estat']:.6f} "
         f"deg={outBh['deg']:.5f} (start = perturbed hedgehog, not re-relaxed)")
-    qB = engB.normalize(qB + engB.perturbation())
+    qB = engB.normalize(qB + engB.perturbation() + engB.halo_seed())
     qB, outB, serB, stB, msB = anf(engB, qB, L_MAIN, MAXIT_BIG, "bigbox")
+    outB4 = remeasure(engB4, qB, L_MAIN)
     log(f"  final: R={outB['R']:.6f} vs big-box axi ref {RAb:.6f} "
-        f"(dR={outB['R'] - RAb:+.6f});  main-box dR was "
-        f"{outM['R'] - RA:+.6f}")
+        f"(dR={outB['R'] - RAb:+.6f});  central4 re-measure "
+        f"R={outB4['R']:.6f} vs [{RAb4:.6f}] (dR={outB4['R'] - RAb4:+.6f});  "
+        f"main-box dR was {outM['R'] - RA:+.6f}")
     log(f"  kappa -> {L_MAIN / outB['I']:.5f};  halo -> "
         f"{serB[-1]['halo']:.4f};  deg={outB['deg']:.5f}")
 
@@ -880,17 +1099,33 @@ def main():
         f"clock-charged solution is "
         f"{'ABOVE (over-spun regime)' if kap_clock > KC else 'below'} "
         f"the halo threshold (ratio {kap_clock / KC:.4f})")
+    # cross-check with the central4 measurement of the same configuration
+    E4c, I4c = outC4["Estat"], outC4["I"]
+    L_clock4 = np.sqrt(2.0 / 3.0 * I4c * E4c)
+    kap_clock4 = L_clock4 / I4c
+    log(f"  [central4 re-measure: Estat={E4c:.6f} I={I4c:.5f} -> "
+        f"L_clock={L_clock4:.6f}, kappa={kap_clock4:.6f} "
+        f"(ratio {kap_clock4 / KC:.4f})]")
     clock = dict(Estat=Estat_c, I=I_c, erot_frac_L4=erot4, L_clock=L_clock,
                  kappa_clock=kap_clock, erot_frac_clock=erotc,
                  above_threshold=bool(kap_clock > KC),
-                 ratio_to_threshold=kap_clock / KC)
+                 ratio_to_threshold=kap_clock / KC,
+                 central4=dict(Estat=E4c, I=I4c, L_clock=L_clock4,
+                               kappa_clock=kap_clock4,
+                               ratio_to_threshold=kap_clock4 / KC))
 
     # ---- outputs ----------------------------------------------------------
     results = dict(
         meta=dict(N=N_MAIN, LBOX=LBOX, LBOX_BIG=LBOX_BIG,
                   h=2 * LBOX / N_MAIN, t=T_FROZEN, L_main=L_MAIN,
                   L_ctrl=L_CTRL, KC=KC, seed=SEED_PERT, smoke=SMOKE,
-                  halo_radius=HALO_RADIUS,
+                  halo_radius=HALO_RADIUS, scheme_descent="corner",
+                  scheme_measure="central4", MU_DEG=MU_DEG,
+                  DEG_BAND=DEG_BAND, MU_FLOOR=MU_FLOOR,
+                  FLOOR_BAND=FLOOR_BAND, BPS_FLOOR=BPS_FLOOR,
+                  deg_ref_main=eng.deg_ref, fgap_ref_main=eng.fgap_ref,
+                  deg_ref_big=engB.deg_ref, fgap_ref_big=engB.fgap_ref,
+                  halo_seed=dict(eta=0.05, r0=3.2, w=0.6),
                   maxit=dict(static=MAXIT_STATIC, main=MAXIT_MAIN,
                              ctrl=MAXIT_CTRL, big=MAXIT_BIG),
                   runtime_s=None),
@@ -901,15 +1136,21 @@ def main():
         static=static_res,
         descent_main=dict(L=L_MAIN, status=stM, meta=msM,
                           final={k: outM[k] for k in outM},
+                          final_central4={k: outM4[k] for k in outM4},
                           R_axi_grid=RA, dR_vs_axi=outM["R"] - RA,
+                          dR_vs_axi_central4=outM4["R"] - RA4,
                           series=serM),
         descent_ctrl=dict(L=L_CTRL, status=stC, meta=msC,
                           final={k: outC[k] for k in outC},
+                          final_central4={k: outC4[k] for k in outC4},
                           R_axi_grid=RAc, dR_vs_axi=outC["R"] - RAc,
+                          dR_vs_axi_central4=outC4["R"] - RAc4,
                           series=serC),
         descent_big=dict(L=L_MAIN, status=stB, meta=msB,
                          final={k: outB[k] for k in outB},
+                         final_central4={k: outB4[k] for k in outB4},
                          R_axi_grid=RAb, dR_vs_axi=outB["R"] - RAb,
+                         dR_vs_axi_central4=outB4["R"] - RAb4,
                          series=serB),
         clock=clock,
     )
