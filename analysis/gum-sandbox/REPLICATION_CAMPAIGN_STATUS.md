@@ -105,25 +105,78 @@ formula to 9 digits; the scaling rung 2√(ê₀𝔦₀) reproduced to 7).
   named, machine-precision-grounded doubt whose adjudicator is the
   unrestricted 2-D solve.
 
-## Next (not yet executed)
-- **Tier 2b Step 3 (now F-R4's adjudicator):** the UNRESTRICTED axisymmetric
-  isorotating 2-D field solve
-  with the real ε-sector (log-divergent compacton-edge boundary layer
-  resolved), targeting κ = 0.802 ± 0.018, V = 1.409 ± 0.010, c_g = 0.42 ±
-  0.04, δ = 0.29 ± 0.05, onset κ = 1.000 ± 0.004.
-- ~~WS-A4 demand tables~~ ✅ closed (gauntlet Group G: all five rows from
-  one δ = 1.0×10⁻¹² window; the "thin corner ∼40" confirmed at 38.6).
-- ~~NR-D1b core-energy floor~~ ✅ closed (gauntlet Group H: W-eternal
-  replicated; the corpus's G→8 rounding is conservative-direction).
-- ~~Generic-set M = 4 Born rerun~~ ✅ closed: τ = 4.48, r² = 0.987 —
-  near-exponential relaxation restored; the corpus's "M ≳ 4" onset holds
-  for generic sets (the stall was pure spectral degeneracy). Tier-3
-  tension resolved in the corpus's favor.
+## Tier 2b Step 3 — Enlarged-Basis Closure ✅ COMPLETE → F-R4 HARDENED + FINDING F-R5
+**`tier2-closure/axi3_*`** — the F-R4 adjudicator: direction-tilt Θ modes
+added to the axisymmetric basis (the only modes that can turn the g-dial,
+per the F-R4 lemma), gates G0–G5 all PASS, Step-2's closure reproduced to
+8×10⁻⁶ before enlargement.
+- **The answer to F-R4's question is "neither"**: tilt modes do not carry
+  the ε→0 closure from the scaling rung (2.0533) to the paper's endpoint
+  (2.5147) — they drive it **past** 2.5147 without stopping. Direct solves
+  hit their caps still descending (𝔠 = 2.78 and climbing); the well-posed
+  saturated limit gives **𝔠_paper ∈ [2.828 (rigorous bound), 3.201]**.
+- **FINDING F-R5 (substantive):** the fixed-L Routhian is variationally
+  unstable to a far-field tilt halo whenever κ_paper > 1/√2 — the standard
+  over-spin criterion ω > μ(tilt), derived (dR = [∫η²](1/8π − κ_ours²)) and
+  verified by shell probes (κ_crit 0.216 measured vs 0.199 ideal, dI
+  quadratic). **Every solution the corpus quotes (rung 0.935, benchmark
+  0.802, deep-BPS 0.764) sits above the threshold**; the true infimum is
+  halo-saturated at κ_paper = 1/√2 exactly. The ⟨r1⟩ benchmark is a
+  **halo-unstable saddle** of its own functional; 𝔠₀ = 2.5147 is excluded
+  from below by a rigorous bound in the enlarged space. The corpus's
+  "onset at κ = 1.000" claim is normalized inconsistently with its
+  closure-algebra κ's (a pinned √2; both readings fail within-model) —
+  working hypothesis: the frozen ⟨r1⟩ code direction-locks the hedgehog,
+  an unstated restriction. Full analysis: `axi3_ADJUDICATION.md`;
+  measured facts: `axi3_RESULTS.md`.
+- Untouched throughout: E_rot/E = ¼ (10⁻⁹), clock residuals ≤ 4×10⁻⁹, the
+  spin-selection and rung algebra — the *selection* theorems survive; the
+  *value* 𝔠₀ does not, within the stated variational problem.
 
-**Gauntlet now at 50/50** — golden Merkle root
-`5640e4fe1e2e52e112af0fac1e7420a15894c384744210be492bbdd50d926b1e`,
+## Findings ledger (the campaign's product)
+- **F-R1** (Tier 0/F): NR-D2's printed KE coefficient ×25 too large at its
+  stated v — conservative direction; the murk kill fires harder.
+- **F-R2** (Tier 2a): AUD-15 V15.2's g-span [1.28,1.32] inconsistent with
+  its own corrected formula (true [1.257,1.315]) — harmless.
+- **F-R3** (Tier 0/I): ⟨r10⟩'s ±0.90 band implies ρ_eff = −0.36, not the
+  printed +0.45 — band-arithmetic slip; the S1 stake unaffected.
+- **F-R4** (Step 2, hardened by Step 3): G.5's SDiff inertia-enhancement
+  mechanism fails at machine precision — inertia is invariant on the SDiff
+  orbit (proof: `axi_FR4_NOTE.md`); no wording repair survives Step 3.
+- **F-R5** (Step 3): the closure's stated variational problem does not
+  select 𝔠₀ = 2.5147 or the ⟨r1⟩ tuple — tilt-halo instability above
+  κ_paper = 1/√2, saturated infimum ≥ 2√2. Discharge path: the corpus
+  produces the frozen ⟨r1⟩ code exhibiting the stabilizing
+  constraint/term absent from App. I.4's printed protocol.
+
+Within-model consequence if F-R4/F-R5 stand: every constant downstream of
+𝔠₀ (the ħ calibration 𝔠Λ√J, κ_phys = √(7/12), the S4′ ε-run anchor,
+binding depths) shifts by −18% (rung, with a stability constraint) to
++12…+27% (saturated) against the printed values. The replicated successes
+stand alongside: the four-branch spectrum, M-1, the ¼ and √2 invariants,
+spin selection, the radial rung (tail mass blind-confirmed), Born-rule
+relaxation incl. equivariance and the generic-M ≳ 4 onset, ⟨r10⟩'s
+central value, and all archive arithmetic (52/52).
+
+## Closed side-gates
+- ~~WS-A4 demand tables~~ ✅ (gauntlet Group G: all five rows from one
+  δ = 1.0×10⁻¹² window; the "thin corner ∼40" confirmed at 38.6).
+- ~~NR-D1b core-energy floor~~ ✅ (gauntlet Group H: W-eternal replicated;
+  the corpus's G→8 rounding is conservative-direction).
+- ~~Generic-set M = 4 Born rerun~~ ✅ (τ = 4.48, r² = 0.987; the corpus's
+  "M ≳ 4" holds for generic sets — Tier-3 tension resolved in the
+  corpus's favor).
+
+**Gauntlet at 52/52** — golden Merkle root
+`e19d0bcb3e97e430d9cca8d0823705f7b6b0807bf3601d5f40923c5f010a85f3`,
 bit-deterministic. Every arithmetic-recomputable gate the archive's
-Watch-Mode memo left open is now externally recomputed; what remains open
-is exactly the *argument-level* physics (NR-A2b's ¾ operator-law selection,
-NR-D2's SDiff-reachability, NR-D1b's c_h/r_min inputs) and the field-level
-Tier 2b solve.
+Watch-Mode memo left open is externally recomputed; what remains open is
+the *argument-level* physics (NR-A2b's ¾ operator-law selection, NR-D2's
+SDiff-reachability, NR-D1b's c_h/r_min inputs) and, now, the corpus's
+response to F-R4/F-R5.
+
+## Campaign status: COMPLETE (Tiers 0–3, Steps 1–3, archive gates)
+Possible extensions (not scheduled): a fully unrestricted 2-D
+Newton–Krylov solve reproducing the corpus's saddle under explicit
+direction-locking (to test the F-R5 working hypothesis); the fs-cosserat
+certified-Rust port of the closure pipeline from the feasibility plan.
