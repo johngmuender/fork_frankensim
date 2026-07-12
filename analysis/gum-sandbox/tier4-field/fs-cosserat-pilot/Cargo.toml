@@ -1,0 +1,16 @@
+[package]
+name = "fs-cosserat-pilot"
+version = "0.1.0"
+edition = "2021"
+description = "Tier 4B of the GUM replication program: certified 3-D texture-field diagnostics (degree, E0, E6, inertia, SDiff invariance, 1/4 invariant) on the analytic eps=0 BPS compacton, with fs-ivl certified 1-D reference enclosures, fs-evidence certificates, and an fs-package bundle verified by fs-checker with bit-deterministic replay."
+
+# Deliberately outside the frankensim workspace (like tools/bootstrap and
+# tier0-gauntlet): only the std-only dependency closure below is built.
+[workspace]
+
+[dependencies]
+fs-ivl = { path = "../../../../crates/fs-ivl" }
+fs-evidence = { path = "../../../../crates/fs-evidence" }
+fs-package = { path = "../../../../crates/fs-package" }
+fs-checker = { path = "../../../../crates/fs-checker" }
+fs-blake3 = { path = "../../../../crates/fs-blake3" }
