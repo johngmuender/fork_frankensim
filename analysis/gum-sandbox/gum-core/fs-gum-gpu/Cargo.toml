@@ -1,0 +1,20 @@
+[package]
+name = "fs-gum-gpu"
+version = "0.1.0"
+edition = "2021"
+description = "GUM core Phase G2: wgpu f64 GPU backend for the gum sweep kernels (WGSL f64 via SHADER_F64 / naga FLOAT64), device-resident SoA field with per-component storage buffers and ghost rind, fixed-workgroup deterministic reductions with CPU fixed-order combine, central4 forward sums + pointwise flux + gather adjoint + renormalize, and a device-resident guarded-descent (ANF) smoke driver.  Correctness rig on lavapipe (software Vulkan); a real GPU inherits the code unchanged (only the adapter changes)."
+
+# Deliberately outside the frankensim workspace (fs-cosserat-pilot /
+# fs-gum-field / fs-gum-statics pattern): only the dependency closure below
+# is built.  wgpu/naga majors are pinned: upgrades are certified-surface
+# changes (scale_survey_v4.json DIMENSION 3 risk entry).
+[workspace]
+
+[dependencies]
+fs-gum-field = { path = "../fs-gum-field" }
+fs-gum-statics = { path = "../fs-gum-statics" }
+wgpu = "=30.0.0"
+pollster = "1"
+
+[dev-dependencies]
+naga = { version = "=30.0.0", features = ["wgsl-in"] }

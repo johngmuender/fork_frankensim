@@ -88,12 +88,18 @@ and make the benchmark a genuine constrained minimum. Measured outcome:
 Identities 1–2 are rational-moment facts of the sphere and could in
 principle be coincidences of sin²-moment algebra (the paper's κ₀ also
 comes from sin²-moments); identity 3 is a one-part-in-300 numerical match
-of a solve nobody tuned. A fourth proximity, recorded without a claim:
-the saturated objective G* = min(E_static − I/16π) converges downward
-with basis size to 2.51442–2.51446 (4C's independent engine cross-checks
-axi3's value at 6×10⁻⁵) — within ~1.2×10⁻⁴ of 𝔠₀ = 2.514735 itself,
-though measurably *below* it and still decreasing; whether the halo-
-saturated G* and the paper's 𝔠₀ coincide exactly in some limit is open. Taken together they support a coherent reading:
+of a solve nobody tuned. A fourth proximity was recorded here
+without a claim: the saturated objective G* = min(E_static − I/16π)
+converged downward to 2.51442–2.51446, within ~10⁻⁴ of 𝔠₀ = 2.514754.
+**RESOLVED by the Phase-G3 precision push (`../tier2-closure/
+gstar_RESULTS.md`): G* = 16√2/9 = 2.5141574… EXACTLY** — a sharp
+Bogomolny bound attained in closed form by a direction-locked *oblate
+compacton* (spherical on the axis, R_eq = (3√2π)^{1/3} at the equator;
+no tilt needed). Since 16√2/9 is algebraic and 𝔠₀ is transcendental,
+the identity fails exactly: |G* − 𝔠₀| = 5.96×10⁻⁴ pinned in closed
+form; the 0.024% near-miss is the numerical accident 24√21 ≈ 35π. The
+saturated closure tuple is therefore now exact: 𝔠_paper = 64√2/(9π) =
+3.2011247 at κ_paper = 1/√2 (superseding the bracket [2.828, 3.201]). Taken together they support a coherent reading:
 **the ⟨r1⟩ pipeline's reported numbers are threshold/saturation values of
 the halo family its own solver was blind to** — the solver sat at (or
 drifted along) the edge of an instability it could not represent, its

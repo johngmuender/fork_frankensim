@@ -205,7 +205,12 @@ exactly**, where the closure factorizes: 𝔠_paper = (4/π)·G\*,
 G\* = min(E_static − I/16π), with the Bogomolny-type bound G ≥ π/√2
 (quadrature-verified to 2×10⁻¹⁶) giving the **rigorous**
 𝔠_paper ≥ 2√2 = 2.82843 — which **excludes 𝔠₀ = 2.5147 from below** in
-the enlarged space. Family values: 𝔠(t→0) ∈ [2.828, 3.201].
+the enlarged space. Family values: 𝔠(t→0) ∈ [2.828, 3.201]. The G3
+precision push subsequently closed this in exact form
+(`tier2-closure/gstar_RESULTS.md`): **G\* = 16√2/9 exactly** (a sharp
+Bogomolny bound attained by a closed-form oblate compacton), so the
+saturated closure value is **𝔠_paper = 64√2/(9π) = 3.2011247 exactly**
+at κ_paper = 1/√2.
 
 **3-D, assumption-free** (Tier 4A, `tier4-field/field3d_RESULTS.md`): on
 a free 96³ Cartesian grid with no symmetry, no ansatz, the fixed-L
@@ -247,11 +252,13 @@ measured facts (the reading after them is a flagged hypothesis):
    𝔠_paper = **2.37096** — against your ⟨r1⟩ benchmark 2.37 ± 0.09 (a
    one-part-in-300 match of a solve nobody tuned).
 
-A fourth proximity, recorded without a claim: the saturated objective
-G\* converges downward with basis size to 2.51442–2.51446 (two
-independent engines agree at 6×10⁻⁵) — within ~1.2×10⁻⁴ of 𝔠₀ =
-2.514735 itself, though measurably below it and still decreasing;
-whether they coincide in some limit is open.
+A fourth proximity was recorded here without a claim — G\* converging
+to within ~10⁻⁴ of 𝔠₀ — and has since been **resolved as an accident**
+(`tier2-closure/gstar_RESULTS.md`): G\* = 16√2/9 = 2.5141574 exactly
+(algebraic), 𝔠₀ = 128√42/(105π) = 2.5147536 (transcendental); the gap
+|G\* − 𝔠₀| = 5.96×10⁻⁴ is pinned in closed form, and the 0.024%
+near-miss is the coincidence 24√21 ≈ 35π. We print this correction
+against our own earlier speculation per the shared discipline.
 
 Separately, a convention tension that is a finding regardless of the
 hypothesis: your closure-algebra κ's (√(7/8), 0.802, √(7/12)) and your
