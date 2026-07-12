@@ -3,3 +3,5 @@ twoknot_run: channel=attract m=23 d=4.312500 x=d/R*=2.4203 grid 160x96x96 h=0.09
   [attract] it=0  obj=6.293242281 Estat=6.2932423 deg=1.97202 gnorm=1.548e0
   [attract] it=50  obj=6.292858385 Estat=6.2928584 pen=0.00e0 fpen=0.00e0 fgap=-0.0385 deg=1.97193 gnorm=1.399e0 dt=1.64e-2 arr=0
   [attract] it=100  obj=6.291046577 Estat=6.2910466 pen=0.00e0 fpen=0.00e0 fgap=-0.0388 deg=1.97114 gnorm=1.575e0 dt=2.70e-2 arr=0
+  [attract] it=150  obj=6.284883352 Estat=6.2847840 pen=9.93e-5 fpen=0.00e0 fgap=-0.0360 deg=1.96682 gnorm=1.897e0 dt=2.64e-2 arr=1
+  [attract] it=200  obj=6.281215283 Estat=6.2806873 pen=5.28e-4 fpen=0.00e0 fgap=-0.0401 deg=1.96656 gnorm=2.632e0 dt=4.35e-2 arr=1
