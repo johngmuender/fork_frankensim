@@ -1,0 +1,702 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+"""
+Tier 5a — GUM family/neutrino/color sector replication audit.
+
+Replicates every RECOMPUTABLE number downstream of the printed frustration-
+integral values (Sigma(p) = A p + B p(p-1)/2) in:
+  - 01-GUM-Omega-Paper-v2.0.1.md  Sec. VII.H/I/J (eqs. 7.7-7.9), Appendix K,
+    AUD-15 errata block (F-A15-3/-5), Appendix I.2/I.8 manifests.
+  - 02-The-Substrate-Course.md    Ch. 18.3-18.5 (the r7->r8 record + table).
+  - corpus/: WS-nu-P2/P4, WS-K charter (RK-7), 08-GUM-Session-Map.
+The Sigma(p) field-theoretic integrals themselves are NOT recomputable from
+the text; this audit covers the printed arithmetic chains only.
+
+Deterministic; no RNG. Within-model audit: nothing here bears on nature.
+Tier-0 items (bridge Groups D/I, F-R3) are cited, not redone.
+"""
+
+import json
+import math
+import os
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+
+# ----------------------------------------------------------------------
+# Data-side constants (documented):
+# PDG/CODATA 2022-2024 central values.
+M_E = 0.51099895000          # MeV  (CODATA 2018/2022, PDG)
+M_MU = 105.6583755           # MeV  (PDG)
+M_TAU_2022 = 1776.86         # MeV  (PDG 2022/2023 average)
+M_TAU_2024 = 1776.93         # MeV  (PDG 2024 average)
+# Quark masses (PDG MS-bar, MeV) except top (two conventions tried):
+M_U, M_D, M_S = 2.16, 4.67, 93.4
+M_C, M_B = 1270.0, 4180.0
+M_T_DIRECT = 172500.0        # direct/MC ("pole-like") top mass
+M_T_MSBAR = 162500.0         # MS-bar m_t(m_t) approx
+# Cosmology/particle:
+MPL_FULL = 1.220890e19       # GeV, full Planck mass
+MPL_RED = 2.435323e18        # GeV, reduced Planck mass
+T_REC_EV = 0.26              # eV, photon temperature at recombination (~3000 K)
+HBARC_EV_M = 1.973269804e-7  # eV*m
+
+checks = []
+
+
+def add(cid, name, printed, recomputed, pull, verdict, notes=""):
+    checks.append(dict(id=cid, name=name, printed=printed,
+                       recomputed=recomputed, pull=pull,
+                       verdict=verdict, notes=notes))
+
+
+def phi(z):
+    """Standard normal CDF."""
+    return 0.5 * (1.0 + math.erf(z / math.sqrt(2.0)))
+
+
+def two_sided_p_within(z):
+    """P(|Z| <= z) for standard normal."""
+    return 2.0 * phi(abs(z)) - 1.0
+
+
+# ======================================================================
+# C1 — LEPTON DATA TARGETS
+# ======================================================================
+ln_tau_mu_22 = math.log(M_TAU_2022 / M_MU)
+ln_tau_mu_24 = math.log(M_TAU_2024 / M_MU)
+ln_mu_e = math.log(M_MU / M_E)
+ratio_data = ln_mu_e / ln_tau_mu_22
+
+add("C1a", "ln(m_tau/m_mu) [corpus '2.822'/'2.8222'; A_data/2]",
+    "2.822 (paper 7.8); 2.8222 (Course 18.5); A_data = 5.644 (K.2)",
+    f"{ln_tau_mu_22:.5f} (m_tau=1776.86); {ln_tau_mu_24:.5f} (m_tau=1776.93)",
+    None, "PASS",
+    "Recomputed 2.82239; corpus 2.822 exact to its precision. The Course's "
+    "4-digit '2.8222' vs recomputed 2.8224: 7e-5 discrepancy, below every "
+    "stated error; consistent with m_tau = 1776.6-1776.9 vintage. "
+    "A_data = 2*2.8224 = 5.6448 vs the corpus's 5.644 (K.2) OK.")
+
+add("C1b", "ln(m_mu/m_e) [corpus '5.332'/'5.3316']",
+    "5.332 (paper); 5.3316 (Course)",
+    f"{ln_mu_e:.5f}",
+    None, "PASS",
+    "m_mu/m_e = 206.76828; ln = 5.33160. Exact match at printed precision.")
+
+add("C1c", "data shape ratio ln(m_mu/m_e)/ln(m_tau/m_mu) [corpus 1.889/1.8893]",
+    "1.889 (paper 7.8); 1.8893 (Course 18.5)",
+    f"{ratio_data:.5f}",
+    None, "PASS",
+    "5.33160/2.82239 = 1.88903; corpus rounds 1.889/1.8893 (their 1.8893 "
+    "reflects 5.3316/2.8222 = 1.88916 with their 4-digit inputs).")
+
+# ======================================================================
+# C2 — SPACING PREDICTIONS AND THE ~2-SIGMA SELF-GRADE
+# ======================================================================
+A8, sA8 = 5.6, 0.9
+B8, sB8 = 5.7, 1.2
+halfA, s_halfA = A8 / 2, sA8 / 2                     # 2.80 +/- 0.45
+halfAB = (A8 + B8) / 2                               # 5.65
+s_halfAB = 0.5 * math.hypot(sA8, sB8)                # independence
+pull1 = (ln_tau_mu_22 - halfA) / s_halfA
+pull2 = (halfAB - ln_mu_e) / s_halfAB
+
+add("C2a", "1/2 A = 2.80+/-0.45 vs ln(m_tau/m_mu); printed pull 0.05sigma",
+    "2.80 +/- 0.45 vs 2.822 (0.05 sigma)",
+    f"pull = ({ln_tau_mu_22:.4f}-2.80)/0.45 = {pull1:+.3f} sigma",
+    round(pull1, 3), "PASS",
+    "0.050 sigma; printed 0.05 exact.")
+
+add("C2b", "1/2(A+B) = 5.65+/-0.75 vs ln(m_mu/m_e); printed pull 0.4sigma",
+    "5.65 +/- 0.75 vs 5.332 (0.4 sigma)",
+    f"sigma = 0.5*sqrt(0.9^2+1.2^2) = {s_halfAB:.3f}; "
+    f"pull = (5.65-{ln_mu_e:.4f})/{s_halfAB:.2f} = {pull2:+.3f} sigma",
+    round(pull2, 3), "PASS",
+    "The +/-0.75 band reproduces EXACTLY under A-B independence "
+    "(0.5*sqrt(0.81+1.44) = 0.75); pull 0.42 -> printed 0.4. NOTE: "
+    "independence assumed; K.1 says 'error propagation as printed' but no "
+    "A-B covariance is published for r8 (contrast r10's published rho).")
+
+# The ~2-sigma-equivalent self-grade: candidate statistics.
+p_joint_product = two_sided_p_within(pull1) * two_sided_p_within(pull2)
+z_equiv_product = None
+# invert two-sided p -> z equivalent
+lo, hi = 0.0, 10.0
+for _ in range(200):
+    mid = (lo + hi) / 2
+    if 2.0 * (1.0 - phi(mid)) > p_joint_product:
+        lo = mid
+    else:
+        hi = mid
+z_equiv_product = (lo + hi) / 2
+chi2 = pull1 ** 2 + pull2 ** 2
+p_chi2_within = 1.0 - math.exp(-chi2 / 2.0)   # P(chi2_2dof <= observed)
+lo, hi = 0.0, 10.0
+for _ in range(200):
+    mid = (lo + hi) / 2
+    if 2.0 * (1.0 - phi(mid)) > p_chi2_within:
+        lo = mid
+    else:
+        hi = mid
+z_equiv_chi2 = (lo + hi) / 2
+
+add("C2c", "self-grade '~2sigma-equivalent' (Course: 'prior weight ~2-4%')",
+    "prior weight ~2-4% => ~2sigma-equivalent (Course 18.5; RT-8 grade)",
+    f"(a) product of P(|z|<=pull): {p_joint_product*100:.2f}% "
+    f"(~{z_equiv_product:.2f} sigma two-sided); "
+    f"(b) P(chi2_2 <= {chi2:.3f}) = {p_chi2_within*100:.2f}% "
+    f"(~{z_equiv_chi2:.2f} sigma)",
+    None, "CONVENTION-LIMITED (self-grade plausible)",
+    "The corpus's 2-4% window is bracketed by the two natural statistics: "
+    "product of two-sided landing probabilities gives 1.3% (~2.5 sigma), "
+    "joint chi-square closeness gives 8.7% (~1.7 sigma). The exact statistic "
+    "behind '2-4%' is not printed; any of these reasonable choices lands "
+    "within a factor ~2 of the self-grade. The pre-E-F1 magnitude miss "
+    "(x1.9) is graded separately by the corpus (demotion to post-hoc), not "
+    "part of the 2-sigma arithmetic. Note this is the corpus's OWN metric.")
+
+# ======================================================================
+# C3 — THE r7 -> E-F1 -> r8 CORRECTION-CHAIN AUDIT (centerpiece)
+# ======================================================================
+A7, sA7 = 2.9, 0.6
+B7, sB7 = 3.2, 0.9
+A_dbl, sA_dbl = 2 * A7, 2 * sA7        # 5.8 +/- 1.2
+B_dbl, sB_dbl = 2 * B7, 2 * sB7        # 6.4 +/- 1.8
+cA = 0.14                              # +14 +/- 5 % cone stiffening (A)
+cB_mult = (1 - 0.09) * (1 + 0.07) * (1 - 0.04)   # rim, back-reaction, inter-face
+cB_add = 1 + (-0.09 + 0.07 - 0.04)
+
+readings = {}
+# R1: multiplicative, post-doubling, labels as printed
+readings["R1 mult, labels as printed"] = (A_dbl * (1 + cA), B_dbl * cB_mult)
+# R2: additive percentage sum on B
+readings["R2 additive-net on B"] = (A_dbl * (1 + cA), B_dbl * cB_add)
+# R3: corrections pre-doubling (commutes -> identical to R1)
+readings["R3 pre-doubling (commutes)"] = (2 * A7 * (1 + cA), 2 * B7 * cB_mult)
+# R4: all four corrections applied to both A and B
+allc = (1 + 0.14) * (1 - 0.09) * (1 + 0.07) * (1 - 0.04)
+readings["R4 all four on each"] = (A_dbl * allc, B_dbl * allc)
+# R5: labels swapped (B-corrections on A, A-correction on B)
+readings["R5 labels swapped"] = (A_dbl * cB_mult, B_dbl * (1 + cA))
+# R6: all signs flipped
+cB_flip = (1 + 0.09) * (1 - 0.07) * (1 + 0.04)
+readings["R6 signs flipped"] = (A_dbl * (1 - cA), B_dbl * cB_flip)
+# R7: corrections not doubled (applied to single-face value, added once)
+readings["R7 corrections not doubled"] = (2 * A7 + cA * A7,
+                                          2 * B7 + (cB_add - 1) * B7)
+# R8: corrections divide (stated as fraction OF the corrected value)
+readings["R8 corrections as fraction of corrected"] = (A_dbl / (1 - cA),
+                                                       B_dbl / (2 - cB_mult))
+
+best = None
+rows = []
+for name, (Ar, Br) in sorted(readings.items()):
+    dA, dB = Ar - A8, Br - B8
+    rows.append(f"    {name}: A={Ar:.3f} (res {dA:+.3f}, "
+                f"{dA/sA8:+.2f} sigma_r8), B={Br:.3f} (res {dB:+.3f}, "
+                f"{dB/sB8:+.2f} sigma_r8)")
+    score = abs(dA / sA8) + abs(dB / sB8)
+    if best is None or score < best[1]:
+        best = (name, score, Ar, Br)
+
+# Inverse reading: what net correction WOULD close the chain?
+needA = A8 / A_dbl - 1     # required net on A
+needB = B8 / B_dbl - 1     # required net on B
+# Implied independent-recomputation leading values:
+A_lead_impl = A8 / (1 + cA) / 2
+B_lead_impl = B8 / cB_mult / 2
+zA_impl = (A7 - A_lead_impl) / sA7
+zB_impl = (B7 - B_lead_impl) / sB7
+
+# Error propagation "as printed":
+sA_chain = math.hypot(2 * sA7 * (1 + cA), A_dbl * 0.05)
+sB_corr = B_dbl * math.sqrt(0.04**2 + 0.03**2 + 0.02**2)
+sB_chain = math.hypot(2 * sB7 * cB_mult, sB_corr)
+
+add("C3a", "chain closure: 2.9 -> x2 -> +14% =?=> printed A = 5.6",
+    "A = 5.6 +/- 0.9 (r8), from A = 2.9 +/- 0.6 (r7), exact x2 (E-F1), "
+    "'+14 +/- 5% cone stiffening (A)'",
+    f"best naive chain 5.8*1.14 = {A_dbl*(1+cA):.3f}; residual "
+    f"{A_dbl*(1+cA)-A8:+.3f} ({(A_dbl*(1+cA)-A8)/sA8:+.2f} sigma of printed "
+    f"+/-0.9); required net correction {needA*100:+.1f}% vs printed +14%",
+    round((A_dbl * (1 + cA) - A8) / sA8, 2),
+    "PRINT-DEFECT-CANDIDATE",
+    "NO tested reading closes A. Enumerated readings (see log): "
+    "multiplicative/additive, pre-/post-doubling (commute), swapped labels, "
+    "flipped signs, un-doubled corrections, inverse-fraction convention. "
+    "The doubled leading value ALREADY exceeds the printed r8 value "
+    "(5.8 > 5.6) before the +14% is applied, so any positive A-correction "
+    "worsens the gap. Chain closure would need net -3.4%, i.e. 15.3 "
+    "percentage points below the printed +14%, > 3x the printed +/-5% "
+    "correction uncertainty.")
+
+add("C3b", "chain closure: 3.2 -> x2 -> (-9%+7%-4%) =?=> printed B = 5.7",
+    "B = 5.7 +/- 1.2 (r8), from B = 3.2 +/- 0.9 (r7), exact x2, corrections "
+    "-9 +/- 4% (rim), +7 +/- 3% (back-reaction), -4 +/- 2% (inter-face)",
+    f"multiplicative: 6.4*0.91*1.07*0.96 = {B_dbl*cB_mult:.3f} "
+    f"(res {B_dbl*cB_mult-B8:+.3f}, {(B_dbl*cB_mult-B8)/sB8:+.2f} sigma); "
+    f"additive net -6%: {B_dbl*cB_add:.3f} "
+    f"(res {B_dbl*cB_add-B8:+.3f}, {(B_dbl*cB_add-B8)/sB8:+.2f} sigma); "
+    f"required net {needB*100:+.1f}%",
+    round((B_dbl * cB_mult - B8) / sB8, 2),
+    "MARGINAL (closes to ~5% under rounding + correction uncertainties)",
+    "B nearly closes: 5.98 vs 5.7 (0.24 sigma of the printed error; the "
+    "printed +/-4/3/2% correction uncertainties give +/-0.35 on the "
+    "chained value, so the 0.28 residual is ~0.8 of that). Not exact, "
+    "but not excludable as rounding. The A chain (C3a) is the defect.")
+
+add("C3c", "r8 error bars vs chain propagation (0.6->0.9? 0.9->1.2?)",
+    "r8 prints A +/- 0.9, B +/- 1.2 (vs r7 A +/- 0.6, B +/- 0.9)",
+    f"chained: sigma_A >= 2*0.6*1.14 = {2*sA7*(1+cA):.2f} "
+    f"(+corr unc: {sA_chain:.2f}); sigma_B >= 2*0.9*0.935 = "
+    f"{2*sB7*cB_mult:.2f} (+corr unc: {sB_chain:.2f})",
+    None, "PRINT-DEFECT-CANDIDATE (chain reading excluded)",
+    "Under ANY chain reading the r8 errors must be >= doubled r7 errors "
+    "(x2 is exact; corrections only add uncertainty): >= 1.37 on A and "
+    ">= 1.68 on B. Printed 0.9 and 1.2 are ~35% and ~30% SMALLER. "
+    "Errors cannot shrink under an exact rescaling plus uncertain "
+    "corrections. Conclusion: r8 must be an independent, higher-precision "
+    "re-evaluation of the integrals, NOT the narrated chain.")
+
+add("C3d", "consistency of the 'independent recomputation' reading",
+    "narrative: 'with beyond-leading corrections (+14%...), the r8 values: "
+    "A = 5.6, B = 5.7' (VII.H / Course 18.4)",
+    f"implied r8 leading values (undo corrections & x2): "
+    f"A_lead = {A_lead_impl:.3f} vs r7 2.9 +/- 0.6 ({zA_impl:+.2f} sigma); "
+    f"B_lead = {B_lead_impl:.3f} vs r7 3.2 +/- 0.9 ({zB_impl:+.2f} sigma)",
+    None, "CONSISTENT-AS-RECOMPUTATION / defect is in the narration",
+    "If r8 re-evaluated the leading integrals and found A_lead = 2.46, "
+    "B_lead = 3.05 (each within r7's stated errors: 0.74 and 0.17 sigma), "
+    "the printed corrections reproduce 5.6/5.7 exactly. The numbers are "
+    "internally consistent ONLY under this reading; the printed narrative "
+    "(r7 values -> x2 -> percentages -> r8 values) is arithmetically false "
+    "as written, chiefly for A. Candidate print defect, Tier-0 F-R1-style: "
+    "the prose chain and the printed numbers cannot both be exact.")
+
+print("C3 full reading enumeration (targets: A = 5.6 +/- 0.9, B = 5.7 +/- 1.2):")
+for r in rows:
+    print(r)
+print(f"    best joint reading: {best[0]} (A={best[2]:.3f}, B={best[3]:.3f})")
+print()
+
+# ======================================================================
+# C4 — SHAPE RATIO
+# ======================================================================
+R7 = (A7 + B7) / A7
+# independent-error propagation on R = 1 + B/A
+sR7 = (B7 / A7) * math.hypot(sA7 / A7, sB7 / B7)
+R8 = (A8 + B8) / A8
+sR8 = (B8 / A8) * math.hypot(sA8 / A8, sB8 / B8)
+# implied correlation for the printed r7 +/-0.35:
+va, vb = (sA7 / A7) ** 2, (sB7 / B7) ** 2
+target = (0.35 / (B7 / A7)) ** 2
+rho_impl = (va + vb - target) / (2 * math.sqrt(va * vb))
+pull_R7 = (R7 - ratio_data) / 0.35
+pull_R8 = (R8 - ratio_data) / 0.28
+
+add("C4a", "r7 shape ratio (A+B)/A; face-count invariant; N-F1 band [1.6,2.2]",
+    "2.10 +/- 0.35 vs data 1.889 - in-band (N-F1 survived)",
+    f"(2.9+3.2)/2.9 = {R7:.4f}; indep-prop sigma = {sR7:.3f}; "
+    f"in [1.6, 2.2]: {1.6 <= R7 <= 2.2}; pull vs data {pull_R7:+.2f} sigma",
+    round(pull_R7, 2), "PASS (central value & band); error CONVENTION-LIMITED",
+    "Central 2.103 -> 2.10 exact; two-face x2 cancels in the ratio, so the "
+    "blind grade legitimately survives E-F1 (corpus's claim confirmed). "
+    "Printed +/-0.35 is SMALLER than independent propagation (+/-0.385); "
+    f"it implies rho(A,B) = +{rho_impl:.2f}. The corpus says covariance was "
+    "published for r10 but prints none for r7; +/-0.35 is recoverable only "
+    "with an unpublished mild positive correlation - not a defect, but not "
+    "reproducible from printed numbers alone. In-band verdict: 2.103 sits "
+    "0.097 below the pre-registered upper edge 2.2 - survived, thinly.")
+
+add("C4b", "r8 shape ratio 2.02 +/- 0.28 vs 1.889 (0.5 sigma)",
+    "ratio 2.02 +/- 0.28 vs 1.889 (0.5 sigma) (eq. 7.8)",
+    f"(5.6+5.7)/5.6 = {R8:.4f}; indep-prop sigma = {sR8:.3f}; "
+    f"pull = {pull_R8:+.2f} sigma",
+    round(pull_R8, 2), "PASS",
+    "2.018 -> printed 2.02; independent propagation gives +/-0.27 vs "
+    "printed +/-0.28 (consistent, unlike r7's band); pull 0.46 -> 0.5.")
+
+# ======================================================================
+# C5 — K.3 HELIKNOTON ARITHMETIC
+# ======================================================================
+dNeff = (4.0 / 7.0) * (10.75 / 106.75) ** (4.0 / 3.0)
+add("C5a", "Delta N_eff = (4/7)(10.75/106.75)^{4/3} = 0.0268 (K.3; P-nu3 '+0.027')",
+    "0.0268 (K.3); +0.027 (VII.I)",
+    f"{dNeff:.6f}",
+    None, "PASS",
+    "0.026775 -> 0.0268 exact; '+0.027' consistent. Standard one-scalar "
+    "decoupled-species formula; g* = 106.75 (SM) and 10.75 are standard.")
+
+m3 = 0.0468  # eV, corpus central (WS-nu-P2)
+pitch = HBARC_EV_M / m3  # 1/q in meters
+add("C5b", "m_nu ~ hbar*q*c dimensional chain; 'pitch ~4 um' (Session Map)",
+    "m_nu ~ hbar q c; pitch ~ 4 um; E ~ gamma_soft/q",
+    f"1/q = hbar*c/m3 = {pitch*1e6:.2f} um for m3 = 0.0468 eV",
+    None, "PASS (the only checkable number)",
+    "With q = 1/pitch, m3 = 0.0468 eV <-> pitch 4.22 um: the Session Map's "
+    "'~4 um' checks. E ~ gamma_soft/q itself carries no recomputable number "
+    "(gamma_soft never printed): NOT RECOVERABLE beyond dimensions.")
+
+def bnu1(T_ev, mpl_gev, mnu_ev):
+    t = T_ev * 1e-9
+    m2 = (mnu_ev * 1e-9) ** 2
+    return (t * mpl_gev * m2) ** 0.25 * 1e3  # MeV
+
+f_full = bnu1(T_REC_EV, MPL_FULL, 0.047)
+f_red = bnu1(T_REC_EV, MPL_RED, 0.047)
+T_need_full = (1.4e-3) ** 4 / (MPL_FULL * (0.047e-9) ** 2) * 1e9
+T_need_red = (1.4e-3) ** 4 / (MPL_RED * (0.047e-9) ** 2) * 1e9
+add("C5c", "B-nu1 = (T M_Pl m_nu^2)^{1/4} at recombination = 1.4 MeV (K.5)",
+    "1.4 MeV (K.5, VII.I 'f >= 1.4 MeV - passed with margin')",
+    f"T_rec = 0.26 eV, m = 0.047 eV: {f_full:.2f} MeV (full M_Pl) / "
+    f"{f_red:.2f} MeV (reduced); 1.4 MeV needs T = {T_need_full:.3f} eV "
+    f"(full) or {T_need_red:.3f} eV (reduced)",
+    None, "CONVENTION-LIMITED (order-of-magnitude PASS)",
+    "The raw formula brackets 1.4 MeV: 1.63 (full M_Pl) / 1.09 (reduced) at "
+    "T_rec = 0.26 eV. Exact 1.4 needs T ~ 0.14 eV (full) or ~0.71 eV "
+    "(reduced) - or the unprinted O(1) 'thermal factors' that WS-nu-P4 "
+    "explicitly says were applied ('1.4 MeV with thermal factors'). "
+    "Not exactly recoverable; no inconsistency at its stated grade.")
+
+g_lo_29 = 0.0503e-9 / 29e-3 ; g_hi_4 = 0.0503e-9 / 4e-3
+g_lo_60 = 0.047e-9 / 60e-3 ; g_hi_4b = 0.047e-9 / 4e-3
+add("C5d", "Majoron g = m_nu/f band endpoints (VII.I; F-A15-3 re-run)",
+    "v2.0 body: g in [8e-10, 1.3e-8] over f in [4,60] MeV; "
+    "v2.0.1 (F-A15-3): g in [1.7e-9, 1.3e-8] over f in [4,29] MeV",
+    f"m=0.047/f=60: {g_lo_60:.2e}; m=0.047/f=4: {g_hi_4b:.2e}; "
+    f"m=0.0503/f=29: {g_lo_29:.2e}; m=0.0503/f=4: {g_hi_4:.2e}",
+    None, "PASS-with-ambiguity",
+    "Lower endpoints check (7.8e-10 -> '8e-10'; 1.73e-9 -> '1.7e-9' using "
+    "m at the 0.0503 floor). Upper endpoint 1.3e-8 needs m ~ 0.050-0.052 eV "
+    "(live-window values), not the 0.047 central: the band mixes m "
+    "conventions across endpoints. Consistent within the live window "
+    "m3 in [0.050, 0.057]; endpoint convention not pinned in print.")
+
+# ======================================================================
+# C6 — K.4 / <r11> QUARK BELTS
+# ======================================================================
+ln_cu = math.log(M_C / M_U)
+ln_tc = math.log(M_T_DIRECT / M_C)
+ln_tc_ms = math.log(M_T_MSBAR / M_C)
+ln_sd = math.log(M_S / M_D)
+ln_bs = math.log(M_B / M_S)
+A_up_data, R_up_data = 2 * ln_tc, ln_cu / ln_tc
+A_up_data_ms, R_up_data_ms = 2 * ln_tc_ms, ln_cu / ln_tc_ms
+A_dn_data, R_dn_data = 2 * ln_bs, ln_sd / ln_bs
+
+add("C6a", "up-type data pair (R, A) = (1.30, 9.82) reconstruction",
+    "(1.30, 9.82) (VII.J)",
+    f"m_t=172.5 GeV: R = ln(m_c/m_u)/ln(m_t/m_c) = {ln_cu:.4f}/{ln_tc:.4f} "
+    f"= {R_up_data:.4f}; A = 2 ln(m_t/m_c) = {A_up_data:.4f}. "
+    f"[MS-bar m_t=162.5: R = {R_up_data_ms:.4f}, A = {A_up_data_ms:.4f}]",
+    None, "PASS (pins the convention: direct/MC top mass)",
+    "Exact reconstruction with PDG MS-bar light masses (m_u = 2.16, "
+    "m_c = 1270 MeV) and the DIRECT top mass 172.5 GeV: (1.2984, 9.823) -> "
+    "(1.30, 9.82). MS-bar top gives (1.31, 9.71) - close but not the "
+    "printed pair. Spacing convention confirmed: heaviest pair = (1/2)A, "
+    "matching the lepton p-ordering (heaviest = p=0).")
+
+add("C6b", "down-type data pair (R, A) = (0.79, 7.60) reconstruction",
+    "(0.79, 7.60) (VII.J)",
+    f"R = ln(m_s/m_d)/ln(m_b/m_s) = {ln_sd:.4f}/{ln_bs:.4f} = "
+    f"{R_dn_data:.4f}; A = 2 ln(m_b/m_s) = {A_dn_data:.4f}",
+    None, "PASS",
+    "(0.7881, 7.602) -> (0.79, 7.60) exact with m_d = 4.67, m_s = 93.4, "
+    "m_b = 4180 MeV. R < 1 = decreasing spacings = negative effective B: "
+    "the data-side sign flip is real.")
+
+# theory side: R = 1 + B_geo/A - zeta*B_tube/A  (reconstructed rule)
+Rg, sRg = 0.33, 0.08
+Bt_anti, sBt_anti = 0.51, 0.14
+Bt_al, sBt_al = 0.06, 0.04
+R_up_th = 1 + Rg - Bt_al
+sR_up_th = math.hypot(sRg, sBt_al)
+R_dn_th = 1 + Rg - Bt_anti
+sR_dn_th = math.hypot(sRg, sBt_anti)
+p_up_R = (R_up_data - R_up_th) / 0.09
+p_dn_R = (R_dn_data - R_dn_th) / 0.16
+p_up_A = (A_up_data - 9.4) / 1.9
+p_dn_A = (A_dn_data - 7.9) / 1.8
+
+add("C6c", "theory R values from K.4 components: 1.27 +/- 0.09, 0.82 +/- 0.16",
+    "aligned R = 1.27 +/- 0.09; anti-aligned R = 0.82 +/- 0.16 (VII.J)",
+    f"R = 1 + B_geo/A - B_tube/A: aligned 1 + 0.33 - 0.06 = {R_up_th:.2f} "
+    f"+/- {sR_up_th:.3f}; anti 1 + 0.33 - 0.51 = {R_dn_th:.2f} +/- "
+    f"{sR_dn_th:.3f}",
+    None, "PASS (composition rule recovered)",
+    "The unprinted composition rule is uniquely pinned by the numbers: "
+    "B_eff/A = B_geo/A - B_tube/A with the tube term SUBTRACTING in both "
+    "classes (larger for anti-aligned). Centrals exact; errors reproduce "
+    "under independence to all printed digits (0.0894 -> 0.09; 0.1612 -> "
+    "0.16). The negative effective B for down-type (0.33 - 0.51 = -0.18) "
+    "is forced once B_tube(anti) > B_geo: the 'derived sign flip' "
+    "arithmetic checks.")
+
+add("C6d", "the four <r11> pulls: 'four numbers at 0.2-0.3 sigma'",
+    "'aligned R = 1.27+/-0.09, A = 9.4+/-1.9 vs (1.30, 9.82); anti R = "
+    "0.82+/-0.16, A = 7.9+/-1.8 vs (0.79, 7.60) - four numbers at 0.2-0.3 sigma'",
+    f"pulls: R_up {p_up_R:+.2f}; A_up {p_up_A:+.2f}; R_dn {p_dn_R:+.2f}; "
+    f"A_dn {p_dn_A:+.2f}",
+    None, "PASS",
+    "All four pulls in [0.17, 0.32] sigma -> '0.2-0.3 sigma' fair (0.32 "
+    "rounds to 0.3). With MS-bar top the up-type R pull becomes 0.49 sigma: "
+    "the claim holds only under the direct-top-mass convention (C6a). "
+    "NOT RECOVERABLE: A_geo and A_tube separately (only A_class = "
+    "A_geo +/- A_tube outputs 9.4/7.9 are printed - the split "
+    "A_geo = 8.65, A_tube = 0.75 is implied but never derivable); the "
+    "lambda* = 0.25 collapse function c(lambda*); the belt integrals.")
+
+# ======================================================================
+# C7 — K.5 SOFT SECTOR
+# ======================================================================
+m_marg = 1.9
+s_marg = 0.4
+s_c = math.sqrt(1 - 1 / m_marg)
+ds_dm = 1 / (2 * s_c * m_marg ** 2)
+s_c_err_sym = ds_dm * s_marg
+s_c_lo = s_c - math.sqrt(1 - 1 / (m_marg - s_marg))
+s_c_hi = math.sqrt(1 - 1 / (m_marg + s_marg)) - s_c
+
+add("C7a", "sin theta_c = sqrt(1 - 1/m) with m = 1.9 +/- 0.4 => 0.69 +/- 0.11",
+    "sin theta_c = 0.69 +/- 0.11 (II.H Thm H-3; K.5); m = 1.9 +/- 0.4 (r9)",
+    f"sqrt(1-1/1.9) = {s_c:.4f}; symmetric prop +/-{s_c_err_sym:.3f}; "
+    f"one-sided: -{s_c_lo:.3f}/+{s_c_hi:.3f}",
+    None, "PASS (central); band conservative",
+    "Central 0.688 -> 0.69 exact. Printed +/-0.11 equals the DOWNSIDE "
+    "excursion to m = 1.5 (0.688 - 0.577 = 0.111); symmetric linear "
+    "propagation gives +/-0.08. The printed band is the conservative "
+    "(max one-sided) choice - defensible, not a defect. "
+    "MEANING CHECK (the mission's 'vs Cabibbo 0.225?'): per WS-K charter "
+    "RK-7/H-K1, sin theta_c here is the CONDENSATE TILT s_fog, NOT the "
+    "Cabibbo angle; the corpus itself names the symbol collision as a "
+    "hazard ('collision is symbolic, not numeric') and SEALS any "
+    "Cabibbo-from-tilt identification (q-h). No data comparison is "
+    "claimed; there is nothing to check against 0.225.")
+
+msk = 1.7  # GeV, Skyrme mass floor used in the f formula (WS-nu-P4, N-nu1)
+f_lo = s_c * math.sqrt(1.0e-5) * msk * 1e3
+f_hi = s_c * math.sqrt(6.0e-4) * msk * 1e3
+f_hi_old = s_c * math.sqrt(2.6e-3) * msk * 1e3
+eps_floor = (1.4e-3 / (s_c * msk)) ** 2
+add("C7b", "f = sin(theta_c) sqrt(eps) m_Sk: window [4, 29] MeV and eps-floor",
+    "f in [4, 29] MeV over operative eps in [1.0e-5, 6e-4] (F-A15-3; "
+    "Session Map); v2.0 body printed [4, 60] (superseded in-corpus); "
+    "B-nu1' floor eps_e >= 1.5e-6",
+    f"f(1e-5) = {f_lo:.2f} MeV -> '4'; f(6e-4) = {f_hi:.1f} MeV -> '29'; "
+    f"eps_floor = (1.4 MeV/(0.69*1.7 GeV))^2 = {eps_floor:.2e} -> '1.5e-6'",
+    None, "PASS (with m_Sk = 1.7 GeV)",
+    "The [4, 29] window and the 1.5e-6 floor both close with m_Sk = 1.7 GeV "
+    "(the WS-nu-P4/N-nu1 value), NOT with K.5's adjacent 'm = 1.9 +/- 0.4' "
+    "- that m is the DIMENSIONLESS margin m = chibar^2/(gammabar*Deltabar^2) "
+    "(Thm H2-1), a different symbol sharing a glyph: a K.5 reader hazard, "
+    "not an arithmetic defect. The body's [4, 60] MeV needs eps up to "
+    "2.6e-3 (above the entrainment ceiling) - already corrected in-corpus "
+    "by F-A15-3; not a new finding. f(1e-5) = 3.7 -> '4' is a generous "
+    "round, noted.")
+
+eps_dress_lo = (0.14 / msk) ** 2
+eps_dress_hi = (0.20 / msk) ** 2
+add("C7c", "eps_dress = (f_q/m_Sk)^2 ~ 1e-2, 'twenty-fold above the ceiling'",
+    "eps_dress ~ 1e-2; 20x above the entrainment ceiling (6e-4) (Q-6')",
+    f"f_q = 0.14-0.20 GeV, m_Sk = 1.7: eps_dress in [{eps_dress_lo:.4f}, "
+    f"{eps_dress_hi:.4f}]; ratio to 6e-4: "
+    f"{eps_dress_lo/6e-4:.0f}-{eps_dress_hi/6e-4:.0f}x",
+    None, "PASS",
+    "(0.17/1.7)^2 = 0.010 exactly ~1e-2; 11-23x above the 6e-4 ceiling, "
+    "'twenty-fold' fair at the upper/central f_q. Also checked: sigma = "
+    "pi f_q^2 ln kappa_q = 0.19 GeV^2 is an INVERSION (corpus's own "
+    "label); f_q = 0.14-0.20 <-> ln kappa_q = 1.5-3.1 (kappa_q ~ 4.5-22, "
+    "not printed): consistent, underdetermined by construction.")
+
+# ======================================================================
+# C8 — REMAINING RECOMPUTABLES
+# ======================================================================
+s3 = 0.5 * (A8 + 2 * B8)                # p=2 -> p=3 spacing
+m_p3 = M_E * 1e6 * math.exp(-s3)        # eV
+eps_ratio = math.exp((4.0 / 3.0) * s3)
+eps_thresh = 0.7 / eps_ratio
+# 1-sigma-low termination threshold (F-A15-3: 'at 1-sigma-low: eps_e >= 4e-5')
+s_s3 = 0.5 * math.hypot(sA8, 2 * sB8)
+s3_lo = s3 - s_s3
+eps_thresh_lo = 0.7 * math.exp(-(4.0 / 3.0) * s3_lo)
+
+add("C8a", "termination: p = 3 at ~100 eV; eps_3 = eps_e*e^{(4/3)*8.5}; "
+    "threshold 8e-6 (and F-A15-3's 8.4e-6 / 4e-5 at 1-sigma-low)",
+    "m(p=3) ~ 100 eV; closure fails (eps >= 0.7) for eps_e >= 8e-6 (VII.H); "
+    "8.4e-6, and 4e-5 at 1-sigma-low (F-A15-3)",
+    f"(1/2)(A+2B) = {s3:.2f}; m_e*e^-8.5 = {m_p3:.1f} eV; e^(4/3*8.5) = "
+    f"{eps_ratio:.3e}; 0.7/that = {eps_thresh:.2e}; 1-sigma-low spacing "
+    f"{s3_lo:.2f} -> threshold {eps_thresh_lo:.2e}",
+    None, "PASS",
+    "104 eV -> '~100 eV'; 8.37e-6 -> '8e-6' and F-A15-3's '8.4e-6' exact. "
+    "The 1-sigma-low value: independent-quadrature sigma on (1/2)(A+2B) = "
+    "1.28 gives threshold 4.6e-5 vs printed '4e-5' - closes to one-digit "
+    "rounding (exact 4.0e-5 would need sigma = 1.17, i.e. mild A-B "
+    "correlation; same unpublished-covariance limitation as C4a). "
+    "'Exactly three families' is arithmetic downstream of (A, B) and the "
+    "eps-window: confirmed as printed.")
+
+eps_nu_ratio = (M_E * 1e6 / 0.05) ** (4.0 / 3.0)
+add("C8b", "undressed-neutrino kill scaling: eps_nu ~ 1e9 eps_e (VII.G)",
+    "eps_nu = eps_e (m_e/m_nu)^{4/3} ~ 1e9 eps_e for a 0.05 eV knot",
+    f"(0.511 MeV / 0.05 eV)^(4/3) = {eps_nu_ratio:.2e}",
+    None, "PASS (order-of-magnitude claim)",
+    "2.2e9: the printed '~1e9' is an order statement; holds. The "
+    "downstream '7 orders violated' and 'free-streaming 1e6+' corroborations "
+    "are not independently recomputable (floor constant not printed).")
+
+pull_bond = (1.92 - 1.90) / math.hypot(0.05, 0.08)
+add("C8c", "bond-equation closed loop (I.2): x0 = 1.90 +/- 0.05 from b = 42 "
+    "vs measured 1.92 +/- 0.08",
+    "'closed loop: the bond equation at b = 42 returns x0 = 1.90 +/- 0.05' "
+    "vs x0 = 1.92 +/- 0.08 (VII.D)",
+    f"pull = 0.02/sqrt(0.05^2+0.08^2) = {pull_bond:.2f} sigma",
+    round(pull_bond, 2), "PASS (agreement); equation NOT RECOVERABLE",
+    "The agreement arithmetic checks (0.21 sigma). The bond equation "
+    "itself (the b_eff = 42 +/- 6 screened-Hessian-vs-core-repulsion "
+    "balance) is never printed in closed form: the loop's premise is "
+    "trust-the-manifest, only its consistency is auditable.")
+
+shift_pred = math.log(2) / 0.96
+shift_meas = 2.42 - 1.92
+s_shift = math.hypot(0.12, 0.08)
+pull_lock_quad = (shift_pred - shift_meas) / s_shift
+pull_lock_014 = (shift_pred - shift_meas) / 0.14
+add("C8d", "clock-lock shift: ln2/0.96 = 0.72 vs 0.50 +/- 0.14; printed "
+    "1.3 sigma (VII.D) -> 1.4 sigma (F-A15-5 harmonized)",
+    "'the 1/2-factor shifts the frozen bond by ~ln2/0.96 = 0.72; agreement "
+    "1.3 sigma' (VII.D); harmonized to 1.4 sigma (F-A15-5, Session Map C-R3)",
+    f"ln2/0.96 = {shift_pred:.4f} ('0.72' checks); measured 2.42-1.92 = "
+    f"{shift_meas:.2f}; pull = {pull_lock_quad:.2f} sigma (quad 0.12+0.08) "
+    f"or {pull_lock_014:.2f} sigma (printed +/-0.14)",
+    round(pull_lock_quad, 2), "PRINT-DEFECT-CANDIDATE (minor, pull annotation)",
+    "The shift prediction and measurement reproduce; the PULL does not: "
+    "printed errors give 1.53-1.57 sigma, vs the corpus's 1.3 (body) and "
+    "1.4 (its own harmonization). Even the harmonized 1.4 needs "
+    "sigma_shift ~ 0.16, larger than any printed combination - plausibly "
+    "an uncertainty on the 0.96 denominator (source never printed: "
+    "NOT RECOVERABLE). Direction: flatters agreement by ~0.15 sigma. Minor.")
+
+qRstar_inv = math.exp(-24.36)
+Rstar_impl = pitch * qRstar_inv  # meters
+lam_tau = HBARC_EV_M / 1.77686e9
+add("C8e", "K.2 parenthetical 'qR* ~ 1e-17' vs its own inversion "
+    "ln(1/qR*) = 24.36",
+    "'the core term q-blind (qR* ~ 1e-17)' ... 'inversion ln(1/qR*) = "
+    "(5.644 - A_core)/kappa_far = 24.36 +/- 0.90' (App. K.2)",
+    f"e^-24.36 = {qRstar_inv:.2e} (~1e-10.6), NOT ~1e-17; the 1e-17 "
+    f"reading would give ln(1/qR*) = {math.log(1e17):.1f}. Implied R* = "
+    f"{Rstar_impl:.2e} m = tau reduced Compton wavelength "
+    f"({lam_tau:.2e} m) exactly (consistent with base m-tilde_tau; "
+    f"m3 = m_tau*qR*)",
+    None, "PRINT-DEFECT-CANDIDATE",
+    "Same-paragraph internal inconsistency in App. K.2: qR* = e^-24.36 = "
+    "2.6e-11, six orders from the printed '~1e-17'. The inversion side is "
+    "the load-bearing one (verified by WS-nu-P2 and Tier-0 Group D); the "
+    "parenthetical is either a stale scale estimate or refers to an "
+    "unprinted different radius (R* ~ 4e-23 m would be required - matching "
+    "neither the tau Compton scale the inversion implies nor the substrate "
+    "scale a <~ 1e-26 m). q-blindness of the core term needs only "
+    "qR* << 1, so no downstream number moves. New (App-K-only) item, "
+    "not covered by Tier-0 F-R3.")
+
+check_08 = math.log(0.0503 / 0.0468) / 0.90
+add("C8f", "[cite-only] bridge floor graze & band: Tier-0/in-corpus items",
+    "0.3 sigma (VII.I) vs 0.08 sigma (F-A15-5, C-nu1); band +/-0.90 & "
+    "rho = +0.45 sign (Tier-0 F-R3)",
+    f"ln(0.0503/0.0468)/0.90 = {check_08:.3f} -> 0.08 confirmed as a "
+    "one-line check; NOT re-adjudicated here",
+    None, "CITE-ONLY (Tier-0 Groups D/I; in-corpus F-A15-5/C-nu1)",
+    "The <r10> bridge arithmetic (24.36; 0.0468 eV; [0.019, 0.115]; the "
+    "window [0.058, 0.11]) was replicated in Tier 0 and by the corpus's "
+    "own WS-nu-P2; the covariance-sign issue is F-R3. Out of scope per "
+    "mission; App K added only the qR* parenthetical (C8e).")
+
+# ======================================================================
+# OUTPUT
+# ======================================================================
+print("=" * 100)
+print("TIER 5a - FAMILY/NEUTRINO/COLOR SECTOR AUDIT (within-model; "
+      "no statement about nature)")
+print("=" * 100)
+for c in checks:
+    print(f"\n[{c['id']}] {c['name']}")
+    print(f"  printed:    {c['printed']}")
+    print(f"  recomputed: {c['recomputed']}")
+    if c['pull'] is not None:
+        print(f"  pull:       {c['pull']} sigma")
+    print(f"  VERDICT:    {c['verdict']}")
+    if c['notes']:
+        print(f"  notes:      {c['notes']}")
+
+summary = {}
+for c in checks:
+    v = c['verdict'].split()[0].split('(')[0]
+    summary[v] = summary.get(v, 0) + 1
+print("\n" + "=" * 100)
+print("VERDICT TALLY:", json.dumps(summary))
+
+out = {
+    "tier": "5a",
+    "sector": "family/neutrino/color (GUM Omega VII.H-J, App K; Course Ch. 18)",
+    "epistemic_notice": (
+        "Within-model replication of printed arithmetic only. The Sigma(p) "
+        "frustration integrals, belt geometry, bond equation, and FQ belt "
+        "collapse functions are not recomputable from the text. The "
+        "~2-sigma self-grade is the corpus's own metric. Nothing here "
+        "bears on nature."),
+    "data_inputs": {
+        "m_e_MeV": M_E, "m_mu_MeV": M_MU,
+        "m_tau_MeV": [M_TAU_2022, M_TAU_2024],
+        "quark_masses_MeV": {"u": M_U, "d": M_D, "s": M_S, "c": M_C,
+                             "b": M_B, "t_direct": M_T_DIRECT,
+                             "t_msbar": M_T_MSBAR},
+        "M_Pl_GeV": {"full": MPL_FULL, "reduced": MPL_RED},
+        "T_rec_eV": T_REC_EV},
+    "c3_reading_enumeration": {
+        name: {"A": round(v[0], 4), "B": round(v[1], 4),
+               "resid_A_sigma": round((v[0] - A8) / sA8, 3),
+               "resid_B_sigma": round((v[1] - B8) / sB8, 3)}
+        for name, v in readings.items()},
+    "checks": checks,
+    "verdict_tally": summary,
+    "finding_candidates": [
+        {"id": "T5-F1", "severity": "moderate",
+         "title": "r7->r8 correction chain does not close for A "
+                  "(and r8 errors exclude any chain reading)",
+         "arithmetic": "2.9 x2 = 5.8; 5.8*1.14 = 6.61 vs printed 5.6 "
+                       "(residual +1.01 = +18%, 1.12x the printed +/-0.9; "
+                       "required net correction -3.4% vs printed +14 +/- 5%). "
+                       "B: 6.4*0.91*1.07*0.96 = 5.98 vs 5.7 (0.24 sigma - "
+                       "marginal). Errors: chain propagation forces "
+                       ">=1.37 (A) / >=1.68 (B) vs printed 0.9/1.2. "
+                       "Only consistent reading: r8 is an independent "
+                       "re-evaluation with implied leading values "
+                       "A_lead = 2.46 (0.74 sigma below r7), B_lead = 3.05 "
+                       "(0.17 sigma); the printed narrative chain is "
+                       "arithmetically false as written."},
+        {"id": "T5-F2", "severity": "minor",
+         "title": "App K.2 parenthetical qR* ~ 1e-17 contradicts its own "
+                  "inversion ln(1/qR*) = 24.36 (=> qR* = 2.6e-11)",
+         "arithmetic": "e^-24.36 = 2.63e-11; ln(1e17) = 39.1. Six orders / "
+                       "14.8 ln-units apart in one paragraph. Implied "
+                       "R* = 1.11e-16 m = tau reduced Compton wavelength "
+                       "(consistent with base m-tilde_tau), so the "
+                       "inversion side is the coherent one. No downstream "
+                       "number moves (q-blindness needs only qR* << 1)."},
+        {"id": "T5-F3", "severity": "minor",
+         "title": "locked-bond pull annotation 1.3/1.4 sigma vs recomputed "
+                  "1.5-1.6 sigma from printed errors",
+         "arithmetic": "(0.722-0.50)/sqrt(0.12^2+0.08^2) = 1.53; "
+                       "/0.14 = 1.57. Corpus's own harmonization (F-A15-5) "
+                       "moved 1.3 -> 1.4, still short; needs "
+                       "sigma_shift ~ 0.16 from an unprinted source "
+                       "(the 0.96 denominator's uncertainty)."}],
+    "cited_not_redone": ["Tier-0 Group D (bridge arithmetic)",
+                         "Tier-0 Group I / F-R3 (the +/-0.90 band's "
+                         "correlation sign)",
+                         "in-corpus F-A15-5 / C-nu1 (0.3 -> 0.08 sigma graze)",
+                         "in-corpus F-A15-3 (f-window [4,60] -> [4,29])"],
+}
+with open(os.path.join(HERE, "family_results.json"), "w") as fh:
+    json.dump(out, fh, indent=2)
+print(f"\nWrote {os.path.join(HERE, 'family_results.json')}")

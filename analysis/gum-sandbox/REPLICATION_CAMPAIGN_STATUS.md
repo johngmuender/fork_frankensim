@@ -204,8 +204,34 @@ response to F-R4/F-R5.
   flagged): **the ⟨r1⟩ numbers are thresholds/saturation values of the
   halo family the corpus's solver was blind to.**
 
-## Campaign status: COMPLETE (Tiers 0–4, Steps 1–3, archive gates)
-Not scheduled (Tier 5 territory per the v2 assessment): blue-fog/
-disclination boxes, family/bridge integrals beyond ⟨r10⟩, nucleation.
-The remaining engineering item is the full fs-cosserat solver port once
-the corpus responds to F-R4/F-R5 (the 4B pilot proved the packaging).
+## Tier 5a — Family/Neutrino/Color Arithmetic ✅ COMPLETE
+**`tier5-family/`** — the arithmetic perimeter of the "no fitted
+parameters" sector (the Σ(p) integrals themselves are not recoverable
+from the text; everything downstream is audited).
+- **Replicates cleanly**: lepton data logs and both spacing pulls (0.05σ,
+  0.43σ); shape ratios; ΔN_eff = 0.026772; termination arithmetic; the
+  soft-sector window (the "Cabibbo" symbol collision is the corpus's own
+  declared and sealed non-issue).
+- **⟨r11⟩ quark belts VINDICATED by full reconstruction**: the rule
+  R = 1 + B_geo/A − B_tube/A reproduces the printed ratios to the error
+  digits, the down-type sign flip is forced, PDG data lands exactly with
+  direct m_t = 172.5 GeV (MS-bar fails — scheme pinned), four pulls at
+  0.17–0.32σ as claimed.
+- **FINDING F-R6 (moderate)**: the ⟨r7⟩→E-F1→⟨r8⟩ narrative chain is
+  arithmetically false as written (2.9 ×2 +14% = 6.61 ≠ 5.6; printed
+  errors shrink where the chain forces growth). Coherent reading: ⟨r8⟩
+  is an independent re-evaluation and the provenance sentence is wrong.
+  Direction-neutral (the honest chain would worsen data agreement).
+- **F-R7 (minor)**: K.2's "qR* ∼ 10⁻¹⁷" is six orders from its own
+  inversion (2.6×10⁻¹¹); inversion side coherent; S1 unaffected.
+- **F-R8 (minor)**: locked-bond pull prints 1.3σ where its own errors
+  give 1.54–1.59σ.
+
+## Campaign status: COMPLETE (Tiers 0–5a, Steps 1–3, archive gates)
+Findings ledger: F-R1–F-R8 (two substantive: F-R4/F-R5 on the ħ-closure;
+one moderate: F-R6 provenance-chain; five print-level/minor). Out of
+envelope (documented, not scheduled): blue-fog/disclination boxes and
+nucleation (GPU-scale/theorem-level, per the v2 assessment's Tier-5
+flag), the Σ(p) integrals from geometry, and the full fs-cosserat solver
+port — the natural next engineering step once the corpus responds to
+F-R4/F-R5 (the 4B pilot proved the packaging).
