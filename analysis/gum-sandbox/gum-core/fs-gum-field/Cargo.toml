@@ -1,0 +1,18 @@
+[package]
+name = "fs-gum-field"
+version = "0.1.0"
+edition = "2021"
+description = "GUM core Phase B1: stored cell-centred N^3 SU(2)/quaternion field (SoA, vacuum ghost rind), FD current stencils (2nd/4th-order central + compact corner), Maurer-Cartan currents, sector energies E2/E4/E6/E0/I/degree, and the 1-D radial hedgehog solver; certified gates against fs-cosserat-pilot enclosures and the field3d/radial referee numbers."
+
+# Deliberately outside the frankensim workspace (fs-cosserat-pilot pattern):
+# only the std-only dependency closure below is built.
+[workspace]
+
+[dependencies]
+fs-math = { path = "../../../../crates/fs-math" }
+fs-ga = { path = "../../../../crates/fs-ga" }
+fs-ivl = { path = "../../../../crates/fs-ivl" }
+fs-evidence = { path = "../../../../crates/fs-evidence" }
+fs-package = { path = "../../../../crates/fs-package" }
+fs-checker = { path = "../../../../crates/fs-checker" }
+fs-blake3 = { path = "../../../../crates/fs-blake3" }
