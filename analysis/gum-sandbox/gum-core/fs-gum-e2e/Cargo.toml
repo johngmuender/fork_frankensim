@@ -1,0 +1,24 @@
+[package]
+name = "fs-gum-e2e"
+version = "0.1.0"
+edition = "2021"
+description = "GUM core Phase F1: the end-to-end certified demo — ONE binary that runs the whole GUM knot pipeline (1-D radial seed, 3-D hedgehog measurement, guarded arrested-Newton-flow relaxation, clock bisection on an isorotating descent, cross-crate topological diagnostics) across the three finished gap-closure crates fs-gum-field / fs-gum-statics / fs-gum-topo, and emits ONE EvidencePackage golden Merkle root (domain gum-core:e2e:v1) with fs-checker three-mode verification and in-process double-run bit-identity."
+
+# Deliberately outside the frankensim workspace (fs-cosserat-pilot /
+# fs-gum-field / fs-gum-statics / fs-gum-topo pattern): only the std-only
+# path-dependency closure below is built.
+[workspace]
+
+[dependencies]
+fs-gum-field = { path = "../fs-gum-field" }
+fs-gum-statics = { path = "../fs-gum-statics" }
+fs-gum-topo = { path = "../fs-gum-topo" }
+fs-ivl = { path = "../../../../crates/fs-ivl" }
+fs-evidence = { path = "../../../../crates/fs-evidence" }
+fs-package = { path = "../../../../crates/fs-package" }
+fs-checker = { path = "../../../../crates/fs-checker" }
+fs-blake3 = { path = "../../../../crates/fs-blake3" }
+
+[[bin]]
+name = "gum_e2e"
+path = "src/main.rs"

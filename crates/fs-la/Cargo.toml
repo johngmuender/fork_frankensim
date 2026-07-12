@@ -10,9 +10,21 @@ description = "Dense linear algebra: GEMM, batched small dense, factorizations, 
 [package.metadata.frankensim]
 layer = "L1"
 
+[features]
+# Default-ON so every in-workspace consumer is unchanged. `exec` carries the
+# fs-exec (two-lane executor) coupling: the cancellation-aware pooled GEMM
+# API and the GEMM build-identity fingerprint (whose inputs include the
+# ../asupersync sibling checkout). Out-of-tree consumers that only need the
+# serial kernels, factorizations, and eigensolvers can depend with
+# `default-features = false` and build from a checkout WITHOUT the
+# asupersync sibling repo (Phase F3 portability, analysis/gum-sandbox/
+# gum-core/PORTABILITY.md).
+default = ["exec"]
+exec = ["dep:fs-exec"]
+
 [dependencies]
 fs-alloc = { path = "../fs-alloc" }
-fs-exec = { path = "../fs-exec" }
+fs-exec = { path = "../fs-exec", optional = true }
 fs-math = { path = "../fs-math" }
 fs-simd = { path = "../fs-simd" }
 fs-rand = { path = "../fs-rand" }
@@ -27,3 +39,25 @@ fs-blake3 = { path = "../fs-blake3" }
 
 [lints]
 workspace = true
+
+# Executor-coupled integration targets: only meaningful (and only able to
+# compile) with the default-ON `exec` feature.
+[[test]]
+name = "batched_perf_lane"
+required-features = ["exec"]
+
+[[test]]
+name = "factor_battery"
+required-features = ["exec"]
+
+[[test]]
+name = "gemm_budget"
+required-features = ["exec"]
+
+[[test]]
+name = "gemm_suite"
+required-features = ["exec"]
+
+[[test]]
+name = "perf_lane"
+required-features = ["exec"]

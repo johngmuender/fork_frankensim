@@ -43,6 +43,7 @@ pub const GEMM_IMPLEMENTATION_VERSION: u32 = 4;
 pub const GEMM_PANEL_RUN_DOMAIN: &str = "org.frankensim.fs-la.gemm-panel-run.v1";
 
 /// Deterministic child run for one NC/KC panel of a declared GEMM operation.
+#[cfg(feature = "exec")]
 #[must_use]
 pub fn gemm_panel_run_id(operation: fs_exec::RunId, panel_ordinal: u64) -> fs_exec::RunId {
     operation.derive(GEMM_PANEL_RUN_DOMAIN, panel_ordinal)
@@ -56,6 +57,7 @@ pub fn gemm_panel_run_id(operation: fs_exec::RunId, panel_ordinal: u64) -> fs_ex
 /// This is performance identity rather than numerical identity: two binaries
 /// can preserve [`GEMM_BIT_SEMANTICS_VERSION`] while requiring independent
 /// tune rows because their generated code differs.
+#[cfg(feature = "exec")]
 pub const GEMM_BUILD_FINGERPRINT: &str = env!("FS_LA_GEMM_BUILD_FINGERPRINT");
 
 /// Dependency-graph evidence identity bound into [`GEMM_BUILD_FINGERPRINT`].
@@ -64,8 +66,10 @@ pub const GEMM_BUILD_FINGERPRINT: &str = env!("FS_LA_GEMM_BUILD_FINGERPRINT");
 /// single-root normal/build receipt. It does not prove that the supplied
 /// receipt describes the invoking Cargo process. `salt:<value>` denotes the
 /// explicit development equivalence class, never verified graph evidence.
+#[cfg(feature = "exec")]
 pub const GEMM_GRAPH_EVIDENCE: &str = env!("FS_LA_GEMM_GRAPH_EVIDENCE");
 
+#[cfg(feature = "exec")]
 const INCLUDED_DEPGRAPH_RECEIPT: &str =
     include_str!(concat!(env!("OUT_DIR"), "/fs_la_depgraph_receipt.json"));
 
@@ -75,6 +79,7 @@ const INCLUDED_DEPGRAPH_RECEIPT: &str =
 /// instead of citing only its digest. Presence means strict structural
 /// validation succeeded; the build environment/operator remains the authority
 /// for correspondence to the actual Cargo selection.
+#[cfg(feature = "exec")]
 pub const GEMM_DEPGRAPH_RECEIPT: Option<&str> = match option_env!("FS_LA_GEMM_HAS_DEPGRAPH_RECEIPT")
 {
     Some(_) => Some(INCLUDED_DEPGRAPH_RECEIPT),
@@ -82,6 +87,7 @@ pub const GEMM_DEPGRAPH_RECEIPT: Option<&str> = match option_env!("FS_LA_GEMM_HA
 };
 
 /// Domain-separated BLAKE3 digest of [`GEMM_DEPGRAPH_RECEIPT`], when present.
+#[cfg(feature = "exec")]
 pub const GEMM_DEPGRAPH_RECEIPT_DIGEST: Option<&str> =
     option_env!("FS_LA_GEMM_DEPGRAPH_RECEIPT_DIGEST");
 
@@ -92,9 +98,11 @@ pub const GEMM_DEPGRAPH_RECEIPT_DIGEST: Option<&str> =
 pub const GEMM_DEPGRAPH_RECEIPT_DOMAIN: &str = "org.frankensim.fs-la.depgraph-receipt.v1";
 
 /// Stable machine-readable spelling of this binary's graph evidence class.
+#[cfg(feature = "exec")]
 pub const GEMM_GRAPH_EVIDENCE_KIND: &str = env!("FS_LA_GEMM_GRAPH_EVIDENCE_KIND");
 
 /// Trust class of the dependency-graph material compiled into this binary.
+#[cfg(feature = "exec")]
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub enum GemmGraphEvidenceClass {
     /// Canonical receipt minted from an operator-selected Cargo tree and
@@ -105,6 +113,7 @@ pub enum GemmGraphEvidenceClass {
 }
 
 /// Immutable dependency-graph evidence view for this exact binary.
+#[cfg(feature = "exec")]
 #[derive(Debug, Clone, Copy, PartialEq, Eq)]
 pub struct GemmGraphEvidence {
     /// Trust/evidence class.
@@ -118,6 +127,7 @@ pub struct GemmGraphEvidence {
 }
 
 /// Dependency-graph evidence compiled into this exact binary.
+#[cfg(feature = "exec")]
 #[must_use]
 pub const fn gemm_graph_evidence() -> GemmGraphEvidence {
     let class = if GEMM_DEPGRAPH_RECEIPT.is_some() {
@@ -139,6 +149,7 @@ pub const fn gemm_graph_evidence() -> GemmGraphEvidence {
 pub const GEMM_MAX_FMAS_BETWEEN_POLLS: usize = MR * NR * (KC + 1);
 
 /// Number of output elements staged between cancellation polls.
+#[cfg(feature = "exec")]
 const C_STAGE_TILE_ELEMENTS: usize = 4096;
 
 /// Explicit operation memory envelope for the pool GEMM path (bead
@@ -204,6 +215,7 @@ pub struct GemmMemoryReport {
 /// Structured progress for a cancellation-aware GEMM dispatch. A successful
 /// return always has `completed_tiles == total_tiles`; a cancelled return may
 /// contain completed work, but that work exists only in private staging.
+#[cfg(feature = "exec")]
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct GemmRunReport {
     /// Caller-ledgered identity of the complete GEMM operation.
@@ -223,12 +235,14 @@ pub struct GemmRunReport {
 
 /// Cancellation observed at a bounded GEMM poll point after all scoped
 /// workers drained. The caller's output remains bitwise unchanged.
+#[cfg(feature = "exec")]
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub struct GemmCancelled {
     /// Work completed in private staging before the request was observed.
     pub report: Box<GemmRunReport>,
 }
 
+#[cfg(feature = "exec")]
 impl core::fmt::Display for GemmCancelled {
     fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
         write!(
@@ -239,9 +253,11 @@ impl core::fmt::Display for GemmCancelled {
     }
 }
 
+#[cfg(feature = "exec")]
 impl core::error::Error for GemmCancelled {}
 
 /// Failure from the caller-owned TilePool GEMM path.
+#[cfg(feature = "exec")]
 #[derive(Debug, Clone, PartialEq, Eq)]
 pub enum GemmRunError {
     /// The gate was observed at a bounded poll point after every worker and
@@ -279,6 +295,7 @@ pub enum GemmRunError {
     },
 }
 
+#[cfg(feature = "exec")]
 impl core::fmt::Display for GemmRunError {
     fn fmt(&self, f: &mut core::fmt::Formatter<'_>) -> core::fmt::Result {
         match self {
@@ -304,6 +321,7 @@ impl core::fmt::Display for GemmRunError {
     }
 }
 
+#[cfg(feature = "exec")]
 impl core::error::Error for GemmRunError {
     fn source(&self) -> Option<&(dyn core::error::Error + 'static)> {
         match self {
@@ -326,6 +344,7 @@ pub fn gemm_execution_tier() -> &'static str {
 }
 
 /// Exact codegen/build fingerprint carried by production GEMM tune keys.
+#[cfg(feature = "exec")]
 #[must_use]
 pub const fn gemm_build_identity() -> &'static str {
     GEMM_BUILD_FINGERPRINT

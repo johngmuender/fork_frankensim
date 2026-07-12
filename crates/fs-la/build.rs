@@ -385,6 +385,18 @@ fn add_depgraph_evidence(payload: &mut Vec<u8>) -> DepgraphEvidence {
 
 #[allow(clippy::too_many_lines)] // one ordered payload defines the complete code-generation identity
 fn main() {
+    // Without the `exec` feature the executor-coupled GEMM API and every
+    // build-identity constant (`FS_LA_GEMM_*`, the OUT_DIR receipt) are
+    // compiled out of the crate, so none of the fingerprint inputs — the
+    // ../asupersync sibling checkout, dependency-graph evidence env vars —
+    // are required. This is what lets an out-of-tree consumer build fs-la
+    // with `default-features = false` from a checkout without the sibling
+    // repo (Phase F3 portability). With `exec` ON (the default), behavior
+    // below is byte-identical to the pre-F3 script.
+    println!("cargo:rerun-if-env-changed=CARGO_FEATURE_EXEC");
+    if env::var_os("CARGO_FEATURE_EXEC").is_none() {
+        return;
+    }
     let mut payload = Vec::new();
     push_field(&mut payload, "schema", b"fs-la-gemm-codegen-v2");
     let graph_evidence = add_depgraph_evidence(&mut payload);
