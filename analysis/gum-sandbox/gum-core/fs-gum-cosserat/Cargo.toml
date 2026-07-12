@@ -1,0 +1,22 @@
+[package]
+name = "fs-gum-cosserat"
+version = "0.1.0"
+edition = "2021"
+description = "GUM physics core, Phase B3: linearized micropolar/Cosserat continuum — plane-wave symbol assembly for arbitrary k, complex-Hermitian eigensolve via the real-symmetric embedding on fs-la, branch classification, mass-matrix-aware symplectic time-domain validation, and the certified Tier-1 referee battery (gates binary) bound to tier1-spectrum/spectrum.py's validated numbers."
+
+# Deliberately outside the frankensim workspace (fs-cosserat-pilot pattern):
+# only the path-dependency closure below is built.
+[workspace]
+
+[dependencies]
+fs-la = { path = "../../../../crates/fs-la" }
+fs-math = { path = "../../../../crates/fs-math" }
+fs-ivl = { path = "../../../../crates/fs-ivl" }
+fs-evidence = { path = "../../../../crates/fs-evidence" }
+fs-package = { path = "../../../../crates/fs-package" }
+fs-checker = { path = "../../../../crates/fs-checker" }
+fs-blake3 = { path = "../../../../crates/fs-blake3" }
+
+[[bin]]
+name = "gum-cosserat-gates"
+path = "src/bin/gates.rs"

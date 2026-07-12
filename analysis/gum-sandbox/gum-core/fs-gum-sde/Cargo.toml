@@ -1,0 +1,18 @@
+[package]
+name = "fs-gum-sde"
+version = "0.1.0"
+edition = "2021"
+description = "Phase B4 of the GUM physics core (gap_survey_v3.json dimension 'Nelson/stochastic-QM'): WienerStream increment addressing on fs-rand Philox streams, Euler-Maruyama + additive-noise SRA1 order-1.5 SRK behind one Stepper trait, OU/GBM analytic convergence gates, the born.py mode-sum wavefunction machinery ported to Rust with the osmotic velocity added, and the Nelson stochastic-mechanics H-theorem demo (rho -> |psi|^2 relaxation against the Tier-3 qualitative referee)."
+
+# Deliberately outside the frankensim workspace (fs-cosserat-pilot /
+# tier0-gauntlet pattern): only the std-only path-dependency closure below
+# is built; the fork's workspace is untouched.
+[workspace]
+
+[dependencies]
+fs-rand = { path = "../../../../crates/fs-rand" }
+fs-math = { path = "../../../../crates/fs-math" }
+
+[profile.release]
+# Determinism doctrine: no fast-math, no LTO surprises; plain optimized build.
+opt-level = 3

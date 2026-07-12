@@ -1,0 +1,22 @@
+[package]
+name = "fs-gum-topo"
+version = "0.1.0"
+edition = "2021"
+description = "GUM core Phase B2: topological-charge diagnostics — stored-field S3 degree (central/corner/geometric), Hopf invariant by Whitehead FFT integral AND preimage linking (cross-validated), and Z/2 disclination holonomy / half-integer winding / defect-line tracing, with the pilot's fail-closed Certified/EvidencePackage wrap and bit-identical replay."
+
+# Deliberately outside the frankensim workspace (like tools/bootstrap,
+# tier0-gauntlet and fs-cosserat-pilot): only the path-dependency closure
+# below is built.
+[workspace]
+
+[dependencies]
+fs-ivl = { path = "../../../../crates/fs-ivl" }
+fs-evidence = { path = "../../../../crates/fs-evidence" }
+fs-package = { path = "../../../../crates/fs-package" }
+fs-checker = { path = "../../../../crates/fs-checker" }
+fs-blake3 = { path = "../../../../crates/fs-blake3" }
+fs-fft = { path = "../../../../crates/fs-fft" }
+
+[[bin]]
+name = "gates"
+path = "src/main.rs"
