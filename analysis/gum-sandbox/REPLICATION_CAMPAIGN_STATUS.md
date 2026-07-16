@@ -281,7 +281,19 @@ from the text; everything downstream is audited).
   as a budget-stamped snapshot of the transit. The superradiant
   REJECTION itself survives untouched. theory-audit/h32_RESULTS.md.
 
-Findings ledger: F-R1–F-R15 (four substantive: F-R4/F-R5 on the ħ-closure, F-R9 on the 0νββ insert, F-R14 on the gravitation sector;
+- **F-R16 (minor; Phase H4)**: the printed stratified statistics group
+  "ℤ₂ × A" is false as written — the connecting homomorphism is
+  nonzero (∂ = ±2·[rot], two independent routes, 28/28 machine
+  checks), so π₁(𝒞_strat) = ℤ₂ × A/⟨2a_rot⟩ (A torsioned; base π₁
+  absent; charged lines cannot traverse the orientation-reversing
+  loop). Every consequence the ħ-closure consumes SURVIVES: the fatal
+  branch is refuted, the rotation class has order exactly 2,
+  χ(rot) = −1 exists splitness-free at w = ±1 — T-H4 is DISCHARGED
+  largely in the corpus's favor; T-H3's benign verdict is now
+  unconditional. Residual GAP of record: the N2/F.3 exchange lift
+  ("ARE fermions" value-forcing). theory-audit/h4_completion.md.
+
+Findings ledger: F-R1–F-R16 (four substantive: F-R4/F-R5 on the ħ-closure, F-R9 on the 0νββ insert, F-R14 on the gravitation sector;
 one moderate: F-R6 provenance-chain; five print-level/minor). Out of
 envelope (documented, not scheduled): blue-fog/disclination boxes and
 nucleation (GPU-scale/theorem-level, per the v2 assessment's Tier-5

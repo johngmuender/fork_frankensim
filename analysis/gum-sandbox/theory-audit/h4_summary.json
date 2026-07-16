@@ -1,0 +1,51 @@
+{
+  "phase": "H4",
+  "item": "T-H4 stratified completion: connecting homomorphism d: pi2(line-moduli) -> pi1(F_l)",
+  "date": "2026-07-16",
+  "auditor": "theory-audit subagent (Fable-class)",
+  "model": {
+    "domain": "V = S^3 minus open tube around compactified straight line (solid torus complement)",
+    "fiber": "F_l = maps V -> S^3, U(1)_k-valued winding-w meridian data on dV, relative degree 1",
+    "base": "affine unoriented lines ~ RP^2 (explicit fiberwise deformation retract, C11)",
+    "bundle": "C_strat = SO(3) x_{O(2)} F_l over RP^2; pullback to S^2 = SO(3) x_{SO(2)} F_l (HLP constructed, not assumed)"
+  },
+  "result": {
+    "d_on_generator": "+-2 [rot_l]  (the 4pi-rotation loop about the line's own axis)",
+    "route_A": "LES naturality to principal SO(2)->SO(3)->S^2; d_P = +-2 (exactness + machine-checked SU(2) lift endpoints); clutching winding numerically -2.000000",
+    "route_B": "explicit hemisphere quaternion family over S^2 minus a disk; boundary flip loop: meridian winding -w, offset winding +2w (phase quadrature), SU(2) lift CLOSED (FR part 0)",
+    "routes_agree": true,
+    "rotation_class": "survives in pi1(C_strat), order exactly 2; [rot] not in im d = <2[rot]> (rho_*-parity, splitness-free)",
+    "p_star": "0 for w != 0 (pi0 monodromy swaps winding-sign components); pi1(C_strat) = pi1(F_l)/<2[rot]>",
+    "chi_rot_minus_one": "EXISTS; for odd w (elementary charge w = +-1) with no assumption on pi1(F_l) beyond the offset homomorphism",
+    "corrected_structure": "pi1(C_strat) = Z2 x (A / 2 a_rot Z); at w=1 with A=Z: Z2 x Z2, i[rot] = (1,1)"
+  },
+  "completions": {
+    "I_split_corpus_claim": "HOLDS IN CORRECTED FORM I': d != 0 (injective) but im d in FR-trivial part; A torsioned to A/<2 a_rot>; base pi1 does not survive (p_* = 0)",
+    "II_nonsplit_Z4": "REFUTED for odd w (chi(rot) = -1 exhibited splitness-free; no base extension exists since p_* = 0)",
+    "III_fatal_kills_rotation": "REFUTED by two independent routes; -w not in 2wZ (rho_*-parity obstruction)"
+  },
+  "MH_status": {
+    "clause_1_im_d_in_A": "DISCHARGED in-model (proven, with correction d != 0)",
+    "clause_2_character": "DISCHARGED in-model (splitness-free for odd w)",
+    "clause_3_N2_exchange_lift": "UNTOUCHED - remains GAP (two-knot space, F.3)"
+  },
+  "consequences": {
+    "QUANT": "underwritten in-model: j in (1/2)Z admissible for the dressed charged knot",
+    "T_B1": "premise P4 stands; hbar-closure fixed point (1/2, 4, sqrt(2)) rests on computed topology",
+    "T_H3": "benign fixed-point verdict's consumed topological hypothesis discharged in-model",
+    "c_doubleprime": "regrade path unchanged: value still dynamically selected (T-B1); 'ARE fermions' remains overreach; printed pi1 = Z2 x A needs corrections (a)-(d) of memo 5.6"
+  },
+  "scope_open": [
+    "curved/shaped line moduli (pi2 larger; not computed; structural rho_*-parity protection noted)",
+    "even w >= 2 (needs FR factor split off)",
+    "w = 0 (undressed sector; already SOUND classically)",
+    "N2 / F.3 exchange lift (dressed two-knot space)"
+  ],
+  "confidence": {
+    "d_computation_in_model": "HIGH (two independent routes; 28/28 machine checks)",
+    "downstream_algebra": "HIGH",
+    "model_captures_corpus_C_strat": "MEDIUM-HIGH (declared gaps: line-shape moduli, constraint-model choice)"
+  },
+  "checks": {"passed": 28, "total": 28, "script": "h4_compute.py", "runtime_s": "~5"},
+  "files": ["h4_completion.md", "h4_compute.py", "h4_summary.json"]
+}
