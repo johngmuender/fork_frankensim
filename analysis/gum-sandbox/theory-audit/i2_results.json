@@ -1,0 +1,421 @@
+{
+  "tuple": {
+    "c_old": {
+      "form": "128*sqrt(42)/(105*pi)",
+      "value": 2.5147536263276082
+    },
+    "c_new": {
+      "form": "64*sqrt(2)/(9*pi)",
+      "value": 3.2011246796697104
+    },
+    "c_ratio": {
+      "form": "35/(6*sqrt(21))",
+      "value": 1.272937693043289,
+      "pct": 27.293769304328897
+    },
+    "kappa_old": {
+      "form": "sqrt(7/12)",
+      "value": 0.7637626158259734
+    },
+    "kappa_new": {
+      "form": "1/sqrt(2)",
+      "value": 0.7071067811865476
+    },
+    "binding_depth_old_pct": 23.623738417402663,
+    "binding_depth_new_pct": 29.28932188134524,
+    "omega_th_old": {
+      "form": "sqrt(7/3)",
+      "value": 1.5275252316519468
+    },
+    "omega_th_new": {
+      "form": "sqrt(2)",
+      "value": 1.4142135623730951
+    },
+    "g_core": {
+      "form": "35/24",
+      "value": 1.4583333333333333
+    },
+    "g_tot": {
+      "form": "35/12",
+      "value": 2.9166666666666665
+    },
+    "e_tot=i_tot": {
+      "form": "64/(9*pi)",
+      "value": 2.2635369684180673
+    },
+    "support_ratio_new": 1.5,
+    "V_old": 1.4142135623730951
+  },
+  "calibration": {
+    "LambdaSqrtJ_refit": {
+      "form": "6*sqrt(21)/35",
+      "value": 0.7855844048495726
+    },
+    "LambdaMtilde_refit": {
+      "form": "3*sqrt(2)/5",
+      "value": 0.848528137423857
+    },
+    "mass_law_factor_change_pct": 17.851130197757925,
+    "mtilde_refit": {
+      "form": "sqrt(7/6)",
+      "value": 1.0801234497346435
+    },
+    "Lambda_refit_J_pinned": 0.7855844048495726,
+    "Rstar_refit": {
+      "form": "(18*sqrt(2)/35)**(1/3)",
+      "value": 0.8993039194192552
+    },
+    "note": "hbar and every species mass are refit targets: Λ√J and Λm̃ absorb the c- and 𝒢-changes exactly; observables built solely from ħ, c, masses, α are c-ABSORBED."
+  },
+  "blindness_verify": {
+    "family_logs": "BLIND — symbolic: M_k/M_j = (ê_k m̃_k)/(ê_j m̃_j), 𝒢/Λ cancel",
+    "r10_bridge": {
+      "verdict": "BLIND at leading order (frozen pipeline is base-m̃_tau, pure mass-ratio arithmetic); residual via any R*<->ƛ identification bounded",
+      "dln_if_Rstar_is_range_kappa_lambdabar": 0.07707533991362915,
+      "dln_if_Rstar_is_compacton_radius": 0.10613423777109211,
+      "sigma_frac_worst": 0.11792693085676902,
+      "m3_worst_case_eV": 0.05071068843850164
+    },
+    "m_Sk": {
+      "verdict": "BLIND as printed (m_Sk = c_Sk*sqrt(a2*a4): no c/κ/Λ√J route; 1.7 GeV is a hadronic identification)",
+      "caveat_I1": "c_Sk is quartic-closure-class; archive <r5> c_q = 3.1±0.2 sits +0.51σ from saturated 3.2011 — consistent with the repaired branch already"
+    }
+  },
+  "overspin_channel_menu": {
+    "polar (s²=|cos|)": {
+      "s2": "1/2",
+      "kappa_crit": 1.0
+    },
+    "uniform": {
+      "s2": "2/3",
+      "kappa_crit": 0.8660254037844386
+    },
+    "s=sin²": {
+      "s2": "6/7",
+      "kappa_crit": 0.7637626158259734
+    },
+    "equatorial ring / tilt (binding)": {
+      "s2": "1",
+      "kappa_crit": 0.7071067811865476
+    }
+  },
+  "exposed_register": {
+    "LambdaSqrtJ": {
+      "old": 1.0,
+      "new": 0.7855844048495726,
+      "class": "calibration register"
+    },
+    "kappa_range_lambdabar": {
+      "old": 0.7637626158259734,
+      "new": 0.7071067811865476,
+      "pct": -7.417990022744858
+    },
+    "electron_range_m": {
+      "old": 2.9493401264548547e-13,
+      "new": 2.730558370137623e-13
+    },
+    "binding_depth_pct": {
+      "old": 23.623738417402663,
+      "new": 29.28932188134524,
+      "rel_change": 1.23982586345305
+    },
+    "omega_th": {
+      "old": 1.5275252316519468,
+      "new": 1.4142135623730951,
+      "WS_A8_well_factor": 0.8571428571428571
+    },
+    "eps_law": {
+      "old": "c0[1 - 0.42 eps^(2/3)] (falling)",
+      "new": "c_sat[1 + 1.15 eps] (rising; sign flip)",
+      "anchor_old_pull_sigma": 0.015618932099073194,
+      "repaired_c_at_0.05": 3.38547,
+      "repaired_vs_r1_sigma": 11.283000000000001,
+      "note": "<r1> re-scoped to restricted-branch code validation; the repaired branch has NO measured ε-scan yet"
+    },
+    "BU1_ceiling": {
+      "old": 0.0006036816105203691,
+      "new": 0.002604724118247985
+    },
+    "operative_eps_range": {
+      "old": [
+        1e-05,
+        0.0006
+      ],
+      "new": [
+        1e-05,
+        0.002604724118247985
+      ]
+    },
+    "f_window_MeV": {
+      "old": [
+        3.7093516953775088,
+        28.732514682846674
+      ],
+      "new": [
+        3.7093516953775088,
+        59.865812040736834
+      ]
+    },
+    "majoron_g": {
+      "old": [
+        1.6340015883711327e-09,
+        1.2656921878875727e-08
+      ],
+      "new": [
+        7.842368294899438e-10,
+        1.2656921878875727e-08
+      ],
+      "note": "low-g edge new: battery re-run flagged"
+    },
+    "quark_censorship_margin": {
+      "old": [
+        11.234410328598857,
+        22.927368017548684
+      ],
+      "new": [
+        2.6037332986255017,
+        5.313741425766329
+      ],
+      "note": "Q-6' 'twenty-fold' -> ~2.6-5.3x; dichotomy survives, margin x4.3 thinner"
+    },
+    "S4prime": {
+      "old": 0.875,
+      "new": 1.4583333333333337,
+      "r1_measured": [
+        0.843,
+        0.046
+      ],
+      "pull_old_sigma": 0.6956521739130441,
+      "pull_new_sigma": 13.376811594202907
+    },
+    "support_diag": {
+      "old": 1.4142135623730951,
+      "new": 1.5,
+      "r1_pulls_sigma": [
+        0.5213562373095115,
+        9.099999999999996
+      ]
+    },
+    "mass_law_norm": {
+      "factor": 1.1785113019775793,
+      "note": "+17.85% — absorbed by Λm̃ x 3√2/5 (exposed in substrate register, absorbed observationally)"
+    },
+    "P_O1_magnitude": {
+      "depth_rescale": 1.23982586345305,
+      "note": "μ-drift suppression floor ~1e-2 class both ways"
+    },
+    "edge_stiffening_anchor": {
+      "lambda_rescale_at_kappa_phys": 0.8980895729193747
+    }
+  },
+  "absorbed_register": [
+    "ħ itself (calibration target; Λ√J x 6√21/35)",
+    "all mass ratios M_k/M_j = (ê_k m̃_k)/(ê_j m̃_j) — P-O1 verified symbolically",
+    "family logs ½A, ½(A+B), (A+B)/A; termination mass m_e e^{-8.5}; Σ(p) belts",
+    "quark spacing ratios <r11> / FQ table (pure ratio arithmetic)",
+    "<r10> bridge central 24.357 and m3 = 0.0468 eV (frozen base-m̃_tau pipeline)",
+    "spectroscopy per the m̃-chain (spectra are functions of ħ, masses, α only)",
+    "E_rot/E = 1/4 (kinematic, exact all closures)",
+    "spin-selection w·j(1-j) = 1; M.0 loop; ±½ error-signal exponents",
+    "Born statistics, spectrum tiers, electrodynamics identities (no contact)",
+    "ΔN_eff = 0.0268; B-ν1 floor 1.5e-6; sidereal 0.123/0.41 ns (physical const.)",
+    "m_Sk = 1.7 GeV (quartic, m̃-independent; I1 caveat noted)",
+    "P-F1' clock corrections (m_e/m_μ)²/2, δ_τ (mass ratios)",
+    "S1, S2 stakes entire (family/neutrino sector blind)"
+  ],
+  "v15_rerun": [
+    {
+      "id": "V15.3",
+      "sector": "family logs + termination",
+      "original": {
+        "halfA": 2.8,
+        "halfApB": 5.65,
+        "ratio": 2.018,
+        "term_mass_eV": 104,
+        "eps_threshold": 8.4e-06
+      },
+      "repaired": "bit-identical (all mass-ratio arithmetic; P-O1 verified)",
+      "confronted": {
+        "ln(mtau/mmu)": 2.8224,
+        "ln(mmu/me)": 5.3316,
+        "pulls_sigma": [
+          0.05,
+          0.42,
+          0.47
+        ],
+        "eps_threshold_vs_operative_bottom": "8.4e-6 < 1.0e-5 (unchanged; ceiling rise to 2.60e-03 does not touch the floor side)"
+      },
+      "verdict": "SURVIVES (identically)"
+    },
+    {
+      "id": "V15.4",
+      "sector": "<r10> bridge and S1 stake",
+      "original": {
+        "lnq": 24.36,
+        "m3_eV": 0.0468,
+        "band": [
+          0.019,
+          0.115
+        ],
+        "Sigma_floor": 0.059
+      },
+      "repaired": {
+        "central": "identical (blind, frozen pipeline)",
+        "residual_exposure_sigma": 0.118,
+        "m3_worst_case_eV": 0.0507,
+        "worst_case_still_inside": true
+      },
+      "confronted": {
+        "stake_floor": 0.058,
+        "Sigma_floor_physical": 0.059
+      },
+      "verdict": "SURVIVES (residual ≤ 0.12σ; S1 endpoints untouched)"
+    },
+    {
+      "id": "V15.5",
+      "sector": "soft sector / Majoron",
+      "original": {
+        "B_nu1_MeV": 1.57,
+        "eps_floor": 1.5e-06,
+        "dNeff": 0.0268
+      },
+      "repaired": "own items bit-identical (m_ν, T, M_Pl, m_Sk: no c-route). Downstream F-A15-3 propagation SHIFTS: f-window top 29 -> 60 MeV (ceiling 6.0e-04 -> 2.6e-03); Majoron g low edge 1.6e-09 -> 7.8e-10",
+      "confronted": {
+        "cosmological floor": "unchanged",
+        "battery": "passed on old window; re-run flagged at new low-g edge"
+      },
+      "verdict": "SURVIVES; propagation SHIFTS-HARMLESSLY (battery re-run flagged)"
+    },
+    {
+      "id": "V15.6",
+      "sector": "P-F1' clock corrections",
+      "original": {
+        "muon": 1.17e-05,
+        "tau": 4.1e-08
+      },
+      "repaired": "bit-identical (mass ratios)",
+      "confronted": "spectroscopy nulls (compliance)",
+      "verdict": "SURVIVES"
+    },
+    {
+      "id": "V15.7",
+      "sector": "color: stiffness closed loop + shape law",
+      "original": {
+        "eps_q": [
+          0.0068,
+          0.0138
+        ],
+        "lambda_star": 0.246,
+        "f_q_GeV": 0.17,
+        "sigma_inversion_band_GeV": [
+          0.14,
+          0.2
+        ]
+      },
+      "repaired": {
+        "eps_q and f_q loop": "bit-identical (m_Sk & σ-band arithmetic; c-blind) — closed loop A SURVIVES",
+        "lambda_star_law": "SUPERSEDED — λ*(ε) = 0.42 ε^{1/3} is the restricted-branch <r6> shape law; the saturated solution is the fixed oblate compacton + halo (re-scan required)",
+        "censorship_margin": "[11.2,22.9] -> [2.60,5.31]"
+      },
+      "confronted": {
+        "f_q vs sigma-inversion band": "0.17 in [0.14, 0.20] dead-center — unchanged"
+      },
+      "verdict": "loop SURVIVES; λ*-row SUPERSEDED (restricted-branch); Q-6' censorship NEWLY-TENSIONED-LITE: margin x4.3 thinner, dichotomy survives (min margin 2.6)"
+    },
+    {
+      "id": "V15.8",
+      "sector": "<r11> FQ overdetermination",
+      "original": {
+        "R_up": 1.27,
+        "R_down": 0.82
+      },
+      "repaired": "bit-identical (pure ratio arithmetic; externally reconstructed, pulls 0.17-0.32σ)",
+      "confronted": "PDG quark spacings",
+      "verdict": "SURVIVES (identically)"
+    },
+    {
+      "id": "V15.9",
+      "sector": "bookkeeping",
+      "original": {
+        "haar": 1.3581,
+        "kills": 14,
+        "sidereal_ns": [
+          0.123,
+          0.41
+        ]
+      },
+      "repaired": "bit-identical — ê0 = 64/15π survives as the spherical Haar backbone (enters the repaired algebra too); kill census and sidereal kinematics have no c-route",
+      "confronted": "internal cross-links",
+      "verdict": "SURVIVES (identically)"
+    }
+  ],
+  "v15_context": {
+    "V15.1": "arithmetic survives (restricted-branch algebra, certified); the physical-endpoint tuple (c0, κ0, ω_th) STRUCK per T3.1 — the supersession, not a failed check",
+    "V15.2": "anchor arithmetic survives; the confrontation is RE-ASSIGNED: old law hits <r1> at 0.02σ but belongs to the struck endpoint; repaired branch predicts c(0.05) = 3.38547 (11.3σ from <r1> — correctly so: <r1> is restricted-branch code, per F-R5/F-R15)"
+  },
+  "bench_stakes_v3": [
+    {
+      "stake": "S3 (E_rot/E)",
+      "old": 0.25,
+      "new": 0.25,
+      "note": "exact, all closures — UNCHANGED (now closure-independent)",
+      "exposure": "UNCHANGED"
+    },
+    {
+      "stake": "S4' (κ²g)",
+      "old": 0.875,
+      "new": 1.4583333333333333,
+      "note": "κ²g_tot = 35/24 (κ²g_core = 35/48 = 0.72917; cleanest: ê_tot = 𝔦_tot = 64/9π = 2.26354); old 7/8 family-exact hence g-blind (value-free); ⟨r1⟩ 0.843±0.046: +0.7σ from 7/8 (restricted), +13.4σ from 35/24 (different branch)",
+      "exposure": "BETTER (discriminating at last)"
+    },
+    {
+      "stake": "V-class diagnostic",
+      "old": 1.4142135623730951,
+      "new": 1.5,
+      "note": "support ratio 3/2 exact (saturated); V = √2 re-scoped to restricted branch; ⟨r1⟩ 1.409±0.010 = 0.5σ from √2, 9.1σ from 3/2 — bench must declare its branch",
+      "exposure": "BETTER (more discriminating) with branch-ID risk"
+    },
+    {
+      "stake": "S5/P8-6 (clock lock)",
+      "old": "V ∝ cosΔφ, bond vibron",
+      "new": "identical",
+      "note": "kinematic; x0_lock = 2.42±0.12 unchanged; -sinΔφ torque externally confirmed",
+      "exposure": "UNCHANGED"
+    },
+    {
+      "stake": "P8-7 (tail range)",
+      "old": 0.7637626158259734,
+      "new": 0.7071067811865476,
+      "note": "range = κ × clock length; κ = 1/√2 = 0.70711 exactly (-7.4%); closed form, no band needed",
+      "exposure": "SHIFTED target; BETTER (exact)"
+    },
+    {
+      "stake": "over-spin onset",
+      "old": "single rehearsed onset κ = 1",
+      "new": "channel-resolved menu κ_crit(w) = 1/√(2⟨sin²θ⟩_w)",
+      "note": "equilibrium sits marginally AT κ = 1/√2: over-spin sheds IMMEDIATELY through the equatorial-ring/tilt channel (zero margin — the marginal-stability caveat IS the bench signature; branch-resolved emission detection required); ladder if ring suppressed: 0.70711 (ring/tilt) < 0.76376 (s=sin²; the old κ0, now a threshold) < 0.86603 (uniform) < 1.00000 (polar — the corpus's measured 1.000±0.004, reproduced exactly)",
+      "exposure": "BETTER (richer + riskier prediction; halo thresholds are now the physics)"
+    },
+    {
+      "stake": "S1 (Σm_ν)",
+      "old": "[0.058, 0.11] eV, NO",
+      "new": "identical",
+      "note": "VERIFIED untouched: bridge blind (≤0.12σ residual), floors physical (oscillation + Σ bound)",
+      "exposure": "UNCHANGED"
+    },
+    {
+      "stake": "S2 (Higgs nulls)",
+      "old": "δg_h = 0",
+      "new": "identical",
+      "note": "family sector, blind",
+      "exposure": "UNCHANGED"
+    }
+  ],
+  "bottom_line": {
+    "data_confronting_sector (family, neutrino, quark, cosmology)": "UNCHANGED — every V15.3-V15.9 confrontation number is bit-identical or shifts ≤ 0.12σ inside its own band; S1/S2 verified untouched",
+    "bench_program": "BETTER — S4' becomes discriminating (was value-free), P8-7 and the V-diagnostic become exact closed forms, the over-spin protocol becomes a channel-resolved ladder with the corpus's own measured 1.000±0.004 reproduced exactly as the polar channel",
+    "forfeited": "the <r1> ε-anchor corroboration (2.371 vs 2.37±0.09, 0.01σ) is RE-SCOPED to restricted-branch code validation; the repaired rising ε-law (+1.15ε) has no measurement yet — a new obligation, mitigated only by F-R15's transit reading",
+    "newly_tensioned": "Q-6' quark-censorship margin thins x4.3 (min 2.6; dichotomy survives); marginal (not gapped) stability is the standing structural risk",
+    "net": "within-model empirical exposure: BETTER on the bench stakes, UNCHANGED across every data confrontation, WORSE at exactly one point (the forfeited ε-anchor hit) plus one thinned margin"
+  }
+}
