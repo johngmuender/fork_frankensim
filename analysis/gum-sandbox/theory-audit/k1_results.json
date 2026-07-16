@@ -1,0 +1,121 @@
+{
+ "spec": {
+  "task": "K1 discriminate p = A e^{-muR*}/6 vs /(15pi/8)",
+  "F6": 6.0,
+  "F15pi8": 5.890486225480862,
+  "split_ratio_p": 1.0185916357881302,
+  "split_pct_p": 1.8591635788130167,
+  "split_pct_b": 3.7528920497538865,
+  "discrimination_bar_sigma": 2.0
+ },
+ "stageA_catalog": [
+  {
+   "q": "p = 0.84 +- 0.03",
+   "src": "VII.C(509)/I.1(777)/map47/Course15",
+   "n": 1,
+   "frac_sigma": 0.03571428571428571,
+   "digits": "2 dp + band",
+   "note": "the calibrand itself; band is the corpus's own precision",
+   "power_sigma": 0.5205658020676447
+  },
+  {
+   "q": "b_eff = 42 +- 6",
+   "src": "VII.D(523)/I.2/A.4",
+   "n": -2,
+   "frac_sigma": 0.14285714285714285,
+   "digits": "2 sf + band",
+   "note": "b ~ C_d/(F_b p^2); instrument C_d error and F_b identity fold in",
+   "power_sigma": 0.26028290103382234
+  },
+  {
+   "q": "x0(bond eq at b=42) = 1.90 +- 0.05",
+   "src": "VII.D(523)",
+   "n": null,
+   "frac_sigma": 0.026315789473684213,
+   "digits": "2 dp + band",
+   "note": "sensitivity dx0/dln b measured in stage B3 from archived arrays",
+   "power_sigma": null
+  },
+  {
+   "q": "x0(measured) = 1.92 +- 0.08",
+   "src": "VII.D(523)",
+   "n": 0,
+   "frac_sigma": 0.04166666666666667,
+   "digits": "2 dp + band",
+   "note": "well location from E_int(x) shape: no amplitude enters; n = 0 exact",
+   "power_sigma": 0.0
+  },
+  {
+   "q": "b_inf ~ 4.5",
+   "src": "VII.D(523)/Course16",
+   "n": -2,
+   "frac_sigma": null,
+   "digits": "2 sf, '~', NO band",
+   "note": "no printed error; F_b unpinned; far zone unmeasured by the instrument",
+   "power_sigma": null
+  },
+  {
+   "q": "B.4 window edges [-m^2/2, m^2/6)",
+   "src": "B.4(741)",
+   "n": 0,
+   "frac_sigma": null,
+   "digits": "exact rationals",
+   "note": "potential-space statement; amplitude readout cannot enter (stage B4)",
+   "power_sigma": 0.0
+  },
+  {
+   "q": "C6 = 64 Lm/15pi",
+   "src": "(7.3)(503)/map47",
+   "n": 0,
+   "frac_sigma": null,
+   "digits": "exact",
+   "note": "energy bound constant, amplitude-free (stage B5)",
+   "power_sigma": 0.0
+  },
+  {
+   "q": "mu^2 = m^2/(2 a_psi)",
+   "src": "B.5(741)",
+   "n": 0,
+   "frac_sigma": 2e-06,
+   "digits": "formula",
+   "note": "replicated to 2e-6; convention-free (J1 gate <=1e-4 all window)",
+   "power_sigma": 0.0
+  },
+  {
+   "q": "I.1 gate constants (virial 3e-4, INT b=1.000, eps=0.05)",
+   "src": "I.1(777)",
+   "n": 0,
+   "frac_sigma": null,
+   "digits": "exact thresholds",
+   "note": "dimensionless shape/energy gates; amplitude-free",
+   "power_sigma": 0.0
+  },
+  {
+   "q": "p_dipole coefficient: p ~ p/mu^2",
+   "src": "(7.4)(511)/(15.6)",
+   "n": 1,
+   "frac_sigma": null,
+   "digits": "NO coefficient printed",
+   "note": "proportionality only: zero archive digits to test against",
+   "power_sigma": null
+  },
+  {
+   "q": "x0_lock = 2.42 +- 0.12, shift 0.50 +- 0.14",
+   "src": "VII.D(525)",
+   "n": 0,
+   "frac_sigma": 0.28,
+   "digits": "2 dp + band",
+   "note": "ln2/slope shift within one law: p^2 prefactor cancels; also <r6> superseded (B.6)",
+   "power_sigma": 0.0
+  },
+  {
+   "q": "C_d (pair-law amplitude)",
+   "src": "(7.5)(521)",
+   "n": null,
+   "frac_sigma": null,
+   "digits": "NEVER printed numerically",
+   "note": "corpus prints the form only; our measurement enters via b_eff channel",
+   "power_sigma": null
+  }
+ ]
+}

@@ -87,7 +87,7 @@
    "detail": "max central movement 7.77e-03 <= 0.013 -> PROPAGATION UNCHANGED"
   }
  ],
- "runtime_s": 175.90411376953125,
+ "runtime_s": 2.236929178237915,
  "s1_new_points": [
   {
    "eps_nominal": 0.001,
@@ -215,15 +215,6 @@
   "unconverged_reasons": [],
   "nfev": 3141,
   "secs": 54.83788704872131
- },
- "s1_dial_in_flight": {
-  "eps": 0.005,
-  "t": 0.0006632194051485354,
-  "ratio": 0.004999835396211375,
-  "ladder": {
-   "N2x": -5.719149535510226e-06,
-   "rmax+": 2.285373045252115e-06
-  }
  },
  "s2_crosscheck": {
   "c_k2": 3.219563656007215,
