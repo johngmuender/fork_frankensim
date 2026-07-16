@@ -1,24 +1,25 @@
 #!/usr/bin/env python3
-"""Phase G5b refine analysis: cap-1600 attractive-channel reruns vs the G4
+"""Phase G5b refine analysis: long-cap attractive-channel reruns vs the G4
 cap-400 campaign.  Deterministic (no RNG).  Reads runs/ (G4, cap 400) and
-runs1600/ (G5b, cap 1600); writes twoknot_refine_results.json and
-twoknot_refine_fig.png.  Does NOT touch twoknot_results.json.
+runs1200/ (G5b, cap 1200 — cut from the planned 1600 after a container
+restart + G5a co-tenancy; see farm_refine.sh); writes
+twoknot_refine_results.json and twoknot_refine_fig.png.  Does NOT touch
+twoknot_results.json.
 
 What it computes (roadmap G5b step 2-3):
 
-  * per-run tail extrapolation of E_static from the instrumented series:
-    Aitken delta^2 on three consecutive block means of the tail (the
-    exponential-approach estimator), with a deterministic error bar =
-    max(|E_inf - E_last|, block scatter).  Falls back to (E_last, tail
-    variation) when the block means are not a contraction (oscillatory
-    arrest-dominated tails).
-  * anchored E_int at cap 1600 (far anchor m = 38, same cap) and its
-    extrapolated twin, each with propagated error bars.
-  * THE CAP SYSTEMATIC: E_int(cap 1600) - E_int(cap 400) per separation.
-  * a refreshed noise model for the 1600 runs and the well-depth
-    significance at x = 1.894.
-  * direct parabolic x0 with band; pair-law + core fit on the 1600 points;
-    b = 42 running-estimator crossing; all vs corpus targets
+  * per-run tail behavior of E_static from the instrumented series
+    (residual slope + Aitken exponential-approach fit where valid);
+  * the DIFFERENTIAL series E_m(it) - E_far(it) on the common
+    instrumentation grid: the shared cap systematic cancels
+    iteration-by-iteration, leaving physics + arrest-desync noise.  The
+    cap-extrapolated E_int and its error bar come from this series
+    (Aitken delta^2 on block medians; fallback tail median +- p2p/2);
+  * THE CAP SYSTEMATIC: E_int(cap 1200) - E_int(cap 400) per separation;
+  * a refreshed noise model for the long-cap runs and the well-depth
+    significance at x = 1.894;
+  * direct parabolic x0 with band; pair-law + core fit on the long-cap
+    points; b = 42 running-estimator crossing; all vs corpus targets
     (predicted 1.90 +- 0.05, measured 1.92 +- 0.08).
 """
 
@@ -30,8 +31,8 @@ import os
 import numpy as np
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-RUNS400 = os.path.join(HERE, "runs")
-RUNS1600 = os.path.join(HERE, "runs1600")
+RUNS_G4 = os.path.join(HERE, "runs")
+RUNS_HI = os.path.join(HERE, "runs1200")
 
 RSTAR = 2.0 ** (5.0 / 6.0)
 T_FROZEN = 0.008276434949296802
@@ -63,31 +64,22 @@ def load_runs(dirname):
 
 
 def tail_extrapolate(run, frac=0.5):
-    """Exponential-approach (Aitken delta^2) extrapolation of E_static from
-    the instrumented series.
-
-    The tail (last `frac` of the recorded series) is split into 3 equal
-    consecutive blocks with means m1, m2, m3.  For a clean exponential
-    approach the block means are a geometric contraction; then
-    E_inf = m3 - (m3 - m2)^2 / ((m3 - m2) - (m2 - m1))  [Aitken].
-    Validity requires 0 < r < 1 with r = (m3-m2)/(m2-m1).
-    Error bar: |E_inf - E_last| + within-block scatter of the last block.
-    Fallback (oscillatory / non-contracting tail): E_inf = E_last,
-    error = peak-to-peak of the last quarter of the series.
-    Returns dict(e_inf, sigma, method, r, e_last, resid_slope)."""
+    """Exponential-approach (Aitken delta^2) extrapolation of the ABSOLUTE
+    E_static from the instrumented series; diagnostic only (the physical
+    estimator is the differential one below).  Tail = last `frac` of the
+    series, 3 equal block means m1,m2,m3; valid if contraction 0 < r < 0.9;
+    else fallback (last value, peak-to-peak of the last quarter)."""
     ser = run["series"]
     es = np.array([e["estat"] for e in ser])
-    its = np.array([e["it"] for e in ser])
+    its = np.array([e["it"] for e in ser], dtype=float)
     e_last = float(es[-1])
     n = len(es)
     i0 = max(0, int(round(n * (1.0 - frac))))
     tail = es[i0:]
     nt = len(tail)
-    # residual slope of the tail (per iteration), always reported
-    it_t = its[i0:].astype(float)
-    slope = float(np.polyfit(it_t, tail, 1)[0]) if nt >= 3 else 0.0
-    k = nt // 3
+    slope = float(np.polyfit(its[i0:], tail, 1)[0]) if nt >= 3 else 0.0
     out = {"e_last": e_last, "resid_slope_per_iter": slope}
+    k = nt // 3
     if k >= 2:
         m1 = float(np.mean(tail[nt - 3 * k : nt - 2 * k]))
         m2 = float(np.mean(tail[nt - 2 * k : nt - k]))
@@ -95,19 +87,16 @@ def tail_extrapolate(run, frac=0.5):
         d1, d2 = m2 - m1, m3 - m2
         if d1 != 0.0:
             r = d2 / d1
+            out["ratio"] = float(r)
             if 0.0 < r < 0.9:
-                e_inf = m3 - d2 * d2 / (d2 - d1) if d2 != d1 else m3
-                scat = float(np.std(tail[nt - k :]))
+                e_inf = m3 - d2 * d2 / (d2 - d1)
                 out.update(
                     e_inf=float(e_inf),
-                    sigma=float(abs(e_inf - e_last) + scat),
+                    sigma=float(abs(e_inf - e_last) + np.std(tail[nt - k :])),
                     method="aitken",
-                    ratio=float(r),
                     blocks=[m1, m2, m3],
                 )
                 return out
-            out["ratio"] = float(r)
-    # fallback: oscillatory tail — no net exponential approach resolvable
     q = es[max(0, n - 1 - max(1, n // 4)) :]
     out.update(
         e_inf=e_last,
@@ -304,11 +293,13 @@ def crossing_x(xs, vals, target):
 
 
 def main():
-    r400 = load_runs(RUNS400)
-    r1600 = load_runs(RUNS1600)
-    far16 = r1600[("attract", FAR_M)]
-    far4 = r400[("attract", FAR_M)]
-    single16 = r1600[("single", 0)]
+    r_g4 = load_runs(RUNS_G4)
+    r_hi = load_runs(RUNS_HI)
+    far_hi = r_hi[("attract", FAR_M)]
+    far_g4 = r_g4[("attract", FAR_M)]
+    single_hi = r_hi[("single", 0)]
+    cap_hi = far_hi["protocol"]["maxit"]
+    cap_g4 = far_g4["protocol"]["maxit"]
 
     results = {
         "constants": {
@@ -316,106 +307,106 @@ def main():
             "b_corpus": B_CORPUS,
             "x0_predicted_corpus": list(X0_PRED),
             "x0_measured_corpus": list(X0_MEAS),
-            "cap_g4": 400, "cap_g5b": 1600,
+            "cap_g4": cap_g4, "cap_hi": cap_hi,
         },
         "per_run": [], "tails": {}, "cap_systematic": {},
     }
 
-    # ---- tail extrapolation for every 1600 run (incl. anchor + single) ----
+    # ---- tail behavior for every long-cap run (incl. anchor + single) ----
     tails = {}
-    for key, run in sorted(r1600.items()):
+    for key, run in sorted(r_hi.items()):
         t = tail_extrapolate(run)
         tails[key] = t
         results["tails"]["%s_m%02d" % key] = t
 
     # ---- per-run table: E_int anchored, at both caps + extrapolated -------
     xs, dd = [], []
-    e400, e1600, einf, sinf = [], [], [], []
+    e_g4, e_hi, einf, sinf = [], [], [], []
     for m in MS_SCAN:
-        run16 = r1600[("attract", m)]
-        run4 = r400[("attract", m)]
-        d = run16["protocol"]["d"]
-        x = run16["protocol"]["x_sep"]
-        ei400 = run4["final"][SCHEME]["estat"] - far4["final"][SCHEME]["estat"]
-        ei1600 = run16["final"][SCHEME]["estat"] - far16["final"][SCHEME]["estat"]
+        run_hi = r_hi[("attract", m)]
+        run_g4 = r_g4[("attract", m)]
+        d = run_hi["protocol"]["d"]
+        x = run_hi["protocol"]["x_sep"]
+        ei_g4 = run_g4["final"][SCHEME]["estat"] - far_g4["final"][SCHEME]["estat"]
+        ei_hi = run_hi["final"][SCHEME]["estat"] - far_hi["final"][SCHEME]["estat"]
         t = tails[("attract", m)]
-        dits, dv = diff_series(run16, far16)
+        dits, dv = diff_series(run_hi, far_hi)
         td = tail_extrapolate_diff(dits, dv)
         ei_inf = td["e_inf"]
         s_inf = td["sigma"]
         results["tails"]["diff_attract_m%02d" % m] = td
         row = {
             "m": m, "d": d, "x": x,
-            "E_1600": run16["final"][SCHEME]["estat"],
-            "Eint_400": ei400, "Eint_1600": ei1600,
+            "E_hi": run_hi["final"][SCHEME]["estat"],
+            "Eint_g4": ei_g4, "Eint_hi": ei_hi,
             "Eint_extrap": ei_inf, "sigma_extrap": s_inf,
-            "cap_shift_1600_minus_400": ei1600 - ei400,
-            "Eint_seed": (run16["seed"][SCHEME]["estat"]
-                          - 2.0 * single16["seed"][SCHEME]["estat"]),
-            "deg_final": run16["final"][SCHEME]["deg"],
-            "d_eff_final": run16["final"]["d_eff"],
-            "arrests": run16["anf"]["arrests"],
-            "status": run16["anf"]["status"],
-            "seconds": run16["anf"]["seconds"],
+            "cap_shift_hi_minus_g4": ei_hi - ei_g4,
+            "Eint_seed": (run_hi["seed"][SCHEME]["estat"]
+                          - 2.0 * single_hi["seed"][SCHEME]["estat"]),
+            "deg_final": run_hi["final"][SCHEME]["deg"],
+            "d_eff_final": run_hi["final"]["d_eff"],
+            "arrests": run_hi["anf"]["arrests"],
+            "status": run_hi["anf"]["status"],
+            "seconds": run_hi["anf"]["seconds"],
             "tail_method": td["method"],
             "resid_slope_per_iter_abs": t["resid_slope_per_iter"],
             "resid_slope_per_iter_diff": td["resid_slope_per_iter"],
         }
         xs.append(x)
         dd.append(d)
-        e400.append(ei400)
-        e1600.append(ei1600)
+        e_g4.append(ei_g4)
+        e_hi.append(ei_hi)
         einf.append(ei_inf)
         sinf.append(s_inf)
         results["per_run"].append(row)
     xs = np.array(xs)
     dd = np.array(dd)
-    e400 = np.array(e400)
-    e1600 = np.array(e1600)
+    e_g4 = np.array(e_g4)
+    e_hi = np.array(e_hi)
     einf = np.array(einf)
     sinf = np.array(sinf)
 
-    # anchor + single cross-check at 1600
-    results["anchor_crosscheck_1600"] = {
+    # anchor + single cross-check at the long cap
+    results["anchor_crosscheck_hi"] = {
         "E_far_minus_2E_single_final": (
-            far16["final"][SCHEME]["estat"]
-            - 2.0 * single16["final"][SCHEME]["estat"]),
-        "value_at_400": (far4["final"][SCHEME]["estat"]
-                         - 2.0 * r400[("single", 0)]["final"][SCHEME]["estat"]),
+            far_hi["final"][SCHEME]["estat"]
+            - 2.0 * single_hi["final"][SCHEME]["estat"]),
+        "value_at_g4_cap": (far_g4["final"][SCHEME]["estat"]
+                            - 2.0 * r_g4[("single", 0)]["final"][SCHEME]["estat"]),
     }
 
     # ---- the cap systematic ------------------------------------------------
-    shift = e1600 - e400
+    shift = e_hi - e_g4
     results["cap_systematic"] = {
         "per_point": {int(m): float(s) for m, s in zip(MS_SCAN, shift)},
         "rms": float(np.sqrt(np.mean(shift**2))),
         "max_abs": float(np.max(np.abs(shift))),
-        "note": "Eint(cap1600) - Eint(cap400), far-anchored, corner scheme; "
-                "this IS the measured cap systematic of the G4 numbers.",
+        "note": f"Eint(cap{cap_hi}) - Eint(cap{cap_g4}), far-anchored, "
+                "corner scheme; this IS the measured cap systematic of the "
+                "G4 numbers.",
     }
 
-    # ---- refreshed noise model at cap 1600 ---------------------------------
-    # Only the attractive channel exists at 1600, so the G4 cross-channel
-    # scatter is not re-measurable.  Three independent handles:
+    # ---- refreshed noise model at the long cap -----------------------------
+    # Only the attractive channel exists at the long cap, so the G4
+    # cross-channel scatter is not re-measurable.  Three independent handles:
     #   (a) the m=23 point: the seed estimator bounds the physical
     #       interaction there at |E| <= 5e-6, so the measured anchored
     #       value at m=23 is (physical + noise) ~ noise;
-    #   (b) the per-run tail-extrapolation error bars (differential,
-    #       propagated through the anchor);
+    #   (b) the per-point differential tail error bars (sigma_extrap);
     #   (c) the G4->G5b cap shift at m=20,23 (where physics is <= 5e-6):
-    #       the shift there is almost pure differential cap noise moving
-    #       between the two caps, an upper bound on the 1600 noise.
+    #       almost pure differential cap noise moving between the caps,
+    #       an upper bound on the long-cap noise.
     m23 = list(MS_SCAN).index(23)
     m20 = list(MS_SCAN).index(20)
     seed23 = abs(results["per_run"][m23]["Eint_seed"])
-    noise_a = abs(float(e1600[m23]))
+    noise_a = abs(float(e_hi[m23]))
     noise_b = float(np.median(sinf))
     noise_c = float(max(abs(shift[m20]), abs(shift[m23])))
     sigma_ref = max(noise_a, min(noise_b, noise_c))
     d23 = float(dd[m23])
     sig_dc = sigma_ref * np.minimum(1.0, np.exp(-MU * (dd - d23)))
-    ss = np.maximum(sig_dc, 0.10 * np.abs(e1600))
-    results["noise_model_1600"] = {
+    ss = np.maximum(sig_dc, 0.10 * np.abs(e_hi))
+    results["noise_model_hi"] = {
         "handle_a_abs_Eint_m23": noise_a,
         "handle_a_seed_bound_m23": seed23,
         "handle_b_median_sigma_extrap": noise_b,
@@ -430,51 +421,52 @@ def main():
     iw = list(MS_SCAN).index(WELL_M)
     well = {
         "x": float(xs[iw]),
-        "Eint_400": float(e400[iw]),
-        "Eint_1600": float(e1600[iw]),
+        "Eint_g4": float(e_g4[iw]),
+        "Eint_hi": float(e_hi[iw]),
         "Eint_extrap": float(einf[iw]),
-        "sigma_1600": float(ss[iw]),
+        "sigma_hi": float(ss[iw]),
         "sigma_extrap": float(sinf[iw]),
-        "depth_over_sigma_1600": float(-e1600[iw] / ss[iw]),
-        "depth_over_sigma_extrap": float(-einf[iw] / sinf[iw]) if sinf[iw] > 0 else None,
+        "depth_over_sigma_hi": float(-e_hi[iw] / ss[iw]),
+        "depth_over_sigma_extrap": (float(-einf[iw] / sinf[iw])
+                                    if sinf[iw] > 0 else None),
         "g4_significance": 2.1,
     }
     results["well"] = well
 
     # ---- direct x0 with band (three estimators) ----------------------------
     bond = {}
-    x0_16, lo_16, hi_16 = parabola_min_with_band(xs, e1600, ss)
-    x0_inf, lo_inf, hi_inf = parabola_min_with_band(xs, einf, np.maximum(sinf, ss))
-    bond["x0_direct_1600"] = x0_16
-    bond["x0_direct_1600_band"] = [lo_16, hi_16]
-    bond["x0_direct_extrap"] = x0_inf
-    bond["x0_direct_extrap_band"] = [lo_inf, hi_inf]
+    x0_h, lo_h, hi_h = parabola_min_with_band(xs, e_hi, ss)
+    x0_e, lo_e, hi_e = parabola_min_with_band(xs, einf, np.maximum(sinf, ss))
+    bond["x0_direct_hi"] = x0_h
+    bond["x0_direct_hi_band"] = [lo_h, hi_h]
+    bond["x0_direct_extrap"] = x0_e
+    bond["x0_direct_extrap_band"] = [lo_e, hi_e]
 
-    # pair-law + core fit on the four 1600 points (dof = 1)
-    fit = fit_model(dd, e1600, ss)
+    # pair-law + core fit on the four long-cap points (dof = 1)
+    fit = fit_model(dd, e_hi, ss)
     if fit is not None:
         fit["b_eff"] = fit["C_d"] * MU / (2.0 * math.pi * P_DIP**2)
         dmin = golden_min(lambda d_, f=fit: float(
             model_v(d_, f["C_d"], f["B_core"], f["nu"])), 2.2, 7.4)
         fit["x0_fit"] = dmin / RSTAR if dmin else None
-    results["fit_1600"] = fit if fit is not None else {"failed": True}
-    bond["x0_fit_1600"] = None if fit is None else fit.get("x0_fit")
+    results["fit_hi"] = fit if fit is not None else {"failed": True}
+    bond["x0_fit_hi"] = None if fit is None else fit.get("x0_fit")
 
     # b = 42 running-estimator crossing (reading B of G4)
-    beff16 = beff_running(e1600, dd)
-    beffinf = beff_running(einf, dd)
-    bond["x0_b42_running_1600"] = crossing_x(xs, beff16, B_CORPUS)
-    bond["x0_b42_running_extrap"] = crossing_x(xs, beffinf, B_CORPUS)
-    bond["beff_running_1600"] = beff16.tolist()
-    bond["beff_running_extrap"] = beffinf.tolist()
+    beff_h = beff_running(e_hi, dd)
+    beff_e = beff_running(einf, dd)
+    bond["x0_b42_running_hi"] = crossing_x(xs, beff_h, B_CORPUS)
+    bond["x0_b42_running_extrap"] = crossing_x(xs, beff_e, B_CORPUS)
+    bond["beff_running_hi"] = beff_h.tolist()
+    bond["beff_running_extrap"] = beff_e.tolist()
 
     # quoted x0: centre of the estimator ensemble, band = envelope of the
     # direct-parabola sigma bands and the estimator spread
-    ests = [v for v in (x0_16, x0_inf, bond["x0_fit_1600"]) if v is not None]
+    ests = [v for v in (x0_h, x0_e, bond["x0_fit_hi"]) if v is not None]
     if ests:
         x0_q = float(np.mean(ests))
-        lo_all = [v for v in (lo_16, lo_inf, *ests) if v is not None]
-        hi_all = [v for v in (hi_16, hi_inf, *ests) if v is not None]
+        lo_all = [v for v in (lo_h, lo_e, *ests) if v is not None]
+        hi_all = [v for v in (hi_h, hi_e, *ests) if v is not None]
         bond["x0_quoted"] = x0_q
         bond["x0_quoted_band"] = [float(min(lo_all)), float(max(hi_all))]
     results["bond"] = bond
@@ -491,41 +483,42 @@ def main():
 
         fig, axes = plt.subplots(1, 2, figsize=(11.5, 4.6))
         ax = axes[0]
-        ax.errorbar(xs, e400, fmt="s", ms=4, color="#999999", label="cap 400 (G4)")
-        ax.errorbar(xs, e1600, yerr=ss, fmt="o", ms=4, color="#1c6fb8",
-                    label="cap 1600")
+        ax.errorbar(xs, e_g4, fmt="s", ms=4, color="#999999",
+                    label=f"cap {cap_g4} (G4)")
+        ax.errorbar(xs, e_hi, yerr=ss, fmt="o", ms=4, color="#1c6fb8",
+                    label=f"cap {cap_hi}")
         ax.errorbar(xs + 0.012, einf, yerr=sinf, fmt="^", ms=4, color="#e08214",
-                    label="cap-extrapolated")
+                    label="cap-extrapolated (diff series)")
         if fit is not None:
             xg = np.linspace(1.6, 2.5, 300)
             ax.plot(xg, model_v(xg * RSTAR, fit["C_d"], fit["B_core"], fit["nu"]),
-                    "-", lw=1, color="#e08214", alpha=0.7, label="pair-law+core fit (1600)")
+                    "-", lw=1, color="#e08214", alpha=0.7,
+                    label=f"pair-law+core fit (cap {cap_hi})")
         ax.axhline(0, color="k", lw=0.6)
         ax.axvspan(X0_MEAS[0] - X0_MEAS[1], X0_MEAS[0] + X0_MEAS[1], alpha=0.12,
                    color="purple", label="corpus 1.92 +- 0.08")
         ax.axvline(X0_PRED[0], color="purple", ls=":", lw=1)
-        if bond["x0_direct_1600"]:
-            ax.axvline(bond["x0_direct_1600"], color="#1c6fb8", ls="--", lw=0.8)
+        if bond["x0_direct_hi"]:
+            ax.axvline(bond["x0_direct_hi"], color="#1c6fb8", ls="--", lw=0.8)
         ax.set_xlabel("x = d / R*")
         ax.set_ylabel("E_int (corner, far-anchored)")
         ax.set_yscale("symlog", linthresh=1e-5)
-        ax.set_title("G5b: attractive channel, cap 400 vs 1600 vs extrapolated")
+        ax.set_title(f"G5b: attractive channel, cap {cap_g4} vs {cap_hi} vs extrap")
         ax.legend(fontsize=7)
 
         ax = axes[1]
-        for m in MS_SCAN + (FAR_M,):
-            run = r1600[("attract", m)]
-            ser = run["series"]
-            it = [e["it"] for e in ser]
-            es = [e["estat"] for e in ser]
-            ax.plot(it, np.array(es) - es[-1], lw=0.9,
-                    label=f"attract m={m} (x={run['protocol']['x_sep']:.2f})")
+        for m in MS_SCAN:
+            run = r_hi[("attract", m)]
+            dits, dv = diff_series(run, far_hi)
+            ax.plot(dits, dv, lw=0.9,
+                    label=f"m={m} (x={run['protocol']['x_sep']:.2f})")
         ax.set_yscale("symlog", linthresh=1e-6)
-        ax.axvline(400, color="k", ls=":", lw=0.8)
-        ax.text(400, ax.get_ylim()[1], " G4 cap", fontsize=7, va="top")
+        ax.axvline(cap_g4, color="k", ls=":", lw=0.8)
+        ax.text(cap_g4, ax.get_ylim()[1], " G4 cap", fontsize=7, va="top")
+        ax.axhline(0, color="k", lw=0.6)
         ax.set_xlabel("ANF iteration")
-        ax.set_ylabel("E_static(it) - E_static(1600)")
-        ax.set_title("Descent tails (cap 1600)")
+        ax.set_ylabel("E_static(m; it) - E_static(far; it)")
+        ax.set_title("Differential descent series (the E_int instrument)")
         ax.legend(fontsize=7)
         fig.tight_layout()
         fig.savefig(os.path.join(HERE, "twoknot_refine_fig.png"), dpi=140)
@@ -533,40 +526,41 @@ def main():
         print("figure generation skipped:", ex)
 
     # ---- console summary ----------------------------------------------------
-    print("== G5b refine: cap 400 -> 1600, attractive channel ==")
+    print(f"== G5b refine: cap {cap_g4} -> {cap_hi}, attractive channel ==")
+    ac = results["anchor_crosscheck_hi"]
     print(f"anchor cross-check (E_far - 2 E_single): "
-          f"{results['anchor_crosscheck_1600']['E_far_minus_2E_single_final']:+.6e} at 1600 "
-          f"vs {results['anchor_crosscheck_1600']['value_at_400']:+.6e} at 400")
-    print(f"{'m':>3s} {'x':>7s} {'Eint400':>12s} {'Eint1600':>12s} {'shift':>10s} "
-          f"{'Eint_extrap':>12s} {'sig_ex':>9s} {'sig1600':>9s} {'tail':>14s}")
+          f"{ac['E_far_minus_2E_single_final']:+.6e} at {cap_hi} "
+          f"vs {ac['value_at_g4_cap']:+.6e} at {cap_g4}")
+    print(f"{'m':>3s} {'x':>7s} {'Eint_g4':>12s} {'Eint_hi':>12s} {'shift':>10s} "
+          f"{'Eint_extrap':>12s} {'sig_ex':>9s} {'sig_hi':>9s} {'tail':>16s}")
     for i, m in enumerate(MS_SCAN):
         row = results["per_run"][i]
-        print(f"{m:3d} {xs[i]:7.4f} {e400[i]:12.4e} {e1600[i]:12.4e} "
+        print(f"{m:3d} {xs[i]:7.4f} {e_g4[i]:12.4e} {e_hi[i]:12.4e} "
               f"{shift[i]:+10.2e} {einf[i]:12.4e} {sinf[i]:9.2e} {ss[i]:9.2e} "
-              f"{row['tail_method']:>14s}")
+              f"{row['tail_method']:>16s}")
     cs = results["cap_systematic"]
     print(f"cap systematic: rms {cs['rms']:.2e}, max |shift| {cs['max_abs']:.2e}")
-    nm = results["noise_model_1600"]
+    nm = results["noise_model_hi"]
     print(f"noise handles: a(m23)={nm['handle_a_abs_Eint_m23']:.2e} "
           f"b(extrap)={nm['handle_b_median_sigma_extrap']:.2e} "
           f"c(shift quiet)={nm['handle_c_cap_shift_quiet_zone']:.2e} "
           f"-> sigma_ref={nm['sigma_ref_adopted']:.2e}")
     w = results["well"]
-    print(f"WELL x={w['x']:.4f}: Eint 400={w['Eint_400']:.3e} "
-          f"1600={w['Eint_1600']:.3e} extrap={w['Eint_extrap']:.3e}")
-    print(f"     depth/sigma: 1600 {w['depth_over_sigma_1600']:.2f} "
+    print(f"WELL x={w['x']:.4f}: Eint g4={w['Eint_g4']:.3e} "
+          f"hi={w['Eint_hi']:.3e} extrap={w['Eint_extrap']:.3e}")
+    print(f"     depth/sigma: hi {w['depth_over_sigma_hi']:.2f} "
           f"extrap {w['depth_over_sigma_extrap']} (G4: 2.1)")
     b = results["bond"]
-    print(f"x0 direct 1600 = {b['x0_direct_1600']} band {b['x0_direct_1600_band']}")
+    print(f"x0 direct hi = {b['x0_direct_hi']} band {b['x0_direct_hi_band']}")
     print(f"x0 direct extrap = {b['x0_direct_extrap']} band {b['x0_direct_extrap_band']}")
-    print(f"x0 fit 1600 = {b['x0_fit_1600']}")
-    print(f"x0 b42 running: 1600 {b['x0_b42_running_1600']} "
+    print(f"x0 fit hi = {b['x0_fit_hi']}")
+    print(f"x0 b42 running: hi {b['x0_b42_running_hi']} "
           f"extrap {b['x0_b42_running_extrap']}")
     if "x0_quoted" in b:
         print(f"x0 QUOTED = {b['x0_quoted']:.3f} band {b['x0_quoted_band']} "
               f"vs corpus {X0_MEAS[0]} +- {X0_MEAS[1]} (pred {X0_PRED[0]} +- {X0_PRED[1]})")
     if fit is not None:
-        print(f"fit 1600: C_d={fit['C_d']:.3e} nu={fit['nu']:.2f} "
+        print(f"fit hi: C_d={fit['C_d']:.3e} nu={fit['nu']:.2f} "
               f"(nu/mu={fit['nu']/MU:.2f}) chi2/dof={fit['chi2']:.2f}/{fit['dof']} "
               f"b_eff={fit['b_eff']:.3e}")
 

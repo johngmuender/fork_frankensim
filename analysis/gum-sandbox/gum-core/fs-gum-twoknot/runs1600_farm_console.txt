@@ -1,1 +1,0 @@
-batch 1/2 (single + attract 16,18,20)
