@@ -71,7 +71,7 @@ sectors; the structural parity protection tested).
   everywhere); χ(rot) = −1 extends to ALL w ≠ 0 splitness-free
   (even-w fermionic sectors theta-twisted); B=2 sector-conditional.
 
-## Phase J — the filed obligations ▶ EXECUTING (post-fold)
+## Phase J — the filed obligations ✅ EXECUTED (post-fold)
 
 Phase I's fold is in (DISCHARGE_PACKAGE v2.2; corpus2 ⟦I4 reported⟧
 boxes). What I1–I4 left open is exactly three named computations, now
@@ -97,6 +97,32 @@ the repaired window f ∈ [3.7, ≈60] MeV — is "SHIFTS-HARMLESSLY"
 confirmed, or does a row newly bind? → j3_majoron.py /
 j3_results.json / j3_RESULTS.md.
 
+## Phase J: ✅ EXECUTED — the obligation verdicts
+- **J1**: the B.4-window 𝔭-grid (first execution; 21 runs, 7/7 gates,
+  N/2N/4N ≤ 7×10⁻⁵) **CONFIRMS the I3 edge-referencing element** —
+  𝔭 is 35% c₂-dependent across the window; edge-referenced /6 puts the
+  corpus's 0.84 at the benchmark potential (0.28σ); the naive /2π only
+  reaches it off-benchmark with the referee μ violated 3.6%. 𝔭 upgrades
+  OPEN → RECOVERED-AS-CLASS; 𝔟_eff stays in band (+1.06σ) jointly
+  (C_d convergence caveat printed). j1_RESULTS.md.
+- **J2**: (4.8′) re-derived — 𝔠_sat(ε) = 3.2011·(1 + 1.152ε) leading
+  order; κ, depth, ω_th, ¼ all ε-frozen exactly; the ⟨r1⟩ ε-anchor
+  forfeit CONFIRMED at 11.283σ (correctly, as restricted-branch code
+  validation). (4.9′): ceiling 2.605×10⁻³ — the exact provenance of
+  "×4.3"; Q-6′ margins [2.60, 5.31]; the confinement dichotomy SURVIVES
+  every reading (worst ×2.03; exponent-robust). All 11 i2 overlaps agree
+  ≤10⁻⁴. Two defects of OUR corpus2 revision found and corrected in
+  print (the stale "twenty-fold"; the superseded ε^{1/3} shape sentence);
+  the multi-ε saturated re-scan named as the residual open. j2_RESULTS.md.
+- **J3**: the Majoron battery re-run — I2's "SHIFTS-HARMLESSLY"
+  **CONFIRMED** (17/17; old-window control reproduces every corpus
+  print; the binding edges are repair-invariant; the moving edge is
+  monotonically safer; SN/recoupling rows pass by inheritance — their
+  bounds are never printed: spec-recovery limits). The corpus's own
+  VII.I dictionary had already stamped ✓ on f ∈ [4, 60]; the re-run
+  makes that arithmetic. j3_RESULTS.md.
+
 ## Beyond (unscheduled)
-Real-GPU physics; the corpus's response to corpus2; whatever J1–J3
-leave open.
+Real-GPU physics; the corpus's response to corpus2/DISCHARGE_PACKAGE;
+the one Phase-J residual: the multi-ε saturated re-scan behind the
+"+1.15ε" linear class (J2's D3).

@@ -308,7 +308,23 @@ from the text; everything downstream is audited).
   splitness-free). theory-audit/i4_topology.md.
 
 Findings ledger: F-R1–F-R17 (four substantive: F-R4/F-R5 on the ħ-closure, F-R9 on the 0νββ insert, F-R14 on the gravitation sector;
-one moderate: F-R6 provenance-chain; five print-level/minor). Out of
+one moderate: F-R6 provenance-chain; five print-level/minor).
+
+Phase J (the filed obligations, 2026-07-16, post-Phase-I fold — no new
+F-R numbers; one recovery, two confirmations, two self-corrections):
+J1 ran App I.1's never-run B.4-window 𝔭-grid (first execution): the I3
+edge-referencing element CONFIRMED — 𝔭 = 0.84 recovered at the benchmark
+to 0.28σ under /6; the 𝔭/𝔟_eff convention item upgrades OPEN →
+RECOVERED-AS-CLASS (j1_RESULTS.md). J2 executed the repaired
+(4.8′)/(4.9′) arithmetic: 𝔠_sat(ε) = 3.2011(1 + 1.152ε), the ε-anchor
+forfeit confirmed at 11.283σ, the Q-6′ ceiling 2.605×10⁻³ (the "×4.3"
+provenance), dichotomy survives every reading — and found two stale
+sentences in OUR corpus2 revision (the Q-6′ "twenty-fold"; the ε^{1/3}
+shape law), both corrected in print per the shared discipline
+(j2_RESULTS.md). J3 re-ran the Majoron battery at g ≈ 7.8×10⁻¹⁰:
+"SHIFTS-HARMLESSLY" confirmed 17/17 with the old-window control exact;
+SN/recoupling bounds never printed — spec-recovery limits stated
+(j3_RESULTS.md). Residual open: the multi-ε saturated re-scan (J2 D3). Out of
 envelope (documented, not scheduled): blue-fog/disclination boxes and
 nucleation (GPU-scale/theorem-level, per the v2 assessment's Tier-5
 flag), the Σ(p) integrals from geometry, and the full fs-cosserat solver

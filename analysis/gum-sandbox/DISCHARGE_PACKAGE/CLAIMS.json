@@ -374,5 +374,19 @@
    "analysis/gum-sandbox/theory-audit/i3_results.json",
    "analysis/gum-sandbox/theory-audit/ROADMAP_v6_SYNTHESIS.md"
   ]
+ },
+ "phase_J_obligations_v2_2": {
+  "note": "Phase J (2026-07-16, post-fold): the three obligations Phase I filed, executed. No new findings numbers; one convention recovery, two confirmations, two corrections to OUR OWN corpus2 revision (printed per the shared discipline).",
+  "J1_p_grid": "App I.1's never-run 'p-grid over the (B.4) window' executed for the first time (21 runs, 7/7 gates each, N/2N/4N <= 7e-5): p is 35% c2-dependent across the window; under the edge-referenced A e^{-mu R*}/6 the corpus's p = 0.84 lands at the benchmark potential to 0.28 sigma (the naive /2pi candidate 0.805 reaches 0.84 only off-benchmark with the frozen referee mu violated 3.6%). The p/b_eff convention item upgrades OPEN -> RECOVERED-AS-CLASS; b_eff = 42 +/- 6 stays in band (+1.06 sigma) jointly (C_d convergence caveat printed in full).",
+  "J2_eps_scan": "(4.8') re-derived: c_sat(eps) = 3.2011 (1 + 1.152 eps) leading order; kappa, depth, omega_th, 1/4 all eps-frozen exactly; the <r1> eps-anchor forfeit confirmed at 11.283 sigma. (4.9') re-derived: ceiling Delta_lock/s = 2.605e-3 (x4.315 above the superseded 6.0e-4 - the exact provenance of the x4.3); Q-6' margins [2.60, 5.31]; the confinement dichotomy survives every reading examined (worst joint x2.03; exponent-robust). All 11 overlaps with i2_propagate.py agree to <= 1e-4. Two stale sentences in our own corpus2 revision found and corrected in print. Residual open: the multi-eps saturated re-scan behind the linear '+1.15 eps' class (two measured points).",
+  "J3_majoron_battery": "The corpus's SN/BBN/streaming battery re-run at the propagated window (f in [3.7, ~60] MeV, g down to 7.8e-10): SHIFTS-HARMLESSLY confirmed 17/17 - the old-window control reproduces every corpus print (dN_eff 0.026772; g edges; eps-floor); the binding edges (f_lo, g_max = m/f_lo) are repair-invariant and the moving edge is monotonically safer. SN-cooling and recoupling rows pass by inheritance, not recomputation: their numerical bounds are never printed in the corpus (spec-recovery limits stated).",
+  "artifacts": [
+   "analysis/gum-sandbox/theory-audit/j1_RESULTS.md",
+   "analysis/gum-sandbox/theory-audit/j1_results.json",
+   "analysis/gum-sandbox/theory-audit/j2_RESULTS.md",
+   "analysis/gum-sandbox/theory-audit/j2_results.json",
+   "analysis/gum-sandbox/theory-audit/j3_RESULTS.md",
+   "analysis/gum-sandbox/theory-audit/j3_results.json"
+  ]
  }
 }

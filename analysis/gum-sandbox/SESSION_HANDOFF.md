@@ -229,3 +229,18 @@ README §8).
 
 Every RESULTS.md is self-describing; every gates binary re-verifies its
 crate in minutes. Trust the committed roots; recompute before extending.
+
+## Addendum (2026-07-16, end of session-X continuation): Phases I and J closed
+
+Phase I executed and folded (DISCHARGE_PACKAGE v2.2 with F-R16/F-R17 +
+phase_I block; corpus2 carries ⟦I4 reported⟧ boxes at every residual-opens
+site). Phase J (the filed obligations) executed and folded: J1 recovered
+the 𝔭/𝔟_eff convention (edge-referenced class; OPEN → RECOVERED-AS-CLASS
+in corpus2), J2 executed the repaired (4.8′)/(4.9′) arithmetic (ceiling
+2.605×10⁻³; ε-anchor forfeit 11.283σ; dichotomy survives; two stale
+sentences in OUR corpus2 revision corrected in print), J3 confirmed the
+Majoron battery SHIFTS-HARMLESSLY (17/17). Ledger remains F-R1–F-R17;
+T-ledger EMPTY. Named residual open: the multi-ε saturated re-scan behind
+J2's linear "+1.15ε" class (two measured points). Artifacts:
+theory-audit/j{1,2,3}_* + ROADMAP_v6_SYNTHESIS.md Phase-J verdicts;
+audit-logs/ archive current through the Phase-J sweep (35 mapped agents).

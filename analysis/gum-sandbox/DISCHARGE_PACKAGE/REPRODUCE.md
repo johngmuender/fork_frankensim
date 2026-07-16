@@ -166,3 +166,11 @@ All deterministic (no RNG); runtimes re-verified on the shipping host.
 | I2 propagation memo checks | `python3 analysis/gum-sandbox/theory-audit/i2_propagate.py` | 2 s | 34/34; S4′ → κ²g_tot = 35/24, ⟨r1⟩ pull 13.4σ (vs 0.7σ restricted); ⟨r10⟩ bridge ≤ 0.12σ |
 | I3 joint convention solve | `python3 analysis/gum-sandbox/theory-audit/i3_conventions.py` | 1 s | one edge-referencing element resolves 𝔭 and 𝔟_eff jointly (B.4/I.2 consistent) |
 | I4 exchange lift / F-R17 | `python3 analysis/gum-sandbox/theory-audit/i4_compute.py` | 4 s | σ(exchange) = −1 ≠ +1 = σ(rotation); B=2 sectors 2/8; 19/19 |
+
+### Phase-J additions (the executed obligations, 2026-07-16)
+
+| number | command | runtime | expected |
+|---|---|---|---|
+| J1 B.4-window 𝔭-grid | `python3 analysis/gum-sandbox/theory-audit/j1_pgrid.py` | 55 s | all solver gates PASS; 𝔭(edge-/6) = 0.84 at benchmark 0.28σ; 𝔟_eff +1.06σ |
+| J2 (4.8′)/(4.9′) | `python3 analysis/gum-sandbox/theory-audit/j2_epsscan.py` | 2 s | 44/44; ceiling 2.605×10⁻³; anchor forfeit 11.283σ; dichotomy survives |
+| J3 Majoron battery | `python3 analysis/gum-sandbox/theory-audit/j3_majoron.py` | 3 s | 17/17; old-window control exact; no row newly binds |

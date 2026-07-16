@@ -1,5 +1,5 @@
 {
- "snapshot_utc": "2026-07-16 FINAL (Phase I complete: ledger F-R1-F-R17; r5 saddle-exclusion; exchange-lift obstruction)",
+ "snapshot_utc": "2026-07-16 FINAL+J (Phase J complete: obligations executed - J1 p-grid convention recovered; J2 eps-scan/Q-6' ceiling; J3 Majoron battery confirmed)",
  "session": "d0b81976",
  "main_session_transcript": "coordinator-session.jsonl.xz",
  "agents": [
@@ -183,6 +183,24 @@
    "description": "G3: G*-vs-c0 precision push",
    "transcript_bytes": 994338,
    "phase": "Phase G3: G* = 16*sqrt2/9 exact"
+  },
+  {
+   "agent_id": "a104716531691d76d",
+   "description": "J1: B.4-window p-grid + converged C_d (I3 discriminator)",
+   "transcript_bytes": null,
+   "phase": "Phase J"
+  },
+  {
+   "agent_id": "a50472368147140a6",
+   "description": "J2: repaired (4.8')/(4.9') eps-scan + Q-6' ceiling (resumed once after 529)",
+   "transcript_bytes": null,
+   "phase": "Phase J"
+  },
+  {
+   "agent_id": "aca7540b20f6bf51d",
+   "description": "J3: Majoron battery re-run at g ~ 7.8e-10",
+   "transcript_bytes": null,
+   "phase": "Phase J"
   }
  ],
  "workflows": {
