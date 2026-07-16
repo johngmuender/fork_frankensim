@@ -153,3 +153,16 @@ root.
 | repaired closure | `python3 analysis/gum-sandbox/theory-audit/t3_closures.py` | <1 min | 𝔠 = 64√2/9π; T3.1 KKT-on-boundary; six 2.5147 routes fail |
 | G* exact | `python3 analysis/gum-sandbox/tier2-closure/gstar_solve.py` | 31 s | G* → 16√2/9 (Richardson 6.0e-7) |
 | N=192 crossing | `cd analysis/gum-sandbox/gum-core/fs-gum-kern && cargo run --release --bin n192_fr5 -- crossing` | 46 min | κ crosses 1/√(8π) at it 2070–2080 |
+
+
+## v2.2 additions (synthesis round / Phase I, 2026-07-16)
+
+All deterministic (no RNG); runtimes re-verified on the shipping host.
+
+| number | command | runtime | expected |
+|---|---|---|---|
+| T-H4 discharge / F-R16 | `python3 analysis/gum-sandbox/theory-audit/h4_compute.py` | 9 s | ∂(gen) = ±2·[rot] on both routes; clutching winding −2.000000; 28/28 |
+| I1 ⟨r5⟩ corroboration test | `python3 analysis/gum-sandbox/theory-audit/i1_r5test.py` | 757 s | saturated anchor 64√2/9π = 3.2011 at +0.51σ; branch separation ≈7σ; both analytic floors respected at every ε |
+| I2 propagation memo checks | `python3 analysis/gum-sandbox/theory-audit/i2_propagate.py` | 2 s | 34/34; S4′ → κ²g_tot = 35/24, ⟨r1⟩ pull 13.4σ (vs 0.7σ restricted); ⟨r10⟩ bridge ≤ 0.12σ |
+| I3 joint convention solve | `python3 analysis/gum-sandbox/theory-audit/i3_conventions.py` | 1 s | one edge-referencing element resolves 𝔭 and 𝔟_eff jointly (B.4/I.2 consistent) |
+| I4 exchange lift / F-R17 | `python3 analysis/gum-sandbox/theory-audit/i4_compute.py` | 4 s | σ(exchange) = −1 ≠ +1 = σ(rotation); B=2 sectors 2/8; 19/19 |

@@ -72,6 +72,32 @@ New exact identities of record (each 12–14 digits in t3_closures.py): (1) **sa
 
 > **⟦H4 resolved⟧.** The closure's admissibility premise (j ∈ ½ℤ) routes through QUANT/App F.5's consistency part, which consumed the then-unproven minimal hypothesis **MH**. The named computation has executed: **∂(gen) = ±2·[rot]** (two independent routes; 28/28 machine checks). **Completion III is REFUTED** — the fatal outcome this box armed against did not occur: the rotation class survives with order exactly 2, χ(rot) = −1 exists at odd w, **j ∈ ½ℤ stays admissible and this appendix, and the closure it repairs, stand solvable together.** Completion II (ℤ₄) is refuted at odd w. Completion I holds **in corrected form**: ∂ ≠ 0, and the printed "ℤ₂ × A" is corrected to **π₁(𝒞_strat) = ℤ₂ × A/⟨2a_rot⟩** (the winding factor torsioned; the base π₁ absent at w ≠ 0 — F-R16, minor). Residuals, at full size: the N2/F.3 exchange lift stays the GAP; curved-line moduli and even w ≥ 2 stay scoped opens; confidence HIGH in-model, MEDIUM-HIGH on model identification. [H4: theory-audit/h4_completion.md, F-R16]
 
+> **⟦I4 reported⟧.** The residuals have executed: the exchange lift **FAILS** (F-R17 — F.3's own proviso constructs the geon obstruction, σ(exchange) = −1 ≠ +1 = σ(rotation); repair χ_exch = χ(σ)·χ_rot with χ(σ) a new free ℤ₂; "ARE fermions" stays overreach, now with the mechanism exhibited); curved-line moduli close **theorem-grade**; χ(rot) = −1 extends to all w ≠ 0. The closure's admissibility premise is untouched either way — **j ∈ ½ℤ stands on strictly larger ground.** [I4: theory-audit/i4_topology.md, F-R17]
+
+## §7′ ⟦Phase I reported⟧ — archive-side evidence and propagation
+
+**The ⟨r5⟩ corroboration test (I1).** The corpus's own frozen quartic-regime
+closure ⟨r5⟩ (𝔠_q = 3.1 ± 0.2) was confronted with both branches computed on
+the certified machinery across ε = 0.02–2.0. Verdict: **saddle-excluding and
+repair-consistent** — under every reading in which a quartic-regime 𝔠_q is
+ε-stable, the archive's number selects the saturated (repaired) branch: the
+branches separate by ≈7σ of ⟨r5⟩'s own error bar, and the t-independent
+anchor 64√2/9π = 3.2011 sits at **+0.51σ**; no reading reaches it from the
+printed (N2-saddle) chain. Two new rigorous floors travel with the test
+(𝔠_sat ≥ 64√2/9π at every ε; a Faddeev-type quartic floor), and every
+measured value respects them. Normalization caveat printed in the memo.
+Filed as archive-side evidence FOR the repair — the archive appears to
+contain the repair's fingerprint. [theory-audit/i1_RESULTS.md, i1_results.json]
+
+**Propagation (I2).** Adopting T3.1 end-to-end: every data confrontation
+SURVIVES (S1 verified untouched; the ⟨r10⟩ bridge moves ≤ 0.12σ); the bench
+sharpens — S4′ becomes discriminating at last (κ²g_tot = 35/24; ⟨r1⟩'s
+0.843 ± 0.046 sits 13.4σ from it and 0.7σ from the restricted branch's 7/8:
+branch declaration mandatory), and the four-rung over-spin ladder is exact.
+Honest costs, printed at full size: the ε-anchor is forfeited; the Q-6′
+censorship margin thins ×4.3. Obligations filed: the repaired (4.8′)/(4.9′)
+ε-scan; the Majoron battery re-run at g ≈ 7.8×10⁻¹⁰. [theory-audit/i2_RESULTS.md]
+
 ## §8 The steelman record (why 2.515 is not adoptable instead)
 
 Every recovery route was constructed and tested (C4): the G\* value-coincidence **disproven exactly** (gap 5.96×10⁻⁴ pinned; the near-miss is 24√21 ≈ 35π); the uniform-channel reference is a non-binding channel accident (twice over); the zero-cost spheroidal reading reproduces 𝔠₀ *exactly* — as the sup of a family of non-solutions, at an open endpoint, on a premise (zero cost) the F-R4 lemma refutes; κ₀ = √(7/12) is recoverable only as a threshold, not a solution; the g = 3/2 algebra does not compose with the true geometry (gives 2.4796, neither number). **One reading stays NOT-AUDITABLE-FROM-TEXT:** the frozen ⟨r1⟩ code may contain an explicit constraint realizing the idealization as an honest penalty — discharge route (a), standing open on the Watch-Mode memo v2's new gate register. Absent that, within the model, 2.515 has no derivation from the printed equations.

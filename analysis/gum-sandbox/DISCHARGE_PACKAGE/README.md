@@ -37,7 +37,7 @@ Merkle root with bit-identical replay; 13/13 certified 3-D diagnostics
 plus 18 solver gates including the F-R5 halo referee. Golden roots and
 commands in `REPRODUCE.md`.
 
-## 2. The findings ledger (F-R1 – F-R8; v2 extends to F-R12 — §10)
+## 2. The findings ledger (F-R1 – F-R8; v2 extends to F-R12 — §10; v2.2 to F-R17 — §11)
 
 | ID | Severity | One-line statement | Discharge path |
 |----|----------|--------------------|----------------|
@@ -404,6 +404,57 @@ DF-forcing, IV.D's selection narrative, the pairs-only convexity, and
 E.6's positivity (which now carries the computed master form
 𝔞₁(p,q) = −(5p+q)/(12(2p+q)) — fix your constitutive response
 exponents and re-derive).
+
+## 11. v2.2 addendum — the synthesis round (Phase I + the topology completion, 2026-07-16)
+
+Four workstreams executed after §10 closed; two new ledger entries. The
+T-ledger paragraph closing §10 is superseded: every argument-level item
+has since been worked to ground (phases H3/H4) — **the theory ledger is
+EMPTY**; what remained were named computations, all now executed.
+
+- **F-R16 (minor; the stratified completion)** — the printed group
+  "ℤ₂ × A" is false as written: the connecting homomorphism is nonzero
+  (∂ = ±2·[rot], two independent routes, 28/28 machine checks), so
+  π₁(𝒞_strat) = ℤ₂ × A/⟨2a_rot⟩. Direction-favorable: the fatal branch
+  (T-H4's completion III) is REFUTED, the rotation class has order
+  exactly 2, χ(rot) = −1 exists splitness-free at w = ±1 — your closure
+  stands solvable as posed, and T-H3's benign verdict is now
+  unconditional.
+- **F-R17 (moderate; App F.3)** — the exchange-lift claim is refuted as
+  stated: with F.3's own proviso (separations bounded below), the
+  ordered-line double cover's swap monodromy gives σ(exchange) = −1 ≠
+  +1 = σ(rotation) — the proviso constructs the obstruction (the geon
+  phenomenon; the classical FR null-homotopy provably exits the
+  separated regime). Repair: χ_exch = χ(σ)·χ_rot with χ(σ) a new free
+  ℤ₂ your T-B1 selection must price; "ARE fermions" is doubly-selected,
+  not forced. Credit at the same site: **F.4 (no braiding) is VINDICATED
+  factor by factor**, the parity block is now a THEOREM on any
+  embedded-line moduli (the fatal completion is structurally dead
+  everywhere), and χ(rot) = −1 extends to all w ≠ 0.
+
+**Archive-side evidence for the repair (I1)** — your own frozen ⟨r5⟩
+(𝔠_q = 3.1 ± 0.2) is SADDLE-EXCLUDING and repair-consistent: under every
+ε-stable reading it selects the saturated branch (≈7σ branch separation;
+the t-independent anchor 64√2/9π = 3.2011 sits at +0.51σ) and cannot
+come from your printed chain. Two new rigorous floors travel with it
+(𝔠_sat ≥ 64√2/9π at every ε; a Faddeev-type quartic floor).
+Normalization caveat printed in the memo.
+
+**Propagation (I2)** — adopting T3.1: every data confrontation SURVIVES
+(S1 verified untouched; the ⟨r10⟩ bridge moves ≤ 0.12σ); the bench
+sharpens (S4′ becomes discriminating at 13.4σ; the four-rung over-spin
+ladder is exact); one honest cost (the ε-anchor forfeited) and the Q-6′
+censorship margin thins ×4.3. New arithmetic obligations filed: the
+repaired (4.8′)/(4.9′) ε-scan; the Majoron battery at g ≈ 7.8×10⁻¹⁰.
+
+**The convention key (I3)** — one edge-referencing element resolves both
+𝔭 = 0.84 and the entire "7 orders" of 𝔟_eff simultaneously (B.4/I.2
+consistent); the discriminating computation is named (your never-run
+B.4-window 𝔭-grid).
+
+Artifacts: theory-audit/{i1,i2,i3}_RESULTS.md, i4_topology.md,
+h4_completion.md; machine checks h4 28/28, i2 34/34, i4 19/19;
+machine-readable entries in CLAIMS.json (v2.2).
 
 ## 9. Epistemic notice (binding on this package)
 

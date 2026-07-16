@@ -1,6 +1,6 @@
 {
- "package": "GUM replication campaign - corpus-facing discharge package for F-R4/F-R5 [v2: theory-audit round integrated]",
- "assembled": "2026-07-16 (v2.1; v2 earlier today; v1 2026-07-12)",
+ "package": "GUM replication campaign - corpus-facing discharge package for F-R4/F-R5 [v2: theory-audit round integrated; v2.2: Phase-I synthesis + F-R16/F-R17 integrated]",
+ "assembled": "2026-07-16 (v2.2; v2.1/v2 earlier today; v1 2026-07-12)",
  "epistemic_status": "Every claim is within-model: it concerns whether the corpus's printed numbers solve the corpus's printed equations, computed on independent certified numerics with the corpus's own conventions. Nothing here bears on nature or on any empirical stake (S1 untouched).",
  "index": "analysis/gum-sandbox/REPLICATION_CAMPAIGN_STATUS.md",
  "certification": {
@@ -296,14 +296,53 @@
     "analysis/gum-sandbox/theory-audit/h32_solve/"
    ],
    "discharge": "Produce the frozen <r1> code and its convergence criterion; or re-derive IV.D's selection claim as a statement about your solver's stationary point rather than the dynamics."
+  },
+  {
+   "id": "F-R16",
+   "severity": "minor",
+   "class": "printed group structure (stratified completion, App F.5 / the T-H4 discharge)",
+   "claim": "The printed stratified statistics group 'Z2 x A' is false as written: the connecting homomorphism is nonzero - d(gen) = +/-2 [rot] by two independent routes (LES naturality to the principal SO(2)->SO(3)->S^2 bundle; explicit hemisphere quaternion family), 28/28 machine checks - so pi1(C_strat) = Z2 x A/<2 a_rot> (the winding factor torsioned; the base pi1(RP^2) absent at w != 0: a charged line cannot traverse the orientation-reversing loop and return to its own component). Direction-favorable: every consequence the hbar-closure consumes SURVIVES - the fatal branch (completion III, integer-j-only) is REFUTED twice over, completion II (Z4) refuted at odd w, the rotation class has order exactly 2, chi(rot) = -1 exists splitness-free at w = +/-1. T-H4 is DISCHARGED-WITH-CORRECTIONS largely in the corpus's favor; T-H3's benign verdict becomes unconditional.",
+   "key_numbers": {
+    "connecting_homomorphism": "d(gen) = +/-2 [rot], two independent routes",
+    "clutching_winding": "-2.000000",
+    "checks": "28/28",
+    "corrected_group": "pi1(C_strat) = Z2 x A/<2 a_rot>"
+   },
+   "artifacts": [
+    "analysis/gum-sandbox/theory-audit/h4_completion.md",
+    "analysis/gum-sandbox/theory-audit/h4_compute.py",
+    "analysis/gum-sandbox/theory-audit/h4_summary.json"
+   ],
+   "discharge": "Correct the printed group in App F.5/VII.F to Z2 x A/<2 a_rot> and adopt the corrected completion; nothing the closure consumes moves."
+  },
+  {
+   "id": "F-R17",
+   "severity": "moderate",
+   "class": "exchange lift refuted (App F.3), with credit to F.4",
+   "claim": "App F.3's exchange-lift claim is refuted as stated: in the two-defect space with F.3's OWN proviso (separations bounded below along the interpolation), the ordered-line double cover's swap monodromy gives sigma(exchange) = -1 != +1 = sigma(rotation) - the proviso constructs the obstruction (the geon phenomenon; the classical FR null-homotopy provably exits the separated regime). Repair: chi_exch = chi(sigma) * chi_rot with chi(sigma) a new free Z2 the corpus must price in T-B1 sector selection; 'ARE fermions' is doubly-selected, not forced. The B=2 worked example is sector-conditional (J=0 forbidden in exactly 2 of 8 sectors). Credit at the same site: F.4 (no braiding) VINDICATED factor by factor; QUANT unaffected and STRENGTHENED - the parity block is a theorem on ANY embedded-line moduli (the fatal completion structurally dead everywhere) and chi(rot) = -1 extends splitness-free to all w != 0 (even-w fermionic sectors theta-twisted).",
+   "key_numbers": {
+    "swap_monodromy": "sigma(exchange) = -1",
+    "rotation_monodromy": "sigma(rotation) = +1",
+    "checks": "19/19",
+    "B2_sector_condition": "J=0 forbidden in exactly 2 of 8 sectors",
+    "chi_rot_extension": "chi(rot) = -1 splitness-free for all w != 0"
+   },
+   "artifacts": [
+    "analysis/gum-sandbox/theory-audit/i4_topology.md",
+    "analysis/gum-sandbox/theory-audit/i4_compute.py",
+    "analysis/gum-sandbox/theory-audit/i4_summary.json"
+   ],
+   "discharge": "Either exhibit an exchange path class evading the geon obstruction within the separated regime (I4's analysis: none exists on the two-line moduli), or adopt the repair chi_exch = chi(sigma) * chi_rot and price chi(sigma) in the T-B1 ledger, regrading 'ARE fermions' to doubly-selected."
   }
  ],
  "consequence_if_FR4_FR5_stand": "Within-model only: every constant downstream of c0 (the hbar calibration c Lambda sqrt(J), kappa_phys = sqrt(7/12), the S4' eps-run anchor, binding depths, omega_th) shifts by -18% (scaling rung with a stability constraint) to +12%..+27% (saturated closure) against printed values. Untouched: the selection theorems (spin-1/2 only, E_rot/E = 1/4, V = sqrt2 at the rung), the clock algebra, the four-branch spectrum, the radial rung, Born-rule relaxation, the family sector (c0-blind by the corpus's own P-O1 argument), and the S1 stake.",
  "theory_ledger_unpromoted": {
-  "note": "Residual T-ledger after Phase H3: T-H4 ONLY \u2014 the c'' stratified completion (three exact completions exhibited, one fatal to the whole hbar-closure; the printed 'Z2 x A' false on another; Route 2 cannot work as sketched; the closure fixed point explicitly consumes this hypothesis). The discharge is a finite, well-posed computation: compute the connecting homomorphism of the stratified fibration. T-H3 closed BENIGN with zero-new-axiom repairs R1-R3 (in your favor); T-H5 -> F-R15; T-H10 -> F-R14; T-H8 -> F-R13.",
+  "note": "Residual T-ledger after Phases H3/H4/I: EMPTY. T-H4 (the last item) was discharged by its named computation - d(gen) = +/-2 [rot], fatal branch refuted (F-R16); its residual opens (the N2/F.3 exchange lift; curved-line moduli; even w >= 2) were then executed in Phase I4 - the lift FAILS (F-R17), the other two close in the closure's favor. Earlier dispositions: T-H3 closed BENIGN with zero-new-axiom repairs (now unconditional); T-H5 -> F-R15; T-H10 -> F-R14; T-H8 -> F-R13.",
   "artifacts": [
    "analysis/gum-sandbox/theory-audit/h31_structure.md",
-   "analysis/gum-sandbox/theory-audit/h31_summary.json"
+   "analysis/gum-sandbox/theory-audit/h31_summary.json",
+   "analysis/gum-sandbox/theory-audit/h4_completion.md",
+   "analysis/gum-sandbox/theory-audit/i4_topology.md"
   ]
  },
  "credit_side_updates_v2": {
@@ -318,6 +357,22 @@
   "artifacts": [
    "analysis/gum-sandbox/theory-audit/T3_repaired_closure.md",
    "analysis/gum-sandbox/theory-audit/t3_closures.py"
+  ]
+ },
+ "phase_I_synthesis_v2_2": {
+  "note": "Phase I (synthesis round, 2026-07-16, after the v2 addendum): four workstreams; full verdicts in theory-audit/ROADMAP_v6_SYNTHESIS.md.",
+  "I1_r5_corroboration": "ARCHIVE-SIDE EVIDENCE FOR THE REPAIR: the corpus's frozen <r5> (c_q = 3.1 +/- 0.2) is saddle-excluding and repair-consistent - under every eps-stable reading it selects the saturated branch (branch separation ~7 sigma; the t-independent anchor 64 sqrt2/(9 pi) = 3.2011 at +0.51 sigma) and cannot come from the corpus's printed chain. Two new rigorous floors travel with it: c_sat >= 64 sqrt2/(9 pi) at every eps; a Faddeev-type quartic floor G_q >= 5.47137. Normalization caveat printed in the memo.",
+  "I2_propagation": "Adopting T3.1: every data confrontation SURVIVES (S1 verified untouched; the <r10> bridge moves <= 0.12 sigma); S4' becomes discriminating at last (kappa^2 g_tot = 35/24 = 1.45833; <r1>'s 0.843 +/- 0.046 sits 13.4 sigma away vs 0.7 sigma from the restricted branch's 7/8 - branch declaration mandatory); the four-rung over-spin ladder is exact. Honest costs: the eps-anchor forfeited; the Q-6' censorship margin thins x4.3. Obligations filed: the repaired (4.8')/(4.9') eps-scan; the Majoron battery re-run at the new low edge g ~ 7.8e-10.",
+  "I3_convention_key": "One edge-referencing normalization element resolves BOTH open conventions simultaneously - p = 0.84 +/- 0.03 and the entire '7 orders' of b_eff = 42 +/- 6 (B.4/I.2 consistent; residual O(1) factor degenerate). Discriminating follow-on named: the never-run B.4-window p-grid with a converged C_d.",
+  "I4_topology_completion": "-> F-R17 (findings above); F-R16 filed from the H4 discharge.",
+  "artifacts": [
+   "analysis/gum-sandbox/theory-audit/i1_RESULTS.md",
+   "analysis/gum-sandbox/theory-audit/i1_results.json",
+   "analysis/gum-sandbox/theory-audit/i2_RESULTS.md",
+   "analysis/gum-sandbox/theory-audit/i2_results.json",
+   "analysis/gum-sandbox/theory-audit/i3_RESULTS.md",
+   "analysis/gum-sandbox/theory-audit/i3_results.json",
+   "analysis/gum-sandbox/theory-audit/ROADMAP_v6_SYNTHESIS.md"
   ]
  }
 }
