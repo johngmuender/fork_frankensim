@@ -1,5 +1,5 @@
 {
- "snapshot_utc": "2026-07-16T13:50Z-approx (Phase H3 complete: ledger F-R1-F-R15)",
+ "snapshot_utc": "2026-07-16 FINAL (corpus2 complete; H4 verdict; ledger F-R1-F-R16)",
  "session": "d0b81976",
  "main_session_transcript": "coordinator-session.jsonl.xz",
  "agents": [

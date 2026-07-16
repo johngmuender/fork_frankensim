@@ -9,9 +9,9 @@
 **The original says.** "S5 | the ħ-value closure (IV): spin-clock system; 𝔠 = 2.515; the bootstrap | DERIVED-AS-FIXED-POINT, LAYERED — No circle: a fixed-point structure, checked."
 
 **Annotation (affix at the S5 row).**
-> **(2026-07-16.)** The no-circle verdict is **externally CONFIRMED** (h31 Part A: the fixed point is benign; two sentences repaired, R1/R2, at zero axiom cost) — a credit annotation on the audit's method. Two riders attach: (i) the value is **𝔠 = 64√2/(9π) = 3.2011** per the repaired closure [T3.1], not 2.515; (ii) the fixed point's admissibility premise consumes the MH completion — the benign verdict is **conditional on T-H4's computation** [H4 PENDING].
+> **(2026-07-16.)** The no-circle verdict is **externally CONFIRMED** (h31 Part A: the fixed point is benign; two sentences repaired, R1/R2, at zero axiom cost) — a credit annotation on the audit's method. Two riders attach: (i) the value is **𝔠 = 64√2/(9π) = 3.2011** per the repaired closure [T3.1], not 2.515; (ii) the fixed point's admissibility premise consumed the MH completion — the benign verdict was **conditional on T-H4's computation**, and that computation has since reported ⟦H4 resolved⟧: ∂ = ±2·[rot], the fatal branch REFUTED, MH's load-bearing clauses discharged in-model (corrected structure π₁(𝒞_strat) = ℤ₂ × A/⟨2a_rot⟩, F-R16 minor) — the rider is lifted and the benign verdict stands unconditional in-model. [H4: theory-audit/h4_completion.md, F-R16]
 
-**Regrade.** S5 stamp: "No circle, checked" → "No circle, externally confirmed; value repaired; conditional on MH."
+**Regrade.** S5 stamp: "No circle, checked" → "No circle, externally confirmed; value repaired; MH discharged ⟦H4 resolved⟧ — unconditional in-model."
 
 **Artifacts:** `theory-audit/h31_RESULTS.md` · `theory-audit/T3_repaired_closure.md`.
 

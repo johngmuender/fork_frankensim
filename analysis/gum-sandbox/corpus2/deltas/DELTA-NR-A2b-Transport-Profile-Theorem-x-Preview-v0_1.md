@@ -23,14 +23,14 @@
 
 ---
 
-## ANNOTATION 2 — [T-H4][T3.1] Protection quartet (line 37) — attribution re-route + pending rider
+## ANNOTATION 2 — [T-H4][T3.1] Protection quartet (line 37) — attribution re-route + completion rider (since lifted, ⟦H4 resolved⟧)
 
 **The original says.** "the moment's leading value is assembled entirely from exact structures: the winding n · ħ/L = 2 (the FR half-quantum, Thm c″) · the transport speed c · the cylinder radius ƛ = c/ω (entrainment exact, IV)."
 
 **The replication found.** The Group-1 audit (repairs R1/R2) re-attributes the half-quantum: L = ħ/2 is the **closure output** (T-B1), not Thm c″'s topology; c″'s content is the consistency of the double-valued sector. The entrainment identities survive the repaired §IV unchanged in form (they hold off-consensus).
 
 **Annotation (affix at line 37).**
-> **Attribution note (2026-07-16).** "ħ/L = 2 (Thm c″)" reads, after the ħ-closure repairs R1/R2: ħ/L = 2 *via the closure's selection j = ½ (T-B1), in the double-valued sector whose consistency is c″'s content*. [H4 PENDING]: the stratified-completion computation (MH connecting homomorphism) is in flight; if completion III failed there would be no half-quantum sector at all, so this quartet inherits the completion hypothesis alongside the closure itself. "Entrainment exact, IV" inherits the repaired §IV — identities unchanged in form. [T-H4][T3.1]
+> **Attribution note (2026-07-16).** "ħ/L = 2 (Thm c″)" reads, after the ħ-closure repairs R1/R2: ħ/L = 2 *via the closure's selection j = ½ (T-B1), in the double-valued sector whose consistency is c″'s content*. ⟦H4 resolved⟧: the stratified-completion computation has reported — ∂ = ±2·[rot], completion III REFUTED (two independent routes; 28/28 checks), the half-quantum sector exists at odd winding with the corrected structure π₁(𝒞_strat) = ℤ₂ × A/⟨2a_rot⟩ (F-R16, minor) — so the quartet's inherited completion hypothesis is discharged; it now rests on the closure alone. "Entrainment exact, IV" inherits the repaired §IV — identities unchanged in form. [T-H4][T3.1][H4: theory-audit/h4_completion.md, F-R16]
 
 **Artifacts:** `theory-audit/T3_repaired_closure.md` · `theory-audit/h31_RESULTS.md`.
 

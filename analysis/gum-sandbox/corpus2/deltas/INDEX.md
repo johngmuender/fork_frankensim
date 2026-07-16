@@ -15,12 +15,12 @@
 | MIP-2-Session-Map-Certification-v0_1.md | DELTA-MIP-2-… | T3.1, F-R4, F-A15-7-vindicated | **CORRECTION** (row 8 superseded; C-PP1 split) |
 | MIP-3-Delta-1-v0_1.md | DELTA-MIP-3-Delta-1-… | F-R10 | **ADVERSE** (five-item registry rollback) |
 | WS-nu-P3-Confrontation-Clause-v0_1.md | DELTA-WS-nu-P3-… | F-R12 | **ADVERSE** (condition (iii) fails-as-cited; Branch-A invocation reversed) |
-| WS-B-Q2-Reading-Circularity-Audit-v0_1.md | DELTA-WS-B-Q2-… | T3.1, T-H3/H4, F-T4-6/7 + credit | **CONDITIONAL** + CREDIT (S5 confirmed, value repaired, MH-conditional) |
+| WS-B-Q2-Reading-Circularity-Audit-v0_1.md | DELTA-WS-B-Q2-… | T3.1, T-H3/H4, F-T4-6/7 + credit | **CONDITIONAL** (rider since lifted ⟦H4 resolved⟧) + CREDIT (S5 confirmed, value repaired, MH discharged) |
 | WS-D-v0_2-Consolidated-Worksheet.md | DELTA-WS-D-v0_2-… | F-R11, F-R1 | **CORRECTION, kill-favor** (rows re-statused) |
 | MIP-4-Ledger-Insert-Pack-v0_1.md | DELTA-MIP-4-… | F-R13 (class anchor) | **CORRECTION** (II.1 → II.1′; conclusions verbatim) |
 | MIP-8-Relaxation-Insert-Pack-v0_1.md | DELTA-MIP-8-… | F-R12 (class anchor) | **CREDIT** (freezing sign corroborated; stake's favor) |
 | MIP-6-Murk-Insert-Pack-v0_1.md | DELTA-MIP-6-… | F-R11, F-R1 + stub | CORRECTION + STUB |
-| MIP-3-Atomic-Spectroscopy-Insert-Pack-v0_1.md | DELTA-MIP-3-Atomic-… | T-H4 [H4 PENDING], F-R10 | CONDITIONAL + register status |
+| MIP-3-Atomic-Spectroscopy-Insert-Pack-v0_1.md | DELTA-MIP-3-Atomic-… | T-H4 ⟦H4 resolved⟧, F-R10 | CONDITIONAL (rider since lifted) + register status |
 
 ## II. Closure re-anchor deltas (T3.1/F-R4 complex — WS-A sector)
 
@@ -38,7 +38,7 @@
 | Original file | Memo | Tags | Severity |
 |---|---|---|---|
 | WS-A-v0_2-Consolidated-Worksheet.md | DELTA-WS-A-v0_2-… | F-R10 | ADVERSE (w1/w2 not confirmed) |
-| WS-A1-NR-A1-Execution-Adjudication-v0_1.md | DELTA-WS-A1-… | T-H4, F-R10 + credit | CONDITIONAL + CREDIT (μ_B chain) + rescinded inheritance |
+| WS-A1-NR-A1-Execution-Adjudication-v0_1.md | DELTA-WS-A1-… | T-H4 ⟦H4 resolved⟧, F-R10 + credit | CONDITIONAL (rider since lifted) + CREDIT (μ_B chain) + rescinded inheritance |
 | WS-A2-Fine-Structure-Registration-Execution-v0_1.md | DELTA-WS-A2-… | F-R10 | **CREDIT-direction** (inversion grade reinstated) |
 | WS-K-Delta-Pack-P8-v0_1.md | DELTA-WS-K-Delta-Pack-P8-… | F-R9, F-R13 | ADVERSE-status (V-K1 open) + re-route |
 | WS-K-v0_2-Consolidated-Worksheet.md | DELTA-WS-K-v0_2-… | F-R9, F-R13 | STATUS-confirmed (row already honest) + re-route |
@@ -75,4 +75,4 @@ None. Every file in the four groups' affected-archive union carried at least one
 
 - **70** delta memos · **98** numbered annotations · **95** REVISION_MAP entries implemented (some entries span multiple sites within one memo; class entries fan out to every named sibling).
 - Substantive/adverse-bearing: **16** (Section I) · closure re-anchors: **6** · gate-consequence: **9** · credit-only/riders: **13** · uniform-class: **25** · plus the WS-nu-P2/Q1/v0_2 trio counted in IV.
-- Open items carried, not resolved (charter rule 5): **T-H4 [H4 PENDING]** (MH connecting homomorphism, in flight — riders on NR-A2b, MIP-3, WS-A1, WS-B-Q2, Watch-Mode) · **NR-D1b r_min leg** · **NR-V1 HIGH gate, G-0, B-0** (untouched by the campaign) · the F-R5 ⟨r1⟩-code production gate.
+- Open items carried, not resolved (charter rule 5): **NR-D1b r_min leg** · **NR-V1 HIGH gate, G-0, B-0** (untouched by the campaign) · the F-R5 ⟨r1⟩-code production gate. **T-H4 — carried OPEN at filing, since resolved by its named computation ⟦H4 resolved⟧**: DISCHARGED-WITH-CORRECTIONS (∂ = ±2·[rot]; fatal branch refuted; π₁(𝒞_strat) = ℤ₂ × A/⟨2a_rot⟩, F-R16 minor); the riders on NR-A2b, MIP-3, WS-A1, WS-B-Q2, and Watch-Mode are lifted in their memos; residual opens carried in its place: the N2/F.3 exchange lift · curved-line moduli · even w ≥ 2. [H4: theory-audit/h4_completion.md, F-R16]

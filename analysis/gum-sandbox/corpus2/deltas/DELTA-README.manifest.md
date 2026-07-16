@@ -6,7 +6,7 @@
 
 ## ANNOTATION 1 — forward pointer (whole document)
 
-> **(2026-07-16.)** The operative manifest is **v4.0-ext**, which: (1) adds Tier IV — the external replication campaign + corpus2 edition (this `deltas/` directory, the campaign-summary insert, the repaired-closure appendix, and the revised core documents: Ω v3.0-ext, Course, Primer, Teachers' Edition, Session Map v2.0-ext, Watch-Mode memo v2); (2) enumerates ALL archive files as AFFECTED (receiving the S-30 delta memos indexed in `deltas/INDEX.md`) or CARRIED FORWARD by reference, unchanged; (3) adds the governance registers: the external findings ledger F-R1–F-R15 + the residual T-ledger (T-H4 OPEN, [H4 PENDING]); the **[externally replicated]** annotation class (the upgrade AUD-15 said internal convergence could not supply); the 30-day response clock started by the discharge package; the S4′ re-stake record (7/8 → 35/24); (4) appends the version history v3.0 → v4.0-ext with the external-edition rationale.
+> **(2026-07-16.)** The operative manifest is **v4.0-ext**, which: (1) adds Tier IV — the external replication campaign + corpus2 edition (this `deltas/` directory, the campaign-summary insert, the repaired-closure appendix, and the revised core documents: Ω v3.0-ext, Course, Primer, Teachers' Edition, Session Map v2.0-ext, Watch-Mode memo v2); (2) enumerates ALL archive files as AFFECTED (receiving the S-30 delta memos indexed in `deltas/INDEX.md`) or CARRIED FORWARD by reference, unchanged; (3) adds the governance registers: the external findings ledger F-R1–F-R16 + the residual T-ledger (T-H4 — opened OPEN/pending, since closed DISCHARGED-WITH-CORRECTIONS ⟦H4 resolved: ∂ = ±2·[rot]; fatal branch refuted; F-R16 minor⟧ [H4: theory-audit/h4_completion.md, F-R16]); the **[externally replicated]** annotation class (the upgrade AUD-15 said internal convergence could not supply); the 30-day response clock started by the discharge package; the S4′ re-stake record (7/8 → 35/24); (4) appends the version history v3.0 → v4.0-ext with the external-edition rationale.
 
 ## ANNOTATION 2 — [F-R1][F-R9][F-R10][F-R11] sector map (line 20) · kill registry (line 45) · watch-mode block (line 52)
 
@@ -24,7 +24,7 @@
 
 ## ANNOTATION 4 — [charter rules 1–2] governance/S-30 designations
 
-> **(2026-07-16.)** The S-30 designation table extends: hashed archive documents → delta memos (`deltas/DELTA-<file>.md`); core documents → full re-editions with priors preserved; the [H4 PENDING] register entry opens; disputed-but-undischarged items (T-H4; the 𝔭/𝔟_eff conventions) marked OPEN with their discharge computations named, not silently resolved (charter rule 5).
+> **(2026-07-16.)** The S-30 designation table extends: hashed archive documents → delta memos (`deltas/DELTA-<file>.md`); core documents → full re-editions with priors preserved; the H4 register entry opens pending and closes ⟦H4 resolved⟧ (DISCHARGED-WITH-CORRECTIONS, F-R16 — resolved by the named computation, not silently); disputed-but-undischarged items (the 𝔭/𝔟_eff conventions; formerly T-H4) marked OPEN with their discharge computations named, not silently resolved (charter rule 5).
 
 ---
 

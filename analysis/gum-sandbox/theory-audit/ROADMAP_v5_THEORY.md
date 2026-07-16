@@ -219,6 +219,10 @@ own action. Three workstreams:
   action pins (p,q), T-H10's conditional defect resolves one way or
   the other unconditionally.
 
+## Phase H4: ✅ EXECUTED — fatal branch REFUTED, T-H4 discharged (F-R16)
+## corpus2: ✅ BUILT — the externally-revised edition (see corpus2/)
+
 ## Beyond (unscheduled)
 The GPU-class physics unchanged from v4; the corpus's response to the
-v2 package; whatever H3 leaves standing at argument level.
+v2 package and to corpus2; the two scoped H4 opens (curved-line
+moduli; even w ≥ 2); the N2/F.3 exchange-lift GAP of record.

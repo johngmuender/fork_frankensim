@@ -16,7 +16,7 @@
 > 4. **NR-K2b⟷K3a: the K3a half RETURNED ADVERSE** (second moment 13–18 orders; mean verified at 1.000 ± 0.001; both V-K1 branches unsupported; Memo №2 basis review re-armed); the K2b half untested-unaffected. [F-R9] `theory-audit/h21_RESULTS.md`.
 > 5. **The closure-anchor gate: CLOSED IN THE CORPUS'S FAVOR** (H2.6, 915σ); the ⟨r2⟩ torque-sign honesty confirmed (H2.7). `theory-audit/h26_RESULTS.md`, `h27_RESULTS.md`.
 > 6. **NR-V1's HIGH gate, G-0, B-0: still open** — not touched by the campaign (G-0 now carries the F-R14 conditionality; see Annotation 3).
-> **Two new named gates join the register:** (i) production of the frozen ⟨r1⟩ code exhibiting the stabilizing constraint absent from App I.4's printed protocol — the F-R5 discharge route; (ii) the MH connecting-homomorphism computation — [H4 PENDING], in flight. [F-R4][F-R5][T-H4]
+> **Two new named gates join the register:** (i) production of the frozen ⟨r1⟩ code exhibiting the stabilizing constraint absent from App I.4's printed protocol — the F-R5 discharge route; (ii) the MH connecting-homomorphism computation — since executed, gate CLOSED DISCHARGED-WITH-CORRECTIONS ⟦H4 resolved: ∂ = ±2·[rot]; fatal branch refuted; π₁(𝒞_strat) = ℤ₂ × A/⟨2a_rot⟩, F-R16; residual: the N2/F.3 lift⟧. [F-R4][F-R5][T-H4][H4: theory-audit/h4_completion.md, F-R16]
 
 ## ANNOTATION 2 — [F-R9] §4 Armed Board, the 0νββ row
 

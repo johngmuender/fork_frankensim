@@ -137,8 +137,17 @@ numeric program (F-R9 promoted — NR-K3a second moment, 13-18 orders;
 F-R4 floor confirmed on the collision problem; E.6 positivity
 T-H10; D1b honest floor T-H11; A2b counterexamples survive; the
 anchor discriminator and torque-sign gates close IN THE CORPUS'S
-FAVOR). Ledger now F-R1-F-R9 + T-H1-T-H11. Start any new session
-from theory-audit/ROADMAP_v5_THEORY.md's Beyond section. G1: 13/13 gates,
+FAVOR). Ledger now F-R1-F-R9 + T-H1-T-H11. FINAL ADDITIONS (2026-07-16 close): H4 executed — the fatal branch
+REFUTED (∂ = ±2·[rot], two routes); T-H4 discharged with corrections
+(F-R16); ledger FINAL at F-R1–F-R16, T-ledger EMPTY. And corpus2/ —
+the complete externally-revised edition: Omega paper v3.0-ext (67/67
+map entries), Course/Primer/Teachers-Ed v2-ext (35/35 + 14), manifest
+v4.0-ext (105-file census: 3 revised/67 delta/35 carried), Session Map
+v2.0-ext, Watch-Mode v2, 09-External-Replication-Record,
+10-The-Repaired-Closure, 70 S-30 delta memos (98 annotations), all
+H4-pending boxes patched and verified. The program is COMPLETE; any
+new session starts from corpus2/README.manifest-v4.0-ext.md and the
+corpus's response. G1: 13/13 gates,
 serial↔4-thread bit-identical, 3.61× speedup. G4: full protocol run
 (23 relaxations, 3 orientations), bond loop IN BAND — closed-loop
 x₀ = 1.88/1.97 vs predicted 1.90 ± 0.05; direct 2.0 ± 0.15 vs corpus

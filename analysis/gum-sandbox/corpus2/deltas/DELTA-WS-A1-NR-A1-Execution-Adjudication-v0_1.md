@@ -4,12 +4,12 @@
 
 ---
 
-## ANNOTATION 1 — [T-H4][H4 PENDING] F-A-2 (line 39)
+## ANNOTATION 1 — [T-H4]⟦H4 resolved⟧ F-A-2 (line 39)
 
 **The original says.** "𝔤_s = n·(ħ/L)·𝒥: the two is the FR half-quantum inverted … the angular momentum is quantized at ħ/2 because …" (c″-lineage attribution).
 
 **Annotation (affix at F-A-2).**
-> **(2026-07-16.)** Attribution re-route per R1/R2: the angular momentum is quantized at ħ/2 *because the closure selects j = ½ (T-B1), in the double-valued sector whose consistency is c″'s content*. Result and PASS-exact adjudication unchanged. [H4 PENDING] rider attached: the half-quantum sector inherits the stratified-completion hypothesis. [T-H4]
+> **(2026-07-16.)** Attribution re-route per R1/R2: the angular momentum is quantized at ħ/2 *because the closure selects j = ½ (T-B1), in the double-valued sector whose consistency is c″'s content*. Result and PASS-exact adjudication unchanged. Completion rider LIFTED ⟦H4 resolved⟧: the stratified-completion computation reported ∂ = ±2·[rot] — the fatal branch refuted, the half-quantum sector computed to exist at odd winding (corrected structure π₁(𝒞_strat) = ℤ₂ × A/⟨2a_rot⟩, F-R16 minor); the sector no longer inherits an undischarged hypothesis. [T-H4][H4: theory-audit/h4_completion.md, F-R16]
 
 ## ANNOTATION 2 — [externally replicated] the 𝔤_s = 2 → μ_B chain (credit side)
 
