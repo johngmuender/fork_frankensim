@@ -121,8 +121,21 @@ j3_results.json / j3_RESULTS.md.
   bounds are never printed: spec-recovery limits). The corpus's own
   VII.I dictionary had already stamped ✓ on f ∈ [4, 60]; the re-run
   makes that arithmetic. j3_RESULTS.md.
+- **J4 (the Phase-J residual, executed post-fold)**: the multi-ε
+  saturated re-scan — dense small-ε solves on the i1 machinery (ε =
+  0.005/0.01/0.02/0.03 × two resolutions; ε = 0.02 reproduces i1 to
+  −2.7×10⁻⁶; intercept hits 64√2/9π at +7.7×10⁻⁵) measure the leading
+  exponent **LINEAR: p = 0.997 [0.996, 1.012]** — the 2/3 class
+  EXCLUDED (χ² ratio 8445; admixture 0.0034 ± 0.0014). J2's D3
+  discharged in the strong direction: the ×4.3 loosening, 60 MeV f-top
+  and 7.8×10⁻¹⁰ Majoron edge are MEASURED (envelopes ×4.31–4.50 /
+  59.9–61.1 / 7.66–7.82×10⁻¹⁰); the 2/3 reversion dies with the
+  exponent; the dichotomy survives every reading incl. the excluded
+  reference (min worst-joint ×1.98 — grazing J2's "factor 2", printed).
+  Defects: 1.3% axi4-vs-i1 amplitude spread; upper-bound family bias;
+  ε < 0.005 unprobed; W4 curvature drift. 14/14 gates. j4_RESULTS.md.
 
 ## Beyond (unscheduled)
-Real-GPU physics; the corpus's response to corpus2/DISCHARGE_PACKAGE;
-the one Phase-J residual: the multi-ε saturated re-scan behind the
-"+1.15ε" linear class (J2's D3).
+Real-GPU physics; the corpus's response to corpus2/DISCHARGE_PACKAGE.
+(The former Phase-J residual — the multi-ε saturated re-scan — was
+executed as J4: exponent linear, 2/3 excluded, ×4.3 measured.)

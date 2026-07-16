@@ -324,7 +324,12 @@ shape law), both corrected in print per the shared discipline
 (j2_RESULTS.md). J3 re-ran the Majoron battery at g ≈ 7.8×10⁻¹⁰:
 "SHIFTS-HARMLESSLY" confirmed 17/17 with the old-window control exact;
 SN/recoupling bounds never printed — spec-recovery limits stated
-(j3_RESULTS.md). Residual open: the multi-ε saturated re-scan (J2 D3). Out of
+(j3_RESULTS.md). The residual open was then executed as J4 (2026-07-16): dense small-ε
+solves measure the saturated exponent LINEAR — p = 0.997 [0.996, 1.012],
+2/3 EXCLUDED (χ² ratio 8445), intercept at 64√2/9π to +7.7×10⁻⁵; the
+×4.3 ceiling loosening, 60 MeV f-top and 7.8×10⁻¹⁰ Majoron edge are
+MEASURED rather than linear-assumption-specific; dichotomy survives
+every reading (j4_RESULTS.md). No named opens remain in Phase J. Out of
 envelope (documented, not scheduled): blue-fog/disclination boxes and
 nucleation (GPU-scale/theorem-level, per the v2 assessment's Tier-5
 flag), the Σ(p) integrals from geometry, and the full fs-cosserat solver

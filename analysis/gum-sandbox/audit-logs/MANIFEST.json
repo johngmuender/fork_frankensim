@@ -1,5 +1,5 @@
 {
- "snapshot_utc": "2026-07-16 FINAL+J (Phase J complete: obligations executed - J1 p-grid convention recovered; J2 eps-scan/Q-6' ceiling; J3 Majoron battery confirmed)",
+ "snapshot_utc": "2026-07-16 FINAL+J4 (Phase J fully closed: J4 eps-law exponent measured LINEAR, 2/3 excluded, x4.3 measured; no named opens remain)",
  "session": "d0b81976",
  "main_session_transcript": "coordinator-session.jsonl.xz",
  "agents": [
@@ -199,6 +199,12 @@
   {
    "agent_id": "aca7540b20f6bf51d",
    "description": "J3: Majoron battery re-run at g ~ 7.8e-10",
+   "transcript_bytes": null,
+   "phase": "Phase J"
+  },
+  {
+   "agent_id": "a0b135e238f19c105",
+   "description": "J4: multi-eps saturated re-scan (restart-recovered; per-point flushing)",
    "transcript_bytes": null,
    "phase": "Phase J"
   }

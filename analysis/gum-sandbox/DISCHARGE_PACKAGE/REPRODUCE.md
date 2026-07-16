@@ -174,3 +174,4 @@ All deterministic (no RNG); runtimes re-verified on the shipping host.
 | J1 B.4-window 𝔭-grid | `python3 analysis/gum-sandbox/theory-audit/j1_pgrid.py` | 55 s | all solver gates PASS; 𝔭(edge-/6) = 0.84 at benchmark 0.28σ; 𝔟_eff +1.06σ |
 | J2 (4.8′)/(4.9′) | `python3 analysis/gum-sandbox/theory-audit/j2_epsscan.py` | 2 s | 44/44; ceiling 2.605×10⁻³; anchor forfeit 11.283σ; dichotomy survives |
 | J3 Majoron battery | `python3 analysis/gum-sandbox/theory-audit/j3_majoron.py` | 3 s | 17/17; old-window control exact; no row newly binds |
+| J4 ε-law re-scan | `python3 analysis/gum-sandbox/theory-audit/j4_epslaw.py` | 250 s | 14/14; p = 0.997 [0.996, 1.012]; 2/3 excluded (χ² ratio 8445); ×4.3 measured |

@@ -240,7 +240,9 @@ in corpus2), J2 executed the repaired (4.8′)/(4.9′) arithmetic (ceiling
 2.605×10⁻³; ε-anchor forfeit 11.283σ; dichotomy survives; two stale
 sentences in OUR corpus2 revision corrected in print), J3 confirmed the
 Majoron battery SHIFTS-HARMLESSLY (17/17). Ledger remains F-R1–F-R17;
-T-ledger EMPTY. Named residual open: the multi-ε saturated re-scan behind
-J2's linear "+1.15ε" class (two measured points). Artifacts:
+T-ledger EMPTY. The former named residual — the multi-ε saturated re-scan — was then
+executed as J4: exponent measured LINEAR (p = 0.997 [0.996, 1.012]; 2/3
+excluded at χ² ratio 8445; ×4.3/60 MeV/7.8×10⁻¹⁰ all MEASURED; dichotomy
+reading-robust). NO named opens remain; only the unscheduled Beyond items. Artifacts:
 theory-audit/j{1,2,3}_* + ROADMAP_v6_SYNTHESIS.md Phase-J verdicts;
 audit-logs/ archive current through the Phase-J sweep (35 mapped agents).
