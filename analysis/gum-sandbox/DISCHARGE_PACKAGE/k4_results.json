@@ -53,7 +53,7 @@
   "K13": {
    "measured": "read",
    "root": "n/a",
-   "status": "PASS (note present, self-contained)"
+   "status": "PASS (analytic note present)"
   },
   "K18": {
    "measured": "1.8 s",
@@ -126,14 +126,124 @@
    "status": "PASS (19/19)"
   },
   "K10": {
-   "measured": "covered by K09",
-   "root": "\u2014",
-   "status": "PENDING (same run as K09)"
+   "measured": "same run as K09",
+   "root": "n/a",
+   "status": "PASS (V4/endA_analytic gates in K09 output)"
   },
   "K36": {
    "measured": "0.5 s (usage error)",
    "root": "\u2014",
    "status": "CMD-DEFECT: printed command missing required args; binary usage requires 'crossing <out.json> <N> <LBOX> <cap_static> <cap_main> [threads]'. Corrected form run as K36b (shipped invocation from n192_RESULTS.md L28)."
+  },
+  "K04": {
+   "measured": "484.0 s (warm build; concurrent)",
+   "root": "OK fp 6b3959d4\u2026 bit-identical",
+   "status": "PASS (OVERALL PASS; \u03ba ratio 1.2525; 1.5x wall vs 316 s under contention)"
+  },
+  "K08": {
+   "measured": "549.3 s (concurrent)",
+   "root": "n/a (fp cca041e8558ce556)",
+   "status": "PASS (21 gates, 21 passed; 1.8x wall vs ~310 s under contention)"
+  },
+  "K09": {
+   "measured": "345.2 s (concurrent)",
+   "root": "n/a",
+   "status": "PASS (c_pap 2.0533, \u03ba 0.9354, V=1.414214, E_rot/E=0.250000 reproduced; 2.0x wall vs 170 s under contention)"
+  },
+  "K15": {
+   "measured": "21.3 s (internal 19.2 s)",
+   "root": "n/a",
+   "status": "PASS (wrote field3d_results_smoke.json etc.; ratio 1.4514 over-spun verdict)"
+  },
+  "K17": {
+   "measured": "518.6 s (concurrent)",
+   "root": "OK fp 6b3959d4\u2026 bit-identical (2nd fresh run)",
+   "status": "PASS"
+  },
+  "K23": {
+   "measured": "1760.8 s (concurrent)",
+   "root": "n/a",
+   "status": "PASS (\u03c4 = 83.04/10.20/4.85 vs printed 83/10.2/4.9); 2.1x wall vs 829 s \u2014 contention, flagged"
+  },
+  "K24": {
+   "measured": "531.5 s (concurrent)",
+   "root": "n/a",
+   "status": "PASS (\u03c4 = 4.4823, r\u00b2 = 0.9873); 2.1x wall vs 252 s \u2014 contention, flagged"
+  },
+  "K26": {
+   "measured": "533.6 s",
+   "root": "OK (all five suites OVERALL PASS incl. statics fp)",
+   "status": "PASS (block executed verbatim from repo root)"
+  },
+  "K27": {
+   "measured": "331.6 s (concurrent)",
+   "root": "n/a",
+   "status": "PASS (R = 1.115e14\u00b13e11 at 1 \u00b5m; 1.967e15 at 4.2 \u00b5m; v/c 6.11e8); 2.8x wall vs 117 s \u2014 contention, flagged"
+  },
+  "K42": {
+   "measured": "2814.1 s",
+   "root": "n/a",
+   "status": "PASS (solver gates PASS; \ud835\udd2d(edge-/6)=0.84 reachable, crossing at c2=0.0083; \ud835\udd1f_eff +1.06\u03c3) \u2014 RUNTIME-DRIFT: 51x vs printed 55 s (finding F6)"
+  },
+  "K43": {
+   "measured": "1.9 s",
+   "root": "n/a",
+   "status": "PASS (44/44)"
+  },
+  "K44": {
+   "measured": "0.1 s",
+   "root": "n/a",
+   "status": "PASS (17/17)"
+  },
+  "K28": {
+   "measured": "0.4 s (usage error)",
+   "root": "\u2014",
+   "status": "CMD-DEFECT: printed '-- all' rejected; usage is single|pair|sdiff|twist. Corrected form = the five shipped runs (h22_RESULTS.md L66-69: single 800-it; pair align/repulse 1200-it; sdiff repulse; twist repulse 21-pt, m=0.9 \u2192 h22_runs/*_m09.json) \u224824 min \u2014 SKIPPED-BUDGET"
+  },
+  "K12": {
+   "measured": "relaunching (wave 1)",
+   "root": "\u2014",
+   "status": "RUNNING (first attempt killed externally mid-run)"
+  },
+  "K16": {
+   "measured": "relaunching (wave 1)",
+   "root": "\u2014",
+   "status": "RUNNING (first attempt killed externally mid-run)"
+  },
+  "K14": {
+   "measured": "awaiting wave 2",
+   "root": "\u2014",
+   "status": "PENDING-WAVE2 (first attempt killed externally mid-run)"
+  },
+  "K36b": {
+   "measured": "awaiting wave 2",
+   "root": "\u2014",
+   "status": "PENDING-WAVE2 (first attempt killed externally; its partial output had clobbered the primary n192_crossing.json \u2014 restored by coordinator; wave-2 rerun will write n192_crossing_freshness.json instead)"
+  },
+  "K29": {
+   "measured": "queued",
+   "root": "n/a",
+   "status": "RUNNING (lane 3 queue)"
+  },
+  "K33": {
+   "measured": "queued",
+   "root": "n/a",
+   "status": "RUNNING (lane 3 queue)"
+  },
+  "K38": {
+   "measured": "queued",
+   "root": "n/a",
+   "status": "RUNNING (lane 3 queue)"
+  },
+  "K32": {
+   "measured": "queued",
+   "root": "\u2014",
+   "status": "RUNNING (lane 3 queue)"
+  },
+  "K45": {
+   "measured": "queued",
+   "root": "n/a",
+   "status": "RUNNING (lane 3 queue)"
   }
  },
  "findings": [
@@ -164,6 +274,27 @@
    "row": "(global)",
    "severity": "info",
    "detail": "A sibling workstream process (theory-audit/k2_smalleps.py, different session) occupies ~1 core for the duration; long rows were additionally run concurrently. Wall-clock comparisons are upper bounds."
+  },
+  {
+   "id": "F5",
+   "class": "CMD-DEFECT",
+   "row": "K28",
+   "severity": "medium",
+   "detail": "REPRODUCE.md v2 row 'F-R4 floor on the collision problem' prints 'cargo run --release --bin h22_solve -- all'; the binary has no 'all' subcommand (usage: single|pair|sdiff|twist, each with required args). Corrected form is the five shipped runs documented in h22_RESULTS.md (single/pair align/pair repulse/sdiff repulse/twist repulse at m=0.9, outputs h22_runs/*_m09.json) totalling ~24 min; not run (SKIPPED-BUDGET after external kill)."
+  },
+  {
+   "id": "F6",
+   "class": "RUNTIME-DRIFT",
+   "row": "K42",
+   "severity": "medium",
+   "detail": "j1_pgrid.py printed runtime 55 s; measured 2814 s (51x) for the full 9-point c2 grid, far beyond the ~2-3x attributable to host contention. Output is complete and gates PASS; the printed runtime (or the shipped grid at time of printing) is inconsistent with the shipped script."
+  },
+  {
+   "id": "F7",
+   "class": "CLOBBER-HAZARD",
+   "row": "K36/K36b",
+   "severity": "high",
+   "detail": "The N=192 crossing row carries two defects: (1) the printed command fails on usage (F1); (2) the naive corrected form (shipped invocation from n192_RESULTS.md L28) writes its output over the primary record n192_runs/n192_crossing.json (complete:true). The first K36b attempt did exactly that before being killed; the primary was restored from git by the coordinator. Freshness rule adopted: re-runs must write to *_freshness outputs or be preceded by .primary.bak copies (see method note)."
   }
  ]
 }
