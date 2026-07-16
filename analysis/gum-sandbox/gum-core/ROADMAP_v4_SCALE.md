@@ -91,8 +91,10 @@ nucleation.
   state); control cleaner at N=192; 2T/4T bit-identity at 192³.
   Corrections printed: iteration milestones are solver-clock; the
   fixed-h box axis is a NULL (4A's big-box plank was h-confounded);
-  the N=192 crossing extrapolates beyond the once-doubled cap
-  (~it 2000–2400) — a ~50-min quiet run would settle it directly.
+  the N=192 crossing was subsequently OBSERVED directly at
+  it 2070–2080 (G5c, 46.3 min quiet run): kappa through 1/sqrt(8pi) with
+  I at the crossing 29.7–29.8 at EVERY grid in the ladder — the F-R5
+  referee is now fully observational at h = 0.046875.
 - **G5b ✅** two-knot refinement (fs-gum-twoknot/twoknot_REFINE.md):
   cap systematic measured (G4's well depth was under-converged 22× its
   σ; location right); well now **5.0σ** (Aitken, −6.53e-3 ± 1.3e-3,
@@ -102,6 +104,6 @@ nucleation.
   DISCHARGE_PACKAGE updated with the G5 refinements + corrections.
 
 ## Program status: ROADMAP v4 EXECUTED (G-A, G1–G4, G5a–G5b)
-Next (unscheduled): the ~2500-cap N=192 crossing run; explicit
+Next (unscheduled): explicit
 k-contiguous SIMD (the documented unclaimed step); real-GPU execution
 of fs-gum-gpu; blue-fog boxes on that on-ramp; the corpus's response.

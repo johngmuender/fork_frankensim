@@ -25,6 +25,7 @@ cargo build --release
 ./target/release/n192_fr5 proto     n192_runs/n192_main.json 192 4.5 450 1600 600 4
 ./target/release/n192_fr5 ctrlclock n192_runs/n192_ctrlclock.json 192 4.5 450 600 4
 ./target/release/n192_fr5 bitcheck  192 4.5 20 2 4
+./target/release/n192_fr5 crossing  n192_runs/n192_crossing.json 192 4.5 450 2500 4
 ```
 
 Measured facts only; adjudication is the coordinator's layer.
@@ -78,6 +79,7 @@ The N = 96 referee box is LBOX = 4.5 (half-width; the field3d 4A box).
 | n192 proto R3 ctrl | | 600 | **killed at it ≈ 500** | — | process killed externally (§11.3); log preserved, series JSON lost |
 | n192 ctrlclock R1+R3+R4 (recovery) | | 450 + 600 | iter_cap ×2 | 960.8 s + 1020.9 s (contended, §11.4) | static replay digit-identical to the killed run; R3 self-limiting; R4 identities exact (Δerot = 0.0); ratio 1.4847 |
 | n192 bitcheck | | 20 iters, 2T vs 4T | PASS | 45.0 s (2T) / 25.4 s (4T) | hashes identical: 0803fe446497060d… |
+| n192 crossing R1+R2 (long cap) | 192³, LBOX 4.5 | 450 + 2500 | iter_cap | 421.3 s + 2348.9 s (quiet) | **threshold crossing OBSERVED at it 2070..2080**; obj strictly monotone (max rise −2.2e-6); static + main-to-1600 rows digit-identical to the earlier runs; kill-tolerant JSON flushed every 100 it |
 
 All descents objective-monotone by construction; guard footprint
 |E_pen| + |E_fpen| ≤ 2e-3 at every ENDPOINT (N = 192 logged rows
@@ -112,35 +114,41 @@ main-descent maximum at N = 48.
 ## 5. R2 — the over-spun main descent: milestones across N
 
 κ-milestones of the SAME frozen protocol (κ₀ ≈ 0.253–0.26 after
-seeding; threshold 1/√(8π) = 0.199471). N = 192 brackets are at the
-100-iteration log granularity for 0.24/0.22 (the 10-iteration series
-died with the killed process, §11.3):
+seeding; threshold 1/√(8π) = 0.199471). N = 192 brackets are from the
+`crossing` run's 10-iteration series (its static and main stages replay
+the killed run digit-for-digit through it 1600 and continue to 2500):
 
 | first κ below | N=48 (h=.1875) | N=96 (h=.09375) | N=128 box 4/3× (h=.09375) | N=192 (h=.046875) |
 |---------------|----------------|------------------|---------------------------|--------------------|
-| 0.24 | — (κ₀ 0.253; not instrumented) | it 120..130 | it 120..130 | it 200..300 |
-| 0.22 | — | it 280..290 | it 280..290 | it 800..900 |
-| threshold 0.19947 | it 150..160 | it 490..500 | it 490..500 | **not by 1600** (κ = 0.20668, still falling; last-400-it slope −1.6e-5/it ⇒ crossing extrapolates to ≈ it 2000–2400) |
-| halo at threshold | n/r | 0.0400 | 0.0399 | — |
+| 0.24 | — (κ₀ 0.253; not instrumented) | it 120..130 | it 120..130 | it 230..240 |
+| 0.22 | — | it 280..290 | it 280..290 | it 830..840 |
+| threshold 0.19947 | it 150..160 | it 490..500 | it 490..500 | **it 2070..2080 — DIRECTLY OBSERVED** (κ 0.199871 → 0.199447; inside the 1600-cap run's it ≈ 2000–2400 extrapolation) |
+| halo at threshold | n/r | 0.0400 | 0.0399 | 0.0430 |
+| I at threshold | n/r | 29.80 | 29.73 | 29.70 |
 
 * **The iteration count to any fixed κ mark is grid-sensitive**:
-  ≈160 / ≈495 / ≳2000 iterations to threshold at h = 0.1875 / 0.09375 /
-  0.046875 — a ×3–4 slowdown per h-halving. The mechanism is solver
-  dynamics, not physics: at finer h the ANF dt-cascade settles ~2–3×
-  lower (N = 192 dt ≈ 0.002–0.008 vs N = 48's ~0.01–0.05) and each
-  accepted step moves the state less.
+  ≈160 / ≈495 / ≈2075 iterations to threshold at h = 0.1875 / 0.09375 /
+  0.046875 — a growing ×3.1 then ×4.2 slowdown per h-halving. The
+  mechanism is solver dynamics, not physics: at finer h the ANF
+  dt-cascade settles ~2–3× lower (N = 192 dt ≈ 0.002–0.008 vs N = 48's
+  ~0.01–0.05) and each accepted step moves the state less.
 * **The trajectory in STATE space is grid-robust.** At matched κ the
   quadrature-exact instruments agree across the ladder: at κ ≈ 0.238,
-  N = 96 (it ≈ 130): halo 0.0310, I 25.31 vs N = 192 (it ≈ 300): halo
-  0.0295, I 24.91; at κ ≈ 0.222, N = 96 (it ≈ 280): halo 0.0340,
-  I 27.07 vs N = 192 (it ≈ 800–900): halo 0.0335–0.0347, I 26.68–27.12.
+  N = 96 (it ≈ 130): halo 0.0310, I 25.31 vs N = 192 (it ≈ 235): halo
+  0.0292, I 24.76; at κ ≈ 0.22, N = 96 (it ≈ 285): halo 0.0340,
+  I 27.07 vs N = 192 (it ≈ 835): halo 0.0343, I 26.98; at the threshold
+  itself: halo 0.0400 / 0.0399 / 0.0430 and I 29.80 / 29.73 / 29.70
+  (N = 96 / 128-box / 192).
   The descent path (κ, halo, I) refines onto itself; only its
   parameterization by iteration slows.
-* N = 192 endpoint at cap 1600: R 3.9377 → 3.7783 monotone
-  (dR = −0.159), κ 0.25876 → 0.20668, halo 0.0276 → 0.0394 (+0.0118 —
-  below the 0.015 E1 gate margin AT THIS CAP; at matched κ it matches
-  the other grids, see above), I 22.89 → 28.66, degree pinned at
-  0.9909, floor at the wall.
+* N = 192 crossing-run endpoint at cap 2500: R 3.9377 → 3.745653
+  monotone (dR = −0.192; max recorded bare-R rise +2.9e-4, penalty-
+  sized; objective max rise −2.2e-6), κ 0.25876 → **0.19502** (below
+  threshold), halo 0.0276 → **0.0456** (+0.0180 — now ABOVE the 0.015
+  E1 gate margin that the 1600-cap read fell short of), I 22.89 →
+  30.37, degree pinned at 0.9909, floor at the wall, 48 arrests, guard
+  footprint ≤ 3.0e-3. At the crossing itself (it 2070..2080): halo
+  0.0430, I 29.70, R 3.75793.
 * Python 4A N = 96 reference (DIFFERENT spin protocol, L = 8.4979,
   κ₀ = 0.374, stated for context, not equivalence): R crosses the
   axisymmetric reference at it ≈ 110, κ crosses solA's 0.2656 at
@@ -202,6 +210,7 @@ The headline number κ(L_clock)/threshold:
 | **N=192 G5a ctrl endpoint, cap 600** | 23.95 (72%) | **1.4847** |
 | N=192 static endpoint | 22.16 (66%) | 1.5449 |
 | N=192 main endpoint, cap 1600 | 28.66 (86%) | 1.3605 |
+| N=192 main endpoint, cap 2500 (crossing run) | 30.37 (91%) | 1.3220 |
 | 4A clean axisymmetric control reference | — | 1.474 |
 | Step-2 solA | — | 1.331 |
 
@@ -253,7 +262,10 @@ Quiet-window ANF hot-path cost at N = 192, 4 threads: 1.05–1.13 s/eval
 across the long runs (451-eval static: 475.0 s; 1601-eval main:
 1807.6 s), vs the task-sheet projection 1.24 s and the 10-iteration
 probe 1.258 s. The N = 192 main descent alone is ~10¹³-FLOP-class; the
-full phase's engine time is ≈ 97 min wall at 4 threads (§11.5). The 16·N³ pass-A flux buffer at N = 192 corner is ~920 MB;
+full phase's engine time is ≈ 143 min wall at 4 threads (§11.5),
+of which the coordinator-directed crossing extension is 46.3 min
+(421.3 s static + 2348.9 s main-2500, quiet — 0.94 s/eval on the
+mixed static/main stream). The 16·N³ pass-A flux buffer at N = 192 corner is ~920 MB;
 peak RSS ≈ 3 GB of 15 — the slab-staged pass A flagged in the G1
 RESULTS remains unnecessary at this scale and remains the prerequisite
 for N > 192.
@@ -279,18 +291,23 @@ Stated as measured facts for the coordinator's adjudication:
    grid-robust.
 3. **What is exposed as solver-clock, not physics**: every
    iteration-indexed milestone. Iterations-to-threshold grow ×3–4 per
-   h-halving (≈160 / ≈495 / ≳2000); the 4A milestones "it ≈
+   h-halving (≈160 / ≈495 / ≈2075, the last directly observed); the 4A
+   milestones "it ≈
    110/400/1610" and the E1 "crossing by it 160" are properties of the
    arrested-Newton clock at their grids.
-4. **Honest limit of this phase**: at N = 192 the κ-threshold crossing
-   itself was NOT reached within the (already once-doubled) 1600-cap —
-   κ = 0.20668 and falling, extrapolated crossing ≈ it 2000–2400, and
-   the halo rise at that cap (+0.0118) is below the E1 gate margin
-   (0.015) even though it matches the coarser grids at matched κ. The
-   F-R5 descent claims at N = 192 therefore rest on the monotone trend
-   plus the matched-state agreement with the grids where the crossing
-   IS resolved — not on an observed crossing. A ≈2500-cap main run
-   (~50 min quiet) would settle it by direct observation.
+4. **The crossing is directly observed at N = 192** (the `crossing`
+   run, cap 2500, replacing this item's earlier honest-limit status):
+   κ falls through 1/√(8π) at **it 2070..2080** (0.199871 → 0.199447),
+   inside the 1600-cap run's it ≈ 2000–2400 extrapolation, with halo
+   0.0430 and I 29.70 at the crossing (vs 0.0400/29.80 at N = 96) and
+   κ = 0.19502, halo = 0.0456 (+0.0180, above the 0.015 E1 margin),
+   I = 30.37 at the 2500 cap, objective strictly monotone throughout.
+   Every referee clause — monotone descent, κ crossing, halo growth —
+   is now an observed fact at 8× the campaign's cells. The remaining
+   honest limits are the ones shared with every 4A/E1 record: the runs
+   end at iteration caps (minimizing sequences still in motion, not
+   converged endpoints), and the deep post-crossing regime
+   (κ → 0.18-class, halo ≥ 0.05–0.10) was measured only at N ≤ 128.
 
 ## 11. Deviations (with reasons)
 
@@ -298,10 +315,10 @@ Stated as measured facts for the coordinator's adjudication:
    exact-h nesting beats a 1.3× box whose h matches no other run; the
    box factor is 4/3 instead of 1.3 (§1).
 2. **N=192 main cap 600 → 1600** after the N = 96 crossing measurement
-   (§2); the crossing still wasn't reached (§5, §10.4). Not extended
-   further: the marginal 50-min rerun was out of the remaining budget
-   and the coordinator's recovery instruction scoped the rerun to the
-   control + clock segment.
+   (§2); the crossing still wasn't reached at 1600. The direct
+   observation was then authorized by the coordinator as a follow-up
+   segment on the idle machine (the `crossing` run, cap 2500, §5,
+   §10.4) and landed at it 2070..2080.
 3. **The first N = 192 proto was killed externally** (the harness
    reaped the whole background run block; no OOM, no panic — the
    binary was mid-control at it ≈ 500) at 07:42. Its static + main
@@ -316,14 +333,15 @@ Stated as measured facts for the coordinator's adjudication:
    recovery segment (those walls flagged; all non-wall numbers are
    scheduling-independent by construction). Thread count for the
    recovery stayed 4 (bits independent of it; K-D).
-5. **Wall budget**: total engine wall ≈ 97 min (probes 45 s; n96 281 s;
-   n128 547 s; killed n192 proto ≈ 2883 s; recovery 1986 s; bitcheck
-   70 s) vs the sheet's ≤ ~90 min — the overage is the killed run's
-   lost control stage plus the recovery's contended static re-run
-   (≈ 26 min combined, of which ≈ 16 min is pure re-execution/
-   contention cost); without the kill the phase lands at ≈ 80 min
-   including the deliberate main-cap doubling. Stated rather than
-   hidden.
+5. **Wall budget**: the original phase ran ≈ 97 min engine wall
+   (probes 45 s; n96 281 s; n128 547 s; killed n192 proto ≈ 2883 s;
+   recovery 1986 s; bitcheck 70 s) vs the sheet's ≤ ~90 min — the
+   overage is the killed run's lost control stage plus the recovery's
+   contended static re-run (≈ 26 min combined, of which ≈ 16 min is
+   pure re-execution/contention cost); without the kill the phase
+   lands at ≈ 80 min including the deliberate main-cap doubling. The
+   coordinator-directed crossing extension added 2777 s (46.3 min,
+   quiet machine) for a total ≈ 143 min. Stated rather than hidden.
 6. **No control at N = 128**: the box axis needs the main channel only
    (the 4A box-sanity protocol likewise ran main only).
 
@@ -333,9 +351,11 @@ Stated as measured facts for the coordinator's adjudication:
 `n192_runs/n128_box.{json,log}`, `n192_runs/n192_main.log` (killed run:
 static + main complete, control to it 500; its JSON was never written),
 `n192_runs/n192_ctrlclock.{json,log}` (+ `.partial` stage flush),
-`n192_runs/n192_bitcheck.log`, this file. Full instrumented series
-(every 10 iterations) for every run that reached its JSON write; the
-killed run's main series exists at 100-iteration granularity in its log.
+`n192_runs/n192_bitcheck.log`, `n192_runs/n192_crossing.{json,log}`
+(the direct-observation run: full 10-iteration series for static 450 +
+main 2500, kill-tolerant), this file. Full instrumented series for
+every run that reached a JSON write; the killed run's main series is
+superseded by the crossing run's digit-identical replay-and-extend.
 
 ## 13. Epistemic notice (binding, inherited)
 
