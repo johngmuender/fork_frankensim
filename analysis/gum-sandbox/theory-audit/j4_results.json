@@ -71,9 +71,64 @@
    "gate": "G0c J2 slope reproduction: s_exact = 1.152 (engine-base 1.136)",
    "pass": true,
    "detail": "s_exact = 1.1518, s_engine = 1.1363"
+  },
+  {
+   "gate": "G1a REPRODUCTION: c_sat(0.02) vs i1's 3.2739555 within stated convergence",
+   "pass": true,
+   "detail": "j4 = 3.2739466, i1 = 3.2739555, rel = -2.73e-06 (conv band 4.3e-05)"
+  },
+  {
+   "gate": "G1b dial(0.02) achieved eps vs i1",
+   "pass": true,
+   "detail": "0.0199991 vs 0.0200012"
+  },
+  {
+   "gate": "G1c all new points respect the analytic floor c >= 3.2011 + 12 t",
+   "pass": true,
+   "detail": "eps=0.005: c-floor=+1.0e-02; eps=0.01: c-floor=+2.0e-02; eps=0.02: c-floor=+3.7e-02; eps=0.03: c-floor=+5.3e-02"
+  },
+  {
+   "gate": "G1d monotone rising in eps (new + i1 small-eps rows)",
+   "pass": true,
+   "detail": "strictly increasing"
+  },
+  {
+   "gate": "G1e in-band grid convergence at every new point (<= 5e-4 rel)",
+   "pass": true,
+   "detail": "0.005: 3.3e-05; 0.01: 3.6e-05; 0.02: 4.3e-05; 0.03: 4.9e-05"
+  },
+  {
+   "gate": "G2a exponent measured: free-p fit on W1, CI + jackknife + window envelope EXCLUDES 2/3",
+   "pass": true,
+   "detail": "p = 0.997, profile CI [0.996, 0.998], jackknife [0.996, 0.998], all-readings envelope [0.996, 1.012] vs 2/3 = 0.667"
+  },
+  {
+   "gate": "G2b pure-2/3 class vs pure-linear class on W1 (chi2 ratio)",
+   "pass": true,
+   "detail": "chi2(2/3)/chi2(lin) = 8445 — 2/3 EXCLUDED as leading order"
+  },
+  {
+   "gate": "G2c intercept: free-intercept linear fit eps->0 vs exact 64sqrt2/9pi",
+   "pass": true,
+   "detail": "c0_fit = 3.201371 vs 3.201125 (rel +7.71e-05, fit sigma 9.7e-05); 12-mode family bias at t->0 +side, consistent with upper-bound family"
+  },
+  {
+   "gate": "G3a linear-reading control reproduces J2/J3: ceiling 2.6047e-3, thinning x4.315, margins [2.60, 5.31] c 3.84, f_top 59.87 MeV, g_min 7.8e-10",
+   "pass": true,
+   "detail": "ceiling 2.6047e-03, x4.315, f_top 59.87, g_min 7.82e-10"
+  },
+  {
+   "gate": "G3b dichotomy robust: eps_q > ceiling at EVERY reading incl. the excluded 2/3 reference and every worst-joint",
+   "pass": true,
+   "detail": "min worst-joint margin x1.98; lepton window [1e-5, ceiling] non-empty at every reading"
+  },
+  {
+   "gate": "G3c x4.3 loosening CONFIRMED across surviving readings",
+   "pass": true,
+   "detail": "thinning range x[4.31, 4.50] (J2's x4.315 inside)"
   }
  ],
- "runtime_s": 118.43261361122131,
+ "runtime_s": 239.10235023498535,
  "s1_new_points": [
   {
    "eps_nominal": 0.005,
@@ -132,15 +187,582 @@
    },
    "nfev": 3141,
    "secs": 59.04466414451599
+  },
+  {
+   "eps_nominal": 0.02,
+   "eps_achieved": 0.019999148720476183,
+   "t": 0.003010124378287627,
+   "c_sat": 3.2739465788663873,
+   "c_sat_coarse": 3.273806309437739,
+   "conv_c_rel": 4.284414093791433e-05,
+   "c_sat_hedgehog_core": 3.322985618017563,
+   "d": 1.3098922643233901,
+   "degree": 0.9999567656107736,
+   "flags": {
+    "stretch": false,
+    "amax": false,
+    "abox": false,
+    "bbox": false
+   },
+   "floor_analytic": 3.2372461722091623,
+   "floor_ok": true,
+   "dial_ladder": {
+    "N2x": {
+     "d_ratio_rel": -1.3713430422335193e-06
+    },
+    "rmax+": {
+     "d_ratio_rel": 5.47958002750093e-07
+    }
+   },
+   "nfev": 3144,
+   "secs": 59.38358163833618
+  },
+  {
+   "eps_nominal": 0.03,
+   "eps_achieved": 0.030005588162755756,
+   "t": 0.004704580825619979,
+   "c_sat": 3.3103127385582045,
+   "c_sat_coarse": 3.3101518809347046,
+   "conv_c_rel": 4.8592878136966e-05,
+   "c_sat_hedgehog_core": 3.3618694382370458,
+   "d": 1.3485306397068275,
+   "degree": 0.999952152322694,
+   "flags": {
+    "stretch": false,
+    "amax": false,
+    "abox": false,
+    "bbox": false
+   },
+   "floor_analytic": 3.2575796495771505,
+   "floor_ok": true,
+   "dial_ladder": {
+    "N2x": {
+     "d_ratio_rel": -8.995139536560615e-07
+    },
+    "rmax+": {
+     "d_ratio_rel": 3.5942356024776245e-07
+    }
+   },
+   "nfev": 3142,
+   "secs": 61.08771467208862
   }
  ],
  "s1_dial_in_flight": {
-  "eps": 0.02,
-  "t": 0.003010124378287627,
-  "ratio": 0.019999148720476183,
+  "eps": 0.03,
+  "t": 0.004704580825619979,
+  "ratio": 0.030005588162755756,
   "ladder": {
-   "N2x": -1.3713430422335193e-06,
-   "rmax+": 5.47958002750093e-07
+   "N2x": -8.995139536560615e-07,
+   "rmax+": 3.5942356024776245e-07
   }
+ },
+ "s2_fits": {
+  "dataset": [
+   {
+    "eps": 0.005000493253250068,
+    "c_sat": 3.219559659291907,
+    "sigma_rel": 3.326578893703136e-05
+   },
+   {
+    "eps": 0.009999678401223202,
+    "c_sat": 3.2376155357117633,
+    "sigma_rel": 3.647108020876644e-05
+   },
+   {
+    "eps": 0.019999148720476183,
+    "c_sat": 3.2739465788663873,
+    "sigma_rel": 4.284414093791433e-05
+   },
+   {
+    "eps": 0.030005588162755756,
+    "c_sat": 3.3103127385582045,
+    "sigma_rel": 4.8592878136966e-05
+   },
+   {
+    "eps": 0.049995778309625045,
+    "c_sat": 3.382842568766411,
+    "sigma_rel": 6.484103259307705e-05
+   },
+   {
+    "eps": 0.09999058144943124,
+    "c_sat": 3.564038120472523,
+    "sigma_rel": 0.00010317190218522843
+   },
+   {
+    "eps": 0.19997138018746444,
+    "c_sat": 3.9485276363260486,
+    "sigma_rel": 0.00014439459222226336
+   },
+   {
+    "eps": 0.49997618678613187,
+    "c_sat": 5.216762575374606,
+    "sigma_rel": 0.0002732428173665147
+   },
+   {
+    "eps": 0.9999380915569649,
+    "c_sat": 7.55465829421593,
+    "sigma_rel": 0.0005225044728215389
+   },
+   {
+    "eps": 1.4995734113354249,
+    "c_sat": 10.083346772426076,
+    "sigma_rel": 0.0006933929306383035
+   },
+   {
+    "eps": 1.9995569539439604,
+    "c_sat": 12.756236549816673,
+    "sigma_rel": 0.000820832750900613
+   }
+  ],
+  "windows": {
+   "W1 eps<=0.05 (primary)": {
+    "n": 5,
+    "eps_range": [
+     0.005000493253250068,
+     0.049995778309625045
+    ],
+    "M1_linear": {
+     "amp": 1.136774208974697,
+     "chi2": 6.771733875078968,
+     "chi2_dof": 1.692933468769742
+    },
+    "M2_twothirds": {
+     "amp": 0.34069606634528016,
+     "chi2": 57186.164390337595,
+     "chi2_dof": 14296.541097584399
+    },
+    "M3_free_p": {
+     "p": 0.9965000000000005,
+     "p_lo": 0.9955000000000006,
+     "p_hi": 0.9980000000000006,
+     "amp": 1.1231257591621977,
+     "chi2": 1.8044384866774825,
+     "dof": 3,
+     "chi2_scale": 1.0
+    },
+    "M4_combo": {
+     "amp_lin": 1.1258911421134485,
+     "amp_23": 0.003388604577837991,
+     "chi2": 1.2186842739419126,
+     "amp_23_sigma": 0.0014379875198363761
+    },
+    "M1f_free_intercept": {
+     "c0": 3.2013713951004195,
+     "slope_abs": 3.629699227649617,
+     "s_over_c0": 1.1337951083103752,
+     "chi2": 0.36489744638242766,
+     "c0_sigma": 9.747079200506906e-05
+    },
+    "M3f_free_p_free_intercept": {
+     "p": 1.0010000000000006,
+     "p_lo": 0.9975000000000006,
+     "p_hi": 1.0045000000000006,
+     "amp": 3.640047398861139,
+     "chi2": 0.29626570486492765,
+     "dof": 2,
+     "chi2_scale": 1.0
+    }
+   },
+   "W2 eps<=0.03": {
+    "n": 4,
+    "eps_range": [
+     0.005000493253250068,
+     0.030005588162755756
+    ],
+    "M1_linear": {
+     "amp": 1.1378543940311432,
+     "chi2": 5.044128369616389,
+     "chi2_dof": 1.681376123205463
+    },
+    "M2_twothirds": {
+     "amp": 0.30637089358896014,
+     "chi2": 23123.69588237376,
+     "chi2_dof": 7707.898627457919
+    },
+    "M3_free_p": {
+     "p": 0.9955000000000006,
+     "p_lo": 0.9930000000000005,
+     "p_hi": 0.9975000000000006,
+     "amp": 1.118474384158823,
+     "chi2": 1.3707624218126797,
+     "dof": 2,
+     "chi2_scale": 1.0
+    },
+    "M4_combo": {
+     "amp_lin": 1.1231983037731526,
+     "amp_23": 0.0040573042457744315,
+     "chi2": 0.9948264240049803,
+     "amp_23_sigma": 0.002016264456915383
+    },
+    "M1f_free_intercept": {
+     "c0": 3.201372055294591,
+     "slope_abs": 3.629640386781112,
+     "s_over_c0": 1.1337764946058766,
+     "chi2": 0.36477559818730493,
+     "c0_sigma": 0.00011435733094620694
+    },
+    "M3f_free_p_free_intercept": {
+     "p": 1.0045000000000006,
+     "p_lo": 0.9965000000000005,
+     "p_hi": 1.0130000000000006,
+     "amp": 3.6819424593104384,
+     "chi2": 0.06721793038811255,
+     "dof": 1,
+     "chi2_scale": 1.0
+    }
+   },
+   "W3 eps<=0.10": {
+    "n": 6,
+    "eps_range": [
+     0.005000493253250068,
+     0.09999058144943124
+    ],
+    "M1_linear": {
+     "amp": 1.1356239397896792,
+     "chi2": 10.835719671835687,
+     "chi2_dof": 2.1671439343671373
+    },
+    "M2_twothirds": {
+     "amp": 0.3807193003677018,
+     "chi2": 152169.91582456583,
+     "chi2_dof": 30433.983164913167
+    },
+    "M3_free_p": {
+     "p": 0.9975000000000006,
+     "p_lo": 0.9965000000000005,
+     "p_hi": 0.9980000000000006,
+     "amp": 1.1271238194024642,
+     "chi2": 2.1984898074278054,
+     "dof": 4,
+     "chi2_scale": 1.0
+    },
+    "M4_combo": {
+     "amp_lin": 1.1269831151861864,
+     "amp_23": 0.003084865112000906,
+     "chi2": 1.3049615930895309,
+     "amp_23_sigma": 0.0009992460863797413
+    },
+    "M1f_free_intercept": {
+     "c0": 3.2013953954003043,
+     "slope_abs": 3.6280102760942836,
+     "s_over_c0": 1.1332590411377896,
+     "chi2": 0.6118683776318852,
+     "c0_sigma": 8.466545179379881e-05
+    },
+    "M3f_free_p_free_intercept": {
+     "p": 0.9995000000000006,
+     "p_lo": 0.9980000000000006,
+     "p_hi": 1.0010000000000006,
+     "amp": 3.623652194433657,
+     "chi2": 0.5156738088709886,
+     "dof": 3,
+     "chi2_scale": 1.0
+    }
+   },
+   "W4 eps<=0.20": {
+    "n": 7,
+    "eps_range": [
+     0.005000493253250068,
+     0.19997138018746444
+    ],
+    "M1_linear": {
+     "amp": 1.1481654541102913,
+     "chi2": 792.5169604790952,
+     "chi2_dof": 132.0861600798492
+    },
+    "M2_twothirds": {
+     "amp": 0.4364101288431248,
+     "chi2": 426476.3636264227,
+     "chi2_dof": 71079.39393773711
+    },
+    "M3_free_p": {
+     "p": 1.0115000000000007,
+     "p_lo": 1.0065000000000004,
+     "p_hi": 1.0160000000000005,
+     "amp": 1.1810102701534952,
+     "chi2": 386.5460858488492,
+     "dof": 5,
+     "chi2_scale": 77.30921716976984
+    },
+    "M4_combo": {
+     "amp_lin": 1.1774413504447163,
+     "amp_23": -0.012338180693759356,
+     "chi2": 501.3089045793134,
+     "amp_23_sigma": 0.007239642835698356
+    },
+    "M1f_free_intercept": {
+     "c0": 3.2003875740561667,
+     "slope_abs": 3.688881615853792,
+     "s_over_c0": 1.1526359012757035,
+     "chi2": 697.3718722158019,
+     "c0_sigma": 0.0008924496901555365
+    },
+    "M3f_free_p_free_intercept": {
+     "p": 1.0225000000000004,
+     "p_lo": 1.0150000000000006,
+     "p_hi": 1.0300000000000007,
+     "amp": 3.8497198397795476,
+     "chi2": 219.4909167426303,
+     "dof": 4,
+     "chi2_scale": 54.872729185657576
+    }
+   }
+  },
+  "local_exponents": [
+   {
+    "pair": [
+     0.005000493253250068,
+     0.009999678401223202
+    ],
+    "p_local": 0.9852751085697189,
+    "sigma": 0.009595796802198856
+   },
+   {
+    "pair": [
+     0.009999678401223202,
+     0.019999148720476183
+    ],
+    "p_local": 0.9968523344211114,
+    "sigma": 0.005432941705035628
+   },
+   {
+    "pair": [
+     0.019999148720476183,
+     0.030005588162755756
+    ],
+    "p_local": 0.9984250581363905,
+    "sigma": 0.00597740324626981
+   },
+   {
+    "pair": [
+     0.030005588162755756,
+     0.049995778309625045
+    ],
+    "p_local": 0.9977059989306336,
+    "sigma": 0.003730395934201066
+   },
+   {
+    "pair": [
+     0.049995778309625045,
+     0.09999058144943124
+    ],
+    "p_local": 0.9979390784934715,
+    "sigma": 0.0022736520764560235
+   }
+  ],
+  "jackknife_p_W1": [
+   0.9975000000000006,
+   0.9960000000000006,
+   0.9960000000000006,
+   0.9965000000000005,
+   0.9955000000000006
+  ],
+  "p_envelope": [
+   0.9955000000000006,
+   1.0115000000000007
+  ],
+  "sigma_model": "per-point sigma = max(grid conv, 3e-05) * c; residual-rescaled CIs (chi2/dof -> 1)"
+ },
+ "s3_propagation": {
+  "formulas": "j2_epsscan.py verbatim: ceiling solves law(eps)=Delta_lock (=3e-3, band [2.4,3.8]e-3); old ceiling (3e-3/0.42)^1.5; margins eps_q/ceiling with eps_q=(f_q/1.7)^2, f_q in [0.14,0.20]; f_top=0.69*sqrt(ceiling)*1700 MeV; g_min=0.0468 eV/f_top (j3)",
+  "ceiling_old": 0.0006036816105203691,
+  "readings": {
+   "RL_J2_axi4_linear_s1.152 (J2 control)": {
+    "ceiling": 0.0026047210175408134,
+    "ceiling_Dband": [
+     0.00208377681403265,
+     0.0032993132888850295
+    ],
+    "thinning_vs_old": 4.314726458696602,
+    "margins_lo_c_hi": [
+     2.6037363981568746,
+     3.8391827503435545,
+     5.31374775134056
+    ],
+    "worst_joint_margin": 2.055581366965954,
+    "breach_further_factor_central": 2.6037363981568746,
+    "f_window_MeV": [
+     3.7093516953775088,
+     59.86577640809407
+    ],
+    "g_low_edge": 7.817488189073661e-10,
+    "window_top_frac_of_3em3": 0.8682403391802711,
+    "status": "SURVIVES (linear class confirmed)"
+   },
+   "RL_fit_i1family_linear": {
+    "ceiling": 0.0026390465022124504,
+    "ceiling_Dband": [
+     0.0021112372017699603,
+     0.0033427922361357713
+    ],
+    "thinning_vs_old": 4.371586704351673,
+    "margins_lo_c_hi": [
+     2.5698701840719806,
+     3.789247363248992,
+     5.244633028718328
+    ],
+    "worst_joint_margin": 2.0288448821620895,
+    "breach_further_factor_central": 2.5698701840719806,
+    "f_window_MeV": [
+     3.7093516953775088,
+     60.25894634610428
+    ],
+    "g_low_edge": 7.766481632652311e-10,
+    "window_top_frac_of_3em3": 0.8796821674041501,
+    "status": "SURVIVES (measured amplitude, i1 family)"
+   },
+   "RP_free_p_best": {
+    "ceiling": 0.0026161019107955345,
+    "ceiling_Dband": [
+     0.002091241884690476,
+     0.0033164815082410417
+    ],
+    "thinning_vs_old": 4.333578934996005,
+    "margins_lo_c_hi": [
+     2.592409298899551,
+     3.822481058071276,
+     5.290631222243981
+    ],
+    "worst_joint_margin": 2.0449403693531196,
+    "breach_further_factor_central": 2.592409298899551,
+    "f_window_MeV": [
+     3.7093516953775088,
+     59.99642061005797
+    ],
+    "g_low_edge": 7.800465348453525e-10,
+    "window_top_frac_of_3em3": 0.8720339702651781,
+    "status": "SURVIVES (best fit)"
+   },
+   "R23_pure_twothirds (EXCLUDED class, reference only)": {
+    "ceiling": 0.0008262875387147323,
+    "ceiling_Dband": [
+     0.0005912432337686817,
+     0.0011779441943420127
+    ],
+    "thinning_vs_old": 1.3687472407888632,
+    "margins_lo_c_hi": [
+     8.20780491372828,
+     12.102324592180985,
+     16.750622272914857
+    ],
+    "worst_joint_margin": 5.757494245475343,
+    "breach_further_factor_central": 8.20780491372828,
+    "f_window_MeV": [
+     3.7093516953775088,
+     33.71814032321805
+    ],
+    "g_low_edge": 1.3879769035712173e-09,
+    "window_top_frac_of_3em3": 0.2754291795715774,
+    "status": "EXCLUDED by G2a/G2b"
+   },
+   "RC_combo_lin_plus_23": {
+    "ceiling": 0.0026075380523340732,
+    "ceiling_Dband": [
+     0.002082562692599284,
+     0.0033082812477516297
+    ],
+    "thinning_vs_old": 4.319392883421436,
+    "margins_lo_c_hi": [
+     2.6009234704530892,
+     3.835035117147667,
+     5.3080070825573245
+    ],
+    "worst_joint_margin": 2.050009177733727,
+    "breach_further_factor_central": 2.6009234704530892,
+    "f_window_MeV": [
+     3.7093516953775088,
+     59.89814041195243
+    ],
+    "g_low_edge": 7.813264264655075e-10,
+    "window_top_frac_of_3em3": 0.8691793507780244,
+    "status": "combination fit (2/3 admixture measured small)"
+   },
+   "RP_free_p_envelope_low_p=0.996": {
+    "ceiling": 0.0026095585053163223,
+    "ceiling_Dband": [
+     0.002085542087779813,
+     0.0033089747163987156
+    ],
+    "thinning_vs_old": 4.322739768512912,
+    "margins_lo_c_hi": [
+     2.598909703154225,
+     3.8320658378141377,
+     5.3038973533759695
+    ],
+    "worst_joint_margin": 2.049579553087775,
+    "breach_further_factor_central": 2.598909703154225,
+    "f_window_MeV": [
+     3.7093516953775088,
+     59.92134197981035
+    ],
+    "g_low_edge": 7.810238965570664e-10,
+    "window_top_frac_of_3em3": 0.8698528351054408,
+    "status": "SURVIVES (envelope edge)"
+   },
+   "RP_free_p_envelope_high_p=1.012": {
+    "ceiling": 0.002714897864297506,
+    "ceiling_Dband": [
+     0.00217743539060698,
+     0.003429640851702269
+    ],
+    "thinning_vs_old": 4.4972346630822235,
+    "margins_lo_c_hi": [
+     2.4980707412984415,
+     3.6833798175267836,
+     5.098103553670288
+    ],
+    "worst_joint_margin": 1.9774685495272906,
+    "breach_further_factor_central": 2.4980707412984415,
+    "f_window_MeV": [
+     3.7093516953775088,
+     61.11879173809805
+    ],
+    "g_low_edge": 7.65721943597054e-10,
+    "window_top_frac_of_3em3": 0.9049659547658353,
+    "status": "SURVIVES (envelope edge)"
+   }
+  },
+  "surviving_ranges": {
+   "ceiling": [
+    0.0026047210175408134,
+    0.002714897864297506
+   ],
+   "thinning": [
+    4.314726458696602,
+    4.4972346630822235
+   ],
+   "f_top_MeV": [
+    59.86577640809407,
+    61.11879173809805
+   ],
+   "g_low_edge": [
+    7.65721943597054e-10,
+    7.817488189073661e-10
+   ]
+  },
+  "robust_vs_reading_specific": {
+   "robust": [
+    "confinement dichotomy (all quarks censored, leptons free) — holds at every reading incl. excluded 2/3",
+    "lepton floor 1.5e-6, operative bottom 1e-5, f_lo 3.71 MeV, all Majoron binding edges (g_max) — ceiling-blind"
+   ],
+   "now_measured_not_reading_specific": [
+    "x4.3 loosening: x[4.31, 4.50]",
+    "f_top ~60 MeV: [59.9, 61.1] MeV",
+    "g_min ~7.8e-10: [7.66e-10, 7.82e-10]"
+   ],
+   "excluded": [
+    "2/3 reading (ceiling 6e-4 class, x11 margin) — measured exponent excludes it"
+   ]
+  }
+ },
+ "summary": {
+  "gates": "14/14 PASS",
+  "exponent": "p = 0.997 (profile CI [0.996, 0.998]; envelope [0.996, 1.012]) — LINEAR class supported; 2/3 EXCLUDED",
+  "law": "c_sat(eps) = 3.201125*(1 + s*eps), s(i1-family W1) = 1.137 (axi4 reading 1.152; family amplitude spread ~1.3%)",
+  "ceiling_range_surviving": [
+   0.0026047210175408134,
+   0.002714897864297506
+  ],
+  "verdict_one_line": "linear exponent measured and confirmed; 2/3 excluded; x4.3 loosening + 60 MeV f-top + 7.8e-10 Majoron edge promoted from linear-reading-specific to measured (with small amplitude-band spread); dichotomy robust at every reading"
  }
 }
