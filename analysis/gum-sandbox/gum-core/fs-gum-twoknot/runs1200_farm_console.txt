@@ -1,2 +1,7 @@
 batch 1/2 (single + attract 38,18 — bank the anchor pair + well first)
 batch 2/2 (attract 16,20,23)
+refine farm complete
+
+real	42m34.717s
+user	94m13.993s
+sys	5m0.227s

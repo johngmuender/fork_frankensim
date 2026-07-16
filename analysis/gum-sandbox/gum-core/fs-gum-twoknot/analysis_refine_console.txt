@@ -1,0 +1,17 @@
+== G5b refine: cap 400 -> 1200, attractive channel ==
+anchor cross-check (E_far - 2 E_single): +3.128745e-02 at 1200 vs +2.656832e-02 at 400
+  m       x      Eint_g4      Eint_hi      shift  Eint_extrap    sig_ex    sig_hi             tail
+ 16  1.6837   1.8422e-01   1.9626e-01  +1.20e-02   1.9330e-01  6.18e-03  1.96e-02  median_diff_p2p
+ 18  1.8942  -5.2665e-04  -6.0011e-03  -5.47e-03  -6.5303e-03  1.30e-03  2.30e-03      aitken_diff
+ 20  2.1046   2.2217e-04  -3.8885e-03  -4.11e-03  -2.8130e-03  3.29e-03  2.30e-03  median_diff_p2p
+ 23  2.4203  -2.2501e-04   4.8589e-04  +7.11e-04   2.1959e-04  1.85e-04  2.30e-03      aitken_diff
+cap systematic: rms 6.93e-03, max |shift| 1.20e-02
+noise handles: a(m23)=4.86e-04 b(extrap)=2.30e-03 c(shift quiet)=4.11e-03 -> sigma_ref=2.30e-03
+WELL x=1.8942: Eint g4=-5.267e-04 hi=-6.001e-03 extrap=-6.530e-03
+     depth/sigma: hi 2.61 extrap 5.013339544191007 (G4: 2.1)
+x0 direct hi = 1.9972099765302684 band [np.float64(1.9920203890558992), np.float64(2.002321552869678)]
+x0 direct extrap = 1.9955419820046316 band [np.float64(1.9891751516228708), np.float64(2.0016221601693607)]
+x0 fit hi = 1.8640548963945622
+x0 b42 running: hi 1.81198421257031 extrap 1.8069394489675061
+x0 QUOTED = 1.952 band [1.8640548963945622, 2.002321552869678] vs corpus 1.92 +- 0.08 (pred 1.9 +- 0.05)
+fit hi: C_d=4.261e+08 nu=9.33 (nu/mu=1.20) chi2/dof=1.87/1 b_eff=7.470e+08
