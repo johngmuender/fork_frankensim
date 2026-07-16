@@ -411,7 +411,7 @@ pairs = [
     ("margin_new_lo", er["quark_censorship_margin"]["new"][0], marg_new[0], 1e-4),
     ("margin_new_hi", er["quark_censorship_margin"]["new"][1], marg_new[2], 1e-4),
     ("margin_old_lo", er["quark_censorship_margin"]["old"][0], marg_old[0], 1e-9),
-    ("margin_old_hi", er["quark_censorship_margin"]["old"][2], marg_old[2], 1e-9),
+    ("margin_old_hi", er["quark_censorship_margin"]["old"][1], marg_old[2], 1e-9),
     ("anchor_old_pull", er["eps_law"]["anchor_old_pull_sigma"], pull_old, 1e-6),
     ("repaired_pull_r1", er["eps_law"]["repaired_vs_r1_sigma"], pull_new, 1e-4),
     ("operative_top_new", er["operative_eps_range"]["new"][1], ceil_new, 1e-4),
@@ -424,7 +424,7 @@ for nm, iv, jv, tol in pairs:
     if not ok:
         disc.append({"item": nm, "i2": iv, "j2": jv})
     gate(f"C i2-overlap {nm}", ok, f"i2 = {iv:.6e}, j2 = {jv:.6e}")
-slope_i2 = float(er["eps_law"]["new"].split("+")[1].split(" ")[0].rstrip("eps "))
+slope_i2 = float(er["eps_law"]["new"].split("+")[1].strip().split(" ")[0])
 gate("C i2 slope string '+1.15 eps' vs j2 s_exact",
      abs(slope_i2 - round(s_exact, 2)) < 5e-3,
      f"i2 prints +{slope_i2}, j2 = {s_exact:.4f} (exact-base reading)")
