@@ -156,7 +156,18 @@ theory level: the corpus's kinematics and self-graded honest
 boundaries replicate; its variational centerpiece and several
 asserted-not-derived steps do not.
 
+## Promotion pass + DISCHARGE_PACKAGE v2: ✅ EXECUTED
+Promotions on the F-R standard (quantitative, validated, no
+reading-escape): T-H1+H2.4 → **F-R10**; T-H11 → **F-R11**;
+T-H6/T-H7 → **F-R12** (ledger now F-R1–F-R12). Remaining in the
+T-ledger with derivation-class discharges: T-H3/4/5/8, T-H9 (absorbed
+in F-R5), T-H10 (text-underdetermined (p,q)). DISCHARGE_PACKAGE v2:
+README §10 addendum (new findings + the in-your-favor closures stated
+with equal prominence + the constructive companion), CLAIMS.json with
+12 findings + T-ledger + credit updates, REPRODUCE.md with the ten
+new deterministic commands.
+
 ## Beyond (unscheduled)
-Promotion pass (T-H → F-R where H2 numerics confirm); DISCHARGE_PACKAGE
-v2 with the repaired-closure memo as the constructive companion; the
-GPU-class physics unchanged from v4.
+The GPU-class physics unchanged from v4; the corpus's response to the
+v2 package; derivation-class T-ledger discharges are the corpus's to
+make.

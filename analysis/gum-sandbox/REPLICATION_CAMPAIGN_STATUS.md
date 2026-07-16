@@ -241,7 +241,17 @@ from the text; everything downstream is audited).
   Step 1's line-support theorem). S1 (Σm_ν) untouched; the K3a 0νββ
   rate phenomenology is what's affected. theory-audit/h21_RESULTS.md.
 
-Findings ledger: F-R1–F-R9 (three substantive: F-R4/F-R5 on the ħ-closure, F-R9 on the 0νββ insert;
+- **F-R10 (moderate; Phase H2.4 + T-audit)**: NR-A2b as printed — the
+  ¾-Casimir normalization mixing and the null-transport exactness's
+  explicit counterexample classes. theory-audit/h24_RESULTS.md.
+- **F-R11 (minor; Phase H2.3)**: the D1b floor overstated 8% (honest
+  relaxed floor 7.7024); Frank-convention resolution printed with our
+  own mis-audit correction. theory-audit/h23_RESULTS.md.
+- **F-R12 (moderate; Phase H T4)**: VI.D — the exact tracker identity
+  w(z) = −1 + Ω_m(z) contradicts the printed direction-check sentence.
+  theory-audit/T4_gravity_oneworld.md.
+
+Findings ledger: F-R1–F-R12 (three substantive: F-R4/F-R5 on the ħ-closure, F-R9 on the 0νββ insert;
 one moderate: F-R6 provenance-chain; five print-level/minor). Out of
 envelope (documented, not scheduled): blue-fog/disclination boxes and
 nucleation (GPU-scale/theorem-level, per the v2 assessment's Tier-5

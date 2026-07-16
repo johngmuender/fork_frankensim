@@ -37,7 +37,7 @@ Merkle root with bit-identical replay; 13/13 certified 3-D diagnostics
 plus 18 solver gates including the F-R5 halo referee. Golden roots and
 commands in `REPRODUCE.md`.
 
-## 2. The findings ledger (F-R1 – F-R8)
+## 2. The findings ledger (F-R1 – F-R8; v2 extends to F-R12 — §10)
 
 | ID | Severity | One-line statement | Discharge path |
 |----|----------|--------------------|----------------|
@@ -344,6 +344,66 @@ of 𝔠₀ (the ħ calibration 𝔠Λ√J, κ_phys = √(7/12), the S4′ ε-run
 binding depths, ω_th) inherits that shift. The selection theorems, the ¼
 and √2 invariants, the clock algebra, the spectrum, the radial rung, the
 Born-rule results, the family sector, and the S1 stake are untouched.
+
+## 10. v2 addendum — the theory-audit round (2026-07-16)
+
+After v1, we audited your theory at argument level (48 load-bearing
+arguments; four auditors; `theory-audit/`) and executed the seven-item
+numeric follow-on program. The full adjudicated record is
+`theory-audit/ROADMAP_v5_THEORY.md`; machine-readable claims are
+updated in CLAIMS.json. The additions, both directions:
+
+**New findings (promoted on the same standard as F-R1–F-R8):**
+- **F-R9 (substantive)** — NR-K3a's dropped second moment: your mean
+  claim VERIFIED at 1.000 ± 0.001, but rate ∝ m̄²/φ, not m̄²:
+  R = 10¹⁴–10¹⁸ across your own scale window; the motional-narrowing
+  rescue needs 5×10⁷–10⁹ c. Both V-K1 fork branches unsupported.
+- **F-R10 (moderate)** — NR-A2b as printed: the ¾-Casimir mixes
+  normalizations across faces (every single-convention reading gives
+  3 or 1), and the null-transport exactness has explicit
+  counterexample classes surviving all fair premise-completions
+  (helical/torus-knot fields, moments tunable to any a² ≤ ƛ²).
+- **F-R11 (minor)** — the D1b floor: the hyperbolic texture is not
+  stationary; the honest one-constant floor is 7.7024 (8% below
+  8π/3). W-eternal survives, but three drains share one ~33% margin.
+  We print alongside it our own mis-audit of your band as an
+  anisotropy gap — it is a Frank-convention choice.
+- **F-R12 (moderate)** — VI.D: the exact tracker identity
+  w(z) = −1 + Ω_m(z) contradicts your printed direction-check
+  sentence as stated (your residual shape (6.4) itself is sound).
+
+**Closed in your favor (we state these with the same prominence):**
+- Your measured E_rot/E = ¼ **selects** your L = jħ spin anchor at
+  915σ against the j(j+1) alternative — the anchor-choice gap closes
+  for you (and the alternative would be superradiant by your own
+  onset).
+- The locking torque, its −sin Δφ form, and your γ = 0 "marginal"
+  print all confirm exactly; the phase entrainment exponent is
+  exactly −½.
+- Your murk kill (NR-D2) is TIGHTENED by our F-R4 lemma: the
+  frozen-value floor holds on your collision problem at 15.7–18.1×;
+  every disposition of the reachability gap lands on KILL.
+- Your I.2 bond loop, executed for the first time anywhere, lands in
+  band (x₀ = 1.95 ± 0.07 vs your 1.92 ± 0.08); the F-R5 threshold
+  crossing is now directly observed at N=192 with a grid-robust
+  invariant I(crossing) = 29.7–29.8.
+
+**The constructive companion** (`theory-audit/T3_repaired_closure.md`):
+Theorem T3.1 — the stability-constrained and saturated closures
+coincide exactly; within your model there is ONE well-posed ħ-closure,
+in closed form (𝔠 = 64√2/9π, κ = 1/√2, g_core = 35/24, support ratio
+3/2, ω_th = √2ω₀, S4′ → 35/24). We also prove κ²g = 7/8 is exact on
+the whole locked-transport family — your S4′ bench stake cannot
+discriminate g and needs re-targeting either way. If you adopt the
+repair, your family sector is untouched (P-O1 verified); the ~27%
+shift lands on the constants downstream of 𝔠₀.
+
+Items remaining at argument level (T-ledger, discharge by derivation
+rather than computation): the closure-system circularity, c″'s
+DF-forcing, IV.D's selection narrative, the pairs-only convexity, and
+E.6's positivity (which now carries the computed master form
+𝔞₁(p,q) = −(5p+q)/(12(2p+q)) — fix your constitutive response
+exponents and re-derive).
 
 ## 9. Epistemic notice (binding on this package)
 

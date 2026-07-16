@@ -134,3 +134,22 @@ F-R4's measurement), `axi4_locked_solve.py` (42 min, the exact
 identities), `axi3_solve.py` (54 min, F-R5's derivation + saturation),
 `field3d_solve.py` (74 min, the 3-D confirmation). Each writes a JSON
 whose fields are named in the corresponding `*_RESULTS.md`.
+
+
+## v2 additions (theory-audit round, 2026-07-16)
+
+All deterministic; seeds printed in each script. Paths relative to repo
+root.
+
+| number | command | runtime | expected |
+|---|---|---|---|
+| F-R9 R-table | `python3 analysis/gum-sandbox/theory-audit/h21_mc.py` | 117 s | R = 1.115e14 ± 0.3% at (a=52.6 fm, L=1 µm); 1.967e15 at 4.2 µm; rescue v/c 6.1e8 at r0=2 fm |
+| F-R4 floor on the collision problem | `cd analysis/gum-sandbox/theory-audit/h22_solve && cargo run --release --bin h22_solve -- all` | ~24 min | SDiff reduction beyond leak ≤ 0; floor margin 15.7–18.1× |
+| F-R11 honest floor | `python3 analysis/gum-sandbox/theory-audit/h23_frank.py` | 163 s | radial 8πK₁r; hyperbolic (8π/15)(3K₁+2K₃)r; relaxed floor 7.7024 |
+| F-R10 counterexamples | `python3 analysis/gum-sandbox/theory-audit/h24_helical.py` | <1 s | ⟨r_⊥²⟩ = 0.332ƛ² (annulus), 0.568ƛ² (torus knot); all premises verified |
+| T-H10 master form | `python3 analysis/gum-sandbox/theory-audit/h25_sdw.py` | 3 s | 𝔞₁(p,q) = −(5p+q)/(12(2p+q)); 27/27 internal checks |
+| anchor discriminator | `cd analysis/gum-sandbox/theory-audit/h26_solve && cargo run --release --bin h26_convention` | ~10 min | E_rot/E = 0.2500 vs 0.4330 (915σ) |
+| entrainment/torque | `python3 analysis/gum-sandbox/theory-audit/h27_entrain.py` | ~2 min | phase exponent −0.500000000; torque −2.5012e-2 vs analytic −2.5e-2 |
+| repaired closure | `python3 analysis/gum-sandbox/theory-audit/t3_closures.py` | <1 min | 𝔠 = 64√2/9π; T3.1 KKT-on-boundary; six 2.5147 routes fail |
+| G* exact | `python3 analysis/gum-sandbox/tier2-closure/gstar_solve.py` | 31 s | G* → 16√2/9 (Richardson 6.0e-7) |
+| N=192 crossing | `cd analysis/gum-sandbox/gum-core/fs-gum-kern && cargo run --release --bin n192_fr5 -- crossing` | 46 min | κ crosses 1/√(8π) at it 2070–2080 |
