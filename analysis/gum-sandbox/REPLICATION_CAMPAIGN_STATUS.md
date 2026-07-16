@@ -251,7 +251,25 @@ from the text; everything downstream is audited).
   w(z) = −1 + Ω_m(z) contradicts the printed direction-check sentence.
   theory-audit/T4_gravity_oneworld.md.
 
-Findings ledger: F-R1–F-R12 (three substantive: F-R4/F-R5 on the ħ-closure, F-R9 on the 0νββ insert;
+- **F-R13 (moderate; Phase H3.3-A)**: Lemma II.1/App F.1's convexity
+  proof is FALSE by strict counterexample (det F_t < 0 on an open
+  interval; the admissible set is not even star-shaped) and the
+  admissible class is ill-posed; the CONCLUSION survives under the
+  supplied repair Lemma II.1′ (degree locally constant along
+  det F ≥ δ histories) — pairs-only and the IBC construction stand.
+  theory-audit/h33_RESULTS.md.
+- **F-R14 (substantive; Phase H3.3-B, promoted from T-H10)**: the
+  corpus's OWN action pins the E.6 response exponents and closes the
+  positivity escape wedge — the photon doublet has p = q − 1 under
+  every index-variance reading and density weight, forcing
+  𝔞₁^(B2) < 0 in every textually permitted reading; Theorem VI.1's
+  convexity core fails UNCONDITIONALLY as printed (favored reading →
+  inverted Newton constant vs VI.B; covector reading → mixed signs,
+  c_GW² can exit the hull). Minimal rescue quantified ("P-acoustic"
+  measure, weight window 1/18 wide) with its priced costs against the
+  Sec III quantum chain and F5/KBKK. theory-audit/h33_RESULTS.md.
+
+Findings ledger: F-R1–F-R14 (four substantive: F-R4/F-R5 on the ħ-closure, F-R9 on the 0νββ insert, F-R14 on the gravitation sector;
 one moderate: F-R6 provenance-chain; five print-level/minor). Out of
 envelope (documented, not scheduled): blue-fog/disclination boxes and
 nucleation (GPU-scale/theorem-level, per the v2 assessment's Tier-5
