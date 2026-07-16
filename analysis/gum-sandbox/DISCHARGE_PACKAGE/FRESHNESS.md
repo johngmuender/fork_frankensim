@@ -49,7 +49,8 @@ Status legend: PASS / FAIL / PENDING / SKIPPED-BUDGET / DUP (same command alread
 | K33 | v2 | `python3 analysis/gum-sandbox/theory-audit/h27_entrain.py` | exponent −0.500000000; torque −2.5012e-2 | ~2 min | — | n/a | PENDING |
 | K34 | v2 | `python3 analysis/gum-sandbox/theory-audit/t3_closures.py` | 𝔠 = 64√2/9π; six 2.5147 routes fail | <1 min | 0.6 s | n/a | PASS (𝔠 = 64√2/9π route confirmed) |
 | K35 | v2 | `python3 analysis/gum-sandbox/tier2-closure/gstar_solve.py` | G* → 16√2/9 (Richardson 6.0e-7) | 31 s | 14.2 s | n/a | PASS (G* = 16√2/9; faster than printed 31 s) |
-| K36 | v2 | `cd analysis/gum-sandbox/gum-core/fs-gum-kern && cargo run --release --bin n192_fr5 -- crossing` | κ crosses 1/√(8π) at it 2070–2080 | 46 min | — | — | PENDING |
+| K36 | v2 | `cd analysis/gum-sandbox/gum-core/fs-gum-kern && cargo run --release --bin n192_fr5 -- crossing` | κ crosses 1/√(8π) at it 2070–2080 | 46 min | 0.5 s (usage error) | — | CMD-DEFECT: printed command missing required args; binary usage requires 'crossing <out.json> <N> <LBOX> <cap_static> <cap_main> [threads]'. Corrected form run as K36b (shipped invocation from n192_RESULTS.md L28). |
+| K36b | v2 | corrected form: `… -- crossing n192_runs/n192_crossing.json 192 4.5 450 2500 4` (per n192_RESULTS.md L28) | κ crosses 1/√(8π) at it 2070–2080 | 46 min | — | — | PENDING |
 | K37 | v2.2 | `python3 analysis/gum-sandbox/theory-audit/h4_compute.py` | ±2·[rot]; winding −2.000000; 28/28 | 9 s | 2.5 s | n/a | PASS (28/28) |
 | K38 | v2.2 | `python3 analysis/gum-sandbox/theory-audit/i1_r5test.py` | 3.2011 at +0.51σ; ≈7σ separation | 757 s | — | n/a | PENDING |
 | K39 | v2.2 | `python3 analysis/gum-sandbox/theory-audit/i2_propagate.py` | 34/34; κ²g_tot = 35/24; 13.4σ | 2 s | 0.9 s | n/a | PASS (34/34) |

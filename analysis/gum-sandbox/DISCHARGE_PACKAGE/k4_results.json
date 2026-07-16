@@ -129,7 +129,41 @@
    "measured": "covered by K09",
    "root": "\u2014",
    "status": "PENDING (same run as K09)"
+  },
+  "K36": {
+   "measured": "0.5 s (usage error)",
+   "root": "\u2014",
+   "status": "CMD-DEFECT: printed command missing required args; binary usage requires 'crossing <out.json> <N> <LBOX> <cap_static> <cap_main> [threads]'. Corrected form run as K36b (shipped invocation from n192_RESULTS.md L28)."
   }
  },
- "findings": []
+ "findings": [
+  {
+   "id": "F1",
+   "class": "CMD-DEFECT",
+   "row": "K36",
+   "severity": "medium",
+   "detail": "REPRODUCE.md v2 row 'N=192 crossing' prints 'cargo run --release --bin n192_fr5 -- crossing' which exits rc=2 with a usage error (crossing requires <out.json> <N> <LBOX> <cap_static> <cap_main> [threads]). The shipped invocation (n192_RESULTS.md line 28) is './target/release/n192_fr5 crossing n192_runs/n192_crossing.json 192 4.5 450 2500 4'; corrected form executed as row K36b."
+  },
+  {
+   "id": "F2",
+   "class": "EXPECTATION-DRIFT",
+   "row": "K07",
+   "severity": "low",
+   "detail": "REPRODUCE says 'cargo test --release, 5/5' for fs-gum-cosserat; the crate now carries 13 unit tests, all pass (13/13). RESULTS.md already records 13/13."
+  },
+  {
+   "id": "F3",
+   "class": "EXPECTATION-DRIFT",
+   "row": "K06",
+   "severity": "low",
+   "detail": "REPRODUCE says '20/20 + Wchi 26/26'; the current binary prints a single extended 26/26 battery (no separate 20/20 line). Merkle root matches RESULTS.md's extended-battery golden root 9ddc0fe4... exactly."
+  },
+  {
+   "id": "F4",
+   "class": "HOST-CONTENTION",
+   "row": "(global)",
+   "severity": "info",
+   "detail": "A sibling workstream process (theory-audit/k2_smalleps.py, different session) occupies ~1 core for the duration; long rows were additionally run concurrently. Wall-clock comparisons are upper bounds."
+  }
+ ]
 }
