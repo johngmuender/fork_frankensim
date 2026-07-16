@@ -246,3 +246,69 @@ excluded at χ² ratio 8445; ×4.3/60 MeV/7.8×10⁻¹⁰ all MEASURED; dichotom
 reading-robust). NO named opens remain; only the unscheduled Beyond items. Artifacts:
 theory-audit/j{1,2,3}_* + ROADMAP_v6_SYNTHESIS.md Phase-J verdicts;
 audit-logs/ archive current through the Phase-J sweep (35 mapped agents).
+
+## Addendum 2 (2026-07-16, credits-exhaustion checkpoint #2): Phase K state — RESTORATION GUIDE
+
+You are (probably) a fresh Claude Fable session resuming this campaign
+after credit exhaustion. Read this section, then REPLICATION_CAMPAIGN_
+STATUS.md, then theory-audit/ROADMAP_v7_HARDENING.md. Branch:
+claude/analyze-gum-ivm-viz (develop and push ONLY here; no PRs).
+
+### Where Phase K stood at checkpoint time
+- **K2 ✅ DONE, coordinator-verified, committed** (5c9f47a + re-verify):
+  linear ε-law holds to ε = 0.001; 2/3 excluded by the new window alone
+  (χ² 77); J4 STRENGTHENED; propagation UNCHANGED. Headline defect K2-D1:
+  the 12-mode family's intercept bias DRIFTS (~+1.7e-4 at ε = 0.001,
+  +3.15σ vs the constant model) — intercept-shaped, not exponent physics.
+  k2_smalleps.py resumes from banked points in ~2 s (verified).
+- **K1 ▶ RUNNING at checkpoint**: the /6 vs /(15π/8) discriminator.
+  Skeleton k1_RESULTS.md (5 sections PENDING); k1_discriminator.py +
+  k1_results.json (stage-flushed) committed as WIP; its run log was at
+  "STAGE B5 — C6 and mu (amplitude-free anchors, re-verified)". If the
+  agent died: read k1_results.json's banked stages, re-run
+  k1_discriminator.py (deterministic), and finish the memo from its
+  output. Remember: a verified NULL ("indistinguishable within the
+  archive") is a legitimate terminal verdict — do not force a winner.
+- **K4 ▶ RUNNING at checkpoint**: the REPRODUCE freshness gauntlet.
+  DISCHARGE_PACKAGE/FRESHNESS.md had 24 rows PASS / 25 PENDING; queue
+  farm (13 k4run.sh jobs; queues A cheap/B mid/C mid/D monsters) with
+  per-command logs + timings.csv in the session scratchpad k4/ dir
+  (NOT in the repo — logs are gitignored and the scratchpad dies with
+  the container). One finding so far: K36 CMD-DEFECT (a REPRODUCE
+  command as printed fails; exit 2 at 0.5 s in timings.csv) — the
+  corrected K36b (fs-gum-kern n192_fr5 crossing, cap 2500) was running
+  (the multi-hour long pole). If the farm died with the container:
+  FRESHNESS.md's PENDING rows are exactly the unfinished work-list;
+  re-run rows by hand from REPRODUCE.md (all paths relative to repo
+  root), update rows, and write the findings section + freshness
+  verdict. Rust rows: baseline flags, NOT -C target-cpu=native.
+- **K3 NOT STARTED** (by design, after K1/K2/K4): WGSL f64
+  sector-measure + E_static gradient vs fs-gum-statics CPU goldens on
+  llvmpipe (tolerance-band, NOT bit-identical across backends).
+
+### Adjudication debts a future session owes
+1. K1 verdict → fold into ROADMAP_v7 (verdict section), campaign
+   status, and IF decisive: corpus2's J1 box (upgrade RECOVERED-AS-CLASS
+   → a named convention) + DISCHARGE_PACKAGE CLAIMS.json.
+2. K4 FRESHNESS.md finalization → commit; CMD-DEFECT findings also
+   belong in DISCHARGE_PACKAGE README (a defects-of-the-package note).
+3. K2 fold: ROADMAP_v7 verdict section + a one-line amendment where
+   J4 is cited (K2-D1 nuance), CLAIMS.json phase_K block when the
+   phase closes, REPRODUCE rows for k1/k2 scripts.
+4. Audit sweep after each fold (tar/xz commands in §5 of this file;
+   MANIFEST agent map — add the three K agents, phase "Phase K").
+5. Task tracker: #53 (K1) and #55 (K4) in_progress at checkpoint.
+
+### Working knowledge worth keeping (beyond §5's playbook)
+- Re-verify discipline unchanged: coordinator re-runs every gate script
+  before final commit; physics fields must be identical (timing fields
+  exempt). COMMIT THE AGENT'S FINAL JSON BEFORE re-running scripts that
+  rewrite their results file (the J4 mid-rewrite lesson, f35c1ae).
+- Agents park with nohup children alive; the harness notification fires
+  anyway. Check pgrep, set a `while kill -0 PID` background watcher,
+  and SendMessage the agent when its process exits (J4/K2/K4 pattern).
+- K4's re-runs legitimately rewrite committed result JSONs (timing
+  fields) — verify timing-only before shrugging; h24/h25/gstar/tier1
+  REPORT and j1_results.json were confirmed such cases.
+- Scripts with per-point flushing resume cheaply; prefer wiring resume
+  into new long scripts (k2_smalleps.py is the template).

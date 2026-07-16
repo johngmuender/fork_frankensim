@@ -117,5 +117,453 @@
    "note": "corpus prints the form only; our measurement enters via b_eff channel",
    "power_sigma": null
   }
- ]
+ ],
+ "defect_j1_json_partial": {
+  "archived_points": [
+   "+0.000",
+   "+0.060",
+   "+0.120",
+   "+0.160"
+  ],
+  "spec_grid": [
+   -0.5,
+   -0.4,
+   -0.3,
+   -0.2,
+   -0.1,
+   0.0,
+   0.06,
+   0.12,
+   0.16
+  ],
+  "note": "j1_results.json on disk is a partial stage-flush (4/9 points, no summary) inconsistent with j1_run.log / j1_RESULTS.md; K1 uses the archived points and log cross-check only."
+ },
+ "stageB1_p_channel": {
+  "p6": 0.8433791481403019,
+  "p15": 0.8590589460938299,
+  "split_abs": 0.01567979795352803,
+  "split_sigma": 0.5226599317842677,
+  "ratio_measured": 1.0185916357881302,
+  "ratio_exact": 1.0185916357881302,
+  "required_band_for_2sigma": 0.007839898976764015,
+  "crossings_c2": {
+   "p_edge_6": [
+    0.008304124792664886
+   ],
+   "p_edge_15pi8": [
+    0.04598174108260961
+   ]
+  },
+  "dp_dc2_at_benchmark": -0.40692405577608487,
+  "c2_offset_equivalent": 0.0385324920730566,
+  "rounding_window": [
+   0.835,
+   0.845
+  ],
+  "p6_in_window": true,
+  "p15_in_window": false,
+  "conditional_sigma_equiv_p15_excluded": 6.6022125946459775,
+  "conditional_sigma_equiv_p6": 1.1705712530609673,
+  "conditions": [
+   "benchmark potential is c2 = 0 exactly (corpus never prints its c2)",
+   "printed 0.84 is the pipeline central value rounded to 2 dp, not the center of a c2-scan band (J1: +-0.03 corresponds to a c2 half-width ~0.07, so a scan-summary reading is live)",
+   "cross-code amplitude agreement A_ours = A_frozen to << 0.5% (unverifiable: the frozen pipeline is not available -- this is the original OPEN itself)"
+  ]
+ },
+ "stageB2_b_channel": {
+  "mu": 7.772563937531979,
+  "Rstar": 1.7817974362806104,
+  "n_rows_kept": 29,
+  "rows_top": [
+   {
+    "estimator": "G4-seed-central4",
+    "Fb": "8pi",
+    "Fb_value": 25.132741228718345,
+    "b_6": 62.03815627706268,
+    "pull_6": 3.334813740008735,
+    "b_15pi8": 59.79414650659835,
+    "pull_15pi8": 2.9616656296113297,
+    "delta_pull": 0.3731481103974055
+   },
+   {
+    "estimator": "G4-seed-corner",
+    "Fb": "3pi^2",
+    "Fb_value": 29.608813203268074,
+    "b_6": 61.42039580771224,
+    "pull_6": 3.232659908946318,
+    "b_15pi8": 59.19873132621553,
+    "pull_15pi8": 2.8631041681801026,
+    "delta_pull": 0.36955574076621556
+   },
+   {
+    "estimator": "G4-seed-central4",
+    "Fb": "2sqrt2pi^2",
+    "Fb_value": 27.915456798555518,
+    "b_6": 55.85396432054391,
+    "pull_6": 2.3062586890578816,
+    "b_15pi8": 53.83364571057893,
+    "pull_15pi8": 1.9701035138379992,
+    "delta_pull": 0.33615517521988236
+   },
+   {
+    "estimator": "G4-seed-central4",
+    "Fb": "3pi^2",
+    "Fb_value": 29.608813203268074,
+    "b_6": 52.659622569610775,
+    "pull_6": 1.7747325790885924,
+    "b_15pi8": 50.754847917259276,
+    "pull_15pi8": 1.457713506875326,
+    "delta_pull": 0.3170190722132664
+   },
+   {
+    "estimator": "G4-seed-corner",
+    "Fb": "4pi^2",
+    "Fb_value": 39.47841760435743,
+    "b_6": 46.065296855784176,
+    "pull_6": 0.6770695209639459,
+    "b_15pi8": 44.39904849466165,
+    "pull_15pi8": 0.39957828016130637,
+    "delta_pull": 0.27749124080263954
+   },
+   {
+    "estimator": "G4-seed-central4",
+    "Fb": "4pi^2",
+    "Fb_value": 39.47841760435743,
+    "b_6": 39.49471692720808,
+    "pull_6": -0.41729963397293746,
+    "b_15pi8": 38.06613593794446,
+    "pull_15pi8": -0.6552828971085192,
+    "delta_pull": 0.2379832631355817
+   },
+   {
+    "estimator": "G4-seed-corner",
+    "Fb": "16pi",
+    "Fb_value": 50.26548245743669,
+    "b_6": 36.17959954689114,
+    "pull_6": -0.9696426915713465,
+    "b_15pi8": 34.870931144301494,
+    "pull_15pi8": -1.18769562025692,
+    "delta_pull": 0.21805292868557347
+   },
+   {
+    "estimator": "G4-seed-central4",
+    "Fb": "16pi",
+    "Fb_value": 50.26548245743669,
+    "b_6": 31.01907813853134,
+    "pull_6": -1.8294841235227555,
+    "b_15pi8": 29.897073253299176,
+    "pull_15pi8": -2.0164689195220826,
+    "delta_pull": 0.18698479599932716
+   },
+   {
+    "estimator": "G4-seed-corner",
+    "Fb": "6pi^2",
+    "Fb_value": 59.21762640653615,
+    "b_6": 30.71019790385612,
+    "pull_6": -1.881040936916462,
+    "b_15pi8": 29.599365663107765,
+    "pull_15pi8": -2.066167549916893,
+    "delta_pull": 0.18512661300043098
+   },
+   {
+    "estimator": "G4-seed-central4",
+    "Fb": "6pi^2",
+    "Fb_value": 59.21762640653615,
+    "b_6": 26.329811284805388,
+    "pull_6": -2.6110096201557815,
+    "b_15pi8": 25.377423958629638,
+    "pull_15pi8": -2.769750856841003,
+    "delta_pull": 0.15874123668522166
+   },
+   {
+    "estimator": "G5b-relaxed-1200",
+    "Fb": "16pi^2",
+    "Fb_value": 157.91367041742973,
+    "b_6": 28.509066804568352,
+    "pull_6": -1.6537966764744,
+    "b_15pi8": 27.477852656769365,
+    "pull_15pi8": -1.8099613286496752,
+    "delta_pull": 0.1561646521752751
+   },
+   {
+    "estimator": "G5b-relaxed-1200",
+    "Fb": "8pi^2",
+    "Fb_value": 78.95683520871486,
+    "b_6": 57.018133609136704,
+    "pull_6": 1.1940885655346087,
+    "b_15pi8": 54.95570531353873,
+    "pull_15pi8": 1.059584098501227,
+    "delta_pull": 0.1345044670333817
+   }
+  ],
+  "max_delta_pull": 0.3731481103974055,
+  "max_delta_pull_row": {
+   "estimator": "G4-seed-central4",
+   "Fb": "8pi",
+   "Fb_value": 25.132741228718345,
+   "b_6": 62.03815627706268,
+   "pull_6": 3.334813740008735,
+   "b_15pi8": 59.79414650659835,
+   "pull_15pi8": 2.9616656296113297,
+   "delta_pull": 0.3731481103974055
+  },
+  "required_total_frac_sigma_for_2sigma": 0.018764460248769432,
+  "archive_band_frac": 0.14285714285714285,
+  "cd_frac_errors": {
+   "G4-relaxed-corner(cap400,SUPERSEDED)": 0.41402931384097574,
+   "G4-seed-corner": 0.004905157461241064,
+   "G4-seed-central4": 0.005233528148948871,
+   "G5b-relaxed-1200": 0.19386159146144474
+  },
+  "cd_cap_systematic_x54": "cap-400 -> cap-1200 moved C_d x54 (unconverged; i3 caveat 2)",
+  "fb_relabel_best": {
+   "pair": [
+    "3",
+    "pi"
+   ],
+   "residual_ln": 0.009275749268728962,
+   "residual_sigma_of_band": 0.06493024488110274
+  }
+ },
+ "stageB2_b_inf": {
+  "no_error_printed": true,
+  "far_zone_instrument": "archived running b_eff at largest x (extrap array): -2.07e+08, 1.46e+08, 1.30e+09, -9.34e+09  (sign-indefinite: far zone unmeasured)",
+  "fb_unpinned": "split 3.75% < factor-family granularity 6.7% median (i3)"
+ },
+ "stageB3_x0_loop": {
+  "rows": [
+   {
+    "Fb": "2",
+    "array": "seed",
+    "x0_6": 1.9783803929945496,
+    "x0_15pi8": 1.978794889136646,
+    "delta_x0": 0.00041449614209643215
+   },
+   {
+    "Fb": "2",
+    "array": "relaxed",
+    "x0_6": 2.108410620226092,
+    "x0_15pi8": 2.1084276920387466,
+    "delta_x0": 1.7071812654645413e-05
+   },
+   {
+    "Fb": "2",
+    "array": "extrap",
+    "x0_6": 1.815276180114991,
+    "x0_15pi8": 1.815587946425857,
+    "delta_x0": 0.0003117663108660462
+   },
+   {
+    "Fb": "4pi^2",
+    "array": "seed",
+    "x0_6": null,
+    "x0_15pi8": null,
+    "delta_x0": null
+   },
+   {
+    "Fb": "4pi^2",
+    "array": "relaxed",
+    "x0_6": 2.116935039733132,
+    "x0_15pi8": 2.1172720238077543,
+    "delta_x0": 0.00033698407462212643
+   },
+   {
+    "Fb": "4pi^2",
+    "array": "extrap",
+    "x0_6": 1.9176479921618579,
+    "x0_15pi8": 1.9195281256108656,
+    "delta_x0": 0.001880133449007726
+   },
+   {
+    "Fb": "8pi^2",
+    "array": "seed",
+    "x0_6": null,
+    "x0_15pi8": null,
+    "delta_x0": null
+   },
+   {
+    "Fb": "8pi^2",
+    "array": "relaxed",
+    "x0_6": 2.125914356754632,
+    "x0_15pi8": 2.126588324903876,
+    "delta_x0": 0.0006739681492442529
+   },
+   {
+    "Fb": "8pi^2",
+    "array": "extrap",
+    "x0_6": 1.9677462476960368,
+    "x0_15pi8": 1.971506514594052,
+    "delta_x0": 0.00376026689801523
+   }
+  ],
+  "max_delta_x0": 0.00376026689801523,
+  "power_sigma": 0.0752053379603046,
+  "note": "x0(measured)=1.92+-0.08 is amplitude-free by construction (well location of E_int(x); no p enters the energy differences)"
+ },
+ "stageB4_window_edges": {
+  "lower_edge": {
+   "statement": "V(pi) = 2 m^2 + 4 c2 >= 0",
+   "exact_edge": -0.5,
+   "vmin_at_edge": 0.0,
+   "vmin_below": -0.00039999999999995595
+  },
+  "upper_edge": {
+   "statement": "quartic Taylor coeff a4 = c2/4 - m^2/24 crosses 0",
+   "exact_edge": 0.16666666666666666,
+   "numeric_root": 0.16666666666910673,
+   "analytic_check_max_err": 6.306483113505124e-13
+  },
+  "amplitude_independence": "both edge conditions are functionals of V(f; m, c2) alone; the dimensionless amplitude p enters ONLY the exterior tail readout f -> p(1+mu r)e^{-mu r}/(mu r)^2 mu (VII.C). Sensitivity to F_p is identically zero: the edges re-derive bit-identically under either candidate because the computation takes no amplitude input."
+ },
+ "stageB5_anchors": {
+  "C6_quadrature": 1.3581221810506847,
+  "C6_exact": 1.3581221810508404,
+  "mu_rel_err_max": 2.196829962608504e-06
+ },
+ "stageB6_record_scan": {
+  "max_array_len": 41,
+  "n_cells": 1474560,
+  "boundary_tail_scalar": 6.460643994743818e-11,
+  "conclusion": "A_3D not re-fittable from frozen records; re-running the 3-D solver would add OUR precision, not ARCHIVE precision -- the bottleneck is the printed +-0.03/+-6 bands, which no re-run moves."
+ },
+ "stageC_verdict": {
+  "powers_sigma": {
+   "p_band": 0.5226599317842677,
+   "b_eff": 0.3731481103974055,
+   "x0_loop": 0.0752053379603046,
+   "x0_measured": 0.0,
+   "window_edges": 0.0,
+   "C6": 0.0,
+   "mu": 0.0,
+   "gate_constants": 0.0,
+   "dipole_coefficient": null,
+   "b_inf": null
+  },
+  "max_unconditional_power": 0.5226599317842677,
+  "verified_null": true,
+  "verdict": "INDISTINGUISHABLE WITHIN THE ARCHIVE (verified null). Best unconditional channel is the p band itself at 0.52 sigma; every other amplitude-bearing quantity is either amplitude-free (n = 0), unbanded, degenerate with the unpinned F_b identity, or orders of magnitude short in precision. The CONDITIONAL printed-digit channel (0.84 rounds from 0.8434, not 0.8591) favors /6 at 6.6 sigma-equivalent IF three unprinted assumptions hold; it is not archive-backed and does not meet the >= 2 sigma unconditional bar.",
+  "prior_figure_note": "J1/ROADMAP carried the split as '0.7 sigma'; the measured split is 0.52 sigma (0.0157/0.03) - the prior figure mildly OVERSTATES the split; the null is stronger than advertised."
+ },
+ "gates": [
+  {
+   "gate": "B1 input integrity: benchmark p/6 matches j1_run.log",
+   "ok": true,
+   "measured": "json 0.843379 vs log 0.8434",
+   "threshold": "< 5e-5",
+   "note": "guards against the partial-flush defect recorded above"
+  },
+  {
+   "gate": "B1 p-band cannot split candidates (power < 2 sigma)",
+   "ok": true,
+   "measured": "0.523 sigma",
+   "threshold": "< 2",
+   "note": "needs +-0.0078, archive prints +-0.03"
+  },
+  {
+   "gate": "B1 rounding channel: p6 rounds to printed 0.84",
+   "ok": true,
+   "measured": "0.8434 in [0.835,0.845)",
+   "threshold": "True",
+   "note": "CONDITIONAL channel, see conditions"
+  },
+  {
+   "gate": "B1 rounding channel: p15pi8 does NOT round to 0.84",
+   "ok": true,
+   "measured": "0.8591 in window = False",
+   "threshold": "False",
+   "note": "would print 0.86; 6.6 sigma-equiv IF conditions held"
+  },
+  {
+   "gate": "B2 b_eff cannot split candidates (max delta-pull < 2 sigma)",
+   "ok": true,
+   "measured": "0.373 sigma max over C_d x F_b",
+   "threshold": "< 2",
+   "note": "on top of the unpinned F_b identity and the x54 C_d systematic"
+  },
+  {
+   "gate": "B2 F_b relabel absorbs the switch below band resolution",
+   "ok": true,
+   "measured": "pair (3,pi) residual 0.0093 ln = 0.06 sigma_band",
+   "threshold": "< 1",
+   "note": "structural degeneracy: factor identity itself unmeasured (i3 caveat 1)"
+  },
+  {
+   "gate": "B2 b_inf~4.5 unusable (no band + far zone unmeasured + F_b unpinned)",
+   "ok": true,
+   "measured": "3 independent blockers recorded",
+   "threshold": "informational",
+   "note": "even a +-0.05 ulp-reading would be voided by the F_b degeneracy"
+  },
+  {
+   "gate": "B3 bond-equation x0 loop cannot split (power < 2 sigma)",
+   "ok": true,
+   "measured": "max dx0 = 0.0038 = 0.075 sigma of +-0.05",
+   "threshold": "< 2",
+   "note": "the crossing sits in the steep rise: 3.75% in b moves x0 by ~0.01"
+  },
+  {
+   "gate": "B4 lower edge = positivity: min V(c2=-1/2) = 0 (at f=pi)",
+   "ok": true,
+   "measured": "min V = 0.00e+00",
+   "threshold": "= 0",
+   "note": "V(pi) = 2 + 4 c2 -> c2 >= -1/2 exact"
+  },
+  {
+   "gate": "B4 lower edge sharp: V < 0 just below",
+   "ok": true,
+   "measured": "min V(c2=-1/2-1e-4) = -4.00e-04",
+   "threshold": "< 0",
+   "note": ""
+  },
+  {
+   "gate": "B4 upper edge = quartic-coefficient sign change at c2 = 1/6 exactly",
+   "ok": true,
+   "measured": "numeric root 0.166666666669",
+   "threshold": "1/6 = 0.166666666667",
+   "note": "a4(c2) = c2/4 - 1/24; matches B.4's 'amplitude-mode coupling' language"
+  },
+  {
+   "gate": "B4 numeric a4 matches analytic c2/4 - 1/24",
+   "ok": true,
+   "measured": "max |err| = 6.31e-13",
+   "threshold": "< 1e-9",
+   "note": "fit-window truncation limited; 7+ orders below any physical scale here"
+  },
+  {
+   "gate": "B4 edges amplitude-free (sensitivity exactly 0)",
+   "ok": true,
+   "measured": "edge computation consumes (m, c2) only",
+   "threshold": "structural",
+   "note": "re-derives identically under BOTH candidates: zero discrimination power"
+  },
+  {
+   "gate": "B5 C6 Haar quadrature = 64/(15pi)",
+   "ok": true,
+   "measured": "1.358122181050685",
+   "threshold": "1.358122181050840",
+   "note": "energy-bound constant: no amplitude enters; 15pi here is NOT the tail F_p"
+  },
+  {
+   "gate": "B5 mu = m/sqrt(2 a_psi) convention-free across window",
+   "ok": true,
+   "measured": "max rel err 2.20e-06 (4 archived pts; 9/9 <= 1e-4 in j1_run.log)",
+   "threshold": "<= 1e-4",
+   "note": ""
+  },
+  {
+   "gate": "B6 no field snapshot in frozen run records",
+   "ok": true,
+   "measured": "largest array in run_single.json = 41 entries",
+   "threshold": "<< 1474560 cells",
+   "note": "scalar diagnostics + iteration series only: the 3-D tail amplitude cannot be re-fit from the archive; its amplitude info enters via C_d (B2)"
+  },
+  {
+   "gate": "C VERIFIED NULL: no archive quantity separates candidates at >= 2 sigma",
+   "ok": true,
+   "measured": "max unconditional power = 0.523 sigma (p band)",
+   "threshold": "< 2",
+   "note": "conditional rounding pointer favors /6 but rests on unprinted assumptions"
+  }
+ ],
+ "all_gates_pass": true
 }

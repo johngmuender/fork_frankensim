@@ -1,5 +1,5 @@
 {
- "snapshot_utc": "2026-07-16 FINAL+J4 (Phase J fully closed: J4 eps-law exponent measured LINEAR, 2/3 excluded, x4.3 measured; no named opens remain)",
+ "snapshot_utc": "2026-07-16 CHECKPOINT-2 (Phase K in flight: K2 done+verified; K1 stage B5; K4 24 PASS/25 pending, K36 CMD-DEFECT + K36b crossing running)",
  "session": "d0b81976",
  "main_session_transcript": "coordinator-session.jsonl.xz",
  "agents": [
@@ -207,6 +207,24 @@
    "description": "J4: multi-eps saturated re-scan (restart-recovered; per-point flushing)",
    "transcript_bytes": null,
    "phase": "Phase J"
+  },
+  {
+   "agent_id": "afbfdde81b908c142",
+   "description": "K1: /6 vs /(15pi/8) amplitude-convention discriminator (RUNNING at checkpoint)",
+   "transcript_bytes": null,
+   "phase": "Phase K"
+  },
+  {
+   "agent_id": "a76b7cd1b6c5b6135",
+   "description": "K2: eps < 0.005 probe (complete; 11/12; K2-D1 intercept-bias drift)",
+   "transcript_bytes": null,
+   "phase": "Phase K"
+  },
+  {
+   "agent_id": "a0f1c08bc72a600a1",
+   "description": "K4: REPRODUCE freshness gauntlet (RUNNING at checkpoint; K36 CMD-DEFECT)",
+   "transcript_bytes": null,
+   "phase": "Phase K"
   }
  ],
  "workflows": {
