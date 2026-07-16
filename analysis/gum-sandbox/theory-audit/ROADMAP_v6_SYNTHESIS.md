@@ -71,6 +71,32 @@ sectors; the structural parity protection tested).
   everywhere); χ(rot) = −1 extends to ALL w ≠ 0 splitness-free
   (even-w fermionic sectors theta-twisted); B=2 sector-conditional.
 
+## Phase J — the filed obligations ▶ EXECUTING (post-fold)
+
+Phase I's fold is in (DISCHARGE_PACKAGE v2.2; corpus2 ⟦I4 reported⟧
+boxes). What I1–I4 left open is exactly three named computations, now
+scheduled as parallel agents:
+
+**J1 — the B.4-window 𝔭-grid + converged C_d.** I3's discriminator:
+App I.1's never-run "𝔭-grid over the (B.4) window", extracted under
+both the raw (0.805) and edge-referenced conventions; joint 𝔟_eff
+check on the best converged C_d (G5b cap-1200), convergence caveats
+printed. → j1_pgrid.py / j1_results.json / j1_RESULTS.md.
+
+**J2 — the repaired (4.8′)/(4.9′) ε-scan arithmetic.** I2's first
+obligation: the ε-scan law under the saturated closure (fixed oblate
+compacton + halo; B.6 sign flip; the forfeited ε-anchor stated), and
+the Q-6′ censorship ceiling re-derivation with the ×4.3 thinned margin
+and the dichotomy verdict. → j2_epsscan.py / j2_results.json /
+j2_RESULTS.md.
+
+**J3 — the Majoron battery at g ≈ 7.8×10⁻¹⁰.** I2's second
+obligation: the corpus's SN/BBN/streaming battery table reconstructed
+(old-window control must reproduce its printed PASS), then re-run over
+the repaired window f ∈ [3.7, ≈60] MeV — is "SHIFTS-HARMLESSLY"
+confirmed, or does a row newly bind? → j3_majoron.py /
+j3_results.json / j3_RESULTS.md.
+
 ## Beyond (unscheduled)
-Real-GPU physics; the corpus's response to corpus2; whatever I1–I4
+Real-GPU physics; the corpus's response to corpus2; whatever J1–J3
 leave open.
