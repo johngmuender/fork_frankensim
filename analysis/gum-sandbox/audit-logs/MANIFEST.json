@@ -1,5 +1,5 @@
 {
- "snapshot_utc": "2026-07-16 FINAL (corpus2 complete; H4 verdict; ledger F-R1-F-R16)",
+ "snapshot_utc": "2026-07-16 FINAL SWEEP 2 (post-corpus2: all writer/patch/H4 agents final turns included)",
  "session": "d0b81976",
  "main_session_transcript": "coordinator-session.jsonl.xz",
  "agents": [
@@ -190,5 +190,6 @@
   "wf_16ac516f-91a": "Phase G-A workflow: scaling survey (4 surveyors)",
   "wf_4efbf95b-59f": "Phase H workflow: theory audit T1-T4 (complete)"
  },
- "note": "Transcripts are JSONL message streams incl. assistant thinking blocks, tool calls, and tool results. Agents marked ONGOING get a final sweep at session end."
+ "note": "Transcripts are JSONL message streams incl. assistant thinking blocks, tool calls, and tool results. Agents marked ONGOING get a final sweep at session end.",
+ "agent_transcript_count_at_final": 64
 }
