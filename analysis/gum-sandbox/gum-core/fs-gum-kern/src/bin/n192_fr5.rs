@@ -636,6 +636,298 @@ fn ctrlclock(out_path: &str, n: usize, lbox: f64, cap_static: usize, cap_ctrl: u
 }
 
 // ---------------------------------------------------------------------------
+// crossing: R1 static + LONG over-spun main, kill-tolerant JSON flushing
+// ---------------------------------------------------------------------------
+
+/// `fs_gum_kern::anf` VERBATIM (same statements, same order — the whole
+/// point is an identical trajectory) plus an I/O-only flush callback
+/// invoked every `flush_every` iterations and on completion.  The callback
+/// receives (series-so-far, iters, arrests, gn0, gn, status-str).
+#[allow(clippy::too_many_arguments)]
+fn anf_flush(
+    f: &mut fs_gum_field::Field3,
+    o: &Opts,
+    p: &AnfParams,
+    label: &str,
+    threads: usize,
+    flush_every: usize,
+    mut on_flush: impl FnMut(&[Record], usize, usize, f64, f64, &str),
+) -> AnfResult {
+    use fs_gum_kern::{axpy_sub, eval_ws, norm_flat, renormalize, step_q, tangent_project, Ws};
+    use fs_gum_statics::diag::halo_fraction;
+    use fs_gum_statics::Status;
+
+    fn record(
+        f: &fs_gum_field::Field3,
+        o: &Opts,
+        out: &fs_gum_statics::Out,
+        it: usize,
+        gn: f64,
+        dt: f64,
+        arrests: usize,
+    ) -> Record {
+        let (halo, _cen) = halo_fraction(f);
+        Record {
+            it,
+            r: out.r,
+            obj: out.obj,
+            epen: out.epen,
+            efpen: out.efpen,
+            floor_gap: out.floor_gap,
+            estat: out.estat,
+            e2: out.e2,
+            e4: out.e4,
+            e6: out.e6,
+            e0: out.e0,
+            i: out.i,
+            kappa: o.l.map_or(0.0, |l| l / out.i),
+            deg: out.deg,
+            halo,
+            gnorm: gn,
+            dt,
+            arrests,
+        }
+    }
+
+    let n = f.n();
+    let h = f.h();
+    let h3 = h * h * h;
+    let ncell4 = 4 * n * n * n;
+
+    let mut ws = Ws::new();
+    let (mut out, gopt) = eval_ws(f, o, true, threads, &mut ws);
+    let mut g = gopt.expect("gradient requested");
+    let mut obj = out.obj;
+    let gn0 = norm_flat(&g.data, n, threads) / h3;
+    let mut gn = gn0;
+    let mut v = vec![0.0_f64; ncell4];
+    let mut qb = vec![0.0_f64; ncell4];
+    save_cells(f, &mut qb);
+    let mut dt = p.dt0;
+    let mut arrests = 0usize;
+    let mut series = Vec::new();
+    let mut status = Status::IterCap;
+
+    series.push(record(f, o, &out, 0, gn0, dt, arrests));
+    if p.print_every > 0 {
+        let r0 = series[0];
+        println!(
+            "  [{label}] it=0  R={:.7} I={:.4} kappa={:.5} deg={:.5} halo={:.4} gnorm={:.3e}",
+            out.r, out.i, r0.kappa, out.deg, r0.halo, gn0
+        );
+    }
+    let mut it = 0usize;
+    while it < p.maxit {
+        it += 1;
+        axpy_sub(&mut v, dt / h3, &g.data, threads);
+        step_q(f, &v, dt, threads);
+        let _drift = renormalize(f, threads);
+        let (out_new, gnew) = eval_ws(f, o, true, threads, &mut ws);
+        if out_new.obj > obj {
+            restore_cells(f, &qb);
+            for vm in v.iter_mut() {
+                *vm = 0.0;
+            }
+            dt *= 0.6;
+            arrests += 1;
+            if dt < 1.0e-7 {
+                status = Status::StallDt;
+                break;
+            }
+        } else {
+            out = out_new;
+            obj = out.obj;
+            g = gnew.expect("gradient requested");
+            save_cells(f, &mut qb);
+            tangent_project(f, &mut v, threads);
+            dt = (dt * 1.01).min(p.dt_max);
+        }
+        gn = norm_flat(&g.data, n, threads) / h3;
+        if it % p.instr_every == 0 || it == p.maxit {
+            let rec = record(f, o, &out, it, gn, dt, arrests);
+            series.push(rec);
+            if p.print_every > 0 && (it % p.print_every == 0 || it == p.maxit) {
+                println!(
+                    "  [{label}] it={it}  R={:.7} pen={:.2e} fpen={:.2e} fgap={:+.4} I={:.4} kappa={:.5} deg={:.5} halo={:.4} gnorm={:.3e} dt={:.2e} arr={arrests}",
+                    out.r, out.epen, out.efpen, out.floor_gap, out.i, rec.kappa, out.deg, rec.halo, gn, dt
+                );
+            }
+        }
+        if it % flush_every == 0 {
+            on_flush(&series, it, arrests, gn0, gn, "running");
+        }
+        if gn < p.gtol_ratio * gn0 {
+            status = Status::Gtol;
+            series.push(record(f, o, &out, it, gn, dt, arrests));
+            break;
+        }
+    }
+    restore_cells(f, &qb);
+    if p.print_every > 0 {
+        println!(
+            "  [{label}] DONE ({}) it={it} R={:.7} pen={:.2e} gnorm/gnorm0={:.3e} arrests={arrests}",
+            status.as_str(),
+            out.r,
+            out.epen,
+            gn / gn0
+        );
+    }
+    on_flush(&series, it, arrests, gn0, gn, status.as_str());
+    AnfResult { out, series, status, iters: it, arrests, gn0, gn }
+}
+
+fn json_partial(
+    series: &[Record],
+    l: Option<f64>,
+    gn0: f64,
+    gn: f64,
+    iters: usize,
+    arrests: usize,
+    wall: f64,
+    status: &str,
+) -> String {
+    let mut s = String::new();
+    let _ = write!(
+        s,
+        "{{\"l\":{},\"status\":\"{status}\",\"iters\":{iters},\"arrests\":{arrests},\"gn0\":{},\"gn\":{},\"wall_s\":{},\"series\":[",
+        l.map_or("null".to_string(), jf),
+        jf(gn0),
+        jf(gn),
+        jf(wall)
+    );
+    for (i, r) in series.iter().enumerate() {
+        if i > 0 {
+            s.push(',');
+        }
+        s.push_str(&json_record(r));
+    }
+    s.push_str("]}");
+    s
+}
+
+#[allow(clippy::too_many_lines)]
+fn crossing_run(out_path: &str, n: usize, lbox: f64, cap_static: usize, cap_main: usize, threads: usize) {
+    let t_all = Instant::now();
+    let thr = kappa_threshold();
+    println!(
+        "G5a crossing: N={n} LBOX={lbox} h={:.9} caps static/main {cap_static}/{cap_main} threads={threads} (kill-tolerant JSON every 100 it)",
+        2.0 * lbox / (n as f64)
+    );
+    println!("bit contract: {}", fs_gum_kern::GUM_KERN_BIT_SEMANTICS);
+    let rp = radial_solve(T_FROZEN, RADIAL_N, RADIAL_RMAX);
+    let fh = hedgehog(&rp, n, lbox);
+    let (out_h, _) = fs_gum_kern::eval(&fh, &Opts::estatic(Scheme::Corner), false, threads);
+    let deg_ref = out_h.deg;
+    let fgap_h = out_h.e6 + out_h.e0 - bps_floor();
+    let fgap_ref = fgap_h - FLOOR_BAND;
+    println!(
+        "hedgehog (corner): Estat={:.7} deg={:.6} I={:.5} fgap={:+.6} -> wall {:+.6}",
+        out_h.estat, out_h.deg, out_h.i, fgap_h, fgap_ref
+    );
+    let bump = bump_field(n, lbox, SEED_PERT, BUMP_K, BUMP_AMP);
+    let halo_seed = halo_seed_field(n, lbox, HALO_ETA, HALO_R0, HALO_W);
+    let head = format!(
+        "\"phase\":\"G5a-crossing\",\"bit_contract\":\"{}\",\n\"n\":{n},\"lbox\":{},\"h\":{},\"threads\":{threads},\n\"protocol\":{{\"seed\":{SEED_PERT},\"bump_k\":{BUMP_K},\"bump_amp\":{BUMP_AMP},\"halo_seed\":[{HALO_ETA},{HALO_R0},{HALO_W}],\"kappa_main\":{KAPPA_MAIN},\"t_frozen\":{},\"caps\":[{cap_static},{cap_main},0]}},\n\"kappa_threshold\":{},\n\"hedgehog\":{{\"estat\":{},\"e2\":{},\"e4\":{},\"e6\":{},\"e0\":{},\"i\":{},\"deg\":{},\"fgap\":{},\"deg_ref\":{},\"fgap_ref\":{}}}",
+        fs_gum_kern::GUM_KERN_BIT_SEMANTICS,
+        jf(lbox),
+        jf(2.0 * lbox / (n as f64)),
+        jf(T_FROZEN),
+        jf(thr),
+        jf(out_h.estat),
+        jf(out_h.e2),
+        jf(out_h.e4),
+        jf(out_h.e6),
+        jf(out_h.e0),
+        jf(out_h.i),
+        jf(out_h.deg),
+        jf(fgap_h),
+        jf(deg_ref),
+        jf(fgap_ref)
+    );
+
+    // R1 static, flushed
+    let opts_static = Opts::estatic(Scheme::Corner).with_guards(deg_ref, fgap_ref);
+    let mut f = fs_gum_statics::diag::clone_field(&fh);
+    add_scaled(&mut f, &bump, 1.0);
+    let _ = f.renormalize();
+    let mut prm = AnfParams::new(cap_static);
+    prm.print_every = 50;
+    let ts = Instant::now();
+    let res_s = {
+        let head = &head;
+        anf_flush(&mut f, &opts_static, &prm, "static", threads, 100, |ser, its, arr, gn0, gn, st| {
+            let j = format!(
+                "{{\n{head},\n\"stage\":\"static\",\"complete\":false,\n\"static\":{}\n}}\n",
+                json_partial(ser, None, gn0, gn, its, arr, ts.elapsed().as_secs_f64(), st)
+            );
+            let _ = std::fs::write(out_path, j);
+        })
+    };
+    let wall_s = ts.elapsed().as_secs_f64();
+    let static_json = json_run(&res_s, None, wall_s);
+    println!(
+        "R1 static done: status={} iters={} arrests={} Estat={:.7} deg={:.6} ({wall_s:.1}s)",
+        res_s.status.as_str(),
+        res_s.iters,
+        res_s.arrests,
+        res_s.out.estat,
+        res_s.out.deg
+    );
+    let mut q_static = vec![0.0_f64; 4 * n * n * n];
+    save_cells(&f, &mut q_static);
+
+    // R2 main at the long cap, flushed every 100 iterations
+    let l_main = KAPPA_MAIN * out_h.i;
+    restore_cells(&mut f, &q_static);
+    add_scaled(&mut f, &bump, 1.0);
+    add_scaled(&mut f, &halo_seed, 1.0);
+    let _ = f.renormalize();
+    let opts_main = Opts::routhian(Scheme::Corner, l_main).with_guards(deg_ref, fgap_ref);
+    let mut prm = AnfParams::new(cap_main);
+    prm.print_every = 50;
+    let tm = Instant::now();
+    let res_m = {
+        let head = &head;
+        let static_json = &static_json;
+        anf_flush(&mut f, &opts_main, &prm, "main", threads, 100, |ser, its, arr, gn0, gn, st| {
+            let cross = crossing(ser, thr);
+            let j = format!(
+                "{{\n{head},\n\"stage\":\"main\",\"complete\":false,\n\"static\":{static_json},\n\"main\":{},\n\"main_kappa_crossing\":{}\n}}\n",
+                json_partial(ser, Some(l_main), gn0, gn, its, arr, tm.elapsed().as_secs_f64(), st),
+                cross.map_or("null".to_string(), |(a, b)| format!("[{a},{b}]")),
+            );
+            let _ = std::fs::write(out_path, j);
+        })
+    };
+    let wall_m = tm.elapsed().as_secs_f64();
+    let (m0, mf) = (res_m.series[0], *res_m.series.last().expect("series"));
+    let cross_m = crossing(&res_m.series, thr);
+    let rise_r = max_rise(&res_m.series, |r| r.r);
+    let rise_obj = max_rise(&res_m.series, |r| r.obj);
+    println!(
+        "R2 main done: L={l_main:.4} kappa {:.5} -> {:.5} (threshold {thr:.5} crossing {}), halo {:.4} -> {:.4}, R {:.6} -> {:.6} (max R rise {rise_r:+.2e}, max obj rise {rise_obj:+.2e}) ({wall_m:.1}s)",
+        m0.kappa,
+        mf.kappa,
+        cross_m.map_or("NOT REACHED".to_string(), |(a, b)| format!("it {a}..{b}")),
+        m0.halo,
+        mf.halo,
+        m0.r,
+        mf.r
+    );
+
+    let j = format!(
+        "{{\n{head},\n\"stage\":\"done\",\"complete\":true,\n\"static\":{static_json},\n\"main\":{},\n\"main_kappa_crossing\":{},\n\"max_r_rise\":{},\n\"max_obj_rise\":{},\n\"total_wall_s\":{}\n}}\n",
+        json_run(&res_m, Some(l_main), wall_m),
+        cross_m.map_or("null".to_string(), |(a, b)| format!("[{a},{b}]")),
+        jf(rise_r),
+        jf(rise_obj),
+        jf(t_all.elapsed().as_secs_f64())
+    );
+    std::fs::write(out_path, j).expect("write json");
+    println!("wrote {out_path}; total wall {:.1}s", t_all.elapsed().as_secs_f64());
+}
+
+// ---------------------------------------------------------------------------
 // budget + bitcheck
 // ---------------------------------------------------------------------------
 
@@ -717,7 +1009,7 @@ fn bitcheck(n: usize, lbox: f64, iters: usize, ta: usize, tb: usize) {
 
 fn main() {
     let args: Vec<String> = std::env::args().collect();
-    let usage = "usage: n192_fr5 budget <N> <LBOX> <iters> [threads]\n       n192_fr5 proto <out.json> <N> <LBOX> <cap_static> <cap_main> <cap_ctrl> [threads]\n       n192_fr5 bitcheck <N> <LBOX> <iters> <threads_a> <threads_b>\n       n192_fr5 ctrlclock <out.json> <N> <LBOX> <cap_static> <cap_ctrl> [threads]";
+    let usage = "usage: n192_fr5 budget <N> <LBOX> <iters> [threads]\n       n192_fr5 proto <out.json> <N> <LBOX> <cap_static> <cap_main> <cap_ctrl> [threads]\n       n192_fr5 bitcheck <N> <LBOX> <iters> <threads_a> <threads_b>\n       n192_fr5 ctrlclock <out.json> <N> <LBOX> <cap_static> <cap_ctrl> [threads]\n       n192_fr5 crossing  <out.json> <N> <LBOX> <cap_static> <cap_main> [threads]";
     let cmd = args.get(1).map(String::as_str).unwrap_or("");
     let p = |i: usize| -> usize { args[i].parse().expect("integer arg") };
     let pf = |i: usize| -> f64 { args[i].parse().expect("float arg") };
@@ -736,6 +1028,10 @@ fn main() {
         "ctrlclock" if args.len() >= 7 => {
             let threads = if args.len() > 7 { p(7) } else { DEFAULT_THREADS };
             ctrlclock(&args[2], p(3), pf(4), p(5), p(6), threads);
+        }
+        "crossing" if args.len() >= 7 => {
+            let threads = if args.len() > 7 { p(7) } else { DEFAULT_THREADS };
+            crossing_run(&args[2], p(3), pf(4), p(5), p(6), threads);
         }
         _ => {
             eprintln!("{usage}");
