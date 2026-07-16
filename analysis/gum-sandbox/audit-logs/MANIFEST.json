@@ -1,5 +1,5 @@
 {
- "snapshot_utc": "2026-07-16T11:20Z-approx (refresh 2; ongoing: G5c crossing, theory-audit workflow)",
+ "snapshot_utc": "2026-07-16T12:00Z-approx (refresh 3: +H2.1/H2.2 agents, theory workflow, G5c finalization)",
  "session": "d0b81976",
  "main_session_transcript": "coordinator-session.jsonl.xz",
  "agents": [
@@ -188,7 +188,7 @@
  "workflows": {
   "wf_c1d7a861-860": "Phase A workflow: gap analysis v3 (5 surveyors)",
   "wf_16ac516f-91a": "Phase G-A workflow: scaling survey (4 surveyors)",
-  "wf_4efbf95b-59f": "Phase H workflow: theory audit T1-T4 (ONGOING at snapshot)"
+  "wf_4efbf95b-59f": "Phase H workflow: theory audit T1-T4 (complete)"
  },
  "note": "Transcripts are JSONL message streams incl. assistant thinking blocks, tool calls, and tool results. Agents marked ONGOING get a final sweep at session end."
 }
