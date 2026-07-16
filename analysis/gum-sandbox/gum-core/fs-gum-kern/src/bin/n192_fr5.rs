@@ -34,6 +34,16 @@
 //!       final field bytes of a short seeded main descent) at two thread
 //!       counts; prints both hashes and PASS/FAIL on equality.
 //!
+//!   ctrlclock <out.json> <N> <LBOX> <cap_static> <cap_ctrl> [threads]
+//!       Recovery/segment runner: R1 static relaxation, then ONLY the
+//!       R3 control descent + R4 clock (no main).  The static stage is
+//!       bit-identical to the same stage of `proto` at any thread count
+//!       (the layer's determinism contract), so a completed `proto` main
+//!       log composes exactly with this run.  JSON is flushed to
+//!       `<out.json>.partial` after the static stage (insurance against
+//!       external kills — added after the 2026-07-16 harness kill lost
+//!       the first N=192 proto's in-memory series).
+//!
 //! Epistemic notice (binding, inherited): everything here is a
 //! within-model computation on a speculative theory's functional.  The
 //! descents replicate and refine the campaign's F-R5 mechanism as grid
@@ -493,6 +503,128 @@ fn proto(
 }
 
 // ---------------------------------------------------------------------------
+// ctrlclock: R1 static + R3 control + R4 clock only (recovery/segment mode)
+// ---------------------------------------------------------------------------
+
+#[allow(clippy::too_many_lines)]
+fn ctrlclock(out_path: &str, n: usize, lbox: f64, cap_static: usize, cap_ctrl: usize, threads: usize) {
+    let t_all = Instant::now();
+    let thr = kappa_threshold();
+    println!(
+        "G5a ctrlclock: N={n} LBOX={lbox} h={:.9} caps static/ctrl {cap_static}/{cap_ctrl} threads={threads}",
+        2.0 * lbox / (n as f64)
+    );
+    println!("bit contract: {}", fs_gum_kern::GUM_KERN_BIT_SEMANTICS);
+    let rp = radial_solve(T_FROZEN, RADIAL_N, RADIAL_RMAX);
+    let fh = hedgehog(&rp, n, lbox);
+    let (out_h, _) = fs_gum_kern::eval(&fh, &Opts::estatic(Scheme::Corner), false, threads);
+    let deg_ref = out_h.deg;
+    let fgap_h = out_h.e6 + out_h.e0 - bps_floor();
+    let fgap_ref = fgap_h - FLOOR_BAND;
+    let (halo_h, _) = fs_gum_statics::diag::halo_fraction(&fh);
+    println!(
+        "hedgehog (corner): Estat={:.7} deg={:.6} I={:.5} fgap={:+.6} -> wall {:+.6}",
+        out_h.estat, out_h.deg, out_h.i, fgap_h, fgap_ref
+    );
+    let bump = bump_field(n, lbox, SEED_PERT, BUMP_K, BUMP_AMP);
+    let halo_seed = halo_seed_field(n, lbox, HALO_ETA, HALO_R0, HALO_W);
+
+    // R1 static (identical construction to proto)
+    let opts_static = Opts::estatic(Scheme::Corner).with_guards(deg_ref, fgap_ref);
+    let mut f = fs_gum_statics::diag::clone_field(&fh);
+    add_scaled(&mut f, &bump, 1.0);
+    let _ = f.renormalize();
+    let mut prm = AnfParams::new(cap_static);
+    prm.print_every = 100;
+    let ts = Instant::now();
+    let res_s = fs_gum_kern::anf(&mut f, &opts_static, &prm, "static", threads);
+    let wall_s = ts.elapsed().as_secs_f64();
+    let mut q_static = vec![0.0_f64; 4 * n * n * n];
+    save_cells(&f, &mut q_static);
+    let hedgehog_json = format!(
+        "{{\"estat\":{},\"e2\":{},\"e4\":{},\"e6\":{},\"e0\":{},\"i\":{},\"deg\":{},\"fgap\":{},\"deg_ref\":{},\"fgap_ref\":{},\"halo\":{}}}",
+        jf(out_h.estat),
+        jf(out_h.e2),
+        jf(out_h.e4),
+        jf(out_h.e6),
+        jf(out_h.e0),
+        jf(out_h.i),
+        jf(out_h.deg),
+        jf(fgap_h),
+        jf(deg_ref),
+        jf(fgap_ref),
+        jf(halo_h)
+    );
+    let head = format!(
+        "{{\n\"phase\":\"G5a-ctrlclock\",\"bit_contract\":\"{}\",\n\"n\":{n},\"lbox\":{},\"h\":{},\"threads\":{threads},\n\"protocol\":{{\"seed\":{SEED_PERT},\"bump_k\":{BUMP_K},\"bump_amp\":{BUMP_AMP},\"halo_seed\":[{HALO_ETA},{HALO_R0},{HALO_W}],\"kappa_ctrl\":{KAPPA_CTRL},\"t_frozen\":{},\"caps\":[{cap_static},0,{cap_ctrl}]}},\n\"kappa_threshold\":{},\n\"hedgehog\":{hedgehog_json},\n\"static\":{}",
+        fs_gum_kern::GUM_KERN_BIT_SEMANTICS,
+        jf(lbox),
+        jf(2.0 * lbox / (n as f64)),
+        jf(T_FROZEN),
+        jf(thr),
+        json_run(&res_s, None, wall_s),
+    );
+    std::fs::write(format!("{out_path}.partial"), format!("{head}\n}}\n")).expect("write partial");
+    println!(
+        "R1 static done: status={} iters={} arrests={} Estat={:.7} deg={:.6} ({wall_s:.1}s); partial JSON flushed",
+        res_s.status.as_str(),
+        res_s.iters,
+        res_s.arrests,
+        res_s.out.estat,
+        res_s.out.deg
+    );
+
+    // R3 control
+    let l_ctrl = KAPPA_CTRL * out_h.i;
+    restore_cells(&mut f, &q_static);
+    add_scaled(&mut f, &bump, 1.0);
+    add_scaled(&mut f, &halo_seed, 1.0);
+    let _ = f.renormalize();
+    let opts_ctrl = Opts::routhian(Scheme::Corner, l_ctrl).with_guards(deg_ref, fgap_ref);
+    let mut prm = AnfParams::new(cap_ctrl);
+    prm.print_every = 100;
+    let tc = Instant::now();
+    let res_c = fs_gum_kern::anf(&mut f, &opts_ctrl, &prm, "ctrl", threads);
+    let wall_c = tc.elapsed().as_secs_f64();
+    let (c0, cf) = (res_c.series[0], *res_c.series.last().expect("series"));
+    let kap_ctrl_max = res_c.series.iter().fold(0.0_f64, |m, s| m.max(s.kappa));
+    println!(
+        "R3 ctrl done: L={l_ctrl:.4} kappa {:.5} -> {:.5} (max {kap_ctrl_max:.5} vs threshold {thr:.5}), halo {:.4} -> {:.4}, I {:.4} -> {:.4} (tilt ceiling 1.5 I_h = {:.4}) ({wall_c:.1}s)",
+        c0.kappa, cf.kappa, c0.halo, cf.halo, c0.i, cf.i, 1.5 * out_h.i
+    );
+
+    // R4 clock on the control endpoint
+    let (estat_c, i_c) = (res_c.out.estat, res_c.out.i);
+    let l_clock = clock_bisect(i_c, estat_c);
+    let l_closed = ((2.0 / 3.0) * i_c * estat_c).sqrt();
+    let erot = erot_frac(l_clock, i_c, estat_c);
+    let kap_clock = l_clock / i_c;
+    let ratio = kap_clock / thr;
+    let clock_ok = (erot - 0.25).abs() <= 1.0e-6 && (l_clock / l_closed - 1.0).abs() <= 1.0e-12;
+    println!(
+        "R4 clock (ctrl endpoint): Estat={estat_c:.6} I={i_c:.5} -> L_clock={l_clock:.6}, E_rot/E={erot:.9}, kappa(L_clock)={kap_clock:.6} = {ratio:.4}x threshold  [identities {}]",
+        if clock_ok { "PASS" } else { "FAIL" }
+    );
+
+    let j = format!(
+        "{head},\n\"ctrl\":{},\n\"clock\":{{\"estat\":{},\"i\":{},\"l_clock\":{},\"erot\":{},\"kappa_clock\":{},\"ratio_to_threshold\":{},\"identities_pass\":{clock_ok}}},\n\"total_wall_s\":{}\n}}\n",
+        json_run(&res_c, Some(l_ctrl), wall_c),
+        jf(estat_c),
+        jf(i_c),
+        jf(l_clock),
+        jf(erot),
+        jf(kap_clock),
+        jf(ratio),
+        jf(t_all.elapsed().as_secs_f64())
+    );
+    std::fs::write(out_path, j).expect("write json");
+    println!("wrote {out_path}; total wall {:.1}s", t_all.elapsed().as_secs_f64());
+    if !clock_ok {
+        std::process::exit(1);
+    }
+}
+
+// ---------------------------------------------------------------------------
 // budget + bitcheck
 // ---------------------------------------------------------------------------
 
@@ -574,7 +706,7 @@ fn bitcheck(n: usize, lbox: f64, iters: usize, ta: usize, tb: usize) {
 
 fn main() {
     let args: Vec<String> = std::env::args().collect();
-    let usage = "usage: n192_fr5 budget <N> <LBOX> <iters> [threads]\n       n192_fr5 proto <out.json> <N> <LBOX> <cap_static> <cap_main> <cap_ctrl> [threads]\n       n192_fr5 bitcheck <N> <LBOX> <iters> <threads_a> <threads_b>";
+    let usage = "usage: n192_fr5 budget <N> <LBOX> <iters> [threads]\n       n192_fr5 proto <out.json> <N> <LBOX> <cap_static> <cap_main> <cap_ctrl> [threads]\n       n192_fr5 bitcheck <N> <LBOX> <iters> <threads_a> <threads_b>\n       n192_fr5 ctrlclock <out.json> <N> <LBOX> <cap_static> <cap_ctrl> [threads]";
     let cmd = args.get(1).map(String::as_str).unwrap_or("");
     let p = |i: usize| -> usize { args[i].parse().expect("integer arg") };
     let pf = |i: usize| -> f64 { args[i].parse().expect("float arg") };
@@ -589,6 +721,10 @@ fn main() {
         }
         "bitcheck" if args.len() >= 7 => {
             bitcheck(p(2), pf(3), p(4), p(5), p(6));
+        }
+        "ctrlclock" if args.len() >= 7 => {
+            let threads = if args.len() > 7 { p(7) } else { DEFAULT_THREADS };
+            ctrlclock(&args[2], p(3), pf(4), p(5), p(6), threads);
         }
         _ => {
             eprintln!("{usage}");

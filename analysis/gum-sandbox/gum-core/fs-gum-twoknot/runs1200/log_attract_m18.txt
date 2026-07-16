@@ -13,3 +13,18 @@ twoknot_run: channel=attract m=18 d=3.375000 x=d/R*=1.8942 grid 160x96x96 h=0.09
   [attract] it=500  obj=6.254746388 Estat=6.2530516 pen=7.95e-4 fpen=9.00e-4 fgap=-0.0419 deg=1.96690 gnorm=2.025e0 dt=2.61e-2 arr=7
   [attract] it=550  obj=6.249986077 Estat=6.2482056 pen=8.20e-4 fpen=9.61e-4 fgap=-0.0420 deg=1.96689 gnorm=2.102e0 dt=4.29e-2 arr=7
   [attract] it=600  obj=6.248695954 Estat=6.2468930 pen=8.42e-4 fpen=9.61e-4 fgap=-0.0420 deg=1.96689 gnorm=1.962e0 dt=8.79e-3 arr=11
+  [attract] it=650  obj=6.248060508 Estat=6.2463241 pen=8.31e-4 fpen=9.05e-4 fgap=-0.0419 deg=1.96689 gnorm=1.881e0 dt=1.45e-2 arr=11
+  [attract] it=700  obj=6.246562438 Estat=6.2447565 pen=8.56e-4 fpen=9.50e-4 fgap=-0.0420 deg=1.96688 gnorm=1.762e0 dt=2.38e-2 arr=11
+  [attract] it=750  obj=6.243252063 Estat=6.2413751 pen=8.77e-4 fpen=1.00e-3 fgap=-0.0421 deg=1.96687 gnorm=1.911e0 dt=3.91e-2 arr=11
+  [attract] it=800  obj=6.242065834 Estat=6.2402222 pen=8.49e-4 fpen=9.94e-4 fgap=-0.0420 deg=1.96688 gnorm=1.512e0 dt=8.01e-3 arr=15
+  [attract] it=850  obj=6.241688745 Estat=6.2398222 pen=8.73e-4 fpen=9.94e-4 fgap=-0.0420 deg=1.96688 gnorm=1.565e0 dt=1.32e-2 arr=15
+  [attract] it=900  obj=6.240650254 Estat=6.2387799 pen=8.76e-4 fpen=9.94e-4 fgap=-0.0420 deg=1.96687 gnorm=1.541e0 dt=2.17e-2 arr=15
+  [attract] it=950  obj=6.238221146 Estat=6.2363256 pen=8.45e-4 fpen=1.05e-3 fgap=-0.0421 deg=1.96689 gnorm=1.880e0 dt=3.56e-2 arr=15
+  [attract] it=1000  obj=6.236975013 Estat=6.2350412 pen=8.92e-4 fpen=1.04e-3 fgap=-0.0421 deg=1.96687 gnorm=1.406e0 dt=7.30e-3 arr=19
+  [attract] it=1050  obj=6.236724996 Estat=6.2348041 pen=8.87e-4 fpen=1.03e-3 fgap=-0.0421 deg=1.96687 gnorm=1.261e0 dt=1.20e-2 arr=19
+  [attract] it=1100  obj=6.235928111 Estat=6.2340089 pen=8.70e-4 fpen=1.05e-3 fgap=-0.0421 deg=1.96688 gnorm=1.191e0 dt=1.97e-2 arr=19
+  [attract] it=1150  obj=6.233956043 Estat=6.2319849 pen=9.09e-4 fpen=1.06e-3 fgap=-0.0421 deg=1.96686 gnorm=1.356e0 dt=3.25e-2 arr=19
+  [attract] it=1200  obj=6.232203995 Estat=6.2302286 pen=9.08e-4 fpen=1.07e-3 fgap=-0.0421 deg=1.96686 gnorm=1.314e0 dt=6.65e-3 arr=23
+  [attract] DONE (iter_cap) it=1200 obj=6.232203995 gnorm/gnorm0=1.387e-1 arrests=23
+  final: Estat(corner)=6.230228591 Estat(central4)=10.354804589 deg=1.966864 deff=3.3419 status=iter_cap iters=1200 arrests=23 (1184.8s, 0.987 s/iter)
+  wrote runs1200/run_attract_m18.json  (total 1185.9s)

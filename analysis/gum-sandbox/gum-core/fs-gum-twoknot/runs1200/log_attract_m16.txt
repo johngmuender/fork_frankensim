@@ -1,0 +1,3 @@
+twoknot_run: channel=attract m=16 d=3.000000 x=d/R*=1.6837 grid 160x96x96 h=0.09375 maxit=1200
+  seed: Estat(corner)=6.490107384 deg=1.971665 fgap=+0.158673 -> wall +0.148673 deff=2.9666 tail=4.59e-11 drift=4.44e-16
+  [attract] it=0  obj=6.490107384 Estat=6.4901074 deg=1.97167 gnorm=8.640e1

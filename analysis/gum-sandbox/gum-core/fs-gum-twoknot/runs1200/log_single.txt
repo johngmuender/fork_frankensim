@@ -13,3 +13,18 @@ twoknot_run: channel=single m=0 d=0.000000 x=d/R*=0.0000 grid 160x96x96 h=0.0937
   [single] it=500  obj=3.113541229 Estat=3.1119033 pen=7.17e-4 fpen=9.21e-4 fgap=-0.0313 deg=0.98048 gnorm=3.125e0 dt=1.15e-2 arr=8
   [single] it=550  obj=3.113158526 Estat=3.1114536 pen=8.49e-4 fpen=8.56e-4 fgap=-0.0313 deg=0.98043 gnorm=3.202e0 dt=1.89e-2 arr=8
   [single] it=600  obj=3.112392034 Estat=3.1107920 pen=7.00e-4 fpen=9.00e-4 fgap=-0.0313 deg=0.98048 gnorm=3.388e0 dt=3.10e-2 arr=8
+  [single] it=650  obj=3.111514935 Estat=3.1098469 pen=7.76e-4 fpen=8.92e-4 fgap=-0.0313 deg=0.98045 gnorm=1.154e0 dt=6.35e-3 arr=12
+  [single] it=700  obj=3.111422375 Estat=3.1097711 pen=7.70e-4 fpen=8.82e-4 fgap=-0.0313 deg=0.98046 gnorm=1.037e0 dt=1.04e-2 arr=12
+  [single] it=750  obj=3.111120571 Estat=3.1094406 pen=7.89e-4 fpen=8.91e-4 fgap=-0.0313 deg=0.98045 gnorm=8.769e-1 dt=1.72e-2 arr=12
+  [single] it=800  obj=3.110526254 Estat=3.1087939 pen=8.06e-4 fpen=9.26e-4 fgap=-0.0314 deg=0.98044 gnorm=9.304e-1 dt=2.83e-2 arr=12
+  [single] it=850  obj=3.109018608 Estat=3.1072262 pen=8.86e-4 fpen=9.07e-4 fgap=-0.0313 deg=0.98042 gnorm=3.466e0 dt=1.64e-2 arr=14
+  [single] it=900  obj=3.108969916 Estat=3.1072217 pen=8.13e-4 fpen=9.35e-4 fgap=-0.0314 deg=0.98044 gnorm=9.550e-1 dt=9.52e-3 arr=16
+  [single] it=950  obj=3.108718875 Estat=3.1069720 pen=8.15e-4 fpen=9.32e-4 fgap=-0.0314 deg=0.98044 gnorm=9.011e-1 dt=1.57e-2 arr=16
+  [single] it=1000  obj=3.108036738 Estat=3.1062603 pen=8.26e-4 fpen=9.50e-4 fgap=-0.0314 deg=0.98044 gnorm=9.385e-1 dt=2.57e-2 arr=16
+  [single] it=1050  obj=3.106077684 Estat=3.1042052 pen=8.50e-4 fpen=1.02e-3 fgap=-0.0315 deg=0.98043 gnorm=1.083e0 dt=4.23e-2 arr=16
+  [single] it=1100  obj=3.105215921 Estat=3.1033735 pen=8.55e-4 fpen=9.87e-4 fgap=-0.0314 deg=0.98043 gnorm=1.120e0 dt=8.67e-3 arr=20
+  [single] it=1150  obj=3.104996783 Estat=3.1031672 pen=8.44e-4 fpen=9.86e-4 fgap=-0.0314 deg=0.98043 gnorm=9.296e-1 dt=1.43e-2 arr=20
+  [single] it=1200  obj=3.104321986 Estat=3.1024711 pen=8.63e-4 fpen=9.88e-4 fgap=-0.0314 deg=0.98042 gnorm=1.125e0 dt=2.35e-2 arr=20
+  [single] DONE (iter_cap) it=1200 obj=3.104321986 gnorm/gnorm0=1.027e0 arrests=20
+  final: Estat(corner)=3.102471102 Estat(central4)=5.853029001 deg=0.980424 deff=0.0000 status=iter_cap iters=1200 arrests=20 (1192.6s, 0.994 s/iter)
+  wrote runs1200/run_single.json  (total 1193.7s)
