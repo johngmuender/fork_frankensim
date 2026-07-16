@@ -81,6 +81,37 @@ Caveats printed in the memo: marginal (not gapped) stability with a
 degenerate halo manifold; the ε-law sign flips. The family sector is
 𝔠₀-blind (P-O1 verified) — S1 unaffected either way.
 
+## Phase H2 addenda (adjudicated as results land)
+
+- **H2.1 → F-R9** (promoted): NR-K3a second moment fails 13–18 orders;
+  mean simultaneously verified; rescue superluminal. See ledger.
+- **H2.2**: F-R4 frozen-value floor confirmed on the collision problem
+  (SDiff moves capture 0%; floor margin 15.7–18.1×; murk kill tightened
+  under both dispositions).
+- **H2.5 → T-H10** (hardened from T4's E.6 GAP): 𝔞₁(p,q) =
+  −(5p+q)/(12(2p+q)) — positivity FALSE as a theorem; double unforced
+  repair required; knot sector −1/3 per Dirac field.
+- **H2.3 → T-H11 + an audit self-correction**: the T1 premise
+  ("degenerate at 8π") was a convention artifact of the corpus's
+  printed unhalved functional — under standard Frank conventions the
+  [8π/3, 8π] band is exactly the {hyperbolic, radial} pair at ONE
+  constant (no anisotropy needed; the closing assumption is a
+  convention, printed against our own audit). NEW T-H11: the
+  hyperbolic profile is not stationary — the relaxed one-constant
+  floor is 7.7024 = 2.4517π (8% below 8π/3), locally minimal
+  (240-perturbation test), so "𝒢_c ≥ 8" overstates the honest floor
+  and the eternal clearance drops ×1.496 → ×1.375. W-eternal still
+  lands under every reading; elastic softening, profile relaxation,
+  and the binding clause share one ~33% margin budget.
+- **H2.4 → T-H1-w1 hardened**: A2b-1's null-transport exactness now
+  has explicit counterexamples surviving ALL plausible
+  premise-completions — incl. a compact-support (1,3) torus-knot field
+  with closed streamlines, zero net axial momentum, exact z-parity,
+  and Route B's current counting satisfied exactly (⟨r_⊥²⟩ tunable to
+  any a² ≤ ƛ²). The only killing completions are the contested clause
+  itself; the repair the corpus needs (an entrainment/planarity lemma)
+  is not printed.
+
 ## Phase H2 — the numeric follow-on program (ranked; top two EXECUTING)
 
 1. **H2.1 (decisive, cheap) — NR-K3a second moment**: Monte-Carlo

@@ -281,13 +281,16 @@ def m2_locking_run(gam, g, dj=0.02, tmax=60000.0, w2=W2_BASE):
     lam, wt, wr = fit(400.0)  # base window ~6.8 libration periods at g=0.05
     floor = sum(wr[-max(2, len(wr) // 10):]) / max(2, len(wr) // 10)
     env_ratio = wr[-1] / wr[0]
+    # model-free effective rate over the whole run (robust when the decay
+    # is non-exponential, e.g. the overdamped-absorber regime)
+    lam_env = -math.log(env_ratio) / (wt[-1] - wt[0])
     # locked phase (circular mean of theta - WREF t over the last 10%)
     ntail = max(1, len(ts) // 10)
     cs = sum(math.cos(th - WREF * t) for th, t in zip(ths[-ntail:], ts[-ntail:]))
     sn = sum(math.sin(th - WREF * t) for th, t in zip(ths[-ntail:], ts[-ntail:]))
     dphi_lock = math.atan2(sn, cs)
     return {"gamma": gam, "g_chi": g, "dJ0": dj, "tmax": tmax, "omega_2": w2,
-            "lambda_lock": lam, "rms_floor": floor,
+            "lambda_lock": lam, "lambda_envelope": lam_env, "rms_floor": floor,
             "envelope_last_over_first": env_ratio,
             "dphi_locked_tail": dphi_lock,
             "rms_windows_t": wt[:: max(1, len(wt) // 40)],
@@ -385,8 +388,9 @@ def main():
         r = m2_locking_run(gam, g)
         m2.append(r)
         lam = r["lambda_lock"]
-        print("M2 gamma=%-8g lambda=%s  env(last/first)=%.4f  dphi_lock=%+.3f"
+        print("M2 gamma=%-8g lambda=%s lambda_env=%+.3e  env(last/first)=%.4f  dphi_lock=%+.3f"
               % (gam, ("%.3e" % lam) if lam is not None else "none",
+                 r["lambda_envelope"],
                  r["envelope_last_over_first"], r["dphi_locked_tail"]))
     out["M2_gamma_scan"] = m2
     # power law on the small-gamma asymptotic decades (below the declocking

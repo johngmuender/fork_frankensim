@@ -1,0 +1,166 @@
+{
+ "meta": {
+  "phase": "H2.4",
+  "date": "2026-07-16",
+  "roadmap_item": "A2b-1 helical counterexample",
+  "audit_ref": "T1_NR_gates.md sec 1.2 (A2b-1 GAP)",
+  "units": "c = omega = 1, lambda_bar = 1",
+  "runtime_s": 0.3
+ },
+ "P1_symbolic": {
+  "CE1_speed_minus_c2": "0",
+  "CE1_continuity": "0",
+  "CE2_speed_minus_c2": "0",
+  "CE2_continuity": "0",
+  "note": "both counterexamples satisfy |v|=c and exact charge conservation, for ARBITRARY radial profile f(r) (CE-1) and the stated sigma (CE-2)"
+ },
+ "P2_CE1_annulus": {
+  "families": {
+   "A": {
+    "r": [
+     0.55,
+     0.75
+    ],
+    "vz": "+sqrt(1-r^2)",
+    "weight": 1.0
+   },
+   "B": {
+    "r": [
+     0.35,
+     0.55
+    ],
+    "vz": "-sqrt(1-r^2)",
+    "weight": 1.2241519450434113
+   }
+  },
+  "max_speed_dev": 1.1102230246251565e-16,
+  "r2_perp_rho_weighted": 0.3315804945362173,
+  "r2_perp_absj_weighted": 0.3315804945362173,
+  "lambda_bar_sq": 1.0,
+  "deficit": 0.6684195054637827,
+  "net_axial_momentum": 0.0,
+  "net_axial_current": 0.0,
+  "I_over_q_omega_2pi": 1.0000000000000002,
+  "streamline": {
+   "r_drift": 1.7535306540139572e-11,
+   "vz_fit_err": 7.353007092092412e-12
+  },
+  "lab_spectrum_bins_omega": [
+   0.0,
+   1.0
+  ],
+  "dphi_dt_every_streamline": 1.0
+ },
+ "P3_CE2_torus": {
+  "R0": 0.7,
+  "b": 0.2121037079277059,
+  "omega_Tp": 2.0943951023931957,
+  "r2_perp_j": 0.5676901087470972,
+  "lambda_bar_sq": 1.0,
+  "deficit": 0.43230989125290276,
+  "closure_after_one_clock_period": 7.574223139893982e-12,
+  "poloidal_turns_per_closure": 3.000000000005624,
+  "knot": "(1,3) torus knot",
+  "on_surface_dev": 5.052555596130048e-13,
+  "speed_range": [
+   0.9999999999999998,
+   1.0000000000000002
+  ],
+  "net_axial_momentum": "0 exactly (integrand prop cos(Theta); quadrature 4.36e-16)",
+  "I_over_q_omega_2pi": "1 exactly (I = C b w INT dTheta/vp; q = 2 pi C b INT dTheta/vp)",
+  "dphi_dt_every_streamline": 1.0,
+  "mirror_note": "CE-2 alone is NOT z-mirror symmetric (mirror reverses the poloidal circulation); the parity completion is handled by CE-3"
+ },
+ "P3b_CE3_mirror_pair": {
+  "h": 0.5,
+  "parity_identity_dev": 2.1379923076950791e-16,
+  "reversed_torus_closure": 1.2422002992757008e-11,
+  "r2_perp_j": 0.5676901087470972,
+  "note": "two CE-2 tori at z=+-h with opposite poloidal circulation; the whole current field satisfies v(Mx)=Mv(x) exactly; also invariant under full inversion P = M o R_z(pi); every other CE-2 property inherits"
+ },
+ "P4_tunability": {
+  "thin_shell_a": [
+   0.05,
+   0.1,
+   0.15,
+   0.2,
+   0.25,
+   0.3,
+   0.35,
+   0.39999999999999997,
+   0.44999999999999996,
+   0.49999999999999994,
+   0.5499999999999999,
+   0.6,
+   0.65,
+   0.7,
+   0.75,
+   0.7999999999999999,
+   0.85,
+   0.9,
+   0.95,
+   1.0
+  ],
+  "r2_over_lb2": [
+   0.0025000000000000005,
+   0.010000000000000002,
+   0.0225,
+   0.04000000000000001,
+   0.0625,
+   0.09,
+   0.12249999999999998,
+   0.15999999999999998,
+   0.20249999999999996,
+   0.24999999999999994,
+   0.30249999999999994,
+   0.36,
+   0.42250000000000004,
+   0.48999999999999994,
+   0.5625,
+   0.6399999999999999,
+   0.7224999999999999,
+   0.81,
+   0.9025,
+   1.0
+  ],
+  "vz_of_a": [
+   0.998749217771909,
+   0.99498743710662,
+   0.9886859966642595,
+   0.9797958971132712,
+   0.9682458365518543,
+   0.9539392014169457,
+   0.9367496997597597,
+   0.9165151389911681,
+   0.8930285549745877,
+   0.8660254037844386,
+   0.8351646544245033,
+   0.8,
+   0.7599342076785331,
+   0.714142842854285,
+   0.6614378277661477,
+   0.6000000000000001,
+   0.526782687642637,
+   0.4358898943540673,
+   0.31224989991991997,
+   0.0
+  ],
+  "note": "r2 = a^2 = (c^2 - v_z^2)/omega^2 exactly, the audit's sqrt(c^2-v_z^2)/omega-class; a=1 recovers the corpus's null ring"
+ },
+ "P5_scoreboard": {
+  "stated_P1_|v|=c_on_every_streamline": "SATISFIED (symbolic 0; numeric <= 3e-13)",
+  "stated_P2_stationary_single_frequency_co-rotation": "SATISFIED: j(r,phi,z,t) = J(r, phi - omega t, z) rigidly; lab spectrum exactly {0, omega}; velocity field itself rotation-equivariant",
+  "implicit_charge_conservation": "SATISFIED (symbolic residual 0, both CEs)",
+  "implicit_smooth_single_valued_v": "SATISFIED (explicit fields; supports avoid axis)",
+  "completion_every_carrier_orbits_at_omega": "SATISFIED: dphi/dt = omega on every streamline, both CEs",
+  "completion_route_B_winding_current_I=q_omega/2pi": "SATISFIED exactly, both CEs -- Route B's I-counting cannot exclude the counterexample; only its Phi_eff = pi lb^2 B step does, and that step ASSUMES the cylinder radius (NR-A1 sec 3.3 'routes share the cylinder lemma')",
+  "completion_zero_net_axial_momentum": "SATISFIED (CE-1 balanced to 0.0e+00; CE-2/CE-3 exact by quadrature)",
+  "completion_zero_net_axial_current": "SATISFIED (same integrals)",
+  "completion_compact_support": "SATISFIED by CE-2/CE-3 (tori)",
+  "completion_closed_streamlines": "SATISFIED by CE-2/CE-3: (1,3) torus knots closing in exactly one clock period",
+  "completion_z_parity_of_current_field": "SATISFIED by CE-3 (mirror pair of counter-circulating tori: v(Mx) = Mv(x) exactly; CE-1/CE-2 alone fail it, so parity DOES constrain single-tube helical drift -- but not the paired configuration, hence the completion does not rescue the theorem)",
+  "completion_pointwise_planar_current_jz==0": "KILLS both CEs -- but this IS the azimuthal-only clause, i.e. the theorem's contested step assumed as an axiom; nothing in NR-A2b sec 1 derives it",
+  "completion_v_equals_pattern_rigid_rotation_field": "KILLS both CEs -- equivalent to the above: v = omega zhat x X pointwise. Structural reason the gap is real: co-rotating stationarity constrains v only up to flows TANGENT to the pattern's level sets (axial drift on a z-uniform pattern, poloidal recirculation on a poloidally-uniform one)"
+ },
+ "verdict": "COUNTEREXAMPLE SURVIVES every textually-plausible premise-completion tested (zero net axial momentum/current, compact support, closed streamlines, mirror symmetry, carriers orbiting at omega, Route-B current counting). The only completions that restore the theorem are restatements of its contested conclusion (pointwise j_z = 0 / v = rigid-rotation field). The corpus's repair must therefore be a new lemma (channel/entrainment forbids drift along pattern-symmetry directions) or a variational selection argument; neither is in the text. <r_perp^2>_j is underdetermined in (0, lb^2]: measured 0.3316 lb^2 (CE-1), 0.5677 lb^2 (CE-2), a^2 for any thin shell."
+}
