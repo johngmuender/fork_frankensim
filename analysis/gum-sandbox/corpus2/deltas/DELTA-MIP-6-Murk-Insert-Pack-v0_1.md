@@ -15,6 +15,10 @@
 
 **Artifacts:** `theory-audit/h23_RESULTS.md` · `theory-audit/h22_RESULTS.md` · `tier0-gauntlet/RESULTS.md` Groups F/H.
 
+## ANNOTATION 2 — [F-R12][F-R14] the w(z) fence stub
+
+> **(2026-07-16.)** Pointer stub: where this pack's w(z) fence stub points at Ω §VI.D, the pointer retargets to the revised §VI.D — direction corrected to the freezing side [F-R12]; sector status conditional on the E.6 discharge [F-R14]. No conclusion of this pack changes thereby.
+
 ---
 
 ## GOVERNANCE FOOTER
