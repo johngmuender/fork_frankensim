@@ -76,8 +76,8 @@ The N = 96 referee box is LBOX = 4.5 (half-width; the field3d 4A box).
 | n192 proto R1 static | 192³, LBOX 4.5 | 450 | iter_cap | 475.0 s | see §4 |
 | n192 proto R2 main | | 1600 | iter_cap | 1807.6 s | monotone; crossing NOT reached (κ = 0.20668, falling); halo +0.0118 |
 | n192 proto R3 ctrl | | 600 | **killed at it ≈ 500** | — | process killed externally (§11.3); log preserved, series JSON lost |
-| n192 ctrlclock R1+R3+R4 (recovery) | | 450 + 600 | {{PEND_CTRL_STATUS}} | {{PEND_CTRL_WALL}} | {{PEND_CTRL_GATES}} |
-| n192 bitcheck | | 20 iters, 2T vs 4T | {{PEND_BIT_STATUS}} | {{PEND_BIT_WALL}} | {{PEND_BIT_HASH}} |
+| n192 ctrlclock R1+R3+R4 (recovery) | | 450 + 600 | iter_cap ×2 | 960.8 s + 1020.9 s (contended, §11.4) | static replay digit-identical to the killed run; R3 self-limiting; R4 identities exact (Δerot = 0.0); ratio 1.4847 |
+| n192 bitcheck | | 20 iters, 2T vs 4T | PASS | 45.0 s (2T) / 25.4 s (4T) | hashes identical: 0803fe446497060d… |
 
 All descents objective-monotone by construction; guard footprint
 |E_pen| + |E_fpen| ≤ 2e-3 at every ENDPOINT (N = 192 logged rows
@@ -155,7 +155,15 @@ died with the killed process, §11.3):
   0.13× the main run's rise), I 22.72 → 26.17 — climbing the bounded
   tilt dial toward the F-R4 ceiling (3/2)·I_h = 33.40, Estat flat
   (3.1205 → 3.1075): no far-field condensate. Differential gates pass.
-* **Control (N = 192, cap 600, recovery run)**: {{PEND_CTRL_SUMMARY}}
+* **Control (N = 192, cap 600, recovery run)**: κ 0.11674 → 0.11158
+  (max 0.11674, always below threshold), halo 0.0276 → **0.0256** — at
+  N = 192 the control's halo fraction FALLS (−0.0020): the seeded shell
+  relaxes away instead of condensing. I 22.89 → 23.95 (72% of the tilt
+  ceiling), Estat 3.1714 → 3.1506 (flat — no E₀-priced condensate).
+  Matched-cap-600 differential vs the N = 192 main run: dhalo −0.0020
+  vs +0.0042, dκ −0.0052 vs −0.0308 — the two-sided signature holds at
+  the finest grid, and is if anything CLEANER (the sub-threshold side
+  loses its lattice-mush-assisted halo drift as h shrinks).
 * **Box axis is NULL at fixed h through the measured caps**: the
   N = 128 / LBOX 6.0 run reproduces the N = 96 / LBOX 4.5 main descent
   to the 4th decimal at matched iterations (it 500: R 3.714064 vs
@@ -182,16 +190,16 @@ died with the killed process, §11.3):
 ## 7. R4 — the clock ladder, and what the ratio is a function of
 
 E_rot/E_tot = 1/4 at the bisected L_clock holds to machine precision on
-every state measured (N = 96: |Δ| = 5.6e-17; N = 192:
-{{PEND_CLOCK_EROT}}; bisection = closed form to ≤ 2.2e-16 rel). The
-headline number κ(L_clock)/threshold:
+every state measured (N = 96: |Δ| = 5.6e-17; N = 192: Δ = 0.0 — the
+stored f64 is 0.25 exactly; bisection = closed form to ≤ 2.2e-16 rel).
+The headline number κ(L_clock)/threshold:
 
 | state the clock is imposed on | I (% of tilt ceiling 33.40) | ratio |
 |-------------------------------|------------------------------|-------|
 | N=48 ctrl endpoint, cap 600 (E1 G-D) | 31.94 (96%) | 1.2525 |
 | N=96 Python 4A ctrl endpoint, cap 1400 | 33.62 (101%) | 1.2448 |
 | N=96 G5a ctrl endpoint, cap 600 | 26.17 (78%) | 1.4105 |
-| N=192 G5a ctrl endpoint, cap 600 | {{PEND_CLOCK_I}} | {{PEND_CLOCK_RATIO}} |
+| **N=192 G5a ctrl endpoint, cap 600** | 23.95 (72%) | **1.4847** |
 | N=192 static endpoint | 22.16 (66%) | 1.5449 |
 | N=192 main endpoint, cap 1600 | 28.66 (86%) | 1.3605 |
 | 4A clean axisymmetric control reference | — | 1.474 |
@@ -204,7 +212,10 @@ saturates** (Estat stays flat, I → (3/2)·I_h). All four control
 trajectories — N = 48 E1, N = 96 Python, N = 96 G5a, N = 192 G5a —
 collapse onto the same declining curve when parameterized by I (e.g. at
 I ≈ 26.2 the Python curve reads ≈ 1.42–1.43, the G5a N = 96 run reads
-1.4105 at 26.17; the G5a N = 192 run reads {{PEND_CLOCK_TREND}}). The
+1.4105 at 26.17; the G5a N = 192 run reads 1.4847 at I = 23.95 where
+the Python curve reads 1.4670 at I = 24.18 — the ~1% offset tracks the
+corner Estat's O(h²) convergence, 3.151 vs 3.108 in the ratio's
+numerator). The
 floor at the tilt ceiling is 1.248–1.257 for the measured Estat range
 (3.107–3.152); the fully-saturated readings are the 1.2448/1.2525 pair.
 What is grid-robust: the floor value ≈ 1.245–1.2525, and the fact that
@@ -216,13 +227,25 @@ saturation-per-iteration is slower (§5).
 
 ## 8. Thread bit-identity spot check at N = 192
 
-{{PEND_BITCHECK_SECTION}}
+A 20-iteration seeded over-spun descent at N = 192 (hedgehog + bump +
+halo shell, the K-D construction), full instrumented series + run
+metadata + final field bytes hashed under the bit contract:
+
+```
+threads=2: 0803fe446497060de0a0cd0de930515d70efd4558a9c362ff2bcbc76371509d8  (45.0 s)
+threads=4: 0803fe446497060de0a0cd0de930515d70efd4558a9c362ff2bcbc76371509d8  (25.4 s)
+```
+
+BIT-IDENTICAL — the G1 thread-identity contract holds at 8× the cells
+it was frozen at (and under farm co-tenancy, which is the point: no
+recorded number in this phase depends on thread count or load).
 
 Supporting replay evidence from the recovery itself: the `ctrlclock`
-static stage re-executed the killed run's static stage and reproduced
-its printed instruments digit-for-digit at every logged iteration
-({{PEND_REPLAY_NOTE}}), across distinct processes ~1 h apart — the
-layer's determinism contract exercised at 192³ scale.
+run re-executed the killed run's static stage and control stage and
+reproduced their printed instruments digit-for-digit at every logged
+iteration (static it 0–450, control it 0–500 — every R, I, κ, deg,
+halo, gnorm, dt, arrest count), across distinct processes ~1 h apart —
+the layer's determinism contract exercised end-to-end at 192³ scale.
 
 ## 9. Performance at scale (context, not a gate)
 
@@ -230,8 +253,7 @@ Quiet-window ANF hot-path cost at N = 192, 4 threads: 1.05–1.13 s/eval
 across the long runs (451-eval static: 475.0 s; 1601-eval main:
 1807.6 s), vs the task-sheet projection 1.24 s and the 10-iteration
 probe 1.258 s. The N = 192 main descent alone is ~10¹³-FLOP-class; the
-full phase's engine time is ≈ {{PEND_TOTAL_WALL}} min wall at 4 threads
-(§11.5). The 16·N³ pass-A flux buffer at N = 192 corner is ~920 MB;
+full phase's engine time is ≈ 97 min wall at 4 threads (§11.5). The 16·N³ pass-A flux buffer at N = 192 corner is ~920 MB;
 peak RSS ≈ 3 GB of 15 — the slab-staged pass A flagged in the G1
 RESULTS remains unnecessary at this scale and remains the prerequisite
 for N > 192.
@@ -244,7 +266,8 @@ Stated as measured facts for the coordinator's adjudication:
    monotone R descent, κ falling with I rising, halo fraction growing,
    control self-limiting with Estat flat, degree and floor guarded
    (footprint §3). Two-sidedness holds at N = 96 and N = 192
-   ({{PEND_TWOSIDED}}).
+   (at N = 192 the control's halo FALLS, −0.0020, while the over-spun
+   run's rises at every grid).
 2. **What the 8× refinement sharpens**: the corner engine's absolute
    accuracy — at N = 192 it passes the 1%-sector/5e-3-degree gate
    class it failed at N = 96, with measured O(h²) ratios 3.8–4.0, and
@@ -293,10 +316,14 @@ Stated as measured facts for the coordinator's adjudication:
    recovery segment (those walls flagged; all non-wall numbers are
    scheduling-independent by construction). Thread count for the
    recovery stayed 4 (bits independent of it; K-D).
-5. **Wall budget**: total engine wall ≈ {{PEND_TOTAL_WALL}} min vs the
-   sheet's ≤ ~90 min — the overage is the killed run's lost control
-   stage plus its recovery re-run of static (≈ 18 min), and the main
-   cap doubling (≈ 19 min). Stated rather than hidden.
+5. **Wall budget**: total engine wall ≈ 97 min (probes 45 s; n96 281 s;
+   n128 547 s; killed n192 proto ≈ 2883 s; recovery 1986 s; bitcheck
+   70 s) vs the sheet's ≤ ~90 min — the overage is the killed run's
+   lost control stage plus the recovery's contended static re-run
+   (≈ 26 min combined, of which ≈ 16 min is pure re-execution/
+   contention cost); without the kill the phase lands at ≈ 80 min
+   including the deliberate main-cap doubling. Stated rather than
+   hidden.
 6. **No control at N = 128**: the box axis needs the main channel only
    (the 4A box-sanity protocol likewise ran main only).
 
