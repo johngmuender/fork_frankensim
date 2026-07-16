@@ -506,11 +506,13 @@ def gates():
         A3J = json.load(fh)
     out["refs"] = dict(solA_c=AJ["solA"]["c_paper"],
                        solB_c=AJ["solB"]["c_paper"],
-                       axi3_R2_sat_c=A3J["R2_saturated"]["joint"]["c_paper"]
-                       if "R2_saturated" in A3J else None)
+                       axi3_R2_sat_c=A3J["R2"]["saturated"]["c_paper"],
+                       axi3_R2_sat_hh_c=A3J["R2"]["saturated_hedgehog"]
+                       ["c_paper"])
     print("   G-C frozen refs: step-2 solA c=%.5f, solB c=%.5f, axi3 R2 "
-          "saturated c=%s" % (out["refs"]["solA_c"], out["refs"]["solB_c"],
-                              out["refs"]["axi3_R2_sat_c"]))
+          "saturated c=%.5f (hedgehog core %.5f)"
+          % (out["refs"]["solA_c"], out["refs"]["solB_c"],
+             out["refs"]["axi3_R2_sat_c"], out["refs"]["axi3_R2_sat_hh_c"]))
     return out
 
 
