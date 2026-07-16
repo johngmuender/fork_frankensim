@@ -393,7 +393,7 @@ def quartic_model():
                                      res["gate_GQ1"]["dH"]))
     # radial solve of the quartic model (N-ladder)
     prof = {}
-    for N, rmax in ((3000, 9.0), (6000, 9.0), (6000, 12.0)):
+    for N, rmax in ((3000, 12.0), (6000, 12.0), (6000, 16.0)):
         r = rs.make_grid(N, rmax)
         f, E, sect, gmax = solve_profile_gen(r, rs.init_profile(r),
                                              1.0, 1.0, 0.0, 1.0)
@@ -403,7 +403,7 @@ def quartic_model():
               "E0 %.5f; E6[coeff 0] %.5f)  gmax=%.1e  virial "
               "tE2-tE4+3E0=%.2e"
               % (N, rmax, E, E2, E4, E0, E6, gmax, E2 - E4 + 3.0 * E0))
-    r, f, E, sect, gmax = prof[(6000, 12.0)]
+    r, f, E, sect, gmax = prof[(6000, 16.0)]
     res["radial"] = dict(E=E, sect=list(sect), gmax=gmax,
                          ladder={"%d_%g" % k: v[2] for k, v in prof.items()})
     fspl = ax.CubicSpline1D(r, f)
