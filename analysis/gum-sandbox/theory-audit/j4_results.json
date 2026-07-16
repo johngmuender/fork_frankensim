@@ -1,0 +1,77 @@
+{
+ "_notice": "WITHIN-MODEL ONLY; analysis layer; J4 = J2 defect D3 (multi-eps saturated re-scan)",
+ "s0_provenance": {
+  "exact_anchor": 3.201124679669711,
+  "j2_points": {
+   "axi4_ring_t0": 3.2034586344889466,
+   "axi4_ring_eps0.05": 3.385470219448016,
+   "s_exact_base": 1.1517548251030663,
+   "s_engine_base": 1.1363442187110095
+  },
+  "i1_at_0.05": {
+   "c_sat": 3.382842568766411,
+   "s_exact_base": 1.135433647303651
+  },
+  "method_class_note": "METHOD-CLASS NOTE (measured): J2's linear fit used the two axi4 ring-saturated engine points (t->0 and eps=0.05). i1's curve is the 12-mode axi3-basis saturated closure on the eps-dial hedgehog base — same objective G_t, different family. At eps=0.05: axi4 3.385470 vs i1 3.382843 (i1 sits -7.76e-04 rel, the TIGHTER upper bound); exact-base slope readings 1.152 (axi4) vs 1.1354 (i1). Both are family upper bounds on the true G_t*; within-family consistency is what decides the EXPONENT, family spread decides the AMPLITUDE band.",
+  "i1_curve_conv_flags": [
+   {
+    "eps": 0.02,
+    "conv": 4.3009278135941464e-05,
+    "floor_ok": true
+   },
+   {
+    "eps": 0.05,
+    "conv": 6.484103259307705e-05,
+    "floor_ok": true
+   },
+   {
+    "eps": 0.1,
+    "conv": 0.00010317190218522843,
+    "floor_ok": true
+   },
+   {
+    "eps": 0.2,
+    "conv": 0.00014439459222226336,
+    "floor_ok": true
+   },
+   {
+    "eps": 0.5,
+    "conv": 0.0002732428173665147,
+    "floor_ok": true
+   },
+   {
+    "eps": 1.0,
+    "conv": 0.0005225044728215389,
+    "floor_ok": true
+   },
+   {
+    "eps": 1.5,
+    "conv": 0.0006933929306383035,
+    "floor_ok": true
+   },
+   {
+    "eps": 2.0,
+    "conv": 0.000820832750900613,
+    "floor_ok": true
+   }
+  ]
+ },
+ "gate_table": [
+  {
+   "gate": "G0a exact anchor c_sat(0) = 64*sqrt(2)/(9*pi) = 3.2011247",
+   "pass": true,
+   "detail": "= 3.2011247"
+  },
+  {
+   "gate": "G0b J2's two points are axi4 ring_t0/ring_eps = 3.203459 / 3.385470",
+   "pass": true,
+   "detail": "3.203459 / 3.385470"
+  },
+  {
+   "gate": "G0c J2 slope reproduction: s_exact = 1.152 (engine-base 1.136)",
+   "pass": true,
+   "detail": "s_exact = 1.1518, s_engine = 1.1363"
+  }
+ ],
+ "runtime_s": 0.002498149871826172
+}
