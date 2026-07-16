@@ -1,0 +1,366 @@
+[
+  {
+    "audit": "T2 audited the five surviving pillars of the GUM ħ-closure at argument level, against the paper as written (Secs. IV, VII.F, VIII.D; Apps. E, F, G; AUD-15) and the campaign's F-R4/F-R5 record. Method: formalize each proof, re-derive every algebraic step, and settle checkable steps by computation (numpy/scipy; scripts in scratchpad t2_checks.py, t2_convention.py). Headline results: (a) T-B1's algebra w·j(1−j)=1, the j=1 pole, the j=3/2 sign obstruction, and the anchors (V=√2, ¼, 𝔠(g)=2√(gê𝔦₀)) are SOUND and were re-verified; w is a positive REAL (not an integer) whose positivity follows from energy/inertia positivity — the discreteness input is entirely in j. Two premise problems found: the unargued semiclassical identification L=jħ (under the corpus's own reference tradition's L²=j(j+1)ħ² the selection of j=½ survives — computed: a=√(j(j+1))<1 only at j=½ — but the anchors become V=2.73, E_rot/E=0.433, 𝔠=3.69, so the VALUE is convention-pinned; the ⟨r1⟩ code's measured ¼ and 1.409 confirm it implements the semiclassical choice); and a scope gap: the j≥2 exclusion is kinematic (E_field≤0, family-free) but the j=1 and j=3/2 exclusions use the dilation-virial structure of the restricted V×SDiff family that F-R5 proved non-exhaustive, so the universal 'every species is spin-½' and the spin-3/2 kill clause are family-bound as proven. Circularity: IV.B/IV.H.1(iii) misattribute j=½ to Theorem c″ (which at most constrains parity) while T-B1, which actually selects j=½, presupposes the closure — as printed a citation circle (defect-candidate); a valid non-circular ordering was exhibited (quantization gives j∈½ℤ, IV.H.1(i)-(ii) give the clock j-free, T-B1's window selects ½, c″ certifies the fermionic sector); the residual unrepaired premise is IV.H.1(i)'s ontological phase≡rotation identification (GAP). (b) Theorem c″: the unstratified FR core (π₄(S³)=ℤ₂, Williams rotation loop) is sound imported mathematics; the stratified Route 1 is a GAP-sketch (fibration local-triviality, base π₁, the ℤ₂×A product structure, and the top-cell obstruction step are named not proven; the TN-series full proofs are absent from the archive); Route 2 is NOT-AUDITABLE-FROM-TEXT (Mayer–Vietoris computes homology, not π₁ — no decomposition, groups, or connecting-map trace given; only a H₁+character reading could be type-correct and none is supplied); and the conclusion 'dressed knots ARE fermions' is a DEFECT-CANDIDATE as worded: π₁=ℤ₂ makes fermionic quantization consistent, never forced — exactly the grade the corpus itself assigns the isomorphic Hopf case (flag F12, 'consistent, not forced'), an internal grading inconsistency; the repair (dynamical sector selection via T-B1: no integer-j solution exists, so hosting a stationary knot forces the −1 sector) is exhibited but inherits (a)'s family-scope gap; F.3's exchange-rotation lift ('separations bounded below') is asserted without construction (GAP). (c) IV.G.1/G.2 are SOUND as scoped: band-blind Bogomolny conditional on the flagged constitutive choice F5′; the self-averaging order O((a/R*)²) is standard two-scale, and its ≤10⁻²⁶ ceiling is arithmetically consistent with the corpus's own inputs (computed (0.511 MeV/10¹⁹ eV)² = 2.6×10⁻²⁷; Bragg a ≈ 6×10⁻²⁶ m). IV.G.3 is a GAP: the carrier-locked exclusion is generic not universal (nothing excludes a locked branch coincidentally satisfying the admission equation 4ê_n g_n 𝔧_n = 𝔠², which is the corpus's own species criterion), and its teeth borrow the entrainment half of (e); the corpus's 'asserts…corroborates' wording is nearly the right grade already. (d) The commissioned convention question is settled affirmatively for the rejection: the rigid rung (κ²=7/6 exactly, re-verified with 𝔠=1.6765) is superradiant under BOTH κ conventions and against every threshold in the campaign's measured locked-channel family — 1.0801 exceeds 1/√2, √(7/12), √3/2, and the corpus's own measured onset 1.000±0.004 (by >3σ of that run); the only channel above it (polar s=|cos|, 1.118) is ruled out as operative by the corpus's own control measurement; under the ω/μ translation the rung lands at exactly √(7/3)=1.5275 (a curious exact identity with the corpus's ω_th). But the surrounding selection narrative ('deformation until κ<1 ⟹ in-gap character derived') is a DEFECT-CANDIDATE: applied in the convention the closure algebra itself fixes, the same criterion rejects every 'consistent' rung (0.764–0.935 all above 1/√2; the deep-BPS endpoint sits EXACTLY at the s=sin² locked threshold √(7/12)) — F-R5 restated at argument level; the table is coherent only under an unstated direction-lock and channel restriction. (e) IV.H.3's half-power error signal is SOUND and was re-derived exactly: on E(L)=ê√(1+x) the exponents are ±1/(1+x), equal to ±½ at the fixed point x=1 (numerically ±0.500000); the derivation needs only stationarity (envelope theorem), so it survives F-R5. The entrainment/attractor half is a GAP: no analytic sign theorem for the Adler torque exists (sign established only numerically in a toy class, marginal in the integrable limit by the corpus's own honest print), and within-model the attractor premise is undermined by F-R5's saddle — a displaced state has a competing halo-shedding channel absent from the analysis — unless the same unstated lock is imported; the τ_𝔥 number was already corrected by the corpus's AUD-15 (F-A15-3). Cross-cutting conclusion: every component that replicated numerically is a kinematic/algebraic skeleton and is genuinely sound (several verified beyond the corpus's own statements), while every step that quantifies over configuration space (a-scope, b-stratified, d-selection, e-attractor) gaps or fails for the single root cause F-R5 isolated numerically: the proofs live on a restricted family/lock the prose does not declare. Pillar (b) carries the one additional independent defect class (sector-forcing vs the corpus's own F12 standard). Uncertainty printed: c″ verdicts are bounded by the absent TN proofs; the (a)/(d)/(e) F-R5-coupled charges would partially discharge if the corpus's frozen ⟨r1⟩ code exhibits an explicit lock term (axi3 §5 path (a)), while the misattribution, sector-forcing, and convention-dependence findings are discharge-independent.",
+    "arguments_examined": [
+      "T-B1 spin-selection theorem (Sec. IV.I): w·j(1−j)=1 algebra, j=1 pole, j=3/2 impossibility, anchors V=√2 / E_rot/E=¼ / admission normalization",
+      "T-B1 premises: definition and positivity of w; provenance of half-integrality; L=jħ vs L²=j(j+1)ħ² identification; family scope of the 1≤j<2 exclusions",
+      "Closure-system circularity: IV.B (C-spin) and IV.H.1(iii) citations of Theorem c″ vs T-B1's dependency on the closure; IV.H.1(i) phase≡rotation identification",
+      "Theorem c″ Route 1 (fibration/obstruction over defect moduli, π₄(S³)=ℤ₂ top cell, Williams-class rotation sign)",
+      "Theorem c″ Route 2 (Mayer–Vietoris connecting-homomorphism claim)",
+      "c″ conclusion strength: fermions forced vs consistent (contrast with corpus flag F12 / Hopf sector); F.3 exchange–rotation lift to the stratified space",
+      "Theorem IV.G.1 band-blind Bogomolny (context for G.2/G.3, conditional on F5′)",
+      "Theorem IV.G.2 core self-averaging (two-scale homogenization, ≤10⁻²⁶ ceiling, Bragg-scale arithmetic)",
+      "Proposition IV.G.3 carrier-locked exclusion (genericity of 𝔠√𝔧_n ≠ 𝔠; dependence on entrainment bandwidth)",
+      "IV.D radiative self-consistency: rigid rung κ²=7/6 superradiant rejection under both κ conventions (axi3 §3 √2 tension) and against the axi4_locked threshold family; the 'consistent' rungs under uniform application of the criterion",
+      "Theorem IV.H.3: envelope-theorem half-power error signal (±½ exponents) and the Adler-torque entrainment/attractor claim, including its interaction with F-R5's saddle finding"
+    ],
+    "verdicts": [
+      {
+        "argument": "T-B1 core algebra (w·j(1−j)=1; V²=1/(1−j); j=1 pole; j=3/2 sign obstruction; j=½ anchors)",
+        "verdict": "SOUND",
+        "reason": "Re-derived end to end and confirmed numerically (𝔠(1)=2.053288, 𝔠(3/2)=2.514754=128√42/105π, κ=√(7/8g), w=4 at j=½); matches tier0 gate A8 and AUD-15 V15.1. Valid given premises P1–P5."
+      },
+      {
+        "argument": "T-B1 premise: w a positive integer?",
+        "verdict": "SOUND",
+        "reason": "Corpus never requires integrality — w≡𝔠²/(ê𝔦₀g) is a positive real; positivity follows from 𝔠²>0, ê≥ê₀>0 (Bogomolny), 𝔦₀>0 (integral of a square), g∈[1,3/2] (Thm IV.4). Discreteness enters only through j."
+      },
+      {
+        "argument": "T-B1 premise: L=jħ identification",
+        "verdict": "GAP",
+        "reason": "Unargued convention. Computed sensitivity: under L²=j(j+1)ħ² the j=½ selection survives (unique a=√(j(j+1))<1) but anchors change to V=2.73, E_rot/E=0.433, 𝔠(3/2)=3.69 — the value side is convention-pinned; ⟨r1⟩'s measured ¼ and 1.409 show the code uses the semiclassical choice, consistently but without justification against the corpus's own Skyrme-reference tradition."
+      },
+      {
+        "argument": "T-B1 universal conclusion ('every elementary massive knot species is spin-½'; spin-3/2 kill clause)",
+        "verdict": "GAP",
+        "reason": "j≥2 exclusion is family-free (E_field≤0, kinematic); j=1 and j=3/2 exclusions use the dilation-virial structure of the restricted V×SDiff family, which F-R5 proved non-exhaustive of the corpus's own variational problem — the proof does not cover the enlarged (halo) space where the corpus's own minimizer runs."
+      },
+      {
+        "argument": "Closure-system circularity (IV.B/IV.H.1(iii) ↔ c″ ↔ T-B1)",
+        "verdict": "DEFECT-CANDIDATE",
+        "reason": "As printed, IV.H.1(iii) and IV.B attribute j=½ to Theorem c″, which only constrains sector consistency; the actual selector T-B1 presupposes the closure system — a citation circle. A valid non-circular ordering exists from the corpus's own parts (exhibited in the memo §a.5) — the defect is in the printed dependency structure, not in the repaired architecture; the residual unproved premise is IV.H.1(i)'s phase≡mechanical-angle identification (GAP)."
+      },
+      {
+        "argument": "Theorem c″, unstratified FR core",
+        "verdict": "SOUND",
+        "reason": "π₄(S³)=ℤ₂ and the nontriviality of the 2π-rotation loop (Williams 1970) are correct imported mathematics; the 'undressed corollary' stands."
+      },
+      {
+        "argument": "Theorem c″, Route 1 (stratified fibration/obstruction)",
+        "verdict": "GAP",
+        "reason": "Four load-bearing steps are named, not proven: local triviality of the fibration over defect moduli; the base's own π₁ (never computed, folded into 'A'); the split product structure ℤ₂×A; the top-cell obstruction claim and rotation-covariant-meridian step. The cited TN-series full proofs are absent from the auditable archive."
+      },
+      {
+        "argument": "Theorem c″, Route 2 (Mayer–Vietoris)",
+        "verdict": "NOT-AUDITABLE-FROM-TEXT",
+        "reason": "MV computes homology, not π₁ — 'connecting homomorphism lands the rotation class' is not type-correct for a fundamental-group statement as written; a legitimate H₁+sign-character reading would require the stratum decomposition, the three H₁ groups, and the class trace, none of which appears. Missing: the entire computation."
+      },
+      {
+        "argument": "c″ conclusion 'identical dressed knots ARE fermions' [DF-forced]",
+        "verdict": "DEFECT-CANDIDATE",
+        "reason": "π₁⊇ℤ₂ yields two consistent quantization sectors; topology forces the exchange–rotation correlation, never the −1 value. The corpus itself grades the isomorphic Hopf case 'consistent, not forced' (flag F12) — internal grading inconsistency. Repair exhibited (T-B1 dynamical sector selection: no integer-j solution exists), inheriting (a)'s family-scope gap; F.3's lift ('separations bounded below') additionally asserted without construction (GAP)."
+      },
+      {
+        "argument": "IV.G.1 band-blind Bogomolny + IV.G.2 core self-averaging",
+        "verdict": "SOUND",
+        "reason": "Sound as scoped: G.1 conditional on the flagged constitutive choice F5′ with the 'up to O(ε)' attainment qualifier; G.2 is standard two-scale homogenization with standard unstated regularity premises, and its ≤10⁻²⁶ ceiling is arithmetically consistent with the corpus's own scales (computed 2.6×10⁻²⁷; Bragg a≈6×10⁻²⁶ m)."
+      },
+      {
+        "argument": "IV.G.3 carrier-locked exclusion",
+        "verdict": "GAP",
+        "reason": "Generic, not universal: no lemma excludes a locked branch coincidentally satisfying the admission equation (the corpus's own species criterion), and no bound on |𝔠_n/𝔠−1| for locked states is derived; the exclusion's dynamical teeth borrow the entrainment half of IV.H.3 (itself GAP). The corpus's 'asserts…corroborates (C2 null)' wording is close to the correct grade."
+      },
+      {
+        "argument": "IV.D rejection of the rigid rung as superradiant",
+        "verdict": "SOUND",
+        "reason": "κ²=7/6 re-verified; the rejection is convention-robust — 1.0801 exceeds every operative threshold under both κ conventions (1/√2, √(7/12), √3/2, and the corpus's own measured onset 1.000±0.004 by >3σ); the sole higher channel (polar, 1.118) is excluded as operative by the corpus's own control run; under the ω/μ translation the rung sits at exactly √(7/3)>1. The sqrt2 tension (axi3 §3) does not rescue the rigid rung."
+      },
+      {
+        "argument": "IV.D selection narrative ('deformation until κ<1 ⟹ in-gap character derived'; the convergence table's 'consistent' column)",
+        "verdict": "DEFECT-CANDIDATE",
+        "reason": "The criterion applied uniformly in the convention the closure algebra itself fixes rejects every accepted rung too (0.764–0.935 all above the surviving tilt/ring threshold 1/√2; the deep-BPS endpoint is exactly marginal at the s=sin² locked threshold √(7/12)) — axi3 §3 proved at least one corpus claim fails in any single convention. Coherent only under an unstated direction-lock plus channel restriction; the consistency ring's third link is broken as written (F-R5 at argument level)."
+      },
+      {
+        "argument": "IV.H.3 half-power error signal (±½ exponents, envelope theorem)",
+        "verdict": "SOUND",
+        "reason": "Re-derived exactly on E(L)=ê√(1+x): exponents ±1/(1+x), equal to ±½ at the fixed point x=1; confirmed numerically (±0.500000); requires only stationarity, not minimality, so it survives F-R5; monotone sign-faithfulness holds along the whole family (stronger than printed)."
+      },
+      {
+        "argument": "IV.H.3 entrainment/attractor (Adler torque, λ, ħ as dynamically selected order parameter)",
+        "verdict": "GAP",
+        "reason": "No analytic sign theorem for the locking torque — restoring sign is established only numerically in a toy class and is marginal in the integrable limit (corpus's own printed boundary); within-model the attractor premise is undermined by F-R5's saddle (competing halo-shedding channel) unless the unstated lock is imported; τ_𝔥 already corrected by the corpus's F-A15-3."
+      }
+    ],
+    "checkable_items": [
+      "Closure exact constants: ê₀=64/15π, 𝔦₀=256/105π, ê₀/𝔦₀=7/4, 𝔠₀²=6ê₀𝔦₀=(128√42/105π)², κ(g)=√(7/8g) — verified in scratchpad/t2_checks.py; re-checkable by direct quadrature of 4s⁴(1−s²) etc.",
+      "T-B1 family: w·j(1−j)=1, V²=1/(1−j), E_rot/E=j/2 for j∈{0.25,0.5,0.75,0.999}; no positive-w solution at j≥1 — symbolic/numeric, done (t2_checks.py)",
+      "Convention sensitivity: with a=√(j(j+1)), unique half-integer solution still j=½ (a=0.866<1; j=1→1.414, j=3/2→1.936); alternative anchors V=2.7321, E_rot/E=0.4330, 𝔠(g=3/2)=3.6914 vs ⟨r1⟩ measured 0.2500±0.0002 and V=1.409±0.010 — done (t2_convention.py); a follow-on could solve the full non-rigid ⟨r1⟩-class closure under the j(j+1) convention on fs-gum-statics to get its ε=0.05 tuple",
+      "Kinematic vs family-bound exclusion boundary: E_field≤0 iff a≥2 (semiclassical j≥2; quantum j(j+1)≥4) — one-line check, done; follow-on: re-pose the j=1 and j=3/2 closure on the halo-saturated branch (axi3 saturated formulation, 𝔠=(4/π)G*) to test whether the exclusion survives the enlarged space",
+      "Rigid rung: κ²=2ê₀/3𝔦₀=7/6, 𝔠=2𝔦₀√(7/6)=1.67650, 8.012% above band edge; √2·√(7/6)=√(7/3)=1.52753 exactly — done (t2_checks.py)",
+      "Threshold family placements: rigid 1.0801 vs {1/√2, √(7/12), √3/2, 1.0000, √(5/4)} and accepted rungs {0.9354, 0.802, 0.7638} vs the same menu; deep-BPS κ₀=√(7/12) identical to the s=sin² locked threshold (⟨sin²θ⟩_w=6/7) — done, cross-checked against axi4_locked_RESULTS.md engine measurements (≤3×10⁻⁵)",
+      "Entrainment exponents: d ln ω_mech/d ln 𝔥 = 1/(1+x), d ln ω_phase/d ln 𝔥 = −1/(1+x) on E(L)=ê√(1+x); fixed point x=1 from E=2L·dE/dL; central-difference confirmation ±0.500000 at δ=10⁻³ — done (t2_checks.py); follow-on: verify ±½ empirically on the fs-gum-statics non-rigid solver by displacing 𝔥 at fixed g",
+      "IV.G.2 ceiling arithmetic: (0.511 MeV/10¹⁹ eV)²=2.61×10⁻²⁷ ≤ 10⁻²⁶; Bragg a=πħc/10¹⁹ eV=6.2×10⁻²⁶ m — done (t2_checks.py)",
+      "Machine-checkable follow-on for (b): compute π₁ contribution of the defect-moduli base for straight-line disclinations (space ≃ lines in ℝ³) and test the ℤ₂×A split on a finite-dimensional model; not attempted here (outside numeric scope)",
+      "Machine-checkable follow-on for (e): sign of the locking torque in the integrable limit via the fs-gum-cosserat B2/B4 coupled toy (corpus's ⟨r2⟩ class) — corpus prints it marginal; a frozen-referee rerun would pin the class boundary"
+    ],
+    "memo_path": "analysis/gum-sandbox/theory-audit/T2_closure_pillars.md"
+  },
+  {
+    "audit": "T1 audited the four open NR gates at argument level, ran the settling computations, and wrote the memo. Headline: the corpus's self-declared replication gates are accurate in six of eight load-bearing steps, but miss two defect-candidates and one unflagged gap. (1) NR-A2b: the null-transport theorem (w1) is a GAP — 'stationary single-frequency' does not exclude helical streamlines, and |v|=c with axial flow gives r_perp <= lambda-bar, not =; the corpus's own NR-A1 graded the same step honestly as 'not yet a theorem'. The 3/4-Casimir step (w2) is a DEFECT-CANDIDATE: for any displacement operator dr = c*S (all Wigner-Eckart allows), Casimir/stretched-projection^2 = s(s+1)/s^2 = 3 at s=1/2, not 3/4; the printed 3/4 mixes 2S/hbar normalization on the projection face with S/hbar on the Casimir face, and the only reading that yields 3/4 ('extent'=peak-to-peak) contradicts Section 1's radius-lambda-bar ring. The s(s+1) vs (s+1)/2 degeneracy caveat itself is SOUND arithmetic. The w3 protection quartet is a GAP conditional on w1's exactness. (2) NR-D2: arithmetic spine recomputed independently — F-R1 confirmed (KE x25, conservative); two new minor slips found (lambda_dB printed ~1e2 fm is actually 3.3e3 fm at the stated v; sigma/m 5e18 corresponds to m~60f not the 16f used for KE in the same section) — both harmless to the verdict. The SDiff-reachability premise is a GAP, but direction-safe: F-R4's frozen-value lemma cuts BOTH ways — it undermines the screening mechanism's theorem-status (a reconciliation changes director values, and no compositional SDiff pullback changes a value distribution — the exact defect-class F-R4 proved against G.5), while STRENGTHENING the kill (no exactly-flat channel can reorient values, so the epsilon-lifted cost is a floor, closing escape gamma rigorously); every disposition of the gap lands on KILL, with margins 8-10+ orders. The web channel's cost coefficient is NOT-AUDITABLE-FROM-TEXT. (3) NR-D1b: arithmetic all verified (8pi/3=8.378, x1.496 clearance, S=201 vs 92); the floor is a GAP with the two corpus-flagged inputs (c_h,min, r_min — plus a checkable subtlety: one-constant elasticity makes radial and hyperbolic hedgehogs degenerate at 8pi, so the [8pi/3,8pi] band encodes unstated anisotropy) AND one unflagged gap: Section 1(iii) admits negative O(1)-fractional binding corrections while the theorem asserts all contributions positive; the eternal verdict needs binding < 33% of E1 at the epsilon-tail's bottom and no such bound is given. F-D1b-2's one-sided-bound logic is SOUND conditional on the floor. (4) NR-K2b: factorization is a GAP (Q-independence of the texture overlap asserted, not derived; the corpus's own gate names it correctly). NR-K3a: DEFECT-CANDIDATE — (i) the printed spectral formula m(k)=m_bar*delta3(k)+fluctuations at k~1/L is false for line-supported density (sparse tubes are broadband to k~1/a); (ii) the observable is quadratic in the amplitude: rate = <|A|^2>, and with kernel range ~2 fm << tube spacing ~micron, <|A|^2>/|<A>|^2 ~ 1/phi ~ 1e14 (a=1/f) to 2.5e16 (thin tubes) — the 'negligible' fluctuation term dominates by 14+ orders, in the OPPOSITE direction from the audit's branch-(b) collapse, so both original fork branches may be wrong and the four-cell collapse is unsupported. Printed uncertainty: this is an estimate-backed challenge (static web, linear insertion, uniform tube support assumed); motional narrowing or a smooth bulk component of m would rescue it — none is in the text. Seven numeric follow-ons specified, the decisive cheap one being a Monte-Carlo line network convolved with the 2-fm kernel for K3a, and an SDiff-projected two-texture relaxation for NR-D2's P4.",
+    "arguments_examined": [
+      "NR-A2b Theorem A2b-1 (w1): null transport pins all streamlines to the causal cylinder, <r2>_j = lambda-bar^2 exactly",
+      "NR-A2b Theorem A2b-2(b) (w2): <r2>_rho/lambda-bar^2 = s(s+1) = 3/4 via the Casimir face of the displacement operator",
+      "NR-A2b F-A2b-2' caveat: s(s+1) and (s+1)/2 degenerate only at s=1/2, harmless by Thm 12.4",
+      "NR-A2b w3: the protection quartet reroutes the sealed eps^(2/3) shell law into the Casimir face",
+      "NR-D2 hard-wall criterion + F-D2b-1 screening-shortfall kill (V_int vs KE, sigma/m geometric)",
+      "NR-D2 P4: SDiff-reachability of the reconciliation field => eps-lifted cost (cross-examined against campaign F-R4)",
+      "NR-D2 Channel 2: web reconnection/pinning over-determination",
+      "NR-D1b F-D1b-1: signed-decomposition lower bound G_c >= 8 => W-eternal",
+      "NR-D1b F-D1b-2: one-sided bound decides the three-fate razor",
+      "NR-K2b F-K2b-1: amplitude factorization A(Q) = line vertex(Q) x Z_shadow^(1/2)(Q-independent)",
+      "NR-K3a Step 1 (F-K3a-2): m_nu and the 0nubb insertion are one object at two momenta",
+      "NR-K3a Step 2 (F-K3a-1): zero-momentum theorem — line-support and bulk-support amplitude-identical in the mean"
+    ],
+    "verdicts": [
+      {
+        "argument": "NR-A2b w1 null-transport theorem (A2b-1)",
+        "verdict": "GAP",
+        "reason": "Premises (i)-(ii) do not exclude helical streamlines: |v|=c with axial component v_z gives r_perp = sqrt(c^2-v_z^2)/omega < lambda-bar; the azimuthal-only clause is asserted, never derived. Route B's claimed independence is contradicted by NR-A1 sect. 3.3 ('the routes share the cylinder lemma'), and NR-A1 itself graded the exactness 'not yet a theorem'."
+      },
+      {
+        "argument": "NR-A2b w2 3/4-Casimir calibration (A2b-2b)",
+        "verdict": "DEFECT-CANDIDATE",
+        "reason": "For any dr = c*S (all that Wigner-Eckart permits), <S^2>/(max <S_z>)^2 = s(s+1)/s^2 = 3 at s=1/2, not 3/4; the printed 3/4 compares faces normalized with different operators (2S/hbar projection vs S/hbar Casimir); the sole 3/4-yielding reading (projection 'extent' = peak-to-peak = lambda-bar) contradicts sect. 1's radius-lambda-bar ring. The 3/4 was inverted from data first (WS-A v0.2), so the free convention lands on a known target. Demotes to GAP only if an unseen VII.F construction reconciles the halving."
+      },
+      {
+        "argument": "NR-A2b F-A2b-2' degeneracy caveat",
+        "verdict": "SOUND",
+        "reason": "s(s+1)=(s+1)/2 iff s=1/2 (verified numerically; laws separate at s>=1); given Thm 12.4 (spin selection, campaign-replicated), the ambiguity is empty within the model. It concerns which invariant law only, and does not cure the calibration defect."
+      },
+      {
+        "argument": "NR-A2b w3 protection quartet / seal opening",
+        "verdict": "GAP",
+        "reason": "Conditionally coherent: if A2b-1's null ring is exact (zero radial spread of j), shell corrections cannot enter the moment — but 'cancels identically in the projection face' is asserted with no face-decomposition of the sealed law, and the condition is itself w1's gap. Demand-table arithmetic (1.4e-10 at p=2/3, ~10 orders) verified against WS-A4; the 3e-21/1e-27 bounds are unaudited imports."
+      },
+      {
+        "argument": "NR-D2 hard-wall criterion + kill F-D2b-1",
+        "verdict": "SOUND",
+        "reason": "Valid given premises (classicality holds with 6 orders margin even after correcting the lambda_dB print; epsilon band imported as frozen); all margins recomputed: f*p=7.60e7, eps-bound 2.6e-12 (printed KE) / 1.05e-13 (true KE), shortfalls 3.8e6-2.3e10, sigma/m 5e18 class. F-R1 (x25 KE slip) confirmed and conservative — every reading tightens the kill. Two new minor prints found (lambda_dB ~1e2 fm is actually 3.3e3 fm at stated v; sigma/m uses m~60f vs KE's 16f), both harmless."
+      },
+      {
+        "argument": "NR-D2 SDiff-reachability => eps-lifted screening cost (P4)",
+        "verdict": "GAP",
+        "reason": "Reachability asserted in one parenthesis, never constructed. F-R4 bears both ways: a reconciliation changes director values, and compositional SDiff pullback cannot change a value distribution (the exact defect-class F-R4 proved against G.5) — so the mechanism is not theorem-grade; but the same frozen-value lemma makes the kill MORE robust (no exactly-flat channel can reorient values => the lifted cost is a floor, closing escape gamma). Direction-safe: both dispositions of the gap land on KILL by >=8 orders. Transfer caveat: F-R4 is proven in the flagship's sector conventions; the murk-sector soft manifold is not defined precisely enough for a literal transfer."
+      },
+      {
+        "argument": "NR-D2 Channel 2 (web pinning)",
+        "verdict": "NOT-AUDITABLE-FROM-TEXT",
+        "reason": "The per-crossing reconnection cost '~eps*f-class' has no derivation in the instrument or cited upstream; the KE comparison is arithmetic-consistent but the coefficient's provenance is unrecoverable. The corpus itself files the channel as moot-but-printed."
+      },
+      {
+        "argument": "NR-D1b F-D1b-1 core-energy floor => W-eternal",
+        "verdict": "GAP",
+        "reason": "Arithmetic verified (8pi/3=8.378; x1.496 clearance; S=201 vs 92). Three gaps: c_h,min=8pi/3 is an [IM] import (and one-constant elasticity makes radial/hyperbolic hedgehogs degenerate at 8pi, so the band encodes unstated anisotropy); r_min~1/f is the corpus's flagged fail-soft assumption (flag honest, logic valid); and — unflagged — sect. 1(iii) admits negative O(1)-fractional binding corrections while the theorem claims all contributions positive: the eternal verdict needs |E3| < 0.33*E1 at the eps-tail's bottom, and no quantitative bound is given (the Hessian citation bounds nothing)."
+      },
+      {
+        "argument": "NR-D1b F-D1b-2 one-sided-bound fate logic",
+        "verdict": "SOUND",
+        "reason": "Conditional on F-D1b-1: 'a one-sided bound collapses a three-window question when the entire uncertain range sits on one side' is valid inference; consequence (5)'s arithmetic (G_m >= 16, sigma/m eased x2-8) is consistent. Inherits the floor's gaps and nothing else."
+      },
+      {
+        "argument": "NR-K2b F-K2b-1 factorization",
+        "verdict": "GAP",
+        "reason": "The Q-independence of Z_shadow (overlap of Q-dependently boosted micron textures) is asserted via mechanism and WS-A analogy, not derived — exactly the content a factorization theorem must prove. The corpus's self-declared replication window names this gap correctly and completely for K2b; Route B items are census assertions."
+      },
+      {
+        "argument": "NR-K3a Step 1 (one insertion, two momenta)",
+        "verdict": "SOUND",
+        "reason": "For a delocalized state over a statistically homogeneous background, the first-order mass eigenvalue is the spatial average of the mixing density — standard perturbation theory; the identification is definitionally coherent within the framework."
+      },
+      {
+        "argument": "NR-K3a Step 2 zero-momentum theorem (F-K3a-1)",
+        "verdict": "DEFECT-CANDIDATE",
+        "reason": "Two-part: (i) m(k)=m_bar*delta3(k)+fluctuations at k~1/L is false for line-supported density — sparse tubes have broadband power to k~1/a; (ii) the rate is <|A|^2>, not |<A>|^2, and with kernel range ~2 fm << spacing L~micron the variance dominates: enhancement ~1/phi = 1.1e14 (a=1/f=52.6 fm) to 2.5e16 (thin tubes) — the 'negligible (fm/um)-class' fluctuation exceeds the retained mean term by 14+ orders, in the OPPOSITE direction from branch (b)'s 1e-18 collapse; both fork branches may be wrong and sect. 3's four-cell collapse is unsupported. Estimate-backed, not proven: static web, linear insertion, uniform tube support assumed; motional narrowing or a smooth bulk m-component would rescue — neither is in the text, whose own caveat marks the joint but grades it negligible without the second-moment check."
+      }
+    ],
+    "checkable_items": [
+      "A2b calibration exhaust: tabulate <r^2>_rho/lambda-bar^2 over all conventions dr=c*S (c fixed by max-projection=lambda-bar, lambda-bar/2, or <dr^2>=lambda-bar^2) — symbolic/numpy, partially done here (yields 3, 1; 3/4 only via mixed normalization)",
+      "A2b-1 helical counterexample: construct explicit stationary single-frequency |v|=c field with v_z != 0 satisfying premises (i)-(ii) and <r_perp^2>_j < lambda-bar^2 — analytic + quadrature",
+      "NR-D2 P4: two-texture reconciliation solve on fs-gum-field/fs-gum-statics — relax overlapping mismatched double-twist axes under (a) full functional, (b) SDiff-projected moves; compare cost to eps*f^2*p and test the F-R4 frozen-value floor directly",
+      "NR-D1b c_h: integrate one-constant Frank energy for radial vs hyperbolic hedgehogs (confirm degeneracy at 8pi under E=c_h*K*r), then scan 2-3 elastic constants for the anisotropy needed to reach 8pi/3 — scipy quadrature",
+      "NR-D1b binding fraction: measure E3/E1 at pitch separation on an NR-D1-class engine configuration; eternal verdict needs < 1/3",
+      "NR-K3a second moment (decisive, cheap): Monte-Carlo static line network (spacing L, tube radius a), convolve with 2-fm double-propagator kernel, compute <|A|^2>/|<A>|^2 across (a, L, r); repeat with time-averaged kernel to price motional narrowing — numpy",
+      "NR-D2 minor prints for the tier-0 gauntlet: lambda_dB = hbar/(mv) = 3.29e3 fm at m=16f, v=1e-3c (corpus prints ~1e2 fm, matching v=1e-2c); sigma/m = 1.88e19 (m=16f) vs corpus 5e18 (m~60f) — both directions priced, verdicts unchanged"
+    ],
+    "memo_path": "/home/user/fork_frankensim/analysis/gum-sandbox/theory-audit/T1_NR_gates.md"
+  },
+  {
+    "audit": "T4 audit of the Omega paper's gravitation (Sec VI) and one-world (Sec VIII/VIII') sectors, argument-level and within-model only, with all pure-arithmetic steps machine-checked (python3/numpy, scratchpad/t4_checks.py; reproduced in the memo). Headline results: (1) Two DEFECT-CANDIDATES on printed proofs with the conclusions recoverable by repairs the corpus did not make — App. F.1's convexity proof of Lemma II.1 (engine of the pairs-only nucleation theorem) is false by explicit counterexample: det((1-t)I + t R_z(pi)) = 0 at t = 1/2 (verified numerically; the pi-twist map is an admissible deformation with det F = 1 everywhere), but the theorem's contrapositive survives via an elementary history-path degree argument; and VI.D's sign theorem expands the grand potential in mu while dropping the linear term -n0*delta-mu (nonzero exactly because the cancellation mechanism needs n0 != 0) — repairable by transcribing to Volovik's conserved q-variable where stationarity is the equilibrium condition. (2) One DEFECT-CANDIDATE on an evidence sentence: the (6.4) 'DESI direction check' cites (w0 > -1, w_a < 0) as favorable, but the family w = -1 + w-hat*Omega_m(z) projects to CPL w_a = +3*w-hat*Om0*(1-Om0) = +0.63*w-hat > 0 (numerically +0.36 with the beta = -0.3 memory term) — opposite sign; the cited pair is growth-anti-correlated at z >~ 0.4, the family's own printed kill direction, and this interacts with SWP Branch A's pre-bound rescue clause. Conversely the shape claim itself is SOUND and stronger than printed: for the pure alpha*H^2 tracker under separate conservation on a LambdaCDM background, w(z) = -1 + Omega_m(z) exactly (w-hat = 1), verified to grid precision. (3) The sector-headline Theorem VI.1 (slaved graviton cone) is SOUND given its premises, but App. E.6's one-line core w_s = N_s*Lambda_s^2*a1^(s) > 0 is a GAP: 'heat-kernel positivity' covers a0, not a1; standard Seeley-DeWitt a1 = tr(R/6 - E) is negative for xi > 1/6 scalars and Dirac-squared operators (4*(1/6 - 1/4) = -1/3), the Sakharov induced-G sign-indefiniteness is documented, and the sum includes knot band-edge sectors that are fermionic by the corpus's own Theorem c-double-prime. The UHECR pincer's arithmetic all checks (hbar*c/a = 1.973e19 eV at a = 1e-26 m; margin exactly 4.0 orders; species bounds span 2e-23 to 1e-16 around the quoted 1e-19) but has a coverage GAP: bounds on UHECR-probed species do not bound max over all summed sectors. (4) One-world: Lock 1 (Valentini) is SOUND given imports with the equilibrium hinge honestly grade-limited [IM+CAL] by the corpus itself; Lock 2's elliptic no-pole core is SOUND and (c/c_L)^5 = 1e-20 checks, but the exponent 5 presupposes unproven monopole/dipole non-radiation (fallback exponent 3 gives 1e-12); Theorem VIII.D.1 (reality-below-gap => even-analyticity => no omega^3 Abraham-Lorentz term) is SOUND as scoped, with E.4 correctly keeping Larmor in the gapless EM channel; Theorem VIII.1 (POVM order-independence via commuting local CP maps) is trivially SOUND, but the S3/A3 gate's forward biconditional has a quantifier GAP ('absent from every POVM proposal' does not exclude every POVM — hard-support spin-dependent distributions are POVM-realizable in principle); QFT-1/QFT-2 have a valid proof skeleton conditional on two debts the corpus itself prints (all-orders spacelike commutativity WS-QFT-2; POVM-record scoping F-A15-9) — the best self-flagged theorem in the audited set. (5) Gibbs-Duhem: the identity chain omega = -P_ext = 0 and the App. B.2 dust down-payment are SOUND, but the load-bearing premise — the gravitating vacuum source is the grand potential, not epsilon — is NOT-AUDITABLE-FROM-TEXT (pure Volovik-class import, no in-model derivation). Bonus arithmetic finding: VI.D's zero-point 'nightmare' figure >= 1e90 J/m^3 does not follow from its own a <= 1e-26 m (gives 3.2e78; 1e90 implies a = 1.33e-29 m) — rhetoric-only. New within-model cross-link: the nucleation threshold omega_th = sqrt(7/3)*omega0 = 1.5275 (arithmetic verified) inherits F-R5 unflagged — the campaign's saturated closure kappa = 1/sqrt(2) gives sqrt(2)*omega0 = 1.414 instead. Eight findings proposed for the coordinator's adjudication (F-T4-1..8), severities moderate to minor; no blocking defect found; credit side printed (12/12 arithmetic checks pass apart from the two flagged slips; the corpus pre-printed its own two largest one-world gaps).",
+    "arguments_examined": [
+      "VI.A Einstein-Cartan by theorem (KBKK dictionary import -> EC field equations)",
+      "Theorem VI.1 slaved graviton cone + App E.6 heat-kernel convexity core (w_s = N_s Lambda_s^2 a1^(s) > 0)",
+      "VI.C UHECR pincer chain (loop weights at cutoff; hbar*c/a; delta_UV <= 1e-19; GW170817 margin)",
+      "VI.D Gibbs-Duhem vacuum-energy cancellation + App B.2 dust down-payment",
+      "VI.D sign theorem (alpha > 0 from quadratic grand-potential expansion)",
+      "VI.D residual shape (6.4) w(z) = -1 + w-hat*Omega_m(z) and the tracking-pathology clause",
+      "VI.D DESI-era direction-check sentence (w0 > -1, w_a < 0 cited as favorable)",
+      "VIII.A conserved-exponential trilemma framing",
+      "VIII.D Lock 1: Valentini no-signalling theorem, premises as used (leaf-wise equivariance + III.D equilibrium rates)",
+      "VIII.D Lock 2: elliptic -1/k^2 no-pole argument + (c/c_L)^5 leakage bound",
+      "Theorem VIII.D.1 no-runaways even-analyticity of the gapped self-force kernel",
+      "Theorem VIII.1 POVM order-independence + Prop VIII.2 + the S3/A3 gate biconditional",
+      "Theorems QFT-1/QFT-2 nucleation covariance (triple padlock)",
+      "Theorem VIII'.1 pairs-only creation via Lemma II.1 / App F.1 convexity",
+      "Threshold (8'.2) omega_th = 2*kappa*omega0 = sqrt(7/3)*omega0 arithmetic + F-R5 contingency"
+    ],
+    "verdicts": [
+      {
+        "argument": "VI.A Einstein-Cartan by theorem",
+        "verdict": "GAP",
+        "reason": "The KBKK defect-geometry dictionary is a legitimate theorem-grade kinematic import, but the dynamics step (the induced action is EC-form: positive R-coefficient, no torsion kinetics) is delegated to the VI.B Sakharov sketch, which carries the E.6 a1-positivity gap; torsion non-propagation is asserted, not derived. Compliance arithmetic checks (1e54 vs 4e17 kg/m^3 = 36.4 orders)."
+      },
+      {
+        "argument": "Theorem VI.1 slaved graviton cone",
+        "verdict": "SOUND",
+        "reason": "Given w_s > 0, the convex-combination algebra and |Delta c_GW/c| <= max|delta_s| are valid (at most a factor-2 slop measuring against the B2 cone). The theorem is sound conditional on App E.6's premise."
+      },
+      {
+        "argument": "App E.6 positivity core (a1^(s) > 0 for all sectors)",
+        "verdict": "GAP",
+        "reason": "'Heat-kernel positivity' covers a0, not a1; Seeley-DeWitt a1 = tr(R/6 - E) is negative for xi > 1/6 scalars and for Dirac-squared operators (4*(1/6-1/4) = -1/3), the induced-G sign problem is standard, and the sum includes fermionic knot band-edge sectors (the corpus's own Theorem c''). Per-sector a1 computation is the missing, finite step."
+      },
+      {
+        "argument": "VI.C UHECR pincer",
+        "verdict": "GAP",
+        "reason": "All arithmetic verified (hbar*c/a = 1.973e19 eV at a = 1e-26 m; species bounds 2.2e-23..1e-16 span the quoted 1e-19; margin exactly 4.0 orders vs the round 1e-15). Missing step: bounds on UHECR-probed species pairs do not bound max_s|delta_s| over all summed substrate sectors (B3, B4, band-edges unprobed); the C1 flow gives a rate, not a common UV anchor, and partial one-sidedness weakens |delta| control in the mean."
+      },
+      {
+        "argument": "VI.D Gibbs-Duhem cancellation",
+        "verdict": "NOT-AUDITABLE-FROM-TEXT",
+        "reason": "The identity chain (omega = eps - mu*n = -P_ext; self-sustained => P_ext = 0) is exact and the App B.2 Bogomolny dust down-payment is sound; but the load-bearing premise — the induced-gravity vacuum source is the grand potential rather than eps — is a pure Volovik-class import with no in-model derivation anywhere in the paper or archive. Bonus arithmetic slip: '>= 1e90 J/m^3' does not follow from a <= 1e-26 m (gives 3.2e78; 1e90 implies a = 1.33e-29 m)."
+      },
+      {
+        "argument": "VI.D sign theorem (alpha > 0)",
+        "verdict": "DEFECT-CANDIDATE",
+        "reason": "As printed, omega(mu) ~ (1/2)chi^-1 (mu-mu0)^2 drops the linear term -n0*delta-mu, which vanishes only if n(mu0) = 0 — contradicting the mechanism's own need for a large mu0*n0 cancellation. Repairable by expanding rho(q) = eps(q) - mu0*q in the conserved q-variable, where stationarity is the equilibrium condition and positivity follows from stability; after repair the grade is GAP (lag mechanism and chi,Gamma -> M*^2 bridge remain asserted, per the corpus's own WS4-M4c debt)."
+      },
+      {
+        "argument": "VI.D residual shape (6.4)",
+        "verdict": "SOUND",
+        "reason": "Verified by direct computation: pure alpha*H^2 tracker with separate conservation on a LambdaCDM background gives w(z) = -1 + Omega_m(z) exactly (w-hat = 1; stronger than the printed O(1) claim); with beta*Hdot at beta in [-1,0], w-hat runs 1.0-1.7. Sound given the rho_DE form; beta < 0 itself is the printed WS4-M4c debt."
+      },
+      {
+        "argument": "VI.D DESI direction-check sentence",
+        "verdict": "DEFECT-CANDIDATE",
+        "reason": "The family's own CPL projection gives w_a = +3*w-hat*Om0*(1-Om0) = +0.63*w-hat > 0 (+0.36 with beta = -0.3), opposite in sign to the cited DESI preference w_a < 0; the cited (w0, w_a) pair is growth-anti-correlated at z >~ 0.4 — the family's own printed kill direction. Only the w0 > -1 half of the citation is on the family's side; interacts with SWP Branch A's pre-bound clause."
+      },
+      {
+        "argument": "VIII.A conserved exponential",
+        "verdict": "NOT-AUDITABLE-FROM-TEXT",
+        "reason": "The three cost results are genuine cited imports, but 'the exponential is conserved; only its address changes' is never formalized: no common cost functional is defined, and no invariance proof across ontology classes exists in the text (WS-B Q1's trilemma maps ontology classes, not cost measures). The tower-depth numerics are [CAL] and out of this memo's charge."
+      },
+      {
+        "argument": "Lock 1 (Valentini premises as used)",
+        "verdict": "SOUND",
+        "reason": "Sound given imports: the theorem is standard, leaf-wise transcription is legitimate given HBD equivariance, and the equilibrium hinge is honestly grade-limited [IM+CAL] by III.D and the corpus's own WS-B Q2 stamping. Residual gap (already on the corpus's debt list): the cosmological initial-condition premise for near-equilibrium."
+      },
+      {
+        "argument": "Lock 2 (-1/k^2 no-pole + (c/c_L)^5 leakage)",
+        "verdict": "GAP",
+        "reason": "The elliptic no-pole core is exactly right at c_L = infinity, and (1e-4)^5 = 1e-20 checks; but the leakage exponent 5 presupposes non-radiating monopole and dipole of the constraint source (conservation laws never exhibited in-text). Fallback from the text's own premises is exponent 3, i.e. 1e-12 — still small, eight orders off the printed bound. Minor, precisely-stated gap."
+      },
+      {
+        "argument": "Theorem VIII.D.1 (no runaways)",
+        "verdict": "SOUND",
+        "reason": "Reality below the gap => Im chi = 0 there; kernel reality => chi(-w) = chi*(w); together with gap-analyticity, chi is even-analytic, the derivative expansion has only even time-derivatives, and the omega^3 Abraham-Lorentz term cannot appear. Correctly scoped: E.4 keeps Larmor in the gapless B2 channel, so the paper does not overclaim against its own electrodynamics."
+      },
+      {
+        "argument": "Theorem VIII.1 + S3/A3 gate",
+        "verdict": "GAP",
+        "reason": "VIII.1 itself is trivially sound (local CP maps on distinct factors commute). The gate's forward implication 'S3 observed => detector is non-POVM' requires exclusion over the whole POVM class, but the text offers only enumeration over proposals; hard-support spin-dependent arrival distributions are POVM-realizable in principle. The reverse direction (T-KILL as modus tollens) is clean. Missing: a proof that the full S3 statistic is jointly non-POVM."
+      },
+      {
+        "argument": "QFT-1/QFT-2 nucleation covariance",
+        "verdict": "GAP",
+        "reason": "The proof skeleton (leaf-wise equivariance => statistics are functionals of Psi; Tomonaga-Schwinger covariance; POVM-scoped records) is valid and mirrors the cited Bell-type-QFT literature; conditional on two debts the corpus itself prints: all-orders spacelike commutativity with IBC terms (WS-QFT-2, open) and the F-A15-9 record scoping. QFT-2 inherits Locks 1-2 statuses. Best self-flagged theorem in the audited set."
+      },
+      {
+        "argument": "Lemma II.1 / App F.1 convexity (pairs-only engine)",
+        "verdict": "DEFECT-CANDIDATE",
+        "reason": "The printed proof's convexity claim is false: the pi-twist map (det F = 1 everywhere, identity at infinity) convexly combined with the identity is singular at t = 1/2 — det((1-t)I + t*R_z(pi)) = 0, machine-verified. The pairs-only conclusion survives via the elementary history-path degree argument (degree locally constant along continuous admissible histories), which is all the physics needs; the set-level claim would otherwise need Hatcher's Smale-conjecture corollary (embeddings) and may be false for merely pointwise det F > 0."
+      },
+      {
+        "argument": "Threshold (8'.2) omega_th = sqrt(7/3) omega0",
+        "verdict": "SOUND",
+        "reason": "Arithmetic exact: 2*sqrt(7/12) = sqrt(7/3) = 1.527525, binding 1 - kappa = 0.2362 (23.6%). New cross-link: the value is F-R5-contingent and unflagged — under the campaign-established saturated closure kappa = 1/sqrt(2), the same argument gives omega_th = sqrt(2)*omega0 = 1.414 (29.3% binding)."
+      }
+    ],
+    "checkable_items": [
+      "Per-sector Seeley-DeWitt a1 coefficients for the B2+/-, B3, B4 acoustic-metric operators and the knot band-edge sectors (symbolic/numeric heat-kernel computation; settles the E.6 positivity gap, G2/F-T4-4)",
+      "Conservation laws of the B1 pressure-channel source (monopole/dipole non-radiation), fixing Lock 2's leakage exponent at 5 vs 3 (analytic; F-T4-6)",
+      "Exact identity w(z) = -1 + Omega_m(z) for the pure alpha*H^2 tracker under separate conservation on a matter+Lambda background (verified numerically to 1.4e-4 grid error; two-line analytic proof available)",
+      "CPL projection w_a = +3*w-hat*Om0*(1-Om0) at a = 1 for the (6.4) family (verified: +0.63 for w-hat = 1, +0.36 at beta = -0.3) vs the cited DESI w_a < 0 (F-T4-3)",
+      "det((1-t)I + t*R_z(pi)) = 0 at t = 1/2: the App F.1 convexity counterexample (verified with numpy; F-T4-1)",
+      "(c/c_L)^5 = 1.000e-20 at c_L/c = 1e4 (verified)",
+      "hbar*c/a = 1.973e19 eV at a = 1e-26 m (verified)",
+      "hbar*c/a^4 = 3.2e78 J/m^3 at a = 1e-26 m; the printed 1e90 J/m^3 implies a = 1.33e-29 m (verified; F-T4-5)",
+      "alpha = 0.73 to match rho_Lambda = 6e-10 J/m^3 with M*^2 = c^4/8piG at H0 = 70 (verified)",
+      "UHECR threshold scalings: (m_p/E)^2 = 2.2e-23 at 2e20 eV, 3.5e-22 at 5e19 eV; (2m_e/E)^2 = 1.0e-16 at 1e14 eV (verified; brackets the quoted 1e-19)",
+      "2*sqrt(7/12) = sqrt(7/3) = 1.527525 and 1 - sqrt(7/12) = 0.2362 (verified); F-R5-contingent alternative 2*(1/sqrt2) = sqrt(2) = 1.414 (F-T4-8)",
+      "Spin-torsion ratio 1e54 / 4e17 kg/m^3 = 36.4 orders (verified); sidereal tau* = 0.1235 ns at 30 m, 370 km/s (verified); DeltaN_eff = (4/7)(10.75/106.75)^(4/3) = 0.0268 (verified)",
+      "Follow-on machine checks: h-principle component count pi_3(SO(3)) = Z for pointwise-det>0 admissibles (formalizable); a joint non-POVM-representability proof for the S3 cutoff statistic (settles F-T4-7)"
+    ],
+    "memo_path": "/home/user/fork_frankensim/analysis/gum-sandbox/theory-audit/T4_gravity_oneworld.md"
+  },
+  {
+    "audit": "T3 constructive audit complete. Memo at analysis/gum-sandbox/theory-audit/T3_repaired_closure.md; all computations reproducible via analysis/gum-sandbox/theory-audit/t3_closures.py (numpy/scipy, deterministic). Headline results: (1) A new organizing identity, kappa_paper^2 = e_hat_tot/(2 i_frak_tot), holds for ANY closure solution (verified in-family reproducing 7/8g, and at saturation giving exactly 1/2) — saturation is exactly the point e_hat_tot = i_frak_tot = 64/(9 pi). (2) C1 (hedgehog-restricted) is well-posed and selects (2.053288, sqrt(7/8)); its strongest extension — the corpus's OWN App-G.5 spheroidal ansatz honestly costed (new closed-form reduction: E0 invariant exactly, E6 cost factor P(lambda)>=1, inertia factor Q(lambda) reproducing the corpus's corrected g(lambda) to 6+ digits) — selects lambda*=0.8173, g*=1.0781, c*=2.1687, kappa*=0.9009: the honest g-dial buys 5.6% of c, not 22.5%; kappa^2 g = 7/8 is proven an exact identity on the whole locked-transport family (= 4 pi E0(1)/I(1)), so S4' cannot discriminate g. Both C1 solutions remain halo-unstable. (3) C2 (stability-constrained): binding channel is the ring/tilt channel at kappa_crit = 1/sqrt2 (menu infimum; any weaker single channel leaves the functional unbounded below, axi4-measured); Theorem T3.1 proves the fixed-L constrained optimum sits EXACTLY at the saturation point (interior stationarity of the convex halo ledger lands on the constraint boundary; KKT multiplier zero) — C2 = C3 exactly, no intermediate tuple exists. (4) C3 (saturated closure) is the unique well-posed reading: full closed-form tuple c = 64 sqrt2/(9 pi) = 3.201125, kappa = 1/sqrt2, oblate compacton + clock-pinned marginal halo; new exact values g_core = 35/24, g_tot = 35/12, e/i core ratio 5/4 (vs spherical 7/4), mass-law factor shift 5/(3 sqrt2) = +17.85% (Mc^2 = (64/9 pi) Lambda m-tilde), support-volume ratio exactly 3/2 (integral of g(sin th)/sin^2 th = 2, verified 1e-15) replacing V = sqrt2, omega_th = sqrt2 omega_0, S4' -> kappa^2 g_tot = 35/24; caveats: marginal (not gapped) stability with a degenerate halo manifold, and the epsilon-law sign flips (+1.15 eps class), moving the B-U1' ceiling to ~2.6e-3. (5) C4 steelman: six routes to 2.5147 tested and each fails — G* accident disproven exactly (24 sqrt21 vs 35 pi); uniform-channel eps=0.05 reference 2.51979 is a non-binding-channel accident (formula validated vs engine at 3e-7); the zero-cost spheroidal reading reproduces c0 EXACTLY but at an open endpoint with its zero-cost premise refuted by the F-R4 value-function lemma (honest cost gives 2.169); kappa0 = sqrt(7/12) is recoverable only as a halo threshold, not a solution; the g=3/2 algebra does not compose with the true oblate geometry (e/i = 5/4 breaks the '7' that generates sqrt42); R_eq = 2.371 vs benchmark 2.37 is numerology. Only the absent frozen r1 code could still discharge (route (a)). (6) Family sector verified c0-blind via formalized P-O1: mass ratios are (e_hat_k m_tilde_k)-ratios with the universal geometric factor and Lambda cancelling; the non-blind set (kappa_phys, omega_th, S4', binding depth, epsilon-window, interaction range, absolute Lambda-unit quantities) is listed explicitly. Per-candidate Sec-IV/App-G change lists written. All within-model; uncertainty printed (unit-map dependence, C1' not yet run on the frozen engine, support-volume identity numeric not symbolic).",
+    "arguments_examined": [
+      "C1: hedgehog/rigid-direction-restricted closure (scaling rung c = 2 sqrt(e0 i0), kappa = sqrt(7/8)) — well-posedness, selected constants, stability",
+      "C1': the corpus's own App-G.5 spheroidal locked family with its true E6 cost (new closed-form reduction and closure solve)",
+      "C2: stability-constrained closure — which halo channel binds and whether the constrained optimum is exactly the saturation point (Theorem T3.1)",
+      "C3: the saturated closure c = 64 sqrt2/(9 pi) at kappa = 1/sqrt2 with the oblate compacton — completeness, uniqueness, degeneracy, downstream tuple",
+      "C4: every recoverable reading of c0 = 128 sqrt42/(105 pi): G* coincidence, uniform-channel saturated reference, zero-cost spheroidal supremum, threshold identity sqrt(7/12), g=3/2 algebra composed with oblate geometry, numerology",
+      "Downstream propagation: hbar = c Lambda sqrt(J) recalibration, kappa_phys, binding depth, S4' (kappa^2 g = 7/8), omega_th, interaction range, epsilon-law (4.8) and B-U1' ceiling (4.9), V invariant",
+      "P-O1 m-tilde-ratio argument: family-sector c0-blindness (mass ratios as e-hat/m-tilde ratios with universal geometric factor)"
+    ],
+    "verdicts": [
+      {
+        "argument": "C1 hedgehog-restricted closure (and C1' honest spheroidal extension)",
+        "verdict": "SOUND",
+        "reason": "Well-posed and attained (rung 2.053288/0.935414; honest G.5-family optimum 2.168732/0.900897 at lambda*=0.8173, g*=1.0781, computed here), with two GAPs the corpus would own: the restriction is undeclared/dynamically unjustified, and every C1 solution is halo-unstable in the enlarged space (axi4-measured). New exact identity: kappa^2 g = 7/8 holds on the entire locked transport family (= 4 pi E0(1)/I(1)), so S4' is family-robust but value-free within C1."
+      },
+      {
+        "argument": "C2 stability-constrained closure: binding channel and selected optimum",
+        "verdict": "SOUND",
+        "reason": "Binding channel is the ring/tilt channel at kappa_crit = 1/sqrt2 (menu infimum; imposing only a weaker channel leaves the functional unbounded below — axi4 §5 measured). Theorem T3.1 (proved): the fixed-L halo ledger is linear+convex, its interior stationarity lands exactly on the constraint boundary (KKT multiplier zero), so the constrained optimum IS the saturation point — C2 = C3 exactly; no intermediate stabilized tuple exists."
+      },
+      {
+        "argument": "C3 the saturated closure as the repaired closure",
+        "verdict": "SOUND",
+        "reason": "The unique well-posed reading of the corpus's stated variational problem with its infimum attained; tuple fully closed-form: c = 64 sqrt2/(9 pi) = 3.201125, kappa = 1/sqrt2, g_core = 35/24, g_tot = 35/12, e_tot = i_tot = 64/(9 pi) (saturation identity), mass-law factor x 5/(3 sqrt2), support-volume ratio exactly 3/2, omega_th = sqrt2 omega0, S4' -> kappa^2 g_tot = 35/24. Priced caveats: marginal (not gapped) stability with a degenerate halo manifold; epsilon-law sign flip; the kappa-convention sentence in App. I.4 must name its channel."
+      },
+      {
+        "argument": "C4 any reading recovering c0 = 2.5147",
+        "verdict": "DEFECT-CANDIDATE",
+        "reason": "All six constructible routes fail: G* = c0 disproven exactly (G3; 24 sqrt21 vs 35 pi accident); uniform-channel eps=0.05 reference 2.51979 is a non-binding-channel, eps-specific accident; the zero-cost spheroidal reading reproduces c0 exactly but at an open (unattained) endpoint with its zero-cost premise refuted by the F-R4 value-function lemma — the honest cost gives 2.169, 13.8% short; kappa0 = sqrt(7/12) is a halo threshold, not a solution; the g=3/2 algebra does not compose with the true oblate geometry (e/i = 5/4, not 7/4 — the sqrt42 dies at saturation); R_eq = 2.371 is numerology. Residual NOT-AUDITABLE branch: the absent frozen r1 code (discharge route (a))."
+      },
+      {
+        "argument": "P-O1 family-sector c0-blindness",
+        "verdict": "SOUND",
+        "reason": "Formalized: M_k/M_j = (e_k m_k)/(e_j m_j) with the geometric closure factor species-universal (m-tilde cancellation, Thms IV.1/IV.3, untouched by F-R4/F-R5) and Lambda cancelling in ratios; every tier-5-replicated quantity is such a ratio, hence invariant under C1/C2/C3/C4. The non-blind set (kappa_phys, omega_th, S4', binding depth, epsilon-window, interaction range, absolute Lambda-unit quantities) is enumerated."
+      }
+    ],
+    "checkable_items": [
+      "kappa_paper^2 = e_hat_tot/(2 i_frak_tot) for any closure solution — symbolic (sympy) from L^2 = (2/3) I E_static + unit map; numeric checks already at 1e-9",
+      "kappa^2 g = 4 pi E0(1)/I(1) = 7/8 exactly on the locked volume-preserving transport family — one-line algebra; verified 1e-12 in t3_closures.py",
+      "Q(lambda) (inertia factor of the locked spheroidal family) == corpus corrected g(lambda) = (3/2)[1/b^2 - (1-b^2) artanh(b)/b^3], b^2 = 1-lambda^2 — candidate symbolic identity; verified numerically to 6+ digits at 7 lambdas",
+      "INT_0^pi g(sin th)/sin^2 th dth = 2 (=> oblate-compacton support volume = 3/2 x spherical) — needs symbolic proof (integration by parts); verified numerically to 1.3e-15",
+      "g_core = 35/24, g_tot = 35/12, e_core/i_core = 5/4, e_tot = i_tot = 64/(9 pi), mass factor 5/(3 sqrt2) — rational arithmetic from G3's closed forms; all verified in t3_closures.py",
+      "Theorem T3.1 (constrained optimum = saturation): R(I) = G + I/(16 pi) + L^2/(2I) convex with stationary point at kappa_ours = 1/sqrt(8 pi) — elementary calculus; engine-checkable by re-running axi3_solve with the constraint active",
+      "general-channel saturated closure c = (4/pi) sqrt(<sin^2>_w) G_w — validated against axi4's printed uniform-channel pair at 3e-7; further checkable on the frozen engine for the s=sin^2 channel",
+      "C1' honest spheroidal optimum (lambda* = 0.817257, c* = 2.168732, kappa* = 0.900897) — cheap follow-on: evaluate the same family on the campaign's frozen axi_solve engine",
+      "repaired B-U1' ceiling numbers (2.6e-3 / 2.9e-3) from |dc/c| <= 3e-3 with the measured sign-flipped linear epsilon-laws"
+    ],
+    "memo_path": "analysis/gum-sandbox/theory-audit/T3_repaired_closure.md"
+  }
+]
