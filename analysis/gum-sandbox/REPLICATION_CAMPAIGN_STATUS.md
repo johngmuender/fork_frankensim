@@ -293,7 +293,21 @@ from the text; everything downstream is audited).
   unconditional. Residual GAP of record: the N2/F.3 exchange lift
   ("ARE fermions" value-forcing). theory-audit/h4_completion.md.
 
-Findings ledger: F-R1–F-R16 (four substantive: F-R4/F-R5 on the ħ-closure, F-R9 on the 0νββ insert, F-R14 on the gravitation sector;
+- **F-R17 (moderate; Phase I4)**: App F.3's exchange-lift claim is
+  refuted as stated — in the two-defect space with F.3's OWN proviso
+  (separations bounded below), the ordered-line double cover's swap
+  monodromy gives σ(exchange) = −1 ≠ +1 = σ(rotation): the proviso
+  constructs the obstruction (the geon phenomenon; the classical FR
+  null-homotopy provably exits the separated regime). Repair:
+  χ_exch = χ(σ)·χ_rot with χ(σ) a new free ℤ₂ the corpus must price;
+  "ARE fermions" demoted further; the B=2 worked example is
+  sector-conditional (J=0 forbidden in exactly 2 of 8 sectors). F.4
+  (no braiding) VINDICATED factor by factor; QUANT unaffected and
+  STRENGTHENED (I4-B's parity theorem kills the fatal completion on
+  ANY embedded-line moduli; I4-C extends χ(rot) = −1 to all w ≠ 0
+  splitness-free). theory-audit/i4_topology.md.
+
+Findings ledger: F-R1–F-R17 (four substantive: F-R4/F-R5 on the ħ-closure, F-R9 on the 0νββ insert, F-R14 on the gravitation sector;
 one moderate: F-R6 provenance-chain; five print-level/minor). Out of
 envelope (documented, not scheduled): blue-fog/disclination boxes and
 nucleation (GPU-scale/theorem-level, per the v2 assessment's Tier-5

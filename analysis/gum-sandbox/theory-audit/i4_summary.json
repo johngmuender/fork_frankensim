@@ -1,0 +1,35 @@
+{
+  "phase": "I4 - topology completion package (ROADMAP_v6_SYNTHESIS)",
+  "date": "2026-07-16",
+  "checks": {"total": 19, "passed": 19, "script": "i4_compute.py", "log": "i4_run.log"},
+  "part_A_exchange_lift_N2_F3": {
+    "verdict": "FAILS_AS_STATED",
+    "confidence": "HIGH (obstruction), MEDIUM-HIGH (model fidelity)",
+    "obstruction": "swap monodromy sigma: pi1(C2_strat) -> Z2 from the ordered-line double cover, well-defined exactly because F.3's proviso (separations bounded below) holds; sigma(exchange) = -1, sigma(rotation) = +1, so no homotopy exists",
+    "mechanism": "geon phenomenon [IM Friedman-Sorkin]: the classical FR null-homotopy provably exits the separated regime (A9); hard defect lines cannot follow it",
+    "repaired_statement": "chi_exch = chi(sigma) * chi_rot with chi(sigma) = +-1 a NEW free discrete choice; correlation holds in exactly half the sectors (A8: 4 of 8 at w=1)",
+    "F4_no_braiding": "VINDICATED in-model: E^2 = r1*r2 factor by factor (FR, per-tube offsets -w, sigma); chi(E^2) = 1 for every abelian character; braid class [B12] = beta1^w beta2^w integer-winding, at most a discrete phase, A-blind characters kill it (MH clause 3)",
+    "scoped_open": "line-merging/reconnection strata (where sigma dies) could restore the lift - a different claim than F.3's, requiring interpolation through the 2w-collision stratum plus a redo of the connecting map on that base"
+  },
+  "part_B_curved_line_moduli": {
+    "verdict": "SURVIVES_THEOREM_GRADE",
+    "confidence": "HIGH (parity theorem), MEDIUM (retract refutation, non-load-bearing)",
+    "naturality": "2[rot] in im d on any moduli containing straight lines; straight sweep stays essential (rho(2rot) = -2w != 0)",
+    "parity_theorem": "rho(dq) = w * <e(K), q> with L = K^w (weight-w law, machine-checked linear in w); w2(N) = w1(T)^2 pulls back to 0 on every S^2, so <e(K), q> is even for EVERY sphere family of embedded lines; [rot] (rho = -w) is never in im d; completion III structurally impossible on any embedded-line moduli, knotted components included",
+    "retraction_to_straight_lines": "REFUTED (pi2 of asymptotic ray-pair data exceeds pi2(RP2); Hatcher unknot-contractibility as the one [IM] input); not needed downstream"
+  },
+  "part_C_even_w": {
+    "verdict": "CHI_ROT_MINUS_ONE_EXISTS_ALL_W",
+    "confidence": "HIGH",
+    "theorem": "i[rot] has order exactly 2 in pi1(C_strat) for every w != 0 (only rho and exactness; no splitting), hence a U(1)-character with chi(rot) = -1 exists (divisibility of U(1)); moduli-independent via part B",
+    "dichotomy": "Z2-VALUED characters reach -1 iff w odd (H4 5.5's caveat located precisely); at even w every chi(rot) = -1 sector is theta-twisted (offset loop carries a nontrivial 2w-th root of unity) unless the corpus's unproven FR splitting is granted",
+    "B2_worked_example": "sector-conditional, not a derivation: 'J = 0 forbidden' holds in exactly 2 of 8 sectors at w = 1 (chi(sigma) = +1 AND chi_rot = -1); spinor-but-J0-allowed geon sectors exist (2 of 8); the example silently consumes N2/F.3"
+  },
+  "consequences": {
+    "theorem_c_doubleprime": "needs THREE inputs now: QUANT (theorem-grade in-model, strengthened by B+C), T-B1 sector selection, and the new priced choice chi(sigma) = +1; 'ARE fermions' demoted further - F.3 refuted as stated, F.5's N1 content promoted",
+    "hbar_closure": "unaffected and strengthened: QUANT consumed only N1; solvability stands on strictly larger ground (all embedded-line moduli, all w != 0)",
+    "corrections_to_corpus": "F.3's parenthetical proviso is self-defeating (it constructs the obstruction); F.4 survives; F.5's B=2 selection rule must be printed as sector-conditional"
+  },
+  "files": ["i4_topology.md", "i4_compute.py", "i4_run.log", "i4_summary.json"],
+  "reproduce": "python3 i4_compute.py (deterministic; numpy + sympy)"
+}

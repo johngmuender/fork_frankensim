@@ -49,6 +49,28 @@ hypothesis pinned sharper); (b) curved-line moduli (does ∂ = ±2[rot]
 survive the retraction's relaxation?); (c) even w ≥ 2 (the composite
 sectors; the structural parity protection tested).
 
+## Phase I: ✅ EXECUTED — the synthesis verdicts
+- **I1**: the ⟨r5⟩ test is SADDLE-EXCLUDING and repair-consistent —
+  under every ε-stable reading the archive's 3.1 ± 0.2 selects the
+  saturated branch (~7σ separation; anchor 64√2/9π at 0.51σ) and
+  cannot come from the corpus's printed chain. Two new rigorous
+  floors (𝔠_sat ≥ 64√2/9π at every ε; Faddeev-type +12t). Filed as
+  archive-side evidence for the repair (normalization caveat printed).
+- **I2**: propagation memo — every data confrontation SURVIVES (S1
+  verified untouched; bridge ≤0.12σ); the bench sharpens (S4′ now
+  discriminating at 13.4σ; the four-rung over-spin ladder all exact);
+  one honest cost (the forfeited ε-anchor) + Q-6′ margin ×4.3 thinner.
+- **I3**: joint convention solve — ONE edge-referencing element
+  resolves both 𝔭 and the entire "7 orders" of 𝔟_eff simultaneously
+  (B.4/I.2 consistent); O(1) factor degenerate; the discriminating
+  follow-on named (the never-run B.4-window 𝔭-grid).
+- **I4 → F-R17**: the exchange lift FAILS with the obstruction
+  exhibited (geon phenomenon; F.3's own proviso constructs it; F.4
+  vindicated; χ(σ) the new priced ℤ₂); curved/knotted-line moduli
+  verdict THEOREM-GRADE (the fatal completion structurally dead
+  everywhere); χ(rot) = −1 extends to ALL w ≠ 0 splitness-free
+  (even-w fermionic sectors theta-twisted); B=2 sector-conditional.
+
 ## Beyond (unscheduled)
 Real-GPU physics; the corpus's response to corpus2; whatever I1–I4
 leave open.

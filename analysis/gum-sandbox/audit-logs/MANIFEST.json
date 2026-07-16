@@ -1,5 +1,5 @@
 {
- "snapshot_utc": "2026-07-16 FINAL SWEEP 2 (post-corpus2: all writer/patch/H4 agents final turns included)",
+ "snapshot_utc": "2026-07-16 FINAL (Phase I complete: ledger F-R1-F-R17; r5 saddle-exclusion; exchange-lift obstruction)",
  "session": "d0b81976",
  "main_session_transcript": "coordinator-session.jsonl.xz",
  "agents": [
