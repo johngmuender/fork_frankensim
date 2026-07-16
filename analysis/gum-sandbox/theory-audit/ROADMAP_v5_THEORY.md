@@ -167,7 +167,29 @@ with equal prominence + the constructive companion), CLAIMS.json with
 12 findings + T-ledger + credit updates, REPRODUCE.md with the ten
 new deterministic commands.
 
-## Phase H3 — the remaining T-ledger, worked constructively ▶ EXECUTING
+## Phase H3: ✅ COMPLETE — the T-ledger worked to ground
+- **H3.1**: T-H3 CLOSES BENIGN (fixed-point self-consistency; zero-new-
+  axiom repairs R1–R3 printed) — conditional on T-H4, which HARDENS to
+  substantive: the FR reconstruction confirms the unstratified core but
+  shows three exact completions of the stratified extension, one FATAL
+  (integer-j-only ⇒ the ħ-closure unsolvable); the printed 'ℤ₂ × A' is
+  false on another; Route 2 cannot work as sketched. The closure fixed
+  point now explicitly consumes the completion hypothesis.
+- **H3.2 → F-R15**: the selection narrative fails dynamically (no
+  feature at κ = 1; benchmark crossed without pause; endpoint at the
+  saturation-class locus per T3.1; tightest rescue 5.5σ short; the
+  benchmark sits ON the transit within its own bars). Superradiant
+  rejection survives.
+- **H3.3 → F-R13 + F-R14**: the convexity proof false-but-repaired
+  (Lemma II.1′ supplied; pairs-only survives); E.6 positivity fails
+  UNCONDITIONALLY from the corpus's own action (B2's p = q − 1 closes
+  the wedge; rescue postulate quantified with priced costs).
+Residual T-ledger: T-H4 (the finite, well-posed completion computation
+— the corpus's or a future phase's), T-H5's superseded narrative
+absorbed into F-R15, T-H10 absorbed into F-R14.
+
+## (original H3 plan, retained)
+## Phase H3 — the remaining T-ledger, worked constructively (as planned)
 The retained items' discharges are the corpus's to make — but each has
 a T3-style constructive treatment we can do: formalize the structure,
 attempt the repair, pin the underdetermined inputs from the corpus's

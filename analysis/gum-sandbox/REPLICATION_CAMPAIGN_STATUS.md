@@ -269,7 +269,19 @@ from the text; everything downstream is audited).
   measure, weight window 1/18 wide) with its priced costs against the
   Sec III quantum chain and F5/KBKK. theory-audit/h33_RESULTS.md.
 
-Findings ledger: F-R1–F-R14 (four substantive: F-R4/F-R5 on the ħ-closure, F-R9 on the 0νββ insert, F-R14 on the gravitation sector;
+- **F-R15 (moderate, F-R5-corroborating; Phase H3.2)**: IV.D's
+  selection narrative fails as a dynamical claim — the honest
+  quasi-static flow from the rigid rung crosses κ = 1 at 4% of the
+  flow with no distinguished feature, crosses the benchmark 0.802
+  without pause at cycle 130, and converges to the saturation-class
+  locus (attractors at/below 1/√2) exactly as Theorem T3.1 predicts;
+  even the tightest compact-support rescue converges 5.5σ below the
+  benchmark. NEW measured fact: the (κ, 𝔠) flow passes within the
+  ⟨r1⟩ tuple's own error bars at cycles 130–170 — the benchmark reads
+  as a budget-stamped snapshot of the transit. The superradiant
+  REJECTION itself survives untouched. theory-audit/h32_RESULTS.md.
+
+Findings ledger: F-R1–F-R15 (four substantive: F-R4/F-R5 on the ħ-closure, F-R9 on the 0νββ insert, F-R14 on the gravitation sector;
 one moderate: F-R6 provenance-chain; five print-level/minor). Out of
 envelope (documented, not scheduled): blue-fog/disclination boxes and
 nucleation (GPU-scale/theorem-level, per the v2 assessment's Tier-5
