@@ -145,6 +145,11 @@ for eps in EPS_NEW:
     sol = i1.dial(eps, t_guess, N=4000, rmax=i1.rmax_for(eps))
     t_guess = sol["t"] * 2.0          # next point is ~2x this eps
     lad = i1.dial_ladder(eps, sol)
+    R["s1_dial_in_flight"] = {"eps": eps, "t": sol["t"],
+                              "ratio": sol["ratio"],
+                              "ladder": {k: v["d_ratio_rel"]
+                                         for k, v in lad.items()}}
+    flush()                           # bank the dial before the ~50 s solve
     r, f = sol["r"], sol["f"]
     fspl = ax.CubicSpline1D(r, f)
     idx = np.nonzero(f > 2e-5)[0]
