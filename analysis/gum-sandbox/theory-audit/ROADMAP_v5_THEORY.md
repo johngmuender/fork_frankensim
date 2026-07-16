@@ -167,7 +167,36 @@ with equal prominence + the constructive companion), CLAIMS.json with
 12 findings + T-ledger + credit updates, REPRODUCE.md with the ten
 new deterministic commands.
 
+## Phase H3 — the remaining T-ledger, worked constructively ▶ EXECUTING
+The retained items' discharges are the corpus's to make — but each has
+a T3-style constructive treatment we can do: formalize the structure,
+attempt the repair, pin the underdetermined inputs from the corpus's
+own action. Three workstreams:
+
+- **H3.1 (T-H3 + T-H4, proof structure)**: the closure-system
+  dependency graph — is the IV.B ↔ c″ ↔ T-B1 cycle vicious
+  (conclusion-assuming) or benign (fixed-point self-consistency)?
+  Attempt an acyclic re-derivation; if none exists, name the minimal
+  axiom that breaks the cycle. For c″: reconstruct the standard
+  Finkelstein–Rubinstein spin-statistics argument for the B=1 sector
+  and determine the minimal hypothesis under which the corpus's
+  "dressed knots ARE fermions" DF grade is earned (the defect may
+  narrow to the stratified extension only).
+- **H3.2 (T-H5, selection dynamics)**: what does honest
+  energy-decreasing deformation at fixed charge select, starting from
+  the rigid rung? Adjudicate with the H2.6 drift data (the clock root
+  flowing to the saturation locus) + a targeted quasi-static run on
+  fs-gum-statics; connect to Theorem T3.1 (expected: the selection
+  narrative's endpoint is the saturated closure, not the corpus's
+  in-gap benchmark — IV.D's narrative then fails toward the same
+  repair T3 built).
+- **H3.3 (T-H8 + T-H10, pinning the underdetermined)**: reconstruct
+  Lemma II.1's pairs-only convexity claim and prove or counterexample
+  it; derive the E.6 response exponents (p,q) from the corpus's OWN
+  constitutive law (W₂ + the VI.A disclination-geometry map) — if the
+  action pins (p,q), T-H10's conditional defect resolves one way or
+  the other unconditionally.
+
 ## Beyond (unscheduled)
 The GPU-class physics unchanged from v4; the corpus's response to the
-v2 package; derivation-class T-ledger discharges are the corpus's to
-make.
+v2 package; whatever H3 leaves standing at argument level.
