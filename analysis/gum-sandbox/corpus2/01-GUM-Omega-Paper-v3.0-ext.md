@@ -26,7 +26,7 @@ This edition is under standing external adjudication. Hashed and public as of th
 
 ## Contents
 
-**0.** Public record. **I.** Introduction. **II.** The constitutive core (fields; objectivity F10′; action; balance laws; spectrum; photon exactness; emergent Lorentz symmetry; **the chiral vacuum**). **III.** The quantum sector. **IV.** The ħ closure (reduction; closure system; exact family; radiative self-consistency; **deep-BPS limit and entrainment**; multi-band universality and the selection principle; the bootstrap; spin selection). **V.** Electrodynamics. **VI.** Gravitation. **VII.** Mass, families, and composites (band-edge theorem; Bogomolny sector; the knot; pair law and clock coherence; knot matter [template grade]; quantization and Theorem c″; **the family generator**; **the collective neutrino and the Σm_ν stake**; **the color sector**). **VIII.** One world. **VIII′.** The nucleation sector (pairs-only theorem; IBC; thresholds; the amplitude-mode Higgs; **covariance theorems QFT-1/2**). **IX.** The experimental program and stakes table. **X.** Audit trail and process metrics. **XI.** Open problems (all arithmetic). **XII.** How GUM dies. **XIII.** Standing watch (SWP-1). **XIV.** Conclusion. **Appendices A–L.** Figures 1–20. References. Ledger index.
+**0.** Public record. **I.** Introduction. **II.** The constitutive core (fields; objectivity F10′; action; balance laws; spectrum; photon exactness; emergent Lorentz symmetry; **the chiral vacuum**). **III.** The quantum sector. **IV.** The ħ closure (reduction; closure system; exact family; radiative self-consistency; **deep-BPS limit and entrainment**; multi-band universality and the selection principle; the bootstrap; spin selection). **V.** Electrodynamics. **VI.** Gravitation. **VII.** Mass, families, and composites (band-edge theorem; Bogomolny sector; the knot; pair law and clock coherence; knot matter [template grade]; quantization and Theorem c″; **the family generator**; **the collective neutrino and the Σm_ν stake**; **the color sector**). **VIII.** One world. **VIII′.** The nucleation sector (pairs-only theorem; IBC; thresholds; the amplitude-mode Higgs; **covariance theorems QFT-1/2**). **IX.** The experimental program and stakes table. **X.** Audit trail and process metrics. **XI.** Open problems ⟦rev⟧ (declaration amended — see XI). **XII.** How GUM dies. **XIII.** Standing watch (SWP-1). **XIV.** Conclusion. **Appendices A–L.** Figures 1–20. References. Ledger index.
 
 ---
 
@@ -806,7 +806,82 @@ Every numbered claim of Secs. II–IX carries {class, flags, kill pointers, audi
 
 **Available next:** (a) **AUD-15** — the v2.0 consolidation audit (the certification gate); (b) formal **watch-mode transition** (quarterly cadence; program dormant pending DESI-DR3/Euclid, HL-LHC, bench collaborations); (c) **T4 external-release sequencing** for the full corpus under the v2.0 document of record. Preference?
 
-<!-- ⟦CONTINUE⟧ -->
+# DELIVERABLE AUD-15 — CONSOLIDATION AUDIT OF GUM-Ω v2.0 (THE CERTIFICATION GATE)
+
+⟦rev⟧ *(v3.0-ext handling note: AUD-15 is a **dated record** — annotated per S-30, never rewritten. Its text below is verbatim v2.0.1; the v3.0-ext annotations are the indented ⟦rev⟧ lines.)*
+
+**Scope:** the four commissioned folds (IV.G/H/I merge; VII.H–J spine; VIII′ covariance seam; stakes/SWP cross-links) plus a full-document number sweep — every multiply-quoted quantity recomputed from scratch across Parts 1–6. **Standing:** tenth consecutive verification pass; by precedent, certification requires the seams found, not their absence.
+
+---
+
+## §1. VERIFICATION LEDGER ✓
+
+⟦rev⟧ *v3.0-ext annotation [externally re-executed]: every V15.x line below has been externally re-executed — tier0-gauntlet/RESULTS.md, 52/52, certified intervals, fail-closed checker three ways — including V15.7/V15.8's closed loops and V15.9's Haar quadrature and kill census. Two print-slips found in the ledger are corrected inline below (F-R2 at V15.2; F-R8 at F-A15-5); the T3.1 supersessions are noted where they land (V15.1, F-A15-1, F-A15-2, F-A15-7).*
+
+**V15.1 (closure algebra, re-derived end to end).** ê₀/𝔦₀ = (64·105)/(15·256) = 7/4 exact ✓; 𝔠₀² = 6ê₀𝔦₀ = 98304/1575π² ⟺ (128√42/105π)² ✓; κ₀ = √(7/12) = 0.7638 ✓; ω_th = √(7/3) = 1.5275 ✓. T-B1 j-family re-derived from the Routhian: stationarity V² = 1 + j²w and clock 1+V² = j(2−j)w combine to **w·j(1−j) = 1, V² = 1/(1−j)** ✓; j = ½ anchors (V = √2, ¼, 𝔠² = 4ê𝔦₀g) recovered ✓.
+
+⟦rev⟧ *annotation [T3.1]: the V15.1 arithmetic is externally recomputed and certified — it verifies the restricted-branch ALGEBRA; the tuple (𝔠₀, κ₀, ω_th) it anchors is superseded by the saturated closure (Sec. IV.J′: 64√2/9π, 1/√2, √2ω₀). The record stands as arithmetic; its physical-endpoint reading is struck.*
+
+**V15.2 (benchmark chain).** 𝔠(0.05) = 2.5147·(1 − 0.42·0.1357) = 2.371 vs ⟨r1⟩ 2.37 ± 0.09 ✓; the (λ\*, g\*) loop re-checked on the *oblate* spheroid branch (see F-A15-7): g(0.37–0.47) spans 1.28–1.32 vs measured 1.31 ± 0.04 ✓.
+
+⟦rev⟧ *annotation [F-R2 print correction]: the span [1.28, 1.32] is inconsistent with AUD-15's own corrected oblate formula — the true span is **[1.257, 1.315]**; the ✓ survives (measured 1.31 ± 0.04 remains inside the true span); conclusion unaffected. [tier2-closure Tier-2a record]*
+
+**V15.3 (family sector).** ½A = 2.80 vs ln(m_τ/m_μ) = 2.822 ✓; ½(A+B) = 5.65 vs 5.332 ✓; ratio 2.018 ✓; termination mass m_e·e^{−8.5} = 104 eV ✓; suppression e^{(4/3)·8.5} = 8.3×10⁴ ⟹ closure-failure threshold ε_e ≥ 8.4×10⁻⁶ ✓.
+
+**V15.4 (bridge and stake).** (5.644 − 3.05)/0.1065 = 24.36 ✓; m₃ = m_τ e^{−24.36} = 0.0468 eV ✓; e^{±0.90} band [0.019, 0.115] ✓; minimal-NO Σ at the floor = 0.0503 + 0.0087 = 0.059 ✓ (stake floor 0.058 ✓); Σ ≤ 0.11 ⟺ m₃ ≤ 0.057 ✓.
+
+⟦rev⟧ *annotation [F-R3 cross-reference]: the e^{±0.90} band checks as arithmetic, but the ±0.90 itself carries the covariance-sign slip corrected at VII.I; S1 and the endpoints unaffected.*
+
+**V15.5 (soft sector / Majoron).** f = 0.69√ε·1.7 GeV arithmetic ✓; B-ν1 = (T M_Pl m_ν²)^{1/4} = 1.57 → 1.4 MeV with thermal factors ✓; ε-floor 1.4×10⁻⁶ → 1.5×10⁻⁶ ✓; ΔN_eff = (4/7)(10.75/106.75)^{4/3} = 0.0268 ✓. **V15.6 (P-F1′).** (m_e/m_μ)²/2 = 1.17×10⁻⁵ ✓; δ_τ = 4.1×10⁻⁸ ✓.
+
+**V15.7 (color — NEW CLOSED LOOP A).** ε_q = (0.14–0.20/1.7)² = 0.7–1.4×10⁻² ✓; λ\*(ε_q) = 0.42(0.2)^{1/3} = 0.246 ✓; and the **H2 stiffness law closes across strata**: f_q = √ε_q·𝔪_Sk = 0.10·1.7 = 0.17 GeV, dead-center in the σ-inversion band [0.14, 0.20] — the soft-sector-derived law validated in the locking stratum. Promoted to a printed verification.
+
+**V15.8 (⟨r11⟩ — NEW CLOSED LOOP B).** The FQ table is overdetermined and closes: R_class − 1 = B_geo/A − B_tube,class/A: aligned 0.33 − 0.06 = 0.27 = R_up − 1 ✓; anti-aligned 0.33 − 0.51 = −0.18 = R_down − 1 ✓ — the derived sign flip is arithmetic-consistent with its own components.
+
+⟦rev⟧ *annotation [credit]: V15.8's loop is now ALSO closed by full external reconstruction — the rule, the forced sign flip, and the four pulls (0.17–0.32σ) all land [tier5-family/].*
+
+**V15.9 (bookkeeping).** Kill census 6 fired + 8 survived + T-KILL conditional = 14 ✓; Letter-13 delta dated ✓; Yukawa Hessian identities (h_∥, h_⊥, trace) ✓; sidereal 0.123/0.41 ns ✓; Haar quadrature (2/π)·8·(4/15) = 64/15π ✓; SWP↔(6.4) cross-link ✓.
+
+## §2. FINDINGS
+
+**■ F-A15-1 (MODERATE — the physical-constant bands are one-sided and ceiling-set; erratum E-Ω-4).** The deep-BPS drift is strictly *negative* in 𝔠 (𝔠(ε) < 𝔠₀ always), and at the B-U1′ ceiling equals Δ_lock = 3×10⁻³ fractional — not the symmetric 1.2×10⁻³ the "(3)" notation implies. Corrected: **𝔠_phys = 2.515₋₀.₀₀₈⁺⁰; κ_phys = 0.7638⁺⁰·⁰⁰²³₋₀; binding 23.6₋₀.₂%; ω_th = 1.5275⁺⁰·⁰⁰⁴⁷₋₀ ω₀.** Results-table row 4 and (4.10) amended; no stake moves.
+
+⟦rev⟧ *annotation [T3.1 supersession]: F-A15-1's one-sided bands refined the struck endpoint; the whole band structure is superseded by the T3.1 retarget (Sec. IV.J′) — and its "drift strictly negative" premise is the ε-law whose sign flips on the repaired problem (4.8′). Dated record retained.*
+
+**■ F-A15-2 (MODERATE, stake-integrity class — S4′'s band was never specified).** κ²g = ê/2𝔦 = 7/8 exactly only at leading BPS; the ⟨r1⟩ benchmark gives κ²g = 0.843 ± 0.046 (−3.7%, 0.7σ) — the relation runs as [1 − c₄ε^{2/3}]. An unspecified band makes the kill unadjudicable. **Frozen now, pre-bench:** interim band 7/8·(1 ± 0.10) at benchmark-ε platforms; **assignment WS10-S4** — extract c₄ from the *archived* ⟨r6⟩ κ(ε), g(ε) scans (no new runs), target ±0.05, band re-frozen at that precision. The hashed Letter is untouched; a dated delta memo issues per the S-30 annotate-don't-rewrite rule. (The S4 lineage's second catch; AUD-13's precedent held.)
+
+⟦rev⟧ *annotation [T3.1 supersession]: the κ²g relation is family-exact (T3.0), so no ε-extraction can make it discriminate g — F-A15-2's interim band and assignment WS10-S4 are superseded by the retargeted stake κ²g_tot = 35/24 (Sec. 0/IX.F). [Regrade: WS10-S4 open → moot-for-discrimination (superseded).]*
+
+**■ F-A15-3 (MODERATE — the operative ε_e range, propagated).** Part 2's (4.9) prints ceiling, floor, and window side by side without stating the intersection. **Operative range: ε_e ∈ [1.0×10⁻⁵, 6×10⁻⁴]₆₈** (window ∩ ceiling; cosmological floor slack below). Propagations: **f ∈ [4, 29] MeV** (the old window's upper half sat *above* the entrainment ceiling — inconsistent states); Majoron g ∈ [1.7×10⁻⁹, 1.3×10⁻⁸] (battery re-run: passes throughout); τ_𝔥 harmonized with the measured ν = 0.36 exponent: **∼10⁻¹⁷–10⁻¹⁶ s** across the range (Part 2's "∼10⁻¹² s / ∼40 orders" was the stale S-16 guess; margin corrected to ≈34 orders, conclusion unchanged); and one **strengthening banked**: the p = 3 threshold (8.4×10⁻⁶) sits *below* the operative bottom — **three-family termination holds across the entire operative range at central (A, B)** (at 1σ-low: for ε_e ≥ 4×10⁻⁵). Errata to II.H, IV.H.3, IV.J, VII.H/I.
+
+**■ F-A15-4 (MODERATE — the S-label collision).** The arrival-signature hierarchy S1–S3 (P7 lineage) collides with stakes S1–S7 *inside single sections* of v2.0: Sec. XII's "S2-absent in Layer 1" sits beside stake S2 = Higgs nulls; IX.A's cutoff "S3" beside stakes-table S3 = ¼. **Arrival signatures renamed A1/A2/A3 corpus-wide** ("the A3 gate"); 31 sites; Fig. 11 relabeled; the hashed Letter contains only stakes and is untouched.
+
+**■ F-A15-5 (MINOR — pull harmonization).** The m₃-vs-floor tension drifted 0.5σ → 0.3σ across blocks; recomputation gives Δln/σ_ln = 0.072/0.90 = **0.08σ** — more consistent than ever quoted; harmonized. (Also C.9's locked-bond pull → 1.4σ.)
+
+⟦rev⟧ *annotation [F-R8]: the locked-bond harmonization is itself understated — the pull from the corpus's own printed errors is **1.5–1.6σ** (1.54σ quadrature; 1.59σ on ±0.14 alone); printed now at all three sites (VII.D, C.9, here). Grade and conclusion unchanged. [tier5-family/family_RESULTS.md C8d]*
+
+**■ F-A15-6 (MINOR — App. J census).** The printed primary-class census (13/8/3/4/3) sums to 31 over 26 rows. Recounted: **DF 15, DW 7, IM 2, CJ 1, record 1.** Corrected.
+
+**■ F-A15-7 (MINOR — App. G.5 prints the wrong branch).** The arctan form (a² = λ²−1) is the *prolate* branch; the used domain is oblate. Correct branch: **g(λ) = (3/2)[1/b² − (1−b²)artanh(b)/b³], b² = 1−λ²**; limits re-verified by continuation (g(1) = 1; g(0⁺) = 3/2; monotone decreasing) ✓.
+
+⟦rev⟧ *annotation [independently vindicated]: the campaign's Q(λ) reproduces F-A15-7's corrected oblate branch to 6+ digits — the geometry is right; the energetics it was attached to (the zero-cost dial) is what F-R4 refuted. Retained as validated geometry with honest cost P(λ) (App. G.5′).*
+
+**■ F-A15-8 (physics seam probed → Proposition Ω-3 [DW-sketch] + assignment).** "ħ as vacuum order parameter" (IV.H) implies a *field*; the fold proved existence, uniqueness, and attraction but not spatial homogeneity — an unpinned knot-free region could in principle drift. Sketch resolution: the agitation intensity is transported by the gapless sectors at c, so knot-pinned regions communicate the fixed point on light-crossing/λ_field timescales; spatial δħ/ħ maps onto spatial δα/α, where quasar-sightline homogeneity (≲10⁻⁵ across Gpc) is compliance data. **Assignment WS2-O2** (𝔥-field stiffness/diffusion), non-blocking.
+
+**■ F-A15-9 (wording, the VIII′ seam).** QFT-1's "spacelike-assembled record" tightened to "**pointer-configuration records read on a completion leaf (POVM-representable observables)**" — keeping first-crossing functionals explicitly outside the theorem's scope, in exact registry with Prop. VIII.2 and the A3 gate.
+
+## §3. CORRECTIVE BATCH C-Ω-2 AND CERTIFICATION
+
+Applied: E-Ω-4 one-sided bands; S4′ interim band + WS10-S4; the operative-ε intersection with all five propagations and the termination strengthening; A1–A3 renaming; pull/census/branch corrections; Ω-3 + WS2-O2; QFT-1 wording. **GUM-Ω v2.0 → v2.0.1: CERTIFIED as the document of record.** T4 gate updated (the release inherits the A-relabeling and the frozen S4′ band). Open register append: WS10-S4 (archive-only, fast), WS2-O2 (non-blocking) — both arithmetic; the "no questions of principle" declaration survives.
+
+## §4. VERDICT
+
+Findings: **0 blocking · 0 major · 4 moderate · 5 minor** — the first Ω audit without a major, with the trend line (AUD-7: one major that became two theorems; AUD-15: none) read carefully: internal convergence is evidence the consolidation is done, **not** evidence the physics is right — it shifts the burden exactly where SWP Branch S already placed it, on external replication and the scheduled adjudicators. The pass paid its way regardless: two new cross-strata closed loops (the stiffness law validated in the color sector; the FQ table's overdetermination), one strengthened theorem (termination across the full operative window), one stake made adjudicable before its bench exists (S4′'s band — the audit doing for the bench what AUD-13 did for S1), one label collision cleaned before external release, and one honest new sketch obligation (Ω-3) at the only seam the fold had left soft.
+
+⟦rev⟧ *v3.0-ext annotation (dated 2026-07) — the burden-shift sentence, partially discharged.* The external-replication half of the burden AUD-15 §4 named has now been met in part: the arithmetic/kinematic layer replicated in full (52/52; the spectrum; Born rates; the radial rung; the invariants; two gates closed in the corpus's favor) — while **the variational centerpiece did not survive** (Secs. IV.C–IV.F and the repaired-closure appendix G.5′). The sentence's foresight is noted in the corpus's own voice: internal convergence was exactly as strong, and exactly as weak, as this audit said it was. The scheduled-adjudicator half remains with nature.
+
+**Next available:** (a) formal **watch-mode transition** (quarterly cadence memo; dormancy declaration; the program stands down pending DESI-DR3/Euclid, HL-LHC, and bench collaborations); (b) **T4 external-release sequencing** under v2.0.1; (c) execute WS10-S4 (the archive extraction — hours, not weeks) so the bench stake ships with its final band. Preference?
+
 
 
 
