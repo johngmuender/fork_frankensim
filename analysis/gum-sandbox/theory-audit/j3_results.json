@@ -1,0 +1,482 @@
+{
+ "meta": {
+  "phase": "ROADMAP_v6 J3",
+  "date": "2026-07-16",
+  "standing": "WITHIN-MODEL ONLY — re-runs the corpus's printed battery arithmetic at shifted inputs; validates nothing about nature.",
+  "sources": [
+   "substrate-suite/01-GUM-Omega-Paper-v2.0.1.md VII.I (dictionary line), (4.9), F-A15-3, App K.3/K.5, V15.5",
+   "corpus2/01-GUM-Omega-Paper-v3.0-ext.md VII.I (identical dictionary line)",
+   "substrate-suite/02-The-Substrate-Course.md 19.3 (the four battery rows)",
+   "corpus/WS-nu-P4-Perimeter-Annex-Funnel-v0_1.md r1 (battery re-certified)",
+   "corpus/WS-K2-Charged-Current-Architecture-v0_1.md (b)/(c) (lab perimeter)",
+   "theory-audit/i2_propagate.py + i2_RESULTS.md (the propagated window)",
+   "tier5-family/family_audit.py C5c/C5d/C7b (prior replication, reused)"
+  ]
+ },
+ "stages": {
+  "A_control": {
+   "f_window_MeV": [
+    3.7093516953775088,
+    28.732514682846674
+   ],
+   "ceil_old": 0.0006036816105203691,
+   "rows_full_band": {
+    "tag": "old-window",
+    "f_MeV": [
+     3.7093516953775088,
+     28.732514682846674
+    ],
+    "m_eV": [
+     0.019,
+     0.115
+    ],
+    "g_range": [
+     6.612717407343051e-10,
+     3.100272215851353e-08
+    ],
+    "R1_free_streaming": {
+     "bound": "f >= B-nu1 (printed 1.4 MeV at m~0.047, raw 1.57; ∝ √m)",
+     "binding_corner": "f_lo, m_hi",
+     "Bnu1_at_mhi_MeV": [
+      2.189918875404078,
+      2.4558375959888594
+     ],
+     "margin": [
+      1.6938306423305607,
+      1.510422228829799
+     ],
+     "pass": true
+    },
+    "R1b_eps_floor": {
+     "eps_floor_at_mhi": 3.4854594102247024e-06,
+     "op_bottom": 1e-05,
+     "pass": true
+    },
+    "R2_BBN_dNeff": {
+     "dNeff": 0.026772117683587383,
+     "f_g_dependence": "none (one decoupled scalar); bit-identical old->new",
+     "printed_bound": "NOT PRINTED (spec-recovery limit); '✓' as stamped",
+     "pass": true
+    },
+    "R3_SN_cooling": {
+     "pass_condition_as_printed": "'evaded from below' — whole g-interval below the band's lower edge; band edges NOT PRINTED (spec-recovery limit)",
+     "binding_edge_g_max": 3.100272215851353e-08,
+     "pass": null
+    },
+    "R4_late_recoupling": {
+     "pass_condition_as_printed": "'harmless' — no formula/number printed (spec-recovery limit); monotone in g, binds at g_max",
+     "binding_edge_g_max": 3.100272215851353e-08,
+     "pass": null
+    },
+    "LAB_WSK2": {
+     "g2_range": [
+      4.372803150937781e-19,
+      9.611687812379857e-16
+     ],
+     "printed": "g² ≲ 1e-16 'negligible' (model value, not bound)",
+     "pnc_distortion_per_x": [
+      5.095053169733804e-05,
+      0.003057031901840282
+     ],
+     "printed_pnc": "1e-4–3e-3 per unit x over [4,29] MeV",
+     "lambda_fm": [
+      6.867723388576368,
+      53.19715662063088
+     ]
+    }
+   },
+   "rows_central": {
+    "tag": "old-window-central-m3",
+    "f_MeV": [
+     3.7093516953775088,
+     28.732514682846674
+    ],
+    "m_eV": [
+     0.0468,
+     0.0468
+    ],
+    "g_range": [
+     1.6288167087560777e-09,
+     1.2616759974073332e-08
+    ],
+    "R1_free_streaming": {
+     "bound": "f >= B-nu1 (printed 1.4 MeV at m~0.047, raw 1.57; ∝ √m)",
+     "binding_corner": "f_lo, m_hi",
+     "Bnu1_at_mhi_MeV": [
+      1.3970181009808302,
+      1.5666560132427882
+     ],
+     "margin": [
+      2.655192293337657,
+      2.367687395332942
+     ],
+     "pass": true
+    },
+    "R1b_eps_floor": {
+     "eps_floor_at_mhi": 1.418430438247966e-06,
+     "op_bottom": 1e-05,
+     "pass": true
+    },
+    "R2_BBN_dNeff": {
+     "dNeff": 0.026772117683587383,
+     "f_g_dependence": "none (one decoupled scalar); bit-identical old->new",
+     "printed_bound": "NOT PRINTED (spec-recovery limit); '✓' as stamped",
+     "pass": true
+    },
+    "R3_SN_cooling": {
+     "pass_condition_as_printed": "'evaded from below' — whole g-interval below the band's lower edge; band edges NOT PRINTED (spec-recovery limit)",
+     "binding_edge_g_max": 1.2616759974073332e-08,
+     "pass": null
+    },
+    "R4_late_recoupling": {
+     "pass_condition_as_printed": "'harmless' — no formula/number printed (spec-recovery limit); monotone in g, binds at g_max",
+     "binding_edge_g_max": 1.2616759974073332e-08,
+     "pass": null
+    },
+    "LAB_WSK2": {
+     "g2_range": [
+      2.6530438707229815e-18,
+      1.591826322433789e-16
+     ],
+     "printed": "g² ≲ 1e-16 'negligible' (model value, not bound)",
+     "pnc_distortion_per_x": [
+      5.095053169733804e-05,
+      0.003057031901840282
+     ],
+     "printed_pnc": "1e-4–3e-3 per unit x over [4,29] MeV",
+     "lambda_fm": [
+      6.867723388576368,
+      53.19715662063088
+     ]
+    }
+   },
+   "g_endpoint_conventions": {
+    "i2_low": 1.6288167087560777e-09,
+    "FA153_low": 1.7344827586206896e-09,
+    "FA153_high": 1.2575e-08,
+    "body_low_f60": 7.833333333333333e-10
+   }
+  },
+  "B_rerun": {
+   "f_window_MeV": [
+    3.7093516953775088,
+    59.85940558926391
+   ],
+   "ceil_new": 0.002604166666666667,
+   "rows_full_band": {
+    "tag": "new-window",
+    "f_MeV": [
+     3.7093516953775088,
+     59.85940558926391
+    ],
+    "m_eV": [
+     0.019,
+     0.115
+    ],
+    "g_range": [
+     3.1741043555246645e-10,
+     3.100272215851353e-08
+    ],
+    "R1_free_streaming": {
+     "bound": "f >= B-nu1 (printed 1.4 MeV at m~0.047, raw 1.57; ∝ √m)",
+     "binding_corner": "f_lo, m_hi",
+     "Bnu1_at_mhi_MeV": [
+      2.189918875404078,
+      2.4558375959888594
+     ],
+     "margin": [
+      1.6938306423305607,
+      1.510422228829799
+     ],
+     "pass": true
+    },
+    "R1b_eps_floor": {
+     "eps_floor_at_mhi": 3.4854594102247024e-06,
+     "op_bottom": 1e-05,
+     "pass": true
+    },
+    "R2_BBN_dNeff": {
+     "dNeff": 0.026772117683587383,
+     "f_g_dependence": "none (one decoupled scalar); bit-identical old->new",
+     "printed_bound": "NOT PRINTED (spec-recovery limit); '✓' as stamped",
+     "pass": true
+    },
+    "R3_SN_cooling": {
+     "pass_condition_as_printed": "'evaded from below' — whole g-interval below the band's lower edge; band edges NOT PRINTED (spec-recovery limit)",
+     "binding_edge_g_max": 3.100272215851353e-08,
+     "pass": null
+    },
+    "R4_late_recoupling": {
+     "pass_condition_as_printed": "'harmless' — no formula/number printed (spec-recovery limit); monotone in g, binds at g_max",
+     "binding_edge_g_max": 3.100272215851353e-08,
+     "pass": null
+    },
+    "LAB_WSK2": {
+     "g2_range": [
+      1.0074938459760646e-19,
+      9.611687812379857e-16
+     ],
+     "printed": "g² ≲ 1e-16 'negligible' (model value, not bound)",
+     "pnc_distortion_per_x": [
+      1.1739002503066678e-05,
+      0.003057031901840282
+     ],
+     "printed_pnc": "1e-4–3e-3 per unit x over [4,29] MeV",
+     "lambda_fm": [
+      3.296507226516656,
+      53.19715662063088
+     ]
+    }
+   },
+   "rows_central": {
+    "tag": "new-window-central-m3",
+    "f_MeV": [
+     3.7093516953775088,
+     59.85940558926391
+    ],
+    "m_eV": [
+     0.0468,
+     0.0468
+    ],
+    "g_range": [
+     7.818320202029173e-10,
+     1.2616759974073332e-08
+    ],
+    "R1_free_streaming": {
+     "bound": "f >= B-nu1 (printed 1.4 MeV at m~0.047, raw 1.57; ∝ √m)",
+     "binding_corner": "f_lo, m_hi",
+     "Bnu1_at_mhi_MeV": [
+      1.3970181009808302,
+      1.5666560132427882
+     ],
+     "margin": [
+      2.655192293337657,
+      2.367687395332942
+     ],
+     "pass": true
+    },
+    "R1b_eps_floor": {
+     "eps_floor_at_mhi": 1.418430438247966e-06,
+     "op_bottom": 1e-05,
+     "pass": true
+    },
+    "R2_BBN_dNeff": {
+     "dNeff": 0.026772117683587383,
+     "f_g_dependence": "none (one decoupled scalar); bit-identical old->new",
+     "printed_bound": "NOT PRINTED (spec-recovery limit); '✓' as stamped",
+     "pass": true
+    },
+    "R3_SN_cooling": {
+     "pass_condition_as_printed": "'evaded from below' — whole g-interval below the band's lower edge; band edges NOT PRINTED (spec-recovery limit)",
+     "binding_edge_g_max": 1.2616759974073332e-08,
+     "pass": null
+    },
+    "R4_late_recoupling": {
+     "pass_condition_as_printed": "'harmless' — no formula/number printed (spec-recovery limit); monotone in g, binds at g_max",
+     "binding_edge_g_max": 1.2616759974073332e-08,
+     "pass": null
+    },
+    "LAB_WSK2": {
+     "g2_range": [
+      6.112613078145749e-19,
+      1.591826322433789e-16
+     ],
+     "printed": "g² ≲ 1e-16 'negligible' (model value, not bound)",
+     "pnc_distortion_per_x": [
+      1.1739002503066678e-05,
+      0.003057031901840282
+     ],
+     "printed_pnc": "1e-4–3e-3 per unit x over [4,29] MeV",
+     "lambda_fm": [
+      3.296507226516656,
+      53.19715662063088
+     ]
+    }
+   },
+   "rows_live_window": {
+    "tag": "new-window-live-m",
+    "f_MeV": [
+     3.7093516953775088,
+     59.85940558926391
+    ],
+    "m_eV": [
+     0.05,
+     0.057
+    ],
+    "g_range": [
+     8.352906198749118e-10,
+     1.5366566635089315e-08
+    ],
+    "R1_free_streaming": {
+     "bound": "f >= B-nu1 (printed 1.4 MeV at m~0.047, raw 1.57; ∝ √m)",
+     "binding_corner": "f_lo, m_hi",
+     "Bnu1_at_mhi_MeV": [
+      1.5417591499957912,
+      1.728972761066709
+     ],
+     "margin": [
+      2.4059216352876094,
+      2.145407827645002
+     ],
+     "pass": true
+    },
+    "R1b_eps_floor": {
+     "eps_floor_at_mhi": 1.7275755337635484e-06,
+     "op_bottom": 1e-05,
+     "pass": true
+    },
+    "R2_BBN_dNeff": {
+     "dNeff": 0.026772117683587383,
+     "f_g_dependence": "none (one decoupled scalar); bit-identical old->new",
+     "printed_bound": "NOT PRINTED (spec-recovery limit); '✓' as stamped",
+     "pass": true
+    },
+    "R3_SN_cooling": {
+     "pass_condition_as_printed": "'evaded from below' — whole g-interval below the band's lower edge; band edges NOT PRINTED (spec-recovery limit)",
+     "binding_edge_g_max": 1.5366566635089315e-08,
+     "pass": null
+    },
+    "R4_late_recoupling": {
+     "pass_condition_as_printed": "'harmless' — no formula/number printed (spec-recovery limit); monotone in g, binds at g_max",
+     "binding_edge_g_max": 1.5366566635089315e-08,
+     "pass": null
+    },
+    "LAB_WSK2": {
+     "g2_range": [
+      6.977104196510143e-19,
+      2.3613137015064014e-16
+     ],
+     "printed": "g² ≲ 1e-16 'negligible' (model value, not bound)",
+     "pnc_distortion_per_x": [
+      1.1739002503066678e-05,
+      0.003057031901840282
+     ],
+     "printed_pnc": "1e-4–3e-3 per unit x over [4,29] MeV",
+     "lambda_fm": [
+      3.296507226516656,
+      53.19715662063088
+     ]
+    }
+   },
+   "grid_worst": {
+    "fs_margin": 1.6938306423305607,
+    "g_max": 3.1002722158513534e-08,
+    "g_min": 3.1741043555246645e-10,
+    "pnc_max": 0.003057031901840282
+   },
+   "signature_notes": {
+    "P_nu4_0nubb": "signature row, not a gate: 'Majoron-mode 0νββ at g ∼ 1e-9 (far-horizon)' — the newly opened strip g ∈ [7.8e-10, 1.6e-9) sits at/below 1e-9: at the new low edge the far-horizon signature retreats further; no pass/fail content",
+    "dNeff_CJ": "[CJ-thermal] conditionality: smaller g makes primordial thermalization less likely; grade unchanged, null does not kill"
+   }
+  },
+  "C_verdict": {
+   "gates_pass": 17,
+   "gates_fail": 0,
+   "verdict": "CONFIRMED: I2's 'SHIFTS-HARMLESSLY' holds — no battery row newly binds or fails anywhere in the repaired window. The two binding edges (f_lo = 3.71 MeV, g_max = m/f_lo) are repair-invariant; the only moving edge (g_min: 1.6e-9 -> 7.8e-10) moves monotonically away from every coupling-driven constraint. R3 (SN) and R4 (recoupling) are inherited-PASS by monotonicity + unchanged binding edge, NOT recomputed: their numerical bounds are never printed in the corpus (spec-recovery limits). The corpus's BODY dictionary (VII.I, both versions) already stamped the four ✓ on f ∈ [4, 60] — the repaired operative window lands on a domain the corpus itself already claimed; the re-run makes that claim arithmetic instead of stamped."
+  }
+ },
+ "gates": [
+  {
+   "id": "A1",
+   "desc": "old f-window bottom 3.71 MeV (corpus rounds to '4'; i2 '3.7')",
+   "pass": true,
+   "detail": "f(1e-5) = 3.7094 MeV"
+  },
+  {
+   "id": "A2",
+   "desc": "old f-window top 28.7 MeV (corpus '29')",
+   "pass": true,
+   "detail": "f(6.0368e-4 -> capped 6e-4) = 28.7325 MeV"
+  },
+  {
+   "id": "A3",
+   "desc": "old g endpoints: i2's 1.6e-9 (m=0.0468/28.7) and F-A15-3's [1.7e-9, 1.3e-8] (m=0.0503/[29,4])",
+   "pass": true,
+   "detail": "1.629e-09; 1.734e-09; 1.258e-08"
+  },
+  {
+   "id": "A4",
+   "desc": "ΔN_eff = (4/7)(10.75/106.75)^{4/3} = 0.0268",
+   "pass": true,
+   "detail": "= 0.026772"
+  },
+  {
+   "id": "A5",
+   "desc": "ε-floor (1.4 MeV inverted) = 1.42e-6 (printed '1.4->1.5e-6')",
+   "pass": true,
+   "detail": "= 1.424e-06"
+  },
+  {
+   "id": "A6",
+   "desc": "B-ν1 raw 1.57 MeV recovers with T = (1.57 MeV)^4/(M_Pl m₃²) — recombination-class T (CONVENTION-LIMITED, per tier5 C5c)",
+   "pass": true,
+   "detail": "T = 0.227 eV (T_rec class ~0.26 eV)"
+  },
+  {
+   "id": "A7",
+   "desc": "v2.0/v3.0 BODY dictionary already prints [8e-10, 1.3e-8] over f ∈ [4, 60] (II.H admission window) — 0.047/60 = 7.8e-10 -> '8e-10'",
+   "pass": true,
+   "detail": "= 7.833e-10"
+  },
+  {
+   "id": "A8",
+   "desc": "CONTROL battery verdict on old window reproduces 'passed': R1 margin>1 across full m-band, ε-floor slack, R2 ✓; R3/R4 stamped ✓ with bounds unprinted",
+   "pass": true,
+   "detail": "R1 margins (th/raw, worst corner m=0.115) = 1.69/1.51; central-m3 margins = 2.66/2.37; eps_floor(0.115) = 3.49e-06"
+  },
+  {
+   "id": "B1",
+   "desc": "repaired ceiling 3e-3/1.152 = 2.60e-3 -> f-top 59.9 MeV (coincident with the II.H window top '60')",
+   "pass": true,
+   "detail": "ceiling = 2.6042e-03; f_top = 59.859 MeV"
+  },
+  {
+   "id": "B2",
+   "desc": "new low edge g = m₃/f_top = 7.8e-10 (the I2 obligation number)",
+   "pass": true,
+   "detail": "= 7.818e-10"
+  },
+  {
+   "id": "B3",
+   "desc": "R1 free-streaming PASSES across the whole repaired window and full m-band; margin identical to control (binding edge f_lo unchanged)",
+   "pass": true,
+   "detail": "worst margin (m=0.115) = 1.694 (thermal) / 1.510 (raw); central m₃ = 2.66/2.37"
+  },
+  {
+   "id": "B4",
+   "desc": "R1b ε-floor stays slack across m-band (max at m=0.115)",
+   "pass": true,
+   "detail": "eps_floor(0.115) = 3.485e-06 < operative bottom 1e-05"
+  },
+  {
+   "id": "B5",
+   "desc": "R2 BBN/ΔN_eff bit-identical (f,g-independent)",
+   "pass": true,
+   "detail": "ΔN_eff = 0.026772 old and new"
+  },
+  {
+   "id": "B6",
+   "desc": "R3 SN-cooling binding edge g_max UNCHANGED old->new for every m (f_lo repair-invariant); new strip only deepens evasion-from-below",
+   "pass": true,
+   "detail": "g_max = 3.100e-08 (m=0.115) / 1.262e-08 (m₃); g_min drops 6.61e-10 -> 3.17e-10"
+  },
+  {
+   "id": "B7",
+   "desc": "R4 late-recoupling binding edge g_max likewise unchanged; newly opened strip is monotonically safer",
+   "pass": true,
+   "detail": "verdict inherited from the old-window stamp (bound unprinted)"
+  },
+  {
+   "id": "B8",
+   "desc": "edge-to-edge grid sweep (121 f × 25 m): extrema sit at corners; no interior reversal (all rows monotone in f and m)",
+   "pass": true,
+   "detail": "g ∈ [3.174e-10, 3.100e-08]; min FS margin = 1.694"
+  },
+  {
+   "id": "B9",
+   "desc": "lab perimeter (WS-K2 b/c): g² top unchanged (≲1e-16 class); Cs-PNC distortion band recomputed — high-f extension only shrinks it",
+   "pass": true,
+   "detail": "g² ∈ [1.01e-19, 9.61e-16]; PNC per-x old [5.1e-05, 3.1e-03] -> new [1.2e-05, 3.1e-03] (λ band 3.3–53.2 fm)"
+  }
+ ]
+}
