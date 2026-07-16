@@ -1,0 +1,11 @@
+{
+"phase": "H2.6 tier-2 — exact dilation-family closure (engine-anchored), + H2.7a exponents on the family",
+"date": "2026-07-16",
+"anchor_state": {"protocol": "N=48 LBOX=4.5 eps=0.05 guarded static ANF, seed 424242, maxit 900 (identical to h26_convention static stage)", "E2": 8.18379024375268216e0, "E4": 5.81482361157884942e0, "E6": 1.62098178981849106e0, "E0": 1.24969293922011726e0, "I": 2.26071110293794071e1, "Estat": 2.98653334599258447e0, "deg": 9.40152916079412315e-1},
+"family": "E(s;L) = t(s E2h + E4h/s) + E6h/s^3 + s^3 E0h + L^2/(2 Ih s^3); V = s^3 (exact sector scaling laws)",
+"s0_static_optimum": 1.04330952265122168e0,
+"anchors": {"corpus_L_eq_j": {"a": 5.00000000000000000e-1, "c_a": 6.66666666666666630e-1, "L": 8.78930430016523090e0, "s_star": 1.17617567045270865e0, "V_over_V0": 1.43277191804907500e0, "I": 3.67842276920166640e1, "Estat": 3.15020356255851697e0, "Etot": 4.20027141674468929e0, "Erot_over_Etot": 2.49999999999999944e-1, "kappa_ours": 2.38942200275494343e-1, "kappa_over_halo_threshold": 1.19787855042619462e0, "kappa_paper": 8.47028046044273952e-1, "c_paper": 2.23225954939979943e0, "envelope_theorem_dev": 1.74786629614231970e-10}, "alt_L2_eq_jjp1": {"a": 8.66025403784438597e-1, "c_a": 1.52741588158084740e0, "L": 2.29361614258746513e1, "s_star": 1.48092408457292102e0, "V_over_V0": 2.85995285819453660e0, "I": 7.34249155772875355e1, "Estat": 4.69073302148685745e0, "Etot": 8.27308307812422683e0, "Erot_over_Etot": 4.33012701892219354e-1, "kappa_ours": 3.12375727578902029e-1, "kappa_over_halo_threshold": 1.56601966211541321e0, "kappa_paper": 1.10734312255327461e0, "c_paper": 3.36318144234473859e0, "envelope_theorem_dev": 1.13264952972258470e-11}},
+"h27a_exponents_dilation": [{"delta": 1.00000000000000002e-3, "dln_omega_mech_dln_h": 4.86906869282373533e-1, "dln_omega_phase_dln_h": -5.00000248381981982e-1, "dln_I_dln_h": 5.13093130717591328e-1}, {"delta": 1.00000000000000008e-5, "dln_omega_mech_dln_h": 4.86906615005796517e-1, "dln_omega_phase_dln_h": -5.00000000024380276e-1, "dln_I_dln_h": 5.13093385001201607e-1}],
+"expected": {"mech": 0.5, "phase": -0.5, "note": "T2 (e.1) exact on the pure V-family at x=1; deviations here are the eps = 0.05 E2/E4 corrections, measured"},
+"runtime_seconds": 1.61627900930000017e1
+}

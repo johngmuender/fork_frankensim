@@ -1,0 +1,17 @@
+[package]
+name = "h26-solve"
+version = "0.1.0"
+edition = "2021"
+description = "Phase H2.6 + H2.7(a): the j(j+1)-convention non-rigid closure on the certified fs-gum engines (N = 48, eps = 0.05, guarded corner-scheme ANF via the fs-gum-kern deterministic threaded layer), solving the clock condition under BOTH spin anchors — (a) corpus semiclassical L = j*chi (clock L^2 = (2/3) I E_static) and (b) quantum-rotor L = sqrt(j(j+1))*chi (clock L^2 = [2a/(2-a)] I E_static, a = sqrt(3)/2) — by the campaign's standard bisection on the non-rigidly relaxed (I(L), E_static(L)); plus the IV.H.3 +-1/2 entrainment-exponent field-level measurement (clock-target displacement L -> L(1+delta)).  Deterministic: LCG perturbation stream is the frozen statics protocol; same binary + args => bit-identical JSON."
+
+# Deliberately outside the frankensim workspace (fs-gum-field /
+# fs-gum-statics / h22_solve pattern): std-only dependency closure.
+[workspace]
+
+[dependencies]
+fs-gum-field = { path = "../../gum-core/fs-gum-field" }
+fs-gum-statics = { path = "../../gum-core/fs-gum-statics" }
+fs-gum-kern = { path = "../../gum-core/fs-gum-kern" }
+
+[profile.release]
+opt-level = 3

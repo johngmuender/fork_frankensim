@@ -1,0 +1,327 @@
+{
+ "phase": "H2.5",
+ "date": "2026-07-16",
+ "seed": 20260716,
+ "part1_dispersions": {
+  "conventions": "corpus W2 Case A (objective mass), chi3=0 baseline, k||z; port of tier1-spectrum/spectrum.py to sympy",
+  "B1": {
+   "omega2": "k**2*(lambda + 2*mu)/rho_0",
+   "in_E6_sum": false,
+   "note": "longitudinal acoustic; corpus relegates it to the elliptic constraint sector (VI B lists B2+-, B3, B4, knot band-edges)"
+  },
+  "B2": {
+   "omega2_smallk": "(mu/rho_0)*k^2 + O(k^4)",
+   "N_s": 2,
+   "gap": 0,
+   "exact_root": "(J*k**2*(m_V**2 + 4*mu + 4*mu_c) + 2*rho_0*(beta*k**2 + gamma*k**2 + 2*m_V**2 + 8*mu_c) - sqrt(J**2*k**4*m_V**4 + 8*J**2*k**4*m_V**2*mu + 8*J**2*k**4*m_V**2*mu_c + 16*J**2*k**4*mu**2 + 32*J**2*k**4*mu*mu_c + 16*J**2*k**4*mu_c**2 - 4*J*beta*k**4*m_V**2*rho_0 - 16*J*beta*k**4*mu*rho_0 - 16*J*beta*k**4*mu_c*rho_0 - 4*J*gamma*k**4*m_V**2*rho_0 - 16*J*gamma*k**4*mu*rho_0 - 16*J*gamma*k**4*mu_c*rho_0 + 8*J*k**2*m_V**4*rho_0 - 32*J*k**2*m_V**2*mu*rho_0 + 64*J*k**2*m_V**2*mu_c*rho_0 - 128*J*k**2*mu*mu_c*rho_0 + 128*J*k**2*mu_c**2*rho_0 + 4*beta**2*k**4*rho_0**2 + 8*beta*gamma*k**4*rho_0**2 + 16*beta*k**2*m_V**2*rho_0**2 + 64*beta*k**2*mu_c*rho_0**2 + 4*gamma**2*k**4*rho_0**2 + 16*gamma*k**2*m_V**2*rho_0**2 + 64*gamma*k**2*mu_c*rho_0**2 + 16*m_V**4*rho_0**2 + 128*m_V**2*mu_c*rho_0**2 + 256*mu_c**2*rho_0**2))/(8*J*rho_0)"
+  },
+  "B3": {
+   "omega2_smallk": "(m_V**2 + 4*mu_c)/J + ((J*(m_V**2 + 4*mu_c) + 2*rho_0*(beta + gamma))/(4*J*rho_0))*k^2 + O(k^4)",
+   "N_s": 2
+  },
+  "B4": {
+   "omega2": "(alpha*k**2 + beta*k**2 + m_V**2 + 4*mu_c)/J",
+   "N_s": 1,
+   "exact_KG": true
+  },
+  "knot_band_edge": {
+   "omega2": "omega_0^2 + c^2 k^2 + O(k^4 a^2)  (corpus (7.1))",
+   "statistics": "fermionic by corpus Theorem c''"
+  },
+  "benchmark_values": {
+   "c_L^2": 3.0,
+   "c_B2^2": 1.0,
+   "gap_B3=gap_B4": 21.0,
+   "c_psi^2_B3": 5.75,
+   "cone_B4=alpha+beta": 1.0
+  },
+  "campaign_cross_validation_rel_dev": {
+   "B2": 3.199940284904349e-13,
+   "B1": 7.08932243713357e-14,
+   "B4": 9.165037326053219e-14,
+   "B3": 1.1483926637058874e-14
+  }
+ },
+ "part2_reduction": {
+  "operator": "D = -w_t(x) d_tau^2 - d_i w_x(x) d_i + M(x); Gilkey metric g^{mu nu} = diag(w_t, w_x, w_x, w_x) is forced by the leading symbol",
+  "modulation": "w_x ~ 1 + eps p h, w_t ~ 1 + eps q h, M ~ M0(1 + eps r h), linear order",
+  "R_linear": "R = (q + 2p) Delta h",
+  "a1_linear": "a1 = (-5*p/12 - q/12) Delta h - M0 r h",
+  "master_a1_ratio": "(-5*p - q)/(12*(2*p + q))",
+  "positive_iff": "(5p + q)(2p + q) < 0  [opposite-sign response wedge only]",
+  "pole": "q = -2p: R vanishes at linear order while the a1 term does not -- on this ray the induced term is not of the form a1*R at all (the (6.1) ansatz fails)",
+  "rays": {
+   "cone-only (corpus's stated form g_s = gbar + 2 delta c^2 n(x)n; p=0)": {
+    "p": 0,
+    "q": 1,
+    "a1_per_mode": "-1/12"
+   },
+   "stiffness-only (q=0)": {
+    "p": 1,
+    "q": 0,
+    "a1_per_mode": "-5/24"
+   },
+   "conformal (p=q)": {
+    "p": 1,
+    "q": 1,
+    "a1_per_mode": "-1/6"
+   },
+   "GR weak-field (q=-p)": {
+    "p": 1,
+    "q": -1,
+    "a1_per_mode": "-1/3"
+   },
+   "unimodular / exact-acoustic (q=-3p)": {
+    "p": 1,
+    "q": -3,
+    "a1_per_mode": "1/6"
+   }
+  },
+  "anchors": {
+   "S3": "6/rho**2",
+   "minimal_E": "0",
+   "conformal_a1": "0",
+   "unimodular": "+1/6"
+  },
+  "mass_note": "literal reading (a1 includes -m^2): on flat/weakly-curved background a1_literal = -m_s^2 < 0 for every gapped sector (B3, B4, knots) whenever R < 6 m_s^2; benchmark: -21 (B3/B4)."
+ },
+ "part3_knot_sector": {
+  "K1_bosonic_KG_reading": "corpus (7.1) taken literally as a bosonic KG operator: a1 follows the PART-2 master formula (minimal: +N/6; cone-only ray: -N/12)",
+  "K2_fermionic_corpus_literal": "Theorem c'' honored, w_s = N_s Lambda_s^2 a1^(s) read as printed with N_s > 0 a mode count: a1(Dirac) = -1/3 => w_knot < 0: convexity fails as written",
+  "K3_fermionic_statistics_signed": "loop sign included (Gamma_F = -Tr ln): contribution = +2 scalar-equivalents per Dirac field > 0 under the minimal reading; the printed formula then needs an erratum (N_s -> supertrace-signed count)",
+  "import": "Lichnerowicz Dslash^2 = -Delta + R/4 (torsion-free)"
+ },
+ "part4_scans": {
+  "admissible_moduli_scan": {
+   "n_draws": 20000,
+   "cL2_min": 5.063138544505751e-06,
+   "cT2_min": 1.111562335090664e-06,
+   "cpsi2_min": 2.4347662636590525e-05,
+   "cB4cone_min": 2.3994107091407015e-06,
+   "gap_min": 5.048360573683668e-06
+  },
+  "ray_scan": {
+   "n_rays": 1440,
+   "fraction_positive": 0.08472222222222223,
+   "analytic_wedge_fraction": 0.08475065946143213,
+   "positive_wedge": "-5p < q < -2p (p>0) and mirror: (5p+q)(2p+q)<0"
+  },
+  "kgrid_crossvalidation_max_rel_dev": 1.354134384808211e-09
+ },
+ "sector_table": [
+  {
+   "sector": "B1 (long. acoustic)",
+   "N_s": 1,
+   "w_t (inertia)": "rho0",
+   "w_x (stiffness)": "lambda + 2 mu",
+   "gap M": "0",
+   "in_E6_sum": false,
+   "a1_minimal_reading": "+1/6",
+   "a1_constitutive_cone_only": "-1/12",
+   "a1_constitutive_general": "1 * (-(5p+q)/(12(2p+q)))",
+   "a1_literal_flat": "0 (massless)",
+   "note": "not in the E.6 sum (elliptic constraint sector); reference only"
+  },
+  {
+   "sector": "B2+- (light transverse doublet / photon)",
+   "N_s": 2,
+   "w_t (inertia)": "rho0",
+   "w_x (stiffness)": "mu",
+   "gap M": "0",
+   "in_E6_sum": true,
+   "a1_minimal_reading": "+2/6",
+   "a1_constitutive_cone_only": "-1/6",
+   "a1_constitutive_general": "2 * (-(5p+q)/(12(2p+q)))",
+   "a1_literal_flat": "0 (massless)",
+   "note": "c^2 = mu/rho0 exact; heavy-field elimination corrections are O(k^4/A_c), i.e. O(R/m~^2) here \u2014 subleading, truncated"
+  },
+  {
+   "sector": "B3 (heavy KG doublet)",
+   "N_s": 2,
+   "w_t (inertia)": "J",
+   "w_x (stiffness)": "J c_psi^2 = (beta+gamma)/2 + A_c J/(2 rho0)",
+   "gap M": "(4 mu_c + m_V^2)/J",
+   "in_E6_sum": true,
+   "a1_minimal_reading": "+2/6",
+   "a1_constitutive_cone_only": "-1/6",
+   "a1_constitutive_general": "2 * (-(5p+q)/(12(2p+q)))",
+   "a1_literal_flat": "-(4 mu_c + m_V^2)/J < 0",
+   "note": "gyroscopic u-phi mixing removed by branch projection, valid to O(k^2/gap)"
+  },
+  {
+   "sector": "B4 (longitudinal twist)",
+   "N_s": 1,
+   "w_t (inertia)": "J",
+   "w_x (stiffness)": "alpha + beta",
+   "gap M": "(4 mu_c + m_V^2)/J",
+   "in_E6_sum": true,
+   "a1_minimal_reading": "+1/6",
+   "a1_constitutive_cone_only": "-1/12",
+   "a1_constitutive_general": "1 * (-(5p+q)/(12(2p+q)))",
+   "a1_literal_flat": "-(4 mu_c + m_V^2)/J < 0",
+   "note": "exactly KG at quadratic order (no k^4 term)"
+  },
+  {
+   "sector": "knot band-edges",
+   "N_s": "per species",
+   "w_t (inertia)": "1",
+   "w_x (stiffness)": "c^2",
+   "gap M": "omega_0^2",
+   "in_E6_sum": true,
+   "a1_bosonic_KG_reading": "master formula (minimal +N/6; cone-only -N/12)",
+   "a1_fermionic_corpus_literal": "-N/3 < 0 (Lichnerowicz; w_s < 0 as printed)",
+   "a1_fermionic_statistics_signed": "+2N/6 scalar-equivalent > 0 (minimal reading)",
+   "note": "fermionic by corpus Theorem c''; the corpus's (7.1) writes a bosonic KG form \u2014 the tension is the audited point"
+  }
+ ],
+ "verdict": {
+  "reduction_status": "REDUCIBLE per sector (Laplace-type after branch projection and second-order truncation; declared error O(k^2/gap, R/gap)). The FULL 6x6 operator is NOT Laplace-type (multi-cone leading symbol) \u2014 the per-sector split of (6.1) is forced, and audited as such.",
+  "headline": "E.6's blanket a1^(s) > 0 is NOT derivable from the corpus's operators. The sign is a function of an underdetermined constitutive response ray (p, q) that the corpus never fixes: a1 = -(5p+q)/(12(2p+q)) per mode. It is NEGATIVE on every same-sign response ray, including the corpus's own displayed perturbation form g_s = gbar + 2 delta_s c^2 n(x)n (cone-only, p = 0: a1 = -1/12 per mode), and positive only on the opposite-sign wedge -5p < q < -2p (8.5% of rays), which contains the unimodular/exact-acoustic ray q = -3p (a1 = +1/6) \u2014 a derivation the corpus would need and does not have.",
+  "fermion_flank": "Under the corpus's own Theorem c'' the knot band-edge sector is fermionic: as printed (w_s = N_s Lambda_s^2 a1^(s), N_s > 0), a1(Dirac) = -1/3 gives w_knot < 0 in EVERY geometric reading; the statistics-signed repair makes it +2 scalar-equivalents but falsifies the printed formula.",
+  "convexity_consequences": [
+   "Reading (minimal coupling + statistics-signed fermions): all w_s > 0 \u2014 Theorem VI.1 convexity SOUND, but both ingredients are unforced repairs the corpus neither states nor derives (minimal coupling is FALSE for the medium's own variational operators except on the unimodular ray).",
+   "Reading (corpus-literal formula + corpus's displayed cone-only modulation): all bosonic w_s < 0 AND w_knot < 0 \u2014 the ratio (6.2) survives formally (common sign divides out) but the induced 1/16 pi G = Sum w_s < 0: an inverted-sign Newton constant, contradicting VI.B's G ~ c^3/(hbar N Lambda^2) identification.",
+   "Mixed readings (constitutive bosons + statistics-signed fermions, or minimal bosons + literal fermions): weights of BOTH signs \u2014 c_GW^2 exits the convex hull; the slaving bound |Delta c_GW/c| <= delta_UV fails as an inequality."
+  ],
+  "verdict": "DEFECT-CANDIDATE (conditional) / GAP CONFIRMED AND SHARPENED: the one-line E.6 justification ('heat-kernel positivity') is false as a theorem about a1; per-sector computation shows the positivity holds only in a measure-0.085 wedge of constitutive response space (plus a statistics-sign erratum), and fails on the corpus's own displayed perturbation form. Region with negative weight: every response ray with (5p+q)(2p+q) > 0, including p=0 (cone-only), q=0 (stiffness-only), p=q (conformal), q=-p (GR weak field); plus the knot sector as printed in every reading."
+ },
+ "checks": [
+  {
+   "name": "K6 Hermitian (symbolic)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "B1: omega^2 = ((lambda+2mu)/rho0) k^2 exactly",
+   "ok": true,
+   "detail": "k**2*(lambda + 2*mu)/rho_0"
+  },
+  {
+   "name": "B4: omega^2 = ((alpha+beta)k^2 + 4mu_c + m_V^2)/J exactly",
+   "ok": true,
+   "detail": "(alpha*k**2 + beta*k**2 + m_V**2 + 4*mu_c)/J"
+  },
+  {
+   "name": "circular basis block-diagonalizes transverse sector (chi3=0)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "2x2 block structure: K_uu = mu k^2 + A_c k^2/2, K_pp = 2A_c + (beta+gamma)k^2/2, |K_up| = A_c k",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "root selection: one gapless + one gapped root at k = 0",
+   "ok": true,
+   "detail": "[0, (m_V**2 + 4*mu_c)/J]"
+  },
+  {
+   "name": "B2: gapless, c^2 = mu/rho0 exactly (Theorem II.2 IR content)",
+   "ok": true,
+   "detail": "c2_B2 = mu/rho_0"
+  },
+  {
+   "name": "B3: gap = (4 mu_c + m_V^2)/J (tier-1 G06 closed form)",
+   "ok": true,
+   "detail": "gap = (m_V**2 + 4*mu_c)/J"
+  },
+  {
+   "name": "B3 cone: c_psi^2 = (beta+gamma)/(2J) + (2mu_c + m_V^2/2)/(2rho0)",
+   "ok": true,
+   "detail": "c_psi^2 = (J*(m_V**2 + 4*mu_c) + 2*rho_0*(beta + gamma))/(4*J*rho_0)"
+  },
+  {
+   "name": "closed-form dispersions reproduce campaign eigensolve at k=1 (rel < 1e-9)",
+   "ok": true,
+   "detail": "{'B2': 3.199940284904349e-13, 'B1': 7.08932243713357e-14, 'B4': 9.165037326053219e-14, 'B3': 1.1483926637058874e-14}"
+  },
+  {
+   "name": "closed forms match direct 6x6 eigensolve at k=1 (< 1e-10)",
+   "ok": true,
+   "detail": "1.1102230246251565e-16"
+  },
+  {
+   "name": "curvature convention: R(S^3, rho) = +6/rho^2 (spheres positive)",
+   "ok": true,
+   "detail": "6/rho**2"
+  },
+  {
+   "name": "anchor: minimal Laplacian -Delta_g has E = 0 (O(eps))",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "anchor: minimal Laplacian a1 = R/6, i.e. a1_ratio = +1/6 by construction",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "anchor: conformal operator (xi = 1/6) has a1-integrand = 0 (O(eps))",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "E_phys at eps = 0 equals -M0 (flat background)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "isotropy: coefficients of h_xx = h_yy = h_zz in both R and a1; no mixed terms",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "a1 linear structure: a1 = cA * Delta h - M0 r h exactly (mass part separates)",
+   "ok": true,
+   "detail": "cA = -5*p/12 - q/12"
+  },
+  {
+   "name": "R linear structure: R = (q + 2p) Delta h",
+   "ok": true,
+   "detail": "cR = 2*p + q"
+  },
+  {
+   "name": "MASTER RESULT: a1_ratio(p,q) = -(5p + q) / (12 (2p + q)) per scalar mode",
+   "ok": true,
+   "detail": "a1_ratio = (-5*p - q)/(12*(2*p + q))"
+  },
+  {
+   "name": "anchor: unimodular ray q = -3p gives a1_ratio = +1/6 (recovers minimal)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "Dirac-type a1 = 4(1/6 - 1/4) = -1/3 per Dirac field",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "statistics-signed Dirac contribution = +2 minimal-scalar equivalents",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "admissible-moduli scan: every sector cone and gap positive (acoustic metrics exist)",
+   "ok": true,
+   "detail": "{'n_draws': 20000, 'cL2_min': 5.063138544505751e-06, 'cT2_min': 1.111562335090664e-06, 'cpsi2_min': 2.4347662636590525e-05, 'cB4cone_min': 2.3994107091407015e-06, 'gap_min': 5.048360573683668e-06}"
+  },
+  {
+   "name": "a1_ratio contains no moduli symbols (sign is moduli-independent, ray-dependent)",
+   "ok": true,
+   "detail": ""
+  },
+  {
+   "name": "positive-sign wedge measure: numeric ray scan matches analytic wedge",
+   "ok": true,
+   "detail": "numeric 0.0847 vs analytic 0.0848"
+  },
+  {
+   "name": "closed-form spectrum == 6x6 eigensolve on full k grid (rel < 1e-8)",
+   "ok": true,
+   "detail": "max rel dev 1.35e-09"
+  }
+ ],
+ "all_checks_pass": true,
+ "runtime_s": 3.0
+}
