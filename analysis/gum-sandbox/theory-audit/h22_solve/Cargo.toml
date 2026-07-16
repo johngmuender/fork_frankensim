@@ -1,0 +1,17 @@
+[package]
+name = "h22-solve"
+version = "0.1.0"
+edition = "2021"
+description = "Phase H2.2: NR-D2 P4 two-texture reconciliation test on the certified fs-gum engines — two displaced hedgehogs with mismatched internal axes (twoknot product-ansatz pattern on the cubic Field3), (a) full guarded ANF relaxation, (b) SDiff-projected relaxation (Leray-projected compositional departure-map descent with analytic reseeding, F-R4 family-A pullback pattern), (c) exact volume-preserving interpolating-twist family scan.  Deterministic: no RNG anywhere."
+
+# Deliberately outside the frankensim workspace (fs-gum-field /
+# fs-gum-statics / fs-gum-twoknot pattern): std-only dependency closure.
+[workspace]
+
+[dependencies]
+fs-gum-field = { path = "../../gum-core/fs-gum-field" }
+fs-gum-statics = { path = "../../gum-core/fs-gum-statics" }
+fs-math = { path = "../../../../crates/fs-math" }
+
+[profile.release]
+opt-level = 3
