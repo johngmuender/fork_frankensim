@@ -228,7 +228,20 @@ from the text; everything downstream is audited).
   give 1.54–1.59σ.
 
 ## Campaign status: COMPLETE (Tiers 0–5a, Steps 1–3, archive gates)
-Findings ledger: F-R1–F-R8 (two substantive: F-R4/F-R5 on the ħ-closure;
+- **F-R9 (Phase H2.1; substantive for the 0νββ insert)**: promoted from
+  theory-audit T-H2 — NR-K3a's "fluctuations negligible" clause fails
+  by 13–18 orders (rate is quadratic in the amplitude; line-supported
+  web gives R = ⟨A²⟩/⟨A⟩² = 10¹⁴–10¹⁸ across the corpus's own scale
+  window, MC + Campbell-exact; the MEAN claim simultaneously verified
+  at 1.000 ± 0.001 — the defect is purely the dropped second moment).
+  Motional-narrowing rescue priced at 5×10⁷–1.2×10⁹ c — causally
+  excluded in-model; both V-K1 fork branches unsupported. Discharge:
+  a second-moment treatment, an on-tube saturation nonlinearity
+  (nowhere in the text), or a smooth bulk m-component (which costs
+  Step 1's line-support theorem). S1 (Σm_ν) untouched; the K3a 0νββ
+  rate phenomenology is what's affected. theory-audit/h21_RESULTS.md.
+
+Findings ledger: F-R1–F-R9 (three substantive: F-R4/F-R5 on the ħ-closure, F-R9 on the 0νββ insert;
 one moderate: F-R6 provenance-chain; five print-level/minor). Out of
 envelope (documented, not scheduled): blue-fog/disclination boxes and
 nucleation (GPU-scale/theorem-level, per the v2 assessment's Tier-5

@@ -41,10 +41,8 @@ for L_um in (1.0, 4.2, 10.0):
     a = np.array([r["a_fm"] for r in rows])
     R = np.array([r["R_campbell"] for r in rows])
     Raud = np.array([r["R_audit_thick"] for r in rows])
-    ax.plot(a, R, "-", color=C[L_um], lw=2, zorder=3)
+    ax.plot(a, R, "-", color=C[L_um], lw=2, zorder=3, label=f"L = {L_um:g} μm")
     ax.plot(a, Raud, "--", color=C[L_um], lw=1.1, alpha=0.55, zorder=2)
-    ax.annotate(f"L = {L_um:g} μm", xy=(a[-1], R[-1]), xytext=(-4, 7),
-                textcoords="offset points", ha="right", fontsize=9, color=INK)
 # direct-MC points (any r0/L; plot only r0=2 rows on this panel)
 for r in grid:
     if "mc_physical" in r and r["r0_fm"] == r0_show:
@@ -62,10 +60,10 @@ ax.set_title("A.  Static web: second moment vs mean  (kernel r0 = 2 fm)\n"
 ax.axhline(1.0, color=INK2, lw=0.8)
 ax.annotate("corpus Step-2 claim: R ≈ 1", xy=(2.2, 1.0), xytext=(0, 5),
             textcoords="offset points", fontsize=8.5, color=INK2)
+leg = ax.legend(loc="upper right", frameon=False, fontsize=9, labelcolor=INK)
 
 # ---- panel B: motional narrowing ------------------------------------------------
 ax = axes[1]
-shown = set()
 for entry in narrow:
     key = (entry["a_fm"], entry["r0_fm"], entry["L_um"])
     if key not in [(52.6, 2.0, 4.2), (52.6, 2.0, 1.0)]:
@@ -73,13 +71,10 @@ for entry in narrow:
     x = np.array([c["delta_over_L"] for c in entry["curve"]])
     R = np.array([c["R"] for c in entry["curve"]])
     col = C[entry["L_um"]]
-    ax.plot(x, R, "-", color=col, lw=2)
-    lab = f"L = {entry['L_um']:g} μm"
-    if lab not in shown:
-        i = max(np.searchsorted(x, 1e-6), 1)
-        ax.annotate(lab, xy=(x[0], R[0]), xytext=(6, 0), textcoords="offset points",
-                    fontsize=9, color=INK, va="center")
-        shown.add(lab)
+    ls = "-" if entry["L_um"] == 4.2 else (0, (5, 3))
+    ax.plot(x, R, ls=ls, color=col, lw=2, label=f"L = {entry['L_um']:g} μm")
+ax.legend(loc="upper right", frameon=False, fontsize=9, labelcolor=INK,
+          title="curves coincide in δ/L", title_fontsize=8, alignment="right")
 ax.axhline(2.0, color=INK2, lw=1.0, ls=":")
 ax.annotate("R = 2 (rescue)", xy=(2e-8, 2.0), xytext=(0, 5),
             textcoords="offset points", fontsize=8.5, color=INK2)
