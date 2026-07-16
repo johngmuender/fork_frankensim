@@ -45,7 +45,7 @@ use fs_gum_field::{bps_floor, Field3, Scheme, T_FROZEN};
 use fs_gum_statics::diag::{
     add_scaled, bump_field, clock_bisect, erot_frac, halo_seed_field, restore_cells, save_cells,
 };
-use fs_gum_statics::{kappa_threshold, AnfParams, AnfResult, Opts, Out, Record, FLOOR_BAND};
+use fs_gum_statics::{kappa_threshold, AnfParams, AnfResult, Opts, Record, FLOOR_BAND};
 
 use std::fmt::Write as _;
 use std::time::Instant;
