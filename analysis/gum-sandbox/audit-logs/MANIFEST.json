@@ -1,5 +1,5 @@
 {
- "snapshot_utc": "2026-07-16T12:00Z-approx (refresh 3: +H2.1/H2.2 agents, theory workflow, G5c finalization)",
+ "snapshot_utc": "2026-07-16T13:00Z-approx (final sweep: full H2 program complete)",
  "session": "d0b81976",
  "main_session_transcript": "coordinator-session.jsonl.xz",
  "agents": [

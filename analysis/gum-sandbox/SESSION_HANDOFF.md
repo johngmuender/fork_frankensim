@@ -127,7 +127,18 @@ in this checkout.
 
 ## 6. IN-FLIGHT AT CHECKPOINT — RESOLVED before session end
 
-**Both in-flight builds completed and are committed.** G1: 13/13 gates,
+**Both in-flight builds completed and are committed.** SUBSEQUENT
+SESSIONS ALSO COMPLETED: ROADMAP_v4 G5a/G5b/G5c (N=192 ladder with the
+crossing OBSERVED at it 2070-2080; two-knot well 5.0σ, x₀ = 1.95 ±
+0.07 vs corpus 1.92 ± 0.08); NATIVE_REMEASURE (host-specific
+regression resolved); Phase H theory audit (48 arguments; T-ledger
+T-H1..T-H11; the repaired-closure Theorem T3.1) and the FULL H2
+numeric program (F-R9 promoted — NR-K3a second moment, 13-18 orders;
+F-R4 floor confirmed on the collision problem; E.6 positivity
+T-H10; D1b honest floor T-H11; A2b counterexamples survive; the
+anchor discriminator and torque-sign gates close IN THE CORPUS'S
+FAVOR). Ledger now F-R1-F-R9 + T-H1-T-H11. Start any new session
+from theory-audit/ROADMAP_v5_THEORY.md's Beyond section. G1: 13/13 gates,
 serial↔4-thread bit-identical, 3.61× speedup. G4: full protocol run
 (23 relaxations, 3 orientations), bond loop IN BAND — closed-loop
 x₀ = 1.88/1.97 vs predicted 1.90 ± 0.05; direct 2.0 ± 0.15 vs corpus

@@ -130,6 +130,32 @@ degenerate halo manifold; the ε-law sign flips. The family sector is
 7. H2.7 — entrainment ±½ empirical on the non-rigid solver; ⟨r2⟩-class
    locking-torque sign in the integrable limit (fs-gum-cosserat toy).
 
+- **H2.6 → T2's anchor GAP closes IN THE CORPUS'S FAVOR**: the
+  convention discriminator is SEPARATED at 915σ — the modified clock
+  condition L² = [2a/(2−a)]·I·E_static forces E_rot/E = a/2, so the
+  corpus's measured ¼ SELECTS the L = jħ anchor (alternative: 0.4330,
+  907σ away on the descent solver too; and the j(j+1) anchor would sit
+  27σ ABOVE the corpus's own radiation onset — superradiant
+  within-model). Residual charge: documentation-grade only.
+- **H2.7 → IV.H.3 scoped exactly as T2 drew**: phase exponent −½ EXACT
+  (root-protected: envelope theorem + clock root ⇒ dlnE/dlnL = ½);
+  mech +0.4869 with the measured ε-correction (+0.5131 inertia
+  response); descent-solver exponents do NOT converge (the F-R5 saddle
+  obstruction, measured). Locking torque ∝ −sin Δφ confirmed in both
+  classes (0.05% vs analytic); the class boundary sits at γ = 0
+  exactly, marginal at the integrator floor — **confirming the
+  corpus's own honest-boundary print** on ⟨r2⟩.
+
+## Phase H2: ✅ COMPLETE (all seven items executed)
+Score for the corpus this phase: two gates closed in its favor (anchor
+selection; torque-sign honesty), two mechanisms confirmed as it uses
+them (¼ selection, −sin Δφ), one kill tightened with numbers (murk,
+15.7×), against F-R9, T-H10, T-H11, and the hardened A2b/w1
+counterexample class. The pattern of the whole campaign holds at the
+theory level: the corpus's kinematics and self-graded honest
+boundaries replicate; its variational centerpiece and several
+asserted-not-derived steps do not.
+
 ## Beyond (unscheduled)
 Promotion pass (T-H → F-R where H2 numerics confirm); DISCHARGE_PACKAGE
 v2 with the repaired-closure memo as the constructive companion; the
