@@ -40,5 +40,37 @@ DISCHARGE_PACKAGE/FRESHNESS.md — the dated re-run record an external
 replicator sees first. Any failure is a finding, not an embarrassment:
 print it. → k4 artifacts.
 
+## Phase K verdicts (K1/K2 adjudicated; K4 running at fold time)
+- **K1: VERIFIED NULL — closed as "indistinguishable within the
+  archive"** (17/17 gates; coordinator re-verified; ~2 s determinism).
+  The archive prints exactly two amplitude-bearing calibrands; every
+  channel falls short of 2σ: the 𝔭 band 0.52σ (NOTE: the 0.7σ quoted
+  in J1/ROADMAP_v6/this file's K1 brief OVERSTATED — measured 0.52σ,
+  the null is stronger than advertised); 𝔟_eff ≤ 0.37σ and doubly
+  voided structurally (F_b relabel absorbs the switch to 0.06σ; the
+  C_d ×54 systematic); the bond loop 0.075σ; the B.4 window edges
+  re-derive EXACTLY but are 𝒱-functionals with zero amplitude
+  sensitivity (the edge signs newly closed: −m̃²/2 anti-vacuum
+  positivity, +m̃²/6 the a₄ sign change); C₆, μ, both x₀ measurements,
+  the I.1 gate constants all amplitude-free; no field snapshot exists
+  in the frozen two-knot records for a 3-D re-fit. One conditional
+  pointer printed, NOT claimed: "0.84" rounds from /6's 0.8434 and not
+  /(15π/8)'s 0.8591 ("0.86") — a 6.6σ-equivalent split IF three
+  unprinted assumptions hold. Defect acted on: the on-disk
+  j1_results.json partial stage-flush (regenerated to the full 9
+  points in this fold). k1_RESULTS.md.
+- **K2: the linear law holds to ε = 0.001 — J4 STRENGTHENED** (11/12;
+  coordinator re-verified; both points at unchanged budgets, conv
+  3×10⁻⁵; ε = 0.005 reproduction +1.24×10⁻⁶; 2/3 excluded by the new
+  window alone, χ² 77; free-intercept p = 1.005 [1.003, 1.007]).
+  Headline defect K2-D1 (the one FAIL, printed): the 12-mode family's
+  intercept bias DRIFTS (~+1.7×10⁻⁴ at ε = 0.001, +3.15σ vs constant)
+  — intercept-shaped by the χ² shape test, so small-ε fixed-intercept
+  exponents are bias artifacts; undermines neither exponent, slope,
+  nor ceiling. Propagation UNCHANGED (movement 7.8×10⁻³ ≤ the 1.3%
+  trigger); J4's (4.9′) envelopes stand. k2_RESULTS.md.
+- **K4**: running at fold time (24 PASS / 25 pending; K36 CMD-DEFECT
+  found; K36b crossing re-run the long pole). Verdict slot reserved.
+
 ## Beyond (unscheduled)
 The corpus's response to corpus2/DISCHARGE_PACKAGE; real-GPU hardware.

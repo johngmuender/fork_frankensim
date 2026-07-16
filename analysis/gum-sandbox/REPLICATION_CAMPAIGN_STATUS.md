@@ -329,7 +329,23 @@ solves measure the saturated exponent LINEAR — p = 0.997 [0.996, 1.012],
 2/3 EXCLUDED (χ² ratio 8445), intercept at 64√2/9π to +7.7×10⁻⁵; the
 ×4.3 ceiling loosening, 60 MeV f-top and 7.8×10⁻¹⁰ Majoron edge are
 MEASURED rather than linear-assumption-specific; dichotomy survives
-every reading (j4_RESULTS.md). No named opens remain in Phase J. Out of
+every reading (j4_RESULTS.md). No named opens remain in Phase J.
+
+Phase K (hardening, 2026-07-16, ROADMAP_v7 — K1/K2 adjudicated, K4's
+freshness gauntlet running at fold time): K1 worked J1's remaining
+/6-vs-/(15π/8) split to a VERIFIED NULL — every amplitude-bearing
+archive channel < 2σ (𝔭 band 0.52σ, correcting the 0.7σ previously
+quoted; 𝔟_eff ≤ 0.37σ structurally voided; bond loop 0.075σ; B.4 edges
+exactly re-derived yet amplitude-insensitive) — the item closes as
+"indistinguishable within the archive," with a conditional rounding
+pointer printed-not-claimed (k1_RESULTS.md). K2 extended the saturated
+ε-scan to ε = 0.001: the linear law HOLDS (2/3 excluded by the new
+window alone, χ² 77), J4 strengthened, propagation unchanged; headline
+defect K2-D1 — the 12-mode family's intercept bias drifts at small ε
+(bias artifact, not exponent physics) (k2_RESULTS.md). K4's REPRODUCE
+re-run had 24 rows PASS with one finding at fold time (K36 CMD-DEFECT:
+a printed command fails as printed; corrected form re-running) —
+final freshness verdict lands in DISCHARGE_PACKAGE/FRESHNESS.md. Out of
 envelope (documented, not scheduled): blue-fog/disclination boxes and
 nucleation (GPU-scale/theorem-level, per the v2 assessment's Tier-5
 flag), the Σ(p) integrals from geometry, and the full fs-cosserat solver

@@ -391,5 +391,16 @@
    "analysis/gum-sandbox/theory-audit/j4_results.json"
   ],
   "J4_eps_law_rescan": "The Phase-J residual (J2's D3) executed: dense small-eps saturated solves (eps = 0.005/0.01/0.02/0.03 x two resolutions, i1 machinery unmodified; eps = 0.02 reproduces i1 to -2.7e-6; eps->0 intercept reproduces 64sqrt2/9pi to +7.7e-5) measure the leading exponent LINEAR: p = 0.997, CI [0.996, 0.998], all-readings envelope [0.996, 1.012]; the 2/3 class EXCLUDED (chi2 ratio 8445; direct admixture 0.0034 +/- 0.0014). Propagated through the (4.9') formulas verbatim: ceiling in [2.60, 2.71]e-3 across surviving readings, so the x4.3 loosening (x4.31-4.50), the ~60 MeV f-top (59.9-61.1) and the 7.8e-10 Majoron edge (7.66-7.82e-10) are measured, not assumption-specific; the confinement dichotomy survives at every reading incl. the excluded 2/3 reference (min worst-joint x1.98). Defects printed: 1.3% axi4-vs-i1 family amplitude spread; 12-mode upper-bound bias; eps < 0.005 unprobed; W4 curvature drift; inherited Delta_lock/eps_q/f-map constants."
+ },
+ "phase_K_hardening_v2_2": {
+  "note": "Phase K (ROADMAP_v7): hardening the J-phase micro-opens + the package freshness gauntlet. K1/K2 entries at their fold; K4 appended when its gauntlet completes.",
+  "K1_convention_discriminator": "VERIFIED NULL: the /6 vs /(15pi/8) edge-referenced amplitude split (1.86% in p, 3.75% in b) is indistinguishable within the archive - every printed amplitude-bearing channel < 2 sigma (p band 0.52 sigma, correcting the 0.7 sigma previously quoted; b_eff <= 0.37 sigma over all four C_d estimators x the factor family, doubly voided structurally; bond-equation x0 loop 0.075 sigma; B.4 window edges re-derive exactly - the edge signs newly closed as anti-vacuum positivity and the a4 sign change - but are V-functionals with zero amplitude sensitivity; C6, mu, both x0 measurements and the I.1 gate constants amplitude-free; the frozen two-knot records contain no field snapshot for a 3-D amplitude re-fit). RECOVERED-AS-CLASS is the terminal statement. A conditional rounding pointer (0.84 rounds from /6's 0.8434, not 0.8591 -> '0.86'; 6.6-sigma-equivalent IF three unprinted assumptions hold) printed, not claimed. 17/17 gates; ~2 s deterministic; coordinator re-verified.",
+  "K2_small_eps_probe": "The saturated eps-law extended to eps = 0.001: LINEAR HOLDS (both new points at unchanged budgets, conv 3e-5, signal/conv 47-80; eps = 0.005 reproduction +1.24e-6; 2/3 excluded by the new eps <= 0.01 window alone, chi2 ratio 77; free-intercept p = 1.005 [1.003, 1.007]) - J4's verdict STRENGTHENED, propagation UNCHANGED (central ceiling movement 7.8e-3 <= the 1.3% family-spread trigger; J4's envelopes cited). Headline defect K2-D1: the 12-mode family's intercept bias is not constant - drifts to ~+1.7e-4 at eps = 0.001 (+3.15 sigma vs the constant model); the chi2 shape test pins the deviation as intercept-shaped, so fixed-intercept small-eps exponents are bias artifacts. 11/12 gates (the FAIL is K2-D1 itself); coordinator re-verified.",
+  "artifacts": [
+   "analysis/gum-sandbox/theory-audit/k1_RESULTS.md",
+   "analysis/gum-sandbox/theory-audit/k1_results.json",
+   "analysis/gum-sandbox/theory-audit/k2_RESULTS.md",
+   "analysis/gum-sandbox/theory-audit/k2_results.json"
+  ]
  }
 }

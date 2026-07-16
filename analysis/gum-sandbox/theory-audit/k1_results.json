@@ -123,7 +123,8 @@
    "+0.000",
    "+0.060",
    "+0.120",
-   "+0.160"
+   "+0.160",
+   "-0.100"
   ],
   "spec_grid": [
    -0.5,
@@ -418,7 +419,7 @@
  "stageB5_anchors": {
   "C6_quadrature": 1.3581221810506847,
   "C6_exact": 1.3581221810508404,
-  "mu_rel_err_max": 2.196829962608504e-06
+  "mu_rel_err_max": 2.3504076029912113e-06
  },
  "stageB6_record_scan": {
   "max_array_len": 41,
@@ -546,7 +547,7 @@
   {
    "gate": "B5 mu = m/sqrt(2 a_psi) convention-free across window",
    "ok": true,
-   "measured": "max rel err 2.20e-06 (4 archived pts; 9/9 <= 1e-4 in j1_run.log)",
+   "measured": "max rel err 2.35e-06 (5 archived pts; 9/9 <= 1e-4 in j1_run.log)",
    "threshold": "<= 1e-4",
    "note": ""
   },
