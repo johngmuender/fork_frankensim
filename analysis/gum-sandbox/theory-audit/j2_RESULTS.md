@@ -62,17 +62,83 @@ The saturated branch (fixed oblate compacton + pinned marginal halo) has exactly
 | λ_e ∼ ε_e^{1/3} ∼ 0.01–0.1 (IV.J consequences) | UNDEFINED/superseded — **still printed in v3.0-ext IV.J′** (D2) |
 | ε-suppression leg of point-likeness (≤6×10⁻⁴) | SHIFTS to ≤2.6×10⁻³ (×4.3 weaker, still small) |
 
-## 3. (4.9′) — censorship ceiling, Q-6′ done properly
-(pending)
+## 3. (4.9′) — the censorship ceiling, Q-6′ done properly
+- **Old ceiling:** (Δ_lock/c_g)^{3/2} = **6.037×10⁻⁴** (printed "≈6×10⁻⁴" ✓); c_g ± 0.04
+  band [5.27, 7.01]×10⁻⁴.
+- **Repaired ceiling:** |δ𝔠/𝔠_sat| = s·ε ≤ Δ_lock ⇒ ε ≤ Δ_lock/s = **2.605×10⁻³**
+  (printed "≈2.6×10⁻³" ✓; engine-base 2.640×10⁻³; Δ_lock band [2.4, 3.8]×10⁻³ ⇒
+  ceiling [2.08, 3.30]×10⁻³).
+- **The ×4.3 with provenance:** ceil_new/ceil_old = (Δ/s)/((Δ/c_g)^{3/2}) = **×4.315** —
+  the exact number behind the memo-chain's "×4.3".
+- **Exponent sensitivity (D3):** reading the same two saturated points at exponent p,
+  ceiling(p) is monotone increasing on p ∈ [2/3, 1]: p = 2/3 → 5.95×10⁻⁴ (amplitude
+  0.4243 — numerologically ≈ old c_g 0.42±0.04; flagged, not charged), p = 1 → 2.60×10⁻³.
+  **The linear reading is the loosest ceiling**; every alternative reading tightens it and
+  *widens* the censorship margin.
+- **ε_q per reading:** (f_q/𝔪_Sk)², f_q ∈ [0.14, 0.20] GeV, 𝔪_Sk = 1.7 GeV (𝔠-blind) ⇒
+  band **[6.78×10⁻³, 1.384×10⁻²]**, central 1.000×10⁻² ("≈10⁻²" ✓).
+- **Margins:** old [11.23, 22.93], central 16.57 — "twenty-fold" was fair for v2.0.1.
+  Repaired: **[2.60, 5.31], central 3.84**. The v3.0-ext Q-6′ sentence retains
+  "twenty-fold" verbatim against its own (4.9′) — **stale (D1)**; it should read
+  "≈×4 above (×2.6–5.3)".
 
-## 4. Confinement dichotomy verdict per reading
-(pending)
+## 4. Confinement dichotomy — verdict at every reading
+| reading | margin ε_q/ceiling |
+|---|---|
+| R1 central ε_q / central ceiling | ×3.84 |
+| R2 low-edge ε_q (6.78×10⁻³) / central ceiling | ×2.60 |
+| R3 printed ε_dress ≈ 10⁻² / central ceiling | ×3.84 |
+| R4 low ε_q / Δ_lock-high ceiling (3.8×10⁻³) | ×2.06 |
+| R5 low ε_q / engine-base-slope ceiling | ×2.57 |
+| R6 low ε_q / exponent-2/3 ceiling | ×11.41 |
+| R7 worst joint (Δ hi + engine slope) | **×2.03** |
 
-## 5. Cross-check vs i2_propagate.py
-(pending)
+**Verdict: the dichotomy SURVIVES AT EVERY READING** — all six quarks censored
+(ε_q > ceiling, min margin ×2.03), all leptons free (floor 1.5×10⁻⁶ < operative bottom
+1.0×10⁻⁵ < ceiling 2.6×10⁻³; termination threshold 8.4×10⁻⁶ untouched; window
+[1.5×10⁻⁶, ~3×10⁻³] survives numerically, top now ceiling-set at 86.8% of 3×10⁻³).
+**Breach conditions:** a further ×2.60 ceiling rise (central; ×2.03 at the worst joint
+reading) — equivalently Δ_lock ≥ 7.8×10⁻³ (λ_field **+6.7σ** above its measured
+(3.1±0.7)×10⁻³ω₀), or slope s ≤ 0.442 (×2.6 below +1.15), or σ-inversion low edge
+f_q ≤ 0.087 GeV (vs 0.14). No reading is within a factor 2 of breach.
 
-## 6. Defects
-(pending)
+## 5. Cross-check vs i2_propagate.py (task c)
+All 11 overlaps AGREE (rel ≤ 10⁻⁴, most ≤ 10⁻⁶): ceiling old/new, censorship margins
+old/new (both edges), anchor pulls 0.0156σ / 11.283σ, operative-range top, f-window top
+59.87 MeV, slope "+1.15". **No discrepancy found.** One print-vs-computed note (D6):
+computed f-window bottom 3.71 MeV vs F-A15-3's printed "[4, 29] MeV" — corpus rounding,
+substance identical (pre-existing, shared with i2).
+
+## 6. Defects (printed honestly; includes our own)
+- **D1 (corpus v3.0-ext, Q-6′):** stale "twenty-fold above the entrainment ceiling"
+  contradicts its own (4.9′); consistent figure ×2.6–5.3 (central ≈×3.8).
+- **D2 (corpus v3.0-ext, IV.J′):** retains λ_e ∼ ε_e^{1/3} ∼ 0.01–0.1 — the superseded
+  restricted-branch shape law inside the repaired section.
+- **D3 (the repaired law / this memo):** "+1.15ε" linear class rests on TWO ε points;
+  exponent unmeasured. Dichotomy is exponent-robust (§3), but the ×4.3 loosening — and
+  the downstream 60 MeV f-top and 7.8×10⁻¹⁰ Majoron edge — are linear-reading-specific;
+  a 2/3 reading reverts the ceiling to ≈6×10⁻⁴ (amplitude 0.424 ≈ old c_g: numerology flag).
+- **D4 (engine):** axi4 ring_t0 base 3.203459 vs exact 3.201125 (+7.3×10⁻⁴, ×5 its own
+  N-ladder estimate 1.4×10⁻⁴) ⇒ 1.4% slope-reading spread (1.152 vs 1.136), ceiling
+  2.60 vs 2.64×10⁻³. Not material to any verdict.
+- **D5 (scope):** J2 discharges the (4.8′)/(4.9′) *arithmetic*; the multi-ε saturated
+  re-scan and the λ* shape re-scan remain OPEN obligations.
+- **D6:** f-window bottom 3.71 vs printed "4" MeV (rounding).
 
 ## 7. Verdict (analysis layer)
-(pending)
+**(4.8′) re-derived:** on the saturated branch only 𝔠 (and g_tot) run with ε —
+𝔠_sat(ε) = 3.201125·(1 + 1.152ε) leading order (sign flipped, exponent 2/3 → 1, both
+traceable to the fixed-oblateness minimiser); κ = 1/√2, depth 29.29%, ω_th = √2ω₀,
+E_rot/E = ¼ are ε-frozen exactly, and the one-sided physical-constant bands flip to the
++𝔠 side with zero band on κ/depth/ω_th. The ⟨r1⟩ ε-anchor is confirmed FORFEITED
+(repaired prediction 11.283σ from ⟨r1⟩, correctly — restricted-branch code validation);
+the repaired branch has no measured scan (2 points; the re-scan proper stays open).
+**(4.9′) re-derived:** ceiling Δ_lock/s = 2.605×10⁻³ (×4.315 above the old 6.037×10⁻⁴),
+Q-6′ margins thin to [2.60, 5.31] (central 3.84), and the confinement dichotomy —
+all six quarks censored, all leptons free — **survives at every reading examined**
+(worst joint ×2.03); breach requires a further ×2.6 ceiling rise ≈ a +6.7σ λ_field.
+The v3.0-ext Q-6′ "twenty-fold" sentence and the IV.J′ ε^{1/3} shape sentence are stale
+(D1/D2) and should be amended in the next revision pass. All i2 overlaps agree; 44/44
+gates PASS. Within-model only; the coordinator adjudicates.
+
+*Files: j2_epsscan.py (44/44), j2_results.json (stage-flushed), this memo.*
