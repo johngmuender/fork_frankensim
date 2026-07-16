@@ -17,11 +17,17 @@ running code — not guessed.
    available single-thread). Achieved 1.9–3.1 GFLOP/s vs 11.3 GFLOP/s
    measured SSE2 peak. Cache behavior benign to N=192 (5-plane stencil
    window ≪ L3).
-3. **Compiler flags are a dead end — measured**: `-C target-cpu=native`
-   makes the real kernels 10–25% *slower* (the per-point `[f64;4]`
-   local-array style defeats the autovectorizer) while speeding up
-   synthetic FMA loops 1.7×. The ~15× single-box headroom (≈4× SIMD ×
-   3.96× threads) lives in *restructured k-contiguous sweeps*, not flags.
+3. **Compiler flags are a dead end — measured** *(on the original
+   Cascade-Lake host)*: `-C target-cpu=native` makes the real kernels
+   10–25% *slower* (the per-point `[f64;4]` local-array style defeats
+   the autovectorizer) while speeding up synthetic FMA loops 1.7×. The
+   ~15× single-box headroom (≈4× SIMD × 3.96× threads) lives in
+   *restructured k-contiguous sweeps*, not flags.
+   **[ANNOTATION 2026-07-16: host-specific — does NOT reproduce on the
+   post-restart Sapphire-Rapids host, where native is parity on the
+   gradient sweeps and +16% on the forward sweep. Strategic conclusion
+   unchanged (gradients at parity ⇒ explicit SIMD is still the step);
+   policy softened; see NATIVE_REMEASURE.md.]**
 4. **Multiprocess scaling is already perfect** (4 copies: 3.96×
    throughput) — task-farm workloads need no new architecture.
 5. **Two determinism hazards block naive threading**, both fixable by
