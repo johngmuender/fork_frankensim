@@ -1,0 +1,10 @@
+twoknot_run: channel=single m=0 d=0.000000 x=d/R*=0.0000 grid 160x96x96 h=0.09375 maxit=1600
+  seed: Estat(corner)=3.146623554 deg=0.986012 fgap=-0.019202 -> wall -0.029202 deff=0.0000 tail=4.58e-11 drift=3.33e-16
+  [single] it=0  obj=3.146623554 Estat=3.1466236 deg=0.98601 gnorm=1.095e0
+  [single] it=50  obj=3.146431604 Estat=3.1464316 pen=0.00e0 fpen=0.00e0 fgap=-0.0193 deg=0.98596 gnorm=9.895e-1 dt=1.64e-2 arr=0
+  [single] it=100  obj=3.145525425 Estat=3.1455254 pen=0.00e0 fpen=0.00e0 fgap=-0.0194 deg=0.98557 gnorm=1.114e0 dt=2.70e-2 arr=0
+  [single] it=150  obj=3.139316778 Estat=3.1389833 pen=3.33e-4 fpen=0.00e0 fgap=-0.0151 deg=0.98065 gnorm=3.250e0 dt=2.64e-2 arr=1
+  [single] it=200  obj=3.135713477 Estat=3.1352038 pen=5.10e-4 fpen=0.00e0 fgap=-0.0192 deg=0.98056 gnorm=3.089e0 dt=4.35e-2 arr=1
+  [single] it=250  obj=3.127567915 Estat=3.1271021 pen=2.58e-4 fpen=2.07e-4 fgap=-0.0302 deg=0.98069 gnorm=5.310e0 dt=3.85e-2 arr=2
+  [single] it=300  obj=3.122239861 Estat=3.1210378 pen=8.48e-4 fpen=3.54e-4 fgap=-0.0305 deg=0.98043 gnorm=7.660e0 dt=5.00e-2 arr=2
+  [single] it=350  obj=3.117386649 Estat=3.1157325 pen=7.88e-4 fpen=8.66e-4 fgap=-0.0313 deg=0.98045 gnorm=2.059e0 dt=1.23e-2 arr=5
