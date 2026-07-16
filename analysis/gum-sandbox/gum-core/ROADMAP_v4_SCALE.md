@@ -85,5 +85,23 @@ nucleation.
   same spec-underdetermination class as the Tier-2b 𝔭 amplitude).
   Caveats: iter_cap runs, 2.1σ well depth, product-ansatz bias — the
   longer-cap rerun is the natural G5 companion workload.
-- G5: queued — N=192 F-R5 endpoint + longer-cap two-knot on
-  fs-gum-kern's threaded sweeps.
+- **G5a ✅** N=192 F-R5 referee on fs-gum-kern (fs-gum-kern/
+  n192_RESULTS.md): state-space path grid-robust; clock ladder resolved
+  (state function, floor ≈ 1.245–1.2525, ratio > 1.24 on every B=1
+  state); control cleaner at N=192; 2T/4T bit-identity at 192³.
+  Corrections printed: iteration milestones are solver-clock; the
+  fixed-h box axis is a NULL (4A's big-box plank was h-confounded);
+  the N=192 crossing extrapolates beyond the once-doubled cap
+  (~it 2000–2400) — a ~50-min quiet run would settle it directly.
+- **G5b ✅** two-knot refinement (fs-gum-twoknot/twoknot_REFINE.md):
+  cap systematic measured (G4's well depth was under-converged 22× its
+  σ; location right); well now **5.0σ** (Aitken, −6.53e-3 ± 1.3e-3,
+  two-point feature); **x₀ = 1.95 ± 0.07 vs corpus 1.92 ± 0.08
+  (0.3σ)**; 𝔟 = 42 crossing honest-negative at 1.81 (1.8σ);
+  𝔟_eff normalization still unrecoverable (𝔭-class).
+  DISCHARGE_PACKAGE updated with the G5 refinements + corrections.
+
+## Program status: ROADMAP v4 EXECUTED (G-A, G1–G4, G5a–G5b)
+Next (unscheduled): the ~2500-cap N=192 crossing run; explicit
+k-contiguous SIMD (the documented unclaimed step); real-GPU execution
+of fs-gum-gpu; blue-fog boxes on that on-ramp; the corpus's response.

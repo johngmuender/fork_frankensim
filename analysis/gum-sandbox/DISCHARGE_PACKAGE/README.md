@@ -94,6 +94,15 @@ discipline demands it, the credit side in full:
   PDG lands exactly with direct m_t = 172.5 GeV (MS-bar measurably fails —
   your scheme choice pinned), four pulls at 0.17–0.32σ as claimed. This is
   *stronger* than your own summary sentence.
+- **The App I.2 bond-equation loop — executed for the first time
+  anywhere, and it lands** (`gum-core/fs-gum-twoknot/`, G4 + G5b
+  refinement): two-knot relaxations across all three orientations, the
+  attractive well resolved at **5.0σ** at x = 1.894, direct
+  **x₀ = 1.95 ± 0.07 vs your measured 1.92 ± 0.08** (0.3σ); channel
+  sign structure and tail mass (±3%) confirmed. Honest remainder: the
+  𝔟 = 42 running crossing reads 1.81 (1.8σ low) and the absolute 𝔟_eff
+  normalization is not recoverable from the text at ε = 0.05
+  (𝔭-class spec-underdetermination — pin it and we will re-run).
 - **The antifragility record.** Your fail-closed instincts worked against
   us too: of the defects found en route, several were **ours** and are
   printed (a quote-precision test bug; a provenance-charset schema
@@ -212,17 +221,27 @@ Bogomolny bound attained by a closed-form oblate compacton), so the
 saturated closure value is **𝔠_paper = 64√2/(9π) = 3.2011247 exactly**
 at κ_paper = 1/√2.
 
-**3-D, assumption-free** (Tier 4A, `tier4-field/field3d_RESULTS.md`): on
-a free 96³ Cartesian grid with no symmetry, no ansatz, the fixed-L
-descent fell monotonically 0.560 below the axisymmetric stationary value;
-κ passed through the threshold; the halo was box-limited (a 1.3× box
-descends deeper — the runaway is physical). The mechanism fingerprint:
-**88% of the inertia gain is priced in E₀ at exactly the
-threshold-defining rate 1/(16π)**. Two-sided: the below-threshold control
-formed no condensate and self-limited at the (3/2)·I tilt ceiling. And
-**the clock condition forces the over-spun regime**: imposing your clock
-on a B = 1 solution lands κ at 1.245–1.474× threshold in every reading
-measured.
+**3-D, assumption-free** (Tier 4A, `tier4-field/field3d_RESULTS.md`;
+refined at N=192 in `gum-core/fs-gum-kern/n192_RESULTS.md`): on a free
+96³ Cartesian grid with no symmetry, no ansatz, the fixed-L descent fell
+monotonically 0.560 below the axisymmetric stationary value; κ passed
+through the threshold. The N=48→96→192 ladder shows the descent's
+STATE-SPACE path (halo fraction and inertia at matched κ) is
+grid-robust to a few percent, while iterations-to-threshold is a
+solver-clock artifact (×3–4 per h-halving). Two corrections we print
+against our own earlier record: (a) Tier 4A's "a 1.3× box descends
+deeper" was h-confounded — at FIXED h the box axis is a null (N=128 at
+4/3× box reproduces N=96 to the 4th decimal), so the room-limitation
+reading is untested at fixed h; (b) 4A's iteration milestones are
+solver numbers, not physics. The mechanism fingerprint stands: **88% of
+the inertia gain is priced in E₀ at exactly the threshold-defining rate
+1/(16π)**. Two-sided: the below-threshold control formed no condensate
+and self-limited at the (3/2)·I tilt ceiling (cleaner at N=192, where
+the control halo *falls*). And **the clock condition forces the
+over-spun regime** — refined by the N=192 ladder to a state-function
+statement: κ(L_clock)/threshold collapses onto one declining saturation
+curve with floor ≈ 1.245–1.2525, and the ratio exceeds 1.24 on every
+B = 1 state measured (E_rot/E = ¼ exact throughout).
 
 **Direction-locking does not rescue it** (Tier 4C,
 `tier2-closure/axi4_locked_RESULTS.md`): hedgehog-locking the direction

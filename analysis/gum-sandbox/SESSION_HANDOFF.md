@@ -133,9 +133,21 @@ serial↔4-thread bit-identical, 3.61× speedup. G4: full protocol run
 x₀ = 1.88/1.97 vs predicted 1.90 ± 0.05; direct 2.0 ± 0.15 vs corpus
 1.92 ± 0.08; 𝔟_eff absolute normalization not recoverable (documented
 spec-underdetermination, 𝔭-class). See ROADMAP_v4_SCALE execution
-record and fs-gum-twoknot/twoknot_RESULTS.md. **The next session's
-starting point is G5** (N=192 F-R5 endpoint + longer-cap two-knot on
-fs-gum-kern threads) and §7. The subsections below are retained as the
+record and fs-gum-twoknot/twoknot_RESULTS.md.
+
+**UPDATE (2026-07-16): G5 also complete** — G5a (N=192 F-R5 ladder:
+state-space path grid-robust, clock ladder resolved to a state
+function with floor ≈1.245–1.2525, fixed-h box axis a NULL correcting
+4A's plank; fs-gum-kern/n192_RESULTS.md) and G5b (two-knot refinement:
+well 5.0σ, x₀ = 1.95 ± 0.07 vs corpus 1.92 ± 0.08 at 0.3σ;
+fs-gum-twoknot/twoknot_REFINE.md). DISCHARGE_PACKAGE carries the G5
+refinements + corrections. ROADMAP v4 is EXECUTED in full; the next
+session starts from ROADMAP_v4_SCALE's "Next (unscheduled)" list
+(the ~2500-cap N=192 crossing run is the cheapest open item; then
+explicit SIMD, real-GPU execution, blue-fog, the corpus's response).
+Ops note: container restarts kill background farms/monitors — bank
+anchors first, use stage-flushed JSONs, and expect to wake agents
+manually (this bit us three times today). The subsections below are retained as the
 historical checkpoint state.
 
 ### (historical) in-flight state at the checkpoint commit
