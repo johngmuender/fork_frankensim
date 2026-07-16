@@ -44,6 +44,17 @@
 //!       external kills — added after the 2026-07-16 harness kill lost
 //!       the first N=192 proto's in-memory series).
 //!
+//!   crossing <out.json> <N> <LBOX> <cap_static> <cap_main> [threads]
+//!       The direct threshold-crossing observation: R1 static, then the
+//!       over-spun main descent at a LONG cap (2500-class), no control.
+//!       Runs the ANF loop through a local verbatim copy (`anf_flush`)
+//!       that adds I/O-ONLY flush callbacks: the JSON (full instrumented
+//!       series so far, "complete":false) is rewritten every 100
+//!       iterations and at stage boundaries, so an external kill loses
+//!       at most 100 iterations.  The floating-point statement sequence
+//!       is `fs_gum_kern::anf` verbatim — fidelity is checked by digit
+//!       replay of the static/main rows against the earlier N=192 logs.
+//!
 //! Epistemic notice (binding, inherited): everything here is a
 //! within-model computation on a speculative theory's functional.  The
 //! descents replicate and refine the campaign's F-R5 mechanism as grid
