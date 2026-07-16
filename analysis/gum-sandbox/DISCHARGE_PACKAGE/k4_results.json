@@ -1,0 +1,15 @@
+{
+  "workstream": "K4 freshness audit",
+  "date_utc": "2026-07-16",
+  "commit": "16d91f08539cf588ea6b0259209e251a2d45bf28",
+  "host": {"cpu": "Intel(R) Xeon(R) Processor @ 2.80GHz", "cores": 4, "ram_gib": 15},
+  "toolchain": {
+    "rustc": "1.99.0-nightly (3659db0d3 2026-07-05)",
+    "cargo": "1.99.0-nightly (2f0e7011e 2026-07-05)",
+    "python3": "3.11.15",
+    "numpy": "2.4.6"
+  },
+  "status": "IN-PROGRESS",
+  "rows": {},
+  "findings": []
+}

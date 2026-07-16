@@ -1,6 +1,6 @@
 # Tier-1 linear-spectrum pilot - GUM replication program
 
-Run date: 2026-07-11. Script: `spectrum.py` (deterministic; seed 20260711 set, no randomness consumed). Runtime: 5.8 s. numpy-only solver (M diagonal, standard Hermitian eigenproblem on M^-1/2 K M^-1/2; scipy not installed).
+Run date: 2026-07-11. Script: `spectrum.py` (deterministic; seed 20260711 set, no randomness consumed). Runtime: 3.9 s. numpy-only solver (M diagonal, standard Hermitian eigenproblem on M^-1/2 K M^-1/2; scipy not installed).
 
 Benchmark moduli: rho0=1, J=1, lambda=1, mu=1, mu_c=5, alpha=0.5, beta=0.5, gamma=0.5, m_V=1. k grid: 400 log-spaced points in [1e-4, 3].
 

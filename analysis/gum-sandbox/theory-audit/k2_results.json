@@ -1,0 +1,100 @@
+{
+ "_notice": "WITHIN-MODEL ONLY; analysis layer; K2 = ROADMAP_v7 eps<0.005 probe (extends J4)",
+ "s0_provenance": {
+  "exact_anchor": 3.201124679669711,
+  "j4_c_005": 3.219559659291907,
+  "j4_conv_005": 3.326578893703136e-05,
+  "j4_family_bias_rel": 7.707148436786326e-05,
+  "j4_free_intercept_slope": 1.1337951083103752,
+  "budgets_default": {
+   "N_OPT": 192,
+   "N_POL": 320,
+   "N_FIN": 480,
+   "N_COARSE": 320,
+   "B_TRI": 220,
+   "B_COLD": 1500,
+   "B_POL": 260
+  },
+  "budgets_escalated_if_needed": {
+   "N_OPT": 256,
+   "N_POL": 416,
+   "N_FIN": 640,
+   "N_COARSE": 480,
+   "B_TRI": 300,
+   "B_COLD": 2000,
+   "B_POL": 340
+  }
+ },
+ "gate_table": [
+  {
+   "gate": "G0a exact anchor c_sat(0) = 64*sqrt(2)/(9*pi) = 3.2011247",
+   "pass": true,
+   "detail": "= 3.2011247"
+  },
+  {
+   "gate": "G0b J4 dataset loaded: banked c_sat(0.005) = 3.2195597, 11-point fit dataset, measured family intercept bias +7.7e-5",
+   "pass": true,
+   "detail": "c(0.005) = 3.2195597; bias = +7.71e-05; free-intercept slope 1.1338"
+  },
+  {
+   "gate": "G0c i1 budgets are J4's budgets (192/320/480/320, 220/1500/260)",
+   "pass": true,
+   "detail": "{'N_OPT': 192, 'N_POL': 320, 'N_FIN': 480, 'N_COARSE': 320, 'B_TRI': 220, 'B_COLD': 1500, 'B_POL': 260}"
+  }
+ ],
+ "runtime_s": 64.41141605377197,
+ "s1_new_points": [
+  {
+   "eps_nominal": 0.001,
+   "eps_achieved": 0.0010001071668025328,
+   "t": 0.00011681020093361415,
+   "c_sat": 3.2053039941224513,
+   "c_sat_coarse": 3.2052154255371907,
+   "conv_c_rel": 2.7631883098400145e-05,
+   "c_sat_hedgehog_core": 3.250255995861686,
+   "d": 1.2552188114036273,
+   "degree": 0.9999720163272093,
+   "flags": {
+    "stretch": false,
+    "amax": false,
+    "abox": false,
+    "bbox": false
+   },
+   "floor_analytic": 3.202526402080914,
+   "floor_ok": true,
+   "dial_ladder": {
+    "N2x": {
+     "d_ratio_rel": -2.9811708377125434e-05
+    },
+    "rmax+": {
+     "d_ratio_rel": 1.1916880900963989e-05
+    }
+   },
+   "signal_over_conv": 47.18732314004576,
+   "budgets": {
+    "N_OPT": 192,
+    "N_POL": 320,
+    "N_FIN": 480,
+    "N_COARSE": 320,
+    "B_TRI": 220,
+    "B_COLD": 1500,
+    "B_POL": 260
+   },
+   "escalated": false,
+   "converged": true,
+   "unconverged_reasons": [],
+   "nfev": 3141,
+   "secs": 64.00108361244202
+  }
+ ],
+ "s2_gate_point": null,
+ "s1_dial_in_flight": {
+  "eps": 0.002,
+  "t": 0.0002461594724426529,
+  "ratio": 0.0019994884816911117,
+  "ladder": {
+   "N2x": -1.4666629496784545e-05,
+   "rmax+": 5.861518194816284e-06
+  }
+ }
+}

@@ -5,7 +5,7 @@
   "roadmap_item": "A2b-1 helical counterexample",
   "audit_ref": "T1_NR_gates.md sec 1.2 (A2b-1 GAP)",
   "units": "c = omega = 1, lambda_bar = 1",
-  "runtime_s": 0.3
+  "runtime_s": 0.5
  },
  "P1_symbolic": {
   "CE1_speed_minus_c2": "0",
