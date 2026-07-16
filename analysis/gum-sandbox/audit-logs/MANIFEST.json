@@ -1,0 +1,194 @@
+{
+ "snapshot_utc": "2026-07-16T11:00Z-approx",
+ "session": "d0b81976",
+ "main_session_transcript": "coordinator-session.jsonl.xz",
+ "agents": [
+  {
+   "agent_id": "a137857638cac1fbf",
+   "description": "Tier-4C: direction-locked closure test",
+   "transcript_bytes": 2177860,
+   "phase": "Tier 4C: direction-locked closure (exact threshold identities)"
+  },
+  {
+   "agent_id": "a16028b04b136a9e9",
+   "description": "Map certification + e2e template crates",
+   "transcript_bytes": 388498
+  },
+  {
+   "agent_id": "a1d8ff4e55fd5e9ba",
+   "description": "E1: build fs-gum-statics crate",
+   "transcript_bytes": 861723,
+   "phase": "Phase E1: fs-gum-statics"
+  },
+  {
+   "agent_id": "a1f8faa8388a52e37",
+   "description": "Tier-4B: certified Rust 3-D diagnostics",
+   "transcript_bytes": 285021,
+   "phase": "Tier 4B: fs-cosserat-pilot certified diagnostics"
+  },
+  {
+   "agent_id": "a208e76c78fa53320",
+   "description": "Map stochastic/quantum/UQ crates",
+   "transcript_bytes": 199918
+  },
+  {
+   "agent_id": "a2c4c26396840ccba",
+   "description": "E2: build W_chi module",
+   "transcript_bytes": 526438,
+   "phase": "Phase E2: W_chi + Dzyaloshinskii"
+  },
+  {
+   "agent_id": "a3438a50a35e005b9",
+   "description": "F3: fix fs-la portability",
+   "transcript_bytes": 706545,
+   "phase": "Phase F3: fs-la/fs-fft portability fix"
+  },
+  {
+   "agent_id": "a39fa97c1a916a855",
+   "description": "Tier-2b step 1: radial field solve",
+   "transcript_bytes": 512712
+  },
+  {
+   "agent_id": "a520efc2fbacbb22f",
+   "description": "Map continuum/FEEC/elasticity crates",
+   "transcript_bytes": 241960
+  },
+  {
+   "agent_id": "a5c5ddedb06ab1aaa",
+   "description": "Map AD/optimization/variational crates",
+   "transcript_bytes": 313995
+  },
+  {
+   "agent_id": "a60781f2eaa1e8e03",
+   "description": "B1: build fs-gum-field crate",
+   "transcript_bytes": 485040,
+   "phase": "Phase B1: fs-gum-field"
+  },
+  {
+   "agent_id": "a6dfbb7591b49c41a",
+   "description": "G5a: N=192 halo endpoint run",
+   "transcript_bytes": 924565,
+   "phase": "Phase G5a + G5c: N=192 referee + crossing run (ONGOING at snapshot)"
+  },
+  {
+   "agent_id": "a7031558d78224b73",
+   "description": "Map solver/spectral/numerics crates",
+   "transcript_bytes": 208350
+  },
+  {
+   "agent_id": "a73f4d2259945bcf3",
+   "description": "Tier-2b step 3: enlarged-basis F-R4 adjudicator",
+   "transcript_bytes": 1704498,
+   "phase": "Tier 2b Step 3: enlarged-basis F-R4 adjudicator (F-R5 discovery)"
+  },
+  {
+   "agent_id": "a76713f0eec09831f",
+   "description": "Tier-5a: family-sector arithmetic audit",
+   "transcript_bytes": 357315,
+   "phase": "Tier 5a: family/neutrino/color arithmetic audit (F-R6/7/8)"
+  },
+  {
+   "agent_id": "a7b3a07afd541d851",
+   "description": "G4: two-knot bond-equation flagship",
+   "transcript_bytes": 1681237,
+   "phase": "Phase G4: fs-gum-twoknot flagship"
+  },
+  {
+   "agent_id": "a83e3f09b43a3fcbb",
+   "description": "Tier-3 Born-relaxation pilot",
+   "transcript_bytes": 998281
+  },
+  {
+   "agent_id": "a8614557447062060",
+   "description": "Tier-4A: 3-D unrestricted field pilot",
+   "transcript_bytes": 1527631,
+   "phase": "Tier 4A: unrestricted 3-D field pilot"
+  },
+  {
+   "agent_id": "a86e8b69b549e7ccf",
+   "description": "Tier-2b step 2: spheroidal isorotating closure",
+   "transcript_bytes": 1213207,
+   "phase": "Tier 2b Step 2: spheroidal isorotating closure (F-R4 discovery)"
+  },
+  {
+   "agent_id": "a8c19b303434be40d",
+   "description": "Deep-read Course, Primer, Teachers Ed",
+   "transcript_bytes": 689491
+  },
+  {
+   "agent_id": "a9b5c6d848c341fdc",
+   "description": "G1: build fs-gum-kern layer",
+   "transcript_bytes": 842117,
+   "phase": "Phase G1: fs-gum-kern"
+  },
+  {
+   "agent_id": "ab0a03649f8bd8456",
+   "description": "F1: build fs-gum-e2e demo",
+   "transcript_bytes": 566121,
+   "phase": "Phase F1: fs-gum-e2e"
+  },
+  {
+   "agent_id": "ab1e6d489c77a57ee",
+   "description": "F2: assemble F-R5 discharge package",
+   "transcript_bytes": 336241,
+   "phase": "Phase F2: DISCHARGE_PACKAGE"
+  },
+  {
+   "agent_id": "abb08bb63d8b3c21a",
+   "description": "G5b: two-knot well refinement",
+   "transcript_bytes": 397803,
+   "phase": "Phase G5b: two-knot refinement (ONGOING-era)"
+  },
+  {
+   "agent_id": "abebb1cea7386f813",
+   "description": "Survey full GUM corpus for replication targets",
+   "transcript_bytes": 416882
+  },
+  {
+   "agent_id": "ac7cbfc1fc5493cdd",
+   "description": "B4: build fs-gum-sde crate",
+   "transcript_bytes": 689053,
+   "phase": "Phase B4: fs-gum-sde (Nelson vs Bohm)"
+  },
+  {
+   "agent_id": "ad4a3c3c433126c9e",
+   "description": "B2: build fs-gum-topo crate",
+   "transcript_bytes": 650652,
+   "phase": "Phase B2: fs-gum-topo"
+  },
+  {
+   "agent_id": "adc62a44bf1008b4f",
+   "description": "B3: build fs-gum-cosserat crate",
+   "transcript_bytes": 590658,
+   "phase": "Phase B3: fs-gum-cosserat"
+  },
+  {
+   "agent_id": "ade8cfe0da7f61730",
+   "description": "G2: build wgpu f64 backend",
+   "transcript_bytes": 560592,
+   "phase": "Phase G2: fs-gum-gpu (wgpu f64)"
+  },
+  {
+   "agent_id": "ae12bf62b6e94aee3",
+   "description": "Tier-1 GUM linear-spectrum pilot",
+   "transcript_bytes": 940204
+  },
+  {
+   "agent_id": "af955162176e7c4d7",
+   "description": "Map topology/soliton/geometry crates",
+   "transcript_bytes": 256162
+  },
+  {
+   "agent_id": "afc9b70d0cdf975f4",
+   "description": "G3: G*-vs-c0 precision push",
+   "transcript_bytes": 994338,
+   "phase": "Phase G3: G* = 16*sqrt2/9 exact"
+  }
+ ],
+ "workflows": {
+  "wf_c1d7a861-860": "Phase A workflow: gap analysis v3 (5 surveyors)",
+  "wf_16ac516f-91a": "Phase G-A workflow: scaling survey (4 surveyors)",
+  "wf_4efbf95b-59f": "Phase H workflow: theory audit T1-T4 (ONGOING at snapshot)"
+ },
+ "note": "Transcripts are JSONL message streams incl. assistant thinking blocks, tool calls, and tool results. Agents marked ONGOING get a final sweep at session end."
+}
