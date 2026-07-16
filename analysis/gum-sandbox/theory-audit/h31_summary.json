@@ -1,0 +1,75 @@
+{
+  "phase": "H3.1 — T-H3 (closure-system circularity) + T-H4 (Theorem c'' dressed-fermion DF grade), proof-structure workstream",
+  "date": "2026-07-16",
+  "memo": "theory-audit/h31_structure.md",
+  "script": "theory-audit/h31_fr.py",
+  "script_checks": {"passed": 31, "total": 31, "deterministic": true},
+  "part_A_T_H3": {
+    "question": "Is the IV.B/IV.H.1(iii) <-> c'' <-> T-B1 premise loop vicious or benign?",
+    "verdict": "BENIGN",
+    "structure": {
+      "as_typeset_graph": "acyclic — the loop is hidden by misattribution: '(Theorem c'')' is cited for content (j = 1/2) that c'' does not contain",
+      "content_resolved_cycles": [
+        "Gamma1: C-SPIN -> TB1-ALG -> TB1-CONC -> C-SPIN",
+        "Gamma2: CPP-DF -> C-SPIN -> TB1-ALG -> TB1-CONC -> CPP-DF"
+      ],
+      "edge_classification": {
+        "C-SPIN -> TB1-ALG": "benign (parametric: consumes only the form L = j*c with j free; IV.I itself generalizes j)",
+        "TB1-ALG -> TB1-CONC": "benign (sound algebra, re-verified exactly)",
+        "TB1-CONC -> C-SPIN": "benign iff fixed point exists and is unique (it does; see conditions)",
+        "CPP-DF -> C-SPIN and CPP-DF -> H1-iii": "phantom edges (misattribution; the two defective sentences)",
+        "TB1-CONC -> CPP-DF": "valid — and the only valid support for the fermionic-value forcing"
+      },
+      "no_edge_presupposes_own_conclusion": true
+    },
+    "benignity_conditions": {
+      "existence": "(j, w, V) = (1/2, 4, sqrt(2)) exact (sympy); tier-0 gate A8; <r1> invariants E_rot/E = 0.2500 +/- 0.0002, V = 1.409 +/- 0.010; clock residual <= 4e-9; H2.6 descent-solver replication",
+      "uniqueness": "half-odd sector: (1/2)Z_odd ∩ (0,1) = {1/2} exact; j = 0 no clock (family-free); j >= 2 kinematic kill (family-free); j = 1 pole and j = 3/2 sign obstruction FAMILY-BOUND (T2 a.4 scope carried); convention-robust under a = sqrt(j(j+1)) (only j = 1/2 in window; H2.6 anchor 915 sigma)"
+    },
+    "repair": {
+      "type": "fixed-point reformulation, zero new axioms for acyclicity",
+      "R1": "IV.B C-spin: replace '(Theorem c'')' by 'j in (1/2)Z admissible (F.5 consistency); the value j = 1/2 is an OUTPUT (T-B1)'; print the closure as a simultaneous system in unknowns (j, w, V) with existence + uniqueness stated on the declared family",
+      "R2": "IV.H.1(iii): replace 'Theorem c'' forces j = 1/2' by 'quantization admits j in (1/2)Z; the system is solvable only at j = 1/2 (T-B1); the solution lies in the double-valued sector whose consistency and exchange-rotation correlation are c'''s content'",
+      "R3": "reorder: T-B1 (or forward pointer) before IV.B's specialization; repaired DAG verified acyclic",
+      "R4_residual_flag": "A-phase postulate: IV.H.1(i) phase == rotation identification must be declared constitutive or derived; needed only for C-clock's 'identity' grade, not for acyclicity or the algebra (GAP, unchanged from T2)"
+    },
+    "printed_record_defect": "exactly two sentences remain DEFECT-CANDIDATE as misattributions: IV.B's '(Theorem c'')' and IV.H.1(iii)"
+  },
+  "part_B_T_H4": {
+    "question": "Does the FR core support 'identical dressed knots ARE fermions' at DF grade; what minimal hypothesis earns the dressed extension; can Route 2 work?",
+    "unstratified_core": {
+      "verdict": "SOUND [IM] — CONFIRMED by first-principles reconstruction (FR1-FR8)",
+      "content": "pi1(Maps_1(S^3,S^3)) = pi4(S^3) = Z2 via evaluation fibration + loop-space translation; generator = 2pi-rotation loop (Williams); FR exchange ~ rotation => chi_exch = chi_rot; both characters consistent; value never forced",
+      "machine_checked": ["degree engine deg(q^n)=n, additivity, deg(conj)=-1", "hedgehog degree 1", "hedgehog rotation/isorotation equivariance (one loop)", "SU(2) lift: 2pi open (endpoint -1), 4pi closed with explicit certified null-homotopy", "LES chase", "(-1)^B ladder"]
+    },
+    "forced_value_defect": {
+      "verdict": "DEFECT-CANDIDATE CONFIRMED — standard argument yields consistent-not-forced; corpus's own F12 grades the isomorphic Hopf case correctly ('contrast Theorem c''' is the internal inconsistency)",
+      "repair": "regrade (7.6) to closure corollary: fermionic sector selected dynamically by T-B1 (j = 1/2 exists only in chi_rot = -1 sector) + F.3 lift for the correlation; inherits T-B1 family scope"
+    },
+    "stratified_extension": {
+      "minimal_hypothesis_MH": "connecting homomorphism d: pi2(M_lines) -> pi1(F_l) has image in the winding factor A (FR Z2 injects); the extension admits a character = -1 on the rotation loop's image; dressed exchange loop has trivial A-component (F.3 lift). Sufficient one-liner: the dressing is pi1-inert (deformation-retraction/iso on the rotation Z2)",
+      "in_corpus_text": false,
+      "adjudication": "SUBSTANTIVE, not documentation-gap",
+      "grounds": [
+        "pi2 of the line-moduli base is nontrivial (RP^2-like: pi2 = Z): the connecting map has a live nonzero domain, never computed in the auditable record (TN series absent)",
+        "three exact completions exhibited and machine-verified: (I) split product — corpus's claim; (II) non-split Z4 — class survives but sector/correlation bookkeeping changes, printed 'Z2 x A' false; (III) d kills the rotation class — FATAL",
+        "under completion III half-integer j is inadmissible and T-B1's window (0,1) contains no admissible j: the closure has NO solution — the stakes are solvability of the whole hbar-closure, not statistics grading",
+        "not standard mathematics: no literature computation covers texture + attached disclination stratified config spaces"
+      ],
+      "mitigation": "underdetermination, not refutation: the corpus's lower-skeleton intuition is a plausible mechanism for im(d) in A; the required computation is finite and well-posed (evaluate d on pi2(RP^2)'s generator; determine the extension class)"
+    },
+    "route_2_mayer_vietoris": {
+      "verdict": "CANNOT WORK AS SKETCHED; 'verified by two independent routes' unsupported (DEFECT-CANDIDATE for the independence claim; NOT-AUDITABLE for unprinted TN content)",
+      "reasons": [
+        "type-incorrect in homology: no MV arrow takes the rotation loop's H1 class to a stratum Z2 (d: H1(C) -> H0(A∩B) torsion-free; d: H2 -> H1 consumes 2-cycles)",
+        "pi1-correct analogue is Seifert-van Kampen, which has no connecting homomorphism and needs the defect-stratum link — Route 1's same unperformed computation",
+        "cohomological steelman (H^1(-;Z2) MV) produces via delta exactly the classes that VANISH on the smooth stratum — the wrong ones; the gluing version reduces to the link computation + MH and yields consistency only, never forcing"
+      ]
+    },
+    "cross_coupling_new": "T-H4 is load-bearing for T-H3: Part A's benign fixed point consumes QUANT (j in (1/2)Z admissible), and QUANT consumes MH — if the dressing kills the rotation class, the closure is unsolvable at any j. MH's proof discharges both ledger items' topology side."
+  },
+  "verdict_lines": {
+    "T_H3": "BENIGN (fixed-point self-consistency; existence + uniqueness verified); repair = fixed-point reformulation R1-R3 (zero new axioms) + A-phase flag R4; two misattributing sentences remain the printed-record defect",
+    "T_H4": "unstratified core SOUND (confirmed); 'ARE fermions' DF overreach CONFIRMED (repair: closure corollary via T-B1); stratified extension SUBSTANTIVE gap with stated minimal hypothesis MH and a live fatal completion; Route 2 dead as sketched"
+  }
+}

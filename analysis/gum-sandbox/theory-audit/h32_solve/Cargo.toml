@@ -1,0 +1,17 @@
+[package]
+name = "h32-solve"
+version = "0.1.0"
+edition = "2021"
+description = "Phase H3.2: adjudicating T-H5 (the corpus IV.D selection narrative) by direct quasi-static selection flow on the certified fs-gum engines (N = 48, eps = 0.05, guarded corner-scheme ANF via the fs-gum-kern deterministic threaded layer).  Starting FROM the rigid rung (kappa_paper = sqrt(7/6), the corpus's rejected superradiant solution), alternate bounded guarded Routhian descent at fixed L with the corpus's own clock self-consistency L^2 = (2/3) I E_static, and instrument kappa_paper(iteration) through the claimed 'until kappa < 1' stopping regime.  Control: the same flow with far-field (halo) growth re-seeded every macro-cycle (a crude in-gap projection at r > 1.5 R*), testing whether an unstated constraint rescues the corpus's benchmark.  Deterministic: frozen LCG perturbation stream; fs-gum-kern bit contract; same binary + args => bit-identical JSON."
+
+# Deliberately outside the frankensim workspace (h22_solve / h26_solve
+# pattern): std-only dependency closure.
+[workspace]
+
+[dependencies]
+fs-gum-field = { path = "../../gum-core/fs-gum-field" }
+fs-gum-statics = { path = "../../gum-core/fs-gum-statics" }
+fs-gum-kern = { path = "../../gum-core/fs-gum-kern" }
+
+[profile.release]
+opt-level = 3
