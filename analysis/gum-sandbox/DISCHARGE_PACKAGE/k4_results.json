@@ -203,27 +203,29 @@
   "K12": {
    "measured": "2546.9 s (2 concurrent)",
    "root": "BIT-IDENTICAL to primary (json physics fields, log modulo timings, png byte-identical)",
-   "status": "PASS (\u03ba_crit shell 0.21625\u20130.21690; saturated closure \u03ba=1/\u221a2, bound \ud835\udd20 \u2265 2.82843; all gates in log)"
+   "status": "PASS (\u03ba_crit shell 0.21625\u20130.21690; saturated closure \u03ba=1/\u221a2, bound \ud835\udd20 \u2265 2.82843; all gates in log)",
+   "bit_identical": true
   },
   "K16": {
    "measured": "2865.2 s (2 concurrent)",
    "root": "BIT-IDENTICAL to primary (json physics fields, both pngs byte-identical)",
-   "status": "PASS (\ud835\udd20 = 2.37096 uniform-saturated; G* = 2.515991; locked ladder 3.26)"
+   "status": "PASS (\ud835\udd20 = 2.37096 uniform-saturated; G* = 2.515991; locked ladder 3.26)",
+   "bit_identical": true
   },
   "K14": {
-   "measured": "awaiting wave 2",
+   "measured": "running (wave 2)",
    "root": "\u2014",
-   "status": "PENDING-WAVE2 (first attempt killed externally mid-run)"
+   "status": "RUNNING (primaries protected by .primary.bak)"
   },
   "K36b": {
-   "measured": "awaiting wave 2",
+   "measured": "running (wave 2)",
    "root": "\u2014",
-   "status": "PENDING-WAVE2 (first attempt killed externally; its partial output had clobbered the primary n192_crossing.json \u2014 restored by coordinator; wave-2 rerun will write n192_crossing_freshness.json instead)"
+   "status": "RUNNING (writes n192_runs/n192_crossing_freshness.json; primary untouched)"
   },
   "K29": {
-   "measured": "queued",
+   "measured": "RUNNING (>50 min CPU so far vs printed 163 s)",
    "root": "n/a",
-   "status": "RUNNING (lane 3 queue)"
+   "status": "RUNNING \u2014 RUNTIME-DRIFT >18x already (finding F8, same family as F6/j1); lane-3 continues to K33/K38/K32/K45 after it"
   },
   "K33": {
    "measured": "queued",
@@ -295,6 +297,14 @@
    "row": "K36/K36b",
    "severity": "high",
    "detail": "The N=192 crossing row carries two defects: (1) the printed command fails on usage (F1); (2) the naive corrected form (shipped invocation from n192_RESULTS.md L28) writes its output over the primary record n192_runs/n192_crossing.json (complete:true). The first K36b attempt did exactly that before being killed; the primary was restored from git by the coordinator. Freshness rule adopted: re-runs must write to *_freshness outputs or be preceded by .primary.bak copies (see method note)."
+  },
+  {
+   "id": "F8",
+   "class": "RUNTIME-DRIFT",
+   "row": "K29",
+   "severity": "medium",
+   "provisional": true,
+   "detail": "h23_frank.py printed runtime 163 s; the fresh run has consumed >50 min of CPU (99% busy, single process) and is still in the relaxed-floor phase. Same drift family as F6 (j1_pgrid 51x). Outcome to be recorded at completion. Note: a duplicate lane-3 launch (operator error during the silent-lane diagnosis: the original lane was alive, not dead) ran h23 twice for ~40 s; the duplicate was killed, primaries were .bak-protected throughout."
   }
  ]
 }
