@@ -323,3 +323,25 @@ claude/analyze-gum-ivm-viz (develop and push ONLY here; no PRs).
   REPORT and j1_results.json were confirmed such cases.
 - Scripts with per-point flushing resume cheaply; prefer wiring resume
   into new long scripts (k2_smalleps.py is the template).
+
+---
+
+## ADDENDUM (2026-07-17, session 536b52e3, branch `claude/analyze-gum-po`)
+
+**Tier 6 — Foundations** now exists on the sibling branch
+`claude/analyze-gum-po` (forked from this line at `e6caebf`; this
+line's Phase-K completion merged back into it additively at `0fcd532`).
+Contents: GUM analyzed against the foundations canon (Bell 1982;
+Goldstein "Bell on Bohm"; Bricmont 2019; Bedingham et al. GRWm 2014),
+ROADMAP_v8 generated and executed (workstreams L1 flipped-SG
+contextuality, L2 momentum-ToF dBB+Nelson, L3 Lock-2 leakage-exponent
+conservation lemma = T4-W3 toy discharge, L5 spin-dependent arrival
+times = A3 phenomenon confirmed), findings F-T6-1…6 + F-T6-L5,
+adjudication + four proposed corpus annotations.
+
+**Restoration entry point for that line**:
+`tier6-foundations/SESSION_CHECKPOINT_tier6.md` (full protocol:
+branch topology, results, foundations-text restoration summaries,
+tacit knowledge, log-archive index). Session archives:
+`audit-logs/MANIFEST_tier6.json` + `tier6-*.xz` (additive to this
+session's MANIFEST.json — do not merge the manifests).

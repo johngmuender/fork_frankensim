@@ -1,0 +1,42 @@
+{
+ "snapshot_utc": "2026-07-17 TIER-6 FOUNDATIONS COMPLETE (L1/L2/L3/L5 executed + adjudicated; Phase-K branch merged additively)",
+ "session": "536b52e3-c0e4-5548-a35f-7ca5893feba9",
+ "branch": "claude/analyze-gum-po",
+ "note": "Additive to MANIFEST.json (session d0b81976, ivm-viz line). This manifest covers the tier6-foundations session only.",
+ "main_session_transcript": "tier6-coordinator-session.jsonl.xz",
+ "workflow": {
+  "run_id": "wf_5852a821-c22",
+  "archive": "tier6-workflow-wf_5852a821-c22.tar.xz",
+  "script": "tier6-workflow-script.js",
+  "contents": "journal.jsonl (per-agent structured returns) + 4 agent transcripts + meta",
+  "total_subagent_tokens": 265836,
+  "total_tool_calls": 67
+ },
+ "agents": [
+  {
+   "agent_id": "a95076e0477a7e583",
+   "description": "L1: flipped Stern-Gerlach contextuality exhibit",
+   "phase": "Tier 6 Execute",
+   "verdict": "4/4 gates PASS (F-T6-2a-EXEC)"
+  },
+  {
+   "agent_id": "a9940d8051476c351",
+   "description": "L2: momentum ToF, dBB exact + Nelson leg",
+   "phase": "Tier 6 Execute",
+   "verdict": "5/5 gates PASS (F-T6-2b/F-T6-6-EXEC)"
+  },
+  {
+   "agent_id": "a9761538f1ab1d2c9",
+   "description": "L3: Lock-2 leakage-exponent conservation ladder",
+   "phase": "Tier 6 Execute",
+   "verdict": "5/5 gates PASS (F-T6-5-EXEC, T4-W3 toy discharge)"
+  },
+  {
+   "agent_id": "a3fbdd11e54d63ba8",
+   "description": "L5: A3 spin-dependent arrival times, independent engine",
+   "phase": "Tier 6 Execute",
+   "verdict": "G1/G4/G5 PASS, G2/G3 PARTIAL (spec artifacts, coordinator-owned; phenomenon CONFIRMED) (F-T6-L5-EXEC)"
+  }
+ ],
+ "caveat": "tier6-coordinator-session.jsonl.xz was snapshotted during the checkpointing turn; the last few checkpoint/commit exchanges after the snapshot instant are absent from the archive by construction. The git history and SESSION_CHECKPOINT_tier6.md carry that residue."
+}
