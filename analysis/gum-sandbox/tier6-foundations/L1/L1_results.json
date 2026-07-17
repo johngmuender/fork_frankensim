@@ -1,0 +1,49 @@
+{
+  "workstream": "L1",
+  "finding_id": "F-T6-2a-EXEC",
+  "parameters": {
+    "L": 80.0,
+    "N_grid": 8192,
+    "sigma": 1.0,
+    "k_kick": 2.5,
+    "dt": 0.005,
+    "T_final": 2.4,
+    "N_traj": 4000,
+    "seed": 20260717,
+    "integrator": "RK4, spectral velocity at half steps, Catmull-Rom cubic in z"
+  },
+  "packet_separation_at_T": 11.999999999999922,
+  "packet_separation_over_sigma0": 11.999999999999922,
+  "gates": {
+    "G1_nodal_line": {
+      "spec": "median (z=0) crossings across all trajectories/steps == 0",
+      "crossings_original": 0,
+      "crossings_flipped": 0,
+      "verdict": "PASS"
+    },
+    "G2_outcome_flip": {
+      "spec": "every trajectory: same exit side, flipped spin label; |Z_flip - Z_orig| at machine/integration precision",
+      "all_same_side": true,
+      "all_labels_flipped": true,
+      "max_abs_Z_flip_minus_Z_orig": 0.0,
+      "max_abs_rho_total_diff": 0.0,
+      "upper_side_label_original": "up",
+      "upper_side_label_flipped": "down",
+      "verdict": "PASS"
+    },
+    "G3_born": {
+      "spec": "upper-exit fraction 0.5 within 3 sigma binomial (N=4000)",
+      "n_upper": 1971,
+      "frac_upper": 0.49275,
+      "sigma_binomial": 0.007905694150420948,
+      "deviation_sigmas": 0.9170605214488273,
+      "verdict": "PASS"
+    },
+    "G4_determinism": {
+      "spec": "dt -> dt/2, 100 trajectories: max deviation <= 1e-6 * separation",
+      "max_position_deviation": 5.851556572622485e-09,
+      "threshold": 1.199999999999992e-05,
+      "verdict": "PASS"
+    }
+  }
+}

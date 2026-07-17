@@ -1,0 +1,318 @@
+{
+  "workstream": "L5",
+  "file_id": "F-T6-L5-EXEC",
+  "params": {
+    "L": 1.0,
+    "xmin": -15.0,
+    "xmax": 45.0,
+    "Nx": 1024,
+    "Nz": 128,
+    "sigma_x": 1.0,
+    "x0": -5.0,
+    "k0": 4.0,
+    "trunc_sigma": 3.0,
+    "dt": 0.002,
+    "dt_refined": 0.001,
+    "T": 8.0,
+    "N": 2000,
+    "seed": 12345,
+    "d_near": 1.0,
+    "d_far": 25.0,
+    "vclamp": 500.0,
+    "rho_eps_rel": 1e-14
+  },
+  "G1": {
+    "norm_deviation_max": 2.220446049250313e-16,
+    "wall_amplitude_max": 3.5282157080952087e-16,
+    "wall_amplitude_max_traj_run": 9.393829081041595e-16,
+    "energy_drift_rel": 2.697374236633908e-16,
+    "energy_mean": 13.171007680543369,
+    "z_mode_leakage": 0.0,
+    "verdict": "PASS"
+  },
+  "G2": {
+    "tau_max": 2.285027252684286,
+    "tau_max_raw_reference_run": 2.285027252684286,
+    "tau_max_dt_halved": 2.285028871218266,
+    "tau_max_rel_change_dt": 7.083215214492877e-07,
+    "tau_max_Nx4096": 2.28467043044095,
+    "tau_max_rel_change_Nx": 0.00015615666855460682,
+    "iqr_transverse_near": 0.38191043634273014,
+    "empty_gap": 5.714972747315715,
+    "required_gap": 0.7638208726854603,
+    "arrivals_in_gap_reference_run": 0,
+    "nonconvergent_edge_trajectory": {
+      "index": 1249,
+      "x0": -2.076,
+      "z0": 0.7252,
+      "fraction_of_ensemble": 0.0005,
+      "arrival_across_resolutions": {
+        "2d_Nx1024_dt2e-3": 5.687,
+        "2d_Nx1024_dt1e-3": 6.134,
+        "1d_Nx1024_dt2e-3": null,
+        "1d_Nx1024_dt1e-3": 3.104,
+        "1d_Nx2048_dt1e-3": 1.674,
+        "1d_Nx2048_dt5e-4": 7.335,
+        "1d_Nx2048_dt2.5e-4": null,
+        "1d_Nx2048_dt1.25e-4": 6.787,
+        "1d_Nx4096_dt2.5e-4": null
+      },
+      "diagnosis": "starts on the +3 sigma truncation edge; chaotic scattering off nodal structure of the diffraction ringing; velocity field near-singular at nodes; rho-floor sensitivity test (eps 1e-14 -> 1e-10) identical, dt/Nx variations non-convergent"
+    },
+    "verdict": "PARTIAL"
+  },
+  "G3": {
+    "transverse_cutoff": 2.285027252684286,
+    "axial_last_arrival": 3.224471607637408,
+    "axial_last_arrival_dt_halved": 3.2245234621608914,
+    "axial_last_arrival_Nx4096": 3.2430180832722626,
+    "frac_axial_beyond_transverse_cutoff": 0.028,
+    "n_axial_beyond": 56,
+    "n_axial_arrivals": 2000,
+    "n_transverse_beyond_at_reference_res": 0,
+    "gate_threshold": 0.05,
+    "verdict": "PARTIAL"
+  },
+  "G4": {
+    "ks_stat": 0.03620411934156169,
+    "ks_p": 0.30721731922766715,
+    "n_far_T": 1421,
+    "n_far_A": 1381,
+    "ks_p_2d_engine": 0.3322747295083782,
+    "verdict": "PASS"
+  },
+  "G5": {
+    "mean_tau_T_near": 1.4884277200310712,
+    "mean_tau_A_near": 1.524004209447876,
+    "ratio_T_over_A": 0.9766559113181887,
+    "ratio_bootstrap_err": 0.006316845012279069,
+    "ratio_2d_engine": 0.9774392496643994,
+    "verdict": "REPORT-ONLY"
+  },
+  "counts": {
+    "near_T_arrivals": 1999,
+    "near_A_arrivals": 2000,
+    "far_T_arrivals": 1419,
+    "far_A_arrivals": 1381,
+    "nonarrival_near_T": 1,
+    "nonarrival_near_A": 0,
+    "nonarrival_far_T": 581,
+    "nonarrival_far_A": 619,
+    "frozen_escapees_T": 1,
+    "frozen_escapees_A": 3
+  },
+  "quartiles": {
+    "T_near": [
+      1.2935450493468736,
+      1.4858587773353606,
+      1.675547048902467
+    ],
+    "A_near": [
+      1.2992423483237048,
+      1.4979317348524495,
+      1.708187425591312
+    ],
+    "T_far": [
+      6.645584903212312,
+      7.110125768383714,
+      7.554644656001761
+    ],
+    "A_far": [
+      6.640241591446511,
+      7.112785439236084,
+      7.53889102520116
+    ]
+  },
+  "engines": {
+    "primary_2d": "full 2-D odd-extension FFT engine (Nx=1024, Nz=128, exact spectral propagation), trajectory dt=2e-3 (refinement 1e-3)",
+    "refinement_1d": "exact-in-z factorized engine (phi = f(x,t) sin(pi z), analytic z-factors), validated against 2-D engine",
+    "cross_engine_validation": {
+      "Nx1024_dt2e-3": {
+        "n_common": 1998,
+        "median_abs_diff": 3.6424859645500796e-05,
+        "p99_abs_diff": 0.0011710355609399921,
+        "max_abs_diff": 0.019589905295083865,
+        "ks_p": 1.0
+      },
+      "Nx1024_dt1e-3": {
+        "n_common": 1999,
+        "median_abs_diff": 3.679929584832209e-05,
+        "p99_abs_diff": 0.0009735827497428738,
+        "max_abs_diff": 3.030084602529075,
+        "ks_p": 1.0
+      }
+    }
+  },
+  "refinement_ladder": {
+    "Nx1024_dt2e-3": {
+      "label": "Nx1024_dt2e-3",
+      "n_T_near": 1998,
+      "max_T_near": 2.28711475739051,
+      "n_T_far": 1418,
+      "max_T_far": 7.996879231953301,
+      "n_A_near": 2000,
+      "max_A_near": 3.3072321378216216,
+      "n_A_far": 1381,
+      "max_A_far": 7.9991084322245145,
+      "T_near_top5": [
+        2.2411773989678707,
+        2.2572732665998663,
+        2.272075995507913,
+        2.2754714240752523,
+        2.28711475739051
+      ],
+      "tau_1249": null,
+      "tau_653": null
+    },
+    "Nx1024_dt1e-3": {
+      "label": "Nx1024_dt1e-3",
+      "n_T_near": 1999,
+      "max_T_near": 3.1038662251726956,
+      "n_T_far": 1419,
+      "max_T_far": 7.99684036600968,
+      "n_A_near": 2000,
+      "max_A_near": 3.3071125189405626,
+      "n_A_far": 1381,
+      "max_A_far": 7.99914820011109,
+      "T_near_top5": [
+        2.257326351510382,
+        2.272070923915625,
+        2.275499407215726,
+        2.2871344594557446,
+        3.1038662251726956
+      ],
+      "tau_1249": 3.1038662251726956,
+      "tau_653": null
+    },
+    "Nx2048_dt1e-3": {
+      "label": "Nx2048_dt1e-3",
+      "n_T_near": 1998,
+      "max_T_near": 2.2845423835593754,
+      "n_T_far": 1419,
+      "max_T_far": 7.999435361832337,
+      "n_A_near": 2000,
+      "max_A_near": 3.2160328721108122,
+      "n_A_far": 1381,
+      "max_A_far": 7.998098010723812,
+      "T_near_top5": [
+        2.2400298602415125,
+        2.2572743590271815,
+        2.2678161737232654,
+        2.2732499374434143,
+        2.2845423835593754
+      ],
+      "tau_1249": 1.6742734610431702,
+      "tau_653": null
+    },
+    "Nx2048_dt5e-4": {
+      "label": "Nx2048_dt5e-4",
+      "n_T_near": 1998,
+      "max_T_near": 7.335299863580996,
+      "n_T_far": 1421,
+      "max_T_far": 7.999029636134877,
+      "n_A_near": 2000,
+      "max_A_near": 3.2245234621608914,
+      "n_A_far": 1381,
+      "max_A_far": 7.9981660259525205,
+      "T_near_top5": [
+        2.2572779698086465,
+        2.2667811903697324,
+        2.2726994795756017,
+        2.285028871218266,
+        7.335299863580996
+      ],
+      "tau_1249": 7.335299863580996,
+      "tau_653": null
+    },
+    "Nx2048_dt2.5e-4": {
+      "label": "Nx2048_dt2.5e-4",
+      "n_T_near": 1997,
+      "max_T_near": 2.285027252684286,
+      "n_T_far": 1421,
+      "max_T_far": 7.999095319862539,
+      "n_A_near": 2000,
+      "max_A_near": 3.224471607637408,
+      "n_A_far": 1381,
+      "max_A_far": 7.998163211642856,
+      "T_near_top5": [
+        2.238850891652873,
+        2.257301507332048,
+        2.2667920199442397,
+        2.272694167130969,
+        2.285027252684286
+      ],
+      "tau_1249": null,
+      "tau_653": null
+    }
+  },
+  "refinement_extra": {
+    "Nx2048_dt1.25e-4": {
+      "label": "Nx2048_dt1.25e-4",
+      "n_T_near": 1998,
+      "max_T_near": 6.787097587959807,
+      "n_T_far": 1420,
+      "max_T_far": 7.9991016453704855,
+      "n_A_near": 2000,
+      "max_A_near": 3.2244728719269804,
+      "n_A_far": 1381,
+      "max_A_far": 7.998162238135254,
+      "T_near_top5": [
+        2.257303389017559,
+        2.266789103916973,
+        2.272693175555011,
+        2.285028578148014,
+        6.787097587959807
+      ],
+      "tau_1249": 6.787097587959807,
+      "tau_653": null
+    },
+    "Nx4096_dt2.5e-4": {
+      "label": "Nx4096_dt2.5e-4",
+      "n_T_near": 1998,
+      "max_T_near": 2.28467043044095,
+      "n_T_far": 1419,
+      "max_T_far": 7.998979692438785,
+      "n_A_near": 2000,
+      "max_A_near": 3.2430180832722626,
+      "n_A_far": 1381,
+      "max_A_far": 7.9978039472264415,
+      "T_near_top5": [
+        2.238862343640534,
+        2.255520363809364,
+        2.2676440905474777,
+        2.273308335894737,
+        2.28467043044095
+      ],
+      "tau_1249": null,
+      "tau_653": null
+    }
+  },
+  "eps_sensitivity": {
+    "label": "eps1e-10",
+    "n_T_near": 1997,
+    "max_T_near": 2.285027252684286,
+    "n_T_far": 1421,
+    "max_T_far": 7.999095319862539,
+    "n_A_near": 2000,
+    "max_A_near": 3.224471607637408,
+    "n_A_far": 1381,
+    "max_A_far": 7.998163211642856,
+    "T_near_top5": [
+      2.238850891652873,
+      2.257301507332048,
+      2.2667920199442397,
+      2.272694167130969,
+      2.285027252684286
+    ],
+    "tau_1249": null,
+    "tau_653": null
+  },
+  "counts_reference_resolution": {
+    "near_T_arrivals": 1997,
+    "near_A_arrivals": 2000,
+    "far_T_arrivals": 1421,
+    "far_A_arrivals": 1381,
+    "nonarrival_near_T": 3,
+    "nonarrival_near_A": 0
+  }
+}
