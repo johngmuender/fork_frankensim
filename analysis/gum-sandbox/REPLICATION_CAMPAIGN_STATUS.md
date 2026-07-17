@@ -349,7 +349,14 @@ series bit-identical; ten process-level findings (two printed-command
 defects; runtime-column drift root-caused to PYTHONHASHSEED with the
 pin-fix written in; stale expectations; the shipped field3d log itself
 truncated). The package REPRODUCES: DISCHARGE_PACKAGE/FRESHNESS.md is
-the dated record. Phase K closed; K3 (GPU extension) remains scheduled. Out of
+the dated record — and post-gauntlet, K28's corrected form was executed
+too (5/5 physics bit-identical): 46/46, ZERO skips. K3 then completed
+the phase: the full sector+gradient pipeline verified in WGSL f64 on
+llvmpipe, 20/20 gates twice, tolerance bands with order-of-magnitude
+headroom, bit-identical GPU replay, the real-GPU migration path
+documented (fs-gum-gpu/K3_RESULTS.md). Phase K COMPLETE; the campaign
+has no scheduled items remaining — only the unscheduled Beyond pair
+(the corpus's response; real-GPU hardware). Out of
 envelope (documented, not scheduled): blue-fog/disclination boxes and
 nucleation (GPU-scale/theorem-level, per the v2 assessment's Tier-5
 flag), the Σ(p) integrals from geometry, and the full fs-cosserat solver

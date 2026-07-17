@@ -287,7 +287,13 @@ claude/analyze-gum-ivm-viz (develop and push ONLY here; no PRs).
   zero physics drift, THE PACKAGE REPRODUCES (FRESHNESS.md); ten
   process findings incl. the PYTHONHASHSEED root-cause with pin-fix.
   The adjudication debts listed below are PAID except K3.
-- **K3 NOT STARTED** (by design, after K1/K2/K4): WGSL f64
+- **K3 ✅ DONE** (post-restore): full sector+gradient pipeline verified
+  in WGSL f64 on llvmpipe, 20/20 gates twice, bands with x9+ headroom,
+  bit-identical replay, migration path documented (fs-gum-gpu/
+  K3_RESULTS.md). K28's corrected form also executed: 5/5 physics
+  bit-identical - the gauntlet closed 46/46, zero skips. PHASE K
+  COMPLETE; NOTHING SCHEDULED REMAINS.
+- (superseded) K3 original brief: WGSL f64
   sector-measure + E_static gradient vs fs-gum-statics CPU goldens on
   llvmpipe (tolerance-band, NOT bit-identical across backends).
 

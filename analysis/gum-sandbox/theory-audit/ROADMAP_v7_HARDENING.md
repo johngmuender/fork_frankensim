@@ -83,8 +83,23 @@ print it. → k4 artifacts.
   runtime column are written into FRESHNESS.md — F2/F3 stale test-count
   expectations, F9 the shipped field3d log was itself truncated (fresh
   run completes it). DISCHARGE_PACKAGE/FRESHNESS.md is the dated
-  record. Phase K complete; K3 (GPU pipeline extension) is the one
-  remaining scheduled workstream.
+  record. POST-GAUNTLET UPGRADE: K28's corrected five-run form was
+  executed once credits returned — all five physics bit-identical to
+  the primaries (sole diff: the embedded seconds field) — the gauntlet
+  closed 46/46 with ZERO skips.
+- **K3: the full GPU physics pipeline VERIFIED on llvmpipe — 20/20
+  gates, twice, coordinator re-verified.** Sector measure
+  (E2,E4,E6,E0,I,deg) + the gather-form E_static gradient in WGSL f64,
+  tolerance-band vs fs-gum-statics at N ∈ {24,32,48,64}: sector worst
+  rel 1.1×10⁻¹³ (band 10⁻¹², ×9 headroom); gradient RMS ≤ 7.7×10⁻¹⁵ /
+  max-abs ≤ 1.1×10⁻¹⁴ over up to 1,048,576 entries; directional
+  derivative ≤ 2.7×10⁻⁶ both backends (cross-backend ⟨g,u⟩ 1.7×10⁻¹⁴);
+  GPU replay bit-identical with FNV-1a-64 fingerprints reproduced by a
+  full second run; arrested-descent smoke monotone under the CPU
+  evaluator. The G2 kernels needed NO shader changes — K3 is the
+  verification battery. llvmpipe timing framed as correctness only;
+  real-GPU migration path documented. fs-gum-gpu/K3_RESULTS.md.
+  Phase K COMPLETE — nothing scheduled remains.
 
 ## Beyond (unscheduled)
 The corpus's response to corpus2/DISCHARGE_PACKAGE; real-GPU hardware.
