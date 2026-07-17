@@ -201,14 +201,14 @@
    "status": "CMD-DEFECT: printed '-- all' rejected; usage is single|pair|sdiff|twist. Corrected form = the five shipped runs (h22_RESULTS.md L66-69: single 800-it; pair align/repulse 1200-it; sdiff repulse; twist repulse 21-pt, m=0.9 \u2192 h22_runs/*_m09.json) \u224824 min \u2014 SKIPPED-BUDGET"
   },
   "K12": {
-   "measured": "relaunching (wave 1)",
-   "root": "\u2014",
-   "status": "RUNNING (first attempt killed externally mid-run)"
+   "measured": "2546.9 s (2 concurrent)",
+   "root": "BIT-IDENTICAL to primary (json physics fields, log modulo timings, png byte-identical)",
+   "status": "PASS (\u03ba_crit shell 0.21625\u20130.21690; saturated closure \u03ba=1/\u221a2, bound \ud835\udd20 \u2265 2.82843; all gates in log)"
   },
   "K16": {
-   "measured": "relaunching (wave 1)",
-   "root": "\u2014",
-   "status": "RUNNING (first attempt killed externally mid-run)"
+   "measured": "2865.2 s (2 concurrent)",
+   "root": "BIT-IDENTICAL to primary (json physics fields, both pngs byte-identical)",
+   "status": "PASS (\ud835\udd20 = 2.37096 uniform-saturated; G* = 2.515991; locked ladder 3.26)"
   },
   "K14": {
    "measured": "awaiting wave 2",
