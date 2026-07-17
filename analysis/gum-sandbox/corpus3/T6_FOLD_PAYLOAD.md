@@ -157,8 +157,8 @@ all content lives in the family.
 
 - Tier-6 campaign record: two workflows (wf_5852a821-c22: L1/L2/L3/L5,
   4 agents; wf_1fc03d62-b33: L7a/L7b, 2 agents) + L5′ agent;
-  16 original gates (14 PASS + 2 PARTIAL→converted by L5′), L7 9/9
-  PASS; three coordinator-owned spec defects printed (L5 truncation,
+  per-workstream gates L1 4/4, L2 5/5, L3 5/5,
+  L5 3 PASS + 2 PARTIAL (both converted by L5′), L7a 4/4, L7b 5/5; three coordinator-owned spec defects printed (L5 truncation,
   L5 G3 bar, L7a grid) — the campaign's own-defects discipline
   maintained. Audit archives: audit-logs/MANIFEST_tier6.json.
 - New reference-group entries for the paper's References section:

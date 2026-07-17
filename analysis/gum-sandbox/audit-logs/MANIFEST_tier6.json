@@ -1,5 +1,5 @@
 {
- "snapshot_utc": "2026-07-17 TIER-6 COMPLETE THROUGH L7 (POVM-exclusion testbed executed: L7a backflow quadraticity violation; L7b spin-affinity 40-sigma + affine-vanishing kill)",
+ "snapshot_utc": "2026-07-17 TIER-6 COMPLETE + CORPUS3 FOLD EDITIONS PRODUCED (paper v4.0-ext, Course/Primer/TE v3-ext, small docs, manifest v5.0-ext; additive-only verified)",
  "session": "536b52e3-c0e4-5548-a35f-7ca5893feba9",
  "branch": "claude/analyze-gum-po",
  "note": "Additive to MANIFEST.json (session d0b81976, ivm-viz line). This manifest covers the tier6-foundations session only.",
@@ -55,6 +55,30 @@
    "description": "L7b: spin-family affinity POVM test on L5-prime engine",
    "phase": "Tier 6 L7",
    "verdict": "5/5 PASS clean - 40.2-sigma non-affinity + affine-vanishing kill bins; no single POVM reproduces the spin family (F-T6-L7b)"
+  },
+  {
+   "agent_id": "a12a3ddffde5c6c34",
+   "description": "corpus3 fold: Omega paper v4.0-ext (15 T6 insertions)",
+   "phase": "corpus3 fold",
+   "verdict": "additive-only PASS; 2 caveats fixed by coordinator (tally harmonization, running heads)"
+  },
+  {
+   "agent_id": "a7e1b5b23ffe82398",
+   "description": "corpus3 fold: Course v3-ext (9 teaching boxes)",
+   "phase": "corpus3 fold",
+   "verdict": "additive-only PASS"
+  },
+  {
+   "agent_id": "addb0f289d8f484e5",
+   "description": "corpus3 fold: Primer + Teachers Edition v3-ext",
+   "phase": "corpus3 fold",
+   "verdict": "additive-only PASS"
+  },
+  {
+   "agent_id": "aaebec275ea309103",
+   "description": "corpus3 fold: Session Map/Watch memo/Replication Record + new manifest v5.0-ext",
+   "phase": "corpus3 fold",
+   "verdict": "additive-only PASS"
   }
  ],
  "caveat": "tier6-coordinator-session.jsonl.xz was snapshotted during the checkpointing turn; the last few checkpoint/commit exchanges after the snapshot instant are absent from the archive by construction. The git history and SESSION_CHECKPOINT_tier6.md carry that residue. Coordinator archive re-snapshotted after L5-prime adjudication; same tail caveat applies to the final commit exchange.",
@@ -63,5 +87,11 @@
   "archive": "tier6-workflow-wf_1fc03d62-b33.tar.xz",
   "script": "tier6-L7-workflow-script.js",
   "total_subagent_tokens": 252802
+ },
+ "workflow3": {
+  "run_id": "wf_2c33ba17-f9b",
+  "archive": "tier6-workflow-wf_2c33ba17-f9b.tar.xz",
+  "script": "tier6-corpus3-workflow-script.js",
+  "total_subagent_tokens": 399795
  }
 }

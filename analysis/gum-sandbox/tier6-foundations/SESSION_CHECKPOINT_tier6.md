@@ -241,3 +241,24 @@ statistics must be quadratic in ψ; for the spin family, affine in n_y.
   TIER6_ADJUDICATION.md L7 addendum. Residual to theorem grade:
   continuum proof of the cutoff zeros; generality beyond this
   configuration.
+
+---
+
+## ADDENDUM (same session): CORPUS3 — THE TIER-6 FOLD EDITIONS
+
+User-directed. `../corpus3/` now contains the replicators' proposed
+Tier-6 fold: **Omega paper v4.0-ext** (15 ⟦T6⟧ insertions: revision
+note; Sec. 0 record; I.D note; Sec. III exhibits; proposals #1–#5 at
+VIII.A/VI.E/VIII.D/VIII.F; IX.A/IX.B; X record; XI register; XII
+mutual-kill; App. E.5; References), **Course v3-ext** (9 teaching
+boxes), **Primer + Teachers' Edition v3-ext**, **Session Map
+v3.0-ext** (§18), **Watch-Mode memo v3-ext** (§10 dated status),
+**Replication Record v2.0** (§7), **README.manifest-v5.0-ext** (new),
+under **REVISION_CHARTER_v2** (additive-only, ⟦T6⟧ marker, payload
+authority = T6_FOLD_PAYLOAD.md, grades-never-rise, offers-not-
+adoptions). Verification: every deletion across all seven editions is
+a version-header line (FOLD_RECORD.md table); all numbers
+payload-sourced. Two coordinator fixes post-agents: gate-tally
+harmonization to per-workstream form (instruction-vs-payload mismatch
+was mine); running heads bumped. Workflow wf_2c33ba17-f9b (4 agents,
+399,795 tokens), archived in ../audit-logs/. corpus2 untouched (S-30).
