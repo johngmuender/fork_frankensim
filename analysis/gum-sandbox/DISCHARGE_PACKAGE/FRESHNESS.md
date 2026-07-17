@@ -28,7 +28,7 @@ Status legend: PASS / FAIL / PENDING / SKIPPED-BUDGET / DUP (same command alread
 | K11 | 2 | `cd analysis/gum-sandbox/tier4-field/fs-cosserat-pilot && cargo run --release` | certified SDiff + ¼ claims; root f88731af… | ~0.2 s | 0.3 s | OK f88731af… | PASS |
 | K12 | 2/3 | `cd analysis/gum-sandbox/tier2-closure && python3 axi3_solve.py` | G0–G5; κ_crit 0.2163–0.2169; saturated closure; +9.1σ | 3241 s | 2546.9 s (2 concurrent) | BIT-IDENTICAL to primary (json physics fields, log modulo timings, png byte-identical) | PASS (κ_crit shell 0.21625–0.21690; saturated closure κ=1/√2, bound 𝔠 ≥ 2.82843; all gates in log) |
 | K13 | 2 | two-line proof (`axi_FR4_NOTE.md`) | analytic — read | — | read | n/a | PASS (note present, self-contained) |
-| K14 | 3 | `cd analysis/gum-sandbox/tier4-field && python3 field3d_solve.py` | R→−0.560; κ through 1/√(8π); clock 1.245/1.331/1.474; E_rot/E=0.250000 | 4461 s | running (wave 2) | — | RUNNING (primaries protected by .primary.bak) |
+| K14 | 3 | `cd analysis/gum-sandbox/tier4-field && python3 field3d_solve.py` | R→−0.560; κ through 1/√(8π); clock 1.245/1.331/1.474; E_rot/E=0.250000 | 4461 s | 5226.1 s (3 concurrent; internal 5224.3 s) | BIT-IDENTICAL to primary (json physics fields exact, png byte-identical, log prefix exact mod eval-timings) | PASS (dR=-0.559992; κ 0.18214 through 1/√(8π); E_rot/E=0.250000 at L_clock; ratio 1.2448 = printed 1.245×) — note F9: shipped log was truncated, fresh log completes it |
 | K15 | 3 | `python3 field3d_solve.py --smoke` (tier4-field) | small-N pipeline pass; `*_smoke.*` outputs | minutes | 21.3 s (internal 19.2 s) | n/a | PASS (wrote field3d_results_smoke.json etc.; ratio 1.4514 over-spun verdict) |
 | K16 | 3 | `cd analysis/gum-sandbox/tier2-closure && python3 axi4_locked_solve.py` | 𝔠=2.37096; locked ladder 3.26/3.29; G*=2.515991 | 2527 s | 2865.2 s (2 concurrent) | BIT-IDENTICAL to primary (json physics fields, both pngs byte-identical) | PASS (𝔠 = 2.37096 uniform-saturated; G* = 2.515991; locked ladder 3.26) |
 | K17 | 3 | `cd analysis/gum-sandbox/gum-core/fs-gum-statics && ./target/release/gum_statics_gates` | halo referee reproduced; κ ratio 1.2525 | ~316 s | 518.6 s (concurrent) | OK fp 6b3959d4… bit-identical (2nd fresh run) | PASS |
@@ -43,7 +43,7 @@ Status legend: PASS / FAIL / PENDING / SKIPPED-BUDGET / DUP (same command alread
 | K26 | 6 | §6 five-line block, verbatim | 52/52; 13/13; 25/25; 18/18; radial gates | ~7 min | 533.6 s | OK (all five suites OVERALL PASS incl. statics fp) | PASS (block executed verbatim from repo root) |
 | K27 | v2 | `python3 analysis/gum-sandbox/theory-audit/h21_mc.py` | R = 1.115e14 ± 0.3%; 1.967e15; v/c 6.1e8 | 117 s | 331.6 s (concurrent) | n/a | PASS (R = 1.115e14±3e11 at 1 µm; 1.967e15 at 4.2 µm; v/c 6.11e8); 2.8x wall vs 117 s — contention, flagged |
 | K28 | v2 | `cd analysis/gum-sandbox/theory-audit/h22_solve && cargo run --release --bin h22_solve -- all` | SDiff reduction ≤ 0; floor margin 15.7–18.1× | ~24 min | 0.4 s (usage error) | — | CMD-DEFECT: printed '-- all' rejected; usage is single|pair|sdiff|twist. Corrected form = the five shipped runs (h22_RESULTS.md L66-69: single 800-it; pair align/repulse 1200-it; sdiff repulse; twist repulse 21-pt, m=0.9 → h22_runs/*_m09.json) ≈24 min — SKIPPED-BUDGET |
-| K29 | v2 | `python3 analysis/gum-sandbox/theory-audit/h23_frank.py` | radial 8πK₁r; relaxed floor 7.7024 | 163 s | RUNNING (>50 min CPU so far vs printed 163 s) | n/a | RUNNING — RUNTIME-DRIFT >18x already (finding F8, same family as F6/j1); lane-3 continues to K33/K38/K32/K45 after it |
+| K29 | v2 | `python3 analysis/gum-sandbox/theory-audit/h23_frank.py` | radial 8πK₁r; relaxed floor 7.7024 | 163 s | RUNNING — 3h30m CPU so far vs printed 163 s (>77x) | n/a | RUNNING — RUNTIME-DRIFT (F8 upgraded); lane-3 tail K33/K38/K32/K45 queued behind it |
 | K30 | v2 | `python3 analysis/gum-sandbox/theory-audit/h24_helical.py` | 0.332ƛ² / 0.568ƛ²; premises verified | <1 s | 3.6 s | n/a | PASS (0.3316ƛ²/0.5677ƛ² vs printed 0.332/0.568) |
 | K31 | v2 | `python3 analysis/gum-sandbox/theory-audit/h25_sdw.py` | 𝔞₁(p,q) formula; 27/27 | 3 s | 3.8 s | n/a | PASS (27/27) |
 | K32 | v2 | `cd analysis/gum-sandbox/theory-audit/h26_solve && cargo run --release --bin h26_convention` | E_rot/E = 0.2500 vs 0.4330 (915σ) | ~10 min | queued | — | RUNNING (lane 3 queue) |
@@ -51,7 +51,7 @@ Status legend: PASS / FAIL / PENDING / SKIPPED-BUDGET / DUP (same command alread
 | K34 | v2 | `python3 analysis/gum-sandbox/theory-audit/t3_closures.py` | 𝔠 = 64√2/9π; six 2.5147 routes fail | <1 min | 0.6 s | n/a | PASS (𝔠 = 64√2/9π route confirmed) |
 | K35 | v2 | `python3 analysis/gum-sandbox/tier2-closure/gstar_solve.py` | G* → 16√2/9 (Richardson 6.0e-7) | 31 s | 14.2 s | n/a | PASS (G* = 16√2/9; faster than printed 31 s) |
 | K36 | v2 | `cd analysis/gum-sandbox/gum-core/fs-gum-kern && cargo run --release --bin n192_fr5 -- crossing` | κ crosses 1/√(8π) at it 2070–2080 | 46 min | 0.5 s (usage error) | — | CMD-DEFECT: printed command missing required args; binary usage requires 'crossing <out.json> <N> <LBOX> <cap_static> <cap_main> [threads]'. Corrected form run as K36b (shipped invocation from n192_RESULTS.md L28). |
-| K36b | v2 | corrected form: `… -- crossing n192_runs/n192_crossing.json 192 4.5 450 2500 4` (per n192_RESULTS.md L28) | κ crosses 1/√(8π) at it 2070–2080 | 46 min | running (wave 2) | — | RUNNING (writes n192_runs/n192_crossing_freshness.json; primary untouched) |
+| K36b | v2 | corrected form: `… -- crossing n192_runs/n192_crossing.json 192 4.5 450 2500 4` (per n192_RESULTS.md L28) | κ crosses 1/√(8π) at it 2070–2080 | 46 min | 8223.2 s (3 concurrent, 4 threads; primary recorded 2777 s) | BIT-IDENTICAL to primary (all physics fields incl. full iteration series; crossing [2070,2080]; I 29.636→29.699 at crossing; κ 0.199871→0.199447 through 1/√(8π)=0.199471) | PASS — RUNTIME-DRIFT 3.0x vs printed 46 min flagged (finding F10, scheduling-only: output bit-identical) |
 | K37 | v2.2 | `python3 analysis/gum-sandbox/theory-audit/h4_compute.py` | ±2·[rot]; winding −2.000000; 28/28 | 9 s | 2.5 s | n/a | PASS (28/28) |
 | K38 | v2.2 | `python3 analysis/gum-sandbox/theory-audit/i1_r5test.py` | 3.2011 at +0.51σ; ≈7σ separation | 757 s | queued | n/a | RUNNING (lane 3 queue) |
 | K39 | v2.2 | `python3 analysis/gum-sandbox/theory-audit/i2_propagate.py` | 34/34; κ²g_tot = 35/24; 13.4σ | 2 s | 0.9 s | n/a | PASS (34/34) |
@@ -64,7 +64,24 @@ Status legend: PASS / FAIL / PENDING / SKIPPED-BUDGET / DUP (same command alread
 
 ## Findings
 
-(populated as runs complete)
+**CMD-DEFECTs (printed command does not run):**
+- **F1 / K36:** `cargo run --release --bin n192_fr5 -- crossing` exits with a usage error — `crossing` requires `<out.json> <N> <LBOX> <cap_static> <cap_main> [threads]`. Corrected form (shipped invocation, n192_RESULTS.md L28) executed as K36b.
+- **F5 / K28:** `cargo run --release --bin h22_solve -- all` — the binary has no `all` subcommand (usage: `single|pair|sdiff|twist`, each with required args). Corrected form is the five shipped runs of h22_RESULTS.md (single / pair align / pair repulse / sdiff repulse / twist repulse at m=0.9 → `h22_runs/*_m09.json`), ~24 min total; SKIPPED-BUDGET.
+- **F7 / K36 (second defect, top of list to fix):** the naive corrected form writes over the primary record `n192_runs/n192_crossing.json`. The first corrected attempt did clobber it (restored from git by the coordinator). REPRODUCE should print the corrected command with a scratch output path. The non-clobber rule in the method note is the campaign-side mitigation; K36b's rerun wrote `n192_crossing_freshness.json`.
+
+**Runtime drift (>2x vs printed):**
+- **F8 / K29 (provisional, running):** h23_frank.py printed 163 s; >3h30m CPU so far. **F6 / K42:** j1_pgrid.py printed 55 s; measured 2814 s (51x), complete, gates PASS. Contention here explains at most ~2-3x; several printed runtimes in the v2/Phase-J tables evidently come from a different measurement pass (different host/load or an earlier smaller grid) than the shipping scripts. **Fix: re-print the runtime column for the theory-audit rows from this gauntlet's timings.csv.**
+- **F10 / K36b:** 8223 s vs 2777 s recorded in the primary (3.0x) — scheduling-only (4-thread solver sharing 4 cores with two other solvers); output bit-identical, so no physics implication.
+- Contended-run annotations (1.5-2.8x, attributable to deliberate concurrency; not defects): K04, K08, K09, K23, K24, K27.
+
+**Expectation drift (stale text, not failures):**
+- **F2 / K07:** "cargo test --release, 5/5" → the crate now has 13 unit tests, 13/13 pass (RESULTS.md already says 13/13).
+- **F3 / K06:** "20/20 + Wχ 26/26" → binary prints a single extended 26/26 battery; root matches RESULTS.md's extended golden root exactly.
+
+**Artifact defect:**
+- **F9 / K14:** shipped `tier4-field/field3d_run.log` is truncated at 53 lines; the fresh run reproduces that prefix exactly (mod eval timings) and the complete 102-line log now stands as the log of record (original preserved in the K4 baseline tarball).
+
+**Environment:** F4 — a sibling workstream process occupied ~1 core during the first execution window; long rows ran concurrently by design (see method note). Two external harness-level stops killed in-flight runs mid-gauntlet; all affected rows were relaunched and completed (except as marked).
 
 ## Verdict
 

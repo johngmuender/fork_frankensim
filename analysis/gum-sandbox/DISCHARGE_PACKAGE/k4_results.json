@@ -213,19 +213,21 @@
    "bit_identical": true
   },
   "K14": {
-   "measured": "running (wave 2)",
-   "root": "\u2014",
-   "status": "RUNNING (primaries protected by .primary.bak)"
+   "measured": "5226.1 s (3 concurrent; internal 5224.3 s)",
+   "root": "BIT-IDENTICAL to primary (json physics fields exact, png byte-identical, log prefix exact mod eval-timings)",
+   "status": "PASS (dR=-0.559992; \u03ba 0.18214 through 1/\u221a(8\u03c0); E_rot/E=0.250000 at L_clock; ratio 1.2448 = printed 1.245\u00d7) \u2014 note F9: shipped log was truncated, fresh log completes it",
+   "bit_identical": true
   },
   "K36b": {
-   "measured": "running (wave 2)",
-   "root": "\u2014",
-   "status": "RUNNING (writes n192_runs/n192_crossing_freshness.json; primary untouched)"
+   "measured": "8223.2 s (3 concurrent, 4 threads; primary recorded 2777 s)",
+   "root": "BIT-IDENTICAL to primary (all physics fields incl. full iteration series; crossing [2070,2080]; I 29.636\u219229.699 at crossing; \u03ba 0.199871\u21920.199447 through 1/\u221a(8\u03c0)=0.199471)",
+   "status": "PASS \u2014 RUNTIME-DRIFT 3.0x vs printed 46 min flagged (finding F10, scheduling-only: output bit-identical)",
+   "bit_identical": true
   },
   "K29": {
-   "measured": "RUNNING (>50 min CPU so far vs printed 163 s)",
+   "measured": "RUNNING \u2014 3h30m CPU so far vs printed 163 s (>77x)",
    "root": "n/a",
-   "status": "RUNNING \u2014 RUNTIME-DRIFT >18x already (finding F8, same family as F6/j1); lane-3 continues to K33/K38/K32/K45 after it"
+   "status": "RUNNING \u2014 RUNTIME-DRIFT (F8 upgraded); lane-3 tail K33/K38/K32/K45 queued behind it"
   },
   "K33": {
    "measured": "queued",
@@ -304,7 +306,21 @@
    "row": "K29",
    "severity": "medium",
    "provisional": true,
-   "detail": "h23_frank.py printed runtime 163 s; the fresh run has consumed >50 min of CPU (99% busy, single process) and is still in the relaxed-floor phase. Same drift family as F6 (j1_pgrid 51x). Outcome to be recorded at completion. Note: a duplicate lane-3 launch (operator error during the silent-lane diagnosis: the original lane was alive, not dead) ran h23 twice for ~40 s; the duplicate was killed, primaries were .bak-protected throughout."
+   "detail": "h23_frank.py printed runtime 163 s; the fresh run has 3h30m of CPU (99% busy, single process, still in the relaxed-floor phase) and counting \u2014 >77x and growing. DRIFT FAMILY SUMMARY: j1_pgrid.py 55 s printed vs 2814 s measured (51x, completed, gates PASS); h23_frank.py 163 s printed vs >12,600 s CPU so far (>77x, running). Host contention in this gauntlet accounts for at most ~2-3x; the only consistent explanation is that several printed runtimes in the v2/Phase-J tables came from a different measurement pass (different host, load, or an earlier smaller grid) than the shipping scripts. FIX: re-print REPRODUCE.md's runtime column for the theory-audit rows from this gauntlet's timings.csv once lane-3 drains."
+  },
+  {
+   "id": "F9",
+   "class": "ARTIFACT-DEFECT",
+   "row": "K14",
+   "severity": "low",
+   "detail": "The shipped primary tier4-field/field3d_run.log is truncated at 53 lines (cut mid Section B); the solve it records completed (its results JSON is complete). The fresh re-run reproduces the surviving 53-line prefix exactly (only eval-timing values differ) and writes the full 102-line log, which now stands as the log of record; the truncated original is preserved in the K4 baseline tarball (scratchpad artifacts_pre.tgz)."
+  },
+  {
+   "id": "F10",
+   "class": "RUNTIME-DRIFT",
+   "row": "K36b",
+   "severity": "low",
+   "detail": "n192 crossing re-run: 8223 s wall vs 2777 s recorded in the primary JSON (printed ~46 min) \u2014 3.0x, fully attributable to running the 4-thread solver concurrently with two other solvers on 4 cores. Output is bit-identical to the primary (entire iteration series), so the drift is scheduling-only."
   }
  ]
 }
