@@ -132,7 +132,7 @@ def lin_interp(V, px, xg0, dx, Nx):
 
 
 def run_1d(Nx, dt, P0, xmin=XMIN_E, xmax=XMAX_E, convention="literal",
-           t_final=T_EVOLVE):
+           t_final=T_EVOLVE, dets=None):
     xg, dx, f0, kx = build_f(Nx, xmin, xmax, convention)
     F = sfft.fft(f0)
     Eh = np.exp(-0.5j * kx ** 2 * (dt / 2.0))
@@ -154,10 +154,11 @@ def run_1d(Nx, dt, P0, xmin=XMIN_E, xmax=XMAX_E, convention="literal",
         b = np.clip(np.real(w) / den, -VCLAMP, VCLAMP)
         return a, b
 
+    if dets is None:
+        dets = {"near": D_NEAR, "far": D_FAR}
     ens = {"T": P0.copy(), "A": P0.copy()}
     active = {"T": np.ones(N, bool), "A": np.ones(N, bool)}
-    tau = {s: {d: np.full(N, np.nan) for d in ("near", "far")} for s in "TA"}
-    dets = {"near": D_NEAR, "far": D_FAR}
+    tau = {s: {d: np.full(N, np.nan) for d in dets} for s in "TA"}
 
     def vel(ab, s, px, pz):
         a, b = ab
