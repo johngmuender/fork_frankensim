@@ -98,3 +98,67 @@ fan-out (independent agents, independent code), then a synthesis
 adjudication (`TIER6_ADJUDICATION.md`) by the coordinator. Gate
 verdicts are the agents'; adjudication and any F-T6 promotions are the
 coordinator's. All artifacts commit to branch `claude/analyze-gum-po`.
+
+---
+
+## ADDENDUM — L7: the T4-W5 POVM-exclusion testbed (pre-registered)
+
+**The operational schema.** A fixed physical detector (fixed apparatus
+state + fixed coupling + fixed pointer readout) induces, by the Naimark
+construction, ONE preparation-independent POVM {E(dt)} on the system
+Hilbert space H_B. Hence, over any family of preparations ψ, a
+POVM-realizable arrival statistic must be a quadratic (sesquilinear)
+functional: Π_ψ(B) = ⟨ψ|E(B)|ψ⟩. The single-preparation "exclusion" is
+vacuous (any one distribution is trivially a POVM); ALL content lives in
+the family. Two independent testbeds:
+
+### L7a — quadraticity/polarization test (1-D spatial family, exact)
+Family ψ_θφ = cosθ·ψ₁ + sinθ·e^{iφ}·ψ₂ (common Gaussian envelope
+σ = 1 at x₀ = −8; momenta k₁ = 1.2, k₂ = 2.4 — interference ⇒
+backflow), free evolution analytic; detector at d = 0. In 1-D,
+no-crossing ordering gives the EXACT Bohmian first-arrival CDF:
+CDF_ψ(t) = max_{s≤t} N_ψ(s), N_ψ(s) = ∫_d^∞ |ψ_s|² dx (running
+maximum of the presence probability). POVM-form fit per time bin over a
+(θ, φ) grid (≥ 7×8 = 56 preparations, 4 fit parameters/bin:
+a·cos²θ + b·sin²θ + sin2θ(c·cosφ + d·sinφ)).
+Gates. G1 numerics: norm/quadrature checks; trajectory-fan control of
+the running-max theorem at one backflow point (KS agreement).
+G2 comparator: the same fit applied to the manifestly quadratic
+functional N_ψ(t_i) must sit at the numerical floor (validates the
+harness). G3 exclusion: pre-registered criterion — Bohmian per-bin
+residual > 10³ × comparator floor AND > 10⁻⁴ absolute, in bins where
+backflow is present (report backflow magnitude alongside).
+G4 control: a no-backflow sub-family (k₁ = k₂, positions differing)
+must show Bohmian = flux = quadratic at the floor (deviation is
+backflow-borne, as theory demands).
+
+### L7b — spin-family affinity test (the A3-relevant one, L5′ engine)
+Fixed spatial preparation (L5′ configuration: C² taper, k₀ = 2,
+d_near = 1), spin state χ(n̂) varying over the Bloch sphere. No
+magnetic field ⇒ one field solve; the guidance current depends on n̂
+only through n_y (out-of-plane component): v = a(x,t) + n_y·b(x,t) —
+two stored vector fields, trajectories per n_y cheap. POVM ⇒ per bin
+Π_B(n̂) = A + B·n̂; pure states with equal n_y but different (n_x, n_z)
+have identical dynamics ⇒ B_x = B_z = 0 ⇒ **Π_B must be AFFINE
+(linear) in n_y**. Grid n_y ∈ {−1, −0.75, …, +1} (9 values), N = 2000
+identical-ensemble trajectories each.
+Gates. G1 engine quality (L5′ bars). G2 linearity: per-bin least-squares
+fit A + B·n_y; exclusion criterion (pre-registered): ≥ 3 independent
+bins with residual > 5σ_bootstrap (+ numeric floor). G3 the
+affine-vanishing kill: measure τ_max(n_y); exhibit ≥ 1 bin with ZERO
+arrivals (0/2000 ⇒ Π < 1.9×10⁻³ at 95%) for all |n_y| ≥ n\* (an
+interval) and Π > 10⁻² for some |n_y| < n\* — an affine function of n_y
+vanishing on an interval while positive elsewhere is impossible ⇒ no
+single POVM reproduces the family. Verify the empty bins at one refined
+resolution. G4: τ_max(n_y) continuity/monotonicity reported.
+G5 report-only: effect sizes.
+
+**Scope honesty (printed in advance).** Both results are within-model:
+they show the MODEL's first-crossing statistics over a preparation
+family are not POVM-realizable, i.e. they supply the exclusion step the
+corpus's gate logic needs — conditional, exactly as VIII.F requires, on
+those statistics being what the experiment observes. The idealized
+non-perturbing screen (Prop. VIII.2's premise) is assumed; a physical
+absorbing detector back-reacts and is itself POVM-describable — that is
+precisely the dichotomy the A3 experiment adjudicates. Nothing bears on
+nature.
