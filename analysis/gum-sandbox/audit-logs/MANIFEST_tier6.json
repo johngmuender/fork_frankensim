@@ -1,5 +1,5 @@
 {
- "snapshot_utc": "2026-07-17 TIER-6 FOUNDATIONS COMPLETE + L5-PRIME EXECUTED (both L5 PARTIALs converted; G4 FAIL-AT-d25 honest, KS(d) monotone approach measured)",
+ "snapshot_utc": "2026-07-17 TIER-6 COMPLETE THROUGH L7 (POVM-exclusion testbed executed: L7a backflow quadraticity violation; L7b spin-affinity 40-sigma + affine-vanishing kill)",
  "session": "536b52e3-c0e4-5548-a35f-7ca5893feba9",
  "branch": "claude/analyze-gum-po",
  "note": "Additive to MANIFEST.json (session d0b81976, ivm-viz line). This manifest covers the tier6-foundations session only.",
@@ -43,7 +43,25 @@
    "phase": "Tier 6 L5-prime (post-checkpoint)",
    "verdict": "G1/G2/G3 PASS (both L5 PARTIALs converted), G4 FAIL-AT-d25 (null approached, not violated; KS(d) 0.126->0.057), G5 report-only (F-T6-L5-EXEC-2)",
    "transcript": "tier6-agent-L5prime.jsonl.xz"
+  },
+  {
+   "agent_id": "a494fbc79cf58dca6",
+   "description": "L7a: 1-D quadraticity/polarization POVM test (exact running-max CDF)",
+   "phase": "Tier 6 L7",
+   "verdict": "4/4 PASS with sanctioned deviations (grid refinement; control adjustment) - exclusion 1.84e-4 vs 2.9e-15 floor, backflow-borne (F-T6-L7a)"
+  },
+  {
+   "agent_id": "a3c0790e91745ba7f",
+   "description": "L7b: spin-family affinity POVM test on L5-prime engine",
+   "phase": "Tier 6 L7",
+   "verdict": "5/5 PASS clean - 40.2-sigma non-affinity + affine-vanishing kill bins; no single POVM reproduces the spin family (F-T6-L7b)"
   }
  ],
- "caveat": "tier6-coordinator-session.jsonl.xz was snapshotted during the checkpointing turn; the last few checkpoint/commit exchanges after the snapshot instant are absent from the archive by construction. The git history and SESSION_CHECKPOINT_tier6.md carry that residue. Coordinator archive re-snapshotted after L5-prime adjudication; same tail caveat applies to the final commit exchange."
+ "caveat": "tier6-coordinator-session.jsonl.xz was snapshotted during the checkpointing turn; the last few checkpoint/commit exchanges after the snapshot instant are absent from the archive by construction. The git history and SESSION_CHECKPOINT_tier6.md carry that residue. Coordinator archive re-snapshotted after L5-prime adjudication; same tail caveat applies to the final commit exchange.",
+ "workflow2": {
+  "run_id": "wf_1fc03d62-b33",
+  "archive": "tier6-workflow-wf_1fc03d62-b33.tar.xz",
+  "script": "tier6-L7-workflow-script.js",
+  "total_subagent_tokens": 252802
+ }
 }

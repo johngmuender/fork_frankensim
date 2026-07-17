@@ -165,3 +165,77 @@ conclusion is convention-robust. Scope caveat unchanged (testbed, not
 POVM-exclusion). F-T6-L5 is hereby CLOSED in its L5′ form; the open
 successor items are the POVM-exclusion theorem (T4-W5) and, if ever
 bench-relevant, a KS(d) extension to the measured asymptote.
+
+---
+
+## ADDENDUM — L7 adjudication: the T4-W5 POVM-exclusion testbed (F-T6-L7a/b; workflow wf_1fc03d62-b33)
+
+Pre-registration: ROADMAP_v8 addendum (commit e21a5a7, before execution).
+Two independent legs, both landing the exclusion. Within-model; nothing
+bears on nature.
+
+**L7b (spin-family affinity — the A3-relevant leg): adjudicated EXECUTED,
+clean, and it is the tier's strongest single result.** On the validated
+L5′ engine (endpoints reproduce L5′ to 8.3×10⁻⁷, KS p = 1.0; one field
+solve drives all nine ensembles since v = a + n_y·b exactly), the
+Bohmian arrival statistics over the spin family are grossly non-affine
+in n_y where any fixed POVM demands affinity: **eight pre-registered
+bins violate at > 5σ with a 40.2σ peak**; the statistics are *even* in
+n_y (the violation is carried entirely by the quadratic component,
+5–12σ in nine bins). The **affine-vanishing kill** is exhibited exactly
+as pre-registered: two bins (t ∈ [6.4, 6.8], [6.8, 7.2]) are empty
+(0/2000, Π < 1.5×10⁻³ at 95% CL) at every |n_y| ≥ 0.75 yet measurably
+populated (Π = 0.012) at n_y = +0.25 — an affine Π_B(n_y) bounded below
+1.5×10⁻³ at ±1 and ±0.75 cannot exceed ~1.9×10⁻³ anywhere in [−1, 1],
+a factor ~7 below the measured interior value; zeros confirmed at
+double Nx AND on an extended box. τ_max(n_y) contracts 209%,
+strictly monotone in |n_y| (15.84 → 5.13). **Conclusion: no single
+POVM reproduces the model's arrival statistics across the spin
+family** — experimentally, a spin rotator before the waveguide — which
+is precisely the class-level statement Sec. VIII.F's gate logic was
+missing (T4-W5): not "absent from proposals" but "unrealizable by the
+class," at testbed grade.
+
+**L7a (1-D quadraticity/polarization leg): adjudicated EXECUTED-WITH-
+SANCTIONED-DEVIATIONS, exclusion demonstrated and mechanism isolated.**
+The exact running-max first-arrival CDF (1-D no-crossing theorem;
+validated by a 4000-trajectory fan at the stratified-sampling limit
+with zero ordering inversions) fails the single-POVM quadratic form by
+1.84×10⁻⁴ — **6×10¹⁰ above the 2.9×10⁻¹⁵ comparator floor** — exactly
+and only in backflow-carrying bins; every backflow-free bin in both
+families sits at the floor. Two deviations, both honest and printed:
+(i) the **pre-registered 7×8 grid contained no backflow point**
+(residual at floor there — the registered sampling alone excludes
+nothing); the pocket (~1.4% of the torus) was found by continuum
+diagnostics (detector-current-matrix λ_min = −4.9×10⁻⁴) and the grid
+refined 25×32 with physics untouched — a coordinator spec defect
+(grid set blind, too coarse), filed in the L5-G2/G3 tradition;
+(ii) the G4 control's no-backflow premise needed its one sanctioned
+separation adjustment, and holds for the registered members only (the
+continuum has a pocket at every separation — the flux/first-crossing
+distinction is generic, which strengthens rather than weakens the
+mechanism claim). Kijowski-class and quantum-flux proposals are
+quadratic by construction and cannot reproduce either family's
+statistics.
+
+**T4-W5 status after L7 (proposed regrade, offered per charter).** The
+corpus's VIII.F "missing step, printed as a request" — a theorem that
+the spin-covariant cutoff statistic is unrealizable by any POVM
+compatible with the preparation class — now has: (a) a concrete
+statistic + preparation family on the corpus's own A3 observable class;
+(b) a measured class-level exclusion (40σ + the interval-vanishing
+contradiction), robust to resolution and box controls; (c) an exact
+mechanism account (backflow pins first-crossing above the quadratic
+presence functional; evenness in n_y defeats affinity). What remains to
+full theorem grade: a continuum (non-ensemble) proof of the hard-cutoff
+zeros and a general statement beyond this configuration. Proposed
+annotation #5 (added to the offer list): VIII.F/IX.B may cite this
+testbed as the constructive candidate discharging the Layer-2 funding
+gate's POVM-exclusion requirement at [DW, testbed-grade,
+configuration-specific], with the continuum proof as the named residual
+obligation. The Prop. VIII.2 premise (non-perturbing screen) is assumed
+throughout; the physical-detector dichotomy remains what A3
+adjudicates — unchanged.
+
+Run record: workflow wf_1fc03d62-b33, two agents, 252,802 tokens.
+Artifacts: `L7a/`, `L7b/` (scripts, JSON, figures, RESULTS.md each).

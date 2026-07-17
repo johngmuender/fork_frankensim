@@ -1,0 +1,79 @@
+{
+  "main_lambda_min_over_t": -0.0004924441470014196,
+  "main_lambda_min_argmin_t": 3.8195,
+  "main_fine_scan_max_backflow": 0.00028335996782352657,
+  "main_fine_scan_argmax": {
+    "theta": 0.7723081940074907,
+    "phi": 0.2454369260617026
+  },
+  "local_dk_at_detector": {
+    "t": [
+      2.0,
+      3.33,
+      5.0,
+      6.67,
+      10.0
+    ],
+    "dk_loc": [
+      0.24,
+      0.09926461464649389,
+      0.04615384615384615,
+      0.026380061949178808,
+      0.011881188118811881
+    ],
+    "note": "phase-gradient mismatch of the two components at x=0: dk_loc = (k2-k1) sigma^4/(sigma^4+t^2); backflow needs amplitude-weighted mismatch to beat the mean local k ~ 1.6"
+  },
+  "control_separation_scan": {
+    "1.0": {
+      "lambda_min": -0.00043296590979036154,
+      "lambda_min_t": 3.7955,
+      "fine_scan_max_backflow": 0.0003123393163366184,
+      "argmax_theta": 0.7592182246175333,
+      "argmax_phi": 3.0925052683774528
+    },
+    "1.5": {
+      "lambda_min": -0.0008800032398289942,
+      "lambda_min_t": 3.9315,
+      "fine_scan_max_backflow": 0.0003316897729609969,
+      "argmax_theta": 0.7461282552275759,
+      "argmax_phi": 3.0925052683774528
+    },
+    "2.0": {
+      "lambda_min": -0.0014093165279142755,
+      "lambda_min_t": 4.073,
+      "fine_scan_max_backflow": 0.00036518369726856736,
+      "argmax_theta": 0.7330382858376183,
+      "argmax_phi": 3.0925052683774528
+    },
+    "3.0": {
+      "lambda_min": -0.002562388928152373,
+      "lambda_min_t": 4.365,
+      "fine_scan_max_backflow": 0.00047913298646173885,
+      "argmax_theta": 0.7068583470577035,
+      "argmax_phi": 3.141592653589793
+    },
+    "4.0": {
+      "lambda_min": -0.0036771287379970125,
+      "lambda_min_t": 4.6615,
+      "fine_scan_max_backflow": 0.0006375285179757162,
+      "argmax_theta": 0.6937683776677459,
+      "argmax_phi": 3.043417883165112
+    }
+  },
+  "ctrl_grid_star": {
+    "index": 27,
+    "theta_over_pi": 0.25,
+    "phi_over_pi": 0.75,
+    "backflow": 0.0004267663062883509
+  },
+  "ctrl_fan": {
+    "dt_traj": 0.001,
+    "sup_norm_ecdf_vs_runmax": 0.0001249227344833903,
+    "dkw_2x_band": 0.04294694083467376,
+    "min_ordering_gap": 0.0008303458564959953,
+    "n_steps_with_inversion": 0,
+    "n_crossed": 3628
+  },
+  "ctrl_continuity_max_dev": 4.743106867821645e-06,
+  "ctrl_min_current": -0.0027049100596271895
+}

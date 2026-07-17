@@ -213,3 +213,31 @@ extension to the measured asymptote; corpus annotations 1–4 still
 offered. Session archives updated: `../audit-logs/`
 tier6-agent-L5prime.jsonl.xz + refreshed coordinator archive;
 MANIFEST_tier6.json amended.
+
+---
+
+## ADDENDUM (same session): L7 POVM-EXCLUSION TESTBED EXECUTED (T4-W5)
+
+The hard open of §2 now has its testbed-grade discharge (user-directed;
+pre-registered at commit e21a5a7; workflow wf_1fc03d62-b33). Schema: a
+fixed detector = one Naimark POVM ⇒ over a preparation family the
+statistics must be quadratic in ψ; for the spin family, affine in n_y.
+- **L7b (headline)**: on the L5′ engine, arrival statistics across
+  n_y ∈ {−1…+1} (9 pts × 2000 identical-ensemble trajectories, one
+  field solve, v = a + n_y·b exact) violate affinity at up to **40.2σ**
+  (8 bins > 5σ; statistics even in n_y); **affine-vanishing kill**: two
+  bins empty (Π < 1.5e-3, 95% CL) for all |n_y| ≥ 0.75 but Π = 0.012
+  at n_y = +0.25 (affine bound ~1.9e-3 — contradiction ×7), zeros
+  confirmed at double Nx + extended box; τ_max(n_y) 15.84 → 5.13
+  monotone. **No single POVM reproduces the family.** F-T6-L7b.
+- **L7a**: exact running-max CDF over spatial superpositions violates
+  the quadratic form by 1.84e-4 (6×10¹⁰ × the 2.9e-15 comparator
+  floor), exactly and only in backflow bins; backflow-free bins at
+  floor. Deviations (honest, printed): registered 7×8 grid missed the
+  backflow pocket (coordinator spec defect; refined 25×32); G4 control
+  adjusted once, continuum has pockets at every separation. F-T6-L7a.
+- Adjudication + proposed annotation #5 (VIII.F/IX.B may cite the
+  testbed at [DW, testbed-grade, configuration-specific]):
+  TIER6_ADJUDICATION.md L7 addendum. Residual to theorem grade:
+  continuum proof of the cutoff zeros; generality beyond this
+  configuration.
