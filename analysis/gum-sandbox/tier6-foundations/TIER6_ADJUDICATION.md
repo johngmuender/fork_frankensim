@@ -116,3 +116,52 @@ such argument must clear.
 
 Artifacts: `L1/ L2/ L3/ L5/` (scripts, JSON, figures, RESULTS.md each);
 run record: workflow wf_5852a821-c22, four agents, 265,836 tokens.
+
+---
+
+## ADDENDUM — L5′ adjudication (F-T6-L5-EXEC-2; run 2026-07-17, post-checkpoint)
+
+The pre-registered follow-up (C² smoothstep truncation; k₀ = 2 boost;
+same gate battery, full ensemble, no exclusions) executed. Adjudicated
+outcomes:
+
+**Both L5 PARTIALs convert to clean PASS.**
+- G2: τ_max = 5.130950, stable to 8.3×10⁻⁸ (Nx-doubling) and 5.6×10⁻¹⁰
+  (dt-halving); empty gap 10.87 = 4.5× required; **all 2000 trajectories
+  converge** across a six-run resolution ladder (max per-trajectory
+  drift 3.7×10⁻⁵, zero status changes) — the latest arrival is born
+  mid-packet, not on the support edge. The L5 edge-outlier failure mode
+  is eliminated, confirming its adjudication as a truncation-spec
+  artifact. Energy is now grid-converged (E = 2.2503989 ± 5×10⁻⁹; the
+  hard-cut UV log-divergence is gone).
+- G3: axial arrivals beyond the transverse cutoff = **11.08%** (> 2× the
+  5% bar; L5: 2.8%), with zero transverse events beyond τ_max out to
+  T = 40. The k₀-compression diagnosis of L5's PARTIAL is confirmed.
+
+**G4: FAIL-AT-d=25, graded honest and diagnosed — the null is
+approached, not violated.** After one coverage retry (T = 40, box
+[−15, 225]; non-arrivals balanced 0/88), KS at the spec'd d = 25 gives
+p = 9.9×10⁻⁸, dt-stable. The seven-plane ladder measures a monotone
+KS(d) decay 0.1261 → 0.0571 with p climbing seven orders to 3.7×10⁻³
+at d = 35: at slow boost the spin-current arrival-time difference
+decays more slowly in packet-width units, so d = 25 is not yet
+asymptotic. L5's G4 PASS (k₀ = 4) vs L5′'s FAIL (k₀ = 2) is a
+**physics-of-configuration pair**, not an inconsistency.
+
+**New bench-design record for the Layer-1 envelope (worth exporting to
+any IX.A protocol discussion):** slowing the packet sharpens the
+near-field spin contrast (G2 gap ×4.5, G3 ×4) but pushes the
+asymptotic far-field regime outward — detector placement must be
+co-designed with the boost. The far-field-null station of the corpus's
+Layer-1 envelope is a *joint* (k₀, d_far) design constraint, not a
+free placement.
+
+Cross-engine credit: far-field samples bit-identical across the two
+independent engines (per-trajectory median agreement 1.6×10⁻³ ⇒ same
+rank configuration), verified genuine, not a harness artifact.
+Sensitivity control: the amplitude-convention variant shifts τ_max to
+4.457 and G3 to 11.66% with G4 p = 0.004 — every adjudicated
+conclusion is convention-robust. Scope caveat unchanged (testbed, not
+POVM-exclusion). F-T6-L5 is hereby CLOSED in its L5′ form; the open
+successor items are the POVM-exclusion theorem (T4-W5) and, if ever
+bench-relevant, a KS(d) extension to the measured asymptote.

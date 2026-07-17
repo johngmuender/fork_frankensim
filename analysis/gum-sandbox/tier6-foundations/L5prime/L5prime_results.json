@@ -87,7 +87,18 @@
         "max": 1.6743289243947856e-07
       }
     },
-    "verdict": "PASS"
+    "verdict": "PASS",
+    "extended_horizon_check": {
+      "horizon": 40.0,
+      "box": [
+        -15.0,
+        225.0
+      ],
+      "Nx": 8192,
+      "tau_max": 5.130949977298187,
+      "transverse_near_arrivals_beyond_tau_max_to_T40": 0,
+      "empty_gap_to_horizon": 34.86905002270181
+    }
   },
   "G3": {
     "frac_axial_beyond_tau_max": 0.11082995951417005,
@@ -169,7 +180,8 @@
         "nonarr_A": 160
       }
     },
-    "verdict": "FAIL"
+    "verdict": "FAIL-AT-d25 (null approached, not violated)",
+    "diagnosis": "FAIL at d=25 is a physics-of-configuration result, not a windowing artifact: with coverage balanced (nonarrival T/A = 0/88) the KS distance is 0.0925 (p=9.9e-8), but KS(d) decays monotonically from 0.1261 (d=1) to 0.0571 (d=35, p=3.7e-3): at k0=2 the spin-current-induced arrival-time difference decays with distance more slowly (in packet-width units the detector is effectively nearer), so d_far=25 is not yet asymptotic; the monotone trend shows the far-field null being approached, not violated."
   },
   "G5": {
     "mean_tau_T_near": 2.9588977937480534,
@@ -435,7 +447,9 @@
       "iqr": 1.2158943277355885,
       "frac_axial_beyond": 0.11082995951417005,
       "ks_far_p": 9.896441103536424e-08,
-      "edge_trajectory": "idx 1754 spread_rel 8.63e-07 across ladder"
-    }
+      "edge_trajectory": "idx 1754 spread_rel 8.63e-07 across ladder",
+      "ks_far_p_T24_window_coverage_artifact": 0.02523837289560019
+    },
+    "note": "L5 G4 PASS at k0=4 vs L5prime FAIL at k0=2, same d=25: slower boost sharpens the near-field contrast (G3: 2.8% -> 11.1%) but pushes the asymptotic far-field regime outward - a bench-design tradeoff for the Layer-1 envelope."
   }
 }

@@ -1,5 +1,5 @@
 {
- "snapshot_utc": "2026-07-17 TIER-6 FOUNDATIONS COMPLETE (L1/L2/L3/L5 executed + adjudicated; Phase-K branch merged additively)",
+ "snapshot_utc": "2026-07-17 TIER-6 FOUNDATIONS COMPLETE + L5-PRIME EXECUTED (both L5 PARTIALs converted; G4 FAIL-AT-d25 honest, KS(d) monotone approach measured)",
  "session": "536b52e3-c0e4-5548-a35f-7ca5893feba9",
  "branch": "claude/analyze-gum-po",
  "note": "Additive to MANIFEST.json (session d0b81976, ivm-viz line). This manifest covers the tier6-foundations session only.",
@@ -36,7 +36,14 @@
    "description": "L5: A3 spin-dependent arrival times, independent engine",
    "phase": "Tier 6 Execute",
    "verdict": "G1/G4/G5 PASS, G2/G3 PARTIAL (spec artifacts, coordinator-owned; phenomenon CONFIRMED) (F-T6-L5-EXEC)"
+  },
+  {
+   "agent_id": "af9bf03eadb396a74",
+   "description": "L5-prime: pre-registered follow-up (C2 smoothstep truncation, k0=2)",
+   "phase": "Tier 6 L5-prime (post-checkpoint)",
+   "verdict": "G1/G2/G3 PASS (both L5 PARTIALs converted), G4 FAIL-AT-d25 (null approached, not violated; KS(d) 0.126->0.057), G5 report-only (F-T6-L5-EXEC-2)",
+   "transcript": "tier6-agent-L5prime.jsonl.xz"
   }
  ],
- "caveat": "tier6-coordinator-session.jsonl.xz was snapshotted during the checkpointing turn; the last few checkpoint/commit exchanges after the snapshot instant are absent from the archive by construction. The git history and SESSION_CHECKPOINT_tier6.md carry that residue."
+ "caveat": "tier6-coordinator-session.jsonl.xz was snapshotted during the checkpointing turn; the last few checkpoint/commit exchanges after the snapshot instant are absent from the archive by construction. The git history and SESSION_CHECKPOINT_tier6.md carry that residue. Coordinator archive re-snapshotted after L5-prime adjudication; same tail caveat applies to the final commit exchange."
 }

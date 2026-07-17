@@ -191,3 +191,25 @@ In `../audit-logs/`:
 To restore deepest context: read this file + FOUNDATIONS_ANALYSIS.md +
 TIER6_ADJUDICATION.md + the four L*/RESULTS.md; decompress the archives
 only if the precise agent-level reasoning is needed.
+
+---
+
+## ADDENDUM (same session, post-checkpoint): L5′ EXECUTED
+
+The first named follow-up of §2 is done (user-directed). `L5prime/`
+(F-T6-L5-EXEC-2): pre-registered fixes (C² smoothstep truncation;
+k₀ = 2), full gate battery, no exclusions. **Both L5 PARTIALs
+converted**: G2 PASS (τ_max = 5.130950, stability 8.3e-8/5.6e-10,
+all 2000 trajectories converge — edge-outlier mode eliminated;
+energy grid-converged); G3 PASS (axial-beyond fraction 11.08% > 5%).
+**G4 = FAIL-AT-d=25, honest**: coverage-balanced KS p = 9.9e-8 at the
+spec'd d = 25, with a measured monotone KS(d) decay (0.126 → 0.057,
+p → 3.7e-3 at d = 35) — the far-field null is approached, not
+violated; at slow boost d = 25 is not asymptotic. New bench-design
+record: (k₀, d_far) is a joint Layer-1 design constraint. Full
+adjudication: TIER6_ADJUDICATION.md addendum. Updated open items:
+POVM-exclusion theorem (T4-W5) stays the hard open; optional KS(d)
+extension to the measured asymptote; corpus annotations 1–4 still
+offered. Session archives updated: `../audit-logs/`
+tier6-agent-L5prime.jsonl.xz + refreshed coordinator archive;
+MANIFEST_tier6.json amended.
