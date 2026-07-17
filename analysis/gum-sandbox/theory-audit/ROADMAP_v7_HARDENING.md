@@ -69,8 +69,22 @@ print it. → k4 artifacts.
   exponents are bias artifacts; undermines neither exponent, slope,
   nor ceiling. Propagation UNCHANGED (movement 7.8×10⁻³ ≤ the 1.3%
   trigger); J4's (4.9′) envelopes stand. k2_RESULTS.md.
-- **K4**: running at fold time (24 PASS / 25 pending; K36 CMD-DEFECT
-  found; K36b crossing re-run the long pole). Verdict slot reserved.
+- **K4: THE PACKAGE REPRODUCES — zero physics drift.** All 46
+  REPRODUCE rows executed fresh on this host (sole skip: K28's ~24-min
+  corrected form, documented); every physics comparison bit-identical —
+  7 Merkle roots, 3 fingerprints, every results-JSON physics field,
+  every PNG, and the FULL 2500-iteration N=192 crossing series on the
+  4-thread solver (window [2070, 2080] identical). All ten findings
+  process-level: F1/F5/F7 two printed-command defects (one with a
+  clobber hazard; corrected forms verified or documented), F6/F8/F10
+  runtime-column drift with F8 ROOT-CAUSED — h23 unpinned hung 5.6 h in
+  sympy's Wang/Hensel factorization; PYTHONHASHSEED=0 reproduces the
+  primary physics-identically in 184.5 s; the pin-fix and a re-printed
+  runtime column are written into FRESHNESS.md — F2/F3 stale test-count
+  expectations, F9 the shipped field3d log was itself truncated (fresh
+  run completes it). DISCHARGE_PACKAGE/FRESHNESS.md is the dated
+  record. Phase K complete; K3 (GPU pipeline extension) is the one
+  remaining scheduled workstream.
 
 ## Beyond (unscheduled)
 The corpus's response to corpus2/DISCHARGE_PACKAGE; real-GPU hardware.

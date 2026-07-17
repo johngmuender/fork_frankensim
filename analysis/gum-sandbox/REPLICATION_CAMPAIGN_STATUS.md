@@ -343,9 +343,13 @@ pointer printed-not-claimed (k1_RESULTS.md). K2 extended the saturated
 window alone, χ² 77), J4 strengthened, propagation unchanged; headline
 defect K2-D1 — the 12-mode family's intercept bias drifts at small ε
 (bias artifact, not exponent physics) (k2_RESULTS.md). K4's REPRODUCE
-re-run had 24 rows PASS with one finding at fold time (K36 CMD-DEFECT:
-a printed command fails as printed; corrected form re-running) —
-final freshness verdict lands in DISCHARGE_PACKAGE/FRESHNESS.md. Out of
+gauntlet COMPLETED: all 46 rows fresh, ZERO PHYSICS DRIFT — every root,
+fingerprint, JSON physics field, PNG, and the full N=192 crossing
+series bit-identical; ten process-level findings (two printed-command
+defects; runtime-column drift root-caused to PYTHONHASHSEED with the
+pin-fix written in; stale expectations; the shipped field3d log itself
+truncated). The package REPRODUCES: DISCHARGE_PACKAGE/FRESHNESS.md is
+the dated record. Phase K closed; K3 (GPU extension) remains scheduled. Out of
 envelope (documented, not scheduled): blue-fog/disclination boxes and
 nucleation (GPU-scale/theorem-level, per the v2 assessment's Tier-5
 flag), the Σ(p) integrals from geometry, and the full fs-cosserat solver

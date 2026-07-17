@@ -282,6 +282,11 @@ claude/analyze-gum-ivm-viz (develop and push ONLY here; no PRs).
   re-run rows by hand from REPRODUCE.md (all paths relative to repo
   root), update rows, and write the findings section + freshness
   verdict. Rust rows: baseline flags, NOT -C target-cpu=native.
+- PHASE-K CLOSURE (post-checkpoint): K1 verified null (0.52σ), K2
+  linear-to-0.001 (J4 strengthened), K4 COMPLETE — all 46 rows fresh,
+  zero physics drift, THE PACKAGE REPRODUCES (FRESHNESS.md); ten
+  process findings incl. the PYTHONHASHSEED root-cause with pin-fix.
+  The adjudication debts listed below are PAID except K3.
 - **K3 NOT STARTED** (by design, after K1/K2/K4): WGSL f64
   sector-measure + E_static gradient vs fs-gum-statics CPU goldens on
   llvmpipe (tolerance-band, NOT bit-identical across backends).

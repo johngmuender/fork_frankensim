@@ -400,7 +400,10 @@
    "analysis/gum-sandbox/theory-audit/k1_RESULTS.md",
    "analysis/gum-sandbox/theory-audit/k1_results.json",
    "analysis/gum-sandbox/theory-audit/k2_RESULTS.md",
-   "analysis/gum-sandbox/theory-audit/k2_results.json"
-  ]
+   "analysis/gum-sandbox/theory-audit/k2_results.json",
+   "analysis/gum-sandbox/DISCHARGE_PACKAGE/FRESHNESS.md",
+   "analysis/gum-sandbox/DISCHARGE_PACKAGE/k4_results.json"
+  ],
+  "K4_freshness_gauntlet": "THE PACKAGE REPRODUCES - zero physics drift. All 46 REPRODUCE rows executed fresh (2026-07-16/17, Sapphire-Rapids-class host, sole skip: K28's ~24-min corrected form, documented): 7 Merkle roots, 3 fingerprints, every results-JSON physics field, every PNG, and the full 2500-iteration N=192 crossing series on the 4-thread solver reproduced BIT-IDENTICALLY. Ten process-level findings, all with fixes or documentation: F1/F5/F7 printed-command defects (K36 missing args - corrected form PASS; K28 nonexistent 'all' subcommand - corrected 5-run form documented; the K36 naive correction clobbers a primary - non-clobber rule codified), F6/F8/F10 runtime-column drift (F8 root-caused: h23 unpinned hung 5.6 h in sympy Wang/Hensel factorization from PYTHONHASHSEED-dependent expression ordering; PYTHONHASHSEED=0 reproduces physics-identically in 184.5 s; pin recommended for all python rows; runtime column re-printed from measured timings), F2/F3 stale test-count expectations, F9 the shipped field3d_run.log was itself truncated at 53/102 lines (fresh run completes the record). Dated record: DISCHARGE_PACKAGE/FRESHNESS.md."
  }
 }

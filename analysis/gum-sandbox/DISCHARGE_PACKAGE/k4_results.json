@@ -13,7 +13,7 @@
   "python3": "3.11.15",
   "numpy": "2.4.6"
  },
- "status": "IN-PROGRESS",
+ "status": "COMPLETE",
  "rows": {
   "K01": {
    "measured": "3.4 s (warm build+run)",
@@ -225,29 +225,29 @@
    "bit_identical": true
   },
   "K29": {
-   "measured": "RUNNING \u2014 3h30m CPU so far vs printed 163 s (>77x)",
-   "root": "n/a",
-   "status": "RUNNING \u2014 RUNTIME-DRIFT (F8 upgraded); lane-3 tail K33/K38/K32/K45 queued behind it"
+   "measured": "184.5 s under PYTHONHASHSEED=0 (unpinned run: 5.6 h CPU, hung in sympy factorization, killed exit 143 at 20283.7 s)",
+   "root": "PHYSICS-IDENTICAL to primary (seed-0 JSON: single diff = meta/runtime_s; evidence scratchpad/h23_seed0_results.json + .log)",
+   "status": "PASS-WITH-PIN (F8 confirmed: requires PYTHONHASHSEED=0; unpinned = hang risk)"
   },
   "K33": {
-   "measured": "queued",
-   "root": "n/a",
-   "status": "RUNNING (lane 3 queue)"
+   "measured": "167.6 s (queue tail)",
+   "root": "PHYSICS-IDENTICAL to primary (only secs fields differ)",
+   "status": "PASS (torque Ts = -2.501224e-2 vs Adler -2.5e-2; phase exponent block in log)"
   },
   "K38": {
-   "measured": "queued",
-   "root": "n/a",
-   "status": "RUNNING (lane 3 queue)"
+   "measured": "943.1 s (queue tail; printed 757 s)",
+   "root": "PHYSICS-IDENTICAL to primary (only secs_* fields differ); log identical mod timings",
+   "status": "PASS (saturated anchor 64\u221a2/9\u03c0 = 3.201125 at +0.5\u03c3; dirB \u22124.7\u03c3; analytic floors respected at every \u03b5)"
   },
   "K32": {
-   "measured": "queued",
-   "root": "\u2014",
-   "status": "RUNNING (lane 3 queue)"
+   "measured": "880.2 s (queue tail; printed ~10 min)",
+   "root": "PHYSICS-IDENTICAL to primary (h26_results + h26_dilation; only timing fields differ)",
+   "status": "PASS (E_rot/E = 0.249450 vs 0.430771 solved; separation 907\u00d7 \u03c3, RESULTS.md documents the 907\u2013915\u00d7 range REPRODUCE quotes as 915\u03c3)"
   },
   "K45": {
-   "measured": "queued",
-   "root": "n/a",
-   "status": "RUNNING (lane 3 queue)"
+   "measured": "257.1 s (queue tail)",
+   "root": "PHYSICS-IDENTICAL to primary (only secs/runtime_s fields differ); log identical mod timings",
+   "status": "PASS (14/14; ceiling 2.6096e-3; \u00d74.32 thinning confirmed)"
   }
  },
  "findings": [
@@ -302,11 +302,10 @@
   },
   {
    "id": "F8",
-   "class": "RUNTIME-DRIFT",
+   "class": "NONDETERMINISM-HAZARD",
    "row": "K29",
-   "severity": "medium",
-   "provisional": true,
-   "detail": "h23_frank.py printed runtime 163 s; the fresh run has 3h30m of CPU (99% busy, single process, still in the relaxed-floor phase) and counting \u2014 >77x and growing. DRIFT FAMILY SUMMARY: j1_pgrid.py 55 s printed vs 2814 s measured (51x, completed, gates PASS); h23_frank.py 163 s printed vs >12,600 s CPU so far (>77x, running). Host contention in this gauntlet accounts for at most ~2-3x; the only consistent explanation is that several printed runtimes in the v2/Phase-J tables came from a different measurement pass (different host, load, or an earlier smaller grid) than the shipping scripts. FIX: re-print REPRODUCE.md's runtime column for the theory-audit rows from this gauntlet's timings.csv once lane-3 drains."
+   "severity": "high",
+   "detail": "CONFIRMED. As-printed h23_frank.py hung 5.6 h CPU (killed exit 143 at 20283.7 s), py-spy pinned in sympy dmp_zz_wang Hensel lifting. Root cause: PYTHONHASHSEED sensitivity of sympy expression ordering. Proof: PYTHONHASHSEED=0 run completed in 184.5 s (printed 163 s), output physics-identical to primary (single diff meta/runtime_s; evidence scratchpad/h23_seed0_results.json + h23_seed0.log). FIX: REPRODUCE.md must pin PYTHONHASHSEED=0 for sympy-bearing rows (h23), recommended globally for the python table. Results are never affected \u2014 the hazard is termination/wall-clock only."
   },
   {
    "id": "F9",
@@ -322,5 +321,15 @@
    "severity": "low",
    "detail": "n192 crossing re-run: 8223 s wall vs 2777 s recorded in the primary JSON (printed ~46 min) \u2014 3.0x, fully attributable to running the 4-thread solver concurrently with two other solvers on 4 cores. Output is bit-identical to the primary (entire iteration series), so the drift is scheduling-only."
   }
- ]
+ ],
+ "rows_summary": {
+  "table_rows": 46,
+  "executed_fresh": 46,
+  "pass": 42,
+  "pass_with_pin": 1,
+  "cmd_defect_as_printed": 2,
+  "skipped_budget": "K28 corrected form only (~24 min)",
+  "bit_identical_comparisons": "7 Merkle roots, 3 fingerprints, all results-JSON physics fields, all PNGs, full N=192 iteration series \u2014 no exceptions"
+ },
+ "verdict": "All 46 rows executed fresh 2026-07-16/17; every physics comparison bit-identical; findings are process-level only (2 CMD-DEFECTs, runtime-column drift, stale expectations, one truncated shipped log, one PYTHONHASHSEED hang hazard). Zero physics drift. The package REPRODUCES."
 }

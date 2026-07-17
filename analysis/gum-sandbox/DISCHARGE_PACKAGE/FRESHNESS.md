@@ -1,6 +1,6 @@
 # FRESHNESS — dated fresh re-run of every REPRODUCE.md command (workstream K4)
 
-- **Date:** 2026-07-16 (UTC), started 22:22 UTC
+- **Date:** 2026-07-16 22:22 UTC → 2026-07-17 (UTC), single gauntlet
 - **Host CPU:** Intel(R) Xeon(R) Processor @ 2.80GHz, 4 cores, 15 GiB RAM
 - **Commit:** `16d91f08539cf588ea6b0259209e251a2d45bf28`
 - **Toolchain:** rustc 1.99.0-nightly (3659db0d3 2026-07-05); cargo 1.99.0-nightly (2f0e7011e 2026-07-05); Python 3.11.15; numpy 2.4.6; wgpu/GPU: not exercised (no REPRODUCE.md row requires a GPU)
@@ -11,7 +11,7 @@
 
 ## Results table
 
-Status legend: PASS / FAIL / PENDING / SKIPPED-BUDGET / DUP (same command already executed under the referenced row). "Root" column: OK = golden Merkle root / fingerprint reproduced bit-identically; n/a = row has no golden root.
+Status legend: PASS / PASS-WITH-PIN (passes with the documented environment pin) / CMD-DEFECT (printed command does not run as printed; corrected form cross-referenced) / SKIPPED-BUDGET. "Root" column: OK = golden Merkle root / fingerprint reproduced bit-identically; n/a = row has no golden root.
 
 | ID | Sect. | Command (from repo root) | Expected | Shipped runtime | Measured | Root | Status |
 |---|---|---|---|---|---|---|---|
@@ -43,24 +43,24 @@ Status legend: PASS / FAIL / PENDING / SKIPPED-BUDGET / DUP (same command alread
 | K26 | 6 | §6 five-line block, verbatim | 52/52; 13/13; 25/25; 18/18; radial gates | ~7 min | 533.6 s | OK (all five suites OVERALL PASS incl. statics fp) | PASS (block executed verbatim from repo root) |
 | K27 | v2 | `python3 analysis/gum-sandbox/theory-audit/h21_mc.py` | R = 1.115e14 ± 0.3%; 1.967e15; v/c 6.1e8 | 117 s | 331.6 s (concurrent) | n/a | PASS (R = 1.115e14±3e11 at 1 µm; 1.967e15 at 4.2 µm; v/c 6.11e8); 2.8x wall vs 117 s — contention, flagged |
 | K28 | v2 | `cd analysis/gum-sandbox/theory-audit/h22_solve && cargo run --release --bin h22_solve -- all` | SDiff reduction ≤ 0; floor margin 15.7–18.1× | ~24 min | 0.4 s (usage error) | — | CMD-DEFECT: printed '-- all' rejected; usage is single|pair|sdiff|twist. Corrected form = the five shipped runs (h22_RESULTS.md L66-69: single 800-it; pair align/repulse 1200-it; sdiff repulse; twist repulse 21-pt, m=0.9 → h22_runs/*_m09.json) ≈24 min — SKIPPED-BUDGET |
-| K29 | v2 | `python3 analysis/gum-sandbox/theory-audit/h23_frank.py` | radial 8πK₁r; relaxed floor 7.7024 | 163 s | RUNNING — 3h30m CPU so far vs printed 163 s (>77x) | n/a | RUNNING — RUNTIME-DRIFT (F8 upgraded); lane-3 tail K33/K38/K32/K45 queued behind it |
+| K29 | v2 | `python3 analysis/gum-sandbox/theory-audit/h23_frank.py` | radial 8πK₁r; relaxed floor 7.7024 | 163 s | 184.5 s under PYTHONHASHSEED=0 (unpinned run: 5.6 h CPU, hung in sympy factorization, killed exit 143 at 20283.7 s) | PHYSICS-IDENTICAL to primary (seed-0 JSON: single diff = meta/runtime_s; evidence scratchpad/h23_seed0_results.json + .log) | PASS-WITH-PIN (F8 confirmed: requires PYTHONHASHSEED=0; unpinned = hang risk) |
 | K30 | v2 | `python3 analysis/gum-sandbox/theory-audit/h24_helical.py` | 0.332ƛ² / 0.568ƛ²; premises verified | <1 s | 3.6 s | n/a | PASS (0.3316ƛ²/0.5677ƛ² vs printed 0.332/0.568) |
 | K31 | v2 | `python3 analysis/gum-sandbox/theory-audit/h25_sdw.py` | 𝔞₁(p,q) formula; 27/27 | 3 s | 3.8 s | n/a | PASS (27/27) |
-| K32 | v2 | `cd analysis/gum-sandbox/theory-audit/h26_solve && cargo run --release --bin h26_convention` | E_rot/E = 0.2500 vs 0.4330 (915σ) | ~10 min | queued | — | RUNNING (lane 3 queue) |
-| K33 | v2 | `python3 analysis/gum-sandbox/theory-audit/h27_entrain.py` | exponent −0.500000000; torque −2.5012e-2 | ~2 min | queued | n/a | RUNNING (lane 3 queue) |
+| K32 | v2 | `cd analysis/gum-sandbox/theory-audit/h26_solve && cargo run --release --bin h26_convention` | E_rot/E = 0.2500 vs 0.4330 (915σ) | ~10 min | 880.2 s (queue tail; printed ~10 min) | PHYSICS-IDENTICAL to primary (h26_results + h26_dilation; only timing fields differ) | PASS (E_rot/E = 0.249450 vs 0.430771 solved; separation 907× σ, RESULTS.md documents the 907–915× range REPRODUCE quotes as 915σ) |
+| K33 | v2 | `python3 analysis/gum-sandbox/theory-audit/h27_entrain.py` | exponent −0.500000000; torque −2.5012e-2 | ~2 min | 167.6 s (queue tail) | PHYSICS-IDENTICAL to primary (only secs fields differ) | PASS (torque Ts = -2.501224e-2 vs Adler -2.5e-2; phase exponent block in log) |
 | K34 | v2 | `python3 analysis/gum-sandbox/theory-audit/t3_closures.py` | 𝔠 = 64√2/9π; six 2.5147 routes fail | <1 min | 0.6 s | n/a | PASS (𝔠 = 64√2/9π route confirmed) |
 | K35 | v2 | `python3 analysis/gum-sandbox/tier2-closure/gstar_solve.py` | G* → 16√2/9 (Richardson 6.0e-7) | 31 s | 14.2 s | n/a | PASS (G* = 16√2/9; faster than printed 31 s) |
 | K36 | v2 | `cd analysis/gum-sandbox/gum-core/fs-gum-kern && cargo run --release --bin n192_fr5 -- crossing` | κ crosses 1/√(8π) at it 2070–2080 | 46 min | 0.5 s (usage error) | — | CMD-DEFECT: printed command missing required args; binary usage requires 'crossing <out.json> <N> <LBOX> <cap_static> <cap_main> [threads]'. Corrected form run as K36b (shipped invocation from n192_RESULTS.md L28). |
 | K36b | v2 | corrected form: `… -- crossing n192_runs/n192_crossing.json 192 4.5 450 2500 4` (per n192_RESULTS.md L28) | κ crosses 1/√(8π) at it 2070–2080 | 46 min | 8223.2 s (3 concurrent, 4 threads; primary recorded 2777 s) | BIT-IDENTICAL to primary (all physics fields incl. full iteration series; crossing [2070,2080]; I 29.636→29.699 at crossing; κ 0.199871→0.199447 through 1/√(8π)=0.199471) | PASS — RUNTIME-DRIFT 3.0x vs printed 46 min flagged (finding F10, scheduling-only: output bit-identical) |
 | K37 | v2.2 | `python3 analysis/gum-sandbox/theory-audit/h4_compute.py` | ±2·[rot]; winding −2.000000; 28/28 | 9 s | 2.5 s | n/a | PASS (28/28) |
-| K38 | v2.2 | `python3 analysis/gum-sandbox/theory-audit/i1_r5test.py` | 3.2011 at +0.51σ; ≈7σ separation | 757 s | queued | n/a | RUNNING (lane 3 queue) |
+| K38 | v2.2 | `python3 analysis/gum-sandbox/theory-audit/i1_r5test.py` | 3.2011 at +0.51σ; ≈7σ separation | 757 s | 943.1 s (queue tail; printed 757 s) | PHYSICS-IDENTICAL to primary (only secs_* fields differ); log identical mod timings | PASS (saturated anchor 64√2/9π = 3.201125 at +0.5σ; dirB −4.7σ; analytic floors respected at every ε) |
 | K39 | v2.2 | `python3 analysis/gum-sandbox/theory-audit/i2_propagate.py` | 34/34; κ²g_tot = 35/24; 13.4σ | 2 s | 0.9 s | n/a | PASS (34/34) |
 | K40 | v2.2 | `python3 analysis/gum-sandbox/theory-audit/i3_conventions.py` | 𝔭 and 𝔟_eff jointly resolved | 1 s | 0.2 s | n/a | PASS (joint 𝔭×𝔟_eff table produced) |
 | K41 | v2.2 | `python3 analysis/gum-sandbox/theory-audit/i4_compute.py` | σ(exchange) = −1; 2/8 sectors; 19/19 | 4 s | 4.1 s | n/a | PASS (19/19) |
 | K42 | J | `python3 analysis/gum-sandbox/theory-audit/j1_pgrid.py` | 𝔭 = 0.84 at 0.28σ; 𝔟_eff +1.06σ | 55 s | 2814.1 s | n/a | PASS (solver gates PASS; 𝔭(edge-/6)=0.84 reachable, crossing at c2=0.0083; 𝔟_eff +1.06σ) — RUNTIME-DRIFT: 51x vs printed 55 s (finding F6) |
 | K43 | J | `python3 analysis/gum-sandbox/theory-audit/j2_epsscan.py` | 44/44; ceiling 2.605×10⁻³; 11.283σ | 2 s | 1.9 s | n/a | PASS (44/44) |
 | K44 | J | `python3 analysis/gum-sandbox/theory-audit/j3_majoron.py` | 17/17; no row newly binds | 3 s | 0.1 s | n/a | PASS (17/17) |
-| K45 | J | `python3 analysis/gum-sandbox/theory-audit/j4_epslaw.py` | 14/14; p = 0.997 [0.996, 1.012] | 250 s | queued | n/a | RUNNING (lane 3 queue) |
+| K45 | J | `python3 analysis/gum-sandbox/theory-audit/j4_epslaw.py` | 14/14; p = 0.997 [0.996, 1.012] | 250 s | 257.1 s (queue tail) | PHYSICS-IDENTICAL to primary (only secs/runtime_s fields differ); log identical mod timings | PASS (14/14; ceiling 2.6096e-3; ×4.32 thinning confirmed) |
 
 ## Findings
 
@@ -70,7 +70,8 @@ Status legend: PASS / FAIL / PENDING / SKIPPED-BUDGET / DUP (same command alread
 - **F7 / K36 (second defect, top of list to fix):** the naive corrected form writes over the primary record `n192_runs/n192_crossing.json`. The first corrected attempt did clobber it (restored from git by the coordinator). REPRODUCE should print the corrected command with a scratch output path. The non-clobber rule in the method note is the campaign-side mitigation; K36b's rerun wrote `n192_crossing_freshness.json`.
 
 **Runtime drift (>2x vs printed):**
-- **F8 / K29 (provisional, running):** h23_frank.py printed 163 s; >3h30m CPU so far. **F6 / K42:** j1_pgrid.py printed 55 s; measured 2814 s (51x), complete, gates PASS. Contention here explains at most ~2-3x; several printed runtimes in the v2/Phase-J tables evidently come from a different measurement pass (different host/load or an earlier smaller grid) than the shipping scripts. **Fix: re-print the runtime column for the theory-audit rows from this gauntlet's timings.csv.**
+- **F8 / K29 — CONFIRMED, root-caused, with fix:** the as-printed `python3 analysis/gum-sandbox/theory-audit/h23_frank.py` hung for 5.6 h of CPU (killed, exit 143 at 20,283.7 s) — py-spy pins it inside sympy's `dmp_zz_wang` Hensel lifting (multivariate factorization). Root cause: **PYTHONHASHSEED sensitivity** — sympy's per-process expression ordering varies with hash randomization, and an unlucky ordering sends the factorization pathological. Proof: a fresh `PYTHONHASHSEED=0 python3 h23_frank.py` completed in **184.5 s** (printed: 163 s) with output **physics-identical to the primary** (single diff: `meta/runtime_s`; evidence banked at scratchpad `h23_seed0_results.json` / `h23_seed0.log`). **FIX for REPRODUCE.md: pin `PYTHONHASHSEED=0` on the sympy-bearing python rows (h23 certainly) — and preferably globally for the python command table; it is free and removes the only nondeterministic hazard found in the entire gauntlet (results were never affected — only wall-clock/termination).**
+- **F6 / K42:** j1_pgrid.py printed 55 s; measured 2814 s (51x), complete, gates PASS. Even net of ~2-3x contention this is far off; the printed value evidently comes from a different measurement pass (different host/load or an earlier smaller grid). Fix: adopt the re-printed runtime column below.
 - **F10 / K36b:** 8223 s vs 2777 s recorded in the primary (3.0x) — scheduling-only (4-thread solver sharing 4 cores with two other solvers); output bit-identical, so no physics implication.
 - Contended-run annotations (1.5-2.8x, attributable to deliberate concurrency; not defects): K04, K08, K09, K23, K24, K27.
 
@@ -81,8 +82,36 @@ Status legend: PASS / FAIL / PENDING / SKIPPED-BUDGET / DUP (same command alread
 **Artifact defect:**
 - **F9 / K14:** shipped `tier4-field/field3d_run.log` is truncated at 53 lines; the fresh run reproduces that prefix exactly (mod eval timings) and the complete 102-line log now stands as the log of record (original preserved in the K4 baseline tarball).
 
+**Confirmed hang hazard (K29, fix required in REPRODUCE):** see F8 above — pin `PYTHONHASHSEED=0` for the python rows.
+
 **Environment:** F4 — a sibling workstream process occupied ~1 core during the first execution window; long rows ran concurrently by design (see method note). Two external harness-level stops killed in-flight runs mid-gauntlet; all affected rows were relaunched and completed (except as marked).
+
+## Re-printed runtime column (theory-audit + Phase-I/J rows, measured on this host)
+
+Authoritative replacement for the printed runtimes flagged under F6/F8/F10. "(c)" = measured under deliberate concurrency (upper bound); uncontended rows are exact.
+
+| row | script/binary | printed | measured here |
+|---|---|---|---|
+| h21 | h21_mc.py | 117 s | 331.6 s (c) |
+| h22 | h22_solve (corrected 5-run form) | ~24 min | not re-run (SKIPPED-BUDGET; estimate stands) |
+| h23 | h23_frank.py | 163 s | **184.5 s with PYTHONHASHSEED=0**; unbounded without the pin (F8) |
+| h24 | h24_helical.py | <1 s | 3.6 s |
+| h25 | h25_sdw.py | 3 s | 3.8 s |
+| h26 | h26_convention | ~10 min | 880.2 s (c) |
+| h27 | h27_entrain.py | ~2 min | 167.6 s (c) |
+| t3 | t3_closures.py | <1 min | 0.6 s |
+| gstar | gstar_solve.py | 31 s | 14.2 s |
+| n192 | n192_fr5 crossing (corrected form) | 46 min | 8223.2 s (c); primary's own record 2777 s |
+| h4 | h4_compute.py | 9 s | 2.5 s |
+| i1 | i1_r5test.py | 757 s | 943.1 s (c) |
+| i2 | i2_propagate.py | 2 s | 0.9 s |
+| i3 | i3_conventions.py | 1 s | 0.2 s |
+| i4 | i4_compute.py | 4 s | 4.1 s |
+| j1 | j1_pgrid.py | 55 s | **2814.1 s (c)** — printed value wrong even net of contention (F6) |
+| j2 | j2_epsscan.py | 2 s | 1.9 s |
+| j3 | j3_majoron.py | 3 s | 0.1 s |
+| j4 | j4_epslaw.py | 250 s | 257.1 s (c) |
 
 ## Verdict
 
-PENDING — runs in progress.
+**All 46 table rows executed fresh on this host on 2026-07-16/17 (the sole exception: K28's ~24-min corrected form, SKIPPED-BUDGET with the correction documented); every physics comparison — 7 golden Merkle roots, 3 run fingerprints, every results-JSON physics field, every PNG, and the full N=192 iteration series — reproduced BIT-IDENTICALLY; the only findings are process-level (two printed-command defects, stale runtime/expectation text, one truncated shipped log, one PYTHONHASHSEED hang hazard that never affects results). Zero physics drift. The package REPRODUCES.**

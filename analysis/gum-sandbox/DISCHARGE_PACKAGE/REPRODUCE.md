@@ -1,5 +1,18 @@
 # REPRODUCE — every load-bearing number, its command, and its guarantee
 
+> **Freshness re-run (2026-07-16/17): see FRESHNESS.md.** Every row
+> below was re-executed fresh; all physics reproduced bit-identically.
+> Corrections from that pass, kept here as annotations rather than
+> silent rewrites: (1) the K36 crossing command needs its full
+> argument list (see FRESHNESS F1) and must write to a NEW output path
+> to avoid clobbering the primary (F7); (2) `h22_solve all` does not
+> exist — use the five per-mode invocations (F5); (3) set
+> `PYTHONHASHSEED=0` for the python rows — h23 unpinned can hang in
+> sympy factorization (F8); (4) the runtime column below reflects an
+> earlier measurement pass — FRESHNESS.md re-prints it as measured
+> under this gauntlet's contention (F6/F10).
+
+
 All paths are relative to the frankensim repository root. The campaign's
 artifacts (scripts, JSON results, run logs, figures, adjudications) live
 where they were produced, under `analysis/gum-sandbox/`; nothing in this

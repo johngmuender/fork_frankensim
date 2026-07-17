@@ -1,5 +1,5 @@
 {
- "snapshot_utc": "2026-07-16 CHECKPOINT-2 (Phase K in flight: K2 done+verified; K1 stage B5; K4 24 PASS/25 pending, K36 CMD-DEFECT + K36b crossing running)",
+ "snapshot_utc": "2026-07-17 PHASE-K CLOSED (K1 null 0.52sigma; K2 linear-to-0.001; K4 all 46 rows ZERO PHYSICS DRIFT - the package REPRODUCES; K3 the one scheduled remainder)",
  "session": "d0b81976",
  "main_session_transcript": "coordinator-session.jsonl.xz",
  "agents": [
