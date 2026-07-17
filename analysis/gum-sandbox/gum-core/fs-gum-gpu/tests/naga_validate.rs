@@ -7,7 +7,7 @@ use naga::valid::{Capabilities, ValidationFlags, Validator};
 
 #[test]
 fn wgsl_kernels_validate_with_float64() {
-    for n in [8usize, 32, 48] {
+    for n in [8usize, 24, 32, 48, 64] {
         for (name, src) in fs_gum_gpu::shaders::all_kernels(n) {
             let module = naga::front::wgsl::parse_str(&src)
                 .unwrap_or_else(|e| panic!("{name} (n={n}): parse error: {e:?}"));

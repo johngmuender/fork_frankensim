@@ -1,0 +1,102 @@
+{
+  "workstream": "K3 full-pipeline WGSL f64 battery (llvmpipe)",
+  "protocol": {"grids": [24, 32, 48, 64], "lbox": 4.5, "t_frozen": 8.276434949296802e-3, "scheme": "central4", "eps_fd": 1e-5, "bands": {"sector_rel": 1e-12, "grad_rms_rel": 1e-11, "grad_maxabs_rel": 1e-10, "dirder_rel": 1e-5, "dirder_cross_rel": 1e-9}},
+  "adapter": "name=\"llvmpipe (LLVM 20.1.2, 256 bits)\" backend=Vulkan type=Cpu driver=\"llvmpipe\" driver_info=\"Mesa 25.2.8-0ubuntu0.24.04.2 (LLVM 20.1.2)\"",
+  "battery": [{
+    "n": 24,
+    "sectors": {
+      "E2": {"gpu": 1.0850629957237084e1, "cpu": 1.0850629957237071e1, "rel": 1.1102230246251565e-15},
+      "E4": {"gpu": 6.036310359806571e0, "cpu": 6.036310359806563e0, "rel": 1.3322676295501878e-15},
+      "E6": {"gpu": 1.5505045966995505e0, "cpu": 1.550504596699556e0, "rel": 3.552713678800501e-15},
+      "E0": {"gpu": 1.5064802275413356e0, "cpu": 1.5064802275413192e0, "rel": 1.0880185641326534e-14},
+      "I": {"gpu": 2.2232917684299245e1, "cpu": 2.223291768429913e1, "rel": 5.10702591327572e-15},
+      "deg": {"gpu": 9.78432146623238e-1, "cpu": 9.784321466232431e-1, "rel": 5.218048215738236e-15}
+    },
+    "worst_sector_rel": 1.0880185641326534e-14,
+    "grad_rms_rel": 1.7296701718611543e-15,
+    "grad_maxabs_rel": 3.156300307064526e-15,
+    "grad_entries": 55296,
+    "replay_bit_identical": {"forward_partials": true, "gradient": true},
+    "fingerprint_fnv1a64": {"forward_partials": "3f75d11ca2d4a539", "gradient": "abd80c50faa4e9c2"},
+    "timings_s": {"cpu_measure": 0.001, "cpu_eval_grad": 0.003, "gpu_init": 0.431, "gpu_forward_readback": 0.006, "gpu_flux_gather_readback": 0.005}
+  }, {
+    "n": 32,
+    "sectors": {
+      "E2": {"gpu": 1.1429620126669025e1, "cpu": 1.1429620126668926e1, "rel": 8.659739592076221e-15},
+      "E4": {"gpu": 6.13316885936203e0, "cpu": 6.133168859362028e0, "rel": 2.220446049250313e-16},
+      "E6": {"gpu": 1.5387090824804859e0, "cpu": 1.5387090824804772e0, "rel": 5.551115123125783e-15},
+      "E0": {"gpu": 1.508104256463958e0, "cpu": 1.5081042564639486e0, "rel": 6.217248937900877e-15},
+      "I": {"gpu": 2.2283844935611594e1, "cpu": 2.2283844935611366e1, "rel": 1.021405182655144e-14},
+      "deg": {"gpu": 9.932041202107202e-1, "cpu": 9.932041202107222e-1, "rel": 1.9984014443252818e-15}
+    },
+    "worst_sector_rel": 1.021405182655144e-14,
+    "grad_rms_rel": 2.4719036632695132e-15,
+    "grad_maxabs_rel": 4.5362905618326565e-15,
+    "grad_entries": 131072,
+    "replay_bit_identical": {"forward_partials": true, "gradient": true},
+    "fingerprint_fnv1a64": {"forward_partials": "bae2844c642b0785", "gradient": "a8002235e1de3caf"},
+    "timings_s": {"cpu_measure": 0.002, "cpu_eval_grad": 0.007, "gpu_init": 0.098, "gpu_forward_readback": 0.005, "gpu_flux_gather_readback": 0.056}
+  }, {
+    "n": 48,
+    "sectors": {
+      "E2": {"gpu": 1.1854130493679744e1, "cpu": 1.1854130493679117e1, "rel": 5.284661597215745e-14},
+      "E4": {"gpu": 6.177521634831896e0, "cpu": 6.1775216348316935e0, "rel": 3.2862601528904634e-14},
+      "E6": {"gpu": 1.5299471306798893e0, "cpu": 1.5299471306798889e0, "rel": 2.220446049250313e-16},
+      "E0": {"gpu": 1.5075916248184713e0, "cpu": 1.5075916248183856e0, "rel": 5.684341886080802e-14},
+      "I": {"gpu": 2.2268089524547165e1, "cpu": 2.2268089524546244e1, "rel": 4.1300296516055823e-14},
+      "deg": {"gpu": 9.985751726720038e-1, "cpu": 9.985751726719758e-1, "rel": 2.7977620220553945e-14}
+    },
+    "worst_sector_rel": 5.684341886080802e-14,
+    "grad_rms_rel": 4.218605270493032e-15,
+    "grad_maxabs_rel": 5.3548468812632554e-15,
+    "grad_entries": 442368,
+    "replay_bit_identical": {"forward_partials": true, "gradient": true},
+    "fingerprint_fnv1a64": {"forward_partials": "3381707ad6d6b68d", "gradient": "7d9c07e1f904f901"},
+    "timings_s": {"cpu_measure": 0.006, "cpu_eval_grad": 0.023, "gpu_init": 0.060, "gpu_forward_readback": 0.052, "gpu_flux_gather_readback": 0.201}
+  }, {
+    "n": 64,
+    "sectors": {
+      "E2": {"gpu": 1.199938848187356e1, "cpu": 1.1999388481872286e1, "rel": 1.0613732115416497e-13},
+      "E4": {"gpu": 6.185400407058209e0, "cpu": 6.185400407057948e0, "rel": 4.218847493575595e-14},
+      "E6": {"gpu": 1.5264449950535197e0, "cpu": 1.5264449950535144e0, "rel": 3.552713678800501e-15},
+      "E0": {"gpu": 1.5075837825207072e0, "cpu": 1.5075837825206577e0, "rel": 3.2862601528904634e-14},
+      "I": {"gpu": 2.226807296050806e1, "cpu": 2.226807296050622e1, "rel": 8.260059303211165e-14},
+      "deg": {"gpu": 9.995405016368899e-1, "cpu": 9.995405016368477e-1, "rel": 4.218847493575595e-14}
+    },
+    "worst_sector_rel": 1.0613732115416497e-13,
+    "grad_rms_rel": 7.655298553629342e-15,
+    "grad_maxabs_rel": 1.070434196335823e-14,
+    "grad_entries": 1048576,
+    "replay_bit_identical": {"forward_partials": true, "gradient": true},
+    "fingerprint_fnv1a64": {"forward_partials": "67f84dcfd8469265", "gradient": "c69b6954ae0e791d"},
+    "timings_s": {"cpu_measure": 0.017, "cpu_eval_grad": 0.063, "gpu_init": 0.062, "gpu_forward_readback": 0.098, "gpu_flux_gather_readback": 0.408}
+  }
+  ],
+  "dirder": {"n": 32, "eps_fd": 1e-5, "base_obj_cpu": 3.194233591403737e0, "base_obj_gpu": 3.1942335914037647e0, "dirs": [{"seed": 7000, "fd_cpu": 4.278309706506888e-4, "an_cpu": 4.2783088101776246e-4, "res_cpu": 2.0950546477749513e-7, "fd_gpu": 4.278309706506888e-4, "an_gpu": 4.278308810177636e-4, "res_gpu": 2.0950546211660248e-7, "cross_rel": 2.6608931978019503e-15}, {"seed": 7001, "fd_cpu": 4.1490721969239525e-4, "an_cpu": 4.149075340401833e-4, "res_cpu": 7.576339314294349e-7, "fd_gpu": 4.1490753055484214e-4, "an_gpu": 4.1490753404018485e-4, "res_gpu": 8.400287906064595e-9, "cross_rel": 3.789020495230935e-15}, {"seed": 7002, "fd_cpu": 1.216710954210498e-4, "an_cpu": 1.216714282831576e-4, "res_cpu": 2.7357533574620453e-6, "fd_gpu": 1.2167147289687817e-4, "an_gpu": 1.2167142828315972e-4, "res_gpu": 3.6667361207954763e-7, "cross_rel": 1.737625888163747e-14}], "worst_res_cpu": 2.7357533574620453e-6, "worst_res_gpu": 3.6667361207954763e-7, "worst_cross_rel": 1.737625888163747e-14},
+  "descent_smoke": {"n": 24, "iters": 40, "dt0": 0.01, "dt_max": 0.05, "seed": 424242, "accepted": 38, "arrests": 2, "stalled": false, "cpu_obj_first": 3.7813554770672817e0, "cpu_obj_last": 3.235577496240888e0, "cpu_monotone": true, "gpu_monotone": true, "worst_obj_cross_rel": 1.1579626146840383e-13, "wall_s": 0.3},
+  "gates": [
+    {"id": "E1", "pass": true, "desc": "Vulkan adapter with SHADER_F64, device created: name=\"llvmpipe (LLVM 20.1.2, 256 bits)\" backend=Vulkan type=Cpu driver=\"llvmpipe\" driver_info=\"Mesa 25.2.8-0ubuntu0.24.04.2 (LLVM 20.1.2)\""},
+    {"id": "S24", "pass": true, "desc": "sector measure GPU vs CPU measure(), hedgehog N=24 central4: worst rel 1.09e-14 <= 1e-12"},
+    {"id": "G24", "pass": true, "desc": "E_static gradient (gather) GPU vs CPU analytic, N=24, 55296 entries: RMS rel 1.73e-15 <= 1e-11, max-abs rel 3.16e-15 <= 1e-10"},
+    {"id": "D24", "pass": true, "desc": "GPU determinism N=24: replay bit-identical — forward partials (1296 f64) true, gradient (55296 f64) true"},
+    {"id": "F24", "pass": true, "desc": "golden fingerprints N=24 (FNV-1a-64, within-backend): partials 3f75d11ca2d4a539, gradient abd80c50faa4e9c2, replay hashes equal true"},
+    {"id": "S32", "pass": true, "desc": "sector measure GPU vs CPU measure(), hedgehog N=32 central4: worst rel 1.02e-14 <= 1e-12"},
+    {"id": "G32", "pass": true, "desc": "E_static gradient (gather) GPU vs CPU analytic, N=32, 131072 entries: RMS rel 2.47e-15 <= 1e-11, max-abs rel 4.54e-15 <= 1e-10"},
+    {"id": "D32", "pass": true, "desc": "GPU determinism N=32: replay bit-identical — forward partials (3072 f64) true, gradient (131072 f64) true"},
+    {"id": "F32", "pass": true, "desc": "golden fingerprints N=32 (FNV-1a-64, within-backend): partials bae2844c642b0785, gradient a8002235e1de3caf, replay hashes equal true"},
+    {"id": "S48", "pass": true, "desc": "sector measure GPU vs CPU measure(), hedgehog N=48 central4: worst rel 5.68e-14 <= 1e-12"},
+    {"id": "G48", "pass": true, "desc": "E_static gradient (gather) GPU vs CPU analytic, N=48, 442368 entries: RMS rel 4.22e-15 <= 1e-11, max-abs rel 5.35e-15 <= 1e-10"},
+    {"id": "D48", "pass": true, "desc": "GPU determinism N=48: replay bit-identical — forward partials (10368 f64) true, gradient (442368 f64) true"},
+    {"id": "F48", "pass": true, "desc": "golden fingerprints N=48 (FNV-1a-64, within-backend): partials 3381707ad6d6b68d, gradient 7d9c07e1f904f901, replay hashes equal true"},
+    {"id": "S64", "pass": true, "desc": "sector measure GPU vs CPU measure(), hedgehog N=64 central4: worst rel 1.06e-13 <= 1e-12"},
+    {"id": "G64", "pass": true, "desc": "E_static gradient (gather) GPU vs CPU analytic, N=64, 1048576 entries: RMS rel 7.66e-15 <= 1e-11, max-abs rel 1.07e-14 <= 1e-10"},
+    {"id": "D64", "pass": true, "desc": "GPU determinism N=64: replay bit-identical — forward partials (24576 f64) true, gradient (1048576 f64) true"},
+    {"id": "F64", "pass": true, "desc": "golden fingerprints N=64 (FNV-1a-64, within-backend): partials 67f84dcfd8469265, gradient c69b6954ae0e791d, replay hashes equal true"},
+    {"id": "DD", "pass": true, "desc": "directional derivative N=32, 3 seeded tangent dirs, eps=1e-5: FD-vs-<g,u> worst res cpu 2.74e-6 / gpu 3.67e-7 <= 1e-5; cross-backend <g,u> rel 1.74e-14 <= 1e-9"},
+    {"id": "AD-a", "pass": true, "desc": "arrested descent (GPU gradient) N=24: CPU-evaluated objective monotone non-increasing over 39 accepted states (3.781355477 -> 3.235577496)"},
+    {"id": "AD-b", "pass": true, "desc": "descent made real progress: 38 accepted steps (>= 10), net CPU-eval decrease 5.458e-1 > 0, GPU objective also monotone true"}
+  ],
+  "all_pass": true,
+  "total_wall_s": 2.6,
+  "walltime_notice": "llvmpipe is software Vulkan on a 4-core container: every GPU timing here is a correctness/readiness record, NOT a GPU performance claim."
+}
