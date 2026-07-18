@@ -91,3 +91,84 @@ defects printed (the M1 Γ = γH degenerate profile; the M4 continuity
 clause). Findings F-T7-M1…M4 + F-T7-1. Audit archives:
 audit-logs/MANIFEST_tier6.json (workflow4 block);
 tier7-program/TIER7_ADJUDICATION.md.
+
+---
+
+# ADDENDUM — Phase N/O payload (for the v4.2 delta; marker stays ⟦T7⟧)
+
+## Q6. N2 + O2 — the honest second-moment rate and the certified-absent bound (F-T7-N2, F-T7-O2) [target: VII.I/IX.E area + X/XI]
+- Route (a) computed: the web is static (h21's motional-narrowing
+  pricing), so a macroscopic sample's Majoron-mode 0νββ rate spatially
+  self-averages to **R × the claimed rate** (RSD ≤ 5×10⁻⁴), R =
+  1.1×10¹⁴–8.9×10¹⁷ at the four h21 anchors; extreme hot-site Lorenz
+  structure (100.000% of the rate on the top 10⁻ᵏ site fraction for all
+  k ≤ 12; on-tube nuclei carry 94.3–99.6% at per-site enhancements
+  10²⁸–10³⁶). Propagated at g²-scaling: the printed window [8×10⁻¹⁰,
+  1.3×10⁻⁸] maps to g_equiv = √R·g = 8.5×10⁻³–12.3 — 6.9–10.1 orders
+  above the corpus's own P-ν4 far-horizon line. Parameter-retreat
+  repricing closed by arithmetic (f_req = 490–44,000 TeV vs the printed
+  [4, 60] MeV window). Verdict: INDETERMINATE-FROM-ARCHIVE.
+- O2 archaeology: **ABSENT-CERTIFIED** — 658 files, 14 logged patterns,
+  370 hits catalogued; zero Majoron-mode rate-level bounds in the
+  archive; nearest miss (WS-K4's KamLAND-Zen T₁/₂ > 3.8×10²⁶ yr,
+  m_ββ < 28–122 meV) triply disqualified (wrong mode; no conversion;
+  printed under the corpus's own "occurrence, never a half-life" seal).
+- **Conditional kill, armed archive-externally: any Majoron-mode
+  rate-level bound g_lim < 8×10⁻³ excludes the honest rate at every
+  anchor and every printed g — P-ν4 would invert from far-horizon to
+  already-excluded.** F-R9 terminal menu: adopt the R-enhanced rate
+  (and face g_lim) or route (c) at the line-support cost (route (b)
+  closed by M3). S1 and S6's occurrence stake untouched; the J3
+  battery unaffected (its rows bind on actual g).
+  Artifacts: tier7-program/N2/RESULTS.md; O2/GLIM_ARCHAEOLOGY.md.
+
+## Q7. N3 + O1 — the kill-bin zeros at field/flow grade (F-T7-N3, F-T7-O1) [target: VIII.F/IX.B T4-W5 box + XI]
+- N3: the line-local crossing criterion is REFUTED in this geometry
+  (v_x = A(t) + n_y·S(z), S(½) = 0 with A > 0 through the kill bins;
+  positive-divergent wall branch) — no sign certificate exists for a
+  detector ahead of a forward-boosted source; the hard cutoff is a
+  TRANSPORT phenomenon. By-products: the criterion is valid and sharp
+  for n_y = 0 (axial support ⊂ [0, 15.87] vs sampled 15.787); a
+  60,000-trajectory covering with zero kill-bin crossings.
+- O1: the backward-reachability theorem (two-sided uniqueness on
+  {ρ > 0}; pre-crossing kills the arrival) executed over all 64,000
+  kill-bin detector points at three resolutions: **zero violations**,
+  80,000/80,000 classification agreement, min pre-crossing margin
+  0.621 = 22,068× the p95 path error, wall residue flux ≤ 2.8×10⁻⁷.
+  **Kill-bin first-crossing measure ≤ 2.8×10⁻⁷ per kill member at
+  field level — ~5,400× sharper than L7b's sampled 1.5×10⁻³.**
+  Discrimination control reproduces the no-cutoff member's Π to 20%
+  (74.0% legitimately fresh).
+- T4-W5 register update: the testbed statistic's zeros now stand at
+  field/flow grade; the residual open narrows to the
+  certified/analytic form of the backward-reachability argument (the
+  line-criterion route is closed by proof).
+  Artifacts: tier7-program/N3/RESULTS.md; O1/RESULTS.md.
+
+## Q8. O3 — the F-R14 decision matrix (F-T7-O3) [target: VI.C dispute box / App. E.6 area]
+- All five h33 anchors reproduced exactly (rational arithmetic); the
+  full 5-reading × 2-bookkeeping matrix computed (~104 cells, 21/21
+  checks): **exactly ONE sound cell — P-acoustic + supertrace** (all
+  weights positive; c_GW² convex; (6.3) restored with the 4.0-order
+  boundary-exact margin). Every other cell = inverted-G or hull-exit;
+  the supertrace fix alone only trades inverted-G for hull-exit.
+  Totals at N_knot = 3 (naive/supertrace): frame −5/3 / +1/3; covector
+  −7/6 / +5/6; vector −119/66 / +13/66; cone-only −17/12 / +7/12;
+  P-acoustic(w = −1/4) −1/6 / +11/6. P-acoustic pricing: tuning
+  fraction 1/4 (width-1/18 window; both natural conventions w = 0,
+  −1/2 excluded and equidistant); the naive-knot rescue subwindow
+  (5/11 of the window) still hull-mixed and abuts the 2p+q = 0 ray
+  where the (6.1) ansatz fails. h33's "two independent repairs is the
+  minimum bill" is computed, not argued. Decision support only;
+  adoption is the authors'; the F-R14 regrade language unchanged.
+  Artifact: tier7-program/O3/RESULTS.md.
+
+## Q9. Process record (phases N + O) [target: Sec. 0 note + Sec. X]
+Fourth and fifth campaign phases (2026-07-18): Phase N (wf_9558d09c-007,
+3 agents — N1 fold 4/4; N2 verdict INDETERMINATE-FROM-ARCHIVE; N3
+NEGATIVE-WITH-DIAGNOSIS) and Phase O (wf_c362f0c0-baa, 3 agents — O1
+5/5; O2 ABSENT-CERTIFIED; O3 4/4, 21/21 checks). One coordinator-owned
+spec artifact (the N3 line criterion — its refutation was the
+sharpening). Findings F-T7-N2/N3/O1/O2/O3. Audit archives:
+audit-logs/MANIFEST_tier6.json (workflow5/6 blocks);
+TIER7_ADJUDICATION.md Phase-N/O addenda.

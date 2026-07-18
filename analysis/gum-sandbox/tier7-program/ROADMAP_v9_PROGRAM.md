@@ -255,3 +255,49 @@ tuning fraction; the supertrace erratum's effect on the knot-sector
 row shown both ways; G4 the honest bottom line: this is DECISION
 SUPPORT — the constitutive choice is the authors' (charter language);
 no reading is recommended, each is priced. File as F-T7-O3.
+
+---
+
+## ADDENDUM — Phase P (pre-registered): v4.2 delta + T4-W5 certification pilot
+
+### P1 — corpus3 v4.2 delta (the N/O fold)
+Editor task under REVISION_CHARTER_v2 (marker ⟦T7⟧; payload authority =
+T7_FOLD_PAYLOAD.md ADDENDUM Q6–Q9): git mv the paper to
+01-GUM-Omega-Paper-v4.2-ext.md; bump all six version headers (v4.1 →
+v4.2, parenthetical unchanged); add a ⟦T7⟧ v4.2 REVISION NOTE after the
+v4.1 note; insert ⟦T7⟧ blocks: Sec. 0 (Q9 phases record), the VII.I/
+IX.E Majoron area (Q6 — honest rate + certified-absent + the armed
+conditional kill), VIII.F/IX.B T4-W5 box area (Q7 — field/flow-grade
+zeros; residual narrowed to certified/analytic form), VI.C dispute-box/
+App. E.6 area (Q8 — the decision matrix, one sound cell, priced),
+Sec. X (Q9), Sec. XI (register: T4-W5 residual narrowed; F-R9 terminal
+menu; F-R14 now carries the computed matrix pointer). Update
+README.manifest v5 (census cell + version history) and Replication
+Record (§9). Verification identical to N1's (additive-only diff vs git
+HEAD v4.1; marker counts; ≥ 15 payload numbers verbatim; ⟦rev⟧/⟦T6⟧/
+prior-⟦T7⟧ preserved).
+
+### P2 — T4-W5 certification pilot (exact-field, high-precision backward paths)
+Upgrade O1 one rung toward certified: the engine's field is a FINITE
+trigonometric sum (analytic sine-mode factors in z; band-limited FFT
+representation in x), so ψ, ρ, j — hence v — can be evaluated EXACTLY
+(to fp rounding) at ARBITRARY points, eliminating O1's dominant error
+source (grid interpolation). Implement exact band-limited evaluation
+(direct mode sums at query points; verify against the grid engine at
+grid nodes to ~1e-13) and re-run the backward classification for a
+STRATIFIED subset: all 16 box-exit/wall-adjacent paths + the 100
+smallest-margin class-(a) paths + 100 random class-(a) paths per
+|n_y| ∈ {1, 0.75} (≥ 432 paths total), with (i) high-order integration
+(DOP853 rtol 1e-12) and (ii) a precision ladder (float64 vs mpmath
+50-digit on ≥ 20 paths incl. the worst margins). Gates: G1 exact-vs-
+grid field agreement at nodes ≤ 1e-12 rel; G2 every re-run path keeps
+its O1 classification (pre-crossed stays pre-crossed; margins agree
+with O1 within O1's own error estimate); G3 precision ladder: float64
+vs 50-digit path endpoints agree ≤ 1e-8 (integration-truncation
+bounded), margins stable to ≥ 6 digits on the ladder subset;
+G4 the worst-margin path's pre-crossing certified at ladder grade with
+the margin printed; G5 honest scope: this is precision-certification
+(exact field + converged integration), NOT formal interval arithmetic;
+state what a formal certification would still require (validated ODE
+enclosures) and that the analytic proof remains the terminal open.
+File as F-T7-P2.
