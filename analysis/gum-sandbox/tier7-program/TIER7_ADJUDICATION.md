@@ -249,3 +249,49 @@ grade; bound 2.8×10⁻⁷; terminal shape demonstrated); F-T7-O2 (g_lim
 ABSENT certified; N2 kill premise certified, armed); F-T7-O3 (the
 one-sound-cell matrix; tuning fraction 1/4; minimum bill computed).
 Run record: wf_c362f0c0-baa, 3 agents, 448,769 tokens.
+
+---
+
+## ADDENDUM — Phase P adjudication (workflow wf_d3b1ed78-3d0 + finisher agent)
+
+**P1 — corpus3 v4.2 delta: adjudicated EXECUTED, 4/4 verification gates
+PASS.** Paper now `01-GUM-Omega-Paper-v4.2-ext.md` (seven new ⟦T7⟧
+blocks: v4.2 revision note; Sec. 0 + Sec. X Phase-N/O records; the Q8
+F-R14 decision-matrix box at VI.C; the Q6 honest-rate/certified-absent/
+armed-kill box at VII.I; the Q7 field/flow-grade zeros box at VIII.F;
+Sec. XI register update). Additive-only verified (deletions = the six
+version headers; 39/39 payload numbers verbatim; all prior
+⟦rev⟧/⟦T6⟧/⟦T7⟧ markers preserved). Manifest + Replication Record (§9)
+updated. The standing offer to the authors is now the v4.2 edition set.
+
+**P2 — T4-W5 certification pilot: adjudicated CERTIFIED-AT-PILOT-GRADE
+(F-T7-P2); 4/5 gates PASS, G3 FAIL honest-and-informative.** On the
+exactly-evaluated band-limited field (grid interpolation — O1's dominant
+error — eliminated; exact-vs-grid 9.9×10⁻¹⁵ over 9,000 nodes), all 432
+stratified backward paths keep their O1 classification (0 moved;
+margins within O1's own error envelope; all 297 capped paths
+re-certified ≥ 2.0), and the 24-path 200-bit ladder shows **every
+pre-crossing margin stable to ~10 digits** — the worst margin in the
+subset certified to 36 printed digits (0.620679003382508519636…).
+G3's FAIL is the endpoint clause only: one wall-adjacent path misses
+the pre-registered t = 0 endpoint bar by 1.70× (the other 23 sit at
+≤ 2.9×10⁻¹⁰) while the margin clause passes with four orders of
+headroom — **the FAIL localizes the flow's sensitivity to the free
+endpoints, not the certified margins the theorem consumes** (the
+fourth informative pre-registration failure of the tier; the bar is
+recorded as a spec note, never amended). Provenance printed: the run
+survived one un-nohup'd process death and one container restart,
+resuming from committed phase intermediates — the checkpoint
+discipline validated operationally. **T4-W5 status after P2:** the
+kill-bin zeros stand at exact-field precision-certification grade;
+the remaining ladder is exactly two named rungs — validated ODE
+enclosures (CAPD/COSY-class, formal) and the fully analytic proof
+(terminal).
+
+**Findings register (Phase P):** F-T7-P2 (exact-field certification;
+432/432 classification stability; 10-digit margin stability; the
+endpoint-sensitivity localization). The v4.2 fold record is
+tier7-program/P1/RESULTS.md. Run record: wf_d3b1ed78-3d0 (P1) +
+finisher agent (P2 completion after the workflow-agent budget
+exhaustion — the workflow's own empty-result failure mode handled by
+coordinator resume, printed here for the process ledger).

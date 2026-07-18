@@ -1,5 +1,5 @@
 {
- "snapshot_utc": "2026-07-18 PHASE O COMPLETE (O1 flow-map proof 5/5 - kill-bin zeros field-grade at 2.8e-7; O2 g_lim ABSENT-CERTIFIED; O3 F-R14 matrix - one sound cell: P-acoustic + supertrace)",
+ "snapshot_utc": "2026-07-18 PHASE P COMPLETE (corpus3 v4.2 edition set; T4-W5 exact-field certification pilot - 432/432 stable, margins 10-digit, worst margin 36-digit certified)",
  "session": "536b52e3-c0e4-5548-a35f-7ca5893feba9",
  "branch": "claude/analyze-gum-po",
  "note": "Additive to MANIFEST.json (session d0b81976, ivm-viz line). This manifest covers the tier6-foundations session only.",
@@ -139,6 +139,25 @@
    "description": "O3: F-R14 rescue decision matrix (exact rational arithmetic)",
    "phase": "Tier 7 Phase O",
    "verdict": "4/4 PASS; anchors exact; ONE sound cell (P-acoustic + supertrace); tuning fraction 1/4 (F-T7-O3)"
+  },
+  {
+   "agent_id": "af1edb4d7d1bb70af",
+   "description": "P1: corpus3 v4.2 delta fold (Q6-Q9 payload)",
+   "phase": "Tier 7 Phase P",
+   "verdict": "4/4 verification gates PASS; additive-only; 39/39 payload numbers verbatim"
+  },
+  {
+   "agent_id": "a2aebc8801687e685",
+   "description": "P2 (workflow leg): certification script + G1/selection phases",
+   "phase": "Tier 7 Phase P",
+   "verdict": "budget-exhausted before StructuredOutput; work completed by finisher"
+  },
+  {
+   "agent_id": "aba7bbb2e45a27707",
+   "description": "P2 finisher: run execution (incl. restart recovery) + gates + RESULTS",
+   "phase": "Tier 7 Phase P",
+   "verdict": "G1/G2/G4/G5 PASS, G3 FAIL endpoint-clause-only (margins 4 orders inside) - CERTIFIED-AT-PILOT-GRADE (F-T7-P2)",
+   "transcript": "tier7-agent-P2finisher.jsonl.xz"
   }
  ],
  "caveat": "tier6-coordinator-session.jsonl.xz was snapshotted during the checkpointing turn; the last few checkpoint/commit exchanges after the snapshot instant are absent from the archive by construction. The git history and SESSION_CHECKPOINT_tier6.md carry that residue. Coordinator archive re-snapshotted after L5-prime adjudication; same tail caveat applies to the final commit exchange.",
@@ -171,5 +190,11 @@
   "archive": "tier7-workflow-wf_c362f0c0-baa.tar.xz",
   "script": "tier7-phaseO-workflow-script.js",
   "total_subagent_tokens": 448769
+ },
+ "workflow7": {
+  "run_id": "wf_d3b1ed78-3d0",
+  "archive": "tier7-workflow-wf_d3b1ed78-3d0.tar.xz",
+  "script": "tier7-phaseP-workflow-script.js",
+  "note": "P2 workflow agent exhausted budget without StructuredOutput; completed by standalone finisher agent (transcript tier7-agent-P2finisher.jsonl.xz)"
  }
 }

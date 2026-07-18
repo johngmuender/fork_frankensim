@@ -344,3 +344,23 @@ Remaining opens after Phase O: certified/analytic T4-W5 form;
 archive-external g_lim; the authors' F-R14 adoption; corpus3 v4.1
 standing offer. A corpus3 v4.2 delta folding F-T7-N*/O* is the natural
 next fold if directed.
+
+---
+
+## ADDENDUM (same session): PHASE P EXECUTED (v4.2 fold + T4-W5 certification pilot)
+
+Workflow wf_d3b1ed78-3d0 + finisher agent; adjudicated in
+TIER7_ADJUDICATION.md Phase-P addendum.
+- **P1**: corpus3 paper now `01-GUM-Omega-Paper-v4.2-ext.md` — the
+  Phase-N/O fold (7 new ⟦T7⟧ blocks; additive-only verified 39/39).
+  The standing offer to the authors = the v4.2 edition set.
+- **P2 (F-T7-P2)**: exact-field certification — grid interpolation
+  eliminated (9.9e-15 field agreement); 432/432 classifications kept;
+  24-path 200-bit ladder: margins stable ~10 digits; worst margin
+  certified to 36 digits (0.620679003382508519636…). G3 FAIL honest:
+  endpoint clause only (1 path, 1.70×), margins 4 orders inside —
+  sensitivity localized to free endpoints. Survived one process death
+  + one container restart via committed phase intermediates.
+- **T4-W5 terminal ladder now**: validated ODE enclosures (formal) →
+  analytic proof (terminal). All other named opens are corpus-side
+  (F-R14 adoption; archive-external g_lim).
