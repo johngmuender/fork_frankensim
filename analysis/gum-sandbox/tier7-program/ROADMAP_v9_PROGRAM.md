@@ -186,3 +186,72 @@ from the no-cutoff family member. Honest scope: this proves the
 continuum support statement GIVEN the computed field (discretization
 bounds printed); it upgrades the L7b kill-bin zeros from ensemble
 statement to field statement; the fully analytic proof remains open.
+
+---
+
+## ADDENDUM — Phase O (pre-registered): flow-map proof, g_lim archaeology, F-R14 decision matrix
+
+### O1 — the flow-map first-crossing proof (T4-W5 terminal shape, per F-T7-N3)
+N3 proved the line criterion cannot work; the transport argument can.
+**Theorem (backward-reachability criterion; state + prove):** trajectories
+of the guidance ODE are unique both ways; if the backward trajectory
+from every kill-bin detector point (d, z, t), z ∈ (0,1), t ∈ the kill
+bins, satisfies max_{s<t} X_x(s) ≥ d (it already crossed the line
+earlier), then NO first crossing occurs in the kill bins — the arrival
+density there is exactly zero at continuum (field) level.
+Execute on the validated L5′/L7b engine, n_y ∈ {+1, −1, +0.75, −0.75}:
+backward-integrate from a fine grid over the kill bins (≥ 200 z × 40 t
+per bin per n_y); classify each point: (a) PRE-CROSSED (max_{s<t} X_x ≥
+d + margin), (b) ρ-floor (backward path enters ρ < ρ_floor near-node/
+wall zones — report the ρ-measure it carries), (c) VIOLATION (backward
+path reaches t = 0 inside supp ρ₀ without pre-crossing = a genuine
+fresh arrival — would refute the zeros). Gates: G1 engine bars;
+G2 zero VIOLATIONS at reference resolution AND under Nx-doubling +
+dt-halving of the backward integration; G3 pre-crossing margin
+quantified (min over class-(a) of max X_x − d) ≫ trajectory
+discretization error (quantified by refinement differences);
+G4 ρ-floor accounting: total |φ₀|²-measure reachable through class-(b)
+≤ 10⁻³ (else PARTIAL with the honest bound); G5 discrimination:
+n_y = +0.25 backward runs from its POPULATED late bins must show a
+substantial fresh-arrival (class-c-like, legitimately arriving)
+fraction — the criterion distinguishes. Verdict target: the kill-bin
+zeros elevated to FIELD/FLOW statement (proof-grade modulo
+discretization); the fully analytic proof remains open but its shape
+is now demonstrated. File as F-T7-O1.
+
+### O2 — g_lim archaeology (the N2 blocking number)
+Exhaustive archive sweep (corpus/ all 104 files, corpus2/, corpus3/,
+theory-audit/, DISCHARGE_PACKAGE/, tier*/) for ANY printed: Majoron-mode
+0νββ bound, T_1/2 limit, experimental rate number, P-ν4 detectability
+line or rate normalization, LEGEND/nEXO sensitivity figures, or any
+g-constraint of any channel (catalog all, with verbatim quotes + file
+paths). Decision rule (pre-registered): if a Majoron-mode rate-level
+bound (g_lim or T_1/2-equivalent) is found → execute the F-T7-N2
+conditional-kill arithmetic against it and report which way it fires;
+if only non-rate g-constraints exist → catalog them and state precisely
+why they do not adjudicate the honest-rate question (the observable
+distinction); if nothing → certify ABSENT with the search protocol
+printed (patterns, file counts) so the certification is reproducible.
+Gates: G1 sweep coverage (file count + pattern list printed; ≥ 2
+independent pattern families); G2 the catalog (every hit quoted);
+G3 the verdict per decision rule. Deliverable: memo
+tier7-program/O2/GLIM_ARCHAEOLOGY.md (+ results JSON). File as F-T7-O2.
+
+### O3 — F-R14 rescue decision matrix (decision support for the authors)
+Implement h33's master formula 𝔞₁(p,q) = −(5p+q)/(12(2p+q)) and the
+corpus sector table (B2 doublet p = q − 1 structural; Q̃-sectors
+q = 3/2 group-protected; knot band-edges with the supertrace-signed
+count per h25 K3). Compute, for each textually available reading
+(frame/soldered, covector, vector, cone-only) AND across the
+P-acoustic window w ∈ (−5/18, −2/9) (incl. the distinguished
+w = −1/4): per-sector weights w_s, the sign of Σw_s (1/16πG), whether
+c_GW² is a convex combination (hull check with the printed sector
+cones), and the (6.3) margin status. Gates: G1 reproduce h33's five
+printed anchors exactly (−1/3, −2/15, −5/33, −1/12; +1/6 at w = −1/4
+on q = −3p); G2 the decision matrix (readings × outcomes) with every
+cell computed, not asserted; G3 the P-acoustic pricing quantified:
+window width vs distance to natural conventions (w = 0, −1/2) as a
+tuning fraction; the supertrace erratum's effect on the knot-sector
+row shown both ways; G4 the honest bottom line: this is DECISION
+SUPPORT — the constitutive choice is the authors' (charter language);
+no reading is recommended, each is priced. File as F-T7-O3.
