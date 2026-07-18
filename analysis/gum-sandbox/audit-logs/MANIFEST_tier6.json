@@ -1,5 +1,5 @@
 {
- "snapshot_utc": "2026-07-18 PHASE P COMPLETE (corpus3 v4.2 edition set; T4-W5 exact-field certification pilot - 432/432 stable, margins 10-digit, worst margin 36-digit certified)",
+ "snapshot_utc": "2026-07-18 PHASE Q COMPLETE (Q1 formal rung: 7/7 machine-checked interval certificates incl. worst-margin stretch case; Q2 Lemma A proven + O-1..O-5 obligation ladder)",
  "session": "536b52e3-c0e4-5548-a35f-7ca5893feba9",
  "branch": "claude/analyze-gum-po",
  "note": "Additive to MANIFEST.json (session d0b81976, ivm-viz line). This manifest covers the tier6-foundations session only.",
@@ -158,6 +158,18 @@
    "phase": "Tier 7 Phase P",
    "verdict": "G1/G2/G4/G5 PASS, G3 FAIL endpoint-clause-only (margins 4 orders inside) - CERTIFIED-AT-PILOT-GRADE (F-T7-P2)",
    "transcript": "tier7-agent-P2finisher.jsonl.xz"
+  },
+  {
+   "agent_id": "wf74-q1",
+   "description": "Q1: validated interval enclosures (Lohner QR over exact field)",
+   "phase": "Tier 7 Phase Q",
+   "verdict": "5/5 PASS incl. stretch case; 7/7 paths certified; zero wraps across ~436k validated steps (F-T7-Q1)"
+  },
+  {
+   "agent_id": "wf74-q2",
+   "description": "Q2: analytic reconnaissance (Lemma A + Conjecture C obligations)",
+   "phase": "Tier 7 Phase Q",
+   "verdict": "3/3 PASS; lemma exact, 0/610 violations; O-1..O-5 printed (F-T7-Q2)"
   }
  ],
  "caveat": "tier6-coordinator-session.jsonl.xz was snapshotted during the checkpointing turn; the last few checkpoint/commit exchanges after the snapshot instant are absent from the archive by construction. The git history and SESSION_CHECKPOINT_tier6.md carry that residue. Coordinator archive re-snapshotted after L5-prime adjudication; same tail caveat applies to the final commit exchange.",
@@ -196,5 +208,11 @@
   "archive": "tier7-workflow-wf_d3b1ed78-3d0.tar.xz",
   "script": "tier7-phaseP-workflow-script.js",
   "note": "P2 workflow agent exhausted budget without StructuredOutput; completed by standalone finisher agent (transcript tier7-agent-P2finisher.jsonl.xz)"
+ },
+ "workflow8": {
+  "run_id": "wf_74d72548-c07",
+  "archive": "tier7-workflow-wf_74d72548-c07.tar.xz",
+  "script": "tier7-phaseQ-workflow-script.js",
+  "total_subagent_tokens": 480196
  }
 }

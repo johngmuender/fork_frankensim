@@ -1,0 +1,12 @@
+{
+  "n_points": 10000,
+  "n_containment_checks": 16000,
+  "violations": 0,
+  "n_velocity_pts": 2000,
+  "max_thin_f_width": 1.0712758747203067e-11,
+  "sanity_cases": 120,
+  "sanity_passed": 120,
+  "sanity_fails": [],
+  "reference": "gmpy2/MPFR 200-bit full 2048-mode point sums (error <= 1e-55, far below enclosure widths)",
+  "verdict": "PASS"
+}

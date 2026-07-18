@@ -418,11 +418,30 @@ def phase_killwindow():
                                              <= row["A_n3_measured"]
                                              <= hi_a + 2e-3)
         rows.append(row)
+    # continuum line-positivity scan: a(d, t) >= vtil - C_lem > 0 for all
+    # admissible t (the analytic form of N3's "criterion hypothesis is
+    # false at every t" -- here for the CONTINUUM field, to t = 200)
+    tsc = np.concatenate([np.arange(4.0, 20.0, 0.05),
+                          np.geomspace(20.0, 200.0, 200)])
+    lo, first_adm = [], None
+    for t in tsc:
+        lem = lemma_at(D_NEAR, t)
+        if not lem["admissible"]:
+            continue
+        if first_adm is None:
+            first_adm = float(t)
+        lo.append((float(t), lem["vtil"] - lem["C_lem"]))
+    lo_v = np.array([v for _, v in lo])
+    scan = dict(t_first_admissible=first_adm, t_max_scanned=200.0,
+                min_lower_bound=float(lo_v.min()),
+                at_t=float(lo[int(np.argmin(lo_v))][0]),
+                all_positive=bool((lo_v > 0).all()))
     return dict(rows=rows,
                 all_a_positive=bool(all(r["a_positive_certified"]
                                         for r in rows)),
                 all_b_positive=bool(all(r["b_positive_certified"]
-                                       for r in rows)))
+                                       for r in rows)),
+                line_positivity_scan=scan)
 
 
 # ----------------------------------------------------------------------

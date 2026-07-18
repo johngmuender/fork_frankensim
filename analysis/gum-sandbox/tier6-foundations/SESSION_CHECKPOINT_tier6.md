@@ -364,3 +364,26 @@ TIER7_ADJUDICATION.md Phase-P addendum.
 - **T4-W5 terminal ladder now**: validated ODE enclosures (formal) →
   analytic proof (terminal). All other named opens are corpus-side
   (F-R14 adoption; archive-external g_lim).
+
+---
+
+## ADDENDUM (same session): PHASE Q EXECUTED (formal rung + analytic program)
+
+Workflow wf_74d72548-c07; adjudicated in TIER7_ADJUDICATION.md Phase-Q
+addendum.
+- **Q1 (F-T7-Q1)**: FORMAL RUNG ATTAINED — 7/7 kill-bin pre-crossing
+  certificates machine-checked by validated interval enclosures
+  (Lohner QR + Picard boxes over the exact 2048-mode field with
+  outward rounding); worst-margin path certified over its full
+  3.555-unit excursion (X_x ≥ 1.0010188761, width 7.8e-4, 233k
+  validated steps, zero retries); 16,000/16,000 containment; engine
+  regularization provably never binds. Trust base one rung below
+  CAPD-grade (stated).
+- **Q2 (F-T7-Q2)**: Lemma A proven exactly (Fresnel identity + moment
+  bounds, explicit constants; 0/610 verification violations);
+  Conjecture C with proof obligations O-1…O-5 each carrying a
+  sufficient condition; honest lemma-vs-kill-window delta printed.
+- **T4-W5 ladder now**: L7b zeros → O1 field/flow → P2 exact-field
+  precision → Q1 machine-checked witnesses + Q2 analytic program.
+  Remaining: formally-verified kernel + population certification
+  (engineering); the analytic theorem via O-1…O-5 (mathematics).

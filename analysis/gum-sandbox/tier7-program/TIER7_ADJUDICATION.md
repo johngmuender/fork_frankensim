@@ -295,3 +295,53 @@ tier7-program/P1/RESULTS.md. Run record: wf_d3b1ed78-3d0 (P1) +
 finisher agent (P2 completion after the workflow-agent budget
 exhaustion — the workflow's own empty-result failure mode handled by
 coordinator resume, printed here for the process ledger).
+
+---
+
+## ADDENDUM — Phase Q adjudication (workflow wf_74d72548-c07)
+
+**Q1 — validated interval enclosures: adjudicated FORMAL-RUNG ATTAINED,
+5/5 gates PASS including the stretch case (F-T7-Q1).** The pre-crossing
+certificates of seven kill-bin backward paths are now **machine-checked
+inequalities**: rigorous interval tubes (full 2048-mode disc-interval
+field sums with outward ulp-padding; Lohner QR mean-value integrator
+with verified Picard boxes and exact second-order remainders) whose
+X_x lower bound provably exceeds d + 10⁻³ at an earlier epoch. The
+stretch case landed: **P2's worst-margin path certified over its full
+3.555-unit excursion (through x ≈ −1.26) in 233,002 validated steps —
+certified X_x ≥ 1.0010188761, tube width 7.8×10⁻⁴ (1.27× inside the
+gate), zero Picard retries**; the small-margin path (395, depth 2.73)
+and five spread paths likewise; ~436k validated steps total with zero
+wraps. Field containment 16,000/16,000 vs 200-bit references; the
+engine's regularization provably never binds on any tube (ρ headroom
+≥ 3.9×10¹², clamp ≥ 237×), so the certificates hold for the ideal and
+the engine law simultaneously — O1/P2 semantics preserved. Honest
+limits carried: seven witness paths (population stays at
+precision-certification grade); trust base = IEEE-754 + nextafter +
+mpmath.iv (one rung below a formally verified kernel).
+
+**Q2 — analytic reconnaissance: adjudicated EXECUTED, 3/3 gates PASS
+(F-T7-Q2).** Lemma A proven *exactly* (recentered Fresnel identity
+f′/f = i(x−x₀)/t + Φ′/(tΦ); moment bounds with explicit constants
+m₂ = 2.424780, m₃ = 3.734202 giving |v − (x−x₀)/t| ≤ D/t² class),
+verified at 122 points × 5 checks against both continuum quadrature
+and the engine field: 0/610 violations. Conjecture C (no-slow-lane /
+finite emptying time for |n_y| ≥ 0.75) stated with quantifiers and an
+exception class, with proof obligations O-1…O-5 each carrying a named
+sufficient condition — a competent analyst can pick the program up.
+The honest delta printed: the lemma controls the ballistic tail, not
+the kill window; the bridge is exactly the O-1…O-5 ladder.
+
+**T4-W5 status after Phase Q (the ladder as it now stands):**
+sampled zeros (L7b) → field/flow statement (O1) → exact-field
+precision certification (P2) → **machine-checked interval certificates
+on witness paths (Q1)** + **the analytic program with one proven lemma
+and enumerated obligations (Q2)**. Remaining: a formally-verified
+kernel + population-scale certification (engineering), and the
+analytic theorem via O-1…O-5 (mathematics). Every rung below these two
+is now on the record.
+
+**Findings register (Phase Q):** F-T7-Q1 (seven machine-checked
+pre-crossing certificates incl. the worst-margin stretch case);
+F-T7-Q2 (Lemma A exact + the O-1…O-5 obligation ladder).
+Run record: wf_74d72548-c07, 2 agents, 480,196 tokens.

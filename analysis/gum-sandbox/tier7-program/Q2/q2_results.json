@@ -2454,7 +2454,14 @@
       }
     ],
     "all_a_positive": true,
-    "all_b_positive": true
+    "all_b_positive": true,
+    "line_positivity_scan": {
+      "t_first_admissible": 4.0,
+      "t_max_scanned": 200.0,
+      "min_lower_bound": 0.02969049809032183,
+      "at_t": 200.0,
+      "all_positive": true
+    }
   },
   "late_layer": {
     "rows": [
@@ -2686,5 +2693,5 @@
       "verdict": "PASS (memo)"
     }
   },
-  "elapsed_s": 2.2790379524230957
+  "elapsed_s": 1.078730583190918
 }
