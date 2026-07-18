@@ -262,3 +262,31 @@ payload-sourced. Two coordinator fixes post-agents: gate-tally
 harmonization to per-workstream form (instruction-vs-payload mismatch
 was mine); running heads bumped. Workflow wf_2c33ba17-f9b (4 agents,
 399,795 tokens), archived in ../audit-logs/. corpus2 untouched (S-30).
+
+---
+
+## ADDENDUM (same session): TIER 7 — PROGRAM EXTENSIONS EXECUTED
+
+User-directed. `../tier7-program/`: PROGRAM_ANALYSIS_T7.md (sector
+scorecard; ranked open register; critical path), ROADMAP_v9_PROGRAM.md
+(M1–M4, pre-registered), executed via workflow wf_95da92d5-375,
+adjudicated in TIER7_ADJUDICATION.md. Headlines:
+- **M1** (WS4-M4c toy): tracker identity w = −1 + Ω_m dynamical
+  (1.8e-12); Γ ∝ Hⁿ ⟹ W = 1−n; the corpus's memory pairs recovered as
+  W(z=0)→W(z=2) roundings; NEW minor flag **F-T7-1**: the "(+0.36 at
+  β=−0.3)" CPL print unrecoverable + inconsistent with W ≥ 1; EdS
+  fixed-point pathology measured (Δw(0) +0.21..+0.31).
+- **M2** (servo law): form replicated (g² slope 1.9932, ω*-linear,
+  integrable marginal); coefficient c = η/2 = pure bath convention;
+  corpus's 0.021 ⇔ η = 0.042; super-Ohmic destroys the g² law ⇒ the
+  printed law pins the r2 bath to the Ohmic class.
+- **M3** (F-R9 route b): **CLOSED, NOT-VIABLE** — saturation can't
+  change sparse support; R log-slow vs mean quadratic collapse (25–46
+  decades traded per decade); repair menu narrows to routes (a)/(c).
+- **M4** (Nelson relaxation): **17×/41× faster** at ν = ħ/2m than the
+  dBB-calibrated tier3 rates; τ ~ ln(1/ν) — dBB a log-singular limit;
+  III.D rates = direction-signed conservative bounds (double edge).
+- Two coordinator spec defects printed (M1 Γ-profile; M4 continuity
+  clause — the wrong pre-registration that produced the discovery).
+Natural next candidates: corpus3 delta folding F-T7-* (a v4.1 pass);
+F-R9 route (a) second-moment treatment; L7 continuum proof.

@@ -1,0 +1,275 @@
+{
+  "G2_tracker_identity": {
+    "grid_points": 8001,
+    "z_range": [
+      0.0,
+      10.0
+    ],
+    "max_abs_dev_w_vs_identity": 1.7744694602583877e-12,
+    "spec": 1e-06
+  },
+  "G4_memory_recovery": {
+    "printed_pairs": {
+      "-0.3": [
+        1.28,
+        1.03
+      ],
+      "-1.0": [
+        1.72,
+        1.05
+      ]
+    },
+    "memory_closedform_fd_crosscheck": {
+      "-0.3": 1.790678716417915e-12,
+      "-1.0": 1.7433832155688833e-12
+    },
+    "reading1_spec_z05_to_z0": {
+      "-0.3": {
+        "W(z=0.5)": 1.14528682617469,
+        "W(z=0)": 1.277533039647577,
+        "dev_first_pct": 10.524466705102345,
+        "dev_second_pct": 24.0323339463667
+      },
+      "-1.0": {
+        "W(z=0.5)": 1.3249516441005802,
+        "W(z=0)": 1.7241379310344827,
+        "dev_first_pct": 22.967927668570916,
+        "dev_second_pct": 64.20361247947453
+      }
+    },
+    "reading2_recovered_z0_to_z2": {
+      "-0.3": {
+        "W(z=0)": 1.277533039647577,
+        "W(z=2)": 1.0253113700281238,
+        "dev_first_pct": 0.1927312775330467,
+        "dev_second_pct": 0.45520679338604325
+      },
+      "-1.0": {
+        "W(z=0)": 1.7241379310344827,
+        "W(z=2)": 1.0501193317422435,
+        "dev_first_pct": 0.24057738572573711,
+        "dev_second_pct": 0.011364927832707969
+      }
+    },
+    "z_where_W_equals_second_printed": {
+      "-0.3": 1.824,
+      "-1.0": 2.0020000000000002
+    }
+  },
+  "G3_CPL": {
+    "corpus_formula_wa_at_Wcal1": 0.6299999999999999,
+    "pure_tracker_conventions": {
+      "A_tangent_a1": {
+        "description": "derivative at a=1 (corpus formula's own definition)",
+        "wa": 0.6299999999962816,
+        "dev_from_0.63_pct": 5.902157069959641e-10
+      },
+      "B_window_0.6_0.8": {
+        "description": "LS fit a in [0.6,0.8] (literal 'around a=0.7')",
+        "wa": 1.0510005600705896,
+        "dev_from_0.63_pct": 66.82548572549041
+      },
+      "C_window_0.5_1.0": {
+        "description": "LS fit a in [0.5,1.0] (z in [0,1])",
+        "wa": 0.9694249609232083,
+        "dev_from_0.63_pct": 53.87697792431878
+      },
+      "D_window_0.7_1.0": {
+        "description": "LS fit a in [0.7,1.0]",
+        "wa": 0.8527970856577098,
+        "dev_from_0.63_pct": 35.36461677106506
+      }
+    },
+    "family_sign_scan": {
+      "tracker_Wcal=0.25": {
+        "wa_tangent": 0.15750000000018063,
+        "wa_window_C": 0.24235624023080188
+      },
+      "tracker_Wcal=0.5": {
+        "wa_tangent": 0.31499999999740064,
+        "wa_window_C": 0.484712480461604
+      },
+      "tracker_Wcal=1.0": {
+        "wa_tangent": 0.6299999999962816,
+        "wa_window_C": 0.9694249609232083
+      },
+      "tracker_Wcal=1.5": {
+        "wa_tangent": 0.944999999997013,
+        "wa_window_C": 1.4541374413848125
+      },
+      "memory_beta=-0.1": {
+        "wa_tangent": 0.6634463496705637,
+        "wa_window_C": 0.9586472846275486
+      },
+      "memory_beta=-0.3": {
+        "wa_tangent": 0.7091152554827839,
+        "wa_window_C": 0.9239878266701899
+      },
+      "memory_beta=-0.5": {
+        "wa_tangent": 0.734693877547284,
+        "wa_window_C": 0.8821869982565236
+      },
+      "memory_beta=-1.0": {
+        "wa_tangent": 0.7491082045148663,
+        "wa_window_C": 0.777472443272652
+      },
+      "memory_beta=-2.0": {
+        "wa_tangent": 0.698060941824452,
+        "wa_window_C": 0.6136680558428499
+      },
+      "GammaProfile_n=-0.5": {
+        "wa_tangent": 0.944999999997013,
+        "wa_window_C": 1.4541374413848125
+      },
+      "GammaProfile_n=0.0": {
+        "wa_tangent": 0.6299999999962816,
+        "wa_window_C": 0.9694249609232083
+      },
+      "GammaProfile_n=0.5": {
+        "wa_tangent": 0.31499999999740064,
+        "wa_window_C": 0.484712480461604
+      },
+      "dynamics_Gamma=50.0": {
+        "wa_tangent": 0.6662675231157895,
+        "wa_window_C": 1.0483250110254347
+      },
+      "dynamics_Gamma=200.0": {
+        "wa_tangent": 0.6385026846766894,
+        "wa_window_C": 0.9866951089848757
+      },
+      "dynamics_Gamma=800.0": {
+        "wa_tangent": 0.6320940444267305,
+        "wa_window_C": 0.9736210661800888
+      }
+    },
+    "memory_wa": {
+      "-0.3": {
+        "wa_tangent": 0.7091152554827839,
+        "wa_window_C": 0.9239878266701899
+      },
+      "-1.0": {
+        "wa_tangent": 0.7491082045148663,
+        "wa_window_C": 0.777472443272652
+      }
+    }
+  },
+  "dynamics": {
+    "50.0": {
+      "W_dyn(z=0)": 1.0544241270364934,
+      "W_dyn(z=0.5)": 1.060993394517003,
+      "min_W_dyn_z0_10": 1.0544241270364934,
+      "max_abs_w_dev_from_identity_z0_10": 0.9736820650155993,
+      "w_dev_at_z0": 0.01632723811094794,
+      "w_dev_at_z10": 0.19278469118811992,
+      "w_dev_at_z3": 0.39518759626453004,
+      "z_of_max_dev": 5.14,
+      "z_tracking_entry_Gamma_eq_H": 19.272114234653884,
+      "min_rho": 0.00020385065273532363,
+      "beta_eff_over_alpha_at_z0_predicted": -0.04,
+      "W0_minus1_predicted_first_order": 0.051,
+      "W0_minus1_measured": 0.05442412703649335,
+      "W0_meas_over_pred": 1.0671397458135952
+    },
+    "200.0": {
+      "W_dyn(z=0)": 1.0129503654198906,
+      "W_dyn(z=0.5)": 1.0141423558001748,
+      "min_W_dyn_z0_10": 1.0129503654198906,
+      "max_abs_w_dev_from_identity_z0_10": 0.4964004744116046,
+      "w_dev_at_z0": 0.003885109625967109,
+      "w_dev_at_z10": 0.4964004744116046,
+      "w_dev_at_z3": 0.0372280470295393,
+      "z_of_max_dev": 10.0,
+      "z_tracking_entry_Gamma_eq_H": 50.086997481941424,
+      "min_rho": 1.2557173844372795e-05,
+      "beta_eff_over_alpha_at_z0_predicted": -0.01,
+      "W0_minus1_predicted_first_order": 0.01275,
+      "W0_minus1_measured": 0.012950365419890586,
+      "W0_meas_over_pred": 1.0157149348933794
+    },
+    "800.0": {
+      "W_dyn(z=0)": 1.003199831606426,
+      "W_dyn(z=0.5)": 1.0034758628562257,
+      "min_W_dyn_z0_10": 1.003199831606426,
+      "max_abs_w_dev_from_identity_z0_10": 0.04258357509048594,
+      "w_dev_at_z0": 0.0009599494819276799,
+      "w_dev_at_z10": 0.04258357509048594,
+      "w_dev_at_z3": 0.008564084207626776,
+      "z_of_max_dev": 10.0,
+      "z_tracking_entry_Gamma_eq_H": 127.73187101388842,
+      "min_rho": 7.821324654945185e-07,
+      "beta_eff_over_alpha_at_z0_predicted": -0.0025,
+      "W0_minus1_predicted_first_order": 0.0031875,
+      "W0_minus1_measured": 0.003199831606425896,
+      "W0_meas_over_pred": 1.0038687392708694
+    },
+    "lag_scaling_logslope_z0": -1.022044618114761,
+    "lag_scaling_logslope_z10": -0.5446553780906485,
+    "profile_n0.5_Wcal_measured_z0": 0.5029220576262017,
+    "profile_n0.5_Wcal_predicted": 0.5,
+    "approach_rate": {
+      "Gamma": 50.0,
+      "measured_rate": 49.999997308065296,
+      "rate_over_Gamma_minus_1": -5.383869405850561e-08,
+      "fit_window_Gamma_t": [
+        1.0,
+        15.0
+      ]
+    }
+  },
+  "G1_numerics_positivity": {
+    "ode_cross_integrator_reldiff": 4.861896280541661e-11,
+    "fd_vs_analytic_w_maxerr": 1.7744694602583877e-12,
+    "min_rho_dynamics_over_forms": 7.821324654945185e-07,
+    "min_memory_shape_factor_1_plus_bOm": 1.045025532590562,
+    "tracker_rho_positive": true,
+    "spec": 1e-08
+  },
+  "G5_branchA": {
+    "tracker_max_abs_W_minus_1": 1.779465463869201e-12,
+    "memory_beta=-0.3": {
+      "deviation_form": "(w+1)-Om = b*Om*(1-Om)/(1+b*Om), b=-1.5*beta",
+      "peak_z": 0.245,
+      "peak_value": 0.09262424394444504,
+      "dev_at_z0": 0.08325991189427312,
+      "dev_at_z10": 0.000542447622415597,
+      "W_monotone_decreasing_in_z": true,
+      "W_ge_1_everywhere": true
+    },
+    "memory_beta=-1.0": {
+      "deviation_form": "(w+1)-Om = b*Om*(1-Om)/(1+b*Om), b=-1.5*beta",
+      "peak_z": 0.14,
+      "peak_value": 0.22514740031394734,
+      "dev_at_z0": 0.2172413793103448,
+      "dev_at_z10": 0.0010492642274387619,
+      "W_monotone_decreasing_in_z": true,
+      "W_ge_1_everywhere": true
+    }
+  },
+  "self_consistency_one_iteration": {
+    "pure_tracker": {
+      "w_iter0_z0": -0.7000265188928971,
+      "w_iter1_z0": -0.4900315583194549,
+      "w_iter0_z05": -0.40869493025837933,
+      "w_iter1_z05": -0.2215483063489455,
+      "delta_w_z0": 0.20999496057344225,
+      "delta_w_z05": 0.18714662390943382
+    },
+    "beta=-0.3": {
+      "w_iter0_z0": -0.6167699375490228,
+      "w_iter1_z0": -0.34382782368270626,
+      "w_iter0_z05": -0.3228015447812004,
+      "w_iter1_z05": -0.1343456855726629,
+      "delta_w_z0": 0.2729421138663165,
+      "delta_w_z05": 0.18845585920853747
+    },
+    "beta=-1.0": {
+      "w_iter0_z0": -0.48279015412647586,
+      "w_iter1_z0": -0.16956795467841623,
+      "w_iter0_z05": -0.2165893548743406,
+      "w_iter1_z05": -0.057028787232082156,
+      "delta_w_z0": 0.3132221994480596,
+      "delta_w_z05": 0.15956056764225846
+    },
+    "note": "pure alpha H^2 has NO self-consistent accelerating fixed point (iteration flows toward EdS; the corpus's own printed pathology); the test-field/LCDM-background reading is what the identity is a statement about"
+  }
+}

@@ -1,5 +1,5 @@
 {
- "snapshot_utc": "2026-07-17 TIER-6 COMPLETE + CORPUS3 FOLD EDITIONS PRODUCED (paper v4.0-ext, Course/Primer/TE v3-ext, small docs, manifest v5.0-ext; additive-only verified)",
+ "snapshot_utc": "2026-07-18 TIER-7 PROGRAM EXTENSIONS COMPLETE (M1 tracker dynamics + convention recovery; M2 servo law-form; M3 F-R9 route-b CLOSED; M4 Nelson 17-41x + log-singular dBB limit)",
  "session": "536b52e3-c0e4-5548-a35f-7ca5893feba9",
  "branch": "claude/analyze-gum-po",
  "note": "Additive to MANIFEST.json (session d0b81976, ivm-viz line). This manifest covers the tier6-foundations session only.",
@@ -79,6 +79,30 @@
    "description": "corpus3 fold: Session Map/Watch memo/Replication Record + new manifest v5.0-ext",
    "phase": "corpus3 fold",
    "verdict": "additive-only PASS"
+  },
+  {
+   "agent_id": "a1bb8f8ea03b339a1",
+   "description": "M1: w(z) from Gamma(H) tracker toy (WS4-M4c)",
+   "phase": "Tier 7",
+   "verdict": "G1/G2/G5 PASS, G3 CONDITIONAL, G4 PASS-MATCH (convention recovered); F-T7-1 minor print flag (F-T7-M1)"
+  },
+  {
+   "agent_id": "a1fc6d458141aa06a",
+   "description": "M2: bootstrap servo coefficient toy (r2 law)",
+   "phase": "Tier 7",
+   "verdict": "4 PASS + G4 PASS-MEASURED; c = eta/2 pure bath convention; law-form replicated (F-T7-M2)"
+  },
+  {
+   "agent_id": "a4e9b6c687c6c8533",
+   "description": "M3: F-R9 route (b) saturation pricing on h21 parametrization",
+   "phase": "Tier 7",
+   "verdict": "NOT-VIABLE, route closed; support-bound lemma; 25-46 decade trade (F-T7-M3)"
+  },
+  {
+   "agent_id": "a1ae8115ac2d1ef5d",
+   "description": "M4: Nelson non-equilibrium relaxation tau(nu) on tier3 setup",
+   "phase": "Tier 7",
+   "verdict": "G1-G3 PASS, G4 PARTIAL-as-discovery; 17-41x acceleration; log-singular dBB limit (F-T7-M4)"
   }
  ],
  "caveat": "tier6-coordinator-session.jsonl.xz was snapshotted during the checkpointing turn; the last few checkpoint/commit exchanges after the snapshot instant are absent from the archive by construction. The git history and SESSION_CHECKPOINT_tier6.md carry that residue. Coordinator archive re-snapshotted after L5-prime adjudication; same tail caveat applies to the final commit exchange.",
@@ -93,5 +117,11 @@
   "archive": "tier6-workflow-wf_2c33ba17-f9b.tar.xz",
   "script": "tier6-corpus3-workflow-script.js",
   "total_subagent_tokens": 399795
+ },
+ "workflow4": {
+  "run_id": "wf_95da92d5-375",
+  "archive": "tier7-workflow-wf_95da92d5-375.tar.xz",
+  "script": "tier7-workflow-script.js",
+  "total_subagent_tokens": 583974
  }
 }
