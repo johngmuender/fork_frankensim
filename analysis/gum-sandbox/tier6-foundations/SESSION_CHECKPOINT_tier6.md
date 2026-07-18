@@ -407,3 +407,55 @@ opens are exactly: the formally-verified kernel + population-scale
 certification (engineering), the analytic theorem via O-1…O-5
 (mathematics), F-R14 adoption and archive-external g_lim (both
 corpus-side).
+
+---
+
+## ADDENDUM (same session): PHASE S — TIER 8 ASSESSMENT + ALTERNATIVES
+
+New directory: `tier8-assessment/`. Two workflows + one nohup chain.
+
+**S-Assess** (wf_f8099700-bc8): the audited assessment pair —
+`PROS_ASSESSMENT.md` (14 points: kinematic skeleton genuinely derived
+and replicated; closed-form repairability; blind re-derivation
+convergence; honest-failure carriage; steelmanned adversarial process)
+and `CONS_ASSESSMENT.md` (14 points: centerpiece failed at value level,
+survives as replicators' repair; calibration-shielded ħ; gravity/
+statistics/0νββ broken or conditional as printed; family flagship
+unauditable at core; single self-adjudicating actor system; terminally
+undischargeable findings). Audit symmetric: 11 SUPPORTED + 3
+OVERSTATED-corrected + 0 UNSUPPORTED on EACH side. Raw briefs/verdicts:
+`s_assess_briefs_audits.json`. The pair is the program's standing
+summary; neither document may be quoted without the other.
+
+**ROADMAP v10 executed** (wf_871291ab-d94; 16/16 gates):
+- **F-T8-S1** (`S1/`): F-R14 sound-cell cost (1) priced — no measure
+  weight both rescues F-R14 and preserves Sec. III's [DF] chain
+  (cancelling w = 1/2 outside window); w = −1/4 correction
+  (9ħ²/16m)∇h·∇ρ/ρ (scheme A). Third quantified IOU of adoption.
+- **F-T8-S2** (`S2/`): closed-form G*(λ) for the chirality family
+  (midpoint (4+π)/3); attainment generic; corpus identities are λ = 1
+  faces of generic BPS identities (I_λ = λI + 2(1−λ)J); chirality
+  selects the VALUE, not the STRUCTURE; c(0.81778) = π numerological.
+- **F-T8-S3** (`S3/`): forward Lohner covering pilot — 0% certified,
+  wrapping-bound (not flow-bound); O-1 needs Taylor-model technology;
+  costs priced both ends (1.2e13–9.4e16 boxes this engine vs ~3.5e6
+  wrapping-free).
+- **F-T8-S4** (`S4/`): N = 10,000 population screen (hybrid RK4/DOP853
+  by measured necessity; attempt-1 FAIL preserved); min margin 0.6216 =
+  P2 reference + 0.14%; worst-24 all STABLE at 200-bit. Engineering
+  open narrows to the formal kernel exactly.
+
+Adjudication: `tier8-assessment/TIER8_ADJUDICATION.md` (incl. the
+reflexivity note: CONS C12–C13 apply to Phase S itself; only outside
+re-derivation discharges). Archives: MANIFEST workflow10/11 +
+tier8-*.tar.xz + both workflow scripts. Campaign status has the ⟦T8⟧
+Phase-S entry.
+
+**Restoration note for future sessions:** the Phase-S findings are NOT
+yet folded into corpus3 (no v4.4). A future fold phase would draw its
+payload from the four RESULTS.md files + TIER8_ADJUDICATION.md; the
+assessment pair is campaign-side documentation and does not fold into
+corpus editions. Tacit knowledge unchanged (pip3 install numpy scipy
+matplotlib sympy mpmath gmpy2 in fresh containers; git from repo root;
+nohup + per-item checkpoints for long runs; workflow subagents not
+resumable — use fresh finisher agents with full context).

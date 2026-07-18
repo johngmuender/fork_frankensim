@@ -158,3 +158,59 @@ completes.**
   S2 dual bookkeeping, S3 terminal-class grouping + added diagnostics,
   S4 hybrid wall band + interior refinement policy.  All printed at their
   workstreams; none moved a pre-registered bar.
+
+---
+
+## ADDENDUM — S4 final adjudication (F-T8-S4)
+
+**Date:** 2026-07-18 (chain completion).  **Gates: 4/4 PASS** (G2/G3
+converted from PARTIAL on chain completion; coordinator acted as finisher
+per the P2 protocol — placeholders in RESULTS.md filled from
+`s4_results.json`, BOX_EXIT locations independently verified from the
+chunk archives).
+
+**The finding.**  The P2 stability margin survives at population scale:
+N = 10,000 (full pre-registered target, no scale-down), 9,991
+A_PRECROSSED + 9 BOX_EXIT (all nine at the extreme wall row z0 = 0.9975;
+P2 semantics, verified from chunk data); margin distribution median 4.85,
+minimum **0.621562** at (n_y = 0.75, t0 = 6.404, z0 = 0.6929) — 0.14%
+*above* the P2 432-config reference minimum 0.620679, i.e. the 23×
+refinement found no new low-margin structure.  Worst-24 through the
+unmodified 200-bit ladder: **24/24 STABLE, 0 UNSTABLE**, certified digits
+9–10, step-halving and DOP853 cross-checks ≤ 3.8e-11.
+
+**Method finding (secured at G1):** a pure fixed-step float64 screener
+cannot hold 1e-6 at the extreme wall rows; the production screener is a
+hybrid (batched RK4 92% + verbatim P2 DOP853 rtol 1e-11 wall band).  The
+attempt-1 calibration FAIL (1.392e-6 at rtol 1e-10) is preserved as an
+artifact; the bar never moved.
+
+**Adjudication:** ACCEPTED as F-T8-S4.  The engineering open narrows:
+population-scale *screened* coverage is done and clean; what remains of
+the open is exactly the formally-verified kernel (machine-checked
+inequalities over the population), whose technology cost S3 measured.
+Register unchanged.
+
+## Phase-S disposition (final)
+
+Phase S is complete: the audited assessment pair (PROS/CONS, symmetric
+11+3/0 audit outcome) plus four executed workstreams, 16/16 gates PASS
+across S1–S4, four accepted findings F-T8-S1…S4:
+
+1. **F-T8-S1** — the F-R14 sound cell's cost (1) is priced exactly;
+   rescuing F-R14 and preserving Sec. III's [DF] chain are *disjoint*
+   (unique cancelling weight w = 1/2 outside the rescue window).
+2. **F-T8-S2** — the closure architecture is generic in the chirality
+   family (closed-form G*(λ)); λ = 1 selects the *value*, not the
+   *structure*; an achiral alternative is architecturally equivalent.
+3. **F-T8-S3** — O-1's only identified route needs Taylor-model-grade
+   technology, not compute (0%-certified covering; wrapping-bound;
+   both cost ends priced).
+4. **F-T8-S4** — the P2 margin survives a 23× population refinement;
+   worst-24 all STABLE at 200-bit; the formal-kernel open is now the
+   *only* engineering remainder.
+
+Remaining opens after Phase S (unchanged in kind, sharpened in price):
+formally-verified kernel (engineering; cost measured), O-1…O-5 analytic
+theorem (mathematics; technology named), F-R14 adoption now carrying a
+third quantified IOU + archive-external g_lim (corpus-side).

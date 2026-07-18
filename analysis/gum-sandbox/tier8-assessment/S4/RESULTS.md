@@ -23,7 +23,13 @@ reference integrator, and the 200-bit gmpy2/MPFR ladder `mp_run_path`).
 
 ## 0. Verdict in one line
 
-PLACEHOLDER
+**4/4 gates PASS.**  The P2 stability margin survives at population scale:
+all 10,000 screened configurations classify pre-crossed (9,991) or
+box-exit (9, the P2 semantics' benign class), the population minimum
+margin is 0.62156 at (n_y = 0.75, t0 = 6.404, z0 = 0.6929) — consistent
+with P2's own reference minimum 0.62068 — and the 24 lowest-margin
+configurations all re-certify **STABLE** through the unmodified 200-bit
+ladder with 9–10 certified digits and zero UNSTABLE findings.
 
 ## 1. Population (parametrization reuse, pre-registered)
 
@@ -80,11 +86,29 @@ calibration step; the G1 gate bar (1e-6) was never moved.
 
 ## 3. Gates
 
-PLACEHOLDER_GATES
+| gate | requirement | measured | verdict |
+|---|---|---|---|
+| S4-G1 | float64 screener reproduces P2 margins on 24 seeded (seed 20260718) class-(a) P2 configs to ≤ 1e-6 relative | max 2.28e-7, p95 1.53e-7, median 3.54e-9; all 24 classifications preserved; attempt-1 FAIL at 1.392e-6 archived, wall rtol tightened 1e-10 → 1e-11 BEFORE production, bar never moved | **PASS** |
+| S4-G2 | population screen complete at final N with margin distribution + minimum located; nohup + chunk checkpoints | N = 10,000 (full target, no scale-down), 100 resume-safe chunks, ~96 min wall; classes 9,991 A_PRECROSSED / 9 BOX_EXIT; margin percentiles (0/5/50/95/100) = 0.622 / 1.324 / 4.850 / 17.52 / 28.82; minimum 0.621562 at (0.75, 6.404, 0.6929); clips never bind; min relative ρ 1.95e-18 above floor | **PASS** |
+| S4-G3 | K = 24 lowest-margin configs through the unmodified P2 200-bit ladder; STABLE/UNSTABLE per config with certified digits; any UNSTABLE reported | 24/24 STABLE, 0 UNSTABLE; screener-vs-mp relative median 8.9e-10, max 4.3e-9; certified digits 9–10; step-halving shifts ≤ 3.5e-11 (3 lowest); DOP853 rtol-1e-12 cross-checks ≤ 3.8e-11 (3 lowest) | **PASS** |
+| S4-G4 | honest scope statement: screened coverage ≠ formally-verified kernel | §5 verbatim; formal-kernel open REMAINS OPEN | **PASS** |
 
 ## 4. Key numbers
 
-PLACEHOLDER_KEY
+| quantity | value |
+|---|---|
+| population N (families × NT × NZ) | 10,000 = 2 × 100 × 50 (all t0 off the O1 grid) |
+| class counts | 9,991 A_PRECROSSED / 9 BOX_EXIT / 0 other |
+| margin percentiles 0/1/5/25/50/75/95/100 | 0.6216 / 0.8550 / 1.3242 / 3.1013 / 4.8496 / 8.6533 / 17.5214 / 28.8196 |
+| population minimum (screener) | 0.621561690406 at (n_y = 0.75, t0 = 6.404, z0 = 0.69291) |
+| population minimum (200-bit mp) | 0.621561690483489914… (certified digits 9) |
+| P2 reference minimum (432 configs) | 0.6206790 — population min sits 0.14% above it |
+| worst-K certification | 24/24 STABLE, 0 UNSTABLE |
+| screener vs mp relative (worst-K) | median 8.9e-10, max 4.3e-9 |
+| G1 validation (24 seeded P2 configs) | max 2.28e-7, median 3.54e-9; attempt-1 1.392e-6 FAIL archived |
+| bench-frozen h policy | interior RK4 h = 1e-3 (≤ 1.85e-7); near-wall h = 5e-4 (≤ 2.4e-8); wall band DOP853 rtol 1e-11 (≤ 1.0e-7) |
+| batched evaluator vs fields_exact | ~9e-15 |
+| wall time | screen ~96 min (4 workers, 100 chunks) + ladder ~40 min (30 items) + gates/fig ~3 s |
 
 ## 5. Honest scope (S4-G4)
 
@@ -102,4 +126,27 @@ nothing here bears on nature.
 
 ## 6. Caveats
 
-PLACEHOLDER_CAVEATS
+1. **The screener is a hybrid by measured necessity** (printed spec
+   amendment, coordinator-owned): a pure fixed-step float64 RK4 cannot
+   hold 1e-6 on the extreme wall rows (cot(πz) drift |v_x| ~ 400 vs field
+   wavelength ~0.06 degrades convergence to ~first order), so the wall
+   band (dw < 0.02, ~8% of configs) runs the verbatim P2 DOP853 pipeline
+   at rtol 1e-11 instead.  This is a method finding of the workstream,
+   not a silent deviation.
+2. **The 9 BOX_EXIT configs** inherit P2's classification semantics
+   verbatim (trajectory leaves the integration box before the horizon —
+   handled as its own class, not a stability failure); all 9 sit at the
+   extreme wall rows.
+3. The G1 attempt-1 calibration FAIL (1.392e-6 > 1e-6 at wall rtol 1e-10)
+   is preserved in `_validate_attempt1.json`; the fix (rtol 1e-11) was
+   made before the production screen started and the gate bar was never
+   moved.
+4. Certified digits for worst-K margins are limited by the
+   screener-vs-mp agreement (9–10 digits), not by the 200-bit ladder
+   itself; step-halving and DOP853 cross-checks on the 3 lowest configs
+   agree to ≤ 3.8e-11.
+5. Population coverage is still a *sample* of the continuous
+   (t0, z0) rectangle — 23× the P2 grid, minimum located interior to the
+   z-range and at the t0 lower edge (the kill-bin lower edge, where P2
+   also found its minimum band).  Nothing here is a machine-checked
+   inequality (§5).

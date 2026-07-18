@@ -501,3 +501,33 @@ plus the L5′ agent; audit archives `audit-logs/MANIFEST_tier6.json`).
   `audit-logs/MANIFEST_tier6.json` (workflow7/8 blocks);
   `tier7-program/TIER7_ADJUDICATION.md` Phase-P/Q addenda. Every
   result is within-model; nothing here bears on nature.
+- ⟦T8⟧ **Phase S (eighth campaign phase, 2026-07-18, session 536b52e3)**
+  — Tier 8 opens: `tier8-assessment/`. Two-part phase. **(1) S-Assess**
+  (wf_f8099700-bc8, 10 agents): six sector surveys → pros-advocate +
+  cons-critic briefs → independent adversarial evidence audits;
+  symmetric outcome (each side 11/14 SUPPORTED + 3/14
+  OVERSTATED-corrected + 0 UNSUPPORTED) → the audited assessment pair
+  `PROS_ASSESSMENT.md` / `CONS_ASSESSMENT.md` (paired documents; neither
+  may be quoted without the other). **(2) ROADMAP v10 executed**
+  (wf_871291ab-d94 + S4 nohup chain): 16/16 gates PASS across four
+  workstreams — S1 P-acoustic cost-(1) priced exactly (rescuing F-R14
+  and preserving Sec. III's [DF] chain are DISJOINT: unique cancelling
+  weight w = 1/2 outside the rescue window (−5/18, −2/9)) [F-T8-S1];
+  S2 chirality-interpolation family solved in closed form
+  (G*(λ) attained ∀λ; the closure architecture is GENERIC — λ = 1
+  selects the value 64√2/(9π), not the structure; achiral alternative
+  architecturally equivalent at c = 2√2) [F-T8-S2]; S3 O-1 covering
+  pilot: engine validated by containment replay but 0% certified —
+  wrapping-bound (true amplification 17–279 vs compounding wrapping
+  2.2–55×); full O-1 needs Taylor-model-grade technology
+  (~3.5×10⁶-box wrapping-free bound), not Q1-engine scale-up
+  [F-T8-S3]; S4 population screener: N = 10,000 (23× refinement),
+  minimum margin 0.6216 (0.14% above the P2 reference), worst-24 all
+  STABLE at 200-bit (0 UNSTABLE); hybrid wall-band screener a method
+  finding; attempt-1 calibration FAIL preserved [F-T8-S4].
+  Adjudication: `tier8-assessment/TIER8_ADJUDICATION.md`; archives:
+  `audit-logs/MANIFEST_tier6.json` workflow10/11 blocks. Remaining
+  opens after Phase S (sharpened in price, unchanged in kind): the
+  formally-verified kernel; the O-1…O-5 analytic theorem; F-R14
+  adoption (now carrying a third quantified IOU) + archive-external
+  g_lim. Every result is within-model; nothing here bears on nature.

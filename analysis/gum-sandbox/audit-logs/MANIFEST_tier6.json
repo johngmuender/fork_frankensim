@@ -1,5 +1,5 @@
 {
- "snapshot_utc": "2026-07-18 PHASE S IN CLOSEOUT - Tier 8 assessment pair (PROS/CONS, audited) + ROADMAP v10 S1-S3 complete (F-T8-S1..S3), S4 population chain running",
+ "snapshot_utc": "2026-07-18 PHASE S COMPLETE - Tier 8: audited PROS/CONS assessment pair + ROADMAP v10 S1-S4 all 16/16 gates PASS (F-T8-S1..S4); S4 chain finished 24/24 STABLE",
  "session": "536b52e3-c0e4-5548-a35f-7ca5893feba9",
  "branch": "claude/analyze-gum-po",
  "note": "Additive to MANIFEST.json (session d0b81976, ivm-viz line). This manifest covers the tier6-foundations session only.",
@@ -223,7 +223,7 @@
    "agent_id": "a0030ea395f5dd7e4",
    "description": "S4 population-scale screener",
    "phase": "Phase S execute",
-   "verdict": "G1 PASS 2.28e-7 (attempt-1 FAIL preserved); G2/G3 chain running at close"
+   "verdict": "4/4 PASS final: N=10,000 screen min 0.6216, worst-24 all STABLE at 200-bit, 0 UNSTABLE; F-T8-S4"
   }
  ],
  "caveat": "tier6-coordinator-session.jsonl.xz was snapshotted during the checkpointing turn; the last few checkpoint/commit exchanges after the snapshot instant are absent from the archive by construction. The git history and SESSION_CHECKPOINT_tier6.md carry that residue. Coordinator archive re-snapshotted after L5-prime adjudication; same tail caveat applies to the final commit exchange.",
