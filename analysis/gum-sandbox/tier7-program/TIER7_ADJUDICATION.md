@@ -192,3 +192,60 @@ route (i) closed by arithmetic; g_lim the isolated residue); F-T7-N3
 (line criterion refuted; T4-W5 residual sharpened to flow-map;
 covering-grade zeros; the n_y = 0 field statement). Run record:
 wf_9558d09c-007, 3 agents, 519,509 tokens.
+
+---
+
+## ADDENDUM — Phase O adjudication (workflow wf_c362f0c0-baa)
+
+**O1 — flow-map proof: adjudicated EXECUTED, 5/5 gates PASS — the
+T4-W5 terminal shape is demonstrated end to end (F-T7-O1).** The
+backward-reachability theorem (two-sided uniqueness on {ρ > 0};
+pre-crossing kills the arrival) executed over all 64,000 kill-bin
+detector points at three resolutions: **zero violations**, 80,000/80,000
+classification agreement under refinement, min pre-crossing margin
+0.621 = 22,068× the p95 path error, and a 16-point wall-cell residue
+flux-bounded at 2.8×10⁻⁷. The kill-bin first-crossing measure is now
+bounded at **≤ 2.8×10⁻⁷ per kill member given the computed field — a
+~5,400× field-level sharpening of L7b's sampled 1.5×10⁻³** — and the
+discrimination control reproduces the no-cutoff member's measured Π to
+20% (the criterion sees physics, not artifact). Adjudicated status of
+the T4-W5 residual: N3 proved the line criterion cannot work; O1
+demonstrates the backward-reachability/transport argument does. What
+remains open is only the *certified/analytic* form (interval
+integration or a closed-form argument); the proof's shape and its
+numerical content are now both on the record.
+
+**O2 — g_lim archaeology: adjudicated ABSENT-CERTIFIED (F-T7-O2).**
+658 text files, 14 logged patterns in three families, 370 hits
+catalogued verbatim: **zero Majoron-mode rate-level bounds** in the
+archive — no g_lim, no Majoron-mode T₁/₂, no detectability number, and
+no T₁/₂(g) conversion that could manufacture one. The nearest miss
+(KamLAND-Zen T₁/₂ > 3.8×10²⁶ yr in WS-K4) is triply disqualified
+(wrong mode; no conversion; printed under the corpus's own
+"occurrence, never a half-life" seal). The 89 g-side constraints are
+R-blind by construction. **The F-T7-N2 conditional kill's premise is
+now certified rather than asserted, and the kill stays armed:
+adjudicable only archive-externally, at g_lim < 8×10⁻³.**
+
+**O3 — F-R14 decision matrix: adjudicated EXECUTED, and it sharpens
+h33's bill into a single computed sentence (F-T7-O3).** All five h33
+anchors reproduced exactly in rational arithmetic; the full 5-reading ×
+2-bookkeeping matrix computed (~104 cells, 21/21 internal checks).
+**Exactly ONE cell of ten is sound — P-acoustic + supertrace** (all
+weights positive, c_GW² convex, (6.3) restored with its 4.0-order
+margin); every other cell fails as inverted-G or hull-exit, and the
+supertrace fix alone only trades inverted-G for hull-exit. The
+P-acoustic price is quantified: tuning fraction 1/4 (width-1/18 window;
+both natural conventions excluded and equidistant); the naive-knot
+total goes positive only on a pole-side subwindow where the hull is
+still mixed and the window's pole edge is where the (6.1) ansatz
+itself fails. h33's "two independent repairs is the minimum bill" is
+thereby *computed*, not argued. Decision support only; nothing
+recommended; the constitutive choice — and the F-R14 regrade — remain
+the authors'.
+
+**Findings register (Phase O):** F-T7-O1 (kill-bin zeros at field/flow
+grade; bound 2.8×10⁻⁷; terminal shape demonstrated); F-T7-O2 (g_lim
+ABSENT certified; N2 kill premise certified, armed); F-T7-O3 (the
+one-sound-cell matrix; tuning fraction 1/4; minimum bill computed).
+Run record: wf_c362f0c0-baa, 3 agents, 448,769 tokens.

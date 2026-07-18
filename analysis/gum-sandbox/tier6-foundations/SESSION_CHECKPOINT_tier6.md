@@ -320,3 +320,27 @@ TIER7_ADJUDICATION.md Phase-N addendum.
 Next natural opens: the flow-map proof (T4-W5 terminal shape); g_lim
 archaeology (corpus-side); F-R14 (authors' choice); corpus3 remains
 the standing offer.
+
+---
+
+## ADDENDUM (same session): PHASE O EXECUTED (flow-map proof; g_lim archaeology; F-R14 matrix)
+
+Workflow wf_c362f0c0-baa; adjudicated in TIER7_ADJUDICATION.md Phase-O
+addendum.
+- **O1 (F-T7-O1)**: backward-reachability proof executed — 64,000
+  kill-bin backward trajectories, zero violations at three resolutions,
+  min margin 0.621 (22,068× p95 error), residue flux ≤ 2.8e-7;
+  kill-bin zeros now FIELD/FLOW grade (~5,400× sharper than L7b);
+  T4-W5's remaining open is only the certified/analytic form.
+- **O2 (F-T7-O2)**: g_lim ABSENT-CERTIFIED (658 files, 14 patterns,
+  370 hits catalogued; nearest miss triply disqualified); the F-T7-N2
+  conditional kill premise certified, armed archive-externally at
+  g_lim < 8e-3.
+- **O3 (F-T7-O3)**: F-R14 matrix computed exactly — ONE sound cell of
+  ten (P-acoustic + supertrace); supertrace alone trades inverted-G
+  for hull-exit; tuning fraction 1/4; h33's minimum bill computed.
+  Decision remains the authors'.
+Remaining opens after Phase O: certified/analytic T4-W5 form;
+archive-external g_lim; the authors' F-R14 adoption; corpus3 v4.1
+standing offer. A corpus3 v4.2 delta folding F-T7-N*/O* is the natural
+next fold if directed.

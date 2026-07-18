@@ -1,5 +1,5 @@
 {
- "snapshot_utc": "2026-07-18 PHASE N COMPLETE (corpus3 v4.1 fold; F-R9 route-a honest second moment + conditional kill F-T7-N2; L7 line criterion refuted, T4-W5 sharpened to flow-map, F-T7-N3)",
+ "snapshot_utc": "2026-07-18 PHASE O COMPLETE (O1 flow-map proof 5/5 - kill-bin zeros field-grade at 2.8e-7; O2 g_lim ABSENT-CERTIFIED; O3 F-R14 matrix - one sound cell: P-acoustic + supertrace)",
  "session": "536b52e3-c0e4-5548-a35f-7ca5893feba9",
  "branch": "claude/analyze-gum-po",
  "note": "Additive to MANIFEST.json (session d0b81976, ivm-viz line). This manifest covers the tier6-foundations session only.",
@@ -121,6 +121,24 @@
    "description": "N3: L7 continuum proof attempt (crossing criterion)",
    "phase": "Tier 7 Phase N",
    "verdict": "NEGATIVE-WITH-DIAGNOSIS: line criterion refuted; T4-W5 sharpened to flow-map; covering-grade zeros banked (F-T7-N3)"
+  },
+  {
+   "agent_id": "a4409b72f6019caf4",
+   "description": "O1: backward-reachability flow-map proof (T4-W5 terminal shape)",
+   "phase": "Tier 7 Phase O",
+   "verdict": "5/5 PASS; zero violations over 64k backward paths x3 resolutions; kill-bin bound 2.8e-7 field-level (F-T7-O1)"
+  },
+  {
+   "agent_id": "adf6cad03f09b6752",
+   "description": "O2: g_lim archaeology (658 files, 14 patterns, 370 hits)",
+   "phase": "Tier 7 Phase O",
+   "verdict": "ABSENT-CERTIFIED; N2 conditional kill premise certified, armed externally (F-T7-O2)"
+  },
+  {
+   "agent_id": "aa970634c64d81248",
+   "description": "O3: F-R14 rescue decision matrix (exact rational arithmetic)",
+   "phase": "Tier 7 Phase O",
+   "verdict": "4/4 PASS; anchors exact; ONE sound cell (P-acoustic + supertrace); tuning fraction 1/4 (F-T7-O3)"
   }
  ],
  "caveat": "tier6-coordinator-session.jsonl.xz was snapshotted during the checkpointing turn; the last few checkpoint/commit exchanges after the snapshot instant are absent from the archive by construction. The git history and SESSION_CHECKPOINT_tier6.md carry that residue. Coordinator archive re-snapshotted after L5-prime adjudication; same tail caveat applies to the final commit exchange.",
@@ -147,5 +165,11 @@
   "archive": "tier7-workflow-wf_9558d09c-007.tar.xz",
   "script": "tier7-phaseN-workflow-script.js",
   "total_subagent_tokens": 519509
+ },
+ "workflow6": {
+  "run_id": "wf_c362f0c0-baa",
+  "archive": "tier7-workflow-wf_c362f0c0-baa.tar.xz",
+  "script": "tier7-phaseO-workflow-script.js",
+  "total_subagent_tokens": 448769
  }
 }

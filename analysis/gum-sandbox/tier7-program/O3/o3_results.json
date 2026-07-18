@@ -1,0 +1,837 @@
+{
+ "workstream": "O3 -- F-R14 rescue decision matrix [F-T7-O3]",
+ "date": "2026-07-18",
+ "epistemic_frame": "Within-model; nothing here bears on nature. Decision support only; the constitutive choice is the authors'.",
+ "master_form": "a1(p,q) = -(5p+q)/(12(2p+q)) per scalar mode (h33 M1, independently re-implemented in exact rational arithmetic here)",
+ "anchors": {
+  "covector": {
+   "pq_B2": [
+    "-1/2",
+    "1/2"
+   ],
+   "a1_B2": "-1/3",
+   "expected": "-1/3",
+   "match": true
+  },
+  "frame": {
+   "pq_B2": [
+    "1/2",
+    "3/2"
+   ],
+   "a1_B2": "-2/15",
+   "expected": "-2/15",
+   "match": true
+  },
+  "vector": {
+   "pq_B2": [
+    "3/2",
+    "5/2"
+   ],
+   "a1_B2": "-5/33",
+   "expected": "-5/33",
+   "match": true
+  },
+  "cone-only": {
+   "pq_B2": [
+    "0",
+    "1"
+   ],
+   "a1_B2": "-1/12",
+   "expected": "-1/12",
+   "match": true
+  },
+  "P-acoustic w=-1/4": {
+   "pq": [
+    "-1/4",
+    "3/4"
+   ],
+   "on_q_eq_-3p": true,
+   "a1": "1/6",
+   "expected": "1/6",
+   "match": true
+  }
+ },
+ "structural_invariants": {
+  "B2": "p = q - 1 (all variances + density weights; re-verified)",
+  "Q_sectors": "q = 3/2 group-protected (re-verified)",
+  "knot_Dirac": "a1 = 4(1/6 - 1/4) = -1/3 per field before loop sign; supertrace-signed = +2*(1/6) = +1/3"
+ },
+ "sector_content": {
+  "N_s_printed_via_h25_operator_table": {
+   "B2": 2,
+   "B3": 2,
+   "B4": 1
+  },
+  "N_knot": "3 Dirac species -- NOT printed in the corpus; parametrized (thresholds reported in N_knot)",
+  "Lambda_s": "no per-sector cutoffs printed; equal Lambda assumed; all weights in units Lambda^2"
+ },
+ "decision_matrix": [
+  {
+   "reading": "frame",
+   "pq_B2": [
+    "1/2",
+    "3/2"
+   ],
+   "pq_Q": [
+    "1/2",
+    "3/2"
+   ],
+   "a1_B2": "-2/15",
+   "a1_B3B4": "-2/15",
+   "sum_bosonic_over_Lambda2": "-2/3",
+   "N_s": {
+    "B2": 2,
+    "B3": 2,
+    "B4": 1,
+    "knot": "3 (parametrized, not printed)"
+   },
+   "cost": "favored: consistent with F10' objectivity (M-1 lesson) + VI.A's KBKK soldering; zero new postulates",
+   "naive_K2": {
+    "a1_knot_per_field": "-1/3",
+    "w_knot_over_Lambda2": "-1",
+    "sum_ws_over_Lambda2": "-5/3",
+    "G_sign": "-",
+    "G_status": "1/16piG = Sigma w_s < 0: INVERTED Newton constant",
+    "hull_status": "FORMALLY CONVEX (all w_s < 0: common sign divides out of the ratio (6.2)) -- but Sigma w_s < 0",
+    "margin_6p3_status": "(6.2) ratio arithmetic retained (margin 4.0 orders IF the bound held) but 1/16piG < 0 voids the sector upstream (contradicts VI.B)"
+   },
+   "supertrace_K3": {
+    "a1_knot_per_field": "1/3",
+    "w_knot_over_Lambda2": "1",
+    "sum_ws_over_Lambda2": "1/3",
+    "G_sign": "+",
+    "G_status": "G_ind > 0",
+    "hull_status": "MIXED SIGNS: weights w_s/Sigma w_s not in (0,1); c_GW^2 CAN exit the hull; (6.2) fails as an inequality",
+    "margin_6p3_status": "(6.3) demoted to order-of-magnitude estimate; the verified arithmetic (margin 4.0 orders, boundary-exact) holds only IF the bound held",
+    "G_flip_threshold": {
+     "N_knot_exceeds": "2",
+     "min_integer_N_knot": 3,
+     "note": "equal-Lambda assumption"
+    }
+   }
+  },
+  {
+   "reading": "covector",
+   "pq_B2": [
+    "-1/2",
+    "1/2"
+   ],
+   "pq_Q": [
+    "-1/2",
+    "3/2"
+   ],
+   "a1_B2": "-1/3",
+   "a1_B3B4": "1/6",
+   "sum_bosonic_over_Lambda2": "-1/6",
+   "N_s": {
+    "B2": 2,
+    "B3": 2,
+    "B4": 1,
+    "knot": "3 (parametrized, not printed)"
+   },
+   "cost": "violates F10' frame-relative discipline (the corpus's own cured defect M-1); abandons the KBKK soldering VI.A imports; unmodeled soldering-gradient connection terms (h33 sec.9) make its +1/6 the least stable cell",
+   "naive_K2": {
+    "a1_knot_per_field": "-1/3",
+    "w_knot_over_Lambda2": "-1",
+    "sum_ws_over_Lambda2": "-7/6",
+    "G_sign": "-",
+    "G_status": "1/16piG = Sigma w_s < 0: INVERTED Newton constant",
+    "hull_status": "MIXED SIGNS: weights w_s/Sigma w_s not in (0,1); c_GW^2 CAN exit the hull; (6.2) fails as an inequality",
+    "margin_6p3_status": "(6.3) demoted to order-of-magnitude estimate; the verified arithmetic (margin 4.0 orders, boundary-exact) holds only IF the bound held"
+   },
+   "supertrace_K3": {
+    "a1_knot_per_field": "1/3",
+    "w_knot_over_Lambda2": "1",
+    "sum_ws_over_Lambda2": "5/6",
+    "G_sign": "+",
+    "G_status": "G_ind > 0",
+    "hull_status": "MIXED SIGNS: weights w_s/Sigma w_s not in (0,1); c_GW^2 CAN exit the hull; (6.2) fails as an inequality",
+    "margin_6p3_status": "(6.3) demoted to order-of-magnitude estimate; the verified arithmetic (margin 4.0 orders, boundary-exact) holds only IF the bound held",
+    "G_flip_threshold": {
+     "N_knot_exceeds": "1/2",
+     "min_integer_N_knot": 1,
+     "note": "equal-Lambda assumption"
+    }
+   }
+  },
+  {
+   "reading": "vector",
+   "pq_B2": [
+    "3/2",
+    "5/2"
+   ],
+   "pq_Q": [
+    "3/2",
+    "3/2"
+   ],
+   "a1_B2": "-5/33",
+   "a1_B3B4": "-1/6",
+   "sum_bosonic_over_Lambda2": "-53/66",
+   "N_s": {
+    "B2": 2,
+    "B3": 2,
+    "B4": 1,
+    "knot": "3 (parametrized, not printed)"
+   },
+   "cost": "no printed text selects the vector variance; same F10' tension as covector without the +1/6 payoff",
+   "naive_K2": {
+    "a1_knot_per_field": "-1/3",
+    "w_knot_over_Lambda2": "-1",
+    "sum_ws_over_Lambda2": "-119/66",
+    "G_sign": "-",
+    "G_status": "1/16piG = Sigma w_s < 0: INVERTED Newton constant",
+    "hull_status": "FORMALLY CONVEX (all w_s < 0: common sign divides out of the ratio (6.2)) -- but Sigma w_s < 0",
+    "margin_6p3_status": "(6.2) ratio arithmetic retained (margin 4.0 orders IF the bound held) but 1/16piG < 0 voids the sector upstream (contradicts VI.B)"
+   },
+   "supertrace_K3": {
+    "a1_knot_per_field": "1/3",
+    "w_knot_over_Lambda2": "1",
+    "sum_ws_over_Lambda2": "13/66",
+    "G_sign": "+",
+    "G_status": "G_ind > 0",
+    "hull_status": "MIXED SIGNS: weights w_s/Sigma w_s not in (0,1); c_GW^2 CAN exit the hull; (6.2) fails as an inequality",
+    "margin_6p3_status": "(6.3) demoted to order-of-magnitude estimate; the verified arithmetic (margin 4.0 orders, boundary-exact) holds only IF the bound held",
+    "G_flip_threshold": {
+     "N_knot_exceeds": "53/22",
+     "min_integer_N_knot": 3,
+     "note": "equal-Lambda assumption"
+    }
+   }
+  },
+  {
+   "reading": "cone-only",
+   "pq_B2": [
+    "0",
+    "1"
+   ],
+   "pq_Q": [
+    "0",
+    "1"
+   ],
+   "a1_B2": "-1/12",
+   "a1_B3B4": "-1/12",
+   "sum_bosonic_over_Lambda2": "-5/12",
+   "N_s": {
+    "B2": 2,
+    "B3": 2,
+    "B4": 1,
+    "knot": "3 (parametrized, not printed)"
+   },
+   "cost": "reads VI.B's displayed g_s literally (time-time only); ignores that spatial covariantization is forced by VI.A (the strain-only retreat self-destructs, F-H33-3)",
+   "naive_K2": {
+    "a1_knot_per_field": "-1/3",
+    "w_knot_over_Lambda2": "-1",
+    "sum_ws_over_Lambda2": "-17/12",
+    "G_sign": "-",
+    "G_status": "1/16piG = Sigma w_s < 0: INVERTED Newton constant",
+    "hull_status": "FORMALLY CONVEX (all w_s < 0: common sign divides out of the ratio (6.2)) -- but Sigma w_s < 0",
+    "margin_6p3_status": "(6.2) ratio arithmetic retained (margin 4.0 orders IF the bound held) but 1/16piG < 0 voids the sector upstream (contradicts VI.B)"
+   },
+   "supertrace_K3": {
+    "a1_knot_per_field": "1/3",
+    "w_knot_over_Lambda2": "1",
+    "sum_ws_over_Lambda2": "7/12",
+    "G_sign": "+",
+    "G_status": "G_ind > 0",
+    "hull_status": "MIXED SIGNS: weights w_s/Sigma w_s not in (0,1); c_GW^2 CAN exit the hull; (6.2) fails as an inequality",
+    "margin_6p3_status": "(6.3) demoted to order-of-magnitude estimate; the verified arithmetic (margin 4.0 orders, boundary-exact) holds only IF the bound held",
+    "G_flip_threshold": {
+     "N_knot_exceeds": "5/4",
+     "min_integer_N_knot": 2,
+     "note": "equal-Lambda assumption"
+    }
+   }
+  },
+  {
+   "reading": "P-acoustic w=-1/4",
+   "pq_B2": [
+    "-1/4",
+    "3/4"
+   ],
+   "pq_Q": [
+    "-1/4",
+    "3/4"
+   ],
+   "a1_B2": "1/6",
+   "a1_B3B4": "1/6",
+   "sum_bosonic_over_Lambda2": "5/6",
+   "N_s": {
+    "B2": 2,
+    "B3": 2,
+    "B4": 1,
+    "knot": "3 (parametrized, not printed)"
+   },
+   "cost": "NEW quantization-measure postulate ([CJ]-class, not an erratum), three printed costs: (1) reopens Sec. III's flat-measure [DF] derivations on curved backgrounds; (2) rho0, J ~ 1/det g3 against KBKK wedge-insertion + F5/F8 bookkeeping; (3) unforced width-1/18 window excluding both natural conventions (tuning by VI.D's own standard) -- tuning fraction quantified below",
+   "naive_K2": {
+    "a1_knot_per_field": "-1/3",
+    "w_knot_over_Lambda2": "-1",
+    "sum_ws_over_Lambda2": "-1/6",
+    "G_sign": "-",
+    "G_status": "1/16piG = Sigma w_s < 0: INVERTED Newton constant",
+    "hull_status": "MIXED SIGNS: weights w_s/Sigma w_s not in (0,1); c_GW^2 CAN exit the hull; (6.2) fails as an inequality",
+    "margin_6p3_status": "(6.3) demoted to order-of-magnitude estimate; the verified arithmetic (margin 4.0 orders, boundary-exact) holds only IF the bound held"
+   },
+   "supertrace_K3": {
+    "a1_knot_per_field": "1/3",
+    "w_knot_over_Lambda2": "1",
+    "sum_ws_over_Lambda2": "11/6",
+    "G_sign": "+",
+    "G_status": "G_ind > 0",
+    "hull_status": "CONVEX: all w_s > 0; c_GW^2 cannot exit the sector-cone hull; (6.2) holds as an inequality",
+    "margin_6p3_status": "(6.3) restored as inequality; margin = 4.0 orders, boundary-exact"
+   }
+  }
+ ],
+ "p_acoustic": {
+  "window": [
+   "-5/18",
+   "-2/9"
+  ],
+  "width": "1/18",
+  "edges": {
+   "w=-2/9": "5p+q = 0 (a1 -> 0)",
+   "w=-5/18": "2p+q = 0 POLE (a1 diverges; h25's 'ansatz fails structurally' ray is the window edge)"
+  },
+  "distinguished_point": {
+   "w": "-1/4",
+   "ray": "q = -3p (unimodular/exact-acoustic, Unruh-aligned)",
+   "a1": "1/6"
+  },
+  "natural_conventions": {
+   "w=0 (corpus flat measure)": {
+    "w": "0",
+    "set_distance_to_window": "2/9",
+    "center_distance": "1/4"
+   },
+   "w=-1/2 (half-density)": {
+    "w": "-1/2",
+    "set_distance_to_window": "2/9",
+    "center_distance": "1/4"
+   }
+  },
+  "tuning_fraction": {
+   "definition_primary": "window width / distance from the window (as a set) to the nearest natural convention",
+   "value_primary": "1/4",
+   "value_center_variant": "2/9",
+   "note": "both natural conventions are EQUIDISTANT (2/9 set / 1/4 center) -- the window sits exactly midway"
+  },
+  "three_printed_costs": "NEW quantization-measure postulate ([CJ]-class, not an erratum), three printed costs: (1) reopens Sec. III's flat-measure [DF] derivations on curved backgrounds; (2) rho0, J ~ 1/det g3 against KBKK wedge-insertion + F5/F8 bookkeeping; (3) unforced width-1/18 window excluding both natural conventions (tuning by VI.D's own standard) -- tuning fraction quantified below",
+  "scan": {
+   "n_points": 61,
+   "w": [
+    -0.27688172043010756,
+    -0.27598566308243727,
+    -0.27508960573476704,
+    -0.2741935483870968,
+    -0.2732974910394265,
+    -0.2724014336917563,
+    -0.27150537634408606,
+    -0.27060931899641577,
+    -0.26971326164874554,
+    -0.26881720430107525,
+    -0.267921146953405,
+    -0.2670250896057348,
+    -0.2661290322580645,
+    -0.26523297491039427,
+    -0.26433691756272404,
+    -0.26344086021505375,
+    -0.2625448028673835,
+    -0.2616487455197133,
+    -0.260752688172043,
+    -0.25985663082437277,
+    -0.25896057347670254,
+    -0.25806451612903225,
+    -0.257168458781362,
+    -0.2562724014336918,
+    -0.2553763440860215,
+    -0.25448028673835127,
+    -0.253584229390681,
+    -0.25268817204301075,
+    -0.2517921146953405,
+    -0.25089605734767023,
+    -0.25,
+    -0.24910394265232974,
+    -0.2482078853046595,
+    -0.24731182795698925,
+    -0.246415770609319,
+    -0.24551971326164873,
+    -0.2446236559139785,
+    -0.24372759856630824,
+    -0.24283154121863798,
+    -0.24193548387096775,
+    -0.2410394265232975,
+    -0.24014336917562723,
+    -0.239247311827957,
+    -0.23835125448028674,
+    -0.23745519713261648,
+    -0.23655913978494622,
+    -0.235663082437276,
+    -0.23476702508960573,
+    -0.23387096774193547,
+    -0.2329749103942652,
+    -0.23207885304659498,
+    -0.23118279569892472,
+    -0.23028673835125446,
+    -0.22939068100358423,
+    -0.22849462365591397,
+    -0.2275985663082437,
+    -0.22670250896057348,
+    -0.22580645161290322,
+    -0.22491039426523296,
+    -0.2240143369175627,
+    -0.22311827956989247
+   ],
+   "a1_per_bosonic_mode": [
+    10.166666666666961,
+    4.999999999999959,
+    3.2777777777777923,
+    2.4166666666666936,
+    1.8999999999999975,
+    1.5555555555555618,
+    1.30952380952382,
+    1.125000000000001,
+    0.9814814814814861,
+    0.866666666666665,
+    0.7727272727272738,
+    0.6944444444444452,
+    0.6282051282051281,
+    0.5714285714285713,
+    0.5222222222222235,
+    0.47916666666666613,
+    0.44117647058823534,
+    0.40740740740740833,
+    0.37719298245614,
+    0.3500000000000005,
+    0.32539682539682646,
+    0.30303030303030276,
+    0.2826086956521742,
+    0.2638888888888893,
+    0.2466666666666664,
+    0.23076923076923095,
+    0.21604938271604904,
+    0.20238095238095244,
+    0.1896551724137932,
+    0.17777777777777745,
+    0.16666666666666666,
+    0.15624999999999983,
+    0.14646464646464658,
+    0.13725490196078424,
+    0.12857142857142861,
+    0.12037037037037025,
+    0.11261261261261271,
+    0.10526315789473668,
+    0.09829059829059825,
+    0.09166666666666681,
+    0.0853658536585366,
+    0.07936507936507926,
+    0.07364341085271324,
+    0.06818181818181812,
+    0.062962962962963,
+    0.057971014492753555,
+    0.0531914893617022,
+    0.04861111111111108,
+    0.044217687074829794,
+    0.03999999999999996,
+    0.0359477124183007,
+    0.03205128205128201,
+    0.0283018867924527,
+    0.024691358024691332,
+    0.021212121212121102,
+    0.017857142857142835,
+    0.014619883040935741,
+    0.011494252873563208,
+    0.008474576271186354,
+    0.005555555555555549,
+    0.0027322404371583927
+   ],
+   "sum_bosonic_over_Lambda2": [
+    50.83333333333481,
+    24.999999999999794,
+    16.38888888888896,
+    12.083333333333467,
+    9.499999999999988,
+    7.777777777777809,
+    6.5476190476191,
+    5.625000000000005,
+    4.9074074074074305,
+    4.333333333333325,
+    3.863636363636369,
+    3.472222222222226,
+    3.1410256410256405,
+    2.8571428571428563,
+    2.6111111111111174,
+    2.395833333333331,
+    2.2058823529411766,
+    2.0370370370370416,
+    1.8859649122807,
+    1.7500000000000024,
+    1.6269841269841323,
+    1.5151515151515138,
+    1.4130434782608712,
+    1.3194444444444464,
+    1.233333333333332,
+    1.1538461538461546,
+    1.0802469135802453,
+    1.0119047619047623,
+    0.948275862068966,
+    0.8888888888888873,
+    0.8333333333333333,
+    0.7812499999999991,
+    0.7323232323232329,
+    0.6862745098039212,
+    0.642857142857143,
+    0.6018518518518513,
+    0.5630630630630635,
+    0.5263157894736834,
+    0.49145299145299126,
+    0.45833333333333404,
+    0.42682926829268303,
+    0.3968253968253963,
+    0.3682170542635662,
+    0.3409090909090906,
+    0.314814814814815,
+    0.2898550724637678,
+    0.26595744680851097,
+    0.24305555555555539,
+    0.22108843537414896,
+    0.1999999999999998,
+    0.1797385620915035,
+    0.16025641025641002,
+    0.1415094339622635,
+    0.12345679012345666,
+    0.10606060606060551,
+    0.08928571428571418,
+    0.0730994152046787,
+    0.057471264367816036,
+    0.04237288135593177,
+    0.027777777777777745,
+    0.013661202185791964
+   ],
+   "knot_naive_over_Lambda2": -1.0,
+   "knot_supertrace_over_Lambda2": 1.0,
+   "total_naive": [
+    49.83333333333481,
+    23.999999999999794,
+    15.38888888888896,
+    11.083333333333467,
+    8.499999999999988,
+    6.777777777777809,
+    5.5476190476191,
+    4.625000000000005,
+    3.9074074074074305,
+    3.333333333333325,
+    2.863636363636369,
+    2.472222222222226,
+    2.1410256410256405,
+    1.8571428571428563,
+    1.6111111111111174,
+    1.3958333333333308,
+    1.2058823529411766,
+    1.0370370370370416,
+    0.8859649122807001,
+    0.7500000000000024,
+    0.6269841269841323,
+    0.5151515151515138,
+    0.4130434782608712,
+    0.3194444444444464,
+    0.23333333333333206,
+    0.15384615384615463,
+    0.08024691358024527,
+    0.011904761904762307,
+    -0.05172413793103403,
+    -0.11111111111111271,
+    -0.16666666666666674,
+    -0.2187500000000009,
+    -0.26767676767676707,
+    -0.31372549019607876,
+    -0.357142857142857,
+    -0.3981481481481487,
+    -0.43693693693693647,
+    -0.4736842105263166,
+    -0.5085470085470087,
+    -0.541666666666666,
+    -0.5731707317073169,
+    -0.6031746031746037,
+    -0.6317829457364338,
+    -0.6590909090909094,
+    -0.685185185185185,
+    -0.7101449275362322,
+    -0.734042553191489,
+    -0.7569444444444446,
+    -0.7789115646258511,
+    -0.8000000000000003,
+    -0.8202614379084965,
+    -0.83974358974359,
+    -0.8584905660377364,
+    -0.8765432098765433,
+    -0.8939393939393945,
+    -0.9107142857142858,
+    -0.9269005847953213,
+    -0.942528735632184,
+    -0.9576271186440682,
+    -0.9722222222222222,
+    -0.9863387978142081
+   ],
+   "total_supertrace": [
+    51.83333333333481,
+    25.999999999999794,
+    17.38888888888896,
+    13.083333333333467,
+    10.499999999999988,
+    8.777777777777809,
+    7.5476190476191,
+    6.625000000000005,
+    5.9074074074074305,
+    5.333333333333325,
+    4.863636363636369,
+    4.472222222222226,
+    4.1410256410256405,
+    3.8571428571428563,
+    3.6111111111111174,
+    3.395833333333331,
+    3.2058823529411766,
+    3.0370370370370416,
+    2.8859649122807003,
+    2.7500000000000027,
+    2.6269841269841323,
+    2.515151515151514,
+    2.413043478260871,
+    2.3194444444444464,
+    2.233333333333332,
+    2.1538461538461546,
+    2.080246913580245,
+    2.0119047619047623,
+    1.948275862068966,
+    1.8888888888888873,
+    1.8333333333333333,
+    1.7812499999999991,
+    1.732323232323233,
+    1.6862745098039214,
+    1.642857142857143,
+    1.6018518518518512,
+    1.5630630630630635,
+    1.5263157894736834,
+    1.4914529914529913,
+    1.458333333333334,
+    1.426829268292683,
+    1.3968253968253963,
+    1.368217054263566,
+    1.3409090909090906,
+    1.3148148148148149,
+    1.2898550724637678,
+    1.2659574468085109,
+    1.2430555555555554,
+    1.221088435374149,
+    1.1999999999999997,
+    1.1797385620915035,
+    1.1602564102564101,
+    1.1415094339622636,
+    1.1234567901234567,
+    1.1060606060606055,
+    1.0892857142857142,
+    1.0730994152046787,
+    1.0574712643678161,
+    1.0423728813559319,
+    1.0277777777777777,
+    1.013661202185792
+   ],
+   "hull_naive": "MIXED at every scanned point (bosonic +, knots -): c_GW^2 can exit",
+   "hull_supertrace": "CONVEX at every scanned point",
+   "naive_G_positive_subwindow": {
+    "exact": [
+     "-5/18",
+     "-25/99"
+    ],
+    "width": "5/198",
+    "fraction_of_window": 0.45454545454545453
+   }
+  }
+ },
+ "margin_6p3": {
+  "orders": 4.0,
+  "arithmetic": "log10(1e-15) - log10(1e-19) = 4.0, boundary-exact (corpus language retained: 'IF the bound held')"
+ },
+ "gates": {
+  "G1_anchors_exact": {
+   "pass": true,
+   "measured": {
+    "covector": "-1/3",
+    "frame": "-2/15",
+    "vector": "-5/33",
+    "cone-only": "-1/12",
+    "P-acoustic w=-1/4": "1/6"
+   }
+  },
+  "G2_matrix_fully_computed": {
+   "pass": true,
+   "rows": 5,
+   "bookkeepings_per_row": 2
+  },
+  "G3_pricing_and_supertrace": {
+   "pass": true,
+   "tuning_fraction_set_distance": "1/4",
+   "tuning_fraction_center_distance": "2/9",
+   "supertrace_flips": {
+    "frame": {
+     "naive": "-",
+     "supertrace": "+",
+     "flips_at_default_N": true,
+     "threshold": {
+      "N_knot_exceeds": "2",
+      "min_integer_N_knot": 3,
+      "note": "equal-Lambda assumption"
+     }
+    },
+    "covector": {
+     "naive": "-",
+     "supertrace": "+",
+     "flips_at_default_N": true,
+     "threshold": {
+      "N_knot_exceeds": "1/2",
+      "min_integer_N_knot": 1,
+      "note": "equal-Lambda assumption"
+     }
+    },
+    "vector": {
+     "naive": "-",
+     "supertrace": "+",
+     "flips_at_default_N": true,
+     "threshold": {
+      "N_knot_exceeds": "53/22",
+      "min_integer_N_knot": 3,
+      "note": "equal-Lambda assumption"
+     }
+    },
+    "cone-only": {
+     "naive": "-",
+     "supertrace": "+",
+     "flips_at_default_N": true,
+     "threshold": {
+      "N_knot_exceeds": "5/4",
+      "min_integer_N_knot": 2,
+      "note": "equal-Lambda assumption"
+     }
+    },
+    "P-acoustic w=-1/4": {
+     "naive": "-",
+     "supertrace": "+",
+     "flips_at_default_N": true,
+     "threshold": null
+    }
+   }
+  },
+  "G4_honest_bottom_line": {
+   "pass": true,
+   "text": "DECISION SUPPORT ONLY. The constitutive choice is the authors' (charter language). No reading is recommended here; each is priced. The F-R14 regrade language is UNCHANGED by this workstream: Theorem VI.1 remains OPEN-DEFECT (unconditional as printed); (6.3) remains demoted to an order-of-magnitude estimate; P-M3 remains premise-suspended pending the E.6 discharge; adoption of P-acoustic (+ the knot supertrace erratum -- two independent repairs is the minimum bill) would be a new [CJ]-class constitutive postulate, not an erratum."
+  }
+ },
+ "checks": [
+  {
+   "name": "G1 anchor a1_B2(covector) = -1/3",
+   "pass": true,
+   "detail": "(p,q)=(-1/2,1/2) -> -1/3"
+  },
+  {
+   "name": "G1 anchor a1_B2(frame) = -2/15",
+   "pass": true,
+   "detail": "(p,q)=(1/2,3/2) -> -2/15"
+  },
+  {
+   "name": "G1 anchor a1_B2(vector) = -5/33",
+   "pass": true,
+   "detail": "(p,q)=(3/2,5/2) -> -5/33"
+  },
+  {
+   "name": "G1 anchor a1_B2(cone-only) = -1/12",
+   "pass": true,
+   "detail": "(p,q)=(0,1) -> -1/12"
+  },
+  {
+   "name": "G1 anchor P-acoustic w=-1/4: on q=-3p, a1 = +1/6",
+   "pass": true,
+   "detail": "(p,q)=(-1/4,3/4) -> 1/6"
+  },
+  {
+   "name": "G1 ALL FIVE ANCHORS EXACT",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "name": "B2 invariant p = q - 1 (all variances, sample density weights)",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "name": "Q~ invariant q = 3/2 group-protected (variance readings, w=0)",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "name": "knot Dirac-type a1 = -1/3 per field before loop sign (h25 K2)",
+   "pass": true,
+   "detail": "-1/3"
+  },
+  {
+   "name": "knot supertrace-signed = +2 minimal-scalar equiv = +1/3 (h25 K3)",
+   "pass": true,
+   "detail": "1/3"
+  },
+  {
+   "name": "G2 decision matrix fully computed",
+   "pass": true,
+   "detail": "5 rows x 2 bookkeepings, ~104 computed cells"
+  },
+  {
+   "name": "G3a supertrace-flip analysis computed for every reading",
+   "pass": true,
+   "detail": "{'frame': True, 'covector': True, 'vector': True, 'cone-only': True, 'P-acoustic w=-1/4': True}"
+  },
+  {
+   "name": "window width = 1/18",
+   "pass": true,
+   "detail": "1/18"
+  },
+  {
+   "name": "edge w=-2/9 is the 5p+q=0 zero; w=-5/18 the 2p+q=0 pole",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "name": "G3b tuning fraction (set-distance) = (1/18)/(2/9) = 1/4",
+   "pass": true,
+   "detail": "d(w=0)=2/9, d(w=-1/2)=2/9 (equal)"
+  },
+  {
+   "name": "G3b tuning fraction (center-distance variant) = (1/18)/(1/4) = 2/9",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "name": "naive-knot G>0 subwindow edge exact (N_knot=3): w = -25/99",
+   "pass": true,
+   "detail": "w_cross=-25/99, a1=1/5"
+  },
+  {
+   "name": "naive G>0 subwindow width = 5/198 (of the 1/18 window)",
+   "pass": true,
+   "detail": "fraction of window = 5/11 = 0.4545"
+  },
+  {
+   "name": "scan: a1(w) > 0 at every interior point (window = positivity wedge)",
+   "pass": true,
+   "detail": "min a1 = 0.0027, max a1 = 10.17 (diverges toward the pole edge w=-5/18)"
+  },
+  {
+   "name": "scan: supertrace total > 0 and convex across the ENTIRE window",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "name": "scan: naive-knot total positive only on the pole-side subwindow",
+   "pass": true,
+   "detail": "scan fraction 0.459 vs exact 0.455 -- and there the hull is still MIXED (knots negative)"
+  }
+ ],
+ "n_pass": 21,
+ "n_total": 21
+}
