@@ -290,3 +290,33 @@ adjudicated in TIER7_ADJUDICATION.md. Headlines:
   clause — the wrong pre-registration that produced the discovery).
 Natural next candidates: corpus3 delta folding F-T7-* (a v4.1 pass);
 F-R9 route (a) second-moment treatment; L7 continuum proof.
+
+---
+
+## ADDENDUM (same session): PHASE N EXECUTED (v4.1 fold; F-R9 route (a); L7 continuum attempt)
+
+User-directed; workflow wf_9558d09c-007; adjudicated in
+TIER7_ADJUDICATION.md Phase-N addendum.
+- **N1**: corpus3 paper now `01-GUM-Omega-Paper-v4.1-ext.md` (8 ⟦T7⟧
+  blocks; additive-only verified; 26/26 payload numbers verbatim);
+  manifest/record/campaign-status updated additively.
+- **N2 (F-T7-N2)**: honest second-moment rate = R × claimed (spatial
+  self-averaging, RSD ≤ 5e-4); extreme hot-site Lorenz (100% of rate
+  on ≤ 1e-12 site fraction); g_equiv = √R·g = 8.5e-3–12.3, 6.9–10.1
+  orders above the corpus's own P-ν4 line; repricing retreat CLOSED by
+  arithmetic (f_req 490–44,000 TeV vs [4,60] MeV). Verdict
+  INDETERMINATE-FROM-ARCHIVE: the archive prints no Majoron-mode 0νββ
+  bound; **conditional kill filed: any external g_lim < 8e-3 excludes
+  the honest rate everywhere**. F-R9 terminal menu: adopt-R (face
+  g_lim) or route (c) at line-support cost. S1/S6 untouched.
+- **N3 (F-T7-N3)**: the line-local crossing criterion REFUTED in this
+  geometry (v_x = A(t) + n_y S(z); S(1/2) = 0 and positive wall
+  branch ⇒ no sign certificate ahead of a forward-boosted source);
+  T4-W5 residual sharpened: the cutoff is a TRANSPORT phenomenon —
+  prove via flow-map. Banked: valid n_y = 0 field statement (axial
+  support ⊂ [0,15.87] vs sampled 15.787); 60,000-trajectory covering
+  with 0 kill-bin crossings (support edges 5.142/6.017 vs kill bin
+  6.4). Third productive coordinator spec artifact of the tier.
+Next natural opens: the flow-map proof (T4-W5 terminal shape); g_lim
+archaeology (corpus-side); F-R14 (authors' choice); corpus3 remains
+the standing offer.

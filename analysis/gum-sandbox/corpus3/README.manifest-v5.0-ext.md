@@ -21,7 +21,7 @@ S-30 remains in force and this edition is built to comply with it, not around it
 
 | corpus3 file (this edition) | corpus2 source (preserved, unedited) | Disposition |
 |---|---|---|
-| corpus3/01-GUM-Omega-Paper-v4.0-ext.md | corpus2/01-GUM-Omega-Paper-v3.0-ext.md | **NEW EDITION** — ⟦T6⟧ additions (foundations annotations, quantum-sector exhibits, Lock-2 lemma, L7 testbed, references/open-problems updates) |
+| corpus3/01-GUM-Omega-Paper-v4.1-ext.md | corpus2/01-GUM-Omega-Paper-v3.0-ext.md | **NEW EDITION** — ⟦T6⟧ additions (foundations annotations, quantum-sector exhibits, Lock-2 lemma, L7 testbed, references/open-problems updates) |
 | corpus3/02-The-Substrate-Course-v3-ext.md | corpus2/02-The-Substrate-Course-v2-ext.md | **NEW EDITION** — ⟦T6⟧ teaching-layer additions |
 | corpus3/03-The-Substrate-Primer-v3-ext.md | corpus2/03-The-Substrate-Primer-v2-ext.md | **NEW EDITION** — ⟦T6⟧ additions |
 | corpus3/04-Substrate-Primer-Teachers-Edition-v3-ext.md | corpus2/04-Substrate-Primer-Teachers-Edition-v2-ext.md | **NEW EDITION** — ⟦T6⟧ additions |
@@ -31,6 +31,9 @@ S-30 remains in force and this edition is built to comply with it, not around it
 | corpus3/README.manifest-v5.0-ext.md | corpus2/README.manifest-v4.0-ext.md | **NEW EDITION** (this document) |
 | corpus3/REVISION_CHARTER_v2.md | corpus2/REVISION_CHARTER.md (inherited) | **GOVERNING INSTRUMENT** — this edition's binding rules 1–7 |
 | corpus3/T6_FOLD_PAYLOAD.md | — (new instrument) | **PAYLOAD OF RECORD** — the canonical, sole-authority statement of every foldable Tier-6 result (charter rule 7) |
+| ⟦T7⟧ corpus3/T7_FOLD_PAYLOAD.md | — (new instrument) | ⟦T7⟧ **PAYLOAD OF RECORD (Tier 7)** — the canonical, sole-authority statement of every foldable Tier-7 result (charter rule 7, marker ⟦T7⟧) |
+
+⟦T7⟧ **Census delta (v4.1 of the paper, 2026-07-18).** The paper's census row above is updated in its filename cell only — corpus3/01-GUM-Omega-Paper-v4.0-ext.md → **corpus3/01-GUM-Omega-Paper-v4.1-ext.md** (git mv; the v4.0-ext content is the v4.1-ext file's verbatim base, recoverable at git HEAD) — treated as a version-header-class exception under S-30 rule 2, noted here; the Disposition text is carried unchanged and now additionally covers the **⟦T7⟧ additions** (third-phase Sec.-0 record; III.D Nelson-relaxation annotation; IV.H.3 servo-coefficient annotation; VI.D WS4-M4c toy discharge + the F-T7-1 minor flag; Sec. X third-phase record; Sec. XI register update). Findings folded: **F-T7-M1…M4 + F-T7-1**; payload of record: corpus3/T7_FOLD_PAYLOAD.md; artifact set: tier7-program/.
 
 ### Carried forward unchanged, by reference (the S-30 rule for everything unlisted)
 
@@ -65,4 +68,8 @@ S-30 remains in force and this edition is built to comply with it, not around it
 7. corpus3/The-Watch-Mode-Transition-Memo-v3-ext.md §10 — the watch's dated status entry.
 8. Course / Primer / TE v3-ext editions — the teaching layer, updated last by design.
 
+⟦T7⟧ *(Reading-order note, v4.1 delta: item 5's paper now lives at **corpus3/01-GUM-Omega-Paper-v4.1-ext.md** — read its ⟦T7⟧ boxes with corpus3/T7_FOLD_PAYLOAD.md as the canonical numbers, and 09-External-Replication-Record-v2.0.md **§8** as the Tier-7 phase record.)*
+
 *Version history: v1 → … → v3.0 (2026-07-06: the covenant folding) → v4.0-ext (2026-07-16: the external folding; preserved at corpus2/README.manifest-v4.0-ext.md) → **v5.0-ext (2026-07-17: the Tier-6 fold — the campaign's foundations phase folded in as ⟦T6⟧ additions under charter v2; findings F-T6-1…6, F-T6-L5, F-T6-L7a/b filed; 16 original gates 14 PASS + 2 PARTIAL→converted by L5′, L7 9/9 PASS; the five annotations offered as proposals; the L7 exclusion carried at testbed grade with its scope caveat; L5′'s G4 reported FAIL-AT-d25/null-approached. Assembled by the replicators; adoption is the authors'.)***
+
+⟦T7⟧ *Version history, continued — the paper's v4.1 delta (2026-07-18: the Tier-7 program-extension fold — the campaign's third phase, workflow wf_95da92d5-375, folded into **01-GUM-Omega-Paper-v4.1-ext.md** as ⟦T7⟧ additions under charter v2; findings **F-T7-M1…M4 + F-T7-1** filed; per-workstream gates M1 G1/G2/G5 PASS + G3 CONDITIONAL (convention-bound) + G4 PASS-MATCH, M2 four PASS + G4 PASS-MEASURED, M3 verdict NOT-VIABLE per pre-registered rule, M4 G1–G3 PASS + G4 PARTIAL-as-discovery; two coordinator-owned spec defects printed (the M1 Γ = γH degenerate profile; the M4 continuity clause); payload of record corpus3/T7_FOLD_PAYLOAD.md; audit archives audit-logs/MANIFEST_tier6.json (workflow4 block) + tier7-program/TIER7_ADJUDICATION.md. This manifest remains v5.0-ext — the delta is recorded additively here. Assembled by the replicators; adoption is the authors'.)*

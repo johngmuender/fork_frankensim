@@ -1,0 +1,823 @@
+{
+  "workstream": "N3",
+  "file_id": "F-T7-N3",
+  "params": {
+    "L": 1.0,
+    "sigma_x": 1.0,
+    "x0": -5.0,
+    "k0": 2.0,
+    "taper": "S2 smoothstep, W=1 for |x-x0|<=2.5 sigma, 0 at 3.5",
+    "amplitude": "literal exp(-(x-x0)^2/(2 sigma^2)) * W",
+    "box": [
+      -15.0,
+      45.0
+    ],
+    "Nx_ref": 2048,
+    "dt_ref": 0.00025,
+    "dt_out": 0.01,
+    "T": 16.0,
+    "d": 1.0,
+    "nz_line": 1999,
+    "floors": [
+      0.1,
+      0.01,
+      0.001
+    ],
+    "ny_gate": [
+      1.0,
+      0.75,
+      -0.75,
+      -1.0,
+      0.25,
+      0.0
+    ],
+    "ny_cover": [
+      -1.0,
+      -0.75,
+      0.75,
+      1.0
+    ],
+    "vclamp": 500.0,
+    "rho_eps_rel": 1e-14
+  },
+  "field_structure": {
+    "identity": "v_x(d,z,t;n_y) = A(t) + n_y S(z) with A(t) = Im(f'/f)(d,t) [z-independent] and S(z) = -pi cot(pi z) [t-independent]; exact for the factorized state.  S has a positive branch (z->1 for n_y>0, z->0 for n_y<0), unbounded until the engine clamp; S(1/2) = 0 for every n_y.",
+    "A_stats": {
+      "frac_t_nonneg": 0.9687695190505934,
+      "last_t_nonneg": 15.87,
+      "A_min_kill_bins": 0.8573505096372404,
+      "A_max_kill_bins": 0.964054185699264,
+      "A_at_T": -1.901005550007219,
+      "rho_line_at_T": 0.0009633130600221392
+    }
+  },
+  "discretization_bounds": {
+    "Nx_doubling": {
+      "after_sampled_taumax": {
+        "median": 1.7425031582085637e-05,
+        "p95": 0.0003515571775845386,
+        "max": 0.0034036767664586964
+      },
+      "kill_bins": {
+        "median": 9.168119743940828e-06,
+        "p95": 2.172740411419682e-05,
+        "max": 2.451638703759862e-05
+      },
+      "full": {
+        "median": 1.193156179246646e-05,
+        "p95": 0.000618845237039034,
+        "max": 17.758591721620043
+      }
+    },
+    "dt_halving": {
+      "after_sampled_taumax": {
+        "median": 7.464251439159852e-12,
+        "p95": 4.069489745184287e-11,
+        "max": 1.9086132674317469e-10
+      },
+      "kill_bins": {
+        "median": 5.270561764803006e-12,
+        "p95": 7.533729196040895e-12,
+        "max": 7.583489392004594e-12
+      },
+      "full": {
+        "median": 4.664157948752745e-12,
+        "p95": 5.788634502290613e-11,
+        "max": 3.2137564716094857e-06
+      }
+    },
+    "exact_vs_stepped": {
+      "after_sampled_taumax": {
+        "median": 2.8669289164895417e-12,
+        "p95": 1.5738890746241908e-11,
+        "max": 7.118283740226161e-11
+      },
+      "kill_bins": {
+        "median": 1.3236078899581116e-12,
+        "p95": 1.8816004310195923e-12,
+        "max": 2.035260848742837e-12
+      }
+    },
+    "total_pointwise": {
+      "after_sampled_taumax": {
+        "median": 1.7425039334661996e-05,
+        "p95": 0.00035155720474421866,
+        "max": 0.0034036769572356462
+      },
+      "kill_bins": {
+        "median": 9.16812347329099e-06,
+        "p95": 2.1727409092242575e-05,
+        "max": 2.4516394570017752e-05
+      }
+    }
+  },
+  "criterion": {
+    "+1.00": {
+      "full": {
+        "tau_star": 16.0,
+        "exists_below_T": false,
+        "frac_t_nonneg": 1.0,
+        "M_at_T": 500.0,
+        "M_max": 500.0,
+        "M_min": 500.0,
+        "delta_min_after_tau01": null,
+        "M_min_bin_6.4_6.8": 500.0,
+        "M_min_bin_6.8_7.2": 500.0
+      },
+      "floor0.1": {
+        "tau_star": 16.0,
+        "exists_below_T": false,
+        "frac_t_nonneg": 1.0,
+        "M_at_T": 7.515526177938157,
+        "M_max": 90.0262923457139,
+        "M_min": 7.4713782501489225,
+        "delta_min_after_tau01": null,
+        "M_min_bin_6.4_6.8": 10.320872859778877,
+        "M_min_bin_6.8_7.2": 10.273882237582617
+      },
+      "floor0.01": {
+        "tau_star": 16.0,
+        "exists_below_T": false,
+        "frac_t_nonneg": 1.0,
+        "M_at_T": 29.243647670237216,
+        "M_max": 111.75441383801295,
+        "M_min": 29.199499742447983,
+        "delta_min_after_tau01": null,
+        "M_min_bin_6.4_6.8": 32.04899435207793,
+        "M_min_bin_6.8_7.2": 32.00200372988168
+      },
+      "floor0.001": {
+        "tau_star": 16.0,
+        "exists_below_T": false,
+        "frac_t_nonneg": 1.0,
+        "M_at_T": 93.30254356657608,
+        "M_max": 175.8133097343518,
+        "M_min": 93.25839563878684,
+        "delta_min_after_tau01": null,
+        "M_min_bin_6.4_6.8": 96.1078902484168,
+        "M_min_bin_6.8_7.2": 96.06089962622053
+      },
+      "mid": {
+        "tau_star": 15.87,
+        "exists_below_T": true,
+        "frac_t_nonneg": 0.9687695190505934,
+        "M_at_T": -1.901005550007219,
+        "M_max": 80.60976061776852,
+        "M_min": -1.9451534777964536,
+        "delta_min_after_tau01": 1.8701231491505517,
+        "delta_median_after_tau01": 1.9199525401217001,
+        "M_min_bin_6.4_6.8": 0.9043411318335005,
+        "M_min_bin_6.8_7.2": 0.8573505096372404
+      }
+    },
+    "+0.75": {
+      "full": {
+        "tau_star": 16.0,
+        "exists_below_T": false,
+        "frac_t_nonneg": 1.0,
+        "M_at_T": 500.0,
+        "M_max": 500.0,
+        "M_min": 500.0,
+        "delta_min_after_tau01": null,
+        "M_min_bin_6.4_6.8": 500.0,
+        "M_min_bin_6.8_7.2": 500.0
+      },
+      "floor0.1": {
+        "tau_star": 16.0,
+        "exists_below_T": false,
+        "frac_t_nonneg": 1.0,
+        "M_at_T": 5.161393245951813,
+        "M_max": 87.67215941372754,
+        "M_min": 5.1172453181625785,
+        "delta_min_after_tau01": null,
+        "M_min_bin_6.4_6.8": 7.966739927792532,
+        "M_min_bin_6.8_7.2": 7.919749305596272
+      },
+      "floor0.01": {
+        "tau_star": 16.0,
+        "exists_below_T": false,
+        "frac_t_nonneg": 1.0,
+        "M_at_T": 21.457484365176107,
+        "M_max": 103.96825053295184,
+        "M_min": 21.413336437386874,
+        "delta_min_after_tau01": null,
+        "M_min_bin_6.4_6.8": 24.262831047016828,
+        "M_min_bin_6.8_7.2": 24.215840424820566
+      },
+      "floor0.001": {
+        "tau_star": 16.0,
+        "exists_below_T": false,
+        "frac_t_nonneg": 1.0,
+        "M_at_T": 69.50165628743025,
+        "M_max": 152.01242245520598,
+        "M_min": 69.45750835964101,
+        "delta_min_after_tau01": null,
+        "M_min_bin_6.4_6.8": 72.30700296927097,
+        "M_min_bin_6.8_7.2": 72.2600123470747
+      },
+      "mid": {
+        "tau_star": 15.87,
+        "exists_below_T": true,
+        "frac_t_nonneg": 0.9687695190505934,
+        "M_at_T": -1.901005550007219,
+        "M_max": 80.60976061776852,
+        "M_min": -1.9451534777964536,
+        "delta_min_after_tau01": 1.8701231491505517,
+        "delta_median_after_tau01": 1.9199525401217001,
+        "M_min_bin_6.4_6.8": 0.9043411318335005,
+        "M_min_bin_6.8_7.2": 0.8573505096372404
+      }
+    },
+    "-0.75": {
+      "full": {
+        "tau_star": 16.0,
+        "exists_below_T": false,
+        "frac_t_nonneg": 1.0,
+        "M_at_T": 500.0,
+        "M_max": 500.0,
+        "M_min": 500.0,
+        "delta_min_after_tau01": null,
+        "M_min_bin_6.4_6.8": 500.0,
+        "M_min_bin_6.8_7.2": 500.0
+      },
+      "floor0.1": {
+        "tau_star": 16.0,
+        "exists_below_T": false,
+        "frac_t_nonneg": 1.0,
+        "M_at_T": 5.161393245951815,
+        "M_max": 87.67215941372754,
+        "M_min": 5.11724531816258,
+        "delta_min_after_tau01": null,
+        "M_min_bin_6.4_6.8": 7.966739927792534,
+        "M_min_bin_6.8_7.2": 7.919749305596274
+      },
+      "floor0.01": {
+        "tau_star": 16.0,
+        "exists_below_T": false,
+        "frac_t_nonneg": 1.0,
+        "M_at_T": 21.457484365176125,
+        "M_max": 103.96825053295186,
+        "M_min": 21.413336437386892,
+        "delta_min_after_tau01": null,
+        "M_min_bin_6.4_6.8": 24.262831047016846,
+        "M_min_bin_6.8_7.2": 24.215840424820584
+      },
+      "floor0.001": {
+        "tau_star": 16.0,
+        "exists_below_T": false,
+        "frac_t_nonneg": 1.0,
+        "M_at_T": 69.50165628742991,
+        "M_max": 152.01242245520564,
+        "M_min": 69.45750835964067,
+        "delta_min_after_tau01": null,
+        "M_min_bin_6.4_6.8": 72.30700296927063,
+        "M_min_bin_6.8_7.2": 72.26001234707437
+      },
+      "mid": {
+        "tau_star": 15.87,
+        "exists_below_T": true,
+        "frac_t_nonneg": 0.9687695190505934,
+        "M_at_T": -1.901005550007219,
+        "M_max": 80.60976061776852,
+        "M_min": -1.9451534777964536,
+        "delta_min_after_tau01": 1.8701231491505517,
+        "delta_median_after_tau01": 1.9199525401217001,
+        "M_min_bin_6.4_6.8": 0.9043411318335005,
+        "M_min_bin_6.8_7.2": 0.8573505096372404
+      }
+    },
+    "-1.00": {
+      "full": {
+        "tau_star": 16.0,
+        "exists_below_T": false,
+        "frac_t_nonneg": 1.0,
+        "M_at_T": 500.0,
+        "M_max": 500.0,
+        "M_min": 500.0,
+        "delta_min_after_tau01": null,
+        "M_min_bin_6.4_6.8": 500.0,
+        "M_min_bin_6.8_7.2": 500.0
+      },
+      "floor0.1": {
+        "tau_star": 16.0,
+        "exists_below_T": false,
+        "frac_t_nonneg": 1.0,
+        "M_at_T": 7.515526177938159,
+        "M_max": 90.0262923457139,
+        "M_min": 7.471378250148924,
+        "delta_min_after_tau01": null,
+        "M_min_bin_6.4_6.8": 10.320872859778879,
+        "M_min_bin_6.8_7.2": 10.273882237582619
+      },
+      "floor0.01": {
+        "tau_star": 16.0,
+        "exists_below_T": false,
+        "frac_t_nonneg": 1.0,
+        "M_at_T": 29.24364767023724,
+        "M_max": 111.75441383801298,
+        "M_min": 29.19949974244801,
+        "delta_min_after_tau01": null,
+        "M_min_bin_6.4_6.8": 32.04899435207796,
+        "M_min_bin_6.8_7.2": 32.0020037298817
+      },
+      "floor0.001": {
+        "tau_star": 16.0,
+        "exists_below_T": false,
+        "frac_t_nonneg": 1.0,
+        "M_at_T": 93.30254356657562,
+        "M_max": 175.81330973435135,
+        "M_min": 93.25839563878638,
+        "delta_min_after_tau01": null,
+        "M_min_bin_6.4_6.8": 96.10789024841634,
+        "M_min_bin_6.8_7.2": 96.06089962622008
+      },
+      "mid": {
+        "tau_star": 15.87,
+        "exists_below_T": true,
+        "frac_t_nonneg": 0.9687695190505934,
+        "M_at_T": -1.901005550007219,
+        "M_max": 80.60976061776852,
+        "M_min": -1.9451534777964536,
+        "delta_min_after_tau01": 1.8701231491505517,
+        "delta_median_after_tau01": 1.9199525401217001,
+        "M_min_bin_6.4_6.8": 0.9043411318335005,
+        "M_min_bin_6.8_7.2": 0.8573505096372404
+      }
+    },
+    "+0.25": {
+      "full": {
+        "tau_star": 16.0,
+        "exists_below_T": false,
+        "frac_t_nonneg": 1.0,
+        "M_at_T": 498.0985832164005,
+        "M_max": 500.0,
+        "M_min": 498.0544352886113,
+        "delta_min_after_tau01": null,
+        "M_min_bin_6.4_6.8": 500.0,
+        "M_min_bin_6.8_7.2": 500.0
+      },
+      "floor0.1": {
+        "tau_star": 16.0,
+        "exists_below_T": false,
+        "frac_t_nonneg": 1.0,
+        "M_at_T": 0.45312738197912505,
+        "M_max": 82.96389354975486,
+        "M_min": 0.40897945418989035,
+        "delta_min_after_tau01": null,
+        "M_min_bin_6.4_6.8": 3.2584740638198446,
+        "M_min_bin_6.8_7.2": 3.2114834416235842
+      },
+      "floor0.01": {
+        "tau_star": 16.0,
+        "exists_below_T": false,
+        "frac_t_nonneg": 1.0,
+        "M_at_T": 5.88515775505389,
+        "M_max": 88.39592392282962,
+        "M_min": 5.841009827264656,
+        "delta_min_after_tau01": null,
+        "M_min_bin_6.4_6.8": 8.69050443689461,
+        "M_min_bin_6.8_7.2": 8.64351381469835
+      },
+      "floor0.001": {
+        "tau_star": 16.0,
+        "exists_below_T": false,
+        "frac_t_nonneg": 1.0,
+        "M_at_T": 21.899881729138603,
+        "M_max": 104.41064789691434,
+        "M_min": 21.85573380134937,
+        "delta_min_after_tau01": null,
+        "M_min_bin_6.4_6.8": 24.705228410979323,
+        "M_min_bin_6.8_7.2": 24.65823778878306
+      },
+      "mid": {
+        "tau_star": 15.87,
+        "exists_below_T": true,
+        "frac_t_nonneg": 0.9687695190505934,
+        "M_at_T": -1.901005550007219,
+        "M_max": 80.60976061776852,
+        "M_min": -1.9451534777964536,
+        "delta_min_after_tau01": 1.8701231491505517,
+        "delta_median_after_tau01": 1.9199525401217001,
+        "M_min_bin_6.4_6.8": 0.9043411318335005,
+        "M_min_bin_6.8_7.2": 0.8573505096372404
+      }
+    },
+    "+0.00": {
+      "full": {
+        "tau_star": 15.87,
+        "exists_below_T": true,
+        "frac_t_nonneg": 0.9687695190505934,
+        "M_at_T": -1.901005550007219,
+        "M_max": 80.60976061776852,
+        "M_min": -1.9451534777964536,
+        "delta_min_after_tau01": 1.8701231491505517,
+        "delta_median_after_tau01": 1.9199525401217001,
+        "M_min_bin_6.4_6.8": 0.9043411318335005,
+        "M_min_bin_6.8_7.2": 0.8573505096372404
+      },
+      "floor0.1": {
+        "tau_star": 15.87,
+        "exists_below_T": true,
+        "frac_t_nonneg": 0.9687695190505934,
+        "M_at_T": -1.901005550007219,
+        "M_max": 80.60976061776852,
+        "M_min": -1.9451534777964536,
+        "delta_min_after_tau01": 1.8701231491505517,
+        "delta_median_after_tau01": 1.9199525401217001,
+        "M_min_bin_6.4_6.8": 0.9043411318335005,
+        "M_min_bin_6.8_7.2": 0.8573505096372404
+      },
+      "floor0.01": {
+        "tau_star": 15.87,
+        "exists_below_T": true,
+        "frac_t_nonneg": 0.9687695190505934,
+        "M_at_T": -1.901005550007219,
+        "M_max": 80.60976061776852,
+        "M_min": -1.9451534777964536,
+        "delta_min_after_tau01": 1.8701231491505517,
+        "delta_median_after_tau01": 1.9199525401217001,
+        "M_min_bin_6.4_6.8": 0.9043411318335005,
+        "M_min_bin_6.8_7.2": 0.8573505096372404
+      },
+      "floor0.001": {
+        "tau_star": 15.87,
+        "exists_below_T": true,
+        "frac_t_nonneg": 0.9687695190505934,
+        "M_at_T": -1.901005550007219,
+        "M_max": 80.60976061776852,
+        "M_min": -1.9451534777964536,
+        "delta_min_after_tau01": 1.8701231491505517,
+        "delta_median_after_tau01": 1.9199525401217001,
+        "M_min_bin_6.4_6.8": 0.9043411318335005,
+        "M_min_bin_6.8_7.2": 0.8573505096372404
+      },
+      "mid": {
+        "tau_star": 15.87,
+        "exists_below_T": true,
+        "frac_t_nonneg": 0.9687695190505934,
+        "M_at_T": -1.901005550007219,
+        "M_max": 80.60976061776852,
+        "M_min": -1.9451534777964536,
+        "delta_min_after_tau01": 1.8701231491505517,
+        "delta_median_after_tau01": 1.9199525401217001,
+        "M_min_bin_6.4_6.8": 0.9043411318335005,
+        "M_min_bin_6.8_7.2": 0.8573505096372404
+      }
+    }
+  },
+  "tau_star_stability": {
+    "+1.00": {
+      "full": {
+        "ref": 16.0,
+        "doubleNx": 16.0,
+        "halvedt": 16.0,
+        "rel_Nx": 0.0,
+        "rel_dt": 0.0
+      },
+      "floor0.01": {
+        "ref": 16.0,
+        "doubleNx": 16.0,
+        "halvedt": 16.0,
+        "rel_Nx": 0.0,
+        "rel_dt": 0.0
+      },
+      "mid": {
+        "ref": 15.87,
+        "doubleNx": 15.87,
+        "halvedt": 15.87,
+        "rel_Nx": 0.0,
+        "rel_dt": 0.0
+      }
+    },
+    "+0.75": {
+      "full": {
+        "ref": 16.0,
+        "doubleNx": 16.0,
+        "halvedt": 16.0,
+        "rel_Nx": 0.0,
+        "rel_dt": 0.0
+      },
+      "floor0.01": {
+        "ref": 16.0,
+        "doubleNx": 16.0,
+        "halvedt": 16.0,
+        "rel_Nx": 0.0,
+        "rel_dt": 0.0
+      },
+      "mid": {
+        "ref": 15.87,
+        "doubleNx": 15.87,
+        "halvedt": 15.87,
+        "rel_Nx": 0.0,
+        "rel_dt": 0.0
+      }
+    },
+    "-0.75": {
+      "full": {
+        "ref": 16.0,
+        "doubleNx": 16.0,
+        "halvedt": 16.0,
+        "rel_Nx": 0.0,
+        "rel_dt": 0.0
+      },
+      "floor0.01": {
+        "ref": 16.0,
+        "doubleNx": 16.0,
+        "halvedt": 16.0,
+        "rel_Nx": 0.0,
+        "rel_dt": 0.0
+      },
+      "mid": {
+        "ref": 15.87,
+        "doubleNx": 15.87,
+        "halvedt": 15.87,
+        "rel_Nx": 0.0,
+        "rel_dt": 0.0
+      }
+    },
+    "-1.00": {
+      "full": {
+        "ref": 16.0,
+        "doubleNx": 16.0,
+        "halvedt": 16.0,
+        "rel_Nx": 0.0,
+        "rel_dt": 0.0
+      },
+      "floor0.01": {
+        "ref": 16.0,
+        "doubleNx": 16.0,
+        "halvedt": 16.0,
+        "rel_Nx": 0.0,
+        "rel_dt": 0.0
+      },
+      "mid": {
+        "ref": 15.87,
+        "doubleNx": 15.87,
+        "halvedt": 15.87,
+        "rel_Nx": 0.0,
+        "rel_dt": 0.0
+      }
+    },
+    "+0.25": {
+      "full": {
+        "ref": 16.0,
+        "doubleNx": 16.0,
+        "halvedt": 16.0,
+        "rel_Nx": 0.0,
+        "rel_dt": 0.0
+      },
+      "floor0.01": {
+        "ref": 16.0,
+        "doubleNx": 16.0,
+        "halvedt": 16.0,
+        "rel_Nx": 0.0,
+        "rel_dt": 0.0
+      },
+      "mid": {
+        "ref": 15.87,
+        "doubleNx": 15.87,
+        "halvedt": 15.87,
+        "rel_Nx": 0.0,
+        "rel_dt": 0.0
+      }
+    },
+    "+0.00": {
+      "full": {
+        "ref": 15.87,
+        "doubleNx": 15.87,
+        "halvedt": 15.87,
+        "rel_Nx": 0.0,
+        "rel_dt": 0.0
+      },
+      "floor0.01": {
+        "ref": 15.87,
+        "doubleNx": 15.87,
+        "halvedt": 15.87,
+        "rel_Nx": 0.0,
+        "rel_dt": 0.0
+      },
+      "mid": {
+        "ref": 15.87,
+        "doubleNx": 15.87,
+        "halvedt": 15.87,
+        "rel_Nx": 0.0,
+        "rel_dt": 0.0
+      }
+    }
+  },
+  "consistency": {
+    "sampled_tau_max_p1_l7b": 5.1309462243002795,
+    "sampled_tau_max_p1_spec": 5.13095,
+    "sampled_axial_last_arrival": 15.787191653896146,
+    "n_axial_beyond_taumax": 219,
+    "A_at_axial_arrivals": {
+      "min": -0.2928331846602154,
+      "frac_ge_m005": 0.9984817813765182
+    },
+    "A_at_late_axial": {
+      "min": -0.2928331846602154,
+      "median": 0.9615964457140117,
+      "frac_ge_0": 0.9863013698630136
+    },
+    "tau_star_mid_ref": 15.87,
+    "axial_support_inside_tau_star_mid": true
+  },
+  "axial_validity_demo": {
+    "tau_star": 15.87,
+    "stability": {
+      "ref": 15.87,
+      "doubleNx": 15.87,
+      "halvedt": 15.87,
+      "rel_Nx": 0.0,
+      "rel_dt": 0.0
+    },
+    "sampled_axial_last": 15.787191653896146,
+    "gap": 0.08280834610385313,
+    "delta_min_after": 1.8701231491505517,
+    "note": "For n_y = 0 the trajectories keep z fixed and v_x is z-independent, so sup_z v_x = A(t) and the criterion APPLIES VALIDLY: axial continuum first-crossing support within [0,16] is contained in [0, tau*_axial] -- a true field statement, sharp to the sampled last arrival.  The criterion works exactly where the spin term is absent."
+  },
+  "covering_diagnostic": {
+    "summary": {
+      "-1.00": {
+        "n_grid": 15000,
+        "n_crossed": 14857,
+        "tau_max_grid": 5.142166597970525,
+        "weight_crossed": 0.9999999978205829,
+        "n_late_beyond_sampled": 1,
+        "weight_late_beyond_sampled": 0.0001969853831455546,
+        "late_list": [
+          {
+            "x0": -5.21,
+            "z0": 0.785,
+            "tau": 5.142166597970525,
+            "weight": 0.0001969853831455546
+          }
+        ],
+        "n_in_kill_bins": 0,
+        "weight_in_kill_bins": 0.0,
+        "n_noncross": 143,
+        "weight_noncross": 2.179417276350828e-09,
+        "noncross_z_range": [
+          0.035,
+          0.995
+        ],
+        "noncross_frozen": 143,
+        "tau_p999_weighted": 5.104521426086293
+      },
+      "-0.75": {
+        "n_grid": 15000,
+        "n_crossed": 14699,
+        "tau_max_grid": 6.0173952774655595,
+        "weight_crossed": 0.9999995238918065,
+        "n_late_beyond_sampled": 0,
+        "weight_late_beyond_sampled": 0.0,
+        "late_list": [],
+        "n_in_kill_bins": 0,
+        "weight_in_kill_bins": 0.0,
+        "n_noncross": 301,
+        "weight_noncross": 4.7610819352557955e-07,
+        "noncross_z_range": [
+          0.005,
+          0.995
+        ],
+        "noncross_frozen": 301,
+        "tau_p999_weighted": 5.959157447725905
+      },
+      "+0.75": {
+        "n_grid": 15000,
+        "n_crossed": 14699,
+        "tau_max_grid": 6.01739527746555,
+        "weight_crossed": 0.9999995238918065,
+        "n_late_beyond_sampled": 0,
+        "weight_late_beyond_sampled": 0.0,
+        "late_list": [],
+        "n_in_kill_bins": 0,
+        "weight_in_kill_bins": 0.0,
+        "n_noncross": 301,
+        "weight_noncross": 4.7610819352558003e-07,
+        "noncross_z_range": [
+          0.005,
+          0.995
+        ],
+        "noncross_frozen": 301,
+        "tau_p999_weighted": 5.959157447725937
+      },
+      "+1.00": {
+        "n_grid": 15000,
+        "n_crossed": 14857,
+        "tau_max_grid": 5.142166597970528,
+        "weight_crossed": 0.9999999978205829,
+        "n_late_beyond_sampled": 1,
+        "weight_late_beyond_sampled": 0.0001969853831455546,
+        "late_list": [
+          {
+            "x0": -5.21,
+            "z0": 0.215,
+            "tau": 5.142166597970528,
+            "weight": 0.0001969853831455546
+          }
+        ],
+        "n_in_kill_bins": 0,
+        "weight_in_kill_bins": 0.0,
+        "n_noncross": 143,
+        "weight_noncross": 2.1794172763508416e-09,
+        "noncross_z_range": [
+          0.005,
+          0.965
+        ],
+        "noncross_frozen": 143,
+        "tau_p999_weighted": 5.104521426086296
+      }
+    },
+    "elapsed": 423.70914006233215
+  },
+  "G1": {
+    "diag_2d": {
+      "norm_deviation_max": 2.220446049250313e-16,
+      "wall_amplitude_max": 3.4364392520789703e-16,
+      "energy_drift_rel": 1.2361218686998078e-16,
+      "energy_mean": 7.18520108890509,
+      "z_mode_leakage": 0.0
+    },
+    "line_norm_dev": 6.661338147750939e-16,
+    "line_energy_drift_rel": 3.9467599468431627e-16,
+    "energy_1d": 2.250398888360412,
+    "verdict": "PASS"
+  },
+  "G2": {
+    "tau_star_full": 16.0,
+    "exists_below_T_full": false,
+    "tau_star_floors": {
+      "floor0.1": 16.0,
+      "floor0.01": 16.0,
+      "floor0.001": 16.0
+    },
+    "tau_star_mid": 15.87,
+    "exists_below_T_mid": true,
+    "stability": {
+      "full": {
+        "ref": 16.0,
+        "doubleNx": 16.0,
+        "halvedt": 16.0,
+        "rel_Nx": 0.0,
+        "rel_dt": 0.0
+      },
+      "floor0.01": {
+        "ref": 16.0,
+        "doubleNx": 16.0,
+        "halvedt": 16.0,
+        "rel_Nx": 0.0,
+        "rel_dt": 0.0
+      },
+      "mid": {
+        "ref": 15.87,
+        "doubleNx": 15.87,
+        "halvedt": 15.87,
+        "rel_Nx": 0.0,
+        "rel_dt": 0.0
+      }
+    },
+    "frac_t_nonneg_full": 1.0,
+    "frac_t_nonneg_mid": 0.9687695190505934,
+    "note": "M(t) = max_z v_x(d,z,t) >= 0 at EVERY output time on the full line and on every rho-floored region: the spin term -n_y pi cot(pi z) has a positive branch at one wall (max over a floored region = A(t) + |n_y| pi cot(pi z_floor)), and even the most favorable single-point restriction z = 1/2 (where the spin term vanishes and v_x = A(t) for every n_y) stays nonnegative until t = 15.87, far beyond the sampled cutoff 5.131.  No tau* < T exists in any variant that the theorem's hypothesis accepts.",
+    "verdict": "FAIL"
+  },
+  "G3": {
+    "tau_star_used": 16.0,
+    "sampled_tau_max": 5.13095,
+    "consistent": true,
+    "gap": 10.86905,
+    "gap_mid": 10.739049999999999,
+    "explanation": "No contradiction (tau* >= sampled tau_max in every variant), but the gap ~10.7-10.9 is NOT the sampled-max-below-continuum-edge gap the gate anticipated: tau* is pinned near T by the mid-channel identity v_x(d,1/2,t) = A(t) (the axial line velocity, positive through the kill bins and recurring to 15.87) and by the positive wall branch of the spin term.  tau* is therefore not an estimate of the continuum support edge; the criterion is vacuous above the sampled cutoff.",
+    "verdict": "PARTIAL"
+  },
+  "G4": {
+    "window": null,
+    "delta_min": null,
+    "disc_bound_after_sampled": {
+      "median": 1.7425039334661996e-05,
+      "p95": 0.00035155720474421866,
+      "max": 0.0034036769572356462
+    },
+    "disc_bound_kill_bins": {
+      "median": 9.16812347329099e-06,
+      "p95": 2.1727409092242575e-05,
+      "max": 2.4516394570017752e-05
+    },
+    "A_min_kill_bins": 0.8573505096372404,
+    "note": "The margin window (tau*+0.1, T] is empty (tau* = T on the full line and on all floored regions).  Where the gate wanted delta(t) = -M(t) > 0, the measurement gives M(t) > 0: in the kill bins M >= A(t) >= 0.857 (mid-channel alone), i.e. the WRONG SIGN by ~1e4 x the discretization bound (9.2e-06 median).  The hypothesis of the theorem is not merely unverified -- it is refuted at proof-grade-modulo-discretization.",
+    "verdict": "FAIL"
+  },
+  "G5": {
+    "tau_star_full_p025": 16.0,
+    "exists_below_T_p025": false,
+    "tau_star_mid_p025": 15.87,
+    "same_for_p1": {
+      "tau_star_full": 16.0,
+      "tau_star_mid": 15.87
+    },
+    "note": "Literal clause holds: n_y = +0.25 shows no tau* below T (M(t) recurs >= 0 to late times).  But n_y = +1 behaves IDENTICALLY under the criterion (also no tau* < T; mid-restriction gives the same 15.87 for both, since v_x(d,1/2,t) = A(t) is n_y-independent): the criterion does not discriminate the cutoff family member from the no-cutoff one, which was this gate's purpose.",
+    "verdict": "PARTIAL"
+  },
+  "elapsed_total": 427.1640968322754
+}

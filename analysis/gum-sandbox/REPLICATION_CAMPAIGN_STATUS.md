@@ -362,3 +362,78 @@ nucleation (GPU-scale/theorem-level, per the v2 assessment's Tier-5
 flag), the Σ(p) integrals from geometry, and the full fs-cosserat solver
 port — the natural next engineering step once the corpus responds to
 F-R4/F-R5 (the 4B pilot proved the packaging).
+
+## Tier 6 — Foundations ✅ COMPLETE (second campaign phase, 2026-07-17)
+**`tier6-foundations/`** (two workflows wf_5852a821-c22 + wf_1fc03d62-b33
+plus the L5′ agent; audit archives `audit-logs/MANIFEST_tier6.json`).
+- **Foundations analysis** (F-T6-1 credit / F-T6-3 discriminator ledger
+  incl. the NEW mutual kill: A3-positive + confirmed objective collapse
+  cannot both stand / F-T6-4 DGNSZ-2013 positioning) —
+  `tier6-foundations/FOUNDATIONS_ANALYSIS.md` §§1–3.
+- **L1 flipped Stern–Gerlach** 4/4 PASS (label-map mechanism measured;
+  Born 0.49275, 0.92σ) [F-T6-2a-EXEC; `tier6-foundations/L1/RESULTS.md`];
+  **L2 momentum ToF + Nelson leg** 5/5 PASS (equivariance at ν = ½;
+  diffusion-blind across ν) [F-T6-2b/F-T6-6-EXEC;
+  `tier6-foundations/L2/RESULTS.md`]; **L3 Lock-2 conservation lemma**
+  5/5 PASS (exponents 1.000000/2.999844/4.999869; T4-W3 toy discharge)
+  [F-T6-5-EXEC; `tier6-foundations/L3/RESULTS.md`].
+- **L5/L5′ A3 phenomenon** (τ_max = 5.130950; axial-beyond 11.08%;
+  **G4 FAIL-AT-d=25/null-approached — never a pass**) [F-T6-L5-EXEC,
+  -EXEC-2; `tier6-foundations/L5/RESULTS.md`, `L5prime/RESULTS.md`];
+  **L7a/L7b T4-W5 POVM-exclusion testbed** (L7b 5/5 clean, affinity
+  violated at peak 40.2σ + affine-vanishing kill; L7a quadraticity
+  violated 1.84×10⁻⁴ vs 2.9×10⁻¹⁵ floor) at [DW, testbed-grade,
+  configuration-specific] [F-T6-L7a/b; `tier6-foundations/L7a/RESULTS.md`,
+  `L7b/RESULTS.md`].
+- Gate census: 16 original gates (14 PASS + 2 PARTIAL→converted by L5′);
+  L7 9/9 PASS; **three coordinator-owned spec defects printed** (L5
+  truncation, L5 G3 bar, L7a grid). Fold: corpus3 v4.0/v3-ext editions
+  under `corpus3/REVISION_CHARTER_v2.md` + `corpus3/T6_FOLD_PAYLOAD.md`.
+
+## Tier 7 — Program Extensions ✅ COMPLETE (third campaign phase, 2026-07-18)
+**`tier7-program/`** (workflow wf_95da92d5-375, four agents; spec
+`tier7-program/ROADMAP_v9_PROGRAM.md`; adjudication
+`tier7-program/TIER7_ADJUDICATION.md`; audit archives
+`audit-logs/MANIFEST_tier6.json`, workflow4 block).
+- **M1 — WS4-M4c toy (F-T7-M1)**: tracker identity w(z) = −1 + Ω_m(z)
+  verified to 1.8×10⁻¹² AND shown dynamical (attractor rate = Γ to
+  5×10⁻⁸); Γ ∝ Hⁿ ⟹ 𝔴 = 1 − n (0.5029 vs 0.5 at n = ½); freezing
+  class forced (min w_a = +0.1575 > 0 over 15 profiles); memory-pair
+  convention RECOVERED (W(z=0)→W(z=2), devs ≤ 0.5%); EdS pathology
+  measured (+0.21/+0.31). Gates G1/G2/G5 PASS + G3 CONDITIONAL
+  (convention-bound) + G4 PASS-MATCH. Open #4 partially discharged at
+  toy grade (residual: field-level Γ; P1 premise).
+  `tier7-program/M1/RESULTS.md`.
+- **F-T7-1 (NEW minor, print-arithmetic, offered)**: VI.D (6.4′)'s
+  "(+0.36 at β = −0.3)" not recoverable under any convention tried
+  (measured +0.71 tangent; +0.78–0.92 windows; sign agrees); S1 and
+  the sign claim unaffected. `tier7-program/M1/RESULTS.md`.
+- **M2 — ⟨r2⟩ servo coefficient (F-T7-M2)**: law-form replicated
+  (g² log-slope 1.9932 ± 0.0041; ω* invariance 1.0050 ± 0.0074;
+  integrable limit marginal ≤ 8×10⁻¹³); coefficient identified
+  c = η/2 exactly (bath-spectrum functional; printed 0.021 ± 0.004
+  attainable at η = 0.042; super-Ohmic destroys the g² law, slope
+  3.38 — the r2 bath pinned to the Ohmic class). Four PASS + G4
+  PASS-MEASURED. `tier7-program/M2/RESULTS.md`.
+- **M3 — F-R9 route (b) (F-T7-M3)**: on-tube saturation rescue
+  **NOT-VIABLE** on h21's parametrization verbatim (anchors to 1.6%;
+  trade 25–46 decades of mean rate per decade of R; R ≤ 10 needs
+  A_sat ~ 10^(−4×10⁷); rate-preserving point leaves R = 5×10¹³–10¹⁶;
+  no CONDITIONAL residue). **F-R9's repair menu narrows to routes
+  (a)/(c)**; motional-narrowing exclusion untouched.
+  `tier7-program/M3/RESULTS.md`.
+- **M4 — Nelson relaxation τ(ν) (F-T7-M4)**: at GUM's own ν = ħ/2m,
+  τ(ν)/τ(dBB) = 0.060 ± 0.005 (M = 9), 0.024 ± 0.004 (M = 16) —
+  17–41× faster; dBB limit log-singular (τ ~ a + b·ln(1/ν), r²
+  0.97/0.92; dBB rate recovered only near ν ~ 10⁻⁸–10⁻⁹); G1–G3 PASS
+  + G4 PARTIAL-as-discovery (continuity clause failed for physics
+  reasons — coordinator spec defect printed). III.D rates become
+  direction-signed conservative bounds: equilibrium STRENGTHENED,
+  relic windows WEAKENED — both edges carried.
+  `tier7-program/M4/RESULTS.md`.
+- **Two coordinator-owned spec defects printed** (M1 Γ = γH degenerate
+  profile; M4 continuity clause). Fold: the paper's v4.1 delta —
+  `corpus3/01-GUM-Omega-Paper-v4.1-ext.md` (⟦T7⟧ marker) under
+  `corpus3/REVISION_CHARTER_v2.md` + `corpus3/T7_FOLD_PAYLOAD.md`;
+  phase record `corpus3/09-External-Replication-Record-v2.0.md` §8.
+  Every result is within-model; nothing here bears on nature.

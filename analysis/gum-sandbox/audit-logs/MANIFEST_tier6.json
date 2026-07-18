@@ -1,5 +1,5 @@
 {
- "snapshot_utc": "2026-07-18 TIER-7 PROGRAM EXTENSIONS COMPLETE (M1 tracker dynamics + convention recovery; M2 servo law-form; M3 F-R9 route-b CLOSED; M4 Nelson 17-41x + log-singular dBB limit)",
+ "snapshot_utc": "2026-07-18 PHASE N COMPLETE (corpus3 v4.1 fold; F-R9 route-a honest second moment + conditional kill F-T7-N2; L7 line criterion refuted, T4-W5 sharpened to flow-map, F-T7-N3)",
  "session": "536b52e3-c0e4-5548-a35f-7ca5893feba9",
  "branch": "claude/analyze-gum-po",
  "note": "Additive to MANIFEST.json (session d0b81976, ivm-viz line). This manifest covers the tier6-foundations session only.",
@@ -103,6 +103,24 @@
    "description": "M4: Nelson non-equilibrium relaxation tau(nu) on tier3 setup",
    "phase": "Tier 7",
    "verdict": "G1-G3 PASS, G4 PARTIAL-as-discovery; 17-41x acceleration; log-singular dBB limit (F-T7-M4)"
+  },
+  {
+   "agent_id": "ab3809f9d884e49c7",
+   "description": "N1: corpus3 v4.1 delta fold (F-T7 payload)",
+   "phase": "Tier 7 Phase N",
+   "verdict": "4/4 verification gates PASS; additive-only; 26/26 payload numbers verbatim"
+  },
+  {
+   "agent_id": "a34768c21a7d5ca52",
+   "description": "N2: F-R9 route (a) honest second-moment treatment",
+   "phase": "Tier 7 Phase N",
+   "verdict": "VERDICT INDETERMINATE-FROM-ARCHIVE + conditional kill (g_lim < 8e-3 excludes); repricing closed by arithmetic (F-T7-N2)"
+  },
+  {
+   "agent_id": "a3fa9ba64a5bea4c5",
+   "description": "N3: L7 continuum proof attempt (crossing criterion)",
+   "phase": "Tier 7 Phase N",
+   "verdict": "NEGATIVE-WITH-DIAGNOSIS: line criterion refuted; T4-W5 sharpened to flow-map; covering-grade zeros banked (F-T7-N3)"
   }
  ],
  "caveat": "tier6-coordinator-session.jsonl.xz was snapshotted during the checkpointing turn; the last few checkpoint/commit exchanges after the snapshot instant are absent from the archive by construction. The git history and SESSION_CHECKPOINT_tier6.md carry that residue. Coordinator archive re-snapshotted after L5-prime adjudication; same tail caveat applies to the final commit exchange.",
@@ -123,5 +141,11 @@
   "archive": "tier7-workflow-wf_95da92d5-375.tar.xz",
   "script": "tier7-workflow-script.js",
   "total_subagent_tokens": 583974
+ },
+ "workflow5": {
+  "run_id": "wf_9558d09c-007",
+  "archive": "tier7-workflow-wf_9558d09c-007.tar.xz",
+  "script": "tier7-phaseN-workflow-script.js",
+  "total_subagent_tokens": 519509
  }
 }

@@ -125,3 +125,70 @@ RESULTS).
 Run record: wf_95da92d5-375, 4 agents, 583,974 tokens. Artifacts:
 `M1/ M2/ M3/ M4/` (scripts, JSON, figures, RESULTS.md each; M4 adds
 m4_hdata.csv + a local resume cache).
+
+---
+
+## ADDENDUM — Phase N adjudication (workflow wf_9558d09c-007)
+
+**N1 — corpus3 v4.1 fold: adjudicated EXECUTED, 4/4 verification gates
+PASS.** Paper renamed to `01-GUM-Omega-Paper-v4.1-ext.md`, all six
+version headers bumped, eight ⟦T7⟧ blocks inserted (head note; Sec. 0;
+III.D; IV.H.3; VI.D ×2 incl. the F-T7-1 flag; Sec. X; Sec. XI);
+manifest, Replication Record (§8), and REPLICATION_CAMPAIGN_STATUS
+(Tier-6/7 sections) updated additively. Diff verification: every
+deletion a version-header line; 26/26 payload numbers verbatim; all
+169 ⟦rev⟧ + 30 ⟦T6⟧ markers preserved.
+
+**N2 — F-R9 route (a): adjudicated EXECUTED; verdict
+INDETERMINATE-FROM-ARCHIVE with a conditional kill sharpening
+(F-T7-N2).** The honest observable is now computed: the web is static
+(h21's own pricing), so the macroscopic sample rate spatially
+self-averages to N·⟨A²⟩ = **R × the claimed rate** (RSD ≤ 5×10⁻⁴), with
+R = 1.1×10¹⁴–8.9×10¹⁷ at the four anchors and an extreme hot-site
+Lorenz structure (100.000% of the rate on the top 10⁻ᵏ site fraction
+for every k ≤ 12; on-tube nuclei carry 94–99.6% at per-site
+enhancements 10²⁸–10³⁶). Propagated at g²-scaling, the printed g-window
+maps to **g_equiv = √R·g = 8.5×10⁻³–12.3 — 6.9–10.1 orders above the
+corpus's own P-ν4 far-horizon line.** Route (i) repricing is **closed
+by arithmetic** (a retreat needs f = 490–44,000 TeV vs the printed
+[4, 60] MeV window; ε 14–18 orders above the corpus's own ceiling).
+The pre-registered verdict is (iii): the archive prints **no
+experimental Majoron-mode 0νββ bound** — the single blocking unprinted
+number is g_lim, and the conditional kill is filed: **any g_lim <
+8×10⁻³ excludes the honest rate at every anchor and every printed g —
+P-ν4 would invert from far-horizon prediction to already-excluded.**
+S1 untouched; S6's occurrence stake unchanged; the J3 battery survives
+as a battery statement (its rows bind on actual g). F-R9's terminal
+menu after M3+N2: **adopt the R-enhanced rate (and face g_lim), or
+route (c) at the line-support cost.**
+
+**N3 — L7 continuum proof: adjudicated NEGATIVE-WITH-DIAGNOSIS
+(F-T7-N3) — the criterion is refuted, not the zeros.** The crossing
+criterion (proved sound in two lines) has a provably false hypothesis
+in this geometry: on the detector line v_x = A(t) + n_y·S(z) with
+S(1/2) = 0 — the mid-channel velocity is n_y-independent and positive
+through the kill bins (0.857–0.964, forced by L5′'s own 219 axial
+arrivals) — and S has a positive-divergent wall branch for every
+n_y ≠ 0. So no line-local sign certificate can exist for a detector
+ahead of a forward-boosted source: **the hard cutoff is a TRANSPORT
+phenomenon** (z-advection lifts laggards into the fast wall lane,
+emptying the not-yet-crossed set — the Das–Dürr mechanism), and the
+T4-W5 residual is sharpened accordingly: *prove the zeros by a
+flow-map argument; the line criterion provably cannot.* Gates graded
+honestly (G2/G4 FAIL, G3/G5 PARTIAL — the FAILs are the finding).
+Two positive by-products banked: (i) for n_y = 0 the criterion IS
+valid and sharp (a true field statement: axial support ⊂ [0, 15.87]
+vs sampled 15.787); (ii) a 60,000-trajectory deterministic covering
+at field-like resolution: **zero kill-bin crossings at every kill-set
+n_y**, grid support edges 5.142/6.017 vs the first kill bin at 6.4 —
+the kill-bin zeros strengthened well beyond the original ensembles.
+Coordinator note: the pre-registered criterion was mine and it is the
+third spec artifact of this tier whose failure produced the sharper
+result — the pattern is now itself a finding about pre-registration
+under adversarial honesty: wrong-but-precise beats vague-but-safe.
+
+**Findings register (Phase N):** F-T7-N2 (conditional kill sharpening;
+route (i) closed by arithmetic; g_lim the isolated residue); F-T7-N3
+(line criterion refuted; T4-W5 residual sharpened to flow-map;
+covering-grade zeros; the n_y = 0 field statement). Run record:
+wf_9558d09c-007, 3 agents, 519,509 tokens.
