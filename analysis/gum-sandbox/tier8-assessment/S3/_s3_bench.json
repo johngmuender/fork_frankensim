@@ -1,0 +1,15 @@
+{
+  "bench_box": "bench",
+  "base": "p31",
+  "h": 0.000244140625,
+  "n_steps": 46,
+  "status": "FAIL_FDISC",
+  "per_step_ms": 5.044517309769341,
+  "s_reached": 1.01123046875,
+  "max_wid": 0.48074464610089623,
+  "growth_factor": 2.136642871559539,
+  "n_steps_full_horizon": 16958,
+  "est_seconds_full_box": 85.54492453906848,
+  "est_seconds_cover_4workers": 513.2695472344109,
+  "decision": "h = 2^-12 retained: per-step cost 5.0 ms, full 4.14-unit horizon 16958 steps = 86 s/box worst case; blow-up-terminated boxes cost far less. 24 parents + <= 96 children fit the wall-clock budget on 4 workers."
+}

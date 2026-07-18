@@ -1,0 +1,40 @@
+{
+  "q1_path": 134,
+  "t0": 6.545,
+  "z0": 0.4125,
+  "h": 6.103515625e-05,
+  "n_steps": 1359,
+  "start_box": [
+    [
+      1.001003452765491,
+      1.0010061848828662
+    ],
+    [
+      0.3991704020486637,
+      0.3991732126740177
+    ]
+  ],
+  "anchor": [
+    1.0,
+    0.4125
+  ],
+  "end_box": [
+    [
+      0.9999963412373092,
+      1.000003658731479
+    ],
+    [
+      0.412497926964796,
+      0.41250207299089253
+    ]
+  ],
+  "end_wid": [
+    7.3174941697118365e-06,
+    4.146026096552014e-06
+  ],
+  "anchor_contained": true,
+  "growth_factor": 2.6035110511669,
+  "elapsed": 6.811125040054321,
+  "note": "forward integration of the time-reverse of the certified backward path: the true trajectory through the anchor lies in the Q1 endpoint enclosure at s_stop, so a valid forward enclosure of that box at t0 MUST contain the anchor",
+  "verdict": "PASS"
+}
