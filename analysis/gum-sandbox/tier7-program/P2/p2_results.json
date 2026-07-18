@@ -1,0 +1,499 @@
+{
+  "workstream": "P2",
+  "file_id": "F-T7-P2",
+  "params": {
+    "L": 1.0,
+    "sigma_x": 1.0,
+    "x0": -5.0,
+    "k0": 2.0,
+    "box": [
+      -15.0,
+      45.0
+    ],
+    "Nx": 2048,
+    "d": 1.0,
+    "kill_bins": [
+      [
+        6.4,
+        6.8
+      ],
+      [
+        6.8,
+        7.2
+      ]
+    ],
+    "ny_families": [
+      1.0,
+      0.75
+    ],
+    "strata": {
+      "wall": 16,
+      "small": 100,
+      "rand": 100
+    },
+    "seed_select": 20260718,
+    "dop853": {
+      "rtol": 1e-12,
+      "atol": 1e-14
+    },
+    "ladder": {
+      "n": 24,
+      "h": 0.0005,
+      "bits": 200,
+      "n_halved": 3
+    },
+    "margin_class": 0.001,
+    "margin_cap": 2.0,
+    "rho_floor_rel": 1e-10,
+    "vclamp": 500.0,
+    "rho_eps_rel": 1e-14
+  },
+  "mirror_check": {
+    "+1.00": {
+      "max_abs_dmargin": 3.5421706012783716e-08,
+      "cls_identical": true
+    },
+    "+0.75": {
+      "max_abs_dmargin": 6.836258670261941e-09,
+      "cls_identical": true
+    }
+  },
+  "G1": {
+    "spec": "exact-vs-grid <= 1e-12 rel, >= 1000 nodes x several times",
+    "times": [
+      0.5,
+      1.7,
+      3.3,
+      5.1,
+      6.6,
+      7.195
+    ],
+    "per_time": [
+      {
+        "t": 0.5,
+        "n_nodes": 1500,
+        "n_well_f": 426,
+        "n_well_ab": 390,
+        "sup_rel_f": 4.885874506162591e-15,
+        "pernode_rel_f_well": 1.3371199655106204e-14,
+        "pernode_rel_ab_well": 2.3321327091383897e-15,
+        "cond_normalized_ab_all": 4.574663139824387e-16
+      },
+      {
+        "t": 1.7,
+        "n_nodes": 1500,
+        "n_well_f": 506,
+        "n_well_ab": 442,
+        "sup_rel_f": 5.174155686467928e-15,
+        "pernode_rel_f_well": 3.751965742731271e-14,
+        "pernode_rel_ab_well": 8.1601392309949e-15,
+        "cond_normalized_ab_all": 9.307429681977458e-16
+      },
+      {
+        "t": 3.3,
+        "n_nodes": 1500,
+        "n_well_f": 643,
+        "n_well_ab": 537,
+        "sup_rel_f": 8.479856916568953e-15,
+        "pernode_rel_f_well": 1.0323115973629676e-13,
+        "pernode_rel_ab_well": 1.1213252548714081e-14,
+        "cond_normalized_ab_all": 1.891682532660835e-15
+      },
+      {
+        "t": 5.1,
+        "n_nodes": 1500,
+        "n_well_f": 840,
+        "n_well_ab": 668,
+        "sup_rel_f": 8.72739016486664e-15,
+        "pernode_rel_f_well": 1.229003336393306e-13,
+        "pernode_rel_ab_well": 1.2906342661267445e-14,
+        "cond_normalized_ab_all": 1.680140469205937e-15
+      },
+      {
+        "t": 6.6,
+        "n_nodes": 1500,
+        "n_well_f": 1022,
+        "n_well_ab": 805,
+        "sup_rel_f": 9.452886722122578e-15,
+        "pernode_rel_f_well": 1.3324330632413787e-13,
+        "pernode_rel_ab_well": 1.2961853812498703e-14,
+        "cond_normalized_ab_all": 2.0353470042505017e-15
+      },
+      {
+        "t": 7.195,
+        "n_nodes": 1500,
+        "n_well_f": 1087,
+        "n_well_ab": 869,
+        "sup_rel_f": 9.940109681638528e-15,
+        "pernode_rel_f_well": 2.0989064292311854e-13,
+        "pernode_rel_ab_well": 1.765254609153999e-14,
+        "cond_normalized_ab_all": 2.156010501970205e-15
+      }
+    ],
+    "worst": {
+      "sup_rel_f": 9.940109681638528e-15,
+      "pernode_rel_f_well": 2.0989064292311854e-13,
+      "pernode_rel_ab_well": 1.765254609153999e-14,
+      "cond_normalized_ab_all": 2.156010501970205e-15,
+      "n_nodes_total": 9000,
+      "n_well_ab_total": 3711
+    },
+    "metric": "(i) sup-normalized f over all nodes; (ii) per-node relative f and a,b on well-conditioned nodes (3e-2 cut); (iii) conditioning-normalized a,b deviation on all nodes; each <= 1e-12",
+    "verdict": "PASS"
+  },
+  "G2": {
+    "n_paths": 432,
+    "n_kept": 432,
+    "n_moved": 0,
+    "moved_detail": [],
+    "margin_diff_uncapped": {
+      "n": 127,
+      "median": 6.385509751627438e-06,
+      "p95": 1.8828480932864266e-05,
+      "max": 8.34296091856146e-05
+    },
+    "o1_error_estimate": {
+      "p95": 2.812593752932191e-05,
+      "max": 0.006017766144757575
+    },
+    "thresholds": {
+      "p95": 5.625187505864382e-05,
+      "max": 0.01203553228951515
+    },
+    "capped": {
+      "n": 297,
+      "all_recertified": true,
+      "min_margin_p2": 2.0009973356919004
+    },
+    "s_pc_diff": {
+      "median": 0.00013768831662286374,
+      "p95": 0.0002538518682565715,
+      "max": 0.02233033932515527
+    },
+    "monitors": {
+      "min_rho_rel_class_a": 7.598613782442444e-18,
+      "rho_floor_events": 3,
+      "max_abs_a_class_a": 7.053439112824077,
+      "max_abs_b_class_a": 7.225111203734693,
+      "clamp_headroom_note": "clips at +-500 never bind on class-(a)"
+    },
+    "verdict": "PASS"
+  },
+  "G3": {
+    "n_ladder": 24,
+    "endpoint_diff": {
+      "median": 4.347514400042994e-11,
+      "max": 1.7027489254509642e-08
+    },
+    "margin_rel_diff": {
+      "median": 2.615153997376341e-11,
+      "max": 1.817475133556598e-10
+    },
+    "s_pc_abs_diff": {
+      "median": 3.7328362623156863e-11,
+      "max": 2.82940781914931e-10
+    },
+    "step_halving": [
+      {
+        "ep_shift": 2.952906706000182e-11,
+        "margin_shift": 6.6385785757461235e-12
+      },
+      {
+        "ep_shift": 3.0508490649162776e-11,
+        "margin_shift": 7.146949698721983e-12
+      },
+      {
+        "ep_shift": 2.429766309232964e-11,
+        "margin_shift": 7.806311153046863e-12
+      }
+    ],
+    "mp_method": "fixed-step classical RK4, h = t0/ceil(t0/5e-4) (~5e-4), 200-bit (~60-digit) GMP/MPFR (gmpy2, mpmath's backend); margins by h/50 local re-integration + 3-pt parabola; s_pc by h/50 bracket + linear interpolation",
+    "mpmath_crosscheck": {
+      "x": 1.2345,
+      "t": 5.4321,
+      "gmpy2": "0.14102937250819025050378506884499237670",
+      "mpmath": "(0.1410293725081904019330404202464211485",
+      "abs_diff": 1.7759255922097138e-16
+    },
+    "per_path": [
+      {
+        "idx": 232,
+        "ny": 0.75,
+        "t0": 6.405,
+        "z0": 0.6825,
+        "margin_f64": 0.620679003403114,
+        "margin_mp": 0.6206790033825085,
+        "ep_diff": 4.3003675308619014e-11,
+        "m_rel": 3.319834758408821e-11
+      },
+      {
+        "idx": 233,
+        "ny": 0.75,
+        "t0": 6.405,
+        "z0": 0.6875,
+        "margin_f64": 0.6210780212274263,
+        "margin_mp": 0.6210780212189706,
+        "ep_diff": 2.8278952263577684e-11,
+        "m_rel": 1.3614522348664688e-11
+      },
+      {
+        "idx": 234,
+        "ny": 0.75,
+        "t0": 6.405,
+        "z0": 0.6775,
+        "margin_f64": 0.6218408435451392,
+        "margin_mp": 0.6218408435625946,
+        "ep_diff": 1.8494904628566844e-11,
+        "m_rel": 2.8070479228033372e-11
+      },
+      {
+        "idx": 235,
+        "ny": 0.75,
+        "t0": 6.405,
+        "z0": 0.6925,
+        "margin_f64": 0.6230554569979605,
+        "margin_mp": 0.6230554569845842,
+        "ep_diff": 5.995224055071144e-11,
+        "m_rel": 2.146887555134957e-11
+      },
+      {
+        "idx": 236,
+        "ny": 0.75,
+        "t0": 6.405,
+        "z0": 0.6725,
+        "margin_f64": 0.6245408837157844,
+        "margin_mp": 0.6245408836984514,
+        "ep_diff": 6.589707295998786e-11,
+        "m_rel": 2.7753225381193485e-11
+      },
+      {
+        "idx": 237,
+        "ny": 0.75,
+        "t0": 6.405,
+        "z0": 0.6975,
+        "margin_f64": 0.6266291419762522,
+        "margin_mp": 0.6266291419499129,
+        "ep_diff": 2.7193932401777537e-11,
+        "m_rel": 4.203325753595406e-11
+      },
+      {
+        "idx": 238,
+        "ny": 0.75,
+        "t0": 6.405,
+        "z0": 0.6675,
+        "margin_f64": 0.6287620736753399,
+        "margin_mp": 0.6287620737004544,
+        "ep_diff": 4.164985038033378e-11,
+        "m_rel": 3.994289435564033e-11
+      },
+      {
+        "idx": 239,
+        "ny": 0.75,
+        "t0": 6.405,
+        "z0": 0.7025,
+        "margin_f64": 0.6318257916901402,
+        "margin_mp": 0.6318257916875822,
+        "ep_diff": 1.1060404423922722e-11,
+        "m_rel": 4.048511286480036e-12
+      },
+      {
+        "idx": 240,
+        "ny": 0.75,
+        "t0": 6.405,
+        "z0": 0.6625,
+        "margin_f64": 0.6344889475650659,
+        "margin_mp": 0.634488947588753,
+        "ep_diff": 8.493331123903758e-11,
+        "m_rel": 3.733249004510704e-11
+      },
+      {
+        "idx": 241,
+        "ny": 0.75,
+        "t0": 6.415,
+        "z0": 0.6825,
+        "margin_f64": 0.6378802611490744,
+        "margin_mp": 0.6378802611606617,
+        "ep_diff": 6.458810012687492e-11,
+        "m_rel": 1.8165300592036708e-11
+      },
+      {
+        "idx": 242,
+        "ny": 0.75,
+        "t0": 6.415,
+        "z0": 0.6875,
+        "margin_f64": 0.6383149259300591,
+        "margin_mp": 0.6383149259429646,
+        "ep_diff": 4.394661269224088e-11,
+        "m_rel": 2.021800518573631e-11
+      },
+      {
+        "idx": 243,
+        "ny": 0.75,
+        "t0": 6.405,
+        "z0": 0.7075,
+        "margin_f64": 0.6386654389944373,
+        "margin_mp": 0.638665438963413,
+        "ep_diff": 1.0043832732974906e-10,
+        "m_rel": 4.8576754513418374e-11
+      },
+      {
+        "idx": 207,
+        "ny": 1.0,
+        "t0": 6.425000000000001,
+        "z0": 0.8475,
+        "margin_f64": 3.9956869411797014,
+        "margin_mp": 3.995686941081608,
+        "ep_diff": 5.977793520043425e-11,
+        "m_rel": 2.4549854566333334e-11
+      },
+      {
+        "idx": 167,
+        "ny": 1.0,
+        "t0": 7.195,
+        "z0": 0.9075,
+        "margin_f64": 7.435665766484947,
+        "margin_mp": 7.43566576693382,
+        "ep_diff": 2.6998422964969124e-10,
+        "m_rel": 6.036755186263102e-11
+      },
+      {
+        "idx": 105,
+        "ny": 1.0,
+        "t0": 7.155,
+        "z0": 0.6125,
+        "margin_f64": 4.208293492453687,
+        "margin_mp": 4.2082934925102125,
+        "ep_diff": 3.31515861797195e-11,
+        "m_rel": 1.3431917495098091e-11
+      },
+      {
+        "idx": 81,
+        "ny": 1.0,
+        "t0": 6.725,
+        "z0": 0.4325,
+        "margin_f64": 4.727755197430836,
+        "margin_mp": 4.727755197444757,
+        "ep_diff": 3.257655217022133e-11,
+        "m_rel": 2.9444038006628875e-12
+      },
+      {
+        "idx": 22,
+        "ny": 1.0,
+        "t0": 6.785,
+        "z0": 0.2775,
+        "margin_f64": 7.588680610388007,
+        "margin_mp": 7.588680610226413,
+        "ep_diff": 2.9179324216137935e-10,
+        "m_rel": 2.12941223648362e-11
+      },
+      {
+        "idx": 80,
+        "ny": 1.0,
+        "t0": 7.195,
+        "z0": 0.3725,
+        "margin_f64": 6.688411001360163,
+        "margin_mp": 6.688411000967299,
+        "ep_diff": 1.1287719567854345e-10,
+        "m_rel": 5.873807808991708e-11
+      },
+      {
+        "idx": 244,
+        "ny": 0.75,
+        "t0": 6.415,
+        "z0": 0.6775,
+        "margin_f64": 0.6390080080557619,
+        "margin_mp": 0.639008008069009,
+        "ep_diff": 3.6495124436833855e-11,
+        "m_rel": 2.0730853076252453e-11
+      },
+      {
+        "idx": 284,
+        "ny": 0.75,
+        "t0": 6.4350000000000005,
+        "z0": 0.7025,
+        "margin_f64": 0.6838971972447951,
+        "margin_mp": 0.6838971972390432,
+        "ep_diff": 1.7146453678291373e-11,
+        "m_rel": 8.410554234615452e-12
+      },
+      {
+        "idx": 324,
+        "ny": 0.75,
+        "t0": 6.415,
+        "z0": 0.7325,
+        "margin_f64": 0.7162007199665474,
+        "margin_mp": 0.7162007200890499,
+        "ep_diff": 9.164176581317232e-12,
+        "m_rel": 1.710448610148257e-10
+      },
+      {
+        "idx": 378,
+        "ny": 0.75,
+        "t0": 7.195,
+        "z0": 0.7475,
+        "margin_f64": 2.156323299802878,
+        "margin_mp": 2.156323299876057,
+        "ep_diff": 3.1007059820917944e-11,
+        "m_rel": 3.393683885906114e-11
+      },
+      {
+        "idx": 349,
+        "ny": 0.75,
+        "t0": 6.885,
+        "z0": 0.2525,
+        "margin_f64": 6.669868052775,
+        "margin_mp": 6.669868052674342,
+        "ep_diff": 1.1326442191485485e-10,
+        "m_rel": 1.509134206399417e-11
+      },
+      {
+        "idx": 415,
+        "ny": 0.75,
+        "t0": 6.565,
+        "z0": 0.0225,
+        "margin_f64": 18.188618196981206,
+        "margin_mp": 18.188618200286943,
+        "ep_diff": 1.7027489254509642e-08,
+        "m_rel": 1.817475133556598e-10
+      }
+    ],
+    "verdict": "FAIL"
+  },
+  "G4": {
+    "selection_index": 232,
+    "o1_flat_index": 32136,
+    "ny": 0.75,
+    "start_t": 6.405,
+    "start_z": 0.6825,
+    "detector_x": 1.0,
+    "margin_o1": 0.6206889089955112,
+    "margin_f64": 0.620679003403114,
+    "margin_mp": 0.6206790033825085,
+    "margin_mp_str": "0.620679003382508519636559682106572646",
+    "crossing_epoch_s_pc_f64": 2.8498644663331856,
+    "crossing_epoch_s_pc_mp": 2.8498644663663995,
+    "endpoint_f64": [
+      -6.147763009214598,
+      0.3868227936391181
+    ],
+    "endpoint_mp": [
+      -6.147763009189638,
+      0.3868227936741365
+    ],
+    "endpoint_agreement": 4.3003675308619014e-11,
+    "margin_agreement_rel": 3.319834758408821e-11,
+    "step_halving_margin_shift": 6.6385785757461235e-12,
+    "min_rho_rel": 0.23305765228645206,
+    "in_ladder": true,
+    "verdict": "PASS"
+  },
+  "G5": {
+    "statement": "PRECISION-CERTIFICATION, NOT FORMAL PROOF: the field is exact (a finite trigonometric sum evaluated to fp rounding; G1) and the integration is converged (adaptive rtol 1e-12 vs 50-digit fixed-step agreement; G3), but no step carries a rigorous enclosure.  Formal certification would require validated ODE integration with interval/Taylor-model enclosures (e.g. CAPD/COSY-class) of the backward flow over the exact field, with outward-rounded mode sums, so that each pre-crossing margin becomes a machine-checked inequality.  The analytic T4-W5 proof (no computation at all) remains the terminal open item.",
+    "verdict": "PASS"
+  },
+  "runtime": {
+    "dop_mean_nfev": 187657.88888888888,
+    "dop_total_s": 7666.071342468262,
+    "ladder_total_s": 2928.8108246326447
+  }
+}
