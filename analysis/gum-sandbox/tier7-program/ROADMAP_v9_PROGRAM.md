@@ -301,3 +301,53 @@ the margin printed; G5 honest scope: this is precision-certification
 state what a formal certification would still require (validated ODE
 enclosures) and that the analytic proof remains the terminal open.
 File as F-T7-P2.
+
+---
+
+## ADDENDUM — Phase Q (pre-registered): the validated-enclosure rung + analytic reconnaissance
+
+### Q1 — validated interval enclosures for the pre-crossing certificates
+The formal rung P2's G5 named, scoped to what makes it tractable: the
+pre-crossing certificate needs only the SHORT backward segment from the
+detector point (d, z, t) to its earlier crossing s_pc (median length
+~0.7–0.9 in t), not the full path to t = 0 — and it needs only that the
+enclosure tube's X_x lower bound exceed d at some s < t. Implement with
+mpmath.iv (interval arithmetic; trust statement required): rigorous
+interval evaluation of the exact band-limited field (finite mode sum
+with interval sin/cos/phases; float64 spectral coefficients declared
+exact-model data — the certified object is the discretized field O1/P2
+computed, its distance to the continuum being the separately-quantified
+layer), plus a validated first-order integrator with stepwise a priori
+enclosure (Picard-box) and rigorous local error bounds; stop when
+lower(X_x) > d + δ. Wrapping controlled by short segments + small h;
+report interval widths.
+**Gates.** G1: interval-field containment checks — the interval field
+encloses ≥ 10⁴ random exact-point evaluations (0 violations) and
+outward-rounding sanity on ≥ 100 hand-checkable cases. G2: the P2
+worst-margin path's pre-crossing CERTIFIED by enclosure — rigorous
+lower bound X_x > d + δ with δ > 0 printed, enclosure widths ≤ 10⁻³ at
+the certificate point. G3: ≥ 5 additional paths certified (spread over
+both kill bins and both |n_y| families), incl. ≥ 1 small-margin path.
+G4: failure accounting — any path where the tube wraps/blows before
+certifying is reported honestly with widths (PARTIAL if < the gate
+count certify). G5: trust statement + scope (mpmath.iv correct-rounding
+assumption; floats-as-exact-model; what CAPD-grade work would add;
+the analytic proof unchanged as terminal open). File as F-T7-Q1.
+
+### Q2 — analytic reconnaissance of the terminal proof
+A scoped analytic memo with at least one PROVEN lemma and the remaining
+obligations enumerated (honest FAIL permitted): (i) prove the late-time
+ballistic asymptotic v_x(x, z, t) = x/t + E(x,z,t) with an explicit,
+rigorous bound on E for the band-limited field class (finite mode sum ⇒
+exact stationary-phase/Fresnel decomposition — do it exactly, no
+hand-waving); (ii) write the transport mechanism (z-advection into the
+fast wall lane emptying the not-yet-crossed set) as a precise
+conjecture with its proof obligations listed (what monotonicity/
+Lyapunov structure would suffice); (iii) derive what the lemma alone
+already yields (e.g., a rigorous late-time bound: no first crossings
+after an explicit T_ball(δ) for trajectories confined to |x − d| ≤ …—
+state exactly what is and is not covered). Deliverable: Q2/ANALYTIC_RECON.md
++ any supporting computation. Gates: G1 the lemma proven (checkable
+derivation, error term explicit, numerically verified at ≥ 100 points);
+G2 the conjecture + obligations printed precisely; G3 the honest
+delta between lemma and needed theorem stated. File as F-T7-Q2.
