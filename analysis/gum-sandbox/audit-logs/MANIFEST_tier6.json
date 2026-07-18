@@ -1,5 +1,5 @@
 {
- "snapshot_utc": "2026-07-18 PHASE R COMPLETE - corpus3 v4.3 edition set (P/Q fold + teaching-doc T7 addenda + consistency sweep; 12/12 gates). Session fold obligations closed.",
+ "snapshot_utc": "2026-07-18 PHASE S IN CLOSEOUT - Tier 8 assessment pair (PROS/CONS, audited) + ROADMAP v10 S1-S3 complete (F-T8-S1..S3), S4 population chain running",
  "session": "536b52e3-c0e4-5548-a35f-7ca5893feba9",
  "branch": "claude/analyze-gum-po",
  "note": "Additive to MANIFEST.json (session d0b81976, ivm-viz line). This manifest covers the tier6-foundations session only.",
@@ -188,6 +188,42 @@
    "description": "R3: Session Map/Watch memo/campaign status/handoff sweep",
    "phase": "Phase R fold",
    "verdict": "4/4 PASS; 85 payload strings verbatim"
+  },
+  {
+   "agent_id": "wf_f8099700 surveys x6",
+   "description": "S-Assess sector surveys: theory-core, early-tiers, field-family, foundations, program-phases, campaign-meta",
+   "phase": "Phase S assess",
+   "verdict": "6/6 structured surveys delivered"
+  },
+  {
+   "agent_id": "wf_f8099700 briefs+audits x4",
+   "description": "pros-advocate, cons-critic, 2 adversarial evidence auditors",
+   "phase": "Phase S assess",
+   "verdict": "PROS 11 SUPPORTED+3 OVERSTATED+0 UNSUPPORTED; CONS same split"
+  },
+  {
+   "agent_id": "abb0edd7c540e29c4",
+   "description": "S1 P-acoustic cost-(1) pricing (sympy)",
+   "phase": "Phase S execute",
+   "verdict": "4/4 PASS; cancelling w=1/2 outside rescue window; F-T8-S1"
+  },
+  {
+   "agent_id": "a7240b17b3b60e4f3",
+   "description": "S2 chirality-interpolation family",
+   "phase": "Phase S execute",
+   "verdict": "4/4 PASS; closed-form G*(lambda); architecture generic; F-T8-S2"
+  },
+  {
+   "agent_id": "a965d760a5a912c85",
+   "description": "S3 O-1 pilot forward covering",
+   "phase": "Phase S execute",
+   "verdict": "4/4 PASS; 0% certified (wrapping-bound); technology-upgrade verdict; F-T8-S3"
+  },
+  {
+   "agent_id": "a0030ea395f5dd7e4",
+   "description": "S4 population-scale screener",
+   "phase": "Phase S execute",
+   "verdict": "G1 PASS 2.28e-7 (attempt-1 FAIL preserved); G2/G3 chain running at close"
   }
  ],
  "caveat": "tier6-coordinator-session.jsonl.xz was snapshotted during the checkpointing turn; the last few checkpoint/commit exchanges after the snapshot instant are absent from the archive by construction. The git history and SESSION_CHECKPOINT_tier6.md carry that residue. Coordinator archive re-snapshotted after L5-prime adjudication; same tail caveat applies to the final commit exchange.",
@@ -238,5 +274,19 @@
   "archive": "tier7-workflow-wf_8444d72f-484.tar.xz",
   "script": "tier7-phaseR-workflow-script.js",
   "total_subagent_tokens": 405480
+ },
+ "workflow10": {
+  "run_id": "wf_f8099700-bc8",
+  "archive": "tier8-workflow-wf_f8099700-bc8.tar.xz",
+  "script": "tier8-assessment-workflow-script.js",
+  "note": "S-Assess: 6 sector surveys + pros/cons briefs + 2 adversarial audits (10 agents)",
+  "total_subagent_tokens": 1143595
+ },
+ "workflow11": {
+  "run_id": "wf_871291ab-d94",
+  "archive": "tier8-workflow-wf_871291ab-d94.tar.xz",
+  "script": "tier8-execute-workflow-script.js",
+  "note": "S-Execute: ROADMAP v10 workstreams S1-S4 (4 agents)",
+  "total_subagent_tokens": 629103
  }
 }
