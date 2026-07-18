@@ -172,3 +172,75 @@ spec artifact (the N3 line criterion — its refutation was the
 sharpening). Findings F-T7-N2/N3/O1/O2/O3. Audit archives:
 audit-logs/MANIFEST_tier6.json (workflow5/6 blocks);
 TIER7_ADJUDICATION.md Phase-N/O addenda.
+
+---
+
+# ADDENDUM 2 — Phase P/Q payload (for the v4.3 delta; marker stays ⟦T7⟧)
+
+## Q10. P2 — exact-field precision certification (F-T7-P2) [target: VIII.F T4-W5 chain + XI]
+On the exactly-evaluated band-limited field (exact-vs-grid 9.9×10⁻¹⁵
+over 9,000 nodes — grid interpolation, O1's dominant error, eliminated):
+all **432 stratified backward paths keep their O1 classification**
+(0 moved; margins within O1's error envelope; all 297 capped paths
+re-certified ≥ 2.0); the 24-path 200-bit ladder shows **every
+pre-crossing margin stable to ~10 digits**, worst margin certified to
+36 printed digits (0.620679003382508519636559682106572646). One honest
+gate FAIL (G3, endpoint clause only): one wall-adjacent path missed
+the pre-registered t = 0 endpoint bar by 1.70× while the margin clause
+passed with four orders of headroom — the flow's sensitivity localizes
+to free endpoints, not the certified margins. Run survived one process
+death + one container restart via committed phase intermediates.
+Artifact: tier7-program/P2/RESULTS.md.
+
+## Q11. Q1 — the formal rung: machine-checked interval certificates (F-T7-Q1) [target: VIII.F chain + XI]
+Seven kill-bin pre-crossing certificates are now **machine-checked
+inequalities**: validated interval enclosures (full 2048-mode
+disc-interval field sums with outward ulp-padding; Lohner QR mean-value
+integrator with verified Picard a-priori boxes and exact second-order
+remainders) prove X_x ≥ d + 10⁻³ rigorously. Stretch case attained:
+**the worst-margin path certified over its full 3.555-unit backward
+excursion (through x ≈ −1.26) in 233,002 validated steps — certified
+X_x ≥ 1.0010188761, tube width 7.8×10⁻⁴, zero Picard retries**; zero
+wraps across ~436k validated steps on all seven paths (both kill bins,
+both |n_y| families, incl. the small-margin path at depth 2.73). Field
+containment 16,000/16,000 vs 200-bit references; the engine's
+regularization provably never binds on any tube (ρ headroom ≥
+3.9×10¹², clamp ≥ 237×) — certificates hold for the ideal AND the
+engine law. Trust base (stated): IEEE-754 correct rounding + nextafter
++ mpmath.iv outward rounding + floats-as-exact-model — one rung below
+a formally verified (CAPD-grade) kernel. Seven witness paths; the
+population keeps P2 grade. Artifact: tier7-program/Q1/RESULTS.md.
+
+## Q12. Q2 — the analytic program opened (F-T7-Q2) [target: VIII.F chain + XI]
+**Lemma A proven exactly**: the recentered Fresnel identity
+f′/f = i(x−x₀)/t + Φ′_t(w)/(tΦ_t(w)) with moment bounds carrying
+explicit constants (m₂ = 2.424780, m₃ = 3.734202), giving
+|v_x − (x−x₀)/t| ≤ D(w,t)/t² class — verified at 122 points × 5 checks
+against both continuum quadrature and the engine field: **0/610
+violations** (min headroom 1.8×10⁻³). **Conjecture C** (no-slow-lane /
+finite emptying time T_max(n_y) < ∞ for |n_y| ≥ 0.75) stated with full
+quantifiers + exception class; **proof obligations O-1…O-5 each with a
+named sufficient condition**. Honest delta printed: the lemma controls
+the ballistic tail, not the kill window — O-1…O-5 is the bridge.
+Artifact: tier7-program/Q2/ANALYTIC_RECON.md.
+
+## Q13. The T4-W5 ladder, complete statement [target: VIII.F + XI register]
+sampled zeros (L7b, ≤ 1.5×10⁻³ at 95% CL) → field/flow statement (O1,
+≤ 2.8×10⁻⁷) → exact-field precision certification (P2, margins
+10-digit) → **machine-checked interval certificates on witness paths
+(Q1)** + **the analytic program with one proven lemma and enumerated
+obligations (Q2)**. Remaining, both correctly named: a formally
+verified kernel + population-scale certification (engineering); the
+analytic theorem via O-1…O-5 (mathematics). Register language: T4-W5's
+testbed discharge now carries certificate grade on witnesses; the
+residual open is the O-1…O-5 program + formal kernel.
+
+## Q14. Process record (phases P + Q) [target: Sec. 0 + Sec. X]
+Sixth and seventh campaign phases (2026-07-18): Phase P (wf_d3b1ed78-3d0
++ finisher agent — P1 fold 4/4; P2 4/5 with the endpoint-clause FAIL
+localized-as-finding; one workflow-agent budget exhaustion handled by
+coordinator resume; one container restart survived via committed
+intermediates) and Phase Q (wf_74d72548-c07 — Q1 5/5 incl. stretch
+case; Q2 3/3). Findings F-T7-P2/Q1/Q2. Audit archives:
+audit-logs/MANIFEST_tier6.json (workflow7/8 blocks);
+TIER7_ADJUDICATION.md Phase-P/Q addenda.
