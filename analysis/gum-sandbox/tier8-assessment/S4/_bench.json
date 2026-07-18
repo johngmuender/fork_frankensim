@@ -1,0 +1,163 @@
+{
+  "t_reference_s": 96.22761368751526,
+  "per_config": [
+    {
+      "ny": 1.0,
+      "t0": 6.404,
+      "z0": 0.02280612244897959,
+      "r": 4,
+      "margin_ref": 18.451021743963814,
+      "margin_r": 18.45102129527029,
+      "margin_r2": 18.451021745671177,
+      "rel_err_r": 2.4318085440003497e-08,
+      "rel_err_r2": 9.253488307857545e-11,
+      "cls_ref": 0,
+      "cls_scr": 0
+    },
+    {
+      "ny": 1.0,
+      "t0": 6.404,
+      "z0": 0.04311224489795919,
+      "r": 4,
+      "margin_ref": 16.04604959372623,
+      "margin_r": 16.046049603613703,
+      "margin_r2": 16.046049594069412,
+      "rel_err_r": 6.161935444975341e-10,
+      "rel_err_r2": 2.138728795686079e-11,
+      "cls_ref": 0,
+      "cls_scr": 0
+    },
+    {
+      "ny": 1.0,
+      "t0": 6.404,
+      "z0": 0.06341836734693877,
+      "r": 2,
+      "margin_ref": 14.417387943191773,
+      "margin_r": 14.417386815494003,
+      "margin_r2": 14.417387948287613,
+      "rel_err_r": 7.82178973247436e-08,
+      "rel_err_r2": 3.534510005790883e-10,
+      "cls_ref": 0,
+      "cls_scr": 0
+    },
+    {
+      "ny": 1.0,
+      "t0": 6.404,
+      "z0": 0.2055612244897959,
+      "r": 2,
+      "margin_ref": 8.377613957075333,
+      "margin_r": 8.377615505176456,
+      "margin_r2": 8.377613957693878,
+      "rel_err_r": 1.8479021959978784e-07,
+      "rel_err_r2": 7.383310071540924e-11,
+      "cls_ref": 0,
+      "cls_scr": 0
+    },
+    {
+      "ny": 1.0,
+      "t0": 6.404,
+      "z0": 0.5101530612244898,
+      "r": 2,
+      "margin_ref": 3.2035074763169424,
+      "margin_r": 3.203507475607818,
+      "margin_r2": 3.2035074763425895,
+      "rel_err_r": 2.2135872011109398e-10,
+      "rel_err_r2": 8.005924829851528e-12,
+      "cls_ref": 0,
+      "cls_scr": 0
+    },
+    {
+      "ny": 1.0,
+      "t0": 6.404,
+      "z0": 0.6726020408163265,
+      "r": 2,
+      "margin_ref": 2.5535074755892366,
+      "margin_r": 2.5535074762786687,
+      "margin_r2": 2.5535074756055143,
+      "rel_err_r": 2.6999414475274535e-10,
+      "rel_err_r2": 6.3746223786120044e-12,
+      "cls_ref": 0,
+      "cls_scr": 0
+    },
+    {
+      "ny": 1.0,
+      "t0": 6.404,
+      "z0": 0.9771938775510204,
+      "r": 4,
+      "margin_ref": 9.835427655465507,
+      "margin_r": 9.835428159561138,
+      "margin_r2": 9.835427656469925,
+      "rel_err_r": 5.125304650431391e-08,
+      "rel_err_r2": 1.0212244117741119e-10,
+      "cls_ref": 0,
+      "cls_scr": 0
+    },
+    {
+      "ny": 0.75,
+      "t0": 6.404,
+      "z0": 0.6726020408163265,
+      "r": 2,
+      "margin_ref": 0.6227591609022327,
+      "margin_r": 0.6227591608886702,
+      "margin_r2": 0.6227591609066623,
+      "rel_err_r": 2.1778056944472782e-11,
+      "rel_err_r2": 7.112810379588859e-12,
+      "cls_ref": 0,
+      "cls_scr": 0
+    }
+  ],
+  "worst_rel_err": 1.8479021959978784e-07,
+  "hybrid_note": "wall band dw < 0.020 runs the P2 DOP853 pipeline (p2.integrate_path) verbatim: bench showed the near-wall cot drift (|v_x| ~ 400 at z0 = 0.0025) defeats affordable fixed steps (rel err 1.5e-5 at 10x steps, ~first-order convergence)",
+  "policy": {
+    "R_NEAR": 4,
+    "R_INT": 2,
+    "H0": 0.002,
+    "DW_HYBRID": 0.02,
+    "DW_NEAR": 0.05,
+    "accepted": true,
+    "wall_rtol": 1e-10,
+    "wall_atol": 1e-12
+  },
+  "timing": {
+    "bench_pass_s": 13.098060131072998,
+    "bench_half_s": 26.02120089530945,
+    "t_hybrid_per_config_s": 31.828387093544006,
+    "n_hybrid_per_chunk": 4,
+    "projected_chunk_s": 200.0,
+    "projected_screen_cpu_s": 20000.0,
+    "projected_screen_wall_4w_min": 83.33333333333333,
+    "t_hybrid_per_config_s_rtol9": 17.32827703158061,
+    "t_hybrid_per_config_s_rtol10": 22.0
+  },
+  "note": "policy ACCEPTED: worst RK4-row screener margin error <= 3e-7 with classifications preserved",
+  "wall_relaxed_check": {
+    "note": "wall band (dw < 0.02) runs p2.integrate_path with rtol 1e-10 / atol 1e-12",
+    "measured": [
+      {
+        "ny": 1.0,
+        "z0": 0.0025,
+        "margin_rtol12": 25.295790083,
+        "margin_rtol10": 25.2957889212,
+        "rel_diff": 4.6e-08,
+        "cls_preserved": true,
+        "t_s": 33
+      },
+      {
+        "ny": 0.75,
+        "z0": 0.0025,
+        "margin_rtol12": 24.173026472,
+        "margin_rtol10": 24.1730264713,
+        "rel_diff": 3e-11,
+        "cls_preserved": true,
+        "t_s": 29
+      },
+      {
+        "ny": 1.0,
+        "z0": 0.9975,
+        "cls": "BOX_EXIT both",
+        "rel_diff": 0.0
+      }
+    ],
+    "rejected_alternative": "rtol 1e-9 measured 6.16e-7 rel on (ny=1, z0=0.0025) -- too close to the 1e-6 gate"
+  }
+}
