@@ -115,23 +115,24 @@
     "DW_HYBRID": 0.02,
     "DW_NEAR": 0.05,
     "accepted": true,
-    "wall_rtol": 1e-10,
-    "wall_atol": 1e-12
+    "wall_rtol": 1e-11,
+    "wall_atol": 1e-13
   },
   "timing": {
     "bench_pass_s": 13.098060131072998,
     "bench_half_s": 26.02120089530945,
     "t_hybrid_per_config_s": 31.828387093544006,
     "n_hybrid_per_chunk": 4,
-    "projected_chunk_s": 200.0,
-    "projected_screen_cpu_s": 20000.0,
-    "projected_screen_wall_4w_min": 83.33333333333333,
+    "projected_chunk_s": 235.0,
+    "projected_screen_cpu_s": 23500.0,
+    "projected_screen_wall_4w_min": 97.91666666666667,
     "t_hybrid_per_config_s_rtol9": 17.32827703158061,
-    "t_hybrid_per_config_s_rtol10": 22.0
+    "t_hybrid_per_config_s_rtol10": 22.0,
+    "t_hybrid_per_config_s_rtol11": 30.0
   },
   "note": "policy ACCEPTED: worst RK4-row screener margin error <= 3e-7 with classifications preserved",
   "wall_relaxed_check": {
-    "note": "wall band (dw < 0.02) runs p2.integrate_path with rtol 1e-10 / atol 1e-12",
+    "note": "wall band (dw < 0.02) runs p2.integrate_path with rtol 1e-11 / atol 1e-13 (FINAL)",
     "measured": [
       {
         "ny": 1.0,
@@ -158,6 +159,25 @@
         "rel_diff": 0.0
       }
     ],
-    "rejected_alternative": "rtol 1e-9 measured 6.16e-7 rel on (ny=1, z0=0.0025) -- too close to the 1e-6 gate"
+    "rejected_alternative": "rtol 1e-9 measured 6.16e-7 rel on (ny=1, z0=0.0025) -- too close to the 1e-6 gate",
+    "calibration_history": [
+      {
+        "wall_rtol": 1e-09,
+        "worst_measured_rel": 6.16e-07,
+        "verdict": "rejected (too close to gate)"
+      },
+      {
+        "wall_rtol": 1e-10,
+        "worst_measured_rel": 1.392e-06,
+        "config": "ny=0.75 t0=6.855 z0=0.9975 (G1 attempt-1 FAIL)",
+        "verdict": "rejected"
+      },
+      {
+        "wall_rtol": 1e-11,
+        "worst_measured_rel": 1.01e-07,
+        "config": "same config re-measured",
+        "verdict": "ACCEPTED, 10x headroom"
+      }
+    ]
   }
 }

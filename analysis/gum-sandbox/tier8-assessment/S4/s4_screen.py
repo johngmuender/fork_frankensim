@@ -363,10 +363,12 @@ def screen_configs(t0, ny_arr, z0_arr, rn, ri, h0=H0):
     n_base = int(np.ceil(t0 / h0))
     for ib in np.where(rfac == 0)[0]:
         # hybrid wall band: the P2 DOP853 pipeline with rtol relaxed to
-        # 1e-10 (bench-verified on the extreme wall configs: margin
-        # motion <= 4.6e-8 rel vs rtol 1e-12, ~20x headroom under the
-        # 1e-6 gate; rtol 1e-12 would double the screen cost)
-        p2.RTOL, p2.ATOL = 1e-10, 1e-12
+        # 1e-11 (calibration history, all printed in RESULTS.md: 1e-10
+        # measured 1.39e-6 rel motion on a long wall path -- the G1
+        # attempt-1 FAIL -- and 1e-11 measures 1.0e-7 on that same
+        # config, 10x headroom under the 1e-6 gate; rtol 1e-12 would be
+        # the P2 pipeline bit-identical but doubles the screen cost)
+        p2.RTOL, p2.ATOL = 1e-11, 1e-13
         try:
             full = p2.integrate_path((float(ny_arr[ib]), t0,
                                       float(z0_arr[ib])))
