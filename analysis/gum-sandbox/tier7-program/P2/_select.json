@@ -1,0 +1,13 @@
+{
+  "mirror": {
+    "+1.00": {
+      "max_abs_dmargin": 3.5421706012783716e-08,
+      "cls_identical": true
+    },
+    "+0.75": {
+      "max_abs_dmargin": 6.836258670261941e-09,
+      "cls_identical": true
+    }
+  },
+  "n_selected": 432
+}

@@ -1,0 +1,82 @@
+{
+  "times": [
+    0.5,
+    1.7,
+    3.3,
+    5.1,
+    6.6,
+    7.195
+  ],
+  "per_time": [
+    {
+      "t": 0.5,
+      "n_nodes": 1500,
+      "n_well_f": 426,
+      "n_well_ab": 390,
+      "sup_rel_f": 4.885874506162591e-15,
+      "pernode_rel_f_well": 1.3371199655106204e-14,
+      "pernode_rel_ab_well": 2.3321327091383897e-15,
+      "cond_normalized_ab_all": 4.574663139824387e-16
+    },
+    {
+      "t": 1.7,
+      "n_nodes": 1500,
+      "n_well_f": 506,
+      "n_well_ab": 442,
+      "sup_rel_f": 5.174155686467928e-15,
+      "pernode_rel_f_well": 3.751965742731271e-14,
+      "pernode_rel_ab_well": 8.1601392309949e-15,
+      "cond_normalized_ab_all": 9.307429681977458e-16
+    },
+    {
+      "t": 3.3,
+      "n_nodes": 1500,
+      "n_well_f": 643,
+      "n_well_ab": 537,
+      "sup_rel_f": 8.479856916568953e-15,
+      "pernode_rel_f_well": 1.0323115973629676e-13,
+      "pernode_rel_ab_well": 1.1213252548714081e-14,
+      "cond_normalized_ab_all": 1.891682532660835e-15
+    },
+    {
+      "t": 5.1,
+      "n_nodes": 1500,
+      "n_well_f": 840,
+      "n_well_ab": 668,
+      "sup_rel_f": 8.72739016486664e-15,
+      "pernode_rel_f_well": 1.229003336393306e-13,
+      "pernode_rel_ab_well": 1.2906342661267445e-14,
+      "cond_normalized_ab_all": 1.680140469205937e-15
+    },
+    {
+      "t": 6.6,
+      "n_nodes": 1500,
+      "n_well_f": 1022,
+      "n_well_ab": 805,
+      "sup_rel_f": 9.452886722122578e-15,
+      "pernode_rel_f_well": 1.3324330632413787e-13,
+      "pernode_rel_ab_well": 1.2961853812498703e-14,
+      "cond_normalized_ab_all": 2.0353470042505017e-15
+    },
+    {
+      "t": 7.195,
+      "n_nodes": 1500,
+      "n_well_f": 1087,
+      "n_well_ab": 869,
+      "sup_rel_f": 9.940109681638528e-15,
+      "pernode_rel_f_well": 2.0989064292311854e-13,
+      "pernode_rel_ab_well": 1.765254609153999e-14,
+      "cond_normalized_ab_all": 2.156010501970205e-15
+    }
+  ],
+  "worst": {
+    "sup_rel_f": 9.940109681638528e-15,
+    "pernode_rel_f_well": 2.0989064292311854e-13,
+    "pernode_rel_ab_well": 1.765254609153999e-14,
+    "cond_normalized_ab_all": 2.156010501970205e-15,
+    "n_nodes_total": 9000,
+    "n_well_ab_total": 3711
+  },
+  "metric": "(i) sup-normalized f over all nodes; (ii) per-node relative f and a,b on well-conditioned nodes (3e-2 cut); (iii) conditioning-normalized a,b deviation on all nodes; each <= 1e-12",
+  "verdict": "PASS"
+}
