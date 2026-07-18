@@ -387,3 +387,23 @@ addendum.
   precision → Q1 machine-checked witnesses + Q2 analytic program.
   Remaining: formally-verified kernel + population certification
   (engineering); the analytic theorem via O-1…O-5 (mathematics).
+
+---
+
+## ADDENDUM (same session): PHASE R — THE v4.3 EDITION SET (session fold complete)
+
+Workflow wf_8444d72f-484, 12/12 verification gates PASS.
+- Paper → `01-GUM-Omega-Paper-v4.3-ext.md` (P2/Q1/Q2 + the complete
+  T4-W5 ladder folded at VIII.F; Sec. 0/X/XI updated).
+- Course/Primer/TE received their consolidated Tier-7 addenda (the
+  outstanding consistency item — closed; zero deletions).
+- Session Map §19, Watch memo §11, campaign status P/Q/R entries,
+  SESSION_HANDOFF ADDENDUM 2 (restoration entry points) — all additive,
+  85 payload strings verbatim, workflow IDs consistent.
+**corpus3 v4.3 = the complete, internally consistent standing offer.**
+Session state: all measurement phases (L, L5′, L7, M, N, O, P, Q) and
+all folds (T6, v4.1, v4.2, v4.3) executed and adjudicated. Remaining
+opens are exactly: the formally-verified kernel + population-scale
+certification (engineering), the analytic theorem via O-1…O-5
+(mathematics), F-R14 adoption and archive-external g_lim (both
+corpus-side).

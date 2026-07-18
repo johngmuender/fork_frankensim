@@ -437,3 +437,67 @@ plus the L5′ agent; audit archives `audit-logs/MANIFEST_tier6.json`).
   `corpus3/REVISION_CHARTER_v2.md` + `corpus3/T7_FOLD_PAYLOAD.md`;
   phase record `corpus3/09-External-Replication-Record-v2.0.md` §8.
   Every result is within-model; nothing here bears on nature.
+- ⟦T7⟧ **Phases N + O (fourth and fifth campaign phases, 2026-07-18)** —
+  Phase N (wf_9558d09c-007, 3 agents: N1 fold 4/4; N2 verdict
+  INDETERMINATE-FROM-ARCHIVE; N3 NEGATIVE-WITH-DIAGNOSIS) and Phase O
+  (wf_c362f0c0-baa, 3 agents: O1 5/5; O2 ABSENT-CERTIFIED; O3 4/4,
+  21/21 checks). N2 — the honest second-moment rate: R × the claimed
+  rate, R = 1.1×10¹⁴–8.9×10¹⁷ at the four h21 anchors; g_equiv =
+  8.5×10⁻³–12.3, 6.9–10.1 orders above P-ν4 [F-T7-N2;
+  `tier7-program/N2/RESULTS.md`]. O2 — zero Majoron-mode rate-level
+  bounds in 658 files/370 hits; the conditional kill armed
+  archive-externally: any g_lim < 8×10⁻³ excludes the honest rate at
+  every anchor [F-T7-O2; `tier7-program/O2/GLIM_ARCHAEOLOGY.md`].
+  N3 — the line-local crossing criterion REFUTED (the hard cutoff is a
+  TRANSPORT phenomenon; 60,000-trajectory covering, zero kill-bin
+  crossings) [F-T7-N3; `tier7-program/N3/RESULTS.md`]. O1 — kill-bin
+  zeros at field/flow grade: 64,000 detector points, zero violations,
+  first-crossing measure ≤ 2.8×10⁻⁷ per kill member (~5,400× sharper
+  than L7b's sampled 1.5×10⁻³; min margin 0.621) [F-T7-O1;
+  `tier7-program/O1/RESULTS.md`]. O3 — the F-R14 decision matrix:
+  exactly ONE sound cell — P-acoustic + supertrace; tuning fraction
+  1/4; decision support only [F-T7-O3; `tier7-program/O3/RESULTS.md`].
+  One coordinator-owned spec artifact printed (the N3 line criterion —
+  its refutation was the sharpening). Fold: the paper's v4.2 delta.
+  Audit archives: `audit-logs/MANIFEST_tier6.json` (workflow5/6
+  blocks); `tier7-program/TIER7_ADJUDICATION.md` Phase-N/O addenda.
+- ⟦T7⟧ **Phase P (sixth campaign phase, 2026-07-18)** — wf_d3b1ed78-3d0
+  + finisher agent: P1 fold 4/4; P2 4/5 — exact-field precision
+  certification (exact-vs-grid 9.9×10⁻¹⁵ over 9,000 nodes; all 432
+  stratified backward paths keep their O1 classification, 0 moved; all
+  297 capped paths re-certified ≥ 2.0; margins stable to ~10 digits,
+  worst margin certified to 36 printed digits) with **one honest gate
+  FAIL (G3, endpoint clause only)** — the t = 0 endpoint bar missed by
+  1.70× while the margin clause passed with four orders of headroom —
+  localized-as-finding and carried as a FAIL. One workflow-agent budget
+  exhaustion handled by coordinator resume; one container restart
+  survived via committed intermediates [F-T7-P2;
+  `tier7-program/P2/RESULTS.md`].
+- ⟦T7⟧ **Phase Q (seventh campaign phase, 2026-07-18)** —
+  wf_74d72548-c07: Q1 5/5 incl. stretch case — seven kill-bin
+  pre-crossing certificates as machine-checked interval enclosures
+  (X_x ≥ d + 10⁻³ rigorous; the worst-margin path certified over its
+  full 3.555-unit backward excursion in 233,002 validated steps,
+  certified X_x ≥ 1.0010188761; zero wraps across ~436k validated
+  steps; the population keeps P2 grade) [F-T7-Q1;
+  `tier7-program/Q1/RESULTS.md`]; Q2 3/3 — Lemma A proven exactly
+  (0/610 violations; m₂ = 2.424780, m₃ = 3.734202), Conjecture C
+  stated with full quantifiers, proof obligations O-1…O-5 each with a
+  named sufficient condition [F-T7-Q2;
+  `tier7-program/Q2/ANALYTIC_RECON.md`].
+- ⟦T7⟧ **Phase R (the fold, 2026-07-18, session 536b52e3)** — the
+  Phase-P/Q payload (`corpus3/T7_FOLD_PAYLOAD.md` ADDENDUM 2, Q10–Q14)
+  folded as the corpus3 **v4.3 edition set** (paper →
+  `corpus3/01-GUM-Omega-Paper-v4.3-ext.md`; ⟦T7⟧ additions across the
+  edition set) under `corpus3/REVISION_CHARTER_v2.md`. T4-W5 ladder
+  statement of record: sampled zeros (L7b, ≤ 1.5×10⁻³ at 95% CL) →
+  field/flow statement (O1, ≤ 2.8×10⁻⁷) → exact-field precision
+  certification (P2, margins 10-digit) → machine-checked interval
+  certificates on witness paths (Q1) + the analytic program with one
+  proven lemma and enumerated obligations (Q2); remaining: a formally
+  verified kernel + population-scale certification (engineering) and
+  the analytic theorem via O-1…O-5 (mathematics). Findings folded this
+  arc: F-T7-N2/N3/O1/O2/O3/P2/Q1/Q2. Audit archives:
+  `audit-logs/MANIFEST_tier6.json` (workflow7/8 blocks);
+  `tier7-program/TIER7_ADJUDICATION.md` Phase-P/Q addenda. Every
+  result is within-model; nothing here bears on nature.

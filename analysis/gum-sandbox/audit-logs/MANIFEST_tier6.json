@@ -1,5 +1,5 @@
 {
- "snapshot_utc": "2026-07-18 PHASE Q COMPLETE (Q1 formal rung: 7/7 machine-checked interval certificates incl. worst-margin stretch case; Q2 Lemma A proven + O-1..O-5 obligation ladder)",
+ "snapshot_utc": "2026-07-18 PHASE R COMPLETE - corpus3 v4.3 edition set (P/Q fold + teaching-doc T7 addenda + consistency sweep; 12/12 gates). Session fold obligations closed.",
  "session": "536b52e3-c0e4-5548-a35f-7ca5893feba9",
  "branch": "claude/analyze-gum-po",
  "note": "Additive to MANIFEST.json (session d0b81976, ivm-viz line). This manifest covers the tier6-foundations session only.",
@@ -170,6 +170,24 @@
    "description": "Q2: analytic reconnaissance (Lemma A + Conjecture C obligations)",
    "phase": "Tier 7 Phase Q",
    "verdict": "3/3 PASS; lemma exact, 0/610 violations; O-1..O-5 printed (F-T7-Q2)"
+  },
+  {
+   "agent_id": "a276068c5548868ec",
+   "description": "R1: paper v4.3-ext + manifest + Record sec 10",
+   "phase": "Phase R fold",
+   "verdict": "4/4 PASS; 29/29 payload strings verbatim"
+  },
+  {
+   "agent_id": "a149e26b2ab91b723",
+   "description": "R2: Course/Primer/TE consolidated Tier-7 addenda",
+   "phase": "Phase R fold",
+   "verdict": "4/4 PASS; zero deletions; consistency item closed"
+  },
+  {
+   "agent_id": "a3f3587c612a27760",
+   "description": "R3: Session Map/Watch memo/campaign status/handoff sweep",
+   "phase": "Phase R fold",
+   "verdict": "4/4 PASS; 85 payload strings verbatim"
   }
  ],
  "caveat": "tier6-coordinator-session.jsonl.xz was snapshotted during the checkpointing turn; the last few checkpoint/commit exchanges after the snapshot instant are absent from the archive by construction. The git history and SESSION_CHECKPOINT_tier6.md carry that residue. Coordinator archive re-snapshotted after L5-prime adjudication; same tail caveat applies to the final commit exchange.",
@@ -214,5 +232,11 @@
   "archive": "tier7-workflow-wf_74d72548-c07.tar.xz",
   "script": "tier7-phaseQ-workflow-script.js",
   "total_subagent_tokens": 480196
+ },
+ "workflow9": {
+  "run_id": "wf_8444d72f-484",
+  "archive": "tier7-workflow-wf_8444d72f-484.tar.xz",
+  "script": "tier7-phaseR-workflow-script.js",
+  "total_subagent_tokens": 405480
  }
 }

@@ -345,3 +345,70 @@ branch topology, results, foundations-text restoration summaries,
 tacit knowledge, log-archive index). Session archives:
 `audit-logs/MANIFEST_tier6.json` + `tier6-*.xz` (additive to this
 session's MANIFEST.json — do not merge the manifests).
+
+---
+
+## ADDENDUM 2 (2026-07-18, session 536b52e3, branch `claude/analyze-gum-po`): the Tier-6/7 arc, complete
+
+⟦T7⟧ Everything below happened on `claude/analyze-gum-po` after the
+2026-07-17 addendum above and is the branch's standing state at this
+session's close. Numbers of record for every Tier-7 claim:
+`corpus3/T7_FOLD_PAYLOAD.md` (Q1–Q14) — editors copy, never restate.
+
+**The phase arc, L through R:**
+- **Phase L / Tier 6 — foundations (2026-07-17)**: workflows
+  wf_5852a821-c22 (L1/L2/L3/L5, 4 agents) + wf_1fc03d62-b33 (L7a/L7b,
+  2 agents) + the L5′ agent; findings family **F-T6-\*** (F-T6-1…6,
+  F-T6-L5-EXEC/-EXEC-2, F-T6-L7a/b); fold = the corpus3 v4.0/v3-ext
+  editions under `corpus3/REVISION_CHARTER_v2.md` +
+  `corpus3/T6_FOLD_PAYLOAD.md`.
+- **Phase M / Tier 7 — program extensions (2026-07-18)**:
+  wf_95da92d5-375, four agents; findings **F-T7-M1…M4 + F-T7-1**
+  (M3: F-R9 route (b) closed NOT-VIABLE; M4: τ(ν)/τ(dBB) =
+  0.060 ± 0.005 at M = 9, 0.024 ± 0.004 at M = 16); fold = the
+  paper's v4.1 delta. [`tier7-program/M1..M4/RESULTS.md`]
+- **Phases N + O (2026-07-18)**: wf_9558d09c-007 + wf_c362f0c0-baa;
+  findings **F-T7-N2/N3/O1/O2/O3** — the honest second-moment rate
+  R × claimed with R = 1.1×10¹⁴–8.9×10¹⁷ (N2,
+  INDETERMINATE-FROM-ARCHIVE) + the O2 ABSENT-CERTIFIED archaeology
+  arming the archive-external kill (any Majoron-mode g_lim < 8×10⁻³
+  excludes); O1's kill-bin zeros at field/flow grade ≤ 2.8×10⁻⁷; O3's
+  F-R14 matrix — exactly ONE sound cell (P-acoustic + supertrace,
+  21/21 checks); fold = the paper's v4.2 delta.
+  [`tier7-program/N2..O3/`]
+- **Phases P + Q (2026-07-18)**: wf_d3b1ed78-3d0 + finisher agent and
+  wf_74d72548-c07; findings **F-T7-P2/Q1/Q2** — P2 4/5 (432 paths keep
+  their O1 classification; worst margin to 36 printed digits) with the
+  honest G3 endpoint-clause FAIL (missed by 1.70×) carried as a FAIL;
+  Q1's seven machine-checked interval certificates (stretch case:
+  233,002 validated steps, certified X_x ≥ 1.0010188761); Q2's Lemma A
+  proven exactly (0/610 violations) + Conjecture C + obligations
+  O-1…O-5. [`tier7-program/P2/RESULTS.md`, `Q1/RESULTS.md`,
+  `Q2/ANALYTIC_RECON.md`]
+- **Phase R (2026-07-18, this session)**: the Phase-P/Q fold — the
+  corpus3 **v4.3 edition set** (`corpus3/01-GUM-Omega-Paper-v4.3-ext.md`
+  + the ⟦T7⟧-extended Course/Primer/Teachers-Ed/Session-Map/Watch-Mode/
+  Replication-Record/manifest editions), which is **the standing offer
+  to the corpus's authors** under `corpus3/REVISION_CHARTER_v2.md`:
+  the replicators' proposal, not the authors' edition; adoption is
+  theirs; grades never rise; honest verdicts carried as printed.
+
+**T4-W5 ladder status (the arc's spine result, payload Q13)**: sampled
+zeros (L7b, ≤ 1.5×10⁻³ at 95% CL) → field/flow statement (O1,
+≤ 2.8×10⁻⁷) → exact-field precision certification (P2, margins
+10-digit) → machine-checked interval certificates on witness paths
+(Q1) + the analytic program with one proven lemma and enumerated
+obligations (Q2). Remaining, both correctly named: a formally verified
+kernel + population-scale certification (engineering); the analytic
+theorem via O-1…O-5 (mathematics).
+
+**Restoration entry points for this line**:
+- `tier6-foundations/SESSION_CHECKPOINT_tier6.md` — full protocol
+  (branch topology, tacit knowledge, log-archive index).
+- `tier6-foundations/TIER6_ADJUDICATION.md` +
+  `tier7-program/TIER7_ADJUDICATION.md` (with its Phase-N/O and
+  Phase-P/Q addenda) — verdicts, findings registers, spec-defect
+  records.
+- `audit-logs/MANIFEST_tier6.json` — the workflow blocks for the whole
+  arc (additive to the older MANIFEST.json — do not merge the
+  manifests).

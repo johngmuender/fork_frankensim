@@ -345,3 +345,39 @@ is now on the record.
 pre-crossing certificates incl. the worst-margin stretch case);
 F-T7-Q2 (Lemma A exact + the O-1…O-5 obligation ladder).
 Run record: wf_74d72548-c07, 2 agents, 480,196 tokens.
+
+---
+
+## ADDENDUM — Phase R adjudication (workflow wf_8444d72f-484): the v4.3 edition set
+
+**R1 — paper v4.3-ext + manifest + Record: 4/4 PASS.** Paper now
+`01-GUM-Omega-Paper-v4.3-ext.md` with six ⟦T7⟧ additions (v4.3 revision
+note; Sec. 0 Phase-P/Q record; the two VIII.F certification-chain
+blocks — P2 exact-field + Q1 machine-checked certificates with trust
+base, then Q2's Lemma A + Conjecture C + O-1…O-5 + the complete
+ladder; Sec. X record; Sec. XI register with the certificate-grade
+language). 29/29 payload strings verbatim incl. the 36-digit certified
+margin; the P2 endpoint FAIL carried as a FAIL in every file.
+
+**R2 — teaching documents: 4/4 PASS, outstanding consistency item
+CLOSED.** The Course, Primer, and Teachers' Edition — which had the
+Tier-6 fold but none of the Tier-7 arc — each gained one consolidated
+⟦T7⟧ addendum in its own register (Course: phases M–Q taught with
+per-chapter tie-ins, 38 verbatim payload strings; Primer: the
+plain-language second-campaign summary with the mandated honest 0νββ
+formulation; TE: the instructor mirror with the five-rung
+certificate-ladder epistemology lesson and honest-limits list). Zero
+deletions anywhere — stale edition notes annotated, never reworded.
+
+**R3 — small docs + status + handoff: 4/4 PASS.** Session Map ⟦T7⟧
+§19 (the full arc mapped); Watch-Mode memo §11 (dated: arc complete;
+NO nature-facing evidence, NO branch triggered); campaign status
+Phase N+O/P/Q/R entries; SESSION_HANDOFF ADDENDUM 2 with the three
+restoration entry points. 85 payload strings verified verbatim across
+the four files; all five Tier-7 workflow IDs consistent everywhere.
+
+**Disposition.** The corpus3 v4.3 edition set is complete and
+internally consistent across all ten documents — the standing offer to
+the corpus's authors, closing the session's fold obligations. Findings
+register unchanged (Phase R is a fold, not a measurement phase).
+Run record: wf_8444d72f-484, 3 agents, 405,480 tokens.

@@ -89,4 +89,42 @@ What did not survive is the endpoint. **F-R4** (machine precision): the isorotat
 
 ---
 
+## ⟦T7⟧ §19 The Tier-7 program-extension arc (NEW — campaign phases three through seven and their fold, mapped in this document's own manner) [F-T7-M1…M4 · F-T7-1 · F-T7-N2/N3 · F-T7-O1/O2/O3 · F-T7-P2 · F-T7-Q1/Q2]
+
+⟦T7⟧ **The arc.** Five workflow phases (2026-07-18) — Phase M/Tier 7 proper (wf_95da92d5-375, four agents), Phase N (wf_9558d09c-007, 3 agents), Phase O (wf_c362f0c0-baa, 3 agents), Phase P (wf_d3b1ed78-3d0 + finisher agent), Phase Q (wf_74d72548-c07) — closed by the Phase-R fold (this corpus3 v4.3 edition set). Numbers of record: corpus3/T7_FOLD_PAYLOAD.md (Q1–Q14). Within-model throughout; nothing below bears on nature. [tier7-program/TIER7_ADJUDICATION.md; audit-logs/MANIFEST_tier6.json, workflow4–8 blocks]
+
+⟦T7⟧ **M1 — WS4-M4c instantiated at toy grade [F-T7-M1; + F-T7-1].** The tracker identity w(z) = −1 + Ω_m(z) verified to 1.8×10⁻¹² AND shown dynamical (attractor rate = Γ to 5×10⁻⁸); the freezing class forced (min w_a = +0.1575 > 0); new structural law Γ ∝ Hⁿ ⟹ 𝔴 = 1 − n (measured 0.5029 vs 0.5 at n = ½); the printed memory-pair convention recovered (W(z = 0) → W(z = 2), devs ≤ 0.5%); EdS pathology quantified (+0.21 pure to +0.31 at β = −1). F-T7-1 (NEW minor, print-arithmetic, offered): VI.D (6.4′)'s "(+0.36 at β = −0.3)" not recoverable under any convention tried (measured +0.71 tangent; sign agrees). [tier7-program/M1/RESULTS.md]
+
+⟦T7⟧ **M2 — the ⟨r2⟩ servo law: form replicated; coefficient = bath convention [F-T7-M2].** λ ∝ g_χ² (log-slope 1.9932 ± 0.0041), λ ∝ ω\* (invariance 1.0050 ± 0.0074), integrable limit exactly marginal (|λ| ≤ 8×10⁻¹³); coefficient identified c = η/2 exactly — a pure bath-spectrum functional; the printed 0.021 ± 0.004 attainable in-class at η = 0.042; super-Ohmic destroys the g² law itself (slope 3.38). [tier7-program/M2/RESULTS.md]
+
+⟦T7⟧ **M3 — F-R9 route (b) CLOSED [F-T7-M3].** The on-tube saturation rescue NOT-VIABLE on h21's parametrization verbatim: 25–46 decades of mean rate per decade of R; at the only rate-preserving point R is still 5×10¹³–10¹⁶; no CONDITIONAL residue — F-R9's repair menu narrows to route (a) or route (c). [tier7-program/M3/RESULTS.md]
+
+⟦T7⟧ **M4 — Nelson relaxation 17–41× faster; dBB a log-singular limit [F-T7-M4].** At GUM's own ν = ħ/2m, τ(ν)/τ(dBB) = 0.060 ± 0.005 (M = 9) and 0.024 ± 0.004 (M = 16); τ ~ a + b·ln(1/ν) (r² 0.97/0.92); III.D's [CAL] dBB-calibrated rates become direction-signed conservative bounds — equilibrium STRENGTHENED, relic windows WEAKENED, both edges carried. [tier7-program/M4/RESULTS.md]
+
+⟦T7⟧ **N1 — the v4.1 fold executed (4/4).** The Phase-M results folded into the paper's v4.1 delta under charter v2. [audit-logs/MANIFEST_tier6.json, workflow5 block]
+
+⟦T7⟧ **N2 — the honest second-moment rate [F-T7-N2].** Route (a) computed: the macroscopic-sample rate self-averages to R × the claimed rate, R = 1.1×10¹⁴–8.9×10¹⁷ at the four h21 anchors; at g²-scaling g_equiv = 8.5×10⁻³–12.3, 6.9–10.1 orders above the corpus's own P-ν4 far-horizon line; verdict INDETERMINATE-FROM-ARCHIVE. [tier7-program/N2/RESULTS.md]
+
+⟦T7⟧ **N3 — the line criterion refuted, as diagnosis [F-T7-N3].** The line-local crossing criterion is REFUTED in this geometry (NEGATIVE-WITH-DIAGNOSIS; the hard cutoff is a TRANSPORT phenomenon); by-product: a 60,000-trajectory covering with zero kill-bin crossings. [tier7-program/N3/RESULTS.md]
+
+⟦T7⟧ **O1 — the kill-bin zeros at field/flow grade [F-T7-O1].** The backward-reachability theorem executed over all 64,000 kill-bin detector points at three resolutions: zero violations; min pre-crossing margin 0.621; kill-bin first-crossing measure ≤ 2.8×10⁻⁷ per kill member — ~5,400× sharper than L7b's sampled 1.5×10⁻³. [tier7-program/O1/RESULTS.md]
+
+⟦T7⟧ **O2 — the g_lim archaeology [F-T7-O2].** ABSENT-CERTIFIED: 658 files, 14 logged patterns, 370 hits catalogued, zero Majoron-mode rate-level bounds in the archive; the conditional kill armed archive-externally — any Majoron-mode rate-level bound g_lim < 8×10⁻³ excludes the honest rate at every anchor and every printed g. [tier7-program/O2/GLIM_ARCHAEOLOGY.md]
+
+⟦T7⟧ **O3 — the F-R14 decision matrix [F-T7-O3].** All five h33 anchors reproduced exactly; the full 5-reading × 2-bookkeeping matrix computed (21/21 checks): exactly ONE sound cell — P-acoustic + supertrace; P-acoustic pricing: tuning fraction 1/4 (width-1/18 window). Decision support only; adoption is the authors'; the F-R14 regrade language unchanged. [tier7-program/O3/RESULTS.md]
+
+⟦T7⟧ **P1 — the v4.2 fold executed (4/4).** The Phase-N/O results folded into the paper's v4.2 delta under charter v2. [audit-logs/MANIFEST_tier6.json, workflow7 block]
+
+⟦T7⟧ **P2 — exact-field precision certification [F-T7-P2].** On the exactly-evaluated field (exact-vs-grid 9.9×10⁻¹⁵), all 432 stratified backward paths keep their O1 classification (0 moved); every pre-crossing margin stable to ~10 digits, worst margin certified to 36 printed digits; one honest gate FAIL (G3, endpoint clause only — the t = 0 endpoint bar missed by 1.70× while the margin clause passed with four orders of headroom) — carried as a FAIL, never a pass. [tier7-program/P2/RESULTS.md]
+
+⟦T7⟧ **Q1 — machine-checked interval certificates [F-T7-Q1].** Seven kill-bin pre-crossing certificates are now machine-checked inequalities (validated interval enclosures prove X_x ≥ d + 10⁻³ rigorously); stretch case attained: the worst-margin path certified over its full 3.555-unit backward excursion in 233,002 validated steps — certified X_x ≥ 1.0010188761; zero wraps across ~436k validated steps on all seven paths; the population keeps P2 grade. [tier7-program/Q1/RESULTS.md]
+
+⟦T7⟧ **Q2 — the analytic program opened [F-T7-Q2].** Lemma A proven exactly (moment constants m₂ = 2.424780, m₃ = 3.734202; 0/610 violations against quadrature and the engine field); Conjecture C stated with full quantifiers; proof obligations O-1…O-5 each with a named sufficient condition; honest delta printed — the lemma controls the ballistic tail, not the kill window. [tier7-program/Q2/ANALYTIC_RECON.md]
+
+⟦T7⟧ **R — the fold (this edition set).** The Phase-P/Q payload (Q10–Q14) folded as the corpus3 v4.3 edition set under REVISION_CHARTER_v2.md; the T4-W5 ladder statement of record: sampled zeros (L7b, ≤ 1.5×10⁻³ at 95% CL) → field/flow statement (O1, ≤ 2.8×10⁻⁷) → exact-field precision certification (P2, margins 10-digit) → machine-checked interval certificates on witness paths (Q1) + the analytic program (Q2); remaining, both correctly named: a formally verified kernel + population-scale certification (engineering); the analytic theorem via O-1…O-5 (mathematics). [corpus3/T7_FOLD_PAYLOAD.md Q13]
+
+⟦T7⟧ **Epistemic notice (this section).** Every result above is within-model; grades never rise by replication; P2's G3 endpoint-clause FAIL is carried as a FAIL; the O3 matrix is decision support only, and the g_lim kill is conditional on a bound the archive certifiably does not contain. Nothing in this section bears on nature, and nothing in it adjudicates any stake.
+
+---
+
 *That is the map as revised. The prior closing question — "where would you like to take the GUM-only work?" — now has the campaign's answer on file: it was taken outside, and it came back with a ledger, a repair, and the watch's next two gates.*
