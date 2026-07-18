@@ -127,3 +127,62 @@ adjudication in `TIER7_ADJUDICATION.md`; artifacts to branch
 `claude/analyze-gum-po`. M3 and M4 must READ the prior artifacts they
 extend (h21, tier3-born) before writing code — parametrization reuse
 is a gate condition, not a suggestion.
+
+---
+
+## ADDENDUM — Phase N (pre-registered): v4.1 fold, F-R9 route (a), L7 continuum proof
+
+### N1 — corpus3 v4.1 delta (the F-T7 fold)
+Editor task under REVISION_CHARTER_v2 (marker ⟦T7⟧; payload authority
+corpus3/T7_FOLD_PAYLOAD.md): bump the paper to v4.1-ext (git mv + all
+version headers), insert ⟦T7⟧ blocks at Sec. 0 (third-phase record),
+III.D (M4), IV.H.3 (M2), VI.D (M1 + F-T7-1 flag), Sec. X (T7 record),
+Sec. XI (register update: WS4-M4c toy-discharged; F-R9 menu narrowed);
+update README.manifest v5 version history + Replication Record (§8) +
+append a Tier-6/7 section to ../REPLICATION_CAMPAIGN_STATUS.md
+(additive). Verification: additive-only diff (headers exempt), payload-
+sourced numbers, grades never rise.
+
+### N2 — F-R9 route (a): the honest second-moment treatment
+On h21's parametrization (mandatory reuse): compute the observable-level
+consequence of including the second moment. Key physics to establish:
+(i) for a macroscopic sample the total rate self-averages SPATIALLY to
+N·⟨A²⟩ ⇒ enhancement factor R = 1e14–1e18 over the corpus's ⟨A⟩²-based
+claim (staticity of the web on experiment timescales follows from h21's
+own motional-narrowing pricing — cite it); (ii) rate-distribution
+statistics across nuclei (burstiness: fraction of rate carried by the
+top 1e-x of sites); (iii) propagate through the corpus's Majoron/P-ν4
+phenomenology: with rate ∝ g²-class scaling, the honest rate = R × the
+printed rate ⇒ effective sensitivity shift √R = 1e7–1e9 in g-equivalent
+units; check against the corpus's own printed g-window [8e-10, 1.3e-8]
+and the J3 battery re-run ("SHIFTS-HARMLESSLY at 7.8e-10") — does the
+honest second moment break the battery, force a parameter retreat, or
+strengthen a kill? Pre-registered decision frame: report which of the
+three, with the arithmetic; no tuning. Gates: G1 h21 anchor
+reproduction; G2 the enhancement + burstiness measured; G3 the
+propagation table (printed rate → honest rate → battery consequence)
+with an explicit verdict; G4 honest-limits paragraph (what route (a)
+does NOT settle: the K3a insert's upstream physics; S1 untouched).
+
+### N3 — L7 continuum proof of the cutoff zeros (T4-W5 residual)
+Elevate L7b's sampled zeros toward theorem grade via a FIELD-LEVEL
+sufficient condition: Theorem (crossing criterion): if
+sup_z v_x(d, z, t) < 0 for all t ∈ (τ*, T], then no trajectory crosses
+x = d in (τ*, T] (a crossing at time t requires v_x ≥ 0 at the crossing
+point), hence the first-crossing density vanishes there — continuum
+support ⊂ [0, τ*]. Execute on the L5′/L7b engine (n_y = +1): compute
+v_x(d_near, z, t) on the full (z, t) grid; measure τ* = sup{t :
+max_z v_x(d, z, t) ≥ 0}; margin δ(t) = −max_z v_x on (τ*, T].
+Gates: G1 field quality (machine precision as before); G2 τ* exists,
+stable ≤ 1% under Nx-doubling + dt-halving; G3 consistency:
+τ* ≥ τ_max(sampled) = 5.130950 and the gap τ* − τ_max reported +
+explained (the sampled max is ≤ the continuum edge); G4 margin: δ(t) ≥
+δ_min > 0 on (τ* + ε, T] with δ_min ≫ discretization error bound
+(quantify both) — the hypothesis of the theorem verified at
+proof-grade-modulo-discretization; G5 discrimination control: same
+computation at n_y = +0.25 must show max_z v_x ≥ 0 recurring out to
+late times (no τ* below T) — the criterion distinguishes the cutoff
+from the no-cutoff family member. Honest scope: this proves the
+continuum support statement GIVEN the computed field (discretization
+bounds printed); it upgrades the L7b kill-bin zeros from ensemble
+statement to field statement; the fully analytic proof remains open.
