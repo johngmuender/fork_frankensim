@@ -1,0 +1,244 @@
+{
+ "workstream": "T1",
+ "finding": "F-T9-T1",
+ "register": "within-model; V.F-graded; nothing bears on nature",
+ "amendments": [
+  "[AMENDMENT A1] The exact IP radial-quantization prescription (operator ordering, c0, fudge-factor value) is not pinnable from accessible literature (egress limited to search snippets); implemented closest published variant: review-pinned E_tot(rho) [Crede-Meyer 0812.0600 / Mathieu et al 0810.4453] + variable-mass radial Schroedinger equation with the loop inertia mu = 2 pi sigma rho.  Central scheme = Zhu-Kroemer ordering with the single cutoff f calibrated ONCE to IP's published 0++ = 1.52 GeV at b = 0.18 GeV^2 (result f* = 1.9724, an O(1) 'fudge factor' as IP describe), then FROZEN before the corpus tension enters.  BenDaniel-Duke ordering validates at 0.62% only in its large-f limit and is carried as the ordering systematic.  Calibration to the model's own published benchmark is validation, not tuning: no X(2370)/lattice anchor entered the calibration.",
+  "[AMENDMENT A2] c0 (additive constant in the review rendition) set to 0: no accessible source values it for the glueball sector; any c0 != 0 would be an un-cited second parameter.",
+  "[AMENDMENT A3] Zero-point constant -13/12 (review-pinned) corresponds to one polarization pair per mode m; the J^PC census uses the full in-plane/out-of-plane content of a 3D loop (reproduces IP's signature odd-J PC=+- oddballs and a low 0-). IP's internal polarization bookkeeping not pinnable; energy validation is unaffected (gate passes on the printed 1.52)."
+ ],
+ "self_checks": {
+  "sho_regression_relerr": 5.483037313069872e-06,
+  "ip_grid_convergence_relerr": 9.916383389231678e-07
+ },
+ "route_A_IP": {
+  "validation": {
+   "b_IP_GeV2": 0.18,
+   "target_GeV": 1.52,
+   "scheme_central": "Zhu-Kroemer ordering, Dirichlet, mu = 2 pi sigma rho",
+   "fstar": 1.9724361517053026,
+   "m0pp_GeV": 1.5200000018363917,
+   "rel_dev": 1.2081524377418723e-09,
+   "bdd_ordering_best_GeV": 1.529356121615862,
+   "bdd_rel_dev": 0.006155343168330242,
+   "f1_reference_GeV": 1.7219818739728148,
+   "gate_T1_G1a": "PASS"
+  },
+  "jpc_census": {
+   "2": {
+    "2--": 1,
+    "2+-": 1,
+    "2-+": 1,
+    "2++": 1
+   },
+   "3": {
+    "3--": 1,
+    "3+-": 1,
+    "3-+": 1,
+    "3++": 1
+   },
+   "4": {
+    "0+-": 1,
+    "0-+": 1,
+    "0++": 2,
+    "4--": 3,
+    "4+-": 2,
+    "4-+": 2,
+    "4++": 3
+   }
+  },
+  "levels_at_sigma_0.19": [
+   {
+    "label": "0++ (ground loop)",
+    "Mph": 0,
+    "n": 0,
+    "L": 0,
+    "eps": 3.5826743623402577,
+    "eps_band": [
+     3.279463229153927,
+     3.8784620043394322
+    ],
+    "mass_GeV": 1.5616515493055205,
+    "mass_band_GeV": [
+     1.4294848804939537,
+     1.6905823933277793
+    ]
+   },
+   {
+    "label": "2++ / 2-+ (m=2 phonon; also 2+-/2-- flagged)",
+    "Mph": 2,
+    "n": 0,
+    "L": 0,
+    "eps": 5.9706756518612085,
+    "eps_band": [
+     5.732085293016533,
+     7.000449056680981
+    ],
+    "mass_GeV": 2.602557179112184,
+    "mass_band_GeV": [
+     2.4985580528014797,
+     3.051424999747703
+    ]
+   },
+   {
+    "label": "3-+ / 3+- oddball (m=3 phonon; also 3++/3--)",
+    "Mph": 3,
+    "n": 0,
+    "L": 0,
+    "eps": 7.134491715339575,
+    "eps_band": [
+     6.649488165946858,
+     8.437720415524234
+    ],
+    "mass_GeV": 3.109852840069336,
+    "mass_band_GeV": [
+     2.8984446941631967,
+     3.6779170605120157
+    ]
+   },
+   {
+    "label": "0++* (radial excitation)",
+    "Mph": 0,
+    "n": 1,
+    "L": 0,
+    "eps": 6.665308612266512,
+    "eps_band": [
+     6.500876210363994,
+     6.8530471263639745
+    ],
+    "mass_GeV": 2.905340666838105,
+    "mass_band_GeV": [
+     2.833666244544431,
+     2.9871739879142374
+    ]
+   },
+   {
+    "label": "0-+ (two m=2 phonons, mixed pol; +0++', 0+-, 4++, ...)",
+    "Mph": 4,
+    "n": 0,
+    "L": 0,
+    "eps": 8.274938189248923,
+    "eps_band": [
+     7.559954565903576,
+     9.730410908780122
+    ],
+    "mass_GeV": 3.6069619330981504,
+    "mass_band_GeV": [
+     3.2953077970532587,
+     4.241387783049832
+    ]
+   },
+   {
+    "label": "1-+ orbital (L=1 on ground loop; known IP 3+1D pathology)",
+    "Mph": 0,
+    "n": 0,
+    "L": 1,
+    "eps": 5.615962955384783,
+    "eps_band": [
+     5.434902197851795,
+     5.82472978966479
+    ],
+    "mass_GeV": 2.447941499319029,
+    "mass_band_GeV": [
+     2.369018944846307,
+     2.538940852657974
+    ]
+   }
+  ],
+  "band_definition": "envelope over the frozen scheme set {ZK ordering x f in [f*/1.5, f*, 1.5 f*]} + {BDD ordering x f in [8, 32]} -- IP cutoff freedom (cf. Johnson-Teper treating the short-distance cutoff as the model's main freedom) plus variable-mass operator-ordering freedom; model systematics only, nothing fitted"
+ },
+ "route_B_NG": {
+  "identity_checks": {
+   "D26_level1_massless": true,
+   "formula_identity_max_abs_err": 0.0,
+   "regge_slope_err": 3.97617008772984e-16,
+   "alpha_closed_equals_half_open": true
+  },
+  "gate_T1_G1b": "PASS",
+  "levels_at_sigma_0.19": [
+   {
+    "label": "N=0 (closed-string tachyon; excluded from glueball reading)",
+    "N": 0,
+    "m_over_sqrtsigma": -1.4472025091165353,
+    "mass_GeV": null,
+    "tachyonic": true,
+    "short_string_sigma_over_M2": null
+   },
+   {
+    "label": "N=1: 0++ (trace), 2++ (helicity +-2), 0-+ candidate (antisym; worldsheet-axion caveat)",
+    "N": 1,
+    "m_over_sqrtsigma": 4.799827718400437,
+    "mass_GeV": 2.092196397091291,
+    "tachyonic": false,
+    "short_string_sigma_over_M2": 0.04340589357051691
+   },
+   {
+    "label": "N=2: 0++, 2++, 4++ trajectory head, + helicity 0..4 tower",
+    "N": 2,
+    "m_over_sqrtsigma": 6.940539413838343,
+    "mass_GeV": 3.0253109918582357,
+    "tachyonic": false,
+    "short_string_sigma_over_M2": 0.020759340403290697
+   },
+   {
+    "label": "N=3: level-3 tower (J up to 6)",
+    "N": 3,
+    "m_over_sqrtsigma": 8.561765506235373,
+    "mass_GeV": 3.7319870619972346,
+    "tachyonic": false,
+    "short_string_sigma_over_M2": 0.013641852265019598
+   }
+  ],
+  "short_string_note": "glueball reading takes the winding/contracted-loop limit where the NG derivative expansion is formally uncontrolled (expansion parameter 8 pi (N - 1/12)/(sigma l^2) -> infinity as l -> 0); printed proxy sigma/M^2 uses the state's own inverse size l_eff = M/sigma; lattice nonetheless finds free NG remarkably accurate at short lengths EXCEPT the 0- sector (Athenodorou-Bringoltz-Teper; worldsheet axion, Athenodorou-Dubovsky-Luo-Teper) [IM]"
+ },
+ "confrontation": {
+  "anchors_IM": {
+   "X2370_m_over_sqrtsigma": [
+    5.41,
+    5.45
+   ],
+   "lattice_0mp_over_0pp": 1.5,
+   "lattice_0pp_over_sqrtsigma": 3.5,
+   "lattice_0mp_over_sqrtsigma": [
+    5.5,
+    5.9
+   ]
+  },
+  "IP": {
+   "m0pp_over_sqrtsigma": 3.5826743623402577,
+   "m0pp_band": [
+    3.279463229153927,
+    3.8784620043394322
+   ],
+   "m0mp_over_sqrtsigma": 8.274938189248923,
+   "m0mp_band": [
+    7.559954565903576,
+    9.730410908780122
+   ],
+   "ratio_0mp_0pp": 2.309709829124299,
+   "ratio_band": [
+    1.9492145488198909,
+    2.9670742523588176
+   ]
+  },
+  "NG": {
+   "m0pp_over_sqrtsigma": 4.799827718400437,
+   "m0mp_candidate_over_sqrtsigma": 4.799827718400437,
+   "ratio_0mp_0pp": 1.0,
+   "note": "N=1 level degeneracy: free NG puts 0++, 2++ and the 0-+ candidate at ONE mass -- the axion-less closed string cannot reproduce the lattice 0-+/0++ = 1.50"
+  },
+  "preregistered_question": {
+   "question": "does the corpus-parametrized closed tube put its lightest pseudoscalar in the X(2370)/lattice-0-+ class (m/sqrt(sigma) ~ 5.4-5.9)?",
+   "IP_lightest_pseudoscalar": 8.274938189248923,
+   "NG_lightest_pseudoscalar_candidate": 4.799827718400437,
+   "window": [
+    5.4,
+    5.9
+   ],
+   "IP_in_window": false,
+   "NG_in_window": false,
+   "IP_band_overlaps_window": false
+  }
+ },
+ "numerology_preemption": "The corpus's dimensionless closure benchmark c-frak = 2.37+-0.09 and m_X ~ 2.37 GeV share digits by man-made-unit coincidence only; this is pre-empted and NEVER cited as structure anywhere in T1."
+}

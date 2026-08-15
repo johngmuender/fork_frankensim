@@ -20,8 +20,9 @@ Deterministic, no RNG.  Two independent routes:
     -13/12 the zeta-regularized zero point sum_{m>=2} m -> zeta(-1) - 1,
     and f the IP short-distance "fudge factor" (finite tube thickness).
     Radial Schroedinger equation in rho with the loop's own inertia
-    mu(rho) = 2 pi sigma rho (position-dependent mass, Weyl-symmetric
-    ordering; ordering freedom quantified as a systematic).
+    mu(rho) = 2 pi sigma rho (position-dependent mass; central scheme
+    Zhu-Kroemer ordering, BenDaniel-Duke carried as the ordering
+    systematic -- see AMENDMENT A1).
 
   ROUTE B (free Nambu-Goto closed string, glueball reading):
     E^2(N_L,N_R;q,l) = (sigma l)^2 + 8 pi sigma [(N_L+N_R)/2 - (D-2)/24]
@@ -74,8 +75,9 @@ def amend(tag, text):
 # Dimensionless units: x = sqrt(sigma) rho, eps = E / sqrt(sigma).
 #   V_M(x) = 2 pi x + c0 + (Mph + ZP) (1 - e^{-f x}) / x
 #   mu(x)  = 2 pi x          (loop inertia 2 pi sigma rho)
-# Weyl-symmetric variable-mass Hamiltonian:
-#   H = -1/2 d/dx [ (1/mu(x)) d/dx ] + V_M(x),  Dirichlet at x=0, x=xmax.
+# Variable-mass Hamiltonian (von Roos orderings; Dirichlet at x=0, x=xmax):
+#   zk : H = mu^{-1/2} (-1/2 d^2/dx^2) mu^{-1/2} + V_M(x)   (central)
+#   bdd: H = -1/2 d/dx [ (1/mu(x)) d/dx ] + V_M(x)          (systematic)
 
 def V_M(x, Mph, f):
     return 2.0 * math.pi * x + C0 + (Mph + ZP) * (1.0 - np.exp(-f * x)) / x
@@ -185,7 +187,7 @@ def census(max_M=4):
             M = sum(m for m, _, _ in combo)
             if M > max_M:
                 continue
-            out.setdefault(M, []).append(combo)
+            out.setdefault(M, []).append(tuple(sorted(combo)))
     tables = {}
     for M, combos in sorted(out.items()):
         # build P and C as permutation(+phase) matrices on the combo basis
@@ -218,17 +220,15 @@ def census(max_M=4):
                 p = float(vec @ sub_P @ vec)
                 cq = float(vec @ sub_C @ vec)
                 states.append((int(lam), int(round(p)), int(round(cq))))
-        # count multiplicities of J^PC = Lambda^{PC}
+        # count multiplicities of J^PC = Lambda^{PC}; for Lambda > 0 the
+        # P = +/- combinations of the J_z = +-Lambda pair are the two
+        # members of a parity DOUBLET (Lambda-doubling): each is the head
+        # of its own J = Lambda tower, so no halving.
         mult = {}
         for lam, p, cq in states:
             key = f"{lam}{'+' if p > 0 else '-'}{'+' if cq > 0 else '-'}"
             mult[key] = mult.get(key, 0) + 1
-        # Lambda=+-lam pairs each give ONE J=lam state pair -> divide by 2 for lam>0
-        mult2 = {}
-        for key, n in mult.items():
-            lam = int(key[:-2])
-            mult2[key] = n // 2 if lam > 0 else n
-        tables[M] = mult2
+        tables[M] = mult
     return tables
 
 # =====================================================================
@@ -236,9 +236,12 @@ def census(max_M=4):
 # =====================================================================
 def ng_E2(NL, NR, q, l, sigma, Ddim):
     assert NL - NR == q, "level matching violated"
-    return (sigma * l) ** 2 + 8 * math.pi * sigma * ((NL + NR) / 2.0
-            - (Ddim - 2) / 24.0) + (2 * math.pi * q / l) ** 2 if l > 0 else \
-           8 * math.pi * sigma * ((NL + NR) / 2.0 - (Ddim - 2) / 24.0)
+    if l > 0:
+        return ((sigma * l) ** 2 + 8 * math.pi * sigma *
+                ((NL + NR) / 2.0 - (Ddim - 2) / 24.0)
+                + (2 * math.pi * q / l) ** 2)
+    assert q == 0, "zero winding requires zero longitudinal momentum"
+    return 8 * math.pi * sigma * ((NL + NR) / 2.0 - (Ddim - 2) / 24.0)
 
 def ng_glueball_m_over_sqrtsigma(N, Ddim=4):
     e2 = 8 * math.pi * (N - (Ddim - 2) / 24.0)
@@ -325,7 +328,9 @@ def main():
 
     RESULTS["route_A_IP"]["validation"] = {
         "b_IP_GeV2": SIGMA_IP, "target_GeV": IP_TARGET,
+        "scheme_central": "Zhu-Kroemer ordering, Dirichlet, mu = 2 pi sigma rho",
         "fstar": fstar, "m0pp_GeV": m0_ip, "rel_dev": dev,
+        "bdd_ordering_best_GeV": m0_bdd, "bdd_rel_dev": dev_bdd,
         "f1_reference_GeV": e_f1,
         "gate_T1_G1a": "PASS" if dev <= 0.03 else "FAIL"}
 
@@ -362,12 +367,16 @@ def main():
         ("0-+ (two m=2 phonons, mixed pol; +0++', 0+-, 4++, ...)", 4, 0, 0),
         ("1-+ orbital (L=1 on ground loop; known IP 3+1D pathology)", 0, 0, 1),
     ]
-    f_lo, f_hi = fstar / 1.5, fstar * 1.5   # IP cutoff freedom band
+    # frozen scheme set for the systematic band: cutoff freedom around the
+    # calibrated f* in the central (ZK) scheme + the BDD ordering at its
+    # own best-validation cutoffs (f = 8 and the f = 32 near-asymptote,
+    # both of which pass the 3% validation gate)
+    schemes = [("zk", fstar / 1.5), ("zk", fstar), ("zk", fstar * 1.5),
+               ("bdd", 8.0), ("bdd", 32.0)]
     ip_out = []
     for label, M, n, L in ip_levels:
-        e_c = ip_eigen(M, fstar, n=n, L=L, ordering="weyl")
-        band = [ip_eigen(M, fv, n=n, L=L, ordering=o)
-                for fv in (f_lo, fstar, f_hi) for o in ("weyl", "fixedmass")]
+        e_c = ip_eigen(M, fstar, n=n, L=L, ordering="zk")
+        band = [ip_eigen(M, fv, n=n, L=L, ordering=o) for o, fv in schemes]
         lo, hi = min(band), max(band)
         ip_out.append({"label": label, "Mph": M, "n": n, "L": L,
                        "eps": e_c, "eps_band": [lo, hi],
@@ -377,10 +386,11 @@ def main():
               f"band [{lo*sqs:.3f}, {hi*sqs:.3f}]")
     RESULTS["route_A_IP"]["levels_at_sigma_0.19"] = ip_out
     RESULTS["route_A_IP"]["band_definition"] = (
-        "envelope over f in [f*/1.5, 1.5 f*] (IP cutoff freedom, cf. "
-        "Johnson-Teper treating the short-distance cutoff as the model's "
-        "main freedom) x {Weyl variable-mass, fixed-mass-at-minimum} "
-        "ordering; model systematics only, nothing fitted")
+        "envelope over the frozen scheme set {ZK ordering x f in "
+        "[f*/1.5, f*, 1.5 f*]} + {BDD ordering x f in [8, 32]} -- IP "
+        "cutoff freedom (cf. Johnson-Teper treating the short-distance "
+        "cutoff as the model's main freedom) plus variable-mass operator-"
+        "ordering freedom; model systematics only, nothing fitted")
 
     # NG route levels
     ng_levels = [
@@ -470,7 +480,94 @@ def main():
     with open(__file__.replace("t1_spectrum.py", "t1_results.json"), "w") as fh:
         json.dump(RESULTS, fh, indent=1)
     print("\nwrote t1_results.json")
+    make_figure(ip_out, ng_out, anchors)
     return RESULTS
+
+
+# ---------------------------------------------------------------- figure
+def make_figure(ip_out, ng_out, anchors):
+    import matplotlib
+    matplotlib.use("Agg")
+    import matplotlib.pyplot as plt
+
+    SURF, INK, INK2 = "#fcfcfb", "#0b0b0b", "#52514e"
+    C_IP, C_NG = "#2a78d6", "#eb6834"          # categorical slots 1, 2
+    fig, ax = plt.subplots(figsize=(8.6, 6.4), dpi=170)
+    fig.patch.set_facecolor(SURF); ax.set_facecolor(SURF)
+
+    # ---- [IM] anchor bands (neutral grays, full width) ----
+    ax.axhspan(*anchors["lattice_0mp_over_sqrtsigma"], color="#e2e0da",
+               zorder=0)
+    ax.axhspan(*anchors["X2370_m_over_sqrtsigma"], color="#c9c6bd", zorder=1)
+    ax.axhline(anchors["lattice_0pp_over_sqrtsigma"], color="#a5a29a",
+               lw=1.4, ls=(0, (5, 3)), zorder=1)
+    ax.text(2.985, sum(anchors["lattice_0mp_over_sqrtsigma"]) / 2 + 0.12,
+            "lattice 0$^{-+}$ 5.5–5.9 [IM]", ha="right", va="bottom",
+            fontsize=8.2, color=INK2)
+    ax.text(2.985, anchors["X2370_m_over_sqrtsigma"][0] - 0.06,
+            "X(2370) 5.41–5.45 [IM]", ha="right", va="top",
+            fontsize=8.2, color=INK2)
+    ax.text(2.985, anchors["lattice_0pp_over_sqrtsigma"] + 0.05,
+            "lattice 0$^{++}$ ≈ 3.5 [IM]", ha="right", va="bottom",
+            fontsize=8.2, color=INK2)
+
+    # ---- level drawing helper: tick = central value, whisker = band ----
+    def draw(xc, levels, color):
+        w = 0.30
+        for k, (lab, eps, band, dy) in enumerate(levels):
+            ax.plot([xc - w, xc + w], [eps, eps], color=color, lw=2.2,
+                    zorder=3, solid_capstyle="butt")
+            if band[1] > band[0]:
+                xw = xc - w - 0.05 - 0.045 * (k % 3)   # stagger whiskers
+                ax.plot([xw, xw], band, color=color, lw=1.3, zorder=2)
+                for b in band:
+                    ax.plot([xw - 0.018, xw + 0.018], [b, b], color=color,
+                            lw=1.3, zorder=2)
+            ax.annotate(lab, (xc + w + 0.02, eps + dy), fontsize=8.4,
+                        color=INK, va="center", ha="left", zorder=4)
+
+    ipL = [
+        ("0$^{++}$ (validated head)", ip_out[0]["eps"], ip_out[0]["eps_band"], 0),
+        ("2$^{++}$/2$^{-+}$ (+2$^{+-}$/2$^{--}$)", ip_out[1]["eps"], ip_out[1]["eps_band"], 0.16),
+        ("1$^{-+}$ orbital — known pathology", ip_out[5]["eps"], ip_out[5]["eps_band"], -0.16),
+        ("0$^{++*}$", ip_out[3]["eps"], ip_out[3]["eps_band"], -0.10),
+        ("3$^{-+}$/3$^{+-}$ oddballs (+3$^{++}$/3$^{--}$)", ip_out[2]["eps"], ip_out[2]["eps_band"], 0.16),
+        ("0$^{-+}$ (+0$^{+-}$, 0$^{++}$′, 4’s)", ip_out[4]["eps"], ip_out[4]["eps_band"], 0),
+    ]
+    ngL = [(e["label"].split(":")[0], e["m_over_sqrtsigma"],
+            [e["m_over_sqrtsigma"]] * 2, 0) for e in ng_out if not e["tachyonic"]]
+    ngL[0] = ("N=1: 0$^{++}$, 2$^{++}$, 0$^{-+}$ cand.\n(worldsheet-axion caveat)",
+              ngL[0][1], ngL[0][2], 0)
+    ngL[1] = ("N=2 tower (0$^{++}$, 2$^{++}$, 4$^{++}$, …)", ngL[1][1], ngL[1][2], 0)
+    ngL[2] = ("N=3 tower", ngL[2][1], ngL[2][2], 0)
+    draw(0.72, ipL, C_IP)
+    draw(2.02, ngL, C_NG)
+
+    ax.set_xlim(0.25, 3.0); ax.set_ylim(0, 10.4)
+    ax.set_xticks([0.72, 2.02])
+    ax.set_xticklabels(["Route A — Isgur–Paton loop\n(validated 1.52 GeV @ b=0.18)",
+                        "Route B — free Nambu–Goto\n(exact levels, D=4)"],
+                       fontsize=9, color=INK)
+    ax.set_ylabel(r"$m/\sqrt{\sigma}$   (dimensionless; at $\sigma$ = 0.19 GeV$^2$ [IM]: "
+                  r"$m$ = value × 0.436 GeV)", fontsize=9, color=INK)
+    ax.tick_params(colors=INK2, labelsize=8.5)
+    for s in ("top", "right"):
+        ax.spines[s].set_visible(False)
+    for s in ("left", "bottom"):
+        ax.spines[s].set_color("#a5a29a")
+    ax.grid(axis="y", color="#eceae4", lw=0.8, zorder=-2)
+    ax.set_axisbelow(True)
+    ax.set_title("T1 — closed-tube spectrum at the corpus tension: two routes vs [IM] anchors\n"
+                 "within-model, V.F grade: dimensionally secure / structurally plausible / "
+                 "quantitatively unclaimed", fontsize=10, color=INK, pad=12)
+    fig.text(0.01, 0.012,
+             "whiskers: model systematics only (IP cutoff-f × ordering envelope); NG levels "
+             "exact (short-string caveat); zero fitted parameters; N=0 NG tachyon excluded.",
+             fontsize=7.6, color=INK2)
+    fig.tight_layout(rect=(0, 0.03, 1, 1))
+    out = __file__.replace("t1_spectrum.py", "t1_fig.png")
+    fig.savefig(out, facecolor=SURF)
+    print("wrote", out)
 
 if __name__ == "__main__":
     main()

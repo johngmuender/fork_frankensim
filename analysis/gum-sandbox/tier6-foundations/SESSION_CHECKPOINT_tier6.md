@@ -459,3 +459,38 @@ corpus editions. Tacit knowledge unchanged (pip3 install numpy scipy
 matplotlib sympy mpmath gmpy2 in fresh containers; git from repo root;
 nohup + per-item checkpoints for long runs; workflow subagents not
 resumable — use fresh finisher agents with full context).
+
+---
+
+## ADDENDUM (session continuation, 2026-08-15): PHASE T — TIER 9, THE GLUEBALL CONFRONTATION
+
+New directory: `tier9-glueball/`. Trigger: user-supplied BESIII Letter
+(arXiv:2607.20366, X(2370) = lightest 0⁻⁺ glueball-dominant; read in
+full, digest at `GLUEBALL_PAPER_DIGEST.md`).
+
+**Context** (wf_14a465fb-5ae): `GLUEBALL_CONTEXT_ANALYSIS.md` +
+`t_context_agents.json` (raw). Core facts for restoration: the corpus's
+color sector is VII.J (Q-1 confinement, Q-2 trichotomy, Q-3 dichotomy,
+Q-5 emergent-Skyrme with σ = 0.19 GeV² [IM] → f_q 0.14–0.20 GeV
+inversion, Q-6′ censorship); glueball-analogs printed exactly once (WS-D
+relic census, v1 record); tube = plain-string question was OPEN; closure
+obligation (knot-free asymptotic states owe closure) unadjudicated;
+seal q-θ forces V.F grading on all hadron-mass numbers.
+
+**ROADMAP v11 executed** (wf_f1635ff3-d44, 16/16 gates, findings
+F-T9-T1…T4): T1 both axion-less closed-string routes MISS the
+X/lattice-0⁻⁺ window (IP 8.27 high / NG 4.80 low, ratio-failing both);
+T2 printed tube = plain bosonic string, no pseudoscalar mode; W_χ =
+unique parity-odd class → "tube-core axion" [CJ-new] offer; T3 scorecard
+1/5/1, F-Q8 closure obligation NEW-OPEN; T4 two-sector dictionary +
+four ⟦T9⟧ annotations drafted (`T4/t4_annotations.md`).
+
+**Restoration note:** Tier-9 findings are NOT folded into corpus3 (no
+v4.4). A future fold would draw from the four RESULTS.md + the
+annotation drafts. The single highest-leverage next computation: the
+tube-core-axion existence/gap derivation (W_χ-sourced parity-odd core
+mode) — T1+T2 jointly show the corpus's ability to house an X-class 0⁻⁺
+hinges on it. Also open: F-Q8 discharge; the h25 missing mediator
+branch; kappa_q valuation. Tacit knowledge: arxiv.org egress BLOCKED
+(WebFetch and curl; WebSearch works; user-uploaded PDFs readable);
+Phase-S restoration notes still apply.

@@ -1,5 +1,5 @@
 {
- "snapshot_utc": "2026-07-18 PHASE S COMPLETE - Tier 8: audited PROS/CONS assessment pair + ROADMAP v10 S1-S4 all 16/16 gates PASS (F-T8-S1..S4); S4 chain finished 24/24 STABLE",
+ "snapshot_utc": "2026-08-15 PHASE T COMPLETE - Tier 9 glueball confrontation: context (6 agents) + ROADMAP v11 T1-T4 (16/16 gates, F-T9-T1..T4); split verdict, no grade motion",
  "session": "536b52e3-c0e4-5548-a35f-7ca5893feba9",
  "branch": "claude/analyze-gum-po",
  "note": "Additive to MANIFEST.json (session d0b81976, ivm-viz line). This manifest covers the tier6-foundations session only.",
@@ -224,6 +224,66 @@
    "description": "S4 population-scale screener",
    "phase": "Phase S execute",
    "verdict": "4/4 PASS final: N=10,000 screen min 0.6216, worst-24 all STABLE at 200-bit, 0 UNSTABLE; F-T8-S4"
+  },
+  {
+   "agent_id": "a65d67c620d4eda4c",
+   "description": "T-ctx color-sector archaeologist",
+   "phase": "Phase T context",
+   "verdict": "ACCOMMODATED/NOT-FORBIDDEN/NEVER-CONSTRUCTED; no mediator branch in h25 content"
+  },
+  {
+   "agent_id": "a114272b86b4a685d",
+   "description": "T-ctx mass-anchor reader",
+   "phase": "Phase T context",
+   "verdict": "scale chain mapped; m_X/sqrt(sigma)=5.41-5.45 target; numerology hazard flagged"
+  },
+  {
+   "agent_id": "a18bcac093d4615bd",
+   "description": "T-ctx selection-rules reader",
+   "phase": "Phase T context",
+   "verdict": "no J^PC/G-parity/decay machinery for composites; loop moduli outside h4/i4"
+  },
+  {
+   "agent_id": "a0ecc6f3a650136c3",
+   "description": "T-lit glueball theory",
+   "phase": "Phase T context",
+   "verdict": "lattice/IP/NG/worldsheet-axion base assembled, VERIFIED/SNIPPET-ONLY discipline"
+  },
+  {
+   "agent_id": "a9adb65f8158ce9e0",
+   "description": "T-lit X(2370) + alternatives",
+   "phase": "Phase T context",
+   "verdict": "chain + adversarial map; Letter ref-[22] defect found (114021->114007)"
+  },
+  {
+   "agent_id": "afecccd3ce7e19d79",
+   "description": "T-ctx stakes machinery",
+   "phase": "Phase T context",
+   "verdict": "legal verdict categories pre-identified; seal q-theta binding"
+  },
+  {
+   "agent_id": "ad0af54fde5dde1de",
+   "description": "T1 closed-tube spectrum",
+   "phase": "Phase T execute",
+   "verdict": "4/4 PASS w/ amendments; pre-registered answer NO both routes; F-T9-T1"
+  },
+  {
+   "agent_id": "a5947b052f80b1e00",
+   "description": "T2 worldsheet-mode census",
+   "phase": "Phase T execute",
+   "verdict": "4/4 PASS; plain bosonic string as printed; tube-core axion [CJ-new] offer; F-T9-T2"
+  },
+  {
+   "agent_id": "a14ff3c6e7d610c41",
+   "description": "T3 scorecard + closure obligation",
+   "phase": "Phase T execute",
+   "verdict": "4/4 PASS; 1/5/1 scorecard; F-Q8 NEW-OPEN; F-T9-T3"
+  },
+  {
+   "agent_id": "ad67b83e642b0f127",
+   "description": "T4 two-sector dictionary",
+   "phase": "Phase T execute",
+   "verdict": "4/4 PASS; alternative priced symmetrically; 4 annotations offered; F-T9-T4"
   }
  ],
  "caveat": "tier6-coordinator-session.jsonl.xz was snapshotted during the checkpointing turn; the last few checkpoint/commit exchanges after the snapshot instant are absent from the archive by construction. The git history and SESSION_CHECKPOINT_tier6.md carry that residue. Coordinator archive re-snapshotted after L5-prime adjudication; same tail caveat applies to the final commit exchange.",
@@ -288,5 +348,19 @@
   "script": "tier8-execute-workflow-script.js",
   "note": "S-Execute: ROADMAP v10 workstreams S1-S4 (4 agents)",
   "total_subagent_tokens": 629103
+ },
+ "workflow12": {
+  "run_id": "wf_14a465fb-5ae",
+  "archive": "tier9-workflow-wf_14a465fb-5ae.tar.xz",
+  "script": "tier9-context-workflow-script.js",
+  "note": "T-context: 3 corpus readers + 2 literature agents + stakes reader",
+  "total_subagent_tokens": 959062
+ },
+ "workflow13": {
+  "run_id": "wf_f1635ff3-d44",
+  "archive": "tier9-workflow-wf_f1635ff3-d44.tar.xz",
+  "script": "tier9-execute-workflow-script.js",
+  "note": "T-execute: ROADMAP v11 workstreams T1-T4",
+  "total_subagent_tokens": 777111
  }
 }

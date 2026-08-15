@@ -531,3 +531,34 @@ plus the L5′ agent; audit archives `audit-logs/MANIFEST_tier6.json`).
   formally-verified kernel; the O-1…O-5 analytic theorem; F-R14
   adoption (now carrying a third quantified IOU) + archive-external
   g_lim. Every result is within-model; nothing here bears on nature.
+- ⟦T9⟧ **Phase T (ninth campaign phase, 2026-08-15, session 536b52e3)** —
+  Tier 9 opens: `tier9-glueball/`. The glueball confrontation: BESIII's
+  X(2370) flavor-singlet/0⁻⁺-glueball identification (arXiv:2607.20366,
+  read in full → `GLUEBALL_PAPER_DIGEST.md`) confronted with the corpus's
+  color sector under seal-q-θ/V.F discipline. **Context** (wf_14a465fb-5ae,
+  6 agents): archaeology verdict ACCOMMODATED / NOT-FORBIDDEN /
+  NEVER-CONSTRUCTED (glueball-analog class printed exactly once, v1 relic
+  census); no gluon dictionary entry; no locking-stratum mediator branch
+  in the h25-audited field content; κ_q never valued; Letter ref-[22]
+  defect found (114021 → 114007); literature base with
+  VERIFIED/SNIPPET-ONLY discipline → `GLUEBALL_CONTEXT_ANALYSIS.md`.
+  **ROADMAP v11 executed** (wf_f1635ff3-d44; 16/16 gates): F-T9-T1
+  closed-tube spectrum at σ = 0.19 GeV² answers the pre-registered
+  question NO — IP 0⁻⁺ at m/√σ = 8.27 (40–70% high, ratio 2.31 vs 1.50),
+  NG candidate 4.80 (low, scalar-degenerate); both axion-less routes
+  bracket the X window from opposite sides, all V.F-graded. F-T9-T2: the
+  printed tube is a PLAIN BOSONIC STRING (two Goldstones, 16/16 symbolic
+  checks); no pseudoscalar worldsheet mode in print; W_χ verified as the
+  unique parity-odd energy class → the "tube-core axion" filed at
+  [CJ-new] offer class, mass ∝ M_gap symbol-only. F-T9-T3: seven-criteria
+  scorecard 1 SUPPORTED-STRUCTURALLY (flavor-singlet) / 5 SILENT / 1
+  TENSION (mass, proposal-priced); closure obligation formalized as
+  proposed F-Q8, adjudicated NEW-OPEN. F-T9-T4: two-sector dictionary
+  (knot composites → Skyrme; glueball-analogs → unconstructed
+  closed-string sector); alternative priced symmetrically (Skyrme-only
+  homelessness vs six-item completion bill that buys a home, not a
+  number); four ⟦T9⟧ annotations drafted at offer class. Split verdict:
+  no printed claim hit, no kill fires, no clock moves, no grade rises;
+  "predicted"/"refutes" both remain unavailable sentences. Adjudication:
+  `tier9-glueball/TIER9_ADJUDICATION.md`. Every result is within-model;
+  nothing here bears on nature.
