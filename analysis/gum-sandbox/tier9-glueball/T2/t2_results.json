@@ -1,0 +1,218 @@
+{
+ "workstream": "T2 (F-T9-T2) - worldsheet-mode census on the GUM tube",
+ "date": "2026-08-15",
+ "register": "within-model; nothing bears on nature; seal q-theta honored (no mass numbers produced); numerology hazard (c-frak = 2.37 vs m_X ~ 2.37 GeV) pre-empted - never cited as structure",
+ "background_reuse": {
+  "geometry": "straight static tube along z, radius a, uniform core (h21_RESULTS.md Sec.2 / h21_mc.py, reused verbatim by M3 Sec.3 and N2 Sec.3); single-tube specialization = amendment A-T2-1 (coordinator-owned)",
+  "halo": "orientation halo theta0 = nu*angle, nu = 1/3 (Q-1 winding 2 pi/3); profile normalization is A-T2-1's closest-feasible variant; tension FORM matches printed Q-5",
+  "printed_energy": "corpus3/01 Sec.II.C lines 132-137 (W2, W_chi, W4, W6+0); II.A line 114 (chiral gate)",
+  "audited_operators": "theory-audit/h25_RESULTS.md Sec.3 (B3/B4 rows)"
+ },
+ "checks": [
+  {
+   "id": "A1",
+   "desc": "e_ij is a true tensor under inversion (even) - printed 01:114",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "id": "A2",
+   "desc": "Gamma_ij is a pseudotensor under inversion (odd) - printed 01:114",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "id": "A3",
+   "desc": "W2 parity-EVEN (mechanical polynomial identity)",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "id": "A4",
+   "desc": "W_chi parity-ODD - the unique parity-odd printed energy class (W4 ~ L^4 even; b_P ~ L^3 odd but enters squared; V(sigma_P) even)",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "id": "A5",
+   "desc": "P_ws (y->-y): e transforms as tensor, Gamma as pseudotensor; in particular phi_z -> -phi_z (an axial-rotation angle about the tube axis is P_ws-ODD: worldsheet pseudoscalar)",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "id": "B1",
+   "desc": "linearized operator on (d_x p0, d_x q0) == d_x(EL) identically => on any background solving EL, translations are EXACT zero modes; the 2 transverse worldsheet modes are MASSLESS (REQUIRED Goldstone validation)",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "id": "C1",
+   "desc": "halo overlap integral is isotropic: I_ab = delta_ab * pi nu^2 ln(R/a)",
+   "passed": true,
+   "detail": "I_diag = log((R_IR/a_core)**(pi*nu**2))"
+  },
+  {
+   "id": "C2",
+   "desc": "static energy per length = worldsheet tension sigma_hal = pi nu^2 f_q^2 ln(R_IR/a_core) - the printed FORM sigma = pi f_q^2 ln kappa_q (01:617); nu^2 bookkeeping absorbed by the unvalued kappa_q",
+   "passed": true,
+   "detail": "sigma_hal = log((R_IR/a_core)**(pi*f_q**2*nu**2))"
+  },
+  {
+   "id": "C3",
+   "desc": "X-sector worldsheet action is relativistic NG form with cone c_q^2 = f_q^2/J_m and ZERO mass term (mass excluded by B1)",
+   "passed": true,
+   "detail": "mu_len = log((R_IR/a_core)**(pi*J_m*nu**2))"
+  },
+  {
+   "id": "D1",
+   "desc": "NO invariant theta-X bilinear exists (charge mismatch): the internal pseudoscalar DECOUPLES from translations at quadratic order; theta^2 and |X|^2 allowed",
+   "passed": true,
+   "detail": "{'theta*X+ (and c.c.)': {'charge': 1, 'allowed': False}, 'theta^2': {'charge': 0, 'allowed': True}, 'X+*X- = |X|^2': {'charge': 0, 'allowed': True}}"
+  },
+  {
+   "id": "D2",
+   "desc": "the axion-type cubic vertex theta * eps_ab dX_a dX_b is O(2) x P_ws INVARIANT (allowed); by Check A its only printed source class is W_chi (unique parity-odd class)",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "id": "E1",
+   "desc": "ALL X-theta cross terms (incl. every W_chi bilinear) vanish on angular integration: pseudoscalar decouples at quadratic order (mechanical confirmation of D1)",
+   "passed": true,
+   "detail": "residual = 0"
+  },
+  {
+   "id": "E2",
+   "desc": "background-wryness tadpoles vanish on angular integration (straight tube is a consistent background at this order)",
+   "passed": true,
+   "detail": "tad_th = 0 ; tad_x = 0"
+  },
+  {
+   "id": "E3",
+   "desc": "longitudinal stiffness of the internal twist mode = (alpha+beta) - exactly the h25-audited B4 stiffness (h25_RESULTS.md Sec.3)",
+   "passed": true,
+   "detail": ""
+  },
+  {
+   "id": "E4",
+   "desc": "uniform-profile limit reproduces the h25-audited B4 gap J w^2 = (alpha+beta) k^2 + 4 mu_c + m_V^2 (branch cross-check)",
+   "passed": true,
+   "detail": "mass2_unif = (m_V**2 + 4*mu_c)/J_m"
+  },
+  {
+   "id": "E5",
+   "desc": "assembled uniform dispersion == printed B4 KG branch (corpus3/01:147; h25 Sec.3 'exactly KG')",
+   "passed": true,
+   "detail": ""
+  }
+ ],
+ "census": [
+  {
+   "row": 1,
+   "mode": "X_1, X_2 transverse translations (2 modes)",
+   "field_content": "tube collective coordinates (broken translations)",
+   "printed_evidence": "corpus3/01-GUM-Omega-Paper-v4.3-ext.md:615 (Q-1/Q-2 tube existence), :617 (Q-5 tension sigma = pi f_q^2 ln kappa_q); h21_RESULTS.md Sec.2 straight-static-tube background",
+   "o2_pws_rep": "O(2) vector (X1 P_ws-even, X2 P_ws-odd)",
+   "worldsheet_mass": "0 (EXACT; Goldstone checks B1, C1-C3)",
+   "status": "PRINTED-DERIVABLE"
+  },
+  {
+   "row": 2,
+   "mode": "core axial rotor theta (rotation of core orientation texture about tube axis)",
+   "field_content": "locking-stratum orientation field, stiffness f_q",
+   "printed_evidence": "field printed at corpus3/01-GUM-Omega-Paper-v4.3-ext.md:617 (Q-5); existence as a tube-localized mode NOT printed -> [CJ-new]; gap scale M_gap symbol-only (corpus3/01-GUM-Omega-Paper-v4.3-ext.md:615 Q-2, T ~ M_gap^2; context analysis Sec.1)",
+   "o2_pws_rep": "O(2) scalar, P_ws-ODD (pseudoscalar; forced by axial character, Check A5)",
+   "worldsheet_mass": "O(M_gap) symbolic, or f_q-scaled; unvalued",
+   "status": "[CJ-new] existence; parity forced if it exists"
+  },
+  {
+   "row": 3,
+   "mode": "core-bound axial twist (B4-class descendant)",
+   "field_content": "substrate micro-rotation phi_z (B4 branch)",
+   "printed_evidence": "branch printed corpus3/01-GUM-Omega-Paper-v4.3-ext.md:147; audited operator h25_RESULTS.md Sec.3 (J w^2 = (alpha+beta)k^2 + 4mu_c + m_V^2); binding to the T2 core NOT printed -> [CJ-new]; NOTE h25/context: the enumerated branch content carries NO locking-stratum mediator branch at all",
+   "o2_pws_rep": "O(2) scalar, P_ws-ODD (pseudoscalar)",
+   "worldsheet_mass": "substrate-scale gap (4mu_c+m_V^2)/J - WRONG STRATUM for a hadronic-scale axion unless the locking-stratum reading (M_gap) is supplied [CJ-new]",
+   "status": "[CJ-new] localization; reduction validated (E3-E5)"
+  },
+  {
+   "row": 4,
+   "mode": "core-bound relative-rotation doublet (B3-class, m = +-1 azimuthal channels)",
+   "field_content": "substrate relative rotation psi_transverse (B3)",
+   "printed_evidence": "branch printed corpus3/01-GUM-Omega-Paper-v4.3-ext.md:147; h25 Sec.3; binding [CJ-new]",
+   "o2_pws_rep": "O(2) vector (parity-even pair)",
+   "worldsheet_mass": "gapped, branch scale; symbolic",
+   "status": "[CJ-new] localization; NON-axionic"
+  },
+  {
+   "row": 5,
+   "mode": "breathing / radius mode",
+   "field_content": "core profile deformation",
+   "printed_evidence": "core profile NOWHERE printed -> [CJ-new] entirely",
+   "o2_pws_rep": "O(2) scalar, P_ws-EVEN",
+   "worldsheet_mass": "O(M_gap) symbolic",
+   "status": "[CJ-new]"
+  },
+  {
+   "row": 6,
+   "mode": "phason (T3) admixture",
+   "field_content": "soft-sector phason, stiffness f in [4,60] MeV",
+   "printed_evidence": "T3 stratum printed corpus3/01-GUM-Omega-Paper-v4.3-ext.md:615 (Q-2) and :167 (II.H); NO printed dynamical cross-stratum coupling to the T2 tube - the only printed cross-stratum relation is the stiffness law f_q = sqrt(eps_q) m_Sk (V15.7); stratum trichotomy discipline (F-Q1 lesson) forbids conflation",
+   "o2_pws_rep": "(would-be O(2) scalar)",
+   "worldsheet_mass": "-",
+   "status": "NOT-SUPPORTED-BY-PRINT (admixture would be [CJ-new])"
+  },
+  {
+   "row": 7,
+   "mode": "longitudinal u_3 along-tube displacement",
+   "field_content": "worldsheet reparametrization",
+   "printed_evidence": "standard collective-coordinate bookkeeping",
+   "o2_pws_rep": "-",
+   "worldsheet_mass": "-",
+   "status": "GAUGE (not a physical worldsheet mode)"
+  },
+  {
+   "row": 8,
+   "mode": "Z_3 mismatch label k in {1,2}",
+   "field_content": "discrete superselection label (winding 2 pi k/3)",
+   "printed_evidence": "corpus3/01-GUM-Omega-Paper-v4.3-ext.md:615 (Q-1 fractional winding 2 pi/n, n=3)",
+   "o2_pws_rep": "-",
+   "worldsheet_mass": "-",
+   "status": "DISCRETE LABEL, not a mode"
+  }
+ ],
+ "symbolic_results": {
+  "X_sector_action": "S_X = Int dt dz [ 1/2 mu_len Xdot_a^2 - 1/2 sigma_hal X'_a^2 ], mass = 0 exactly",
+  "sigma_hal": "log((R_IR/a_core)**(pi*f_q**2*nu**2))",
+  "mu_len": "log((R_IR/a_core)**(pi*J_m*nu**2))",
+  "cone": "c_q^2 = f_q^2 / J_m",
+  "theta_sector_action": "S_theta = Int dt dz 1/2 [ J I2 thdot^2 - (alpha+beta) I2 th'^2 - (K_perp + M_lock^2-class I2) th^2 ]; I2 = 2 pi Int h^2 r dr, K_perp = 2 pi Int (beta+gamma)/2 h'(r)^2 r dr-class + locking-well integral [CJ-new]",
+  "theta_mass": "m_theta = O(M_gap) SYMBOL-ONLY (M_gap never valued in print) or f_q-scaled; no number claimed",
+  "axion_vertex": "theta * eps_ab d X_a d X_b: O(2) x P_ws invariant; only printed source class = W_chi (chi2/chi3); coefficient = chi x (core overlap integral) [CJ-new]",
+  "sigma_prefactor_note": "halo reduction gives pi nu^2 f_q^2 ln(R/a); printed sigma = pi f_q^2 ln kappa_q matches the form with the nu^2 = 1/9 bookkeeping absorbed into the unvalued ln kappa_q (kappa_q never printed - context Sec.1)"
+ },
+ "gates": {
+  "T2-G1": {
+   "requirement": "tube background reproduced from campaign machinery with citations; mode-enumeration table complete with printed-evidence column (h25 cross-check)",
+   "measured": "h21/M3/N2 straight-static-tube background reused (single-tube specialization A-T2-1 printed); 8-row census, every row printed-evidence or [CJ-new]; h25 cross-check: enumerated branch content (B1,B2+-,B3,B4,knot band-edges) contains NO locking-stratum mediator branch",
+   "verdict": "PASS"
+  },
+  "T2-G2": {
+   "requirement": "quadratic worldsheet action derived symbolically for >= the 2 transverse modes (MUST be massless - Goldstone check) and every candidate internal mode; [CJ-new] flags at every unprinted step",
+   "measured": "transverse modes massless by operator identity (B1) and explicit halo reduction (C1-C3, NG form, tension = pi nu^2 f_q^2 ln(R/a)); internal twist-mode action extracted (E1-E5), uniform limit reproduces h25 B4 dispersion exactly; internal masses symbol-only (M_gap / f_q-scaled); all ansatz steps flagged [CJ-new]",
+   "verdict": "PASS"
+  },
+  "T2-G3": {
+   "requirement": "census verdict with parity classification; if NO pseudoscalar from printed structure, that is the finding; if one exists, structure at [CJ-new]/[DW, testbed-grade]",
+   "measured": "VERDICT: plain bosonic string AS PRINTED (only the 2 transverse Goldstones are printed-derivable) -> the GUM tube inherits the known 3+1D IP/NG J^PC problems. The chirality hook is real but undischarged: W_chi is the UNIQUE parity-odd printed class (A4); any core-localized axial rotor/twist is FORCED P_ws-odd (A5); the axion vertex theta*eps_ab dX dX is symmetry-allowed and chi-sourced-only (D2); but mode existence/localization/gap are all [CJ-new] - tube-core-axion candidate filed at [CJ-new]/[DW, testbed-grade] proposal class, mass prop-to M_gap symbol-only",
+   "verdict": "PASS"
+  },
+  "T2-G4": {
+   "requirement": "within-model; SILENT-corpus verdicts carried; no grade motion",
+   "measured": "register held: no mass numbers produced (symbol-only); seal q-theta trivially satisfied; numerology hazard pre-empted; SILENT verdicts (tube-core chirality, cross-stratum transfer, loop quantization) carried from archaeology; no grade motion; no stake; forbidden sentences absent",
+   "verdict": "PASS"
+  }
+ },
+ "verdict": "PLAIN BOSONIC STRING AS PRINTED: printed structure supplies exactly the two transverse Goldstones and nothing else; no pseudoscalar worldsheet mode emerges from printed structure (the finding); the tube-core-axion candidate (core-bound axial rotor/twist, forced P_ws-odd, chi-sourced axion vertex, mass prop-to M_gap symbolic) is filed at [CJ-new]/[DW, testbed-grade] proposal class",
+ "runtime_s": 2.6,
+ "all_checks_pass": true
+}
