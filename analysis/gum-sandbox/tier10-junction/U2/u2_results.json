@@ -1,0 +1,287 @@
+{
+ "workstream": "U2 \u2014 two-carrier transport sign test (F-T10-U2)",
+ "date": "2026-08-16",
+ "register": "within-model; nothing bears on nature; sign/monotonicity only; magnitudes UNCLAIMABLE (corpus prints no transport law); [CJ-new] construction on printed scale inputs; no fitting; STAR values are [IM] anchors only and appear nowhere in this file",
+ "printed_inputs": {
+  "sigma_GeV2": 0.19,
+  "sqrt_sigma_GeV": 0.43588989435406733,
+  "M_knot_window_GeV": [
+   1.7,
+   172.5
+  ],
+  "f_q_window_GeV": [
+   0.14,
+   0.2
+  ],
+  "m_J_over_sqrt_sigma_set": [
+   0.0,
+   0.1355,
+   0.39
+  ],
+  "E_snap_window_GeV": [
+   0.1,
+   0.14
+  ],
+  "snap_scale_provenance": "Primer ex. 15.1 chain: ~1e5 N x 1e-15 m ~ 100 MeV-class (corpus3/03:807,811,827)",
+  "junction_order_n": 3,
+  "junction_order_caveat": "Primer-asserted (03:811), paper-conditional on WS1-H3 (01:615,779); F-K0-1 seam carried"
+ },
+ "construction_CJ_new": {
+  "W_V": "3 * M_knot (three knots move; Q rides only on knots by V.D winding / K-1)",
+  "W_J": "m_J + 3*sigma*ell_tube + 2*E_snap (junction + tube stubs migrate; 2x pair-minting paid at destination)",
+  "ell_tube_readings": {
+   "compact": "1/sqrt(sigma)",
+   "conservative": "1/f_q (hardest case)"
+  },
+  "suppression_ansatz": "P(W) = g(W), g normalized monotone decreasing; three families run (exponential, power-law, Gaussian); the SIGN is g-independent"
+ },
+ "G1_validation_limits": {
+  "checks": [
+   {
+    "check": "G1a_minting_disabled_asymmetry_exactly_zero",
+    "pass": true,
+    "detail": "P_J == 0.0, B - Q == 0.0, B/Q == 1.0 exact float equality for all 3 g-families x 3 dy x 4 Lambda"
+   },
+   {
+    "check": "G1b_zero_cost_PJ_is_exact_maximum",
+    "pass": true,
+    "detail": "P_J == 1.0 exactly at W_J = 0 and g(0) >= g(w) on a 101-pt probe, all families/scales"
+   },
+   {
+    "check": "G1b_sharp_limit_junction_share_exactly_one",
+    "pass": true,
+    "detail": "exp family, Lambda = 1e-3 GeV: g(W_V) == 0.0 (underflow), P_J == 1.0, share == 1.0 exact"
+   }
+  ],
+  "all_pass": true
+ },
+ "G2_window_scan": {
+  "grid": {
+   "n_m_knot": 241,
+   "n_f_q": 61,
+   "n_e_snap": 9,
+   "n_m_j": 3,
+   "m_knot_GeV": [
+    1.7,
+    172.5
+   ],
+   "f_q_GeV": [
+    0.14,
+    0.2
+   ],
+   "e_snap_GeV": [
+    0.1,
+    0.14
+   ],
+   "m_j_GeV": [
+    0.0,
+    0.05906308068497613,
+    0.16999705879808627
+   ]
+  },
+  "readings": {
+   "compact": {
+    "margin_min": 2.901573932383925,
+    "margin_min_at": {
+     "m_knot_GeV": 1.7,
+     "f_q_GeV": 0.14,
+     "m_j_GeV": 0.16999705879808627,
+     "e_snap_GeV": 0.14
+    },
+    "margin_max": 343.24494669741887,
+    "W_J_range_GeV": [
+     1.5076696830622023,
+     1.7576667418602887
+    ],
+    "W_V_range_GeV": [
+     5.1,
+     517.5
+    ],
+    "fraction_of_grid_with_junction_dominance": 1.0,
+    "sign_flip_anywhere_in_window": false
+   },
+   "conservative": {
+    "margin_min": 1.127962819051021,
+    "margin_min_at": {
+     "m_knot_GeV": 1.7,
+     "f_q_GeV": 0.14,
+     "m_j_GeV": 0.16999705879808627,
+     "e_snap_GeV": 0.14
+    },
+    "margin_max": 169.67213114754097,
+    "W_J_range_GeV": [
+     3.0500000000000003,
+     4.521425630226657
+    ],
+    "W_V_range_GeV": [
+     5.1,
+     517.5
+    ],
+    "fraction_of_grid_with_junction_dominance": 1.0,
+    "sign_flip_anywhere_in_window": false
+   }
+  },
+  "flip_boundary": {
+   "statement": "at the hardest corner (M_knot = m_Sk floor, m_J max, E_snap max) the junction channel stays cheaper until the migrating tube-stub length reaches ell_flip",
+   "ell_flip_GeV^-1": 8.15789989684546,
+   "ell_flip_fm": 1.609773753049986,
+   "ell_used_conservative_GeV^-1": 7.142857142857142,
+   "ell_used_conservative_fm": 1.4094784314285713,
+   "ell_used_compact_GeV^-1": 2.294157338705618,
+   "ell_used_compact_fm": 0.4526991402092796,
+   "headroom_factor_conservative": 1.1421059855583646,
+   "headroom_factor_compact": 3.5559461241870247
+  },
+  "ansatz_robustness": {
+   "n_points_checked": 42768,
+   "dominance_sign_equals_cost_sign_everywhere": true,
+   "B_minus_Q_nonnegative_everywhere": true,
+   "analytic_statement": "for ANY monotone-decreasing g: W_J < W_V  <=>  g(W_J) >= g(W_V)  (junction dominance), and B - Q = P_J = g(W_J) > 0 whenever minting is enabled \u2014 the B >= Q sign needs NO cost model at all, only channel-J openness plus Q-blind minting; the cost model enters only the dominance statement."
+  }
+ },
+ "G3_reconciliation_ledger": {
+  "assignments": [
+   {
+    "minted_flavors": "uuu",
+    "destination_baryon_charge": "2",
+    "net_minted_charge_in_destination_region": "0",
+    "B_total_before": "1",
+    "B_total_after": "1",
+    "B_at_destination": "1",
+    "original_knots_moved": 0,
+    "exact": true
+   },
+   {
+    "minted_flavors": "uud",
+    "destination_baryon_charge": "1",
+    "net_minted_charge_in_destination_region": "0",
+    "B_total_before": "1",
+    "B_total_after": "1",
+    "B_at_destination": "1",
+    "original_knots_moved": 0,
+    "exact": true
+   },
+   {
+    "minted_flavors": "udu",
+    "destination_baryon_charge": "1",
+    "net_minted_charge_in_destination_region": "0",
+    "B_total_before": "1",
+    "B_total_after": "1",
+    "B_at_destination": "1",
+    "original_knots_moved": 0,
+    "exact": true
+   },
+   {
+    "minted_flavors": "udd",
+    "destination_baryon_charge": "0",
+    "net_minted_charge_in_destination_region": "0",
+    "B_total_before": "1",
+    "B_total_after": "1",
+    "B_at_destination": "1",
+    "original_knots_moved": 0,
+    "exact": true
+   },
+   {
+    "minted_flavors": "duu",
+    "destination_baryon_charge": "1",
+    "net_minted_charge_in_destination_region": "0",
+    "B_total_before": "1",
+    "B_total_after": "1",
+    "B_at_destination": "1",
+    "original_knots_moved": 0,
+    "exact": true
+   },
+   {
+    "minted_flavors": "dud",
+    "destination_baryon_charge": "0",
+    "net_minted_charge_in_destination_region": "0",
+    "B_total_before": "1",
+    "B_total_after": "1",
+    "B_at_destination": "1",
+    "original_knots_moved": 0,
+    "exact": true
+   },
+   {
+    "minted_flavors": "ddu",
+    "destination_baryon_charge": "0",
+    "net_minted_charge_in_destination_region": "0",
+    "B_total_before": "1",
+    "B_total_after": "1",
+    "B_at_destination": "1",
+    "original_knots_moved": 0,
+    "exact": true
+   },
+   {
+    "minted_flavors": "ddd",
+    "destination_baryon_charge": "-1",
+    "net_minted_charge_in_destination_region": "0",
+    "B_total_before": "1",
+    "B_total_after": "1",
+    "B_at_destination": "1",
+    "original_knots_moved": 0,
+    "exact": true
+   }
+  ],
+  "all_exact": true,
+  "trichotomy_verdict": {
+   "carrier": "KNOTS \u2014 K-1 intact at every step: B is at all times (1/3) x signed core count; the junction never carries a unit of B (or any charge) in the ledger",
+   "enforcer": "the web/taping rule + junction constraint \u2014 it is exactly this constraint that FORCES the signed assembly B = +1 at destination (minted thirds must terminate on the junction and sum to an integer)",
+   "transporter": "the junction+tube migration mode \u2014 B moves across the rapidity interval with ZERO original knots moving and net signed core count exactly conserved (pairs net-zero)",
+   "compatibility": "COMPATIBLE, as computed: knot-carried B (K-1) and junction-led transport are not in tension \u2014 carrier, enforcer and transporter are three different structural roles, and the junction-led mode realizes the third without touching the first",
+   "status": "[CJ-new] within-model construction: the corpus prints the legality of every ingredient (migration-free statics, snap+minting existence, reconnection net-conservation, taping rule) but no dynamics; this ledger tests structural consistency, not a prediction"
+  }
+ },
+ "figure": "u2_fig.png",
+ "headline": {
+  "B_vs_Q_asymmetry_sign": "+1 (B transport >= Q transport) at every grid point with minting enabled, for every cost family \u2014 the sign requires only channel-J openness plus Q-blind minting",
+  "junction_dominance": "junction channel strictly cheaper (W_J < W_V) at 100% of the 4D grid in BOTH tube-length readings",
+  "min_margin_conservative": 1.127962819051021,
+  "min_margin_compact": 2.901573932383925,
+  "max_margin": 343.24494669741887,
+  "fragility_note": "the conservative-reading margin at the hardest corner is thin; see flip_boundary \u2014 an ell_tube only ~x1.14 above 1/f_q would flip the corner sign"
+ },
+ "G4_anchor_scan": {
+  "patterns": [
+   "(?<![\\d.])1\\.84(?!\\d)",
+   "(?<![\\d.])0\\.64(?!\\d)",
+   "(?<![\\d.])1\\.04(?!\\d)"
+  ],
+  "files": {
+   "u2_transport.py": {
+    "exists": true,
+    "hits": []
+   },
+   "u2_results.json": {
+    "exists": true,
+    "hits": []
+   },
+   "RESULTS.md": {
+    "exists": true,
+    "hits": [
+     {
+      "line": 196,
+      "pattern": "(?<![\\d.])1\\.84(?!\\d)",
+      "anchor_context": true,
+      "legal": true,
+      "text": "- [IM] anchor: isobar \u27e8B\u27e9/\u0394Q \u00d7 \u0394Z/A = [ANCHOR-REDACTED] \u00b1 0.02 \u00b1 0.09 \u00b1 0.16 (0\u201310 % central)"
+     },
+     {
+      "line": 197,
+      "pattern": "(?<![\\d.])1\\.04(?!\\d)",
+      "anchor_context": true,
+      "legal": true,
+      "text": "- [IM] anchor: \u03b1_B(\u03b3+Au) = [ANCHOR-REDACTED] \u00b1 0.22 (junction Regge window [0.42, 1])"
+     },
+     {
+      "line": 198,
+      "pattern": "(?<![\\d.])0\\.64(?!\\d)",
+      "anchor_context": true,
+      "legal": true,
+      "text": "- [IM] anchor: \u03b1_B(Au+Au) = [ANCHOR-REDACTED] \u00b1 0.05, centrality-independent"
+     }
+    ]
+   }
+  },
+  "pass": true
+ }
+}

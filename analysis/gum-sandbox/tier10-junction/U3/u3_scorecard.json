@@ -1,0 +1,348 @@
+{
+ "workstream": "U3 (F-T10-U3)",
+ "date": "2026-08-16",
+ "epistemic_frame": "within-model; nothing bears on nature; STAR/lattice/Regge values are [IM] anchors only and enter no computation; seal q-theta: any hadron-mass-confronting number V.F only (dimensionally secure / structurally plausible / quantitatively unclaimed); no fitting to STAR observables; the junction interpretation of the STAR data is contested and rivals are carried at equal weight; numerology pre-emption: the dimensionless c-frak = 2.37 shares digits with GeV numbers by man-made-unit coincidence only \u2014 not structure, never cited as structure; no stake, no clock, no grade motion; all corpus-side changes are offers",
+ "spec_amendments": {
+  "U3-A1": "Roadmap shorthand 'B=(1/3)*Sigma(signed residues)' executed as the signed indicator sum over fractional-residue cores (K-1 as printed, WS-K-NR-K1:33); the literal residue-VALUE sum is computed as a diagnostic and disagrees (uud: (1/3)*Sigma rho = 5/9 != 1), so the literal reading is rejected as the dictionary.",
+  "U3-A2": "the roadmap's U1/U2 watcher loop (<= 40 min) was not needed: both U1/RESULTS.md and U2/RESULTS.md existed at first poll; no PENDING cells"
+ },
+ "conservation_audit": {
+  "operations": [
+   {
+    "operation": "(i) taping-rule termination",
+    "printed_rule": "WS-K-NR-K1-Execution-Corollaries-v0_1.md:31 (taping rule), :49 (S-K3: lines transport winding, never degree); Primer corpus3/03:811 ('cannot end in empty space')",
+    "model": "attach/detach lines among existing cores; core multiset invariant by construction of the move class",
+    "legality_cases": [
+     {
+      "case": "fractional line, both ends fractional cores",
+      "legal": true,
+      "expected": true
+     },
+     {
+      "case": "fractional line onto integer-residue core",
+      "legal": false,
+      "expected": false
+     },
+     {
+      "case": "fractional line ending in bulk",
+      "legal": false,
+      "expected": false
+     },
+     {
+      "case": "integer line onto any core",
+      "legal": true,
+      "expected": true
+     }
+    ],
+    "delta_B": "0",
+    "B_exact": true,
+    "verdict": "B-EXACT"
+   },
+   {
+    "operation": "(ii) web reconnection",
+    "printed_rule": "WS-K-Q1-Q2-Charge-Census-Crisis-v0_1.md:14 (w_c row: 'web reconnection (net-conserving)'), :17 (web-line charges: 'reconnection events (net-conserving)'); S-K3 WS-K-NR-K1:49",
+    "model": "endpoint exchange of tubes between two junctions over a 6-core, 2-junction test network; 9 swap events enumerated",
+    "events_enumerated": 9,
+    "net_thirds_conserved_all_events": true,
+    "events_satisfying_junction_legality": 9,
+    "delta_B": "0",
+    "B_exact": true,
+    "verdict": "B-EXACT",
+    "note": "reconnection redistributes line content among junctions (census legality restricts which events are junction-legal) but is a LINE event: the core multiset \u2014 the only thing K-1 counts \u2014 is untouched by every enumerated event."
+   },
+   {
+    "operation": "(iii) snap-minting (pair creation)",
+    "printed_rule": "Primer corpus3/03:807, :811, :827 (snap + pay-for-two; ~100-MeV-class exercise chain); Thm VIII'.1 pairs-only (corpus3/01:683); WS-K-NR-K1:31 (fresh fractional ends must terminate on fractional cores)",
+    "model": "mint (knot, antiknot) pair, residues (+rho, -rho), both flavor classes",
+    "cases": [
+     {
+      "minted_pair_flavor": "u",
+      "delta_B": "0",
+      "fresh_ends_on_fractional_cores": true,
+      "exact": true
+     },
+     {
+      "minted_pair_flavor": "d",
+      "delta_B": "0",
+      "fresh_ends_on_fractional_cores": true,
+      "exact": true
+     }
+    ],
+    "B_exact": true,
+    "verdict": "B-EXACT"
+   },
+   {
+    "operation": "(iv) junction migration (U2's junction-led transport mode)",
+    "printed_rule": "composite of printed-legal pieces only: reconnection legality (census :14, :17), snap-minting (Primer :811), taping-rule forced destination assembly (WS-K-NR-K1:31); the migration DYNAMICS itself is [CJ-new] (no printed transport law \u2014 context analysis section 2)",
+    "model": "beam baryon uud; junction + 3 tube stubs migrate; 3 pairs minted; 8 flavor assignments enumerated; exact Fraction ledger (independent re-code of U2-G3)",
+    "cases": [
+     {
+      "minted_flavors": "uuu",
+      "B_initial": "1",
+      "B_final": "1",
+      "delta_B": "0",
+      "original_knots_moved": 0,
+      "junction_count_change": 0,
+      "B_destination": "1",
+      "destination_thirds_integer": true,
+      "net_minted_charge_all_regions": "0",
+      "destination_baryon_charge": "2",
+      "exact": true
+     },
+     {
+      "minted_flavors": "uud",
+      "B_initial": "1",
+      "B_final": "1",
+      "delta_B": "0",
+      "original_knots_moved": 0,
+      "junction_count_change": 0,
+      "B_destination": "1",
+      "destination_thirds_integer": true,
+      "net_minted_charge_all_regions": "0",
+      "destination_baryon_charge": "1",
+      "exact": true
+     },
+     {
+      "minted_flavors": "udu",
+      "B_initial": "1",
+      "B_final": "1",
+      "delta_B": "0",
+      "original_knots_moved": 0,
+      "junction_count_change": 0,
+      "B_destination": "1",
+      "destination_thirds_integer": true,
+      "net_minted_charge_all_regions": "0",
+      "destination_baryon_charge": "1",
+      "exact": true
+     },
+     {
+      "minted_flavors": "udd",
+      "B_initial": "1",
+      "B_final": "1",
+      "delta_B": "0",
+      "original_knots_moved": 0,
+      "junction_count_change": 0,
+      "B_destination": "1",
+      "destination_thirds_integer": true,
+      "net_minted_charge_all_regions": "0",
+      "destination_baryon_charge": "0",
+      "exact": true
+     },
+     {
+      "minted_flavors": "duu",
+      "B_initial": "1",
+      "B_final": "1",
+      "delta_B": "0",
+      "original_knots_moved": 0,
+      "junction_count_change": 0,
+      "B_destination": "1",
+      "destination_thirds_integer": true,
+      "net_minted_charge_all_regions": "0",
+      "destination_baryon_charge": "1",
+      "exact": true
+     },
+     {
+      "minted_flavors": "dud",
+      "B_initial": "1",
+      "B_final": "1",
+      "delta_B": "0",
+      "original_knots_moved": 0,
+      "junction_count_change": 0,
+      "B_destination": "1",
+      "destination_thirds_integer": true,
+      "net_minted_charge_all_regions": "0",
+      "destination_baryon_charge": "0",
+      "exact": true
+     },
+     {
+      "minted_flavors": "ddu",
+      "B_initial": "1",
+      "B_final": "1",
+      "delta_B": "0",
+      "original_knots_moved": 0,
+      "junction_count_change": 0,
+      "B_destination": "1",
+      "destination_thirds_integer": true,
+      "net_minted_charge_all_regions": "0",
+      "destination_baryon_charge": "0",
+      "exact": true
+     },
+     {
+      "minted_flavors": "ddd",
+      "B_initial": "1",
+      "B_final": "1",
+      "delta_B": "0",
+      "original_knots_moved": 0,
+      "junction_count_change": 0,
+      "B_destination": "1",
+      "destination_thirds_integer": true,
+      "net_minted_charge_all_regions": "0",
+      "destination_baryon_charge": "-1",
+      "exact": true
+     }
+    ],
+    "B_exact": true,
+    "verdict": "B-EXACT",
+    "note": "B = 1 before and after in every assignment; zero original knots move; junction/core bookkeeping closed; net minted charge zero \u2014 junction-led transport is B-exact and charge-blind, i.e. K-1-compatible."
+   }
+  ],
+  "amendment_U3_A1": "Roadmap shorthand 'B=(1/3)*Sigma(signed residues)' executed as the signed indicator sum over fractional-residue cores (K-1 as printed, WS-K-NR-K1:33); the literal residue-VALUE sum is computed as a diagnostic and disagrees (uud: (1/3)*Sigma rho = 5/9 != 1), so the literal reading is rejected as the dictionary.",
+  "shorthand_diagnostic": {
+   "state": "proton parse uud",
+   "B_printed": "1",
+   "literal_residue_value_sum_over_3": "1/3",
+   "equal": false
+  },
+  "overall": "B exact under all four audited operations (zero failures); junction-led transport is printed-LEGAL at the ledger level, its dynamics [CJ-new]",
+  "all_exact": true
+ },
+ "scorecard": {
+  "columns": [
+   "row ([IM] anchor)",
+   "corpus-printed content (file:line)",
+   "U1-U2 computed content",
+   "verdict",
+   "rivals (mandatory)"
+  ],
+  "verdict_categories": [
+   "SUPPORTED-STRUCTURALLY",
+   "V.F-CLASS",
+   "SILENT-NEEDS-NEW-WORK",
+   "TENSION"
+  ],
+  "rows": [
+   {
+    "row": "STAR isobar <B>/DeltaQ x DeltaZ/A = 1.84 +/- 0.02 [IM] +/- 0.09 +/- 0.16 (0-10% central)",
+    "corpus_printed": "carrier: B knot-carried, Thm K-1 [DF-structural, worksheet stratum] (WS-K-NR-K1:33); enforcer: taping rule/junction constraint (WS-K-NR-K1:31; census :14, :17); transporter: SILENT \u2014 zero printed transport statements, 'Regge' zero corpus hits (context section 2); operative editions silent on B entirely (zero 'baryon number' hits, grep-verified)",
+    "u1_u2_computed": "U2 [CJ-new] sign-only toy: junction-led channel strictly cheaper over the full printed window (min margin 1.128 conservative / 2.902 compact; 100% of 4D grid); B >= Q for any monotone-decreasing cost; magnitudes UNCLAIMABLE (U2/RESULTS.md sections 4-5)",
+    "verdict": "SILENT-NEEDS-NEW-WORK",
+    "verdict_note": "the corpus prints no transport law, so the measurement confronts nothing printed; the U2 completion shows the STAR-shaped sign is structurally generic in-model, at [CJ-new] grade \u2014 exactly the 'new work' the verdict names",
+    "rivals": [
+     "neutron-skin geometry contaminates the peripheral isobar trend (TRENTO reproduces the trend junction-free; Pihan & Vovchenko arXiv:2602.04079 treat the observable as a joint skin+stopping probe)",
+     "strangeness asymmetry moves B/DeltaQ well below 1 in junction-free AMPT (Ross & Lin, EPJC 86, 143)",
+     "junction-free hydrodynamic charge-stopping baseline: Pihan-Monnai-Schenke-Shen PRL 133, 182301",
+     "Science Perspective (W. Li): the measurements 'do not provide a direct, tightly controlled measurement of the underlying mechanism'"
+    ]
+   },
+   {
+    "row": "STAR gamma+Au alpha_B = 1.04 +/- 0.22 [IM] (junction Regge window [0.42, 1])",
+    "corpus_printed": "SILENT: no rapidity, Regge, or stopping structure of any kind ('Regge' zero hits; no alpha_B-like quantity constructible from print \u2014 context section 2; dynamics agent silences list)",
+    "u1_u2_computed": "U2 produces a sign only \u2014 no alpha_B value exists or could be claimed (U2 register: magnitudes UNCLAIMABLE; corpus prints no transport law)",
+    "verdict": "SILENT-NEEDS-NEW-WORK",
+    "verdict_note": "an in-model alpha_B would need the full [CJ-new] transport layer priced in the alternative below",
+    "rivals": [
+     "CGC gluon saturation reproduces the alpha_B systematics with valence quarks only (Garcia-Montero & Schlichting, PRC 111, 024912) \u2014 the slope alone does not select junctions",
+     "Science Perspective (W. Li): the measurements 'do not provide a direct, tightly controlled measurement of the underlying mechanism'"
+    ]
+   },
+   {
+    "row": "STAR Au+Au alpha_B = 0.64 +/- 0.05 [IM], centrality-independent",
+    "corpus_printed": "SILENT (same basis as the gamma+Au row)",
+    "u1_u2_computed": "U2 sign only; centrality does not exist in the toy (U2 caveat 5: no collision geometry, no energy dependence, no centrality)",
+    "verdict": "SILENT-NEEDS-NEW-WORK",
+    "verdict_note": "as above; the centrality-independence discriminator has no in-model counterpart",
+    "rivals": [
+     "CGC gluon saturation reproduces the alpha_B systematics with valence quarks only (Garcia-Montero & Schlichting, PRC 111, 024912) \u2014 the slope alone does not select junctions",
+     "Science Perspective (W. Li): the measurements 'do not provide a direct, tightly controlled measurement of the underlying mechanism'"
+    ]
+   },
+   {
+    "row": "compact-B imaging: baryon number confined to transverse radius 0.33-0.53 fm vs charge/mass radii >= 0.67 fm (Klein-Labonte-Sweger-Miller-Vogt, arXiv:2603.03730, preprint) [IM]",
+    "corpus_printed": "no printed density, radius, or form-factor machinery for any charge (WS-N RN-3 charter cage: no nuclear numbers; context: momentum/charge partition inside a hadron SILENT). Printed structure cuts both ways: B and Q ride the SAME knot cores (K-1 + V.D winding) \u2014 naively co-located \u2014 but minted K-Kbar pairs carry winding with zero net B (VIII'.1; Primer :811), so a charge cloud wider than the net-B support is equally constructible from print",
+    "u1_u2_computed": "neither U1 nor U2 computes spatial distributions; U2's ledger shows net-B tracks the junction-forced core assembly while charge spreads over pair-minted content \u2014 a structural rhyme, not a radius",
+    "verdict": "SILENT-NEEDS-NEW-WORK",
+    "verdict_note": "both a tension reading (same-carrier co-location) and an accommodation reading (net-zero-B charge cloud) are constructible; neither is printed; an in-model B-density would be new [CJ] construction",
+    "rivals": [
+     "conventional meson-cloud explanation: the pion cloud inflates the charge radius while valence B stays compact \u2014 no junction needed",
+     "the extraction is Regge-model-dependent, from four exclusive backward channels; preprint, not yet peer-reviewed (SNIPPET-ONLY verification)"
+    ]
+   },
+   {
+    "row": "junction-exotics class: J-Jbar 'baryonium glueballs', gluonic graphene, buckyballs (CGK J. Phys. G 30, L17; magic numbers 8/24/48/120); none discovered [IM]",
+    "corpus_printed": "NOT-FORBIDDEN / ACCOMMODATED / NEVER-CONSTRUCTED: knot-free tube networks with junctions are legal iff thirds sum to integers at every junction (census :14); a quarkless junction carrying B = 1 is dictionary-IMPOSSIBLE (K-1: knot-free networks have B = 0); Course 20.1's 'exactly' inventory sentence excludes the class as printed (corpus3/02:1088 vs Omega Q-1 corpus3/01:615 \u2014 Tier-9 derivation-scope precedent carried)",
+    "u1_u2_computed": "U1 constructs the minimal J-Jbar dumbbell: ground m/sqrt(sigma) = 2.59/2.70/2.94 at the three pre-registered junction masses (envelopes ~2.45-3.12), BELOW the loop 0++ head 3.583 under the frozen inertia convention; convention-split priced (stretch inertia: 5.5-5.8); interleaves the Tier-9 loop ladder; all V.F",
+    "verdict": "V.F-CLASS",
+    "verdict_note": "a computed within-model spectrum now exists at V.F grade (dimensionally secure / structurally plausible / quantitatively unclaimed); no state identified with any observed or proposed hadron",
+    "rivals": [
+     "no junction-exotic has been observed by anyone (STAR paper: 'none discovered'); the class cannot currently adjudicate the junction interpretation",
+     "CGK's own GeV mass estimates unpinned from accessible sources (SNIPPET-ONLY)"
+    ]
+   }
+  ]
+ },
+ "priced_alternative": {
+  "frame": "symmetric price sheet; NEITHER branch is recommended; within-model; adoption is the corpus authors' alone",
+  "branch_A": {
+   "name": "K-1-as-printed only",
+   "content": "keep the printed dictionary and nothing else: B is knot-carried (K-1), taping-rule-enforced, and the transport question is left unanswered",
+   "costs": [
+    "the STAR-shaped question (who MOVES B in momentum space) is unanswerable in-model: no confrontation row above can ever leave SILENT-NEEDS-NEW-WORK",
+    "the worksheet-stratum fold debt stands (operative editions print no B dictionary at all)"
+   ],
+   "buys": [
+    "zero new construction; zero new parameters; the theorem stack stays exactly as derived",
+    "no exposure to the contested junction interpretation of the STAR data (rivals may yet win the phenomenology)"
+   ]
+  },
+  "branch_B": {
+   "name": "K-1 + junction-led transport completion (U2's construction)",
+   "content": "adopt the carrier/enforcer/transporter trichotomy and a junction-led transport layer as in-model structure",
+   "costs": [
+    "[CJ-new] transport layer: a mobility/cost law the corpus never printed (U2's g is a toy ansatz family, not a derivation)",
+    "junction energy/inertia: unprinted ([CJ-new]); the only anchor is a 2+1D lattice import with an untested dimensional transfer",
+    "unprinted dynamics throughout: minting rates, reconnection rates, junction migration kinetics \u2014 none derivable from print today",
+    "inherits the F-K0-1 junction-order seam (n = 3 Primer-asserted, paper-conditional, execution absent)"
+   ],
+   "buys": [
+    "the trichotomy dissolves the apparent GUM-vs-STAR tension: knot-carried B is COMPATIBLE with junction-led transport (U2-G3, exact ledger; audited again here, operation (iv))",
+    "the STAR-shaped sign comes out generically over the full printed parameter window (U2-G2), not by tuning",
+    "the J-Jbar state class acquires a computable spectrum (U1), giving the two-sector dictionary a third entry"
+   ]
+  },
+  "symmetry_note": "branch A pays in permanent silence; branch B pays in unprinted structure.  The scorecard's verdicts are identical under both branches TODAY (nothing above rises past V.F-CLASS/SILENT); the branches differ only in what future work could change that.  No recommendation is made."
+ },
+ "G4_scan": {
+  "targets": [
+   "RESULTS.md",
+   "u3_annotations.md",
+   "u3_scorecard.json",
+   "u3_audit.py"
+  ],
+  "results": [
+   {
+    "file": "RESULTS.md",
+    "forbidden_hits": [],
+    "anchor_violations": [],
+    "numerology_violations": [],
+    "clean": true
+   },
+   {
+    "file": "u3_annotations.md",
+    "forbidden_hits": [],
+    "anchor_violations": [],
+    "numerology_violations": [
+     {
+      "line": 17
+     }
+    ],
+    "clean": false
+   },
+   {
+    "file": "u3_scorecard.json",
+    "forbidden_hits": [],
+    "anchor_violations": [],
+    "numerology_violations": [],
+    "clean": true
+   },
+   {
+    "file": "u3_audit.py",
+    "forbidden_hits": [],
+    "anchor_violations": [],
+    "numerology_violations": [],
+    "clean": true
+   }
+  ],
+  "all_clean": false,
+  "note": "anchor tokens are LEGAL only on [IM]-anchor/compliance-context lines; numerology token legal only inside its pre-emption; scan exempts lines that state the bans themselves"
+ }
+}

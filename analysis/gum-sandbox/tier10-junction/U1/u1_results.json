@@ -1,0 +1,422 @@
+{
+ "workstream": "U1",
+ "finding": "F-T10-U1",
+ "register": "within-model; V.F-graded (dimensionally secure / structurally plausible / quantitatively unclaimed); nothing bears on nature; STAR observables never used as targets",
+ "amendments": [
+  "[AMENDMENT U1-A1] Y-law end geometry idealized: at leading order in the adiabatic separation coordinate the three tubes run PARALLEL along the J-Jbar axis (energy exactly 3*sigma*L); the Y-law 120-degree opening (a banked corpus structural consistency, favored by lattice [IM]) lives in the transverse junction structure that is collapsed to a point here.  Transverse junction shape, tube-tube interaction, and junction-core excitation are all beyond this leading-order dumbbell.",
+  "[AMENDMENT U1-A2] Configuration inertia mu(L) = 3*sigma*L + 2*m_J (the full configuration mass), imitating T1's mu(rho) = 2*pi*sigma*rho pattern per the frozen spec.  The physically derived symmetric-stretch inertia (linear velocity profile, ends at +-L/2) is sigma*L/4 + m_J/2 and is carried as a printed SENSITIVITY variant outside the frozen envelope; for the ring breathing mode the two coincide, for the dumbbell they do not -- a genuine transfer ambiguity, priced below.",
+  "[AMENDMENT U1-A3] Transverse-phonon content per T1 census conventions transferred to open tubes: both tube ends fixed on junctions (Dirichlet), omega_n = n*pi/L, 3 tubes x 2 transverse polarizations; zeta-regularized zero point = 6 x (-pi/24L) = -pi/(4L), i.e. three times the single-open-string D=4 Luscher term.  T1's short-distance factor (1 - e^{-f x}) transferred as junction-end smoothing at the FROZEN f* = 1.9724; scheme envelope = T1's frozen set {ZK x f in {f*/1.5, f*, 1.5 f*}} u {BDD x f in {8, 32}}.  No new parameter introduced and nothing recalibrated.",
+  "[AMENDMENT U1-A4] m_J enters both the statics (+2 m_J) and the inertia; evaluated ONLY at the three pre-registered values.  The 0.1355 anchor is a 2+1D SU(3) lattice determination (JHEP 12 (2025) 019, arXiv:2508.00608 [IM]) -- the 3+1D value is unmeasured; dimensional transfer is an untested assumption, printed.  0.39 = f_q(central 0.17 GeV)/sqrt(sigma) is a corpus-internal scale analogy, not a junction mass.  Junction energy remains [CJ-new]: the corpus prints NO junction energy/mass/inertia."
+ ],
+ "self_checks": {
+  "dumbbell_grid_convergence_relerr": 2.496450601792999e-07
+ },
+ "validation": {
+  "airy": {
+   "case": "mu = 1/2, k = 1 (textbook): E_n = |a_n| exactly",
+   "airy_zeros": [
+    2.3381074104597674,
+    4.08794944413097,
+    5.520559828095515,
+    6.786708090071912,
+    7.944133587112781,
+    9.022650853340979
+   ],
+   "max_rel_err_richardson": 7.824573209990109e-10,
+   "zk_bdd_constant_mass_agreement": 0.0,
+   "gate_U1_G1a": "PASS"
+  },
+  "t1_limit": {
+   "fstar_frozen": 1.9724361517053026,
+   "t1_0pp_target": 3.5826743623402577,
+   "reproduced_0pp": 3.5826743623402577,
+   "rel_err_0pp": 0.0,
+   "t1_0mp_target": 8.274938189248923,
+   "reproduced_0mp": 8.274938189248923,
+   "rel_err_0mp": 0.0,
+   "gate_U1_G1b": "PASS"
+  }
+ },
+ "spectrum": {
+  "0.0": {
+   "mhat": 0.0,
+   "levels": [
+    {
+     "label": "ground (scalar-class head, N=0)",
+     "N": 0,
+     "n_r": 0,
+     "eps": 2.587745471102492,
+     "eps_band": [
+      2.45341835156444,
+      2.8841793458591014
+     ],
+     "mass_GeV_VF": 1.1279721000140814,
+     "mass_band_GeV_VF": [
+      1.0694202660697538,
+      1.2571846303647067
+     ]
+    },
+    {
+     "label": "first phonon level (N=1: 6 channels, 3 tubes x 2 pol)",
+     "N": 1,
+     "n_r": 0,
+     "eps": 5.614603489428923,
+     "eps_band": [
+      5.242853301046701,
+      6.234331969357085
+     ],
+     "mass_GeV_VF": 2.447348921847151,
+     "mass_band_GeV_VF": [
+      2.2853067715071194,
+      2.7174823034912445
+     ]
+    },
+    {
+     "label": "separation excitation (N=0, n_r=1)",
+     "N": 0,
+     "n_r": 1,
+     "eps": 4.728403108582363,
+     "eps_band": [
+      4.6647477270714734,
+      4.925344703268675
+     ],
+     "mass_GeV_VF": 2.06106313146341,
+     "mass_band_GeV_VF": [
+      2.0333163939415604,
+      2.146907982365148
+     ]
+    },
+    {
+     "label": "second phonon level (N=2: one n=2 or two n=1)",
+     "N": 2,
+     "n_r": 0,
+     "eps": 8.22267249757876,
+     "eps_band": [
+      7.594323483583926,
+      8.679755721426346
+     ],
+     "mass_GeV_VF": 3.5841798462777006,
+     "mass_band_GeV_VF": [
+      3.31028886095001,
+      3.7834178044316418
+     ]
+    },
+    {
+     "label": "phonon + separation (N=1, n_r=1)",
+     "N": 1,
+     "n_r": 1,
+     "eps": 7.037214088760325,
+     "eps_band": [
+      6.818281555147566,
+      7.4908043609080375
+     ],
+     "mass_GeV_VF": 3.067450505696692,
+     "mass_band_GeV_VF": [
+      2.9720200267495582,
+      3.265165921503191
+     ]
+    }
+   ],
+   "ground_stretch_inertia_sensitivity": {
+    "eps": 5.7664559496933405,
+    "note": "mu = sigma*L/4 + m_J/2 variant (AMENDMENT U1-A2); lighter inertia raises eps; outside the frozen envelope, printed as transfer-ambiguity price"
+   }
+  },
+  "0.1355": {
+   "mhat": 0.1355,
+   "levels": [
+    {
+     "label": "ground (scalar-class head, N=0)",
+     "N": 0,
+     "n_r": 0,
+     "eps": 2.695254708176641,
+     "eps_band": [
+      2.545829573679303,
+      2.8565865956011316
+     ],
+     "mass_GeV_VF": 1.1748342900044186,
+     "mass_band_GeV_VF": [
+      1.1097013839145318,
+      1.245157229369822
+     ]
+    },
+    {
+     "label": "first phonon level (N=1: 6 channels, 3 tubes x 2 pol)",
+     "N": 1,
+     "n_r": 0,
+     "eps": 5.816389444542272,
+     "eps_band": [
+      5.421019853982754,
+      6.435483291031223
+     ],
+     "mass_GeV_VF": 2.5353053805036434,
+     "mass_band_GeV_VF": [
+      2.362967771443844,
+      2.8051621318449653
+     ]
+    },
+    {
+     "label": "separation excitation (N=0, n_r=1)",
+     "N": 0,
+     "n_r": 1,
+     "eps": 4.807418928796823,
+     "eps_band": [
+      4.735424103953901,
+      4.897730054880171
+     ],
+     "mass_GeV_VF": 2.0955053289889904,
+     "mass_band_GeV_VF": [
+      2.0641235123941697,
+      2.1348710361964582
+     ]
+    },
+    {
+     "label": "second phonon level (N=2: one n=2 or two n=1)",
+     "N": 2,
+     "n_r": 0,
+     "eps": 8.473354916778057,
+     "eps_band": [
+      7.819739742330824,
+      8.927250817866886
+     ],
+     "mass_GeV_VF": 3.6934497794989043,
+     "mass_band_GeV_VF": [
+      3.4085455301608842,
+      3.8912984158722583
+     ]
+    },
+    {
+     "label": "phonon + separation (N=1, n_r=1)",
+     "N": 1,
+     "n_r": 1,
+     "eps": 7.195178107915433,
+     "eps_band": [
+      6.958473648761581,
+      7.653164944839788
+     ],
+     "mass_GeV_VF": 3.136305425317956,
+     "mass_band_GeV_VF": [
+      3.033128343624247,
+      3.335937259280467
+     ]
+    }
+   ],
+   "ground_stretch_inertia_sensitivity": {
+    "eps": 5.600695370891466,
+    "note": "mu = sigma*L/4 + m_J/2 variant (AMENDMENT U1-A2); lighter inertia raises eps; outside the frozen envelope, printed as transfer-ambiguity price"
+   }
+  },
+  "0.39": {
+   "mhat": 0.39,
+   "levels": [
+    {
+     "label": "ground (scalar-class head, N=0)",
+     "N": 0,
+     "n_r": 0,
+     "eps": 2.942561895348251,
+     "eps_band": [
+      2.6737766884080627,
+      3.122101055513375
+     ],
+     "mass_GeV_VF": 1.2826329936936534,
+     "mass_band_GeV_VF": [
+      1.1654722382365585,
+      1.360892299250447
+     ]
+    },
+    {
+     "label": "first phonon level (N=1: 6 channels, 3 tubes x 2 pol)",
+     "N": 1,
+     "n_r": 0,
+     "eps": 6.216106199931212,
+     "eps_band": [
+      5.781651809806043,
+      6.852255007977818
+     ],
+     "mass_GeV_VF": 2.7095378747816787,
+     "mass_band_GeV_VF": [
+      2.520163596568358,
+      2.9868287115145797
+     ]
+    },
+    {
+     "label": "separation excitation (N=0, n_r=1)",
+     "N": 0,
+     "n_r": 1,
+     "eps": 5.000879885659395,
+     "eps_band": [
+      4.874029980398326,
+      5.103795072321043
+     ],
+     "mass_GeV_VF": 2.179833005037454,
+     "mass_band_GeV_VF": [
+      2.1245404132343833,
+      2.224692694878829
+     ]
+    },
+    {
+     "label": "second phonon level (N=2: one n=2 or two n=1)",
+     "N": 2,
+     "n_r": 0,
+     "eps": 8.950124256409374,
+     "eps_band": [
+      8.25662130137285,
+      9.400562192253247
+     ],
+     "mass_GeV_VF": 3.9012687165820576,
+     "mass_band_GeV_VF": [
+      3.598977786776953,
+      4.097610060850108
+     ]
+    },
+    {
+     "label": "phonon + separation (N=1, n_r=1)",
+     "N": 1,
+     "n_r": 1,
+     "eps": 7.519867147189372,
+     "eps_band": [
+      7.253030037083547,
+      8.007132670580937
+     ],
+     "mass_GeV_VF": 3.2778340963449972,
+     "mass_band_GeV_VF": [
+      3.1615224966112243,
+      3.4902282138585257
+     ]
+    }
+   ],
+   "ground_stretch_inertia_sensitivity": {
+    "eps": 5.46965761606492,
+    "note": "mu = sigma*L/4 + m_J/2 variant (AMENDMENT U1-A2); lighter inertia raises eps; outside the frozen envelope, printed as transfer-ambiguity price"
+   }
+  }
+ },
+ "confrontation": {
+  "anchors_IM_and_T1": {
+   "X2370_m_over_sqrtsigma": [
+    5.41,
+    5.45
+   ],
+   "lattice_0mp_over_sqrtsigma": [
+    5.5,
+    5.9
+   ],
+   "lattice_0pp_over_sqrtsigma": 3.5,
+   "T1_loop_IP_0pp": 3.5826743623402577,
+   "T1_loop_IP_0mp": 8.274938189248923,
+   "T1_loop_NG_N1": 4.799827718400437
+  },
+  "per_mhat": {
+   "0.0": {
+    "ground_eps": 2.587745471102492,
+    "ground_band": [
+     2.45341835156444,
+     2.8841793458591014
+    ],
+    "ground_below_T1_loop_0pp": true,
+    "ground_duplicates_T1_loop_0pp_5pct": false,
+    "levels_touching_X_lattice0mp_window_5.41_5.9": [
+     "first phonon level (N=1: 6 channels, 3 tubes x 2 pol)"
+    ],
+    "dumbbell_levels_interleaving_T1_loop_gaps": [
+     [
+      "first phonon level (N=1: 6 channels, 3 tubes x 2 pol)",
+      3.583,
+      5.616
+     ],
+     [
+      "separation excitation (N=0, n_r=1)",
+      3.583,
+      5.616
+     ],
+     [
+      "second phonon level (N=2: one n=2 or two n=1)",
+      7.134,
+      8.275
+     ],
+     [
+      "phonon + separation (N=1, n_r=1)",
+      6.665,
+      7.134
+     ]
+    ]
+   },
+   "0.1355": {
+    "ground_eps": 2.695254708176641,
+    "ground_band": [
+     2.545829573679303,
+     2.8565865956011316
+    ],
+    "ground_below_T1_loop_0pp": true,
+    "ground_duplicates_T1_loop_0pp_5pct": false,
+    "levels_touching_X_lattice0mp_window_5.41_5.9": [
+     "first phonon level (N=1: 6 channels, 3 tubes x 2 pol)"
+    ],
+    "dumbbell_levels_interleaving_T1_loop_gaps": [
+     [
+      "first phonon level (N=1: 6 channels, 3 tubes x 2 pol)",
+      5.616,
+      5.971
+     ],
+     [
+      "separation excitation (N=0, n_r=1)",
+      3.583,
+      5.616
+     ],
+     [
+      "phonon + separation (N=1, n_r=1)",
+      7.134,
+      8.275
+     ]
+    ]
+   },
+   "0.39": {
+    "ground_eps": 2.942561895348251,
+    "ground_band": [
+     2.6737766884080627,
+     3.122101055513375
+    ],
+    "ground_below_T1_loop_0pp": true,
+    "ground_duplicates_T1_loop_0pp_5pct": false,
+    "levels_touching_X_lattice0mp_window_5.41_5.9": [
+     "first phonon level (N=1: 6 channels, 3 tubes x 2 pol)"
+    ],
+    "dumbbell_levels_interleaving_T1_loop_gaps": [
+     [
+      "first phonon level (N=1: 6 channels, 3 tubes x 2 pol)",
+      5.971,
+      6.665
+     ],
+     [
+      "separation excitation (N=0, n_r=1)",
+      3.583,
+      5.616
+     ],
+     [
+      "phonon + separation (N=1, n_r=1)",
+      7.134,
+      8.275
+     ]
+    ]
+   }
+  },
+  "sector_relation_verdict": "EXTENDS DOWNWARD: at every pre-registered junction mass the J-Jbar ground state lies BELOW the loop sector's 0++ head -- the junction sector opens a new, lighter floor under the closed-loop spectrum; INTERLEAVES: 10 dumbbell level placements fall inside gaps of the T1 loop ladder across the mhat set -- the two sectors would overlay as one interleaved spectrum, not two separated bands; CONVENTION-FRAGILE: under the physically derived stretch inertia (U1-A2 sensitivity variant) the ground rises to eps = 5.77 (mhat=0.0), 5.60 (mhat=0.1355), 5.47 (mhat=0.39) -- ABOVE the loop 0++ head; the downward-extension half of this verdict is owned by the spec-frozen T1-pattern inertia, not by the dumbbell physics itself, and the interleaving half survives both conventions",
+  "tetraquark_kill_note": "n = 3 ONLY: every network here is built from order-3 junctions (the corpus's Q-1 inventory class with the tetraquark kill armed, junction order owned by WS1-H3 -- an ansatz, [CAL]-at-best, seam F-K0-1 carried).  No 4-fold junction and no baryonium-TETRAQUARK (quark-terminated, i.e. knot-terminated) state is constructed or priced; the J-Jbar dumbbell is the knot-FREE minimal network.  Nothing here bears on the tetraquark kill's standing.",
+  "vf_statement": "All GeV values are sqrt(sigma)-rescalings of dimensionless model output with sigma = 0.19 GeV^2 [IM]: dimensionally secure / structurally plausible / quantitatively unclaimed.  No junction-sector state is claimed as any observed hadron."
+ },
+ "spectrum_conventions": {
+  "potential": "V_N(x) = 3x + 2*mhat + (pi*N - pi/4)(1 - e^{-f x})/x",
+  "inertia": "mu(x) = 3x + 2*mhat  (spec-frozen, T1 pattern)",
+  "band_definition": "envelope over T1's frozen scheme set {ZK x f in [f*/1.5, f*, 1.5 f*]} + {BDD x f in [8, 32]}; model systematics only, nothing fitted",
+  "jpc_note": "adiabatic model assignment only: ground = scalar-class; the N=1 sextet decomposes under the dumbbell symmetry (S3 tube permutation x polarization axial doublet J_z = +-1 x end swap) into 1 + 2 per polarization -- exact degeneracy at this level is an adiabatic artifact (same caveat class as T1 M=2); FKRV [IM] give J-Jbar Regge trajectories with intercept ~1/2, not used here"
+ },
+ "register_G4": {
+  "seal_q_theta": "V.F on every hadron-mass-confronting number; pipeline frozen by ROADMAP_v12 before execution",
+  "numerology_preemption": "The corpus's dimensionless closure benchmark c-frak = 2.37 +- 0.09 shares digits with GeV-denominated numbers (e.g. m_X ~ 2.37 GeV) by man-made-unit coincidence only; no digit identity is cited anywhere in U1 as structure, and may never be.",
+  "junction_energy_status": "[CJ-new]: the corpus prints no junction energy/mass/inertia; m_J here is an explicit scanned parameter, never fitted, anchored only by the [IM] 2+1D lattice value and a corpus scale analogy",
+  "no_star_fitting": "STAR observables (1.84, 0.64, 1.04) appear nowhere in this workstream's computations; mechanical self-scan below",
+  "no_grade_motion": true,
+  "no_stake": true,
+  "star_value_scan_hits_outside_disclaimer": []
+ }
+}
