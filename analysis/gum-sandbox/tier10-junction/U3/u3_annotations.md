@@ -14,8 +14,8 @@ secure / structurally plausible / quantitatively unclaimed*; seal q-θ).
 The junction interpretation of the STAR data is itself contested
 (CGC-saturation rival, neutron-skin and strangeness confounds); every
 box carries that symmetrically.  **Numerology pre-emption, binding in
-every box:** the corpus's dimensionless 𝔠 = 2.37 ± 0.09 shares digits by
-coincidence (man-made units) with GeV-denominated numbers; that digit
+every box:** the dimensionless 𝔠 = 2.37 shares digits by coincidence
+(man-made units) with GeV-denominated numbers; that digit
 identity is not structure and may never be cited as structure.  No
 stake is issued, no clock started, no grade moved by any box.
 

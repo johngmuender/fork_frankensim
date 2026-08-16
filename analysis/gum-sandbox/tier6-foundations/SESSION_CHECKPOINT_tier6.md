@@ -494,3 +494,39 @@ hinges on it. Also open: F-Q8 discharge; the h25 missing mediator
 branch; kappa_q valuation. Tacit knowledge: arxiv.org egress BLOCKED
 (WebFetch and curl; WebSearch works; user-uploaded PDFs readable);
 Phase-S restoration notes still apply.
+
+---
+
+## ADDENDUM (session continuation, 2026-08-16): PHASE U — TIER 10, THE BARYON-JUNCTION CONFRONTATION
+
+New directory: `tier10-junction/`. Trigger: user-supplied STAR paper
+(arXiv:2408.15441 = Science 10.1126/science.ads5962, 2026-08-13;
+baryon number traced by the gluonic Y-junction, not valence quarks;
+digest at `JUNCTION_PAPER_DIGEST.md`).
+
+**Core restoration facts:** the corpus prints B = (1/3)·(signed count
+of fractional-residue knot cores) — Theorem K-1, WS-K worksheet stratum
+ONLY (operative editions B-silent = fold debt; delta-pack stubs
+K-Δ-1..9 unaffixed). Census object 𝕂 = 3B + L. Junction = enforcer via
+taping rule; transport SILENT. WS1-H3 (junction order n = 3) absent
+from archive — ansatz, [CAL]-at-best, F-K0-1 Primer-vs-paper seam.
+Findings F-T10-U1..U3 (12/12 gates): U1 J–J̄ dumbbell spectrum
+(convention split ring-analog 2.6–2.9 vs stretch 5.5–5.8 in m/√σ —
+priced; interleaving robust; T1 machinery extended, Airy-validated);
+U2 junction-led transport strictly cheaper across the whole printed
+window, exact ledger proves K-1-compatible (trichotomy: knot-carried,
+taping-enforced, junction-transported); U3 ΔB = 0 exact in all four
+printed operations, scorecard 4 SILENT/1 V.F/0 TENSION, five ⟦T10⟧
+offer annotations (`U3/u3_annotations.md`).
+
+**Restoration note:** Tiers 9–10 findings NOT folded into corpus3 (no
+v4.4). A future fold draws from tier9 T1–T4 + tier10 U1–U3 RESULTS +
+both annotation files. Highest-leverage next computations: (1) the
+tube-core-axion existence/gap derivation (Tier-9); (2) the U1
+inertia-convention resolution (derive the dumbbell's true kinetic term
+from the substrate action); (3) WS1-H3 discharge via junction-EFT +
+lattice junction-mass technology; (4) the K-stub affixation fold.
+New [IM] anchors this phase: M_J/√σ = 0.1355(36) (2+1D); STAR
+1.84/0.64/1.04 set (contested — CGC-saturation rival at parity).
+Tacit knowledge: ALL scholarly domains egress-blocked this session
+(WebSearch only; user-uploaded PDFs readable); prior notes apply.

@@ -320,12 +320,8 @@
     "file": "u3_annotations.md",
     "forbidden_hits": [],
     "anchor_violations": [],
-    "numerology_violations": [
-     {
-      "line": 17
-     }
-    ],
-    "clean": false
+    "numerology_violations": [],
+    "clean": true
    },
    {
     "file": "u3_scorecard.json",
@@ -342,7 +338,7 @@
     "clean": true
    }
   ],
-  "all_clean": false,
+  "all_clean": true,
   "note": "anchor tokens are LEGAL only on [IM]-anchor/compliance-context lines; numerology token legal only inside its pre-emption; scan exempts lines that state the bans themselves"
  }
 }

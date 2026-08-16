@@ -1,5 +1,5 @@
 {
- "snapshot_utc": "2026-08-15 PHASE T COMPLETE - Tier 9 glueball confrontation: context (6 agents) + ROADMAP v11 T1-T4 (16/16 gates, F-T9-T1..T4); split verdict, no grade motion",
+ "snapshot_utc": "2026-08-16 PHASE U COMPLETE - Tier 10 baryon-junction confrontation: context (4 agents) + ROADMAP v12 U1-U3 (12/12 gates, F-T10-U1..U3); trichotomy computed; no grade motion",
  "session": "536b52e3-c0e4-5548-a35f-7ca5893feba9",
  "branch": "claude/analyze-gum-po",
  "note": "Additive to MANIFEST.json (session d0b81976, ivm-viz line). This manifest covers the tier6-foundations session only.",
@@ -284,6 +284,48 @@
    "description": "T4 two-sector dictionary",
    "phase": "Phase T execute",
    "verdict": "4/4 PASS; alternative priced symmetrically; 4 annotations offered; F-T9-T4"
+  },
+  {
+   "agent_id": "a5249b4bf02b06bc1",
+   "description": "U-ctx junction archaeologist",
+   "phase": "Phase U context",
+   "verdict": "Theorem K-1 found: B knot-carried (valence pole); K-stubs unaffixed (fold debt); WS1-H3 absent"
+  },
+  {
+   "agent_id": "a0911cf1a128edaa7",
+   "description": "U-ctx dynamics/transport reader",
+   "phase": "Phase U context",
+   "verdict": "transport corpus-SILENT; statics asymmetry inventory assembled; F-Q1 scale-transfer lesson enforced"
+  },
+  {
+   "agent_id": "ad1be901fb406b0a8",
+   "description": "U-lit junction theory",
+   "phase": "Phase U context",
+   "verdict": "Artru/RV/Kharzeev/CGK base; NEW anchor M_J/sqrt(sigma)=0.1355(36) 2+1D lattice + Komargodski-Zhong EFT"
+  },
+  {
+   "agent_id": "ac15e12fd04c5a6d7",
+   "description": "U-lit experiment + reception",
+   "phase": "Phase U context",
+   "verdict": "paper = Science 2026-08-13; CGC-saturation rival mapped; reception still forming"
+  },
+  {
+   "agent_id": "a566779608c7dd38e",
+   "description": "U1 J-Jbar dumbbell spectrum",
+   "phase": "Phase U execute",
+   "verdict": "4/4 PASS; convention split priced (2.6-2.9 vs 5.5-5.8); interleaving robust; F-T10-U1"
+  },
+  {
+   "agent_id": "a1202019e40da1ca3",
+   "description": "U2 two-carrier transport sign test",
+   "phase": "Phase U execute",
+   "verdict": "4/4 PASS; junction-led strictly cheaper window-wide; trichotomy computed; F-T10-U2"
+  },
+  {
+   "agent_id": "a8f9e13c2f54c1dfa",
+   "description": "U3 dictionary audit + scorecard",
+   "phase": "Phase U execute",
+   "verdict": "4/4 PASS; delta-B=0 in 4/4 operations; 4 SILENT/1 V.F/0 TENSION; 5 annotations; F-T10-U3"
   }
  ],
  "caveat": "tier6-coordinator-session.jsonl.xz was snapshotted during the checkpointing turn; the last few checkpoint/commit exchanges after the snapshot instant are absent from the archive by construction. The git history and SESSION_CHECKPOINT_tier6.md carry that residue. Coordinator archive re-snapshotted after L5-prime adjudication; same tail caveat applies to the final commit exchange.",
@@ -362,5 +404,19 @@
   "script": "tier9-execute-workflow-script.js",
   "note": "T-execute: ROADMAP v11 workstreams T1-T4",
   "total_subagent_tokens": 777111
+ },
+ "workflow14": {
+  "run_id": "wf_7dcf7848-03c",
+  "archive": "tier10-workflow-wf_7dcf7848-03c.tar.xz",
+  "script": "tier10-context-workflow-script.js",
+  "note": "U-context: junction archaeology + dynamics reader + 2 literature agents",
+  "total_subagent_tokens": 466079
+ },
+ "workflow15": {
+  "run_id": "wf_bf485b04-be0",
+  "archive": "tier10-workflow-wf_bf485b04-be0.tar.xz",
+  "script": "tier10-execute-workflow-script.js",
+  "note": "U-execute: ROADMAP v12 workstreams U1-U3",
+  "total_subagent_tokens": 447148
  }
 }

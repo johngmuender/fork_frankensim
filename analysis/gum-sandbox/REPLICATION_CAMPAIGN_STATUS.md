@@ -562,3 +562,35 @@ plus the L5′ agent; audit archives `audit-logs/MANIFEST_tier6.json`).
   "predicted"/"refutes" both remain unavailable sentences. Adjudication:
   `tier9-glueball/TIER9_ADJUDICATION.md`. Every result is within-model;
   nothing here bears on nature.
+- ⟦T10⟧ **Phase U (tenth campaign phase, 2026-08-16, session 536b52e3)** —
+  Tier 10 opens: `tier10-junction/`. The baryon-junction confrontation:
+  STAR's Science paper (arXiv:2408.15441, 10.1126/science.ads5962,
+  published 2026-08-13 — "Do quarks or gluons carry baryon number?")
+  read in full → `JUNCTION_PAPER_DIGEST.md`. **Context**
+  (wf_7dcf7848-03c, 4 agents): the corpus ANSWERS the STAR title
+  question on the VALENCE side — Theorem K-1 (worksheet stratum):
+  B = (1/3)·(signed count of fractional-residue knot cores), junction =
+  enforcer (taping rule), transporter role SILENT; K-stubs unaffixed in
+  ALL operative editions (fold debt); WS1-H3 absent (15 refs, 0
+  executions; n = 3 ansatz, F-K0-1 seam); new [IM] anchor
+  M_J/√σ = 0.1355(36) (2+1D lattice); reception mapped with the
+  CGC-saturation rival at parity → `JUNCTION_CONTEXT_ANALYSIS.md`.
+  **ROADMAP v12 executed** (wf_bf485b04-be0; 12/12 gates): F-T10-U1
+  J–J̄ dumbbell at σ = 0.19 GeV² (validated to Airy 7.8e-10 +
+  T1-machine-exact): ground m/√σ = 2.59–2.94 (ring-analog inertia) vs
+  5.5–5.8 (stretch inertia) — the convention split IS the priced
+  finding; interleaves the Tier-9 loop ladder convention-robustly;
+  junction-mass lever arm weak (+14%). F-T10-U2 two-carrier sign test:
+  junction-led channel strictly cheaper over the ENTIRE printed window
+  (min margin 1.128, any monotone cost; 42,768 robustness checks);
+  exact ledger: B moves with zero original knots moving —
+  **carrier/enforcer/transporter trichotomy computed: K-1-compatible
+  junction-led transport**. F-T10-U3: K-1 chain audited line-by-line;
+  ΔB = 0 exact in 4/4 printed operations (22 cases); scorecard 4×
+  SILENT / 1× V.F-CLASS / 0× TENSION (the apparent GUM-vs-STAR tension
+  dissolves — STAR speaks to the transporter role the corpus never
+  adjudicated); roadmap shorthand defect U3-A1 caught and printed; five
+  ⟦T10⟧ offer annotations drafted. No stake, no clock, no grade motion;
+  rivals carried throughout. Adjudication:
+  `tier10-junction/TIER10_ADJUDICATION.md`. Every result is
+  within-model; nothing here bears on nature.
