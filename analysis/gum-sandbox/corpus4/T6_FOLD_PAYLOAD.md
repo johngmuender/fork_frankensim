@@ -1,3 +1,6 @@
+⟦T10-era note⟧ Carried verbatim into corpus4 as the authority for its
+own ⟦T6⟧/⟦T7⟧ blocks; the corpus4 fold's authority is
+EW_SS_FOLD_PAYLOAD.md.
 # T6 FOLD PAYLOAD — canonical statement of every Tier-6 result to fold
 
 **Authority note.** This file is the single source of truth for corpus3

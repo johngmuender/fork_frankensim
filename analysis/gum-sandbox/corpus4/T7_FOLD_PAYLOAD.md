@@ -1,3 +1,6 @@
+⟦T10-era note⟧ Carried verbatim into corpus4 as the authority for its
+own ⟦T6⟧/⟦T7⟧ blocks; the corpus4 fold's authority is
+EW_SS_FOLD_PAYLOAD.md.
 # T7 FOLD PAYLOAD — canonical statement of the Tier-7 results (for the v4.1 delta)
 
 Single source of truth for the v4.1 fold editor (charter rule 7 applies;

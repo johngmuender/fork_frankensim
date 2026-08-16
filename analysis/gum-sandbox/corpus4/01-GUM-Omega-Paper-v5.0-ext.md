@@ -1,4 +1,8 @@
-# GUM-Ω v4.3-ext (externally-revised edition): THE CONCEPTUALLY COMPLETE EDITION — THE REPLICATORS' PROPOSED REVISION — THE TIER-6 FOUNDATIONS + TIER-7 PROGRAM-EXTENSION FOLD
+# GUM-Ω v5.0-ext (externally-revised edition): THE CONCEPTUALLY COMPLETE EDITION — THE REPLICATORS' PROPOSED REVISION — THE TIER-6 FOUNDATIONS + TIER-7 PROGRAM-EXTENSION FOLD
+
+## THE ELECTROWEAK+STRONG EDITION
+
+*(Edition note, v5.0-ext: this is the corpus4 electroweak+strong fold of v4.3-ext — the v4.3-ext text is carried verbatim; every corpus4 addition carries a leading ⟦EW⟧, ⟦T8⟧, ⟦T9⟧, or ⟦T10⟧ marker; see the ⟦EW⟧⟦T8⟧⟦T9⟧⟦T10⟧ REVISION NOTE (v5.0-ext) below.)*
 
 *(Edition note, v4.0-ext: this is the corpus3 Tier-6 foundations fold of v3.0-ext — the v3.0-ext text is carried verbatim; every Tier-6 addition carries a leading ⟦T6⟧ marker; see the ⟦T6⟧ REVISION NOTE (v4.0-ext) below.)*
 
@@ -15,6 +19,8 @@
 > **⟦T7⟧ REVISION NOTE (v4.2-ext).** This edition adds the **Phase-N/O fold** — the external replication campaign's **fourth and fifth phases** (the pre-registered workstreams N2/N3 and O1/O2/O3 of tier7-program/ROADMAP_v9_PROGRAM.md), findings **F-T7-N2/N3/O1/O2/O3** — to the v4.1-ext text, which is carried verbatim. Binding rules are the same Tier-6 revision charter (analysis/gum-sandbox/corpus3/REVISION_CHARTER_v2.md; the marker stays **⟦T7⟧** for this pass); the canonical statement of every folded number is **corpus3/T7_FOLD_PAYLOAD.md, ADDENDUM — Phase N/O payload (Q6–Q9)** (charter rule 7 — editors copy from the payload, never restate from memory). **Marker discipline:** every Phase-N/O change carries a leading **⟦T7⟧** marker and cites its finding ([F-T7-…]) and reproducing artifact path (tier7-program/…); corpus2's ⟦rev⟧, the Tier-6 fold's ⟦T6⟧, and the v4.1 fold's eight prior ⟦T7⟧ blocks are all preserved verbatim wherever they already appear; pre-existing text is never deleted or reworded (sole exception: the version-header/title lines, updated to the v4.2-ext edition name). **S-30 compliance:** no prior edition is rewritten — this is the v4.1-ext text plus ⟦T7⟧ additions. It is the **replicators' proposal, not the authors' edition; adoption is theirs**; grades never rise by replication, and every offered annotation is explicitly a proposal the authors may strike without breaking the edition. Every change is within-model; nothing here bears on nature.
 
 > **⟦T7⟧ REVISION NOTE (v4.3-ext).** This edition adds the **Phase-P/Q fold** — the external replication campaign's **sixth and seventh phases** (Phase P: wf_d3b1ed78-3d0 + finisher agent; Phase Q: wf_74d72548-c07), findings **F-T7-P2/Q1/Q2** — to the v4.2-ext text, which is carried verbatim. Binding rules are the same Tier-6 revision charter (analysis/gum-sandbox/corpus3/REVISION_CHARTER_v2.md; the marker stays **⟦T7⟧** for this pass); the canonical statement of every folded number is **corpus3/T7_FOLD_PAYLOAD.md, ADDENDUM 2 — Phase P/Q payload (Q10–Q14)** (charter rule 7 — editors copy from the payload, never restate from memory). **Marker discipline:** every Phase-P/Q change carries a leading **⟦T7⟧** marker and cites its finding ([F-T7-…]) and reproducing artifact path (tier7-program/…); corpus2's ⟦rev⟧, the Tier-6 fold's ⟦T6⟧, and every prior ⟦T7⟧ block (the v4.1 and v4.2 folds') are preserved verbatim wherever they already appear; pre-existing text is never deleted or reworded (sole exception: the version-header/title lines, updated to the v4.3-ext edition name). **S-30 compliance:** no prior edition is rewritten — this is the v4.2-ext text plus ⟦T7⟧ additions. It is the **replicators' proposal, not the authors' edition; adoption is theirs**; grades never rise by replication, honest verdicts are carried as printed (P2's G3 endpoint-clause FAIL stays a FAIL), and every offered annotation is explicitly a proposal the authors may strike without breaking the edition. Every change is within-model; nothing here bears on nature.
+
+> **⟦EW⟧⟦T8⟧⟦T9⟧⟦T10⟧ REVISION NOTE (v5.0-ext — THE ELECTROWEAK+STRONG EDITION).** This edition is the **corpus4 fold** — the electroweak sector and the expanded strong sector folded into the v4.3-ext text, which is carried verbatim. This corpus4 edition set was **commissioned by the corpus's owner** (session goal, 2026-08-16); binding rules are the corpus4 revision charter (analysis/gum-sandbox/corpus4/REVISION_CHARTER_v3.md), and the canonical statement of every folded number is **corpus4/EW_SS_FOLD_PAYLOAD.md** (charter rule 7 — editors copy from the payload's cited source blocks, never restate from memory). **The electroweak sector** enters from the synthesis line (synthesis/GUM-Omega-Synthesis-v4.5-SS.md §8, carried verbatim) as the NEW Sec. VII-W between Part 4 and Part 5, **adopted at printed grade by owner commission** (charter v3 rule 5) — every ⟦EW⟧ box cites its §8.x source; grades carry as printed there ([DF | flag]-conditional etc.) and no grade may exceed its source. **The expanded strong sector** enters from the Tier-8/9/10 campaign phases (findings F-T8-S1…S4, F-T9-T1…T4, F-T10-U1…U3; adjudications tier8-assessment/, tier9-glueball/TIER9_ADJUDICATION.md, tier10-junction/TIER10_ADJUDICATION.md) as ⟦T8⟧/⟦T9⟧/⟦T10⟧ boxes at VI.C, VII.J, and Secs. IX–XI and App. J — each box retains its origin label ("campaign proposal, adopted this edition") so the provenance is auditable. **Marker discipline:** every corpus4 change carries a leading **⟦EW⟧**, **⟦T8⟧**, **⟦T9⟧**, or **⟦T10⟧** marker — distinct from ⟦rev⟧/⟦T6⟧/⟦T7⟧, all preserved verbatim wherever they already appear; pre-existing text is never deleted or reworded (sole exceptions: the version-header/title lines, updated to the v5.0-ext edition name, and explicitly-marked supersession notes, which quote what they supersede); the document's length strictly grows. **Register locks:** grades never rise by replication; every hadron-mass-confronting number is copied at **V.F strength only** ("dimensionally secure / structurally plausible / quantitatively unclaimed") under seal q-θ; the X(2370) and STAR junction results are **[IM] anchors carried with their live rivals** (mixing-fraction unknowns; CGC-saturation / neutron-skin / strangeness counter-explanations) wherever cited; the forbidden sentences remain unavailable; the 𝔠 ≈ 2.37 vs 2.37 GeV digit coincidence is never cited as structure. **S-30 compliance:** the corpus3 files are untouched — this is a NEW document, not a rewrite of the dated record. Every change is within-model; nothing here bears on nature.
 
 ---
 
@@ -42,9 +48,15 @@ This edition is under standing external adjudication. Hashed and public as of th
 
 ⟦rev⟧ We present, in consolidated and mathematically explicit form, the complete GUM program: a speculative constructive framework in which the pillars of fundamental phenomenology arise as response modes of a single medium — a chiral micropolar (Cosserat) solid with periodic-on-average microstructure at scale a ≲ 10⁻²⁶ m, irreducible zero-point agitation, co-rotationally objective constitutive law, and a near-threshold chiral condensate on its soft sector. From one action we obtain: **(i) Quantum mechanics** as the substrate's osmotic hydrodynamics — Nelson kinematics with grounded premises, the quantum potential as the exact Fisher-information pressure, Madelung closure, circulation quantization by texture single-valuedness, the Born rule as an H-theorem with simulation-anchored rates. **(ii) A derivation of Planck's constant:** the spin-clock closure — the joint requirements that a knot's internal isorotation carry spin ħ/2 and tick at ω = E/ħ — is solvable only for j = ½ (the spin-selection theorem: every elementary massive species is spin-½), forces the carrier into its band gap by radiative self-consistency, fixes the exact invariant E_rot/E = 1/4 (externally replicated to 10⁻⁹), rescopes V = √2 to the restricted (V,g)-family — the saturated solution is d-stationary at d = 1 and its natural volume diagnostic is the **support ratio 3/2 exactly** — and pins ħ = 𝔠Λ√J with, under the repaired saturated closure, **𝔠 = 64√2/(9π) = 3.2011 at κ = 1/√2 exactly** (Theorem T3.1: the stability-constrained and saturated closures coincide; oblate BPS compacton + pinned marginal equatorial halo), the scaling rung 𝔠 = 2.0533 standing as the constrained alternative, with the T3 caveats printed: marginal not gapped stability, degenerate halo manifold, ε-law sign flip. (The former deep-BPS endpoint 𝔠₀ = 128√42/(105π) = 2.515(3) is **struck** — C4 DEFECT-CANDIDATE: no well-posed within-model functional selects it, and it is excluded from below by the rigorous bound 𝔠 ≥ 2√2 in the enlarged space. [F-R4][F-R5][T3.1; tier2-closure/{axi3,axi4_locked,gstar}_RESULTS.md; theory-audit/T3_repaired_closure.md; t3_closures.py].) The constant is further shown to be a dynamically selected vacuum order parameter (the bootstrap: one consistency condition, unique fixed point, field-level attractor with λ_field = (3.1 ± 0.7)×10⁻³ω₀ ⟨r3⟩). **(iii) Electrodynamics** as torsional response — exact photon masslessness and all-orders achirality from constitutive objectivity, kinematic photon stability at every energy, charge as a triple-locked disclination, Coulomb and Aharonov–Bohm derived. **(iv) Gravitation** as defect geometry — Einstein–Cartan by theorem ⟦rev-note: the dynamics step is a GAP and the cone-slaving convexity premise is under F-R14 dispute; see Sec. VI.A/VI.C and the App. E.6 rewrite; (6.3) is demoted to an order-of-magnitude estimate⟧; vacuum energy cancelled in equilibrium by Gibbs–Duhem with residual ρ_Λ ~ αH²M\*², α > 0 by stability ⟦rev-note: via the q-variable transcription, F-R12; see VI.D⟧, and a growth-correlated w(z) ⟦rev-note: 'thawing' corrected to the freezing/tracker class, w(z) = −1 + Ω_m(z) exactly in the pure tracker; F-R12⟧; a Machian-dragged emergent foliation. **(v) Mass and families:** particles as topological knots with band-edge masses; the family structure as discrete helical-frustration classes against the vacuum's blue-fog chiral order, whose two computed integrals reproduce the charged-lepton mass-spacing logarithms with no fitted parameters (½A = 2.80 ± 0.45 vs 2.822; ½(A+B) = 5.65 ± 0.75 vs 5.332; self-graded ≈2σ-equivalent), terminate the tower at exactly three charged families, and force SM-null Higgs couplings for μ, τ, b, t. **(vi) The neutrino** as the pitch quantum of the chiral vacuum (a Hopf texture; Majorana-generic; the Majoron dictionary passed), whose mass is connected to the charged spacings by one computed logarithm: m₃ = 0.047 eV (1σ: 0.019–0.115), staking **Σm_ν ∈ [0.058, 0.11] eV, normal ordering** — the program's dated wager. **(vii) Confinement** as vacuum-web topology: fractional network winding is one cause with two consequences — the flux tube and a mass-blind ε-floor that censors free closure — so all six quarks are confined and all leptons free (the dichotomy exact); the hadronic level is identified as the emergent Skyrme model (the Cosserat loop's second closure); quark spacing ratios, including a derived down-type sign flip, land at 0.2–0.3σ ⟨r11⟩. **(viii) One world, completed:** hypersurface Bohm–Dirac dynamics on the foliation's leaves; entanglement as a leaf-wide elliptic constraint; a **triple padlock** (no signal, no energy, no particle-number leak at equilibrium); the arrival-time kill test executed both ways; and the nucleation sector closed by the equivariant-jump covariance theorem — creation/annihilation statistics are foliation-blind while jump micro-histories remain foliation-relative, inheriting exactly the already-staked exposure. Fourteen pre-registered kills have been executed or survived; three blocking defects were self-caught and repaired; every remaining open problem is arithmetic ⟦rev-note: amended twice — the completion hypothesis MH (T-H4) was finite, well-posed, load-bearing, and OPEN; it has since been **DISCHARGED in-model with corrections** (⟦H4 resolved⟧: ∂ = ±2·[rot], the fatal branch refuted, χ(rot) = −1 at odd w; π₁(𝒞_strat) = ℤ₂ × A/⟨2a_rot⟩, not the printed ℤ₂ × A — F-R16 minor); the residual opens are the N2/F.3 exchange lift, curved-line moduli, and even w ≥ 2 — see Sec. XI [H4: theory-audit/h4_completion.md, F-R16]; ⟦I4 reported⟧ all three have since executed — the lift FAILS (F-R17: the proviso constructs the geon obstruction, σ(exchange) = −1 ≠ +1 = σ(rotation); repair χ_exch = χ(σ)·χ_rot, χ(σ) a new free ℤ₂), the other two close in the closure's favor (parity theorem-grade; χ(rot) = −1 at all w ≠ 0) — see the App. F ⟦I4⟧ box [I4: theory-audit/i4_topology.md, F-R17]⟧. The framework's fate now rests on scheduled experiments whose kill clauses are signed in advance.
 
+⟦EW⟧ **Abstract/scope extension (v5.0-ext, one EW sentence).** **(ix) The electroweak sector** (Sec. VII-W, this edition): no elementary massive spin-0/1 species exists (spin-selection ⇒ W/Z/h are collective/composite) [DF | T3.1]; the weak triplet = the gapped orientation branches {B3±, B4} under co-rotation SO(3)_cr; W± = charged twist excitons; Z = mixed neutral twist [DW | F14]; one invariance, two facts: photon masslessness = custodial ρ = 1 (C-EW4); e = g sin θ_w is a diagonalization identity; sin²θ_w stays [IM]; Higgs = attractor-amplitude breathing mode (F15); Yukawa pattern κ_f ∝ m_f by mass factorization (EW-4), window |η_f| ≤ 0.05; G_F small because the vertex threads the §4 halo (C-EW2); V−A by the zero-mode chirality filter (EW-6); CKM/PMNS = frustration-basis mismatch, CP phases = network holonomy counting (EW-7), N = 3 forced; termination–top lock: the same censor prices three families and y_t ≈ 1 (EW-9, C-EW3). [⟦EW⟧ source: synthesis/GUM-Omega-Synthesis-v4.5-SS.md §8 (one-line forms per EW_SS_FOLD_PAYLOAD.md A4); adopted by owner commission, corpus4 charter v3 rule 5]
+
+⟦T9⟧⟦T10⟧ **Abstract/scope extension (v5.0-ext, one strong-sector sentence).** **(x) The strong sector, expanded** (⟦T9⟧/⟦T10⟧ boxes at Sec. VII.J, this edition): baryon number by residue count (Theorem K-1: **B = (1/3)·(count of fractional-residue cores, signed)**; 𝕂 = 3B + L; ΔB = 0 exact in 4/4 printed operations, 22 cases), the carrier/enforcer/transporter trichotomy, the three-sector state dictionary, and computed closed-tube and junction spectra at the printed tension σ = 0.19 GeV² [IM] — every hadron-mass-confronting number at V.F strength only ("dimensionally secure / structurally plausible / quantitatively unclaimed") under seal q-θ — with the X(2370) and STAR junction results entering as [IM] anchors carried with their live rivals (mixing-fraction unknowns; CGC-saturation / neutron-skin / strangeness counter-explanations). [F-T9-T1…T4, F-T10-U1…U3; tier9-glueball/TIER9_ADJUDICATION.md, tier10-junction/TIER10_ADJUDICATION.md; campaign proposal, adopted this edition]
+
 ## Contents
 
 **0.** Public record. **I.** Introduction. **II.** The constitutive core (fields; objectivity F10′; action; balance laws; spectrum; photon exactness; emergent Lorentz symmetry; **the chiral vacuum**). **III.** The quantum sector. **IV.** The ħ closure (reduction; closure system; exact family; radiative self-consistency; **deep-BPS limit and entrainment**; multi-band universality and the selection principle; the bootstrap; spin selection). **V.** Electrodynamics. **VI.** Gravitation. **VII.** Mass, families, and composites (band-edge theorem; Bogomolny sector; the knot; pair law and clock coherence; knot matter [template grade]; quantization and Theorem c″; **the family generator**; **the collective neutrino and the Σm_ν stake**; **the color sector**). **VIII.** One world. **VIII′.** The nucleation sector (pairs-only theorem; IBC; thresholds; the amplitude-mode Higgs; **covariance theorems QFT-1/2**). **IX.** The experimental program and stakes table. **X.** Audit trail and process metrics. **XI.** Open problems ⟦rev⟧ (declaration amended — see XI). **XII.** How GUM dies. **XIII.** Standing watch (SWP-1). **XIV.** Conclusion. **Appendices A–L.** Figures 1–20. References. Ledger index.
+
+⟦EW⟧ *(v5.0-ext Contents addendum: **VII-W.** The electroweak sector (VII-W.0–VII-W.14; inserted between Part 4's end and Part 5's header, this edition). [⟦EW⟧ source: synthesis/GUM-Omega-Synthesis-v4.5-SS.md §8; adopted by owner commission, corpus4 charter v3 rule 5])*
 
 ---
 
@@ -174,7 +186,7 @@ Tree-level locking merges the gapless transverse stiffness (M2); radiatively, th
 
 Say "continue" for Part 2.
 
-# GUM-Ω v4.3-ext (Tier-6/7 fold): THE CONCEPTUALLY COMPLETE EDITION — PART 2 OF 6
+# GUM-Ω v5.0-ext (corpus4 EW+SS fold): THE CONCEPTUALLY COMPLETE EDITION — PART 2 OF 6
 
 *(Sections III–IV: the quantum sector and the ħ closure in full. Ledger classes and ⟨r-n⟩ tags as defined in Part 1; equation numbers section-local.)*
 
@@ -388,7 +400,7 @@ Entrained species satisfy L = ħ/2 and ω = E/ħ **exactly** (the lag is stored 
 
 Say "continue" for Part 3.
 
-# GUM-Ω v4.3-ext (Tier-6/7 fold): THE CONCEPTUALLY COMPLETE EDITION — PART 3 OF 6
+# GUM-Ω v5.0-ext (corpus4 EW+SS fold): THE CONCEPTUALLY COMPLETE EDITION — PART 3 OF 6
 
 *(Sections V–VI: electrodynamics and gravitation, all derivations in-line; watch-mode cross-links to SWP-1 where staked.)*
 
@@ -466,6 +478,8 @@ sector-summed over B2±, B3, B4, and knot band-edges. Newton's constant: G ∼ c
 
 ⟦T7⟧ **Annotation [Tier 7 — the F-R14 decision matrix, computed (F-T7-O3); decision support only].** The dispute box's discharge path is now priced cell by cell. All five h33 anchors reproduced exactly (rational arithmetic); the full 5-reading × 2-bookkeeping matrix computed (~104 cells, 21/21 checks): **exactly ONE sound cell — P-acoustic + supertrace** (all weights positive; c_GW² convex; (6.3) restored with the 4.0-order boundary-exact margin). Every other cell = inverted-G or hull-exit; the supertrace fix alone only trades inverted-G for hull-exit. Totals at N_knot = 3 (naive/supertrace): frame −5/3 / +1/3; covector −7/6 / +5/6; vector −119/66 / +13/66; cone-only −17/12 / +7/12; P-acoustic(w = −1/4) −1/6 / +11/6. P-acoustic pricing: tuning fraction 1/4 (width-1/18 window; both natural conventions w = 0, −1/2 excluded and equidistant); the naive-knot rescue subwindow (5/11 of the window) still hull-mixed and abuts the 2p+q = 0 ray where the (6.1) ansatz fails. h33's "two independent repairs is the minimum bill" is computed, not argued. **Decision support only; the constitutive choice — and adoption — is the authors'; the F-R14 regrade language is unchanged.** Within-model; grades unchanged. [F-T7-O3; tier7-program/O3/RESULTS.md]
 
+⟦T8⟧ **[F-T8-S1; tier8-assessment/S1/RESULTS.md] Cost (1) of the sound cell is now exactly priced:** no quantization-measure weight both rescues F-R14 and preserves Sec. III's flat-measure [DF] chain — the unique cancelling weight w = 1/2 (scheme A, exact to all orders) lies outside the rescue window (−5/18, −2/9); at w = −1/4 the correction is the h-gradient force (9ħ²/16m)∇h·∇ρ/ρ. Adoption of P-acoustic + supertrace therefore carries a third quantified IOU. Campaign proposal, adopted this edition; F-R14 regrade language unchanged.
+
 **The pincer** [DW]. The loop weights peak at the cutoff, where the C1 flow makes δ *largest*; and ħc/a ≳ 2×10¹⁹ eV for a ≲ 10⁻²⁶ m — **ultra-high-energy cosmic rays probe δ essentially at the substrate cutoff.** Observed UHECR propagation (no vacuum Cherenkov, no photon decay; bounds species-pair-dependent and partially one-sided) pins δ_UV ≲ 10⁻¹⁹, hence
 
 **|Δc_GW/c| ≲ 10⁻¹⁹: GW170817's 10⁻¹⁵ bound is passed** ⟦rev⟧ — as an order-of-magnitude estimate, no longer "automatically, with ≥ 4 orders of margin" [F-R14]. (6.3)
@@ -510,7 +524,7 @@ sector-summed over B2±, B3, B4, and knot band-edges. Newton's constant: G ∼ c
 
 Say "continue" for Part 4.
 
-# GUM-Ω v4.3-ext (Tier-6/7 fold): THE CONCEPTUALLY COMPLETE EDITION — PART 4 OF 6
+# GUM-Ω v5.0-ext (corpus4 EW+SS fold): THE CONCEPTUALLY COMPLETE EDITION — PART 4 OF 6
 
 *(Section VII: mass, families, the neutrino stake, and confinement — the corpus's phenomenological spine, with its two executed kills printed where they fell.)*
 
@@ -616,13 +630,271 @@ The shallow-knot neutrino died by internal audit before cosmology could act: the
 
 **Theorem Q-5 (the loop's second closure)** [DF-structural+DW]. The ℤ₃ mismatch-tube tension σ = πf_q² ln κ_q with σ = 0.19 GeV² gives f_q ≈ 0.14–0.20 GeV [inversion, not derivation]; the long-wavelength theory of line-neutral composites is the locking-stratum orientation field with stiffness f_q and stabilizing quartic — **the hadronic Skyrme model**: the ancestor imported as methodology is identified as GUM's own L2 effective theory (baryons as its solitons; the Y-law junction geometry a banked consistency). **The quark-spacing record ⟨r11⟩** [DW, ≈2σ shelf]: at ε_q ∼ 10⁻² the belts are non-coplanar (λ\* = 0.25 ± 0.03; B_geo/A collapses to 0.33 ± 0.08) and the tube adds an alignment-split pair (ζ = ±1): aligned → R = 1.27 ± 0.09, A = 9.4 ± 1.9 vs up-type data (1.30, 9.82); anti-aligned → R = 0.82 ± 0.16, A = 7.9 ± 1.8 vs down-type (0.79, 7.60) — four numbers at 0.2–0.3σ, **including the derived sign flip** (negative effective B: decreasing down-type spacings, which the lepton mechanism cannot produce); ℤ₂ assignment penalty printed. ⟦rev⟧ **[VINDICATED BY FULL EXTERNAL RECONSTRUCTION]:** the rule R = 1 + B_geo/A − B_tube/A reproduces the printed ratios to the error digits; the down-type sign flip is FORCED by the reconstruction; PDG data lands exactly with **direct m_t = 172.5 GeV** (MS-bar fails — the scheme is pinned, a new sharpening the corpus may bank); four pulls at 0.17–0.32σ as claimed. [DW, ≈2σ shelf, assignment-penalized] retained + external-replication annotation. [tier5-family/] **Honest residue:** quark termination is *not* derived (censored species never individually close — the terminator has no purchase); base scales (m̃_t, m̃_b) are inputs; **F-Q2′** (derive ε_q from substrate structure) is the sector's wall, dual-constrained by σ and the hadronic spectrum.
 
+⟦T9⟧⟦T10⟧ **VII.J expansion note (v5.0-ext).** The subsection's pre-existing text above stands verbatim; the boxes below copy the synthesis line's expanded Strong Sector — synthesis/GUM-Omega-Synthesis-v4.5-SS.md §7.4.0–§7.4.8 — in the payload's order (EW_SS_FOLD_PAYLOAD.md B1), with inline cross-reference annotations "(= …)" appended and the source text unchanged. Each box is a **campaign proposal, adopted this edition** (corpus4 charter v3 rule 5); grades as printed in the source; grades never rise; **seal q-θ** — every hadron-mass-confronting number below is at V.F strength only ("dimensionally secure / structurally plausible / quantitatively unclaimed"). Within-model; nothing here bears on nature.
+
+⟦T9⟧⟦T10⟧ **Box VII.J-1 (mandate and method; synthesis §7.4.0 verbatim).** [F-T9-T1…T4, F-T10-U1…U3; tier9-glueball/TIER9_ADJUDICATION.md, tier10-junction/TIER10_ADJUDICATION.md; campaign proposal, adopted this edition] Through v4.4-EW the strong sector was carried in five sentences. Two 2026 experimental events made that compression untenable: BESIII's identification of the X(2370) as dominantly the lightest 0⁻⁺ glueball — the first flavor-singlet light hadron above 1 GeV (arXiv:2607.20366) — and STAR's evidence, published in *Science* (10.1126/science.ads5962), that baryon number is traced by the gluonic Y-junction rather than by valence quarks. Both results are **[IM] imported anchors**; both are carried below together with their live rivals (the glueball identification's mixing-fraction unknowns; the CGC-saturation, neutron-skin, and strangeness counter-explanations of the junction observables). The Tier-9/Tier-10 campaign confrontations (findings F-T9-T1…T4, F-T10-U1…U3; 28/28 pre-registered gates) supply the computed content. **Binding discipline inherited from the campaign:** seal q-θ — every within-model number confronting a hadron mass is printed at V.F strength only ("dimensionally secure / structurally plausible / quantitatively unclaimed"); no spectrum below is a mass claim; the digit coincidence between the dimensionless closure number 𝔠 ≈ 2.37 (r1 benchmark) and m_X(2370) ≈ 2.37 GeV is a man-made-units accident and is never cited as structure. What the sector still does not earn is printed in §7.4.8 (= Box VII.J-9 below) and may not be spent.
+
+⟦T9⟧ **Box VII.J-2 (confinement dichotomy [DF]; synthesis §7.4.1 verbatim).** [F-T9-T1…T4; tier9-glueball/TIER9_ADJUDICATION.md; campaign proposal, adopted this edition] Fractional network winding is one cause with two consequences: a flux tube of constant tension and a mass-blind ε-floor that censors free closure. Consequently all six quarks are confined and all leptons are free (exact dichotomy). The hadronic level is the emergent Skyrme model (second Cosserat-loop closure). Quark spacing ratios, including a derived down-type sign flip, land at 0.2–0.3σ. (This is the v4.4 paragraph, retained verbatim as the sector's headline; the theorems behind it are now printed.)
+
+⟦T9⟧ **Box VII.J-3 (the printed architecture: tubes, strata, censorship; synthesis §7.4.2 verbatim).** [F-T9-T1…T4; tier9-glueball/TIER9_ADJUDICATION.md; campaign proposal, adopted this edition]
+
+**Theorem Q-1 (confinement by vacuum-web topology) [DF-structural].** A knot carrying fractional frame winding against the double-twist network cannot be screened smoothly: it must terminate network disclination line(s); line tension ⟹ linear potential; finite-energy states are the line-neutral composites — K–K̄ mesons and n-junction baryons, with junction order n owned by the posed computation WS1-H3 (§7.4.8 (= Box VII.J-9 below)) and the tetraquark kill armed on it.
+
+**Theorem Q-2 (stratum trichotomy) [DF].** Line tensions come in three classes: T1 substrate-scale (cosmologically absent), T2 gapped-stratum flux tubes (T ~ M_gap²), T3 soft phason strings (f² ∈ [1.6×10⁻⁵, 4×10⁻³] GeV²). The color tube is T2; the early ×50–10⁴ "tension gap" crisis was a stratum misassignment (F-Q1, dissolved).
+
+**Theorem Q-3 (the dichotomy) [DF].** A winding charge confines iff its mediator stratum is gapped: electric charge is unconfined because the photon is massless (II.2); color is confined because its stratum is gapped — one gap structure, both experimental signs.
+
+**Theorem Q-5 (the loop's second closure) [DF-structural+DW].** The ℤ₃ mismatch-tube tension σ = πf_q² ln κ_q with σ = 0.19 GeV² [IM: the standard QCD string tension] gives f_q ≈ 0.14–0.20 GeV [inversion, not derivation]; the long-wavelength theory of line-neutral composites is the locking-stratum orientation field with stiffness f_q and stabilizing quartic — the hadronic Skyrme model (baryons as its solitons; the Y-law junction geometry a banked consistency). Cross-strata verification: f_q = √ε_q·𝔪_Sk = 0.17 GeV lands dead-center in the inversion band (V15.7).
+
+**Theorem Q-6′ (closure censorship) [DF].** Fractional winding also prices a mass-blind dressing floor ε_dress = (f_q/𝔪_Sk)² ≈ 10⁻²; all six quarks (top included) are censored and confined, all leptons free — with the language lock: confined constituents are internal moduli; **only asymptotic states owe closure** (this lock becomes load-bearing in §7.4.5 (= Box VII.J-6 below)).
+
+**Honest residue (unchanged):** quark termination is not derived; base scales (m̃_t, m̃_b) are inputs; F-Q2′ (derive ε_q from substrate structure) remains the sector's wall, dual-constrained by σ and the hadronic spectrum; κ_q and M_gap are never numerically valued.
+
+⟦T10⟧ **Box VII.J-4 (baryon number by residue count — Theorem K-1, affixed; synthesis §7.4.3 verbatim).** [F-T10-U3; tier10-junction/TIER10_ADJUDICATION.md; campaign proposal, adopted this edition]
+
+**Theorem K-1 (baryon number; proton stability by sector lock) [DF-structural].** Baryon number **B = (1/3)·(count of fractional-residue cores, signed)** is exact in tear-free matter. Each quark core carries an electric-winding residue ρ = w_em mod 1 of ±1/3 class; the taping rule — a fractional line can terminate only on a fractional core — makes integer-only transfer between cores impossible, closing the census's armed proton-decay channel. The conserved object of smooth matter is 𝕂 = ΣK + Q_H, restricted by sector to **𝕂 = 3B + L**, with B exact everywhere and L violable exactly on the vacuum's own disclination web (Theorem K-2). Confinement and baryon conservation are one theorem's two readings: the same taping rule that confines quarks makes B exact.
+
+*Affixation note.* K-1/K-2 and the 𝕂-ledger were proved in the WS-K worksheet stratum (2026-07) but were unaffixed to every operative edition — a filed fold debt (F-T10-U3). v4.5 discharges it here. An exact-arithmetic audit (22 enumerated cases) verified ΔB = 0 under all printed operations: taping-rule termination, web reconnection (net-conserving), snap-minting (pair creation), and junction migration.
+
+⟦T10⟧ **Box VII.J-5 (the carrier/enforcer/transporter trichotomy — Theorem SS-1; synthesis §7.4.4 verbatim).** [F-T10-U2; tier10-junction/TIER10_ADJUDICATION.md; campaign proposal, adopted this edition] The STAR question — "do quarks or gluons carry baryon number?" — has, inside GUM, a three-part answer that the phenomenology merges but the ontology separates:
+
+**Theorem SS-1 (trichotomy) [DF-structural for (i)–(ii); DW for (iii)].**
+(i) **Carrier:** the knots (K-1 — the valence pole).
+(ii) **Enforcer:** the web/taping rule (B-exactness is line topology).
+(iii) **Transporter:** open as printed; the junction-led mode — the Y-junction of light tubes migrates while pair minting supplies fresh knots at destination, the original valence knots flying on into mesons — is ledger-legal (exact audit: B = 1 → 1 with zero original knots moving, net minted charge zero in all flavor assignments) and **generically cheaper than valence transport across the entire printed parameter window** (knots ≥ 𝔪_Sk ≈ 1.7 GeV vs tubes at σ with exactly two massless transverse modes and junctions as unweighted constraint points; minimum cost margin 1.128 at the hardest corner, up to ~343; sign robust for any monotone-decreasing cost function, 42,768 checks — F-T10-U2).
+
+**Consequence.** GUM is *knot-carried, taping-enforced, junction-transported*: it reproduces the structural cartoon of the STAR result (B-transport ≥ Q-transport with a chargeless junction) while keeping baryon number on the knots. The apparent conflict between K-1 (valence-side carrier) and the junction-favoring data dissolves — the data speak to role (iii), which the corpus had never adjudicated. Magnitudes (the isobar 1.84, the slopes 0.64/1.04) are **unclaimable**: the corpus prints no transport law, and the junction interpretation itself has live rivals. No sentence of the form "GUM predicted the junction result" is available.
+
+⟦T9⟧⟦T10⟧ **Box VII.J-6 (the three-sector state dictionary — Flag F17; synthesis §7.4.5 verbatim).** [F-T9-T3, F-T9-T4, F-T10-U3; tier9-glueball/TIER9_ADJUDICATION.md, tier10-junction/TIER10_ADJUDICATION.md; campaign proposal, adopted this edition]
+
+**Flag F17 (three-sector dictionary) [DW-structural].** The strong sector's finite-energy states divide by knot and junction content:
+
+| state class | owning sector | status in print |
+|---|---|---|
+| n-junction baryons, K–K̄ mesons, B = 2 deuteron-analog | Q-5 emergent Skyrme (orientation field, stiffness f_q) | constructed [DF-structural+DW] |
+| knot-free closed tubes (glueball-analogs, 0⁻⁺ X(2370)-class) | closed-string sector of the T2 tube | accommodated, never constructed; class named once (v1 relic census) |
+| knot-free junction networks (J–J̄ "baryonium glueballs", buckyball analogs; B = 0 by K-1) | junction-EFT class (Komargodski–Zhong; lattice junction mass M_J/√σ = 0.1355(36), 2+1D [IM]) | accommodated, never constructed |
+
+The Skyrme identification alone cannot house a glueball-dominant state (the Skyrme model owns no glueballs; QCD-side a scalar glueball must be added as a dilaton field) — with the X(2370) identification standing, Q-5-as-printed leaves the class homeless while the corpus's own relic census presupposes it. The dictionary is the priced repair (F-T9-T4, F-T10-U3); the double-counting audit found zero actual collisions in print and four potential ones, each with a standard resolution.
+
+**The closure obligation (posed as F-Q8).** By Q-6′'s language lock, a knot-free closed tube or junction network is an *asymptotic state that owes closure at the vacuum's ħ* — and every printed closure mechanism is knot-built. Three branches: an emergent-level closure mechanism for knotless states; a principled excusal; or cannot-close — which would forbid the class the relic census assumes. Adjudicated NEW-OPEN (F-T9-T3); posed as SS-Closure-II.
+
+⟦T9⟧⟦T10⟧ **Box VII.J-7 (computed spectra at the printed tension — all V.F-graded; synthesis §7.4.6 verbatim).** [F-T9-T1, F-T9-T2, F-T10-U1, F-T10-U2; tier9-glueball/TIER9_ADJUDICATION.md, tier10-junction/TIER10_ADJUDICATION.md; campaign proposal, adopted this edition] With σ = 0.19 GeV² [IM] and zero fitted parameters (validation-first: the Isgur–Paton implementation reproduces its own published 1.52 GeV scalar before any GUM number enters; Nambu–Goto identities machine-exact; dumbbell solver validated against exact Airy zeros to 7.8×10⁻¹⁰):
+
+- **Closed tube (glueball-analog), F-T9-T1:** the Isgur–Paton route puts the lightest pseudoscalar at m/√σ = 8.27 (envelope 7.56–9.73) with 0⁻⁺/0⁺⁺ = 2.31; free Nambu–Goto puts its only candidate at 4.80, degenerate with the scalar. The [IM] anchors are m_X/√σ = 5.41–5.45 and lattice 0⁻⁺/0⁺⁺ ≈ 1.50: **both axion-less routes miss the window from opposite sides and both fail the ratio** — the known state of the art for closed bosonic strings without a worldsheet axion.
+- **Why (Theorem SS-2, plain-string census) [DF at operator level]:** the GUM tube as printed carries exactly two massless transverse Goldstone modes and nothing else derivable — no pseudoscalar worldsheet mode exists in print (F-T9-T2; 16/16 symbolic checks; the enumerated field content contains no locking-stratum mediator branch). The corpus's closed-tube sector therefore inherits the 3+1D closed-string J^PC problems in exactly the 0⁻ channel where the X(2370) sits.
+- **Flag F18 (tube-core axion candidate) [CJ].** W_χ is the corpus's unique parity-odd energy class; any core-localized axial rotor/twist mode is forced worldsheet-pseudoscalar by the printed tensor characters; the axion-type vertex is symmetry-allowed with W_χ its only possible source. Existence, localization, and gap are unprinted (mass ∝ M_gap, symbol-only). **The sector's ability to house an X-class 0⁻⁺ demonstrably hinges on this single computation** (SS-Closure-I). F18 may not be built upon silently.
+- **Junction–antijunction dumbbell, F-T10-U1:** ground state at m/√σ = 2.59–2.94 under the ring-analog inertia, 5.5–5.8 under the physically derived stretch inertia — **the inertia-convention split is the finding and is priced** (SS-Closure-IV); excited levels interleave the closed-tube ladder convention-robustly (10 placements, zero duplications); the junction-mass dependence across m_J/√σ ∈ [0, 0.39] moves the ground only +14%.
+
+**Cross-lock C-SS1 (one χ-sector, two duties).** The same chiral couplings whose quenching keeps the photon achiral (II.3) are the only printed source of the tube-core axion (F18). The chirality that must stay *suppressed* on B2 must be *expressed* on the tube core for the strong sector to house its pseudoscalar — one sector, two opposite-signed obligations, testable together.
+
+**Cross-lock C-SS2 (one rule, two conservations).** The taping rule is simultaneously confinement (Q-1/Q-6′) and baryon-number exactness (K-1) — already printed as "one theorem's two readings"; either falls with the other.
+
+**Cross-lock C-SS3 (one censor, three sectors).** The superradiance censor that repaired the ħ-closure (§4 (= Sec. IV.D of this paper)) and terminates the family tower (C-EW3) is also what any F-Q8 closure mechanism for knotless states must satisfy: the same censor prices ħ, three families, and the legality of the glueball-analog class.
+
+⟦T9⟧⟦T10⟧ **Box VII.J-8 (the 2026 external-confrontation record; synthesis §7.4.7 verbatim).** [F-T9-T1…T4, F-T10-U1…U3; tier9-glueball/TIER9_ADJUDICATION.md, tier10-junction/TIER10_ADJUDICATION.md; campaign proposal, adopted this edition] Printed at census grade, no credit claimed, rivals at parity:
+
+- **X(2370) (BESIII):** of the seven glueball criteria (mass; 0⁻⁺; production; η_c-pattern; flavor-singlet; narrow widths; γω/γφ suppression), the corpus-as-printed supports **one** — flavor-singlet, structurally, since a knot-free state has no flavor labels — is silent-needs-new-work on five, and carries one proposal-priced tension (mass: §7.4.6 (= Box VII.J-7 above)). The K*(892)K̄ suppression test that established the singlet property has no in-model counterpart (no G-parity analog is printed).
+- **Baryon junction (STAR):** scorecard 4× silent / 1× V.F-class / **0× tension** — the trichotomy (§7.4.4 (= Box VII.J-5 above)) dissolves the apparent conflict; the compact-B imaging result (B confined to 0.33–0.53 fm vs charge radii ≥ 0.67 fm) is structurally congenial to a junction-transported picture but is not claimed.
+- Both records carry the standing sentence: nothing here bears on nature; the corpus neither predicted nor is refuted by either result.
+
+⟦T9⟧⟦T10⟧ **Box VII.J-9 (posed closures — unpaid bills, printed; synthesis §7.4.8 verbatim).** [F-T9-T3, F-T10-U1…U3; tier9-glueball/TIER9_ADJUDICATION.md, tier10-junction/TIER10_ADJUDICATION.md; campaign proposal, adopted this edition]
+
+- **SS-Closure-I:** the tube-core axion — existence, localization, and gap of a W_χ-sourced parity-odd core mode (the single computation on which the 0⁻⁺ question hinges).
+- **SS-Closure-II:** the F-Q8 closure obligation for knot-free asymptotic states (three branches; the third contradicts the relic census).
+- **SS-Closure-III:** WS1-H3, the junction order n — still an ansatz (n = 3) with no execution document; the discharge technology is now concrete (junction effective string theory + lattice junction mass). The Primer-vs-paper status seam (F-K0-1) is carried until discharge. The tetraquark kill stays armed on the outcome.
+- **SS-Closure-IV:** the dumbbell inertia convention — derive the junction state's kinetic term from the substrate action (the convention split of §7.4.6 (= Box VII.J-7 above) is the price of not having done so).
+- **SS-Closure-V:** F-Q2′ — derive ε_q from substrate structure (the sector's standing wall, inherited unchanged). (= open problem #1, Sec. XI of this paper)
+
+Also explicitly not earned in v4.5: any hadron mass at better than V.F strength (seal q-θ stands); the X(2370) glueball identification itself (mixing fraction unquantified; single-facility); the junction interpretation of the STAR observables (CGC saturation reproduces the slope systematics with valence quarks only; neutron-skin and strangeness confounds are live); κ_q and M_gap as numbers; a locking-stratum mediator branch in the enumerated field content (its absence is itself a filed structural gap). Silence on any closure beyond the next revision is itself auditable.
+
 ---
 
 *[END OF PART 4. — Part 5: Sec. VIII (one world: the conserved exponential; leaf dynamics; the elliptic mechanization; the double padlock and the unlock; T-KILL both branches and the S3 gate); Sec. VIII′ (nucleation: the pairs-only theorem; IBC UV-finiteness; ⟦rev⟧ ω_th = √2ω₀ [T3.1] with bound K–K̄ lines; the amplitude-mode Higgs with mass-proportional couplings; covariance Theorems QFT-1/QFT-2 and the triple padlock); Sec. IX (the experimental program and the stakes table v2); Secs. X–XIV (audit trail; open problems; How GUM Dies with the fourteen-kill registry; Standing Watch SWP-1; conclusion).]*
 
+⟦EW⟧ *(Part-4-end bracket addendum, v5.0-ext — the bracket line above is carried verbatim; appended note: + **Sec. VII-W (electroweak, this edition)** — inserted immediately below, between Part 4's end and Part 5's header. [⟦EW⟧ source: synthesis/GUM-Omega-Synthesis-v4.5-SS.md §8; adopted by owner commission, corpus4 charter v3 rule 5])*
+
 Say "continue" for Part 5.
 
-# GUM-Ω v4.3-ext (Tier-6/7 fold): THE CONCEPTUALLY COMPLETE EDITION — PART 5 OF 6
+## VII-W. THE ELECTROWEAK SECTOR ⟦EW⟧
+
+⟦EW⟧ *(Section note, v5.0-ext: this entire section is the synthesis line's Electroweak Sector — synthesis/GUM-Omega-Synthesis-v4.5-SS.md §8.0–§8.14 — copied verbatim, with the subsections renumbered VII-W.0…VII-W.14, each subsection headed by its ⟦EW⟧ marker + citation line, and inline cross-reference annotations "(= Sec. … of this paper)" appended with the source text unchanged (EW_SS_FOLD_PAYLOAD.md A2). The sector is **adopted by owner commission** (corpus4 charter v3 rule 5) at the grades printed in the source; no grade rises. Within-model; nothing here bears on nature.)*
+
+### VII-W.0 Mandate and method
+
+[⟦EW⟧ source: synthesis/GUM-Omega-Synthesis-v4.5-SS.md §8.0; adopted by owner commission, corpus4 charter v3 rule 5]
+
+Through v4.3-ext the weak interaction was the corpus's thinnest sector: a [CJ] silhouette with no printed structure. The July 2026 external analysis supplied a reconstruction template and a demand — *"this is the sector where GUM must produce theorems."* v4.4 answers with four [DF]-grade theorems, six [DW]-grade results, one combinatorial theorem, three new flags (F14–F16), four cross-locks binding the sector to the ħ-closure, the family tower, confinement, and the dark-energy sign, one corrigendum (P-F1′ → P-F1″), three posed closures with named deliverables, and four new stakes. Grades are conditional on their flags exactly as elsewhere in the corpus. What the sector still does not earn is printed in §8.13 (= VII-W.13 of this paper) and may not be spent.
+
+### VII-W.1 Compositeness mandate
+
+[⟦EW⟧ source: synthesis/GUM-Omega-Synthesis-v4.5-SS.md §8.1; adopted by owner commission, corpus4 charter v3 rule 5]
+
+**Theorem EW-0 (no elementary electroweak bosons) [DF | T3.1].** By the spin-selection theorem, j = ½ is the unique non-singular carrier: no elementary massive species of spin 0 or spin 1 exists in GUM. Hence W±, Z, and h — if realized — are necessarily collective modes or composites of the P̃/locking sector. The SM's elementary-boson ontology is not available to the model even as an option; compositeness is not a scenario but a corollary.
+
+### VII-W.2 The weak multiplet (Flag F14)
+
+[⟦EW⟧ source: synthesis/GUM-Omega-Synthesis-v4.5-SS.md §8.2; adopted by owner commission, corpus4 charter v3 rule 5]
+
+The locked chiral ground state is invariant under diagonal co-rotation SO(3)_cr — the same invariance behind Theorem II.2. Under SO(3)_cr the six linear branches of §2 (= Sec. II.E of this paper) organize as: B1 (constraint scalar), B2± (co-rotation-inert gapless doublet — the photon), and the gapped orientation triplet {B3±, B4} transforming as J = 1.
+
+**Flag F14 (weak-triplet identification).** The weak vector sector is this triplet, dressed as follows: the charged members are triplet quanta bound to unit disclination winding ("charged twist excitons") → W±; the neutral member is the B4 channel after B2-mixing (§8.4 (= VII-W.4 of this paper)) → Z. The classification is [DW] (it follows from the §2 linearization (= Sec. II.E of this paper) plus the stated dressing); the exciton binding itself is [CJ] until EW-Closure-I is executed. Laboratory precedent for collective-mode spectroscopy of an SO(3) relative-rotation order parameter exists in superfluid ³He-B, whose order parameter is the exact mathematical analog of P̃.
+
+**Theorem EW-1 (charged-gap theorem; forced U(1)_em) [DF | F10′].** Any branch carrying net disclination winding pays a texture cost bounded below by the locked-medium tension — the same energetics that floors §7.4 (= Sec. VII.J of this paper). Hence no gapless charged mode exists in any phase of the locked medium: exact masslessness is available only to neutral channels, and B2 is its unique occupant (II.2). The residual pattern "SU(2)-like × U(1) → U(1)_em" is thereby a theorem of winding energetics, not a choice of potential shape. The observed absence of any massless charged particle in nature is, inside GUM, not an accident.
+
+### VII-W.3 Custodial protection
+
+[⟦EW⟧ source: synthesis/GUM-Omega-Synthesis-v4.5-SS.md §8.3; adopted by owner commission, corpus4 charter v3 rule 5]
+
+**Theorem EW-2 (custodial theorem) [DF | F14].** SO(3)_cr invariance of the locked state forces the orientation triplet to be exactly degenerate at χ → 0; all splittings enter through (i) χ-sector transduction and (ii) B2-mixing. Consequently the tree relation
+
+ρ ≡ M_W² / (M_Z² cos²θ_w) = 1
+
+holds identically, with corrections opening at the same O(χ²(ka)²) order as photon-achirality regeneration (II.3).
+
+**Cross-lock C-EW4.** One invariance, two SM facts: the co-rotation symmetry that keeps the photon exactly massless (II.2) *is* the custodial symmetry that fixes ρ = 1. They stand or fall together.
+
+Inverse-kill (added to the S7 battery): any confirmed ρ ≠ 1 beyond the printed radiative window retires F14. GUM pre-commits to the ρ = 1 side of the historical W-mass measurement dispute and will absorb the community's final average without amendment rights.
+
+### VII-W.4 Photon–Z diagonalization; the weak angle
+
+[⟦EW⟧ source: synthesis/GUM-Omega-Synthesis-v4.5-SS.md §8.4; adopted by owner commission, corpus4 charter v3 rule 5]
+
+The χ₂ transduction mixes B2 with the neutral twist channel.
+
+**Theorem EW-3 (protected diagonalization; coupling identity) [DF | F14].** Co-rotation invariance forces one exact zero eigenvalue of the mixed 2×2 sector at all orders: II.2 survives mixing. The orthogonal combination is the Z, with
+
+M_Z = M_T / cos θ_w,  tan θ_w = ϑ,
+
+where ϑ is a constitutive modulus ratio of the transduction/stiffness sector. **Corollary [DF]:** the same χ₂ normalizes both the B2–matter coupling and the mixing; hence e = g sin θ_w is an identity of the diagonalization, not an input.
+
+Status of ϑ: **[IM]** — the same ledger class as α. No numeric value of sin²θ_w is claimed in v4.4. **EW-Closure-III (posed):** does the C1-family radiative flow possess an attractor for ϑ? If yes, θ_w is promoted to [DW]; if no, it remains constitutive. Either answer is a deliverable.
+
+### VII-W.5 The Higgs as attractor-amplitude mode (Flag F15)
+
+[⟦EW⟧ source: synthesis/GUM-Omega-Synthesis-v4.5-SS.md §8.5; adopted by owner commission, corpus4 charter v3 rule 5]
+
+P̃ ∈ SU(2) has no radial direction; the Higgs is therefore *not* a P̃ mode. Recall (§4 (= Sec. IV of this paper)) that the locking scale is dynamically selected: ħ and the vacuum sit at a field-level attractor of the bootstrap.
+
+**Flag F15.** h is the gapped J = 0 breathing mode of the attractor amplitude (the lock-scale condensate) — the mechanical analog of the amplitude ("Higgs") mode of a superconductor. Because h carries no orientation charge, its fluctuations cannot generate a B2 mass: II.2 is untouched by construction (consistency check passed). M_h is the curvature of the bootstrap effective potential at the attractor point; its computation is a deliverable of EW-Closure-I. No number is claimed in v4.4.
+
+### VII-W.6 Yukawa pattern by factorization
+
+[⟦EW⟧ source: synthesis/GUM-Omega-Synthesis-v4.5-SS.md §8.6; adopted by owner commission, corpus4 charter v3 rule 5]
+
+**Theorem EW-4 (factorization ⇒ coupling universality) [DW].** The corpus mass formula is multiplicative:
+
+m_f = M₀(lock) · e^(−I_f),
+
+with M₀ the band-edge scale (proportional to the lock amplitude) and I_f the scale-free frustration integrals of §7.2 (= Sec. VII.H of this paper). If I_f is lock-independent, then ∂m_f/∂(lock) = m_f/(lock) exactly: the h coupling to every knot is
+
+g_hff = m_f / v_eff
+
+with one universal v_eff and **zero fundamental Yukawas** — the SM pattern κ_f ∝ m_f as a theorem of mass factorization.
+
+Deviations are the fingerprint. η_f ≡ κ_f/κ_f^SM − 1 = −∂I_f/∂ln(lock) is nonzero only through the weak dependence of the frustration integrals on the lock scale via the fog stiffness. Requiring the two frustration-log landings of §7.2 (= Sec. VII.H of this paper) (2.80 vs 2.822; 5.65 vs 5.332) to stay inside their printed penalties bounds the window:
+
+|η_f| ≤ 0.05 (68), family-ordered |η_t| < |η_b| < |η_τ| < |η_μ| (lighter = less protected).
+
+The same window bounds the soft channel: BR(h → soft-fog excitations) ≤ few % — an invisible-width exposure sitting at exactly HL-LHC sensitivity.
+
+**Corrigendum P-F1′ → P-F1″.** The v4.3 phrase "SM-null Higgs couplings" is retired as ambiguous. The vanishing-coupling reading is excluded by observation (H→ττ and H→bb established at Run 2); the intended reading — couplings SM-valued, deviations null — is the only one consistent with the original kill condition ("confirmed anomaly"), and is now formalized as **P-F1″** with the η-window above. This rewording was forced by the July 2026 external analysis; per corpus policy, every external sentence stays inside the audited grade.
+
+### VII-W.7 Fermi constant; charged and neutral currents
+
+[⟦EW⟧ source: synthesis/GUM-Omega-Synthesis-v4.5-SS.md §8.7; adopted by owner commission, corpus4 charter v3 rule 5]
+
+Integrating out the gapped triplet yields the four-knot contact interaction with G_F ∝ g₄²/M_W². The vertex factor g₄ is the triple overlap (knot zero-mode ⊗ B4 profile ⊗ disclination form factor); its magnitude is exponentially suppressed by tunneling through the **pinned marginal equatorial halo** of the §4 compacton (= Sec. IV of this paper).
+
+**Cross-lock C-EW2.** The same halo that fixed 𝔠 = 64√2/(9π) now prices the weakness of the weak interaction: weak interactions are weak because the vertex must thread the halo. [DW structure; numeric G_F awaits EW-Closure-I.]
+
+Neutral currents: the Z (twist channel) couples diagonally in frustration class, because class transitions require winding transfer, which the neutral channel cannot supply.
+
+**Proposition EW-5 (GIM analog) [DW].** No tree-strength flavor-changing neutral currents; class-changing neutral processes open only at second order in the pump. Inverse-kill added to the S7 battery.
+
+The heliknoton, being itself a twist texture, couples to Z naturally; with the tower terminating at three (§7.2 (= Sec. VII.H of this paper)), the invisible Z width counts exactly N_ν = 3 — in agreement with the LEP lineshape.
+
+Charged-current phenomenology at the ontology level: β-decay is a fractional-winding rearrangement inside a baryon network emitting a charged twist pulse that materializes at the coincidence stratum as an (electron knot + antineutrino heliknoton) pair — the pairs-only lemma of §1.1 (= Sec. II.B, Lemma II.1′, of this paper) is satisfied, and the cheapest pair partner is always a pitch quantum, which is *why* the neutrino is the universal companion of charged-current events.
+
+### VII-W.8 Chirality filter; V−A
+
+[⟦EW⟧ source: synthesis/GUM-Omega-Synthesis-v4.5-SS.md §8.8; adopted by owner commission, corpus4 charter v3 rule 5]
+
+**Proposition EW-6 (zero-mode chirality filter) [DW].** In the chiral medium the knot's fermionic zero-mode doublet splits: one helicity class remains core-normalizable; the other is expelled toward the halo/continuum with exponentially small residue. The B4 vertex is a twist operator and couples only to the core class: charged currents are maximally parity-violating, V∓A, with the sign slaved to the vacuum handedness. Wrong-chirality admixture:
+
+ε_R ∼ e^(−μ d_halo)
+
+— the same exponent family as the G_F suppression. The halo prices both the *strength* and the *handedness purity* of the weak vertex.
+
+**Cross-lock C-EW1 (handedness chain).** One global sign must simultaneously fix: (i) the frustration-ladder orientation (§7.2 (= Sec. VII.H of this paper)), (ii) weak left-handedness, (iii) the structural w_a > 0 of §6 (= Sec. VI.D of this paper), and (iv) the δ_CP sign of Stake S10. The chain is falsifiable as a package; no member may be flipped independently.
+
+What v4.4 does not earn: the Michel structure beyond leading order and the numeric ε_R floor. Stake S8 prices the exposure.
+
+### VII-W.9 Mixing matrices; CP by holonomy
+
+[⟦EW⟧ source: synthesis/GUM-Omega-Synthesis-v4.5-SS.md §8.9; adopted by owner commission, corpus4 charter v3 rule 5]
+
+Interaction basis = B4-vertex eigenmodes; mass basis = frustration eigenknots; CKM and PMNS are the mismatch matrices between them.
+
+Quark knots are confined network windings, rigidly co-oriented with the network: small mismatch, with the Cabibbo parameter as the network misalignment angle [CJ]. Lepton knots are free against the fog while the heliknoton basis is set by the ambient helix: O(1) mismatch — large PMNS angles [DW-qualitative]. The qualitative dichotomy "CKM small, PMNS large" is thus a consequence of the confinement dichotomy of §7.4 (= Sec. VII.J of this paper).
+
+**Proposition EW-7 (holonomy phase counting) [DF-combinatorial | F13].** Transport holonomies around double-twist network cells, modulo per-class rephasings, leave exactly (N−1)(N−2)/2 irreducible phases: one CP phase per sector for the forced N = 3. Kobayashi–Maskawa counting is recovered as network holonomy. CP violation therefore *exists by structure* and *requires the third family* — which the tower supplies and terminates.
+
+μ–τ reflection: the double-twist network's reflection symmetry acting on the heliknoton basis gives θ₂₃ → 45° and δ_CP → ±π/2 at leading order, broken only by frustration-class asymmetry; the sign of δ_CP is slaved to C-EW1. Stake S10.
+
+### VII-W.10 One scale; the top; the dissolved hierarchy
+
+[⟦EW⟧ source: synthesis/GUM-Omega-Synthesis-v4.5-SS.md §8.10; adopted by owner commission, corpus4 charter v3 rule 5]
+
+**Proposition EW-8 (one-scale electroweak sector) [DW].** M_W, M_Z, M_h, and m_t are all band-edge-scale objects: gapped triplet, mixed neutral, attractor curvature, and class-3 knot near the edge respectively. Their observed clustering within a factor ≈2 (80–173 GeV) is structural; there is no independent Higgs-sector scale. The hierarchy problem is re-classed: a constitutive band gap does not run to the lattice scale (the same radiative-locking machinery as the C1 flow protects it), just as the gap of a superconductor is not destabilized by the Fermi energy.
+
+**Theorem EW-9 (termination–top lock) [DW ≈2σ].** The family tower terminates at three (§7.2 (= Sec. VII.H of this paper)) precisely because a fourth frustration class would carry its knot above the band edge, where the superradiance censor of §4 (= Sec. IV.D of this paper) — the same censor whose enforcement repaired the ħ-closure — forbids stationary carriers. **Corollary:** the last admitted class sits nearest the edge, forcing y_t = m_t/v_eff into the top of the last frustration spacing; the measured y_t ≈ 0.99 lands inside the printed window [e^(−ΔI₃), 1).
+
+**Cross-lock C-EW3.** One censor prices two facts: (i) exactly three families, (ii) y_t ≈ 1. Killing either kills both.
+
+### VII-W.11 Electroweak restoration as lock melting (Flag F16)
+
+[⟦EW⟧ source: synthesis/GUM-Omega-Synthesis-v4.5-SS.md §8.11; adopted by owner commission, corpus4 charter v3 rule 5]
+
+At T ∼ band edge the co-rotation lock melts. The laboratory analogs of the fog (liquid-crystal blue phases) melt via weakly first-order transitions.
+
+**Flag F16 [CJ].** The electroweak crossover is a weakly first-order lock-melt. Sphaleron analog: winding-network reconnection at det F → 0 strata — the pairs-only stratum doubles as the B-violation site. All three Sakharov conditions are structurally present: reconnection (B violation), holonomy phases plus fog handedness (C, CP violation), and departure from equilibrium at the weakly first-order melt. **No rate is computed.** F16 may not be built upon silently. Stake S9 prices the gravitational-wave exposure.
+
+### VII-W.12 Anomaly bookkeeping as tiling neutrality
+
+[⟦EW⟧ source: synthesis/GUM-Omega-Synthesis-v4.5-SS.md §8.12; adopted by owner commission, corpus4 charter v3 rule 5]
+
+**Proposition EW-10 (tiling neutrality) [DW].** With the §7.4-derived winding thirds (= Sec. VII.J of this paper) and down-type sign flip, per-family charge neutrality of the network unit cell reads
+
+3(⅔) + 3(−⅓) + (−1) + 0 = 0.
+
+"Anomaly cancellation" is re-classed as a tiling constraint; hypercharge assignments are winding fractions. The full anomaly-polynomial correspondence is EW-Closure-II (posed, unpaid).
+
+### VII-W.13 Posed closures (unpaid bills, printed)
+
+[⟦EW⟧ source: synthesis/GUM-Omega-Synthesis-v4.5-SS.md §8.13; adopted by owner commission, corpus4 charter v3 rule 5]
+
+- **EW-Closure-I:** the charged twist-exciton bound state (triplet quantum ⊗ unit disclination). Deliverables: M_W/ω₀, E_bind, g₄ ⇒ G_F, and M_h from attractor curvature.
+- **EW-Closure-II:** tiling ⇔ anomaly polynomial correspondence in full.
+- **EW-Closure-III:** existence or non-existence of a C1-flow attractor for ϑ (the θ_w promotion test).
+
+Also explicitly not earned in v4.4: the numeric value of sin²θ_w (stays [IM], like α); absolute M_W; full Michel/radiative structure; electroweak precision analogs of S, T, U (posed); the Z-pole lineshape beyond N_ν counting (posed). Silence on any closure beyond the next revision is itself auditable.
+
+### VII-W.14 New flags, cross-locks, and stakes (summary)
+
+[⟦EW⟧ source: synthesis/GUM-Omega-Synthesis-v4.5-SS.md §8.14; adopted by owner commission, corpus4 charter v3 rule 5]
+
+**Flags:** F14 (weak-triplet identification), F15 (attractor-amplitude Higgs), F16 (weakly first-order lock-melt).
+
+**Cross-locks:** C-EW1 (global handedness chain: ladder / left-handedness / w_a > 0 / δ_CP sign), C-EW2 (one halo prices 𝔠, G_F, and ε_R), C-EW3 (one censor prices three families and y_t ≈ 1), C-EW4 (one invariance prices photon masslessness and ρ = 1).
+
+**Stakes:** S2′ (supersedes S2), S8, S9, S10; S7-battery additions: ρ = 1 at tree level; no tree-strength FCNC; e = g sin θ_w; no massless charged mode. Full table in §10 (= the v5.0-ext stakes addendum at Sec. IX.F of this paper).
+
+---
+
+⟦EW⟧ *(Part-5-start bracket addendum, v5.0-ext: Part 5 now opens after Sec. VII-W (electroweak, this edition); the Part-5 header line below is carried with only its version name updated. [⟦EW⟧ source: synthesis/GUM-Omega-Synthesis-v4.5-SS.md §8; adopted by owner commission, corpus4 charter v3 rule 5])*
+
+# GUM-Ω v5.0-ext (corpus4 EW+SS fold): THE CONCEPTUALLY COMPLETE EDITION — PART 5 OF 6
 
 *(Sections VIII–XIV: the one-world sector, nucleation, the experimental program, and the program's actuarial machinery.)*
 
@@ -744,6 +1016,20 @@ EPRB with spacelike-separated spin and arrival measurements: the correlation-ons
 | S6 | 0νββ occurs | LEGEND-1000/nEXO era | full-funnel exclusion (kills VII.I) | conditional |
 | S7 | inverse-kill battery | standing | any single confirmed violation | continuous |
 
+⟦EW⟧ **Supersession note (S2 → S2′), v5.0-ext.** The S2 row above — quoted verbatim: "S2 | δg_h(μ,τ,b,t) = 0 to ≲10⁻⁵ | HL-LHC | any confirmed deviation | 30-day memo" — is superseded by stake **S2′** in the addendum table below (couplings SM-valued within the η-window, per the P-F1′ → P-F1″ corrigendum, Sec. VII-W.6); the hashed Stake Letter is untouched; a dated re-stake delta issues per S-30, exactly as S4′'s did. [⟦EW⟧ source: synthesis/GUM-Omega-Synthesis-v4.5-SS.md §10; adopted by owner commission, corpus4 charter v3 rule 5]
+
+⟦EW⟧ **Stakes addendum table (v5.0-ext — the electroweak stakes and S7-battery additions, rows copied verbatim from the synthesis §10 table).** [⟦EW⟧ source: synthesis/GUM-Omega-Synthesis-v4.5-SS.md §10; adopted by owner commission, corpus4 charter v3 rule 5]
+
+| Stake | Content | Adjudicator | Kill condition |
+|---|---|---|---|
+| S2′ | Higgs couplings SM-valued within η-window (\|η_f\| ≤ 0.05, family-ordered); BR(h→invisible/fog) inside window | HL-LHC | confirmed coupling anomaly outside window, or invisible width above window |
+| S8 | Michel ρ = 3/4; RH charged-current admixture below printed ε_R | precision μ / β-decay programs | confirmed RH current above window |
+| S9 | EW lock-melt GW background weak (below printed LISA-band amplitude) | LISA | loud first-order EW-scale stochastic background |
+| S10 | θ₂₃ within printed band of maximal; δ_CP within band of −π/2, sign per C-EW1 | DUNE / Hyper-K | robust δ_CP ≈ 0 or π, or strongly non-maximal θ₂₃ |
+| S7 (additions) | Standing inverse-kill battery (photon mass, EP violation, **ρ ≠ 1**, **tree-strength FCNC**, **e ≠ g sin θ_w**, **massless charged mode**, **tetraquark-like ground-state baryons — armed, conditional on SS-Closure-III returning n = 3 (v4.5)**, …) | whole community | any confirmed detection |
+
+⟦T9⟧⟦T10⟧ **Strong-sector note (v5.0-ext; copied verbatim from the synthesis §10).** "No new stake is issued by the strong-sector expansion: seal q-θ bars hadron-spectrum wagers, and the X(2370)/junction confrontations enter as [IM] anchors with live rivals, not adjudicators. The S7 tetraquark line above is the corpus's pre-existing kill, now cross-referenced to its posed closure." [F-T9-T1…T4, F-T10-U1…U3; tier9-glueball/TIER9_ADJUDICATION.md, tier10-junction/TIER10_ADJUDICATION.md; campaign proposal, adopted this edition]
+
 ---
 
 ## X. AUDIT TRAIL AND PROCESS METRICS
@@ -762,6 +1048,10 @@ EPRB with spacelike-separated spin and arrival measurements: the correlation-ons
 
 ⟦T7⟧ **External adjudication, sixth and seventh phases (dated 2026-07-18 — the Tier-7 Phase-P/Q campaign record).** Two workflows: **Phase P** (**wf_d3b1ed78-3d0** + finisher agent — P1 fold 4/4; P2 4/5 with the endpoint-clause FAIL localized-as-finding; one workflow-agent budget exhaustion handled by coordinator resume; one container restart survived via committed intermediates) and **Phase Q** (**wf_74d72548-c07** — Q1 5/5 incl. stretch case; Q2 3/3). **The P2 G3 gate stands as a recorded FAIL (endpoint clause only)** — one wall-adjacent path missed the pre-registered t = 0 endpoint bar by 1.70× while the margin clause passed with four orders of headroom — reported as a fail, never as a pass; the campaign's own-defects/honest-verdicts discipline maintained, appended in the corpus's own antifragility framing. Findings **F-T7-P2/Q1/Q2** filed at the affected sections of this edition (VIII.F; Sec. XI). [Audit archives: audit-logs/MANIFEST_tier6.json (workflow7/8 blocks); TIER7_ADJUDICATION.md Phase-P/Q addenda; artifact set: tier7-program/; T7_FOLD_PAYLOAD.md Q14]
 
+⟦T8⟧ **Tier-8 assessment record (v5.0-ext, one sentence).** The Tier-8 campaign phase's audited assessment pair (tier8-assessment/PROS_ASSESSMENT.md, tier8-assessment/CONS_ASSESSMENT.md) is cited here as campaign-side documentation of the corpus's standing. [F-T8-S1…S4; tier8-assessment/; campaign proposal, adopted this edition]
+
+⟦T9⟧⟦T10⟧ **Tier-9/Tier-10 campaign record (v5.0-ext, one sentence).** The Tier-9 X(2370) confrontation (ROADMAP v11, 16/16 pre-registered gates; findings F-T9-T1…T4; tier9-glueball/TIER9_ADJUDICATION.md) and the Tier-10 STAR junction confrontation (ROADMAP v12, 12/12 pre-registered gates; findings F-T10-U1…U3; tier10-junction/TIER10_ADJUDICATION.md) are folded at Sec. VII.J as ⟦T9⟧/⟦T10⟧ boxes — both external results enter as [IM] anchors carried with their live rivals, every hadron-mass-confronting number at V.F strength only under seal q-θ; campaign proposal, adopted this edition; within-model, nothing here bears on nature.
+
 ## XI. OPEN PROBLEMS
 
 **#1 F-Q2′:** derive ε_q ≈ 10⁻² from substrate structure (dual-constrained: σ and the hadronic spectrum). **#2 R-M3b:** defect-gauge Ward identities (margin-protected). **#3 WS-QFT-2:** all-orders spacelike commutativity (non-blocking; polytope-bounded). **#4 WS4-M4c / W-net′:** 𝔴's value from Γ(H); network-transient ledger. **#5** Archival numerics (Stage-A′ records; WS10-FQ ancillaries). ⟦rev⟧ **#6 [DISCHARGED-WITH-CORRECTIONS, ⟦H4 resolved⟧]: the completion hypothesis MH** — the named computation executed: ∂(gen) = ±2·[rot] (two independent routes; 28/28 machine checks); MH clauses 1–2 discharged in-model with the correction ∂ ≠ 0 — **π₁(𝒞_strat) = ℤ₂ × A/⟨2a_rot⟩**, not the printed ℤ₂ × A (F-R16, minor); the fatal branch REFUTED and the closure's solvability underwritten (VII.F box). **Residual GAP (stays open): the N2/F.3 exchange lift** in the dressed two-knot space — "ARE fermions" remains overreach. **Scoped opens (stay open): curved-line moduli** (larger π₂; structural ρ₊-parity protection noted, not proven) **and even w ≥ 2** (needs the FR factor split off). [H4: theory-audit/h4_completion.md, F-R16] **#7 [NEW, OPEN]: production of the frozen ⟨r1⟩ code** exhibiting the stabilizing constraint/term absent from App. I.4's printed protocol (F-R5 discharge route (a)). Standing obligations: O-F1 residuals (Σ(p) prefactors at ±5%); the WS10-F3′ external-replication invitation (pre-drafted, mandatory under SWP Branch S) ⟦rev⟧ — **PARTIALLY EXECUTED:** the F3′/⟨r10⟩ arithmetic perimeter has been externally recomputed (gauntlet D-group; tier5-family for the downstream family/quark arithmetic incl. the ⟨r11⟩ full reconstruction and vindication); full discharge still requires release of the Σ(p) integral pipeline, which the campaign's corpus survey found unrecoverable from the 104-file text (the one end-to-end release is ⟨r10⟩) [tier5-family/family_RESULTS.md; REPLICATION_CAMPAIGN_STATUS.md]. ⟦rev⟧ **Declaration, amended:** v2.0.1 declared "the open register contains no question of principle." That declaration was **withdrawn pending H4**; with H4 reported — the fatal branch refuted, MH discharged in corrected form — it is **reinstated in scoped form**: the remaining opens (the N2/F.3 lift; curved-line moduli; even w ≥ 2) are named, finite computations, none with an identified mechanism to unsolve the closure (any completion-III mechanism must produce an odd multiple of [rot] in im ∂, which ρ₊-parity blocks structurally). [H4: theory-audit/h4_completion.md, F-R16] ⟦I4 reported⟧ **Register update — #6's residual GAP and both scoped opens EXECUTED:** the N2/F.3 exchange lift **FAILS** (F-R17: the proviso constructs the geon obstruction, σ(exchange) = −1 ≠ +1 = σ(rotation); repair χ_exch = χ(σ)·χ_rot, χ(σ) a new free ℤ₂; "ARE fermions" is doubly-selected, not forced); **curved-line moduli CLOSED theorem-grade** (the ρ₊-parity block of the preceding sentence is now a theorem on any embedded-line moduli); **even w ≥ 2 CLOSED** (χ(rot) = −1 splitness-free at all w ≠ 0; even-w fermionic sectors θ-twisted; the B = 2 worked example is sector-conditional — J = 0 forbidden in exactly 2 of 8 sectors). The reinstated declaration stands, sharpened: the last open with a conjectured mechanism has executed — against the hoped value, and in the closure's favor. [I4: theory-audit/i4_topology.md, i4_compute.py 19/19, F-R17]
@@ -773,6 +1063,20 @@ EPRB with spacelike-separated spin and arrival measurements: the correlation-ons
 ⟦T7⟧ **Register update (Tier 7, phases N/O).** **T4-W5 residual NARROWED:** the line-criterion route is **closed by proof** — N3: the line-local crossing criterion is REFUTED in this geometry (v_x = A(t) + n_y·S(z), S(½) = 0 with A > 0 through the kill bins; positive-divergent wall branch); no sign certificate exists for a detector ahead of a forward-boosted source; the hard cutoff is a TRANSPORT phenomenon — and the testbed statistic's zeros now stand at **field/flow grade** — O1: the backward-reachability theorem executed over all 64,000 kill-bin detector points at three resolutions, **zero violations**, 80,000/80,000 classification agreement, min pre-crossing margin 0.621 = 22,068× the p95 path error; kill-bin first-crossing measure ≤ 2.8×10⁻⁷ per kill member at field level, ~5,400× sharper than L7b's sampled 1.5×10⁻³. **The residual open narrows to the certified/analytic form of the backward-reachability argument** [F-T7-N3, F-T7-O1; tier7-program/N3/RESULTS.md, tier7-program/O1/RESULTS.md]. **F-R9 TERMINAL MENU (after M3 + N2 + O2):** adopt the R-enhanced honest rate — R = 1.1×10¹⁴–8.9×10¹⁷ at the four h21 anchors; g_equiv = √R·g = 8.5×10⁻³–12.3 — and face g_lim, or route (c) at the printed cost of the line-support theorem (route (b) closed by M3); the archive's own bound is **ABSENT-CERTIFIED** (O2: 658 files, 14 logged patterns, 370 hits catalogued; zero Majoron-mode rate-level bounds), and the **conditional kill is armed archive-externally: any Majoron-mode rate-level bound g_lim < 8×10⁻³ excludes the honest rate at every anchor and every printed g** — P-ν4 would invert from far-horizon to already-excluded; S1 and S6's occurrence stake untouched [F-T7-N2, F-T7-O2; tier7-program/N2/RESULTS.md, tier7-program/O2/GLIM_ARCHAEOLOGY.md]. **F-R14 now carries the computed decision-matrix pointer** (O3: exactly ONE sound cell — P-acoustic + supertrace; tuning fraction 1/4; "two independent repairs is the minimum bill" computed, not argued; decision support only — see the VI.C ⟦T7⟧ box) [F-T7-O3; tier7-program/O3/RESULTS.md]. Grades unchanged; offers remain offers.
 
 ⟦T7⟧ **Register update (Tier 7, phases P/Q).** **T4-W5 — the ladder, complete statement:** sampled zeros (L7b, ≤ 1.5×10⁻³ at 95% CL) → field/flow statement (O1, ≤ 2.8×10⁻⁷) → exact-field precision certification (P2, margins 10-digit) → **machine-checked interval certificates on witness paths (Q1)** + **the analytic program with one proven lemma and enumerated obligations (Q2)**. **Register language: T4-W5's testbed discharge now carries certificate grade on witnesses; the residual open is the O-1…O-5 program + formal kernel.** Remaining, both correctly named: a formally verified kernel + population-scale certification (engineering); the analytic theorem via O-1…O-5 (mathematics). The P2 G3 endpoint-clause FAIL is carried in this register as printed — a FAIL, localized-as-finding, never a pass. Grades unchanged; offers remain offers. [F-T7-P2, F-T7-Q1, F-T7-Q2; tier7-program/P2/RESULTS.md, tier7-program/Q1/RESULTS.md, tier7-program/Q2/ANALYTIC_RECON.md; T7_FOLD_PAYLOAD.md Q13]
+
+⟦EW⟧ **Open-problems addendum (v5.0-ext — the posed electroweak closures, copied verbatim from the synthesis §8.13; see Sec. VII-W.13).** [⟦EW⟧ source: synthesis/GUM-Omega-Synthesis-v4.5-SS.md §8.13; adopted by owner commission, corpus4 charter v3 rule 5]
+- **EW-Closure-I:** the charged twist-exciton bound state (triplet quantum ⊗ unit disclination). Deliverables: M_W/ω₀, E_bind, g₄ ⇒ G_F, and M_h from attractor curvature.
+- **EW-Closure-II:** tiling ⇔ anomaly polynomial correspondence in full.
+- **EW-Closure-III:** existence or non-existence of a C1-flow attractor for ϑ (the θ_w promotion test).
+Also explicitly not earned in v4.4: the numeric value of sin²θ_w (stays [IM], like α); absolute M_W; full Michel/radiative structure; electroweak precision analogs of S, T, U (posed); the Z-pole lineshape beyond N_ν counting (posed). Silence on any closure beyond the next revision is itself auditable.
+
+⟦T9⟧⟦T10⟧ **Open-problems addendum (v5.0-ext — the posed strong-sector closures, copied verbatim from the synthesis §7.4.8; see the Sec. VII.J Box VII.J-9).** [F-T9-T3, F-T10-U1…U3; tier9-glueball/TIER9_ADJUDICATION.md, tier10-junction/TIER10_ADJUDICATION.md; campaign proposal, adopted this edition]
+- **SS-Closure-I:** the tube-core axion — existence, localization, and gap of a W_χ-sourced parity-odd core mode (the single computation on which the 0⁻⁺ question hinges).
+- **SS-Closure-II:** the F-Q8 closure obligation for knot-free asymptotic states (three branches; the third contradicts the relic census).
+- **SS-Closure-III:** WS1-H3, the junction order n — still an ansatz (n = 3) with no execution document; the discharge technology is now concrete (junction effective string theory + lattice junction mass). The Primer-vs-paper status seam (F-K0-1) is carried until discharge. The tetraquark kill stays armed on the outcome.
+- **SS-Closure-IV:** the dumbbell inertia convention — derive the junction state's kinetic term from the substrate action (the convention split of Box VII.J-7 is the price of not having done so).
+- **SS-Closure-V:** F-Q2′ — derive ε_q from substrate structure (the sector's standing wall, inherited unchanged). (= open problem #1 above, which stays open at its own register line)
+Also explicitly not earned in v4.5: any hadron mass at better than V.F strength (seal q-θ stands); the X(2370) glueball identification itself (mixing fraction unquantified; single-facility); the junction interpretation of the STAR observables (CGC saturation reproduces the slope systematics with valence quarks only; neutron-skin and strangeness confounds are live); κ_q and M_gap as numbers; a locking-stratum mediator branch in the enumerated field content (its absence is itself a filed structural gap). Silence on any closure beyond the next revision is itself auditable.
 
 ## XII. HOW GUM DIES
 
@@ -796,7 +1100,7 @@ One medium; eight result streams; **twenty-six ledgered results** (Sec. I.D) of 
 
 Say "continue" for Part 6.
 
-# GUM-Ω v4.3-ext (Tier-6/7 fold): THE CONCEPTUALLY COMPLETE EDITION — PART 6 OF 6
+# GUM-Ω v5.0-ext (corpus4 EW+SS fold): THE CONCEPTUALLY COMPLETE EDITION — PART 6 OF 6
 
 *(Appendices A–L, figure specifications, references, colophon. Appendix content is derivation-complete at the level of the archived TN series; where a full computation lives in a tagged release, the appendix gives the checkable spine and the manifest pointer.)*
 
@@ -853,6 +1157,8 @@ Multipole O(1/x); near-BPS O(ε ln 1/ε) boundary-layer; adiabatic O(v²/c²); c
 Every numbered claim of Secs. II–IX carries {class, flags, kill pointers, audit citations}; coverage 100% by the J-index script (31/31 spot-check on record). Class census of the twenty-six results-table rows: DF 13; DW 8; CAL 3 (as primary); IM 4 (as primary); CJ 3 — with struck rows retained at their death grades. The index is the referee's map of exactly what is claimed at what strength; no external sentence may exceed it.
 
 ⟦rev⟧ **New annotation class (v3.0-ext): [externally replicated: artifact-path].** Attaches to a claim whose computation was independently re-derived on an external codebase. It is explicitly NOT the ⬛ nature-facing "established (independently replicated)" tag of the Primer/one-pager system; **grades never rise by it** (charter rule 4) — but AUD-15 §4's stated burden-shift is partially discharged by it. Every such annotation must carry its artifact path and, where certified, its Merkle root.
+
+⟦EW⟧⟦T8⟧⟦T9⟧⟦T10⟧ **Census addendum (v5.0-ext — the corpus4 EW+SS fold).** **New marker classes:** **⟦EW⟧** — synthesis-line electroweak content, every box citing "[⟦EW⟧ source: synthesis/GUM-Omega-Synthesis-v4.5-SS.md §8.x; adopted by owner commission, corpus4 charter v3 rule 5]"; grades carry as printed in the source ([DF | flag]-conditional etc.) and no grade may exceed its source. **⟦T8⟧/⟦T9⟧/⟦T10⟧** — campaign-phase content, citing finding tags (F-T8-S1…S4; F-T9-T1…T4; F-T10-U1…U3) and artifact paths (tier8-assessment/; tier9-glueball/TIER9_ADJUDICATION.md; tier10-junction/TIER10_ADJUDICATION.md), each box retaining its origin label "campaign proposal, adopted this edition" (charter v3 rule 5). **New sections and boxes:** Sec. VII-W (THE ELECTROWEAK SECTOR, VII-W.0–VII-W.14, between Parts 4 and 5); the nine ⟦T9⟧/⟦T10⟧ boxes appended inside Sec. VII.J (Boxes VII.J-1…9); the ⟦T8⟧ cost-(1) box at Sec. VI.C; the Sec.-X record sentences; the Secs. IX/XI addenda. **New flags:** F14 (weak-triplet identification), F15 (attractor-amplitude Higgs), F16 (weakly first-order lock-melt), F17 (three-sector dictionary), F18 (tube-core axion candidate [CJ]), F19 (junction-led transport mode). **New cross-locks:** C-EW1–C-EW4; C-SS1–C-SS3. **New stakes:** S2′ (supersedes S2 — supersession note at Sec. IX.F, quoting the superseded row), S8, S9, S10; four S7-battery additions (ρ = 1 tree; no tree-strength FCNC; e = g sin θ_w; no massless charged mode); no new strong-sector stake is issued (seal q-θ). **Posed closures added to the open register:** EW-Closure-I/II/III; SS-Closure-I…V. **Register locks carried:** grades never rise by replication; every hadron-mass-confronting number at V.F strength only ("dimensionally secure / structurally plausible / quantitatively unclaimed") under seal q-θ; the X(2370) and STAR junction results are [IM] anchors carried with their live rivals wherever cited; the forbidden sentences remain unavailable in every document; the 𝔠 ≈ 2.37 (dimensionless) vs 2.37 GeV digit coincidence is never cited as structure. Within-model; nothing here bears on nature. [EW_SS_FOLD_PAYLOAD.md; REVISION_CHARTER_v3.md]
 
 ## APPENDIX K — FAMILY / NEUTRINO / COLOR COMPUTATION RECORDS
 

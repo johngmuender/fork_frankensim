@@ -530,3 +530,31 @@ New [IM] anchors this phase: M_J/√σ = 0.1355(36) (2+1D); STAR
 1.84/0.64/1.04 set (contested — CGC-saturation rival at parity).
 Tacit knowledge: ALL scholarly domains egress-blocked this session
 (WebSearch only; user-uploaded PDFs readable); prior notes apply.
+
+---
+
+## ADDENDUM (session continuation, 2026-08-16): PHASE V — THE CORPUS4 FOLD
+
+`corpus4/` = complete new edition set of all corpus3 documents with EW
+(synthesis v4.4-EW/v4.5-SS §8, owner-commissioned adoption) + strong
+sector (Tiers 8–10) folded in. Governing docs:
+`corpus4/REVISION_CHARTER_v3.md` (8 rules) +
+`corpus4/EW_SS_FOLD_PAYLOAD.md` (Parts A–D, payload authority).
+Editions: paper v5.0-ext (1,275 lines), Course v4-ext, Primer v4-ext,
+TE v4-ext, Session Map v4.0-ext, Record v3.0, manifest v6.0-ext, Watch
+memo v4-ext, T6/T7 payloads (3-line headers, bodies byte-identical),
+FOLD_RECORD (verdicts filled). Fold workflow wf_1cadd65b-be9; 11/11
+coordinator-verified PASS; +622 lines total; deletions header-class
+only. Notable editor amendments (all printed in edition notes):
+chapter-collision resolutions (Course Ch. 20-W not Ch. 21; Primer
+Ch. 15½ not Ch. 16; §15.7 number kept); paper PART-header version
+bumps; E1 self-caught SS-Closure-V verbatim defect repaired pre-gates.
+
+**Restoration note:** the session also survived a container restart at
+Phase-V start (fresh clone checked out the ORIGINAL branch
+claude/analyze-gum-po-5x5cne at a Phase-K commit — fix: git fetch +
+checkout claude/analyze-gum-po; reinstall python deps). The synthesis
+line lives in `synthesis/` (v4.4-EW preserved + v4.5-SS, published as
+artifact 62369470-e9fa-449e-b340-7f35f3fc16e2). Remaining opens
+unchanged in kind: SS-Closure-I…V, EW-Closure-I…III (now printed in the
+paper's Sec. XI), the Tier-8 engineering/math opens, F-R14 corpus-side.

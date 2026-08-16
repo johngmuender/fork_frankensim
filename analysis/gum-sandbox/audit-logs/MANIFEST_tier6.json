@@ -1,5 +1,5 @@
 {
- "snapshot_utc": "2026-08-16 PHASE U COMPLETE - Tier 10 baryon-junction confrontation: context (4 agents) + ROADMAP v12 U1-U3 (12/12 gates, F-T10-U1..U3); trichotomy computed; no grade motion",
+ "snapshot_utc": "2026-08-16 PHASE V COMPLETE - corpus4 fold: EW + strong sectors into all 11 corpus3-derived editions (11/11 coordinator-verified PASS, +622 lines)",
  "session": "536b52e3-c0e4-5548-a35f-7ca5893feba9",
  "branch": "claude/analyze-gum-po",
  "note": "Additive to MANIFEST.json (session d0b81976, ivm-viz line). This manifest covers the tier6-foundations session only.",
@@ -326,6 +326,30 @@
    "description": "U3 dictionary audit + scorecard",
    "phase": "Phase U execute",
    "verdict": "4/4 PASS; delta-B=0 in 4/4 operations; 4 SILENT/1 V.F/0 TENSION; 5 annotations; F-T10-U3"
+  },
+  {
+   "agent_id": "a3188e1431d4cbf91",
+   "description": "E1 Omega paper v5.0-ext",
+   "phase": "Phase V fold",
+   "verdict": "PASS; 969->1275; 98/98 verbatim-copy audit; self-caught defect repaired"
+  },
+  {
+   "agent_id": "a0b80d0edb9b8bdac",
+   "description": "E2 teaching docs v4-ext x3",
+   "phase": "Phase V fold",
+   "verdict": "3/3 PASS; chapter-collision amendments printed; 20/20+9+/13 spot strings"
+  },
+  {
+   "agent_id": "a46cb90d1cb1e9541",
+   "description": "E3 meta set x6",
+   "phase": "Phase V fold",
+   "verdict": "6/6 PASS; T6/T7 bodies byte-identical; FOLD_RECORD template"
+  },
+  {
+   "agent_id": "a2eca8f8d2d2a935a",
+   "description": "E4 Record v3.0",
+   "phase": "Phase V fold",
+   "verdict": "PASS; 19/19 spot strings; Phases S/T/U + provenance + fold closing"
   }
  ],
  "caveat": "tier6-coordinator-session.jsonl.xz was snapshotted during the checkpointing turn; the last few checkpoint/commit exchanges after the snapshot instant are absent from the archive by construction. The git history and SESSION_CHECKPOINT_tier6.md carry that residue. Coordinator archive re-snapshotted after L5-prime adjudication; same tail caveat applies to the final commit exchange.",
@@ -418,5 +442,12 @@
   "script": "tier10-execute-workflow-script.js",
   "note": "U-execute: ROADMAP v12 workstreams U1-U3",
   "total_subagent_tokens": 447148
+ },
+ "workflow16": {
+  "run_id": "wf_1cadd65b-be9",
+  "archive": "corpus4-workflow-wf_1cadd65b-be9.tar.xz",
+  "script": "corpus4-fold-workflow-script.js",
+  "note": "corpus4 fold: 4 document editors (paper/teaching/meta/record)",
+  "total_subagent_tokens": 697728
  }
 }

@@ -594,3 +594,27 @@ plus the L5′ agent; audit archives `audit-logs/MANIFEST_tier6.json`).
   rivals carried throughout. Adjudication:
   `tier10-junction/TIER10_ADJUDICATION.md`. Every result is
   within-model; nothing here bears on nature.
+- ⟦T11⟧ **Phase V (eleventh campaign phase, 2026-08-16, session 536b52e3)**
+  — the corpus4 fold: `corpus4/` created as a complete new edition of
+  EVERY corpus3 document with the electroweak sector (synthesis line
+  v4.4-EW/v4.5-SS §8, adopted by owner commission) and the expanded
+  strong sector (Tiers 8–10: F-T8-S1…S4, F-T9-T1…T4, F-T10-U1…U3,
+  campaign proposals adopted-with-origin-labels) folded in under
+  REVISION_CHARTER_v3.md (additive-only, ⟦EW⟧/⟦T8⟧/⟦T9⟧/⟦T10⟧ markers,
+  payload authority EW_SS_FOLD_PAYLOAD.md, grades never rise, seal q-θ
+  V.F on all masses, rivals at parity). Fold workflow wf_1cadd65b-be9
+  (4 editors): paper → v5.0-ext "THE ELECTROWEAK+STRONG EDITION"
+  (969→1,275 lines; new Sec. VII-W = EW sector complete; nine
+  ⟦T9⟧/⟦T10⟧ boxes in VII.J; ⟦T8⟧ F-R14 cost box at VI.C; stakes
+  addendum S2′/S8/S9/S10 + S7 additions; closures EW-I/II/III +
+  SS-I…V; App. J census); Course → v4-ext (Ch. 20-W EW + §20.6
+  strong); Primer → v4-ext (Ch. 15½ EW + §15.7 strong); TE → v4-ext
+  (Lab W + solutions + 15.2 seam note); Session Map → v4.0-ext (§20);
+  Watch memo → v4-ext (§12, no board clock moves); Record → v3.0
+  (§§11–15: Phases S/T/U + synthesis provenance + fold closing);
+  manifest → v6.0-ext; FOLD_RECORD extended with 11 gate rows.
+  Coordinator verification: 11/11 documents PASS (total 4,678→5,300
+  lines, +622; deletions version-header class only, zero suspicious;
+  T6/T7 payload bodies byte-identical). corpus3 stands untouched as the
+  dated record. Every result is within-model; nothing here bears on
+  nature.
